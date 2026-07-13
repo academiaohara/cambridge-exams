@@ -2899,26 +2899,14 @@
       var totalConvs = convs.length;
       var convsHtml = '';
       convs.forEach(function(conv, ci) {
-        var linesHtml = '';
-        var speakers = {};
-        var speakerIdx = 0;
-        (conv.lines || []).forEach(function(line) {
-          if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
-          var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
+        var linesHtml = self._buildConvStoryLinesHtml(conv.lines, function(rawText) {
+          return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
             var sepIdx = inner.indexOf('|');
             if (sepIdx === -1) sepIdx = inner.indexOf('/');
             var displayIdiom = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
             var lookupIdiom = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
             return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showIdIdiomPopup(\'' + self._jsStr(lookupIdiom) + '\')" title="' + self._escapeHTML(displayIdiom) + '">' + displayIdiom + '</strong>';
           });
-          linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
-            self._getAvatarHtml(line.speaker) +
-            '<div class="pv-conv-bubble">' +
-              '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
-              '<span class="pv-conv-text">' + text + '</span>' +
-            '</div>' +
-          '</div>';
         });
         var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (ci + 1) + '/' + totalConvs + '</span>' : '';
         convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
@@ -2932,24 +2920,34 @@
         convDotsHtml += '<div class="pv-gallery-nav-dot' + (ci === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + ci + '" title="' + self._escapeHTML(conv.title || ('Conversation ' + (ci + 1))) + '" onclick="FastExercises._idConvGoTo(' + ci + ')"></div>';
       });
 
+      var convNavHtml = totalConvs > 1
+        ? '<div class="pv-gallery-nav-col pv-conv-nav-bottom" id="id-conv-nav">' + convDotsHtml + '</div>'
+        : '';
+
       container.innerHTML =
         '<div class="fe-point-view">' +
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
-            '<div class="pv-gallery-single-wrap">' +
+            '<div class="pv-gallery-single-wrap pv-conv-story-wrap">' +
               '<div class="pv-conversations-slides" id="id-conv-slides">' +
                 convsHtml +
               '</div>' +
-              '<div class="pv-gallery-nav-col" id="id-conv-nav">' +
-                convDotsHtml +
-              '</div>' +
+              convNavHtml +
             '</div>' +
             '<div class="pv-conv-footer">' +
-              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + 'Idioms are highlighted in bold. Click a highlighted idiom to see its meaning.' + '</p>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + 'Idioms are highlighted in bold. Tap the dialogue to reveal each message, then click an idiom to see its meaning.' + '</p>' +
+              '<button class="fe-point-next-btn" id="id-conv-legacy-next" disabled onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 'Ready! Next' +
               '</button>' +
             '</div>' +
         '</div>';
+
+      self._initConvStoryMode({
+        root: container,
+        onAllRevealed: function() {
+          var btn = document.getElementById('id-conv-legacy-next');
+          if (btn) btn.disabled = false;
+        }
+      });
 
       var slidesArea = document.getElementById('id-conv-slides');
       if (slidesArea) {
@@ -3117,15 +3115,11 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, ctx.lessonPoints) +
-            '<div class="pv-drag-container">' +
-              '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                '<div class="pv-chips-title">' + 'Idioms' + ':</div>' +
-                '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
-              '</div>' +
+            '<div class="pv-drag-container pv-drag-container--responsive">' +
               '<div class="pv-drag-main">' +
                 '<div class="pv-conv-block">' +
                   '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
-                  '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+                  '<div class="pv-conv-dialogue pv-conv-dialogue--drag">' + linesHtml + '</div>' +
                 '</div>' +
                 '<div class="pv-drag-result" id="id-drag-result" style="display:none;">' +
                   '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
@@ -3135,6 +3129,10 @@
                     : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                   ) +
                 '</div>' +
+              '</div>' +
+              '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+                '<div class="pv-chips-title">' + 'Idioms' + '</div>' +
+                '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
               '</div>' +
             '</div>' +
         '</div>';
@@ -3730,6 +3728,117 @@
       this._showQuizQuestion(qIndex + 1);
     },
 
+    // ── Conversation story mode (Duolingo-style message reveal) ─────────
+    _buildConvStoryLinesHtml: function(lines, textProcessor) {
+      var self = this;
+      var speakers = {};
+      var speakerIdx = 0;
+      var html = '';
+      (lines || []).forEach(function(line, li) {
+        if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
+        var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+        var text = textProcessor ? textProcessor(line.text) : self._escapeHTML(line.text);
+        var stateClass = li > 0 ? ' pv-conv-line--hidden' : ' pv-conv-line--visible';
+        html += '<div class="pv-conv-line pv-conv-' + side + stateClass + '" data-line-idx="' + li + '">' +
+          self._getAvatarHtml(line.speaker) +
+          '<div class="pv-conv-bubble">' +
+            '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
+            '<span class="pv-conv-text">' + text + '</span>' +
+          '</div>' +
+        '</div>';
+      });
+      return html;
+    },
+
+    _convStoryCountHidden: function(slideEl) {
+      if (!slideEl) return 0;
+      return slideEl.querySelectorAll('.pv-conv-line--hidden').length;
+    },
+
+    _convStoryRevealNextInSlide: function(slideEl) {
+      if (!slideEl) return false;
+      var hidden = slideEl.querySelector('.pv-conv-line--hidden');
+      if (!hidden) return false;
+      hidden.classList.remove('pv-conv-line--hidden');
+      hidden.classList.add('pv-conv-line--visible');
+      requestAnimationFrame(function() {
+        if (hidden.scrollIntoView) hidden.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+      var remaining = slideEl.querySelectorAll('.pv-conv-line--hidden').length;
+      var hint = slideEl.querySelector('.pv-conv-story-hint');
+      if (hint) hint.classList.toggle('pv-conv-story-hint--done', remaining === 0);
+      return true;
+    },
+
+    _convStoryAllRevealed: function(root) {
+      var slides = (root || document).querySelectorAll('.pv-conv-slide');
+      for (var i = 0; i < slides.length; i++) {
+        if (this._convStoryCountHidden(slides[i]) > 0) return false;
+      }
+      return slides.length > 0;
+    },
+
+    _convStoryCheckComplete: function(opts) {
+      opts = opts || {};
+      var root = (opts && opts.root) || document;
+      if (!this._convStoryAllRevealed(root)) return;
+      if (opts.onAllRevealed) opts.onAllRevealed();
+    },
+
+    _convStoryAdvance: function(slideEl) {
+      if (!slideEl) return;
+      if (this._convStoryRevealNextInSlide(slideEl)) {
+        this._convStoryCheckComplete(this._convStoryOpts || {});
+        return;
+      }
+      this._convStoryCheckComplete(this._convStoryOpts || {});
+    },
+
+    _initConvStoryMode: function(opts) {
+      opts = opts || {};
+      var self = this;
+      this._convStoryOpts = opts;
+      var root = opts.root || document;
+
+      root.querySelectorAll('.pv-conv-slide').forEach(function(slide) {
+        var dialogue = slide.querySelector('.pv-conv-dialogue');
+        if (!dialogue) return;
+        dialogue.classList.add('pv-conv-story-stage');
+        if (!dialogue.querySelector('.pv-conv-story-hint')) {
+          var hint = document.createElement('div');
+          hint.className = 'pv-conv-story-hint';
+          hint.innerHTML = '<span class="material-symbols-outlined">touch_app</span> Tap to continue';
+          dialogue.appendChild(hint);
+        }
+        if (!dialogue._convStoryBound) {
+          dialogue._convStoryBound = true;
+          dialogue.addEventListener('click', function(e) {
+            if (e.target.closest('.pv-highlight-clickable')) return;
+            self._convStoryAdvance(slide);
+          });
+        }
+        var remaining = slide.querySelectorAll('.pv-conv-line--hidden').length;
+        var hintEl = slide.querySelector('.pv-conv-story-hint');
+        if (hintEl) hintEl.classList.toggle('pv-conv-story-hint--done', remaining === 0);
+      });
+
+      if (opts.passive) {
+        var session = window.FastExercisesVocabSession;
+        if (session && session.setActionBtn) session.setActionBtn('continue', true);
+        if (session && session.setPassiveContinue) {
+          session.setPassiveContinue(function() {
+            if (!self._convStoryAllRevealed(root)) {
+              var activeSlide = root.querySelector('.pv-conv-slide.pv-conv-slide-active');
+              if (activeSlide) self._convStoryAdvance(activeSlide);
+              return;
+            }
+            if (opts.onComplete) opts.onComplete();
+            else if (opts.categoryId) self._completeAndNext(opts.categoryId, opts.levelId, opts.lessonId, opts.pointIndex);
+          });
+        }
+      }
+    },
+
     // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
     _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
@@ -3748,26 +3857,14 @@
       var totalConvs = convs.length;
       var convsHtml = '';
       convs.forEach(function(conv, ci) {
-        var linesHtml = '';
-        var speakers = {};
-        var speakerIdx = 0;
-        (conv.lines || []).forEach(function(line) {
-          if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
-          var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
+        var linesHtml = self._buildConvStoryLinesHtml(conv.lines, function(rawText) {
+          return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
             var sepIdx = inner.indexOf('|');
             if (sepIdx === -1) sepIdx = inner.indexOf('/');
             var displayVerb = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
             var lookupVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
             return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(lookupVerb) + '\')" title="' + self._escapeHTML(displayVerb) + '">' + displayVerb + '</strong>';
           });
-          linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
-            self._getAvatarHtml(line.speaker) +
-            '<div class="pv-conv-bubble">' +
-              '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
-              '<span class="pv-conv-text">' + text + '</span>' +
-            '</div>' +
-          '</div>';
         });
         var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (ci + 1) + '/' + totalConvs + '</span>' : '';
         convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
@@ -3776,23 +3873,37 @@
         '</div>';
       });
 
-      // Nav dots for conversations
+      // Nav dots for conversations (shown below dialogue on wide layouts)
       var convDotsHtml = '';
       convs.forEach(function(conv, ci) {
         convDotsHtml += '<div class="pv-gallery-nav-dot' + (ci === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + ci + '" title="' + self._escapeHTML(conv.title || ('Conversation ' + (ci + 1))) + '" onclick="FastExercises._pvConvGoTo(' + ci + ')"></div>';
       });
 
+      var convNavHtml = totalConvs > 1
+        ? '<div class="pv-gallery-nav-col pv-conv-nav-bottom" id="pv-conv-nav">' + convDotsHtml + '</div>'
+        : '';
+
       var convContentHtml =
-        '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations">' +
+        '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap">' +
           '<div class="pv-conversations-slides" id="pv-conv-slides">' + convsHtml + '</div>' +
-          '<div class="pv-gallery-nav-col" id="pv-conv-nav">' + convDotsHtml + '</div>' +
+          convNavHtml +
         '</div>' +
         '<p class="pv-conv-hint fe-vocab-sp-hint"><span class="material-symbols-outlined">info</span> ' +
-          'Phrasal verbs are highlighted in bold. Click a highlighted verb to see its definition.' + '</p>';
+          'Phrasal verbs are highlighted in bold. Tap the dialogue to reveal each message, then click a verb to see its definition.' + '</p>';
 
       var pointPv = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
       var pointLabelPv = pointPv ? (pointPv.label || '') : '';
+      var storyOpts = {
+        passive: false,
+        categoryId: catMeta.id,
+        levelId: levelId,
+        lessonId: lessonId,
+        pointIndex: pointIndex
+      };
       if (self._runVocabPassiveSession(container, convContentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelPv)) {
+        storyOpts.passive = true;
+        storyOpts.root = document.getElementById('sp-screen-mount') || document;
+        self._initConvStoryMode(storyOpts);
         var slidesAreaSp = document.getElementById('pv-conv-slides');
         if (slidesAreaSp) {
           slidesAreaSp.addEventListener('wheel', function(e) {
@@ -3817,11 +3928,19 @@
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             convContentHtml +
             '<div class="pv-conv-footer">' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+              '<button class="fe-point-next-btn" id="pv-conv-legacy-next" disabled onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 'Ready! Next' +
               '</button>' +
             '</div>' +
         '</div>';
+
+      self._initConvStoryMode({
+        root: container,
+        onAllRevealed: function() {
+          var btn = document.getElementById('pv-conv-legacy-next');
+          if (btn) btn.disabled = false;
+        }
+      });
 
       var slidesArea = document.getElementById('pv-conv-slides');
       if (slidesArea) {
@@ -3959,15 +4078,11 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, ctx.lessonPoints) +
-            '<div class="pv-drag-container">' +
-              '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                '<div class="pv-chips-title">' + 'Phrasal Verbs' + ':</div>' +
-                '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
-              '</div>' +
+            '<div class="pv-drag-container pv-drag-container--responsive">' +
               '<div class="pv-drag-main">' +
                 '<div class="pv-conv-block">' +
                   '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
-                  '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+                  '<div class="pv-conv-dialogue pv-conv-dialogue--drag">' + linesHtml + '</div>' +
                 '</div>' +
                 '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
                   '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
@@ -3977,6 +4092,10 @@
                     : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                   ) +
                 '</div>' +
+              '</div>' +
+              '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+                '<div class="pv-chips-title">' + 'Phrasal Verbs' + '</div>' +
+                '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
               '</div>' +
             '</div>' +
         '</div>';
