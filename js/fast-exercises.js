@@ -130,6 +130,7 @@
         var lesson = level.lessons[li];
         if (!lesson.points) continue;
         for (var pi = 0; pi < lesson.points.length; pi++) {
+          if (this._isTheoryPointType(lesson.points[pi].type)) continue;
           if (!this._isPointComplete(categoryId, levelId, lesson.id, pi)) return false;
         }
       }
@@ -139,6 +140,7 @@
     _isLessonComplete: function(categoryId, levelId, lessonId, lessonPoints) {
       if (!lessonPoints || lessonPoints.length === 0) return true;
       for (var pi = 0; pi < lessonPoints.length; pi++) {
+        if (this._isTheoryPointType(lessonPoints[pi].type)) continue;
         if (!this._isPointComplete(categoryId, levelId, lessonId, pi)) return false;
       }
       return true;
@@ -229,6 +231,7 @@
           var lesson = level.lessons[lj];
           if (!lesson.points) continue;
           for (var pi = 0; pi < lesson.points.length; pi++) {
+            if (this._isTheoryPointType(lesson.points[pi].type)) continue;
             total++;
             if (this._isPointComplete(categoryId, level.id, lesson.id, pi)) done++;
           }
@@ -249,6 +252,7 @@
         var lesson = level.lessons[lj];
         if (!lesson.points) continue;
         for (var pi = 0; pi < lesson.points.length; pi++) {
+          if (this._isTheoryPointType(lesson.points[pi].type)) continue;
           total++;
           if (this._isPointComplete(categoryId, level.id, lesson.id, pi)) done++;
         }
@@ -446,6 +450,7 @@
       var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz') && pi === lesson.points.length - 1;
       if (!isLastGate) return true;
       for (var prev = 0; prev < pi; prev++) {
+        if (this._isTheoryPointType(lesson.points[prev].type)) continue;
         if (!this._isPointComplete(catMeta.id, levelId, lesson.id, prev)) return false;
       }
       return true;
@@ -1274,6 +1279,7 @@
         for (var lj = 0; lj < level.lessons.length; lj++) {
           if (!level.lessons[lj].points) continue;
           for (var pi = 0; pi < level.lessons[lj].points.length; pi++) {
+            if (this._isTheoryPointType(level.lessons[lj].points[pi].type)) continue;
             totalAll++;
             if (this._isPointComplete(catMeta.id, level.id, level.lessons[lj].id, pi)) totalDone++;
           }
@@ -1447,6 +1453,7 @@
 
           if (lesson.points) {
             for (var pi = 0; pi < lesson.points.length; pi++) {
+              if (self._isTheoryPointType(lesson.points[pi].type)) continue;
               if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi)) {
                 lessonComplete = false;
               } else {
