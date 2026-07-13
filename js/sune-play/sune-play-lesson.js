@@ -80,6 +80,30 @@
     return required.every(function(exerciseId) { return !!completed[exerciseId]; });
   }
 
+  function areAllPracticeNodesComplete(unitData, progress) {
+    if (!unitData || !progress) return false;
+    var nodes = unitData.practiceNodes || [];
+    if (!nodes.length) return false;
+    var completed = progress.completedNodes || {};
+    return nodes.every(function(node) { return !!completed[node.nodeId]; });
+  }
+
+  function isTheoryRequirementMet(unitData, progress) {
+    if (!unitData) return false;
+    var structure = unitData.unitStructure || {};
+    if (!structure.theoryRequiredBeforePractice) return true;
+    return !!progress.theoryCompleted;
+  }
+
+  function maybeMarkLearningUnitComplete(level, unitId, unitData, progress) {
+    if (!unitData || (unitData.type !== 'grammar' && unitData.type !== 'vocabulary')) return;
+    if (!areAllPracticeNodesComplete(unitData, progress)) return;
+    if (!isTheoryRequirementMet(unitData, progress)) return;
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._markCourseUnitOpened) {
+      DashboardNav._markCourseUnitOpened(level, unitId);
+    }
+  }
+
   function maybeMarkReviewUnitComplete(level, unitId, unitData, progress) {
     if (!unitData || (unitData.type !== 'review' && unitData.type !== 'progress_test')) return;
     if (!areAllRequiredExercisesComplete(unitData, progress)) return;
@@ -1497,6 +1521,7 @@
         );
       }
       maybeMarkReviewUnitComplete(lessonState.level, lessonState.unitId, lessonState.unitData, lessonState.progress);
+      maybeMarkLearningUnitComplete(lessonState.level, lessonState.unitId, lessonState.unitData, lessonState.progress);
       lessonState.phase = 'complete';
     } else {
       lessonState.phase = 'retry';
