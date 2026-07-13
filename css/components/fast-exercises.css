@@ -2957,6 +2957,12 @@
   overflow: hidden;
 }
 
+/* Story slides also carry .pv-conv-slide-active (display:block); restore flex layout */
+.pv-conv-block--story.pv-conv-slide-active {
+  display: flex;
+  flex-direction: column;
+}
+
 .pv-conv-drag-fixed {
   flex-shrink: 0;
   z-index: 1;
