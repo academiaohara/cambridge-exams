@@ -81,6 +81,66 @@
     };
   }
 
+  function splitMcGapPrompt(sentence, gapCount) {
+    var normalized = normalizeGapSentence(sentence);
+    if (gapCount <= 1) {
+      var parts = splitGapSentence(sentence);
+      return {
+        gapCount: 1,
+        sentenceBefore: parts.sentenceBefore,
+        sentenceAfter: parts.sentenceAfter,
+        segments: null
+      };
+    }
+    var segments = normalized.split(/_{2,}|\.{3,}/).map(function(part) {
+      return part.trim();
+    });
+    return {
+      gapCount: gapCount,
+      sentenceBefore: '',
+      sentenceAfter: '',
+      segments: segments
+    };
+  }
+
+  function resolveGapDisplayParts(answer, gapCount) {
+    var resolved = String(answer || '').trim();
+    if (gapCount <= 1) return [resolved];
+    return resolved.split(/\s+/).filter(Boolean);
+  }
+
+  function buildOptionGapDisplayMap(options, correct, gapCount) {
+    var correctStr = String(correct || '').trim().toLowerCase();
+    var map = {};
+    (options || []).forEach(function(opt) {
+      var text = String(opt).replace(/^[A-D]\)\s*/i, '').trim();
+      map[text] = text.toLowerCase() === correctStr
+        ? resolveGapDisplayParts(correct, gapCount)
+        : resolveGapDisplayParts(text, gapCount);
+    });
+    return map;
+  }
+
+  function parseVerbPromptHint(hint) {
+    var trimmed = String(hint || '').trim();
+    if (!/^_/.test(trimmed)) return { particle: '', display: trimmed };
+    var particle = trimmed.replace(/^_+\s*/, '').trim();
+    return { particle: particle, display: particle };
+  }
+
+  function stripHintParticleFromSentence(sentence, particle) {
+    if (!particle) return sentence;
+    var normalized = normalizeGapSentence(sentence);
+    var chunks = normalized.split(/(_{2,}|\.{3,})/);
+    if (chunks.length < 3) return sentence;
+    var afterGap = chunks[2] || '';
+    var particleEsc = particle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var stripped = afterGap.replace(new RegExp('^\\s*' + particleEsc + '(?=\\s|$|[,.!?;:])', 'i'), '');
+    if (stripped === afterGap) return sentence;
+    chunks[2] = stripped;
+    return chunks.join('').replace(/\s+/g, ' ').trim();
+  }
+
   function buildMcOptions(options) {
     return (options || []).map(function(opt, i) {
       var text = String(opt).replace(/^[A-D]\)\s*/i, '').trim() || String(opt);
@@ -105,6 +165,12 @@
       if (!GAP_RE.test(writeSentence)) writeSentence = (writeSentence + ' ___').trim();
       var hint = exercise.hint || exercise.root || '';
       var useVerbPrompt = hint && /^_/.test(hint);
+      var verbPrompt = hint;
+      if (useVerbPrompt) {
+        var parsedHint = parseVerbPromptHint(hint);
+        writeSentence = stripHintParticleFromSentence(writeSentence, parsedHint.particle);
+        verbPrompt = parsedHint.display;
+      }
       var writeInstruction = '';
       if (exercise.type === 'transform' && hint) {
         writeInstruction = 'Use ' + hint + ' to form the correct word.';
@@ -118,8 +184,8 @@
           sentence: writeSentence,
           answer: exercise.correct,
           acceptedAnswers: [exercise.correct],
-          preselectedVerb: useVerbPrompt ? hint : '',
-          verbPrompt: useVerbPrompt ? hint : '',
+          preselectedVerb: useVerbPrompt ? verbPrompt : '',
+          verbPrompt: useVerbPrompt ? verbPrompt : '',
           instruction: writeInstruction,
           explanation: exercise.explanation || ''
         }
@@ -130,10 +196,8 @@
     var normalizedSentence = normalizeGapSentence(exercise.sentence || '');
     var gapCount = countGaps(normalizedSentence);
     var hasGap = gapCount > 0;
-    var useMeaningContrast = !hasGap || gapCount > 1 ||
-      (String(exercise.correct || '').indexOf(' ') !== -1 && gapCount > 0);
 
-    if (useMeaningContrast) {
+    if (!hasGap) {
       return {
         screenId: id,
         formatType: 'meaning_contrast',
@@ -147,16 +211,20 @@
     }
 
     var mcOptions = buildMcOptions(shuffledOptions);
-    var parts = splitGapSentence(exercise.sentence || '');
+    var promptParts = splitMcGapPrompt(exercise.sentence || '', gapCount);
     return {
       screenId: id,
       formatType: 'mc_4_option',
       payload: {
-        sentenceBefore: parts.sentenceBefore,
-        sentenceAfter: parts.sentenceAfter,
+        sentenceBefore: promptParts.sentenceBefore,
+        sentenceAfter: promptParts.sentenceAfter,
+        segments: promptParts.segments,
+        gapCount: promptParts.gapCount,
+        optionGapDisplayValues: buildOptionGapDisplayMap(shuffledOptions, exercise.correct, promptParts.gapCount),
         options: mcOptions,
         answer: findMcAnswerLetter(mcOptions, exercise.correct),
         answerText: exercise.correct,
+        instruction: 'Choose the option that best fits.',
         explanation: exercise.explanation || ''
       }
     };
@@ -302,6 +370,19 @@
           btn.classList.add('sp-option-btn--correct');
         }
       });
+      var mcPayload = screen.payload || {};
+      if (mcPayload.gapCount > 1 && mcPayload.optionGapDisplayValues && mcPayload.answerText) {
+        var correctValues = mcPayload.optionGapDisplayValues[mcPayload.answerText];
+        if (Array.isArray(correctValues)) {
+          correctValues.forEach(function(text, idx) {
+            var slot = root.querySelector('#sp-choice-slot-' + idx);
+            if (!slot) return;
+            slot.textContent = text || '';
+            var anchor = slot.closest('.sp-gap-anchor');
+            if (anchor) anchor.classList.add('sp-gap-anchor--filled');
+          });
+        }
+      }
     }
     if (correct === false && screen && screen.formatType === 'meaning_contrast') {
       var correctAnswer = String((screen.payload || {}).answer || '').trim().toLowerCase();
@@ -314,9 +395,9 @@
       input.classList.toggle('sp-gap-underline-input--correct', correct === true);
       input.classList.toggle('sp-gap-underline-input--incorrect', correct === false);
     });
-    root.querySelectorAll('.sp-inline-gap-group').forEach(function(group) {
-      group.classList.toggle('sp-gap-slot--correct', correct === true);
-      group.classList.toggle('sp-gap-slot--incorrect', correct === false);
+    root.querySelectorAll('.sp-gap-slot, .sp-inline-gap-group').forEach(function(slot) {
+      slot.classList.toggle('sp-gap-slot--correct', correct === true);
+      slot.classList.toggle('sp-gap-slot--incorrect', correct === false);
     });
   }
 
@@ -386,7 +467,7 @@
       case 'meaning_contrast':
         return p.instruction || 'Choose the option that best fits.';
       case 'mc_4_option':
-        return p.instruction || 'Choose the correct answer: A, B, C or D.';
+        return p.instruction || 'Choose the option that best fits.';
       case 'free_text_gap_fill':
       case 'preselected_verb_gap_fill':
         return p.instruction || (p.verbPrompt || p.preselectedVerb
