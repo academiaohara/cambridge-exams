@@ -3078,6 +3078,52 @@
     },
 
     // ── IDIOMS: CONVERSATION DRAG (Point 4) ───────────────────────────────
+    _buildConvDragContentHtml: function(conv, opts) {
+      return '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap">' +
+        '<div class="pv-conv-block">' +
+          '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + this._escapeHTML(conv.title || '') + '</span>' + (opts.numHtml || '') + '</div>' +
+          '<div class="pv-chips-panel pv-chips-panel--in-conv" id="' + opts.chipsPanelId + '" data-total-gaps="' + opts.totalGaps + '" data-filled="0">' +
+            '<div class="pv-chips-title">' + opts.chipsTitle + '</div>' +
+            '<div class="pv-chips-list" id="' + opts.chipsListId + '">' + opts.chipsHtml + '</div>' +
+          '</div>' +
+          '<div class="pv-conv-dialogue pv-conv-dialogue--drag">' + opts.linesHtml + '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _mountConvDragInSession: function(container, contentHtml, ctx, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var self = this;
+      var point = (ctx.lessonPoints && ctx.lessonPoints[pointIndex]) ? ctx.lessonPoints[pointIndex] : null;
+      var pointLabel = point ? (point.label || '') : '';
+      if (!self._runVocabPassiveSession(container, contentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints, pointLabel, function() {
+        self._completeAndNext(catMeta.id, levelId, lessonId, pointIndex);
+      }, '')) {
+        return false;
+      }
+      ctx.sessionMode = true;
+      if (window.FastExercisesVocabSession && window.FastExercisesVocabSession.setActionBtn) {
+        window.FastExercisesVocabSession.setActionBtn('continue', false);
+      }
+      return true;
+    },
+
+    _onConvDragComplete: function(ctx, resultId, resultTextId) {
+      var convs = ctx && ctx.convs;
+      var isLastConv = ctx.singleConvMode || !convs || (ctx.currentConvIdx + 1 >= convs.length);
+      if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
+      if (ctx && ctx.sessionMode && window.FastExercisesVocabSession) {
+        window.FastExercisesVocabSession.setActionBtn('continue', true);
+      } else {
+        var result = document.getElementById(resultId);
+        var resultText = document.getElementById(resultTextId);
+        if (result && resultText) {
+          resultText.textContent = 'All correct! Well done!';
+          result.style.display = 'flex';
+        }
+      }
+      if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+    },
+
     _renderIdConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
       this._currentLessonData = lessonData;
@@ -3172,21 +3218,27 @@
 
       var numHtml = (!singleConv && totalConvs > 1) ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
+      var dragContentHtml = self._buildConvDragContentHtml(conv, {
+        chipsPanelId: 'id-chips-panel',
+        chipsListId: 'id-chips-list',
+        chipsTitle: 'Idioms',
+        linesHtml: linesHtml,
+        chipsHtml: chipsHtml,
+        totalGaps: totalGaps,
+        numHtml: numHtml
+      });
+
+      this._idDragContext.totalGaps = totalGaps;
+
+      if (self._mountConvDragInSession(container, dragContentHtml, ctx, catMeta, levelId, lessonId, lessonTitle, pointIndex)) {
+        return;
+      }
+
       container.innerHTML =
         '<div class="fe-point-view">' +
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, ctx.lessonPoints) +
             '<div class="pv-drag-container pv-drag-container--stacked">' +
-              '<div class="pv-drag-main">' +
-                '<div class="fe-vocab-sp-conversations">' +
-                  '<div class="pv-conv-block">' +
-                    '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
-                    '<div class="pv-chips-panel pv-chips-panel--in-conv" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                      '<div class="pv-chips-title">' + 'Idioms' + '</div>' +
-                      '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
-                    '</div>' +
-                    '<div class="pv-conv-dialogue pv-conv-dialogue--drag">' + linesHtml + '</div>' +
-                  '</div>' +
-                '</div>' +
+              '<div class="pv-drag-main">' + dragContentHtml +
                 '<div class="pv-drag-result" id="id-drag-result" style="display:none;">' +
                   '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
                   '<div class="pv-drag-result-text" id="id-drag-result-text"></div>' +
@@ -3198,8 +3250,6 @@
               '</div>' +
             '</div>' +
         '</div>';
-
-      this._idDragContext.totalGaps = totalGaps;
     },
 
     _idDragNextConv: function() {
@@ -3277,16 +3327,7 @@
         panel.setAttribute('data-filled', filled);
         if (filled >= total) {
           var ctx = this._idDragContext;
-          var convs = ctx && ctx.convs;
-          var isLastConv = ctx.singleConvMode || !convs || (ctx.currentConvIdx + 1 >= convs.length);
-          if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
-          var result = document.getElementById('id-drag-result');
-          var resultText = document.getElementById('id-drag-result-text');
-          if (result && resultText) {
-            resultText.textContent = 'All correct! Well done!';
-            result.style.display = 'flex';
-          }
-          if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+          this._onConvDragComplete(ctx, 'id-drag-result', 'id-drag-result-text');
         }
       }
     },
@@ -4253,21 +4294,27 @@
 
       var numHtml = (!singleConv && totalConvs > 1) ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
+      var dragContentHtml = self._buildConvDragContentHtml(conv, {
+        chipsPanelId: 'pv-chips-panel',
+        chipsListId: 'pv-chips-list',
+        chipsTitle: 'Phrasal Verbs',
+        linesHtml: linesHtml,
+        chipsHtml: chipsHtml,
+        totalGaps: totalGaps,
+        numHtml: numHtml
+      });
+
+      this._pvDragContext.totalGaps = totalGaps;
+
+      if (self._mountConvDragInSession(container, dragContentHtml, ctx, catMeta, levelId, lessonId, lessonTitle, pointIndex)) {
+        return;
+      }
+
       container.innerHTML =
         '<div class="fe-point-view">' +
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, ctx.lessonPoints) +
             '<div class="pv-drag-container pv-drag-container--stacked">' +
-              '<div class="pv-drag-main">' +
-                '<div class="fe-vocab-sp-conversations">' +
-                  '<div class="pv-conv-block">' +
-                    '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
-                    '<div class="pv-chips-panel pv-chips-panel--in-conv" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                      '<div class="pv-chips-title">' + 'Phrasal Verbs' + '</div>' +
-                      '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
-                    '</div>' +
-                    '<div class="pv-conv-dialogue pv-conv-dialogue--drag">' + linesHtml + '</div>' +
-                  '</div>' +
-                '</div>' +
+              '<div class="pv-drag-main">' + dragContentHtml +
                 '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
                   '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
                   '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
@@ -4279,10 +4326,6 @@
               '</div>' +
             '</div>' +
         '</div>';
-
-      // Update context for drag handlers
-      this._pvDragContext.totalGaps = totalGaps;
-      this._finishPointRender(container, ctx.lessonPoints, pointIndex);
     },
 
     _pvDragNextConv: function() {
@@ -4365,17 +4408,7 @@
         panel.setAttribute('data-filled', filled);
         if (filled >= total) {
           var ctx = this._pvDragContext;
-          var convs = ctx && ctx.convs;
-          var isLastConv = ctx.singleConvMode || !convs || (ctx.currentConvIdx + 1 >= convs.length);
-          // Only mark point complete when the last conversation is done
-          if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
-          var result = document.getElementById('pv-drag-result');
-          var resultText = document.getElementById('pv-drag-result-text');
-          if (result && resultText) {
-            resultText.textContent = 'All correct! Well done!';
-            result.style.display = 'flex';
-          }
-          if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+          this._onConvDragComplete(ctx, 'pv-drag-result', 'pv-drag-result-text');
         }
       }
     },
