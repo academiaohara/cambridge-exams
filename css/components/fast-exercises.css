@@ -2743,6 +2743,16 @@
   padding: 12px 14px;
 }
 
+.pv-chips-panel--in-conv {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1.5px solid rgba(59, 130, 246, 0.12);
+  background: #f8fafc;
+  padding: 14px 20px;
+  margin: 0;
+}
+
 .pv-chips-title {
   font-size: 0.82rem;
   font-weight: 700;
