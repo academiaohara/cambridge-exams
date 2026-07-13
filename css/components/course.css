@@ -7449,7 +7449,8 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
 }
 
 body:has(.dashboard-layout--lesson-focus) #main-content,
-body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
+body:has(.dashboard-layout--lesson-focus) #courseCenterSection,
+body:has(.dashboard-layout--lesson-focus) #feCenterSection.fe-section--vocab-exercise {
   flex: 1;
   display: flex;
   flex-direction: column;

@@ -163,8 +163,10 @@
   }
 
   function buildLessonShellHtml(innerHtml) {
-    return '<div id="sp-lesson-mount" class="sp-lesson-mount">' +
-      '<div class="sp-lesson">' + (innerHtml || '') + '</div>' +
+    return '<div class="course-unit-content">' +
+      '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content">' +
+        '<div class="sp-lesson">' + (innerHtml || '') + '</div>' +
+      '</div>' +
     '</div>';
   }
 

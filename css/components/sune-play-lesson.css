@@ -4667,6 +4667,7 @@ body:has(.sp-lesson-mount) #courseCenterScroll,
 body:has(.sp-lesson-mount) .cw-page-content,
 body:has(.sp-lesson-mount) .course-hub-page,
 body:has(.sp-lesson-mount) #courseCenterSection,
+body:has(.sp-lesson-mount) #feCenterSection.fe-section--vocab-exercise,
 body:has(.sp-lesson-mount) .dashboard-layout--lesson-focus,
 body:has(.sp-lesson-mount) .dashboard-layout--lesson-focus > .dashboard-center,
 body:has(.sp-lesson-mount) .dashboard-center--course,
@@ -4686,6 +4687,7 @@ body:has(.sp-lesson-mount) .dashboard-layout--lesson-focus {
 }
 
 body:has(.dashboard-layout--lesson-focus) #courseCenterSection.course-center--lesson-focus:has(.sp-lesson-mount),
+body:has(.dashboard-layout--lesson-focus) #feCenterSection.fe-section--vocab-exercise:has(.sp-lesson-mount),
 body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-lesson-mount) {
   min-height: 0;
   max-height: 100dvh;
