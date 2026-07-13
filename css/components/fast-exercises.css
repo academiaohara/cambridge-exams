@@ -2483,16 +2483,20 @@
   align-items: stretch;
   width: 100%;
   max-width: 100%;
-  padding: 8px 0 4px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .pv-conv-story-wrap .pv-conversations-slides {
   width: 100%;
   flex: 1;
+  min-width: 0;
 }
 
 .pv-conv-story-wrap .pv-conv-block {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .pv-conv-nav-bottom {
@@ -2527,7 +2531,7 @@
 }
 
 .pv-conv-bubble {
-  max-width: min(520px, 88%);
+  max-width: min(560px, 90%);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -8345,7 +8349,22 @@
 .fe-section--vocab-exercise .sp-screen--vocab-passive {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  align-self: stretch;
+}
+
+.fe-section--vocab-exercise .sp-screen--vocab-passive:has(.pv-conv-story-wrap) {
+  max-width: 100%;
+}
+
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-story-wrap) .sp-exercise-card {
+  padding: 0;
+  max-width: 100%;
+}
+
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-story-wrap) {
+  padding-inline: 0;
 }
 
 .fe-section--vocab-exercise .sp-screen--vocab-passive .pv-gallery-single-wrap,
@@ -8366,6 +8385,11 @@
 .fe-vocab-sp-conversations.pv-conv-story-wrap,
 .sp-screen--vocab-passive .pv-conv-story-wrap {
   max-width: 100%;
+  width: 100%;
+}
+
+.fe-section--vocab-exercise .sp-screen--vocab-passive .fe-vocab-sp-conversations.pv-conv-story-wrap {
+  padding: 0;
 }
 
 .fe-vocab-sp-hint {
