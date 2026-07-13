@@ -48,14 +48,6 @@
     var cards = [];
     var explanation = lessonData.explanation || {};
 
-    if (explanation.rule) {
-      cards.push({
-        id: 'wf-rule',
-        title: 'Word formation',
-        sections: [{ type: 'explanation', description: explanation.rule }]
-      });
-    }
-
     (explanation.groups || []).forEach(function(group, gi) {
       var items = (group.examples || []).map(function(ex) {
         return {

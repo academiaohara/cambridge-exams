@@ -3525,10 +3525,12 @@
 .fe-dot-wf-explanation    { background: #e11d48; color: #fff; }
 .fe-dot-wf-multiple-choice { background: #db2777; color: #fff; }
 .fe-dot-wf-transform       { background: #be185d; color: #fff; }
+.fe-dot-wf-mixed           { background: #9d174d; color: #fff; }
 
 .fe-dot-outline.fe-dot-wf-explanation    { background: #fff; border-color: #e11d48; color: #e11d48; overflow: hidden; }
 .fe-dot-outline.fe-dot-wf-multiple-choice { background: #fff; border-color: #db2777; color: #db2777; overflow: hidden; }
 .fe-dot-outline.fe-dot-wf-transform       { background: #fff; border-color: #be185d; color: #be185d; overflow: hidden; }
+.fe-dot-outline.fe-dot-wf-mixed           { background: #fff; border-color: #9d174d; color: #9d174d; overflow: hidden; }
 
 /* ── Idiom dot colours ──────────────────────────────────────────────── */
 .fe-dot-id-gallery  { background: #f59e0b; color: #fff; }
@@ -3717,8 +3719,47 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   WORD FORMATION – Multiple Choice root label
+   WORD FORMATION – Root word tile
    ═══════════════════════════════════════════════════════════════════════ */
+.wf-mc-root-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.wf-root-tile {
+  display: inline-block;
+  padding: 6px 16px;
+  background: #fff;
+  border: 2px solid #fecdd3;
+  border-bottom-width: 3px;
+  border-bottom-color: #fda4af;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 #fda4af;
+  color: #be185d;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.wf-root-tile--inline {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  vertical-align: baseline;
+}
+
+.wf-transform-write-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Legacy label kept for backwards compatibility */
 .wf-mc-root-label {
   display: flex;
   align-items: center;
@@ -8328,6 +8369,10 @@
 .fe-section--merged-path .fe-dot.fe-dot-wf-transform:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #be185d !important;
   box-shadow: 0 4px 0 #9d174d !important;
+}
+.fe-section--merged-path .fe-dot.fe-dot-wf-mixed:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
+  background: #9d174d !important;
+  box-shadow: 0 4px 0 #831843 !important;
 }
 .fe-section--merged-path .fe-dot.fe-dot-id-gallery:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #f59e0b !important;

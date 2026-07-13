@@ -1552,6 +1552,41 @@ button.sp-vocab-word-card:focus-visible {
   white-space: nowrap;
 }
 
+.sp-wf-root-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.sp-wf-root-tile {
+  display: inline-block;
+  padding: 6px 16px;
+  background: #fff;
+  border: 2px solid #fecdd3;
+  border-bottom-width: 3px;
+  border-bottom-color: #fda4af;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 #fda4af;
+  color: #be185d;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.sp-screen--wf-mc .sp-wf-root-tile {
+  text-transform: lowercase;
+}
+
+.sp-gap-verb-ref .sp-wf-root-tile {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
 .sp-hint-slash-sep {
   color: #94a3b8;
   font-weight: 700;
