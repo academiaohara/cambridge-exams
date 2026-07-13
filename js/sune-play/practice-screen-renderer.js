@@ -2732,6 +2732,9 @@
   }
 
   function renderConvGapAvatar(speaker) {
+    if (window.FastExercises && window.FastExercises._getAvatarHtml) {
+      return window.FastExercises._getAvatarHtml(speaker);
+    }
     var initial = String(speaker || '').charAt(0).toUpperCase() || '?';
     return '<div class="pv-conv-avatar" aria-hidden="true">' + esc(initial) + '</div>';
   }
@@ -2769,10 +2772,10 @@
       return renderConversationGapLine(line, idx);
     }).join('');
 
-    return '<div class="sp-screen sp-screen--conversation-gap pv-conv-story-wrap fe-vocab-sp-conversations">' +
-      '<div class="pv-conv-block">' +
-        titleHtml +
-        '<div class="pv-conv-dialogue pv-conv-dialogue--fill">' + linesHtml + '</div>' +
+    return '<div class="sp-screen sp-screen--conversation-gap pv-conv-story-wrap pv-conv-story-wrap--fill fe-vocab-sp-conversations">' +
+      '<div class="pv-conv-block pv-conv-block--fill">' +
+        (titleHtml ? '<div class="pv-conv-fill-fixed">' + titleHtml + '</div>' : '') +
+        '<div class="pv-conv-dialogue pv-conv-dialogue--scroll pv-conv-dialogue--fill">' + linesHtml + '</div>' +
       '</div>' +
     '</div>';
   }
@@ -3763,7 +3766,13 @@
       var convInput = root.querySelector('.sp-conv-gap-input');
       if (convInput) {
         resizeUnderlineGapInput(convInput);
-        requestAnimationFrame(function() { convInput.focus(); });
+        requestAnimationFrame(function() {
+          convInput.focus();
+          var activeLine = root.querySelector('.pv-conv-line--active');
+          if (activeLine && activeLine.scrollIntoView) {
+            activeLine.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        });
       }
     }
 

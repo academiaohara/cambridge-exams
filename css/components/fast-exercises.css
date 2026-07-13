@@ -2607,22 +2607,59 @@
 .pv-conv-dialogue--fill {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 8px 0 4px;
+  gap: 14px;
+}
+
+.pv-conv-story-wrap--fill {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.pv-conv-block--fill {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+.pv-conv-fill-fixed {
+  flex-shrink: 0;
+}
+
+.pv-conv-dialogue--fill.pv-conv-dialogue--scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 16px 20px 24px;
+  scroll-padding-block: 24px;
 }
 
 .pv-conv-line--inactive {
-  opacity: 0.42;
-  filter: grayscale(0.15);
+  opacity: 0.7;
   pointer-events: none;
 }
 
 .pv-conv-line--inactive .pv-conv-text {
-  background: #eef2f7;
+  background: #f1f5f9;
+  color: #64748b;
 }
 
 .pv-conv-line--inactive.pv-conv-right .pv-conv-text {
   background: #e8f0fb;
+  color: #64748b;
+}
+
+.pv-conv-line--inactive .pv-conv-name {
+  color: #94a3b8;
 }
 
 .pv-conv-line--active {
@@ -2630,7 +2667,16 @@
 }
 
 .pv-conv-line--active .pv-conv-text {
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.22);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.28);
+  background: #eff6ff;
+}
+
+.pv-conv-line--active.pv-conv-right .pv-conv-text {
+  background: #dbeafe;
+}
+
+.pv-conv-line--active {
+  scroll-margin-block: 48px;
 }
 
 .sp-screen--conversation-gap .sp-conv-gap-input {
@@ -3045,6 +3091,10 @@
   .pv-conv-story-wrap .pv-conv-text {
     font-size: 1rem;
     padding: 12px 16px;
+  }
+
+  .pv-conv-dialogue--fill.pv-conv-dialogue--scroll {
+    padding: 18px 28px 28px;
   }
 
   .pv-drag-container--stacked .pv-conv-dialogue--drag,
@@ -8607,29 +8657,44 @@
 }
 
 .fe-section--vocab-exercise .sp-screen--conversation-gap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   align-self: stretch;
+  overflow: hidden;
 }
 
 .fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap) {
   padding-inline: 0;
+  overflow: hidden;
 }
 
 .fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap) .sp-exercise-card {
+  flex: 1;
+  min-height: 0;
   padding: 0;
   max-width: 100%;
+  width: 100%;
   border: none;
   box-shadow: none;
   background: transparent;
+  overflow: hidden;
+  align-items: stretch;
 }
 
-.fe-section--vocab-exercise .sp-screen--conversation-gap .pv-conv-block {
-  border: none;
-  box-shadow: none;
-  background: transparent;
+.fe-section--vocab-exercise .sp-screen--conversation-gap .pv-conv-block--fill {
+  width: 100%;
+  max-width: 100%;
+}
+
+.fe-section--vocab-exercise .sp-screen--conversation-gap .pv-conv-story-wrap--fill {
+  max-width: 100%;
 }
 
 .fe-vocab-sp-trophy {

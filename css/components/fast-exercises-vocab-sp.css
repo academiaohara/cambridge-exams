@@ -65,6 +65,15 @@ body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenter
   overflow: auto;
 }
 
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-screen--conversation-gap) #feCenterSection .sp-practice-main,
+body:has(#feCenterSection.fe-section--vocab-exercise .pv-conv-story-wrap--fill) #feCenterSection .sp-practice-main {
+  overflow: hidden;
+}
+
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-screen--conversation-gap) #feCenterSection .sp-exercise-card {
+  overflow: hidden;
+}
+
 @media (min-width: 768px) {
   body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .dashboard-layout--lesson-focus > .dashboard-center.course-center--lesson-focus {
     max-width: 960px;
