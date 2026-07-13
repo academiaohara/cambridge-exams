@@ -3079,16 +3079,146 @@
 
     // ── IDIOMS: CONVERSATION DRAG (Point 4) ───────────────────────────────
     _buildConvDragContentHtml: function(conv, opts) {
-      return '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap">' +
-        '<div class="pv-conv-block">' +
-          '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + this._escapeHTML(conv.title || '') + '</span>' + (opts.numHtml || '') + '</div>' +
-          '<div class="pv-chips-panel pv-chips-panel--in-conv" id="' + opts.chipsPanelId + '" data-total-gaps="' + opts.totalGaps + '" data-filled="0">' +
-            '<div class="pv-chips-title">' + opts.chipsTitle + '</div>' +
-            '<div class="pv-chips-list" id="' + opts.chipsListId + '">' + opts.chipsHtml + '</div>' +
+      return '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap pv-conv-story-wrap--drag">' +
+        '<div class="pv-conv-block pv-conv-block--drag">' +
+          '<div class="pv-conv-drag-fixed">' +
+            '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + this._escapeHTML(conv.title || '') + '</span>' + (opts.numHtml || '') + '</div>' +
+            '<div class="pv-chips-panel pv-chips-panel--in-conv" id="' + opts.chipsPanelId + '" data-total-gaps="' + opts.totalGaps + '" data-filled="0">' +
+              '<div class="pv-chips-title">' + opts.chipsTitle + '</div>' +
+              '<div class="pv-chips-list" id="' + opts.chipsListId + '">' + opts.chipsHtml + '</div>' +
+            '</div>' +
           '</div>' +
-          '<div class="pv-conv-dialogue pv-conv-dialogue--drag">' + opts.linesHtml + '</div>' +
+          '<div class="pv-conv-dialogue pv-conv-dialogue--drag pv-conv-dialogue--scroll">' + opts.linesHtml + '</div>' +
         '</div>' +
       '</div>';
+    },
+
+    _initConvDragInteractions: function(ctx) {
+      var self = this;
+      var root = document.querySelector('.pv-conv-block--drag');
+      if (!root || root._feDragBound) return;
+      root._feDragBound = true;
+
+      root.addEventListener('dragover', function(e) {
+        var zone = e.target.closest('.pv-drop-zone');
+        if (!zone || zone.getAttribute('data-filled') === 'true') return;
+        e.preventDefault();
+        root.querySelectorAll('.pv-drop-zone.pv-drop-hover').forEach(function(z) {
+          if (z !== zone) z.classList.remove('pv-drop-hover');
+        });
+        zone.classList.add('pv-drop-hover');
+      });
+
+      root.addEventListener('dragleave', function(e) {
+        var zone = e.target.closest('.pv-drop-zone');
+        if (!zone) return;
+        if (!zone.contains(e.relatedTarget)) zone.classList.remove('pv-drop-hover');
+      });
+
+      root.addEventListener('drop', function() {
+        root.querySelectorAll('.pv-drop-zone.pv-drop-hover').forEach(function(z) {
+          z.classList.remove('pv-drop-hover');
+        });
+        document.querySelectorAll('.pv-chip.pv-chip-dragging').forEach(function(c) {
+          c.classList.remove('pv-chip-dragging');
+        });
+        self._pvSelectedChip = null;
+        self._idSelectedChip = null;
+      });
+
+      root.addEventListener('dragend', function(e) {
+        if (!e.target.classList.contains('pv-chip')) return;
+        e.target.classList.remove('pv-chip-dragging');
+        self._pvSelectedChip = null;
+        self._idSelectedChip = null;
+        self._updateConvDragGapHighlights(ctx, false);
+      });
+    },
+
+    _updateConvDragGapHighlights: function(ctx, chipSelected) {
+      var root = document.querySelector('.pv-conv-block--drag');
+      if (!root) return;
+      root.querySelectorAll('.pv-drop-zone').forEach(function(zone) {
+        var empty = zone.getAttribute('data-filled') !== 'true';
+        zone.classList.toggle('pv-drop-zone--targetable', !!chipSelected && empty);
+      });
+    },
+
+    _clearConvDragGap: function(gapId, ctx) {
+      if (!ctx) return;
+      var gap = document.getElementById(gapId);
+      if (!gap || gap.getAttribute('data-filled') !== 'true') return;
+
+      var chipId = gap.getAttribute('data-chip-id');
+      if (chipId !== null && chipId !== '') {
+        var chip = document.getElementById(ctx.chipPrefix + chipId);
+        if (chip) {
+          chip.classList.remove('pv-chip-used', 'pv-chip-selected');
+          chip.draggable = true;
+        }
+      }
+
+      gap.innerHTML = '<span class="pv-drop-placeholder">_____</span>';
+      gap.setAttribute('data-filled', 'false');
+      gap.removeAttribute('data-chip-id');
+      gap.classList.remove('pv-drop-zone--filled', 'pv-drop-zone--shake');
+
+      var panel = document.getElementById(ctx.panelId);
+      if (panel) {
+        var filled = Math.max(0, parseInt(panel.getAttribute('data-filled') || '0', 10) - 1);
+        panel.setAttribute('data-filled', String(filled));
+      }
+
+      if (ctx.sessionMode && window.FastExercisesVocabSession) {
+        window.FastExercisesVocabSession.setActionBtn('continue', false);
+      }
+    },
+
+    _fillConvDragGap: function(gapId, chipId, ctx) {
+      if (!ctx) return false;
+      var gap = document.getElementById(gapId);
+      var chip = document.getElementById(ctx.chipPrefix + chipId);
+      if (!gap || !chip || chip.classList.contains('pv-chip-used')) return false;
+      if (gap.getAttribute('data-filled') === 'true') return false;
+
+      var verbFromChip = chip.getAttribute('data-verb');
+      var correctVerb = gap.getAttribute('data-verb');
+      var normChip = verbFromChip.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g, '').replace(/\s+/g, ' ').trim();
+      var normGap = correctVerb.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g, '').replace(/\s+/g, ' ').trim();
+      var isCorrect = verbFromChip.trim().toLowerCase() === correctVerb.trim().toLowerCase() || normChip === normGap;
+
+      if (!isCorrect) {
+        gap.classList.add('pv-drop-zone--shake');
+        chip.classList.add('pv-chip-wrong');
+        var self = this;
+        setTimeout(function() {
+          gap.classList.remove('pv-drop-zone--shake');
+          chip.classList.remove('pv-chip-wrong');
+        }, 520);
+        return false;
+      }
+
+      var displayText = gap.getAttribute('data-display') || verbFromChip;
+      gap.setAttribute('data-filled', 'true');
+      gap.setAttribute('data-chip-id', String(chipId));
+      gap.classList.add('pv-drop-zone--filled');
+      gap.classList.remove('pv-drop-hover', 'pv-drop-zone--targetable');
+      gap.innerHTML = '<span class="pv-drop-filled pv-drop-correct">' + this._escapeHTML(displayText) + '</span>';
+
+      chip.classList.add('pv-chip-used');
+      chip.classList.remove('pv-chip-selected', 'pv-chip-dragging');
+      chip.draggable = false;
+
+      var panel = document.getElementById(ctx.panelId);
+      if (panel) {
+        var total = parseInt(panel.getAttribute('data-total-gaps') || '0', 10);
+        var filled = parseInt(panel.getAttribute('data-filled') || '0', 10) + 1;
+        panel.setAttribute('data-filled', String(filled));
+        if (filled >= total) {
+          this._onConvDragComplete(ctx, ctx.resultId, ctx.resultTextId);
+        }
+      }
+      return true;
     },
 
     _mountConvDragInSession: function(container, contentHtml, ctx, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
@@ -3104,6 +3234,7 @@
       if (window.FastExercisesVocabSession && window.FastExercisesVocabSession.setActionBtn) {
         window.FastExercisesVocabSession.setActionBtn('continue', false);
       }
+      requestAnimationFrame(function() { self._initConvDragInteractions(ctx); });
       return true;
     },
 
@@ -3145,7 +3276,11 @@
         convs: [conv], currentConvIdx: 0, singleConvMode: true,
         container: container,
         lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData,
-        lessonPoints: lessonPoints
+        lessonPoints: lessonPoints,
+        chipPrefix: 'id-chip-',
+        panelId: 'id-chips-panel',
+        resultId: 'id-drag-result',
+        resultTextId: 'id-drag-result-text'
       };
 
       this._idDragRenderConv(container, catMeta, levelId, lessonId, lessonTitle, pointIndex);
@@ -3250,86 +3385,72 @@
               '</div>' +
             '</div>' +
         '</div>';
+
+      requestAnimationFrame(function() { self._initConvDragInteractions(ctx); });
     },
 
     _idDragNextConv: function() {
       var ctx = this._idDragContext;
       if (!ctx) return;
       ctx.currentConvIdx++;
+      var root = document.querySelector('.pv-conv-block--drag');
+      if (root) root._feDragBound = false;
       this._idDragRenderConv(ctx.container, ctx.catMeta, ctx.levelId, ctx.lessonId, ctx.lessonTitle, ctx.pointIndex);
     },
 
     _idDragStart: function(event, chipId) {
       event.dataTransfer.setData('text/plain', String(chipId));
+      event.dataTransfer.effectAllowed = 'move';
       this._idSelectedChip = chipId;
       var chip = document.getElementById('id-chip-' + chipId);
       if (chip) chip.classList.add('pv-chip-dragging');
+      this._updateConvDragGapHighlights(this._idDragContext, true);
     },
 
     _idDrop: function(event, gapId) {
       event.preventDefault();
-      var chipId = parseInt(event.dataTransfer.getData('text/plain'));
-      this._idFillGap(gapId, chipId);
+      var gap = document.getElementById(gapId);
+      if (gap) gap.classList.remove('pv-drop-hover');
+      var chipId = parseInt(event.dataTransfer.getData('text/plain'), 10);
+      if (this._fillConvDragGap(gapId, chipId, this._idDragContext)) {
+        this._idSelectedChip = null;
+        this._updateConvDragGapHighlights(this._idDragContext, false);
+      }
     },
 
     _idChipClick: function(chipId) {
+      var ctx = this._idDragContext;
       if (this._idSelectedChip === chipId) {
         this._idSelectedChip = null;
         document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected'); });
+        this._updateConvDragGapHighlights(ctx, false);
         return;
       }
       document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
       this._idSelectedChip = chipId;
       var chip = document.getElementById('id-chip-' + chipId);
-      if (chip) chip.classList.add('pv-chip-selected');
+      if (chip && !chip.classList.contains('pv-chip-used')) chip.classList.add('pv-chip-selected');
+      this._updateConvDragGapHighlights(ctx, true);
     },
 
     _idGapClick: function(gapId) {
+      var ctx = this._idDragContext;
+      var gap = document.getElementById(gapId);
+      if (gap && gap.getAttribute('data-filled') === 'true') {
+        this._clearConvDragGap(gapId, ctx);
+        return;
+      }
       if (this._idSelectedChip !== null && this._idSelectedChip !== undefined) {
-        this._idFillGap(gapId, this._idSelectedChip);
-        this._idSelectedChip = null;
+        if (this._fillConvDragGap(gapId, this._idSelectedChip, ctx)) {
+          this._idSelectedChip = null;
+          this._updateConvDragGapHighlights(ctx, false);
+        }
         document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
       }
     },
 
     _idFillGap: function(gapId, chipId) {
-      var gap = document.getElementById(gapId);
-      var chip = document.getElementById('id-chip-' + chipId);
-      if (!gap || !chip || chip.classList.contains('pv-chip-used')) return;
-      if (gap.getAttribute('data-filled') === 'true') return;
-
-      var verbFromChip = chip.getAttribute('data-verb');
-      var correctVerb = gap.getAttribute('data-verb');
-      var normChip = verbFromChip.trim().toLowerCase();
-      var normGap  = correctVerb.trim().toLowerCase();
-      var isCorrect = normChip === normGap;
-
-      var displayText = isCorrect ? (gap.getAttribute('data-display') || verbFromChip) : verbFromChip;
-      gap.setAttribute('data-filled', 'true');
-      gap.innerHTML = '<span class="pv-drop-filled ' + (isCorrect ? 'pv-drop-correct' : 'pv-drop-wrong') + '">' + this._escapeHTML(displayText) + '</span>';
-      if (!isCorrect) {
-        gap.setAttribute('data-filled', 'false');
-        var self = this;
-        setTimeout(function() {
-          gap.innerHTML = '<span class="pv-drop-placeholder">_____</span>';
-          gap.setAttribute('data-filled', 'false');
-        }, 1200);
-        return;
-      }
-
-      chip.classList.add('pv-chip-used');
-      chip.draggable = false;
-
-      var panel = document.getElementById('id-chips-panel');
-      if (panel) {
-        var total = parseInt(panel.getAttribute('data-total-gaps'));
-        var filled = parseInt(panel.getAttribute('data-filled')) + 1;
-        panel.setAttribute('data-filled', filled);
-        if (filled >= total) {
-          var ctx = this._idDragContext;
-          this._onConvDragComplete(ctx, 'id-drag-result', 'id-drag-result-text');
-        }
-      }
+      this._fillConvDragGap(gapId, chipId, this._idDragContext);
     },
 
     // ── IDIOMS: QUIZ (Point 5) ─────────────────────────────────────────────
@@ -4219,7 +4340,11 @@
         convs: [conv], currentConvIdx: 0, singleConvMode: true,
         container: container,
         lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData,
-        lessonPoints: lessonPoints
+        lessonPoints: lessonPoints,
+        chipPrefix: 'pv-chip-',
+        panelId: 'pv-chips-panel',
+        resultId: 'pv-drag-result',
+        resultTextId: 'pv-drag-result-text'
       };
 
       this._pvDragRenderConv(container, catMeta, levelId, lessonId, lessonTitle, pointIndex);
@@ -4326,91 +4451,72 @@
               '</div>' +
             '</div>' +
         '</div>';
+
+      requestAnimationFrame(function() { self._initConvDragInteractions(ctx); });
     },
 
     _pvDragNextConv: function() {
       var ctx = this._pvDragContext;
       if (!ctx) return;
       ctx.currentConvIdx++;
+      var root = document.querySelector('.pv-conv-block--drag');
+      if (root) root._feDragBound = false;
       this._pvDragRenderConv(ctx.container, ctx.catMeta, ctx.levelId, ctx.lessonId, ctx.lessonTitle, ctx.pointIndex);
     },
 
     _pvDragStart: function(event, chipId) {
       event.dataTransfer.setData('text/plain', String(chipId));
+      event.dataTransfer.effectAllowed = 'move';
       this._pvSelectedChip = chipId;
       var chip = document.getElementById('pv-chip-' + chipId);
       if (chip) chip.classList.add('pv-chip-dragging');
+      this._updateConvDragGapHighlights(this._pvDragContext, true);
     },
 
     _pvDrop: function(event, gapId) {
       event.preventDefault();
-      var chipId = parseInt(event.dataTransfer.getData('text/plain'));
-      this._pvFillGap(gapId, chipId);
+      var gap = document.getElementById(gapId);
+      if (gap) gap.classList.remove('pv-drop-hover');
+      var chipId = parseInt(event.dataTransfer.getData('text/plain'), 10);
+      if (this._fillConvDragGap(gapId, chipId, this._pvDragContext)) {
+        this._pvSelectedChip = null;
+        this._updateConvDragGapHighlights(this._pvDragContext, false);
+      }
     },
 
     _pvChipClick: function(chipId) {
-      // Toggle selection
+      var ctx = this._pvDragContext;
       if (this._pvSelectedChip === chipId) {
         this._pvSelectedChip = null;
         document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected'); });
+        this._updateConvDragGapHighlights(ctx, false);
         return;
       }
       document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
       this._pvSelectedChip = chipId;
       var chip = document.getElementById('pv-chip-' + chipId);
-      if (chip) chip.classList.add('pv-chip-selected');
+      if (chip && !chip.classList.contains('pv-chip-used')) chip.classList.add('pv-chip-selected');
+      this._updateConvDragGapHighlights(ctx, true);
     },
 
     _pvGapClick: function(gapId) {
+      var ctx = this._pvDragContext;
+      var gap = document.getElementById(gapId);
+      if (gap && gap.getAttribute('data-filled') === 'true') {
+        this._clearConvDragGap(gapId, ctx);
+        return;
+      }
       if (this._pvSelectedChip !== null && this._pvSelectedChip !== undefined) {
-        this._pvFillGap(gapId, this._pvSelectedChip);
-        this._pvSelectedChip = null;
+        if (this._fillConvDragGap(gapId, this._pvSelectedChip, ctx)) {
+          this._pvSelectedChip = null;
+          this._updateConvDragGapHighlights(ctx, false);
+        }
         document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
       }
     },
 
     _pvFillGap: function(gapId, chipId) {
-      var gap = document.getElementById(gapId);
-      var chip = document.getElementById('pv-chip-' + chipId);
-      if (!gap || !chip || chip.classList.contains('pv-chip-used')) return;
-      if (gap.getAttribute('data-filled') === 'true') return;
-
-      var verbFromChip = chip.getAttribute('data-verb');
-      var correctVerb = gap.getAttribute('data-verb');
-      // Normalize both sides: strip optional parenthetical parts for comparison
-      var normChip = verbFromChip.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g,'').replace(/\s+/g,' ').trim();
-      var normGap  = correctVerb.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g,'').replace(/\s+/g,' ').trim();
-      var isCorrect = verbFromChip.trim().toLowerCase() === correctVerb.trim().toLowerCase() || normChip === normGap;
-
-      // Fill the gap: show conjugated display form when correct, chip verb when wrong
-      var displayText = isCorrect ? (gap.getAttribute('data-display') || verbFromChip) : verbFromChip;
-      gap.setAttribute('data-filled', 'true');
-      gap.innerHTML = '<span class="pv-drop-filled ' + (isCorrect ? 'pv-drop-correct' : 'pv-drop-wrong') + '">' + this._escapeHTML(displayText) + '</span>';
-      if (!isCorrect) {
-        gap.setAttribute('data-filled', 'false'); // Allow re-drop
-        var self = this;
-        setTimeout(function() {
-          gap.innerHTML = '<span class="pv-drop-placeholder">_____</span>';
-          gap.setAttribute('data-filled', 'false');
-        }, 1200);
-        return;
-      }
-
-      // Mark chip as used
-      chip.classList.add('pv-chip-used');
-      chip.draggable = false;
-
-      // Check completion
-      var panel = document.getElementById('pv-chips-panel');
-      if (panel) {
-        var total = parseInt(panel.getAttribute('data-total-gaps'));
-        var filled = parseInt(panel.getAttribute('data-filled')) + 1;
-        panel.setAttribute('data-filled', filled);
-        if (filled >= total) {
-          var ctx = this._pvDragContext;
-          this._onConvDragComplete(ctx, 'pv-drag-result', 'pv-drag-result-text');
-        }
-      }
+      this._fillConvDragGap(gapId, chipId, this._pvDragContext);
     },
 
     // ── PV MIXED PRACTICE (Point 5) ──────────────────────────────────────
