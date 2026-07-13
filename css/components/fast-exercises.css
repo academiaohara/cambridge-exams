@@ -8134,7 +8134,7 @@
   }
 }
 
-/* ── Vocabulary exercises: SunePlay practice shell (no lives) ─────────── */
+/* ── Vocabulary exercises: SunePlay practice shell (learning-aligned) ── */
 .fe-vocab-sp-center {
   max-width: none !important;
   padding: 0 !important;
@@ -8146,7 +8146,7 @@
 
 .dashboard-center--course-vocab.fe-vocab-sp-center,
 .dashboard-center--course.fe-vocab-sp-center,
-.dashboard-center.fe-vocab-lesson-focus.fe-vocab-sp-center {
+.dashboard-center.course-center--lesson-focus.fe-vocab-sp-center {
   min-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
   max-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
 }
@@ -8163,7 +8163,8 @@
 }
 
 .fe-section--vocab-exercise .fe-vocab-sp-lesson,
-.fe-section--vocab-exercise .fe-vocab-sp-mount,
+.fe-section--vocab-exercise .sp-lesson-mount,
+.fe-section--vocab-exercise .sp-lesson,
 .fe-section--vocab-exercise .sp-practice-session {
   flex: 1;
   min-height: 0;
@@ -8186,10 +8187,6 @@
 
 .fe-section--vocab-exercise .sp-screen--vocab-passive {
   width: 100%;
-}
-
-.fe-vocab-sp-header .sp-session-progress {
-  flex: 1;
 }
 
 .fe-vocab-sp-gallery .pv-gallery-card,

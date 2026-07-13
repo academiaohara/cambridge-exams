@@ -278,8 +278,8 @@
       var center = document.querySelector('.dashboard-center');
       if (layout) layout.classList.toggle('dashboard-layout--lesson-focus', !!active);
       if (center) {
-        center.classList.toggle('fe-vocab-lesson-focus', !!active);
-        center.classList.remove('course-center--lesson-focus');
+        center.classList.toggle('course-center--lesson-focus', !!active);
+        center.classList.remove('fe-vocab-lesson-focus');
       }
     },
 
@@ -300,8 +300,8 @@
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
               ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
               : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + sidebars.left + '</div>') +
-            '<div class="dashboard-center dashboard-center--course fe-vocab-lesson-focus fe-vocab-sp-center">' +
-              '<div class="fe-section fe-section--merged-path fe-section--vocab-exercise" id="feCenterSection"></div>' +
+            '<div class="dashboard-center dashboard-center--course course-center--lesson-focus fe-vocab-sp-center">' +
+              '<div class="fe-section fe-section--merged-path fe-section--vocab-exercise course-unit-content" id="feCenterSection"></div>' +
             '</div>' +
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
               ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
@@ -321,8 +321,8 @@
       if (layout) layout.classList.add('dashboard-layout--lesson-focus');
       var centerCol = centerSection.closest('.dashboard-center');
       if (centerCol) {
-        centerCol.classList.add('fe-vocab-lesson-focus', 'fe-vocab-sp-center');
-        centerCol.classList.remove('course-center--lesson-focus');
+        centerCol.classList.add('course-center--lesson-focus', 'fe-vocab-sp-center');
+        centerCol.classList.remove('fe-vocab-lesson-focus');
       }
 
       this._setVocabLessonFocus(true);
@@ -352,7 +352,10 @@
       if (!session) return null;
       if (session.destroy) session.destroy();
       this._hideVocabMapChrome();
-      return session.ensureSession(this, container, opts);
+      if (opts && opts.passive) {
+        return session.startPassiveSession(this, container, opts) ? session.getScreenMount() : null;
+      }
+      return null;
     },
 
     _getVocabPointInstruction: function(point, extraInstruction) {
@@ -367,7 +370,10 @@
       var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
       var instruction = self._getVocabPointInstruction(point);
 
-      var screenMount = self._beginVocabPracticeSession(container, {
+      if (session.destroy) session.destroy();
+      self._hideVocabMapChrome();
+
+      return session.startQuizSession(self, container, {
         categoryId: catMeta.id,
         catMeta: catMeta,
         levelId: levelId,
@@ -376,103 +382,16 @@
         lessonPoints: lessonPoints,
         lessonTitle: lessonTitle,
         pointLabel: pointLabel,
-        sessionCorrect: 0,
-        sessionTotal: exercises.length
-      });
-      if (!screenMount) return false;
-
-      var s = window._feVocabSession;
-      s.exercises = exercises;
-      s.correctCount = 0;
-      s.questionIndex = 0;
-
-      function renderQuestion(qi) {
-        session.clearResultStyles();
-        var ex = exercises[qi];
-        if (!ex) return;
-        var html = ex.type === 'write-verb' || ex.type === 'transform'
-          ? session.renderWriteScreen(ex)
-          : session.renderMcqScreen(ex, qi + 1, exercises.length);
-        screenMount.innerHTML = html;
-        var screenRoot = screenMount.querySelector('.sp-screen');
-        if (instruction && screenRoot) session.mountInstruction(screenRoot, instruction);
-
-        if (ex.type === 'write-verb' || ex.type === 'transform') {
-          session.bindWriteInput();
-        } else {
-          session.bindMcqSelection();
-        }
-        session.setActionBtn('check', false);
-      }
-
-      function finishQuiz() {
-        self._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        screenMount.innerHTML =
-          '<div class="sp-result-screen sp-result-screen--complete">' +
-            '<div class="sp-result-icon sp-result-icon--success"><span class="material-symbols-outlined">celebration</span></div>' +
-            '<h2 class="sp-result-title">Point complete!</h2>' +
-            '<p class="sp-result-subtitle">' + self._escapeHTML(s.correctCount + '/' + exercises.length + ' correct') + '</p>' +
-          '</div>';
-        session.setPassiveContinue(function() {
+        instruction: instruction,
+        exercises: exercises,
+        onPointComplete: function() {
+          self._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        },
+        onContinueToNext: function() {
           self._nextPoint(catMeta.id, levelId, lessonId, pointIndex);
-        });
-        if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
-      }
-
-      s.onCheck = function() {
-        var qi = s.questionIndex;
-        var ex = exercises[qi];
-        if (!ex) return;
-        var isCorrect = false;
-        var correctAnswer = ex.correct || '';
-
-        if (ex.type === 'write-verb' || ex.type === 'transform') {
-          var input = document.getElementById('fe-vocab-write-input');
-          var typed = input ? input.value.trim().toLowerCase() : '';
-          isCorrect = typed === String(correctAnswer).trim().toLowerCase();
-          if (input) {
-            input.classList.toggle('sp-gap-input--correct', isCorrect);
-            input.classList.toggle('sp-gap-input--incorrect', !isCorrect);
-          }
-        } else {
-          var selected = screenMount.querySelector('.sp-option-btn--selected');
-          if (!selected) return;
-          var chosen = selected.getAttribute('data-value') || '';
-          isCorrect = chosen.trim().toLowerCase() === String(correctAnswer).trim().toLowerCase();
-          session.markMcqResult(selected, correctAnswer);
         }
-
-        session.lockScreen();
-        if (isCorrect) {
-          s.correctCount++;
-          session.incrementProgress();
-        }
-        session.showFeedback(isCorrect, correctAnswer);
-        s._awaitingContinue = true;
-      };
-
-      s.onContinue = function() {
-        if (!s._awaitingContinue) return;
-        s._awaitingContinue = false;
-        s.questionIndex++;
-        if (s.questionIndex >= exercises.length) {
-          finishQuiz();
-          return;
-        }
-        renderQuestion(s.questionIndex);
-      };
-
-      s.onSkip = function() {
-        s.questionIndex++;
-        if (s.questionIndex >= exercises.length) {
-          finishQuiz();
-          return;
-        }
-        renderQuestion(s.questionIndex);
-      };
-
-      renderQuestion(0);
-      return true;
+      });
     },
 
     _runVocabPassiveSession: function(container, contentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel, onContinue) {
@@ -483,7 +402,10 @@
       var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
       var instruction = self._getVocabPointInstruction(point);
 
-      var screenMount = self._beginVocabPracticeSession(container, {
+      if (session.destroy) session.destroy();
+      self._hideVocabMapChrome();
+
+      return session.startPassiveSession(self, container, {
         categoryId: catMeta.id,
         catMeta: catMeta,
         levelId: levelId,
@@ -494,19 +416,13 @@
         pointLabel: pointLabel,
         sessionCorrect: pointIndex,
         sessionTotal: lessonPoints ? lessonPoints.length : 1,
-        passive: true
+        contentHtml: contentHtml,
+        instruction: instruction,
+        onContinue: function() {
+          if (onContinue) onContinue();
+          else self._completeAndNext(catMeta.id, levelId, lessonId, pointIndex);
+        }
       });
-      if (!screenMount) return false;
-
-      screenMount.innerHTML = '<div class="sp-screen sp-screen--vocab-passive">' + contentHtml + '</div>';
-      var screenRoot = screenMount.querySelector('.sp-screen');
-      if (instruction && screenRoot) session.mountInstruction(screenRoot, instruction);
-
-      session.setPassiveContinue(function() {
-        if (onContinue) onContinue();
-        else self._completeAndNext(catMeta.id, levelId, lessonId, pointIndex);
-      });
-      return true;
     },
 
     _clearVocabPracticeSession: function() {
