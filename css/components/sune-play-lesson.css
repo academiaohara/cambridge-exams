@@ -1059,6 +1059,14 @@ button.sp-vocab-word-card:focus-visible {
   justify-content: flex-start;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--conversation-gap) {
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: flex-start;
+  max-width: 100%;
+  padding: 0;
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) .sp-screen--passage-gap {
   flex: 1;
   min-height: 0;
@@ -1079,6 +1087,16 @@ button.sp-vocab-word-card:focus-visible {
   margin-inline: auto;
   align-self: center;
   box-sizing: border-box;
+}
+
+.sp-practice-main .sp-screen--conversation-gap {
+  max-width: 100%;
+  align-self: stretch;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-inline: 0;
 }
 
 .sp-practice-main .sp-screen .sp-session-instruction,
