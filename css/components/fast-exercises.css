@@ -2628,29 +2628,52 @@
 /* ── POINT 4: Conversation Drag ──────────────────────────────────────── */
 .pv-drag-container {
   display: flex;
-  flex-direction: row-reverse;
-  gap: 20px;
+  flex-direction: column;
+  gap: 16px;
   padding: 12px 0 24px;
-  align-items: flex-start;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+}
+
+.pv-drag-container--stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  align-items: stretch;
 }
 
 .pv-drag-container--responsive {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 220px);
-  grid-template-areas: "main chips";
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
   max-width: 100%;
-  align-items: start;
+  align-items: stretch;
 }
 
+.pv-drag-container--stacked .pv-drag-main,
 .pv-drag-container--responsive .pv-drag-main {
-  grid-area: main;
+  width: 100%;
+  min-width: 0;
 }
 
+.pv-drag-container--stacked .pv-chips-panel,
 .pv-drag-container--responsive .pv-chips-panel {
-  grid-area: chips;
-  width: auto;
+  width: 100%;
+  position: static;
+  max-height: none;
+  flex-shrink: 0;
+}
+
+.pv-drag-container--stacked .pv-chips-list,
+.pv-drag-container--responsive .pv-chips-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
 }
 
 .pv-drag-main {
@@ -2711,16 +2734,13 @@
 }
 
 .pv-chips-panel {
-  width: 170px;
+  width: 100%;
   flex-shrink: 0;
-  background: #f8fafc;
-  border: 1px solid rgba(45, 46, 95, 0.1);
-  border-radius: 18px;
-  padding: 16px 18px;
-  position: sticky;
-  top: 80px;
-  max-height: calc(100dvh - 120px);
-  overflow: auto;
+  background: #fff;
+  border: 2px solid #e2e8f4;
+  border-radius: 14px;
+  box-shadow: 0 2px 0 #dce3f0;
+  padding: 12px 14px;
 }
 
 .pv-chips-title {
@@ -2734,8 +2754,9 @@
 
 .pv-chips-list {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .pv-chip {
@@ -2798,42 +2819,6 @@
 
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .pv-drag-container--responsive {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "main"
-      "chips";
-    gap: 14px;
-    padding-bottom: 12px;
-  }
-
-  .pv-drag-container--responsive .pv-chips-panel {
-    position: sticky;
-    bottom: 0;
-    top: auto;
-    z-index: 6;
-    width: 100%;
-    max-height: none;
-    border-radius: 16px 16px 0 0;
-    box-shadow: 0 -4px 20px rgba(45, 46, 95, 0.1);
-    padding: 12px 14px 14px;
-  }
-
-  .pv-drag-container--responsive .pv-chips-list {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    gap: 8px;
-    padding-bottom: 4px;
-    justify-content: flex-start;
-  }
-
-  .pv-drag-container--responsive .pv-chip {
-    flex-shrink: 0;
-  }
-
   .pv-conv-bubble {
     max-width: min(480px, 92%);
   }
@@ -2850,18 +2835,7 @@
   .pv-chip { font-size: 0.83rem; padding: 7px 13px; }
   .pv-write-row { flex-direction: column; align-items: flex-start; }
   .pv-write-input { max-width: 100%; }
-  .pv-drag-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .pv-chips-panel {
-    width: 100%;
-    position: static;
-  }
   .pv-chips-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
     justify-content: center;
   }
   .pv-gallery-single-wrap {
@@ -2897,6 +2871,7 @@
     padding: 12px 16px;
   }
 
+  .pv-drag-container--stacked .pv-conv-dialogue--drag,
   .pv-drag-container--responsive .pv-conv-dialogue--drag {
     padding: 18px 28px 22px;
   }
