@@ -2488,6 +2488,19 @@
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.18);
 }
 
+.pv-conv-story-wrap:not(.pv-conv-story-wrap--drag) .pv-conv-bubble {
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.12s ease;
+}
+
+.pv-conv-story-wrap:not(.pv-conv-story-wrap--drag) .pv-conv-bubble:hover {
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.14);
+}
+
+.pv-conv-story-wrap:not(.pv-conv-story-wrap--drag) .pv-conv-bubble:active {
+  transform: scale(0.99);
+}
+
 .pv-conv-story-hint {
   display: flex;
   align-items: center;
