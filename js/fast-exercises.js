@@ -443,8 +443,7 @@
     _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked) {
       if (!levelUnlocked || lessonUnlocked === false || !lesson.points || !lesson.points[pi]) return false;
       var point = lesson.points[pi];
-      var isLastGate = (point.type === 'pv-mixed' || point.type === 'pv-conversation-drag' ||
-        point.type === 'id-quiz' || point.type === 'id-conversation-drag') && pi === lesson.points.length - 1;
+      var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz') && pi === lesson.points.length - 1;
       if (!isLastGate) return true;
       for (var prev = 0; prev < pi; prev++) {
         if (!this._isPointComplete(catMeta.id, levelId, lesson.id, prev)) return false;
@@ -3013,7 +3012,10 @@
       var convs = (lessonData && lessonData.conversations) || [];
       var idioms = (lessonData && lessonData.idioms) || [];
 
-      if (convs.length === 0 || idioms.length === 0) {
+      var convIdx = self._getPointConversationIndex(lessonPoints, pointIndex);
+      var conv = convs[convIdx];
+
+      if (!conv || idioms.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
         container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
@@ -3022,7 +3024,8 @@
       this._idDragContext = {
         categoryId: catMeta.id, levelId: levelId, lessonId: lessonId,
         pointIndex: pointIndex, catColor: catMeta.color,
-        convs: convs, currentConvIdx: 0, container: container,
+        convs: [conv], currentConvIdx: 0, singleConvMode: true,
+        container: container,
         lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData,
         lessonPoints: lessonPoints
       };
@@ -3037,6 +3040,7 @@
       var convIdx = ctx.currentConvIdx;
       var conv = convs[convIdx];
       var totalConvs = convs.length;
+      var singleConv = !!ctx.singleConvMode;
 
       var gapIdioms = {};
       var totalGaps = 0;
@@ -3094,7 +3098,7 @@
         '</span>';
       });
 
-      var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
+      var numHtml = (!singleConv && totalConvs > 1) ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
       container.innerHTML =
         '<div class="fe-point-view">' +
@@ -3108,7 +3112,7 @@
                 '<div class="pv-drag-result" id="id-drag-result" style="display:none;">' +
                   '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
                   '<div class="pv-drag-result-text" id="id-drag-result-text"></div>' +
-                  (convIdx + 1 < totalConvs
+                  (!singleConv && convIdx + 1 < totalConvs
                     ? '<button class="fe-point-next-btn" onclick="FastExercises._idDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
                     : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                   ) +
@@ -3200,7 +3204,7 @@
         if (filled >= total) {
           var ctx = this._idDragContext;
           var convs = ctx && ctx.convs;
-          var isLastConv = !convs || (ctx.currentConvIdx + 1 >= convs.length);
+          var isLastConv = ctx.singleConvMode || !convs || (ctx.currentConvIdx + 1 >= convs.length);
           if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
           var result = document.getElementById('id-drag-result');
           var resultText = document.getElementById('id-drag-result-text');
@@ -3931,22 +3935,24 @@
       var convs = (lessonData && lessonData.conversations) || [];
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
 
-      if (convs.length === 0 || pvs.length === 0) {
+      var convIdx = self._getPointConversationIndex(lessonPoints, pointIndex);
+      var conv = convs[convIdx];
+
+      if (!conv || pvs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
         container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
-      // Store full context including all conversations
       this._pvDragContext = {
         categoryId: catMeta.id, levelId: levelId, lessonId: lessonId,
         pointIndex: pointIndex, catColor: catMeta.color,
-        convs: convs, currentConvIdx: 0, container: container,
+        convs: [conv], currentConvIdx: 0, singleConvMode: true,
+        container: container,
         lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData,
         lessonPoints: lessonPoints
       };
 
-      // Render the first conversation
       this._pvDragRenderConv(container, catMeta, levelId, lessonId, lessonTitle, pointIndex);
     },
 
@@ -3957,6 +3963,7 @@
       var convIdx = ctx.currentConvIdx;
       var conv = convs[convIdx];
       var totalConvs = convs.length;
+      var singleConv = !!ctx.singleConvMode;
 
       // Extract gaps from this conversation only
       var gapVerbs = {};
@@ -4016,7 +4023,7 @@
         '</span>';
       });
 
-      var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
+      var numHtml = (!singleConv && totalConvs > 1) ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
       container.innerHTML =
         '<div class="fe-point-view">' +
@@ -4030,7 +4037,7 @@
                 '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
                   '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
                   '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
-                  (convIdx + 1 < totalConvs
+                  (!singleConv && convIdx + 1 < totalConvs
                     ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
                     : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                   ) +
@@ -4129,7 +4136,7 @@
         if (filled >= total) {
           var ctx = this._pvDragContext;
           var convs = ctx && ctx.convs;
-          var isLastConv = !convs || (ctx.currentConvIdx + 1 >= convs.length);
+          var isLastConv = ctx.singleConvMode || !convs || (ctx.currentConvIdx + 1 >= convs.length);
           // Only mark point complete when the last conversation is done
           if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
           var result = document.getElementById('pv-drag-result');
