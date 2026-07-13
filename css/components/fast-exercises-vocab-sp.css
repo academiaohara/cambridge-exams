@@ -32,9 +32,7 @@ body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .dashboar
   min-height: 0;
   max-height: 100dvh;
   overflow: hidden;
-  width: 100%;
-  max-width: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -46,10 +44,9 @@ body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenter
   overflow: hidden;
 }
 
-body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .fe-vocab-sp-lesson,
-body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .sp-lesson-mount,
-body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .sp-lesson,
-body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .sp-practice-session {
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenterSection .sp-lesson-mount,
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenterSection .sp-lesson,
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenterSection .sp-practice-session {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -58,7 +55,7 @@ body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .sp-pract
   height: 100%;
 }
 
-body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) .fe-section--vocab-exercise .sp-practice-main {
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenterSection .sp-practice-main {
   flex: 1;
   min-height: 0;
   overflow: auto;

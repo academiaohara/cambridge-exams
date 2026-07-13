@@ -53,6 +53,22 @@
       .replace(/\{\.\.\.\}/g, '___');
   }
 
+  function countGaps(sentence) {
+    var normalized = normalizeGapSentence(sentence);
+    var matches = normalized.match(/_{2,}|\.{3,}/g);
+    return matches ? matches.length : 0;
+  }
+
+  function shuffleArray(arr) {
+    var copy = (arr || []).slice();
+    for (var i = copy.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = tmp;
+    }
+    return copy;
+  }
   function splitGapSentence(sentence) {
     var normalized = normalizeGapSentence(sentence);
     var match = normalized.match(/^(.+?)(_{2,}|\.{3,})(.*)$/);
@@ -87,49 +103,69 @@
     if (isWriteExercise(exercise)) {
       var writeSentence = normalizeGapSentence(exercise.sentence || '');
       if (!GAP_RE.test(writeSentence)) writeSentence = (writeSentence + ' ___').trim();
+      var hint = exercise.hint || exercise.root || '';
+      var useVerbPrompt = hint && /^_/.test(hint);
+      var writeInstruction = '';
+      if (exercise.type === 'transform' && hint) {
+        writeInstruction = 'Use ' + hint + ' to form the correct word.';
+      } else if (hint && !useVerbPrompt) {
+        writeInstruction = 'Complete the gap. Hint: ' + hint;
+      }
       return {
         screenId: id,
-        formatType: exercise.hint ? 'preselected_verb_gap_fill' : 'free_text_gap_fill',
+        formatType: useVerbPrompt ? 'preselected_verb_gap_fill' : 'free_text_gap_fill',
         payload: {
           sentence: writeSentence,
           answer: exercise.correct,
           acceptedAnswers: [exercise.correct],
-          preselectedVerb: exercise.hint || '',
-          verbPrompt: exercise.hint || '',
+          preselectedVerb: useVerbPrompt ? hint : '',
+          verbPrompt: useVerbPrompt ? hint : '',
+          instruction: writeInstruction,
           explanation: exercise.explanation || ''
         }
       };
     }
 
-    var options = buildMcOptions(exercise.options || []);
-    var parts = splitGapSentence(exercise.sentence || '');
-    var hasGap = GAP_RE.test(normalizeGapSentence(exercise.sentence || ''));
+    var shuffledOptions = shuffleArray(exercise.options || []);
+    var normalizedSentence = normalizeGapSentence(exercise.sentence || '');
+    var gapCount = countGaps(normalizedSentence);
+    var hasGap = gapCount > 0;
+    var useMeaningContrast = !hasGap || gapCount > 1 ||
+      (String(exercise.correct || '').indexOf(' ') !== -1 && gapCount > 0);
 
-    if (!hasGap) {
+    if (useMeaningContrast) {
       return {
         screenId: id,
         formatType: 'meaning_contrast',
         payload: {
           sentence: exercise.sentence || '',
-          options: (exercise.options || []).slice(),
+          options: shuffledOptions,
           answer: exercise.correct,
           explanation: exercise.explanation || ''
         }
       };
     }
 
+    var mcOptions = buildMcOptions(shuffledOptions);
+    var parts = splitGapSentence(exercise.sentence || '');
     return {
       screenId: id,
       formatType: 'mc_4_option',
       payload: {
         sentenceBefore: parts.sentenceBefore,
         sentenceAfter: parts.sentenceAfter,
-        options: options,
-        answer: findMcAnswerLetter(options, exercise.correct),
+        options: mcOptions,
+        answer: findMcAnswerLetter(mcOptions, exercise.correct),
         answerText: exercise.correct,
         explanation: exercise.explanation || ''
       }
     };
+  }
+
+  function buildLessonShellHtml(innerHtml) {
+    return '<div id="sp-lesson-mount" class="sp-lesson-mount">' +
+      '<div class="sp-lesson">' + (innerHtml || '') + '</div>' +
+    '</div>';
   }
 
   function buildShellHtml(opts) {
@@ -145,45 +181,31 @@
       })
       : '<div class="sp-practice-session"><div id="sp-screen-mount"></div></div>';
 
-    return '<div class="fe-vocab-sp-lesson">' +
-      '<div id="sp-lesson-mount" class="sp-lesson-mount">' +
-        '<div class="sp-lesson">' + sessionHtml + '</div>' +
-      '</div>' +
-    '</div>';
+    return buildLessonShellHtml(sessionHtml);
   }
 
   function buildCompleteHtml(opts) {
     var node = { nodeId: 'vocab-point', title: opts.pointLabel || opts.lessonTitle || 'Vocabulary' };
     if (practiceUI && practiceUI.PracticeCompleteScreen) {
-      return '<div class="fe-vocab-sp-lesson">' +
-        '<div id="sp-lesson-mount" class="sp-lesson-mount">' +
-          '<div class="sp-lesson">' +
-            practiceUI.PracticeCompleteScreen(node, {
-              correct: opts.correctCount || 0,
-              required: opts.total || 1,
-              livesLeft: opts.livesLeft || 0,
-              xp: opts.xp || 0,
-              passed: true
-            }) +
-          '</div>' +
-        '</div>' +
-      '</div>';
+      return buildLessonShellHtml(
+        practiceUI.PracticeCompleteScreen(node, {
+          correct: opts.correctCount || 0,
+          required: opts.total || 1,
+          livesLeft: opts.livesLeft || 0,
+          xp: opts.xp || 0,
+          passed: true
+        })
+      );
     }
-    return '<div class="sp-result-screen sp-result-screen--complete">' +
-      '<h2 class="sp-result-title">Point complete!</h2>' +
-    '</div>';
+    return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--complete"><h2 class="sp-result-title">Point complete!</h2></div>');
   }
 
   function buildFailedHtml(opts) {
     var node = { nodeId: 'vocab-point', title: opts.pointLabel || opts.lessonTitle || 'Vocabulary', shortTitle: opts.pointLabel || 'this point' };
     if (practiceUI && practiceUI.PracticeFailedScreen) {
-      return '<div class="fe-vocab-sp-lesson">' +
-        '<div id="sp-lesson-mount" class="sp-lesson-mount">' +
-          '<div class="sp-lesson">' + practiceUI.PracticeFailedScreen(node) + '</div>' +
-        '</div>' +
-      '</div>';
+      return buildLessonShellHtml(practiceUI.PracticeFailedScreen(node));
     }
-    return '<div class="sp-result-screen sp-result-screen--failed"><h2 class="sp-result-title">Out of lives</h2></div>';
+    return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--failed"><h2 class="sp-result-title">Out of lives</h2></div>');
   }
 
   function setActionBtn(mode, enabled) {
@@ -264,12 +286,35 @@
     if (screen && locked) screen.classList.add('sp-screen--locked');
   }
 
-  function applyGapResultStyles(correct) {
+  function applyGapResultStyles(correct, screen) {
     var root = getMount();
     if (!root) return;
     root.querySelectorAll('.sp-option-btn--selected').forEach(function(btn) {
       btn.classList.toggle('sp-option-btn--correct', correct === true);
       btn.classList.toggle('sp-option-btn--incorrect', correct === false);
+    });
+    if (correct === false && screen && screen.formatType === 'mc_4_option') {
+      var answerLetter = ((screen.payload || {}).answer || '').toUpperCase();
+      root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+        if ((btn.getAttribute('data-letter') || '').toUpperCase() === answerLetter) {
+          btn.classList.add('sp-option-btn--correct');
+        }
+      });
+    }
+    if (correct === false && screen && screen.formatType === 'meaning_contrast') {
+      var correctAnswer = String((screen.payload || {}).answer || '').trim().toLowerCase();
+      root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+        var val = (btn.getAttribute('data-value') || '').trim().toLowerCase();
+        if (val === correctAnswer) btn.classList.add('sp-option-btn--correct');
+      });
+    }
+    root.querySelectorAll('.sp-gap-inline-input').forEach(function(input) {
+      input.classList.toggle('sp-gap-underline-input--correct', correct === true);
+      input.classList.toggle('sp-gap-underline-input--incorrect', correct === false);
+    });
+    root.querySelectorAll('.sp-inline-gap-group').forEach(function(group) {
+      group.classList.toggle('sp-gap-slot--correct', correct === true);
+      group.classList.toggle('sp-gap-slot--incorrect', correct === false);
     });
   }
 
@@ -305,9 +350,7 @@
   function applyLifeLoss(amount, screen) {
     var s = getSession();
     if (!s || !s.hearts || amount <= 0) return 0;
-    var lost = s.hearts.loseLife(amount, { screenId: screen && screen.screenId });
-    if (lost && window.AudioUtils) window.AudioUtils.playFailureSound();
-    return lost;
+    return s.hearts.loseLife(amount, { screenId: screen && screen.screenId });
   }
 
   function showFeedback(result) {
@@ -329,7 +372,7 @@
     s.awaitingContinue = true;
     s._lastFeedbackResult = result;
     s._lastResultCorrect = result.correct;
-    applyGapResultStyles(result.correct);
+    applyGapResultStyles(result.correct, s.currentScreen);
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
   }
@@ -371,7 +414,8 @@
 
     screenMount.innerHTML = renderer.PracticeScreenRenderer(screen);
     var screenRoot = screenMount.querySelector('.sp-screen');
-    var instruction = s.instruction || getScreenInstruction(screen);
+    var instruction = (screen.payload && screen.payload.instruction) || getScreenInstruction(screen);
+    if (!instruction && s.instruction && s.questionIndex === 0) instruction = s.instruction;
     if (instruction && screenRoot) mountInstruction(screenRoot, instruction);
 
     if (screenRoot) {
@@ -471,6 +515,16 @@
     updateHeader();
   }
 
+  function getExplainContext(screen) {
+    if (!screen || !screen.payload) return '';
+    var p = screen.payload;
+    if (p.sentence) return p.sentence;
+    if (screen.formatType === 'mc_4_option') {
+      return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
+    }
+    return '';
+  }
+
   function handleExplainClick() {
     var s = getSession();
     var result = s && s._lastFeedbackResult;
@@ -479,7 +533,7 @@
 
     var explainOpts = {
       title: 'Explanation',
-      context: (screen && screen.payload && screen.payload.sentence) || '',
+      context: getExplainContext(screen),
       explanation: result.explanation,
       correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
       continueLabel: 'Continue'
