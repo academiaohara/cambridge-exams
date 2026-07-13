@@ -1355,32 +1355,46 @@
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
         '<div class="pv-info-modal-box pv-info-modal-box--pv">' +
-          '<div class="pv-info-modal-header">' +
-            '<span class="pv-info-modal-icon">' + '<span class="material-symbols-outlined">auto_stories</span>' + '</span>' +
-            '<h2 class="pv-info-modal-title">' + 'What are Phrasal Verbs' + '</h2>' +
+          '<div class="pv-info-modal-hero">' +
+            '<div class="pv-info-modal-hero-inner">' +
+              '<span class="pv-info-modal-icon">' + '<span class="material-symbols-outlined">auto_stories</span>' + '</span>' +
+              '<h2 class="pv-info-modal-title">' + 'What are Phrasal Verbs' + '</h2>' +
+            '</div>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'pv-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
-            '<p><strong>' + 'What are phrasal verbs?' + '</strong></p>' +
-            '<p>' + 'Phrasal verbs are combinations of a verb and one or two particles (a preposition or an adverb) that together create a meaning different from the original verb.' + '</p>' +
-            '<p>' + 'For example:' + '</p>' +
-            '<ul class="pv-info-list">' +
-              '<li>' + '<em>look</em> (to see) → <em>look after</em> (to take care of)' + '</li>' +
-              '<li>' + '<em>get</em> (to obtain) → <em>get along</em> (to have a good relationship)' + '</li>' +
-            '</ul>' +
-            '<p>' + '👉 The key point is that their meaning is often <strong>not literal</strong>, so they need to be learned as a whole.' + '</p>' +
-            '<p><strong>' + 'Why are they important?' + '</strong></p>' +
-            '<p>' + 'Phrasal verbs are very common in everyday English and frequently appear in Cambridge exams. Learning them will help you:' + '</p>' +
-            '<ul class="pv-info-list">' +
-              '<li>' + 'Understand real-life conversations' + '</li>' +
-              '<li>' + 'Sound more natural when speaking' + '</li>' +
-              '<li>' + 'Improve your exam performance' + '</li>' +
-            '</ul>' +
-            '<p><strong>' + 'Tip 💡' + '</strong></p>' +
-            '<p>' + 'Try to learn them with examples and in context, not as isolated words.' + '</p>' +
-            '<p><button class="pv-info-dict-link" onclick="FastExercises._showPvDictionary(); document.getElementById(\'pv-info-modal\').remove();">' + _mi('search') + ' Open the Phrasal Verbs Dictionary</button></p>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">' + 'What are phrasal verbs?' + '</h3>' +
+              '<p class="pv-info-block-text">' + 'Phrasal verbs are combinations of a verb and one or two particles (a preposition or an adverb) that together create a meaning different from the original verb.' + '</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--examples">' +
+              '<h3 class="pv-info-block-label">' + 'For example' + '</h3>' +
+              '<ul class="pv-info-list">' +
+                '<li>' + '<em>look</em> (to see) → <em>look after</em> (to take care of)' + '</li>' +
+                '<li>' + '<em>get</em> (to obtain) → <em>get along</em> (to have a good relationship)' + '</li>' +
+              '</ul>' +
+            '</section>' +
+            '<p class="pv-info-highlight"><span class="pv-info-highlight-emoji">👉</span><span>The key point is that their meaning is often <strong>not literal</strong>, so they need to be learned as a whole.</span></p>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">' + 'Why are they important?' + '</h3>' +
+              '<p class="pv-info-block-text">' + 'Phrasal verbs are very common in everyday English and frequently appear in Cambridge exams. Learning them will help you:' + '</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--benefits">' +
+              '<ul class="pv-info-list">' +
+                '<li>' + 'Understand real-life conversations' + '</li>' +
+                '<li>' + 'Sound more natural when speaking' + '</li>' +
+                '<li>' + 'Improve your exam performance' + '</li>' +
+              '</ul>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--tip">' +
+              '<h3 class="pv-info-block-label">' + _mi('lightbulb') + ' Tip' + '</h3>' +
+              '<p class="pv-info-block-text">' + 'Try to learn them with examples and in context, not as isolated words.' + '</p>' +
+            '</section>' +
+            '<div class="pv-info-dict-wrap">' +
+              '<button class="pv-info-dict-link" onclick="FastExercises._showPvDictionary(); document.getElementById(\'pv-info-modal\').remove();">' + _mi('search') + ' Open the Phrasal Verbs Dictionary</button>' +
+            '</div>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + 'Got it!' + '</button>' +
@@ -3690,16 +3704,18 @@
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
         '<div class="pv-info-modal-box pv-info-modal-box--pv">' +
-          '<div class="pv-info-modal-header">' +
-            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">school</span></span>' +
-            '<h2 class="pv-info-modal-title">' + self._escapeHTML(lessonTitle || '') + '</h2>' +
+          '<div class="pv-info-modal-hero">' +
+            '<div class="pv-info-modal-hero-inner">' +
+              '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">school</span></span>' +
+              '<h2 class="pv-info-modal-title">' + self._escapeHTML(lessonTitle || '') + '</h2>' +
+            '</div>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'pv-lesson-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
             '<p class="pv-lesson-info-level"><span class="material-symbols-outlined">label</span> ' + self._escapeHTML(levelId || '') + '</p>' +
-            (verbsHtml ? '<div class="pv-lesson-info-verbs">' + verbsHtml + '</div>' : '') +
+            (verbsHtml ? '<section class="pv-info-block pv-info-block--examples"><div class="pv-lesson-info-verbs">' + verbsHtml + '</div></section>' : '') +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-lesson-info-modal\').remove()">' + 'Got it!' + '</button>' +
@@ -4996,27 +5012,39 @@
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
         '<div class="pv-info-modal-box pv-info-modal-box--wf">' +
-          '<div class="pv-info-modal-header">' +
-            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">text_fields</span></span>' +
-            '<h2 class="pv-info-modal-title">What is Word Formation?</h2>' +
+          '<div class="pv-info-modal-hero">' +
+            '<div class="pv-info-modal-hero-inner">' +
+              '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">text_fields</span></span>' +
+              '<h2 class="pv-info-modal-title">What is Word Formation?</h2>' +
+            '</div>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'wf-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
-            '<p><strong>What is word formation?</strong></p>' +
-            '<p>Word formation is the process of creating new words by adding prefixes or suffixes to a base (root) word, or by combining words.</p>' +
-            '<p><strong>For example:</strong></p>' +
-            '<ul class="pv-info-list">' +
-              '<li><em>act</em> → <em>action</em> (suffix <strong>-ion</strong>)</li>' +
-              '<li><em>happy</em> → <em>unhappy</em> (prefix <strong>un-</strong>)</li>' +
-              '<li><em>use</em> → <em>useful</em> → <em>usefulness</em> (multiple suffixes)</li>' +
-            '</ul>' +
-            '<p><strong>Why is it important?</strong></p>' +
-            '<p>Word formation is a key part of Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). It tests your ability to transform words to fit a sentence grammatically and meaningfully.</p>' +
-            '<p><strong>Tip 💡</strong></p>' +
-            '<p>Learn root words together with their most common derivatives. Pay attention to whether you need a noun, adjective, verb or adverb in context.</p>' +
-            '<p><button class="wf-info-dict-link" onclick="FastExercises._showWfDictionary(); document.getElementById(\'wf-info-modal\').remove();">' + _mi('search') + ' Open the Word Formation Dictionary</button></p>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">What is word formation?</h3>' +
+              '<p class="pv-info-block-text">Word formation is the process of creating new words by adding prefixes or suffixes to a base (root) word, or by combining words.</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--examples">' +
+              '<h3 class="pv-info-block-label">For example</h3>' +
+              '<ul class="pv-info-list">' +
+                '<li><em>act</em> → <em>action</em> (suffix <strong>-ion</strong>)</li>' +
+                '<li><em>happy</em> → <em>unhappy</em> (prefix <strong>un-</strong>)</li>' +
+                '<li><em>use</em> → <em>useful</em> → <em>usefulness</em> (multiple suffixes)</li>' +
+              '</ul>' +
+            '</section>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">Why is it important?</h3>' +
+              '<p class="pv-info-block-text">Word formation is a key part of Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). It tests your ability to transform words to fit a sentence grammatically and meaningfully.</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--tip">' +
+              '<h3 class="pv-info-block-label">' + _mi('lightbulb') + ' Tip</h3>' +
+              '<p class="pv-info-block-text">Learn root words together with their most common derivatives. Pay attention to whether you need a noun, adjective, verb or adverb in context.</p>' +
+            '</section>' +
+            '<div class="pv-info-dict-wrap">' +
+              '<button class="wf-info-dict-link" onclick="FastExercises._showWfDictionary(); document.getElementById(\'wf-info-modal\').remove();">' + _mi('search') + ' Open the Word Formation Dictionary</button>' +
+            '</div>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'wf-info-modal\').remove()">Got it!</button>' +
@@ -5280,27 +5308,39 @@
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
         '<div class="pv-info-modal-box pv-info-modal-box--colloc">' +
-          '<div class="pv-info-modal-header">' +
-            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">format_quote</span></span>' +
-            '<h2 class="pv-info-modal-title">What are Collocations?</h2>' +
+          '<div class="pv-info-modal-hero">' +
+            '<div class="pv-info-modal-hero-inner">' +
+              '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">format_quote</span></span>' +
+              '<h2 class="pv-info-modal-title">What are Collocations?</h2>' +
+            '</div>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'colloc-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
-            '<p><strong>What are collocations?</strong></p>' +
-            '<p>Collocations are words that naturally go together in English. They are combinations of words — phrases and patterns — that native speakers use habitually.</p>' +
-            '<p><strong>For example:</strong></p>' +
-            '<ul class="pv-info-list">' +
-              '<li><em>make</em> a decision (not <em>do</em> a decision)</li>' +
-              '<li><em>take</em> into account / <em>give</em> an account of</li>' +
-              '<li><em>act</em> on sb\'s advice / <em>act</em> in good faith</li>' +
-            '</ul>' +
-            '<p><strong>Why is it important?</strong></p>' +
-            '<p>Knowing collocations, fixed phrases, and common patterns is essential for Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). They help you sound natural and achieve higher marks in Use of English and Writing.</p>' +
-            '<p><strong>Tip 💡</strong></p>' +
-            '<p>Learn collocations in context, not in isolation. Notice which verbs go with which nouns, and which prepositions follow key words.</p>' +
-            '<p><button class="colloc-info-dict-link" onclick="FastExercises._showCollocDictionary(); document.getElementById(\'colloc-info-modal\').remove();">' + _mi('search') + ' Open the Collocations Dictionary</button></p>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">What are collocations?</h3>' +
+              '<p class="pv-info-block-text">Collocations are words that naturally go together in English. They are combinations of words — phrases and patterns — that native speakers use habitually.</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--examples">' +
+              '<h3 class="pv-info-block-label">For example</h3>' +
+              '<ul class="pv-info-list">' +
+                '<li><em>make</em> a decision (not <em>do</em> a decision)</li>' +
+                '<li><em>take</em> into account / <em>give</em> an account of</li>' +
+                '<li><em>act</em> on sb\'s advice / <em>act</em> in good faith</li>' +
+              '</ul>' +
+            '</section>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">Why is it important?</h3>' +
+              '<p class="pv-info-block-text">Knowing collocations, fixed phrases, and common patterns is essential for Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). They help you sound natural and achieve higher marks in Use of English and Writing.</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--tip">' +
+              '<h3 class="pv-info-block-label">' + _mi('lightbulb') + ' Tip</h3>' +
+              '<p class="pv-info-block-text">Learn collocations in context, not in isolation. Notice which verbs go with which nouns, and which prepositions follow key words.</p>' +
+            '</section>' +
+            '<div class="pv-info-dict-wrap">' +
+              '<button class="colloc-info-dict-link" onclick="FastExercises._showCollocDictionary(); document.getElementById(\'colloc-info-modal\').remove();">' + _mi('search') + ' Open the Collocations Dictionary</button>' +
+            '</div>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'colloc-info-modal\').remove()">Got it!</button>' +
@@ -5323,27 +5363,39 @@
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
         '<div class="pv-info-modal-box pv-info-modal-box--id">' +
-          '<div class="pv-info-modal-header">' +
-            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
-            '<h2 class="pv-info-modal-title">What are Idioms?</h2>' +
+          '<div class="pv-info-modal-hero">' +
+            '<div class="pv-info-modal-hero-inner">' +
+              '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
+              '<h2 class="pv-info-modal-title">What are Idioms?</h2>' +
+            '</div>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'id-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
-            '<p><strong>What are idioms?</strong></p>' +
-            '<p>Idioms are fixed expressions whose meaning cannot be deduced from the literal meaning of the individual words. They are a key part of natural, fluent English.</p>' +
-            '<p><strong>For example:</strong></p>' +
-            '<ul class="pv-info-list">' +
-              '<li><em>break the ice</em> → to make people feel more relaxed in a social situation</li>' +
-              '<li><em>hit the nail on the head</em> → to describe exactly what is causing a problem</li>' +
-              '<li><em>under the weather</em> → to feel slightly ill</li>' +
-            '</ul>' +
-            '<p><strong>Why are they important?</strong></p>' +
-            '<p>Idioms appear frequently in Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). Using them correctly will help you sound more natural and score higher in Speaking and Writing.</p>' +
-            '<p><strong>Tip 💡</strong></p>' +
-            '<p>Learn idioms in context — pay attention to the situation in which they are used, not just their meaning.</p>' +
-            '<p><button class="pv-info-dict-link" onclick="FastExercises._showIdDictionary(); document.getElementById(\'id-info-modal\').remove();">' + _mi('search') + ' Open the Idioms Dictionary</button></p>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">What are idioms?</h3>' +
+              '<p class="pv-info-block-text">Idioms are fixed expressions whose meaning cannot be deduced from the literal meaning of the individual words. They are a key part of natural, fluent English.</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--examples">' +
+              '<h3 class="pv-info-block-label">For example</h3>' +
+              '<ul class="pv-info-list">' +
+                '<li><em>break the ice</em> → to make people feel more relaxed in a social situation</li>' +
+                '<li><em>hit the nail on the head</em> → to describe exactly what is causing a problem</li>' +
+                '<li><em>under the weather</em> → to feel slightly ill</li>' +
+              '</ul>' +
+            '</section>' +
+            '<section class="pv-info-block">' +
+              '<h3 class="pv-info-block-label">Why are they important?</h3>' +
+              '<p class="pv-info-block-text">Idioms appear frequently in Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). Using them correctly will help you sound more natural and score higher in Speaking and Writing.</p>' +
+            '</section>' +
+            '<section class="pv-info-block pv-info-block--tip">' +
+              '<h3 class="pv-info-block-label">' + _mi('lightbulb') + ' Tip</h3>' +
+              '<p class="pv-info-block-text">Learn idioms in context — pay attention to the situation in which they are used, not just their meaning.</p>' +
+            '</section>' +
+            '<div class="pv-info-dict-wrap">' +
+              '<button class="pv-info-dict-link" onclick="FastExercises._showIdDictionary(); document.getElementById(\'id-info-modal\').remove();">' + _mi('search') + ' Open the Idioms Dictionary</button>' +
+            '</div>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'id-info-modal\').remove()">Got it!</button>' +
