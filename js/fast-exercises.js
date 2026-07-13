@@ -3006,7 +3006,7 @@
       };
 
       var convContentHtml =
-        '<div class="pv-gallery-single-wrap pv-conv-story-wrap">' +
+        '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap pv-conv-story-wrap--listen">' +
           '<div class="pv-conversations-slides" id="id-conv-slides">' +
             self._buildSingleConvStoryHtml(conv, textProcessor) +
           '</div>' +
@@ -4002,9 +4002,11 @@
     _buildSingleConvStoryHtml: function(conv, textProcessor) {
       var self = this;
       var linesHtml = self._buildConvStoryLinesHtml(conv.lines || [], textProcessor);
-      return '<div class="pv-conv-block pv-conv-slide pv-conv-slide-active">' +
-        '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span></div>' +
-        '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+      return '<div class="pv-conv-block pv-conv-slide pv-conv-slide-active pv-conv-block--story">' +
+        '<div class="pv-conv-drag-fixed">' +
+          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span></div>' +
+        '</div>' +
+        '<div class="pv-conv-dialogue pv-conv-dialogue--scroll">' + linesHtml + '</div>' +
       '</div>';
     },
 
@@ -4137,7 +4139,7 @@
       };
 
       var convContentHtml =
-        '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap">' +
+        '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap pv-conv-story-wrap--listen">' +
           '<div class="pv-conversations-slides" id="pv-conv-slides">' +
             self._buildSingleConvStoryHtml(conv, textProcessor) +
           '</div>' +
