@@ -394,13 +394,13 @@
       });
     },
 
-    _runVocabPassiveSession: function(container, contentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel, onContinue) {
+    _runVocabPassiveSession: function(container, contentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel, onContinue, instructionOverride) {
       var self = this;
       var session = window.FastExercisesVocabSession;
       if (!session) return false;
 
       var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
-      var instruction = self._getVocabPointInstruction(point);
+      var instruction = instructionOverride !== undefined ? instructionOverride : self._getVocabPointInstruction(point);
 
       if (session.destroy) session.destroy();
       self._hideVocabMapChrome();
@@ -2896,10 +2896,11 @@
         return;
       }
 
-      var totalConvs = convs.length;
+      var convSlides = self._buildConvSlides(convs, 2);
+      var totalSlides = convSlides.length;
       var convsHtml = '';
-      convs.forEach(function(conv, ci) {
-        var linesHtml = self._buildConvStoryLinesHtml(conv.lines, function(rawText) {
+      convSlides.forEach(function(slide, si) {
+        var linesHtml = self._buildConvStoryLinesHtml(slide.lines, function(rawText) {
           return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
             var sepIdx = inner.indexOf('|');
             if (sepIdx === -1) sepIdx = inner.indexOf('/');
@@ -2908,19 +2909,20 @@
             return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showIdIdiomPopup(\'' + self._jsStr(lookupIdiom) + '\')" title="' + self._escapeHTML(displayIdiom) + '">' + displayIdiom + '</strong>';
           });
         });
-        var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (ci + 1) + '/' + totalConvs + '</span>' : '';
-        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
-          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
+        var numHtml = totalSlides > 1 ? '<span class="pv-conv-num">' + (si + 1) + '/' + totalSlides + '</span>' : '';
+        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (si === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + si + '" data-conv-idx="' + slide.convIdx + '">' +
+          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(slide.title || '') + '</span>' + numHtml + '</div>' +
           '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
         '</div>';
       });
 
       var convDotsHtml = '';
-      convs.forEach(function(conv, ci) {
-        convDotsHtml += '<div class="pv-gallery-nav-dot' + (ci === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + ci + '" title="' + self._escapeHTML(conv.title || ('Conversation ' + (ci + 1))) + '" onclick="FastExercises._idConvGoTo(' + ci + ')"></div>';
+      convSlides.forEach(function(slide, si) {
+        var dotTitle = (slide.title || ('Part ' + (si + 1))) + (slide.partTotal > 1 ? ' (' + (slide.partIdx + 1) + '/' + slide.partTotal + ')' : '');
+        convDotsHtml += '<div class="pv-gallery-nav-dot' + (si === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + si + '" title="' + self._escapeHTML(dotTitle) + '" onclick="FastExercises._idConvGoTo(' + si + ')"></div>';
       });
 
-      var convNavHtml = totalConvs > 1
+      var convNavHtml = totalSlides > 1
         ? '<div class="pv-gallery-nav-col pv-conv-nav-bottom" id="id-conv-nav">' + convDotsHtml + '</div>'
         : '';
 
@@ -2934,7 +2936,6 @@
               convNavHtml +
             '</div>' +
             '<div class="pv-conv-footer">' +
-              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + 'Idioms are highlighted in bold. Tap the dialogue to reveal each message, then click an idiom to see its meaning.' + '</p>' +
               '<button class="fe-point-next-btn" id="id-conv-legacy-next" disabled onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 'Ready! Next' +
               '</button>' +
@@ -2964,7 +2965,7 @@
         });
       }
       this._idConvCurrentIdx = 0;
-      this._idConvTotal = convs.length;
+      this._idConvTotal = totalSlides;
     },
 
     _idConvGoTo: function(idx) {
@@ -3729,6 +3730,37 @@
     },
 
     // ── Conversation story mode (Duolingo-style message reveal) ─────────
+    _splitConvLines: function(lines, parts) {
+      parts = parts || 2;
+      var list = lines || [];
+      if (list.length <= 1) return [list];
+      var chunkSize = Math.ceil(list.length / parts);
+      var chunks = [];
+      for (var i = 0; i < list.length; i += chunkSize) {
+        chunks.push(list.slice(i, i + chunkSize));
+      }
+      return chunks;
+    },
+
+    _buildConvSlides: function(convs, partsPerConv) {
+      var self = this;
+      partsPerConv = partsPerConv || 2;
+      var slides = [];
+      (convs || []).forEach(function(conv, ci) {
+        var chunks = self._splitConvLines(conv.lines, partsPerConv);
+        chunks.forEach(function(chunk, pi) {
+          slides.push({
+            title: conv.title || '',
+            lines: chunk,
+            convIdx: ci,
+            partIdx: pi,
+            partTotal: chunks.length
+          });
+        });
+      });
+      return slides;
+    },
+
     _buildConvStoryLinesHtml: function(lines, textProcessor) {
       var self = this;
       var speakers = {};
@@ -3764,9 +3796,6 @@
       requestAnimationFrame(function() {
         if (hidden.scrollIntoView) hidden.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
-      var remaining = slideEl.querySelectorAll('.pv-conv-line--hidden').length;
-      var hint = slideEl.querySelector('.pv-conv-story-hint');
-      if (hint) hint.classList.toggle('pv-conv-story-hint--done', remaining === 0);
       return true;
     },
 
@@ -3804,12 +3833,6 @@
         var dialogue = slide.querySelector('.pv-conv-dialogue');
         if (!dialogue) return;
         dialogue.classList.add('pv-conv-story-stage');
-        if (!dialogue.querySelector('.pv-conv-story-hint')) {
-          var hint = document.createElement('div');
-          hint.className = 'pv-conv-story-hint';
-          hint.innerHTML = '<span class="material-symbols-outlined">touch_app</span> Tap to continue';
-          dialogue.appendChild(hint);
-        }
         if (!dialogue._convStoryBound) {
           dialogue._convStoryBound = true;
           dialogue.addEventListener('click', function(e) {
@@ -3817,9 +3840,6 @@
             self._convStoryAdvance(slide);
           });
         }
-        var remaining = slide.querySelectorAll('.pv-conv-line--hidden').length;
-        var hintEl = slide.querySelector('.pv-conv-story-hint');
-        if (hintEl) hintEl.classList.toggle('pv-conv-story-hint--done', remaining === 0);
       });
 
       if (opts.passive) {
@@ -3855,9 +3875,11 @@
       }
 
       var totalConvs = convs.length;
+      var convSlides = self._buildConvSlides(convs, 2);
+      var totalSlides = convSlides.length;
       var convsHtml = '';
-      convs.forEach(function(conv, ci) {
-        var linesHtml = self._buildConvStoryLinesHtml(conv.lines, function(rawText) {
+      convSlides.forEach(function(slide, si) {
+        var linesHtml = self._buildConvStoryLinesHtml(slide.lines, function(rawText) {
           return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
             var sepIdx = inner.indexOf('|');
             if (sepIdx === -1) sepIdx = inner.indexOf('/');
@@ -3866,20 +3888,20 @@
             return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(lookupVerb) + '\')" title="' + self._escapeHTML(displayVerb) + '">' + displayVerb + '</strong>';
           });
         });
-        var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (ci + 1) + '/' + totalConvs + '</span>' : '';
-        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
-          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
+        var numHtml = totalSlides > 1 ? '<span class="pv-conv-num">' + (si + 1) + '/' + totalSlides + '</span>' : '';
+        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (si === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + si + '" data-conv-idx="' + slide.convIdx + '">' +
+          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(slide.title || '') + '</span>' + numHtml + '</div>' +
           '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
         '</div>';
       });
 
-      // Nav dots for conversations (shown below dialogue on wide layouts)
       var convDotsHtml = '';
-      convs.forEach(function(conv, ci) {
-        convDotsHtml += '<div class="pv-gallery-nav-dot' + (ci === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + ci + '" title="' + self._escapeHTML(conv.title || ('Conversation ' + (ci + 1))) + '" onclick="FastExercises._pvConvGoTo(' + ci + ')"></div>';
+      convSlides.forEach(function(slide, si) {
+        var dotTitle = (slide.title || ('Part ' + (si + 1))) + (slide.partTotal > 1 ? ' (' + (slide.partIdx + 1) + '/' + slide.partTotal + ')' : '');
+        convDotsHtml += '<div class="pv-gallery-nav-dot' + (si === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + si + '" title="' + self._escapeHTML(dotTitle) + '" onclick="FastExercises._pvConvGoTo(' + si + ')"></div>';
       });
 
-      var convNavHtml = totalConvs > 1
+      var convNavHtml = totalSlides > 1
         ? '<div class="pv-gallery-nav-col pv-conv-nav-bottom" id="pv-conv-nav">' + convDotsHtml + '</div>'
         : '';
 
@@ -3887,9 +3909,7 @@
         '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap">' +
           '<div class="pv-conversations-slides" id="pv-conv-slides">' + convsHtml + '</div>' +
           convNavHtml +
-        '</div>' +
-        '<p class="pv-conv-hint fe-vocab-sp-hint"><span class="material-symbols-outlined">info</span> ' +
-          'Phrasal verbs are highlighted in bold. Tap the dialogue to reveal each message, then click a verb to see its definition.' + '</p>';
+        '</div>';
 
       var pointPv = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
       var pointLabelPv = pointPv ? (pointPv.label || '') : '';
@@ -3900,7 +3920,7 @@
         lessonId: lessonId,
         pointIndex: pointIndex
       };
-      if (self._runVocabPassiveSession(container, convContentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelPv)) {
+      if (self._runVocabPassiveSession(container, convContentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelPv, null, '')) {
         storyOpts.passive = true;
         storyOpts.root = document.getElementById('sp-screen-mount') || document;
         self._initConvStoryMode(storyOpts);
@@ -3919,7 +3939,7 @@
           });
         }
         self._pvConvCurrentIdx = 0;
-        self._pvConvTotal = convs.length;
+        self._pvConvTotal = totalSlides;
         return;
       }
 
@@ -3957,7 +3977,7 @@
         });
       }
       this._pvConvCurrentIdx = 0;
-      this._pvConvTotal = convs.length;
+      this._pvConvTotal = totalSlides;
     },
 
     _pvConvGoTo: function(idx) {
