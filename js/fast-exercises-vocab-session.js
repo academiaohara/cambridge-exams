@@ -1,11 +1,9 @@
 // js/fast-exercises-vocab-session.js
-// SunePlay-style practice shell for course vocabulary exercises (PV, idioms, word formation)
+// SunePlay-style practice shell for course vocabulary (no lives)
 
 (function() {
   'use strict';
 
-  var practiceUI = window.SunePlayPracticeUI;
-  var heartsMod = window.SunePlayHearts;
   var screenRenderer = window.SunePlayScreenRenderer;
 
   function esc(str) {
@@ -13,6 +11,10 @@
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function escAttr(str) {
+    return esc(str).replace(/'/g, '&#39;');
   }
 
   function mi(name) {
@@ -28,8 +30,49 @@
     return root ? root.querySelector('#sp-screen-mount') : null;
   }
 
-  function getSessionRoot() {
-    return getMount() ? getMount().querySelector('.sp-practice-session') : null;
+  function progressBarHtml(completed, total) {
+    var pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+    return '<div class="sp-session-progress" data-component="SessionProgressBar">' +
+      '<div class="sp-session-progress-track">' +
+        '<div class="sp-session-progress-fill" style="width:' + pct + '%"></div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function buildShellHtml(opts) {
+    opts = opts || {};
+    var completed = opts.completed || 0;
+    var total = opts.total || 1;
+    return '<div class="fe-vocab-sp-lesson">' +
+      '<div class="fe-vocab-sp-mount" id="feVocabSpMount">' +
+        '<div class="sp-practice-session fe-vocab-sp-session" data-component="PracticeSession">' +
+          '<header class="sp-practice-header fe-vocab-sp-header">' +
+            '<button type="button" class="sp-header-btn sp-header-exit" data-action="exit-session" aria-label="Exit">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+            progressBarHtml(completed, total) +
+          '</header>' +
+          '<div class="sp-practice-main">' +
+            '<div class="sp-practice-body">' +
+              '<div class="sp-exercise-card" id="sp-screen-mount"></div>' +
+            '</div>' +
+            '<footer class="sp-practice-footer" id="sp-practice-footer">' +
+              '<div class="sp-practice-footer-inner">' +
+                '<div id="sp-feedback-mount" class="sp-feedback-mount"></div>' +
+                '<div class="sp-practice-footer-actions">' +
+                  '<button type="button" class="sp-btn sp-btn--skip" id="sp-skip-btn" aria-label="Skip">Skip</button>' +
+                  '<div class="sp-footer-actions-right">' +
+                    '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Check">' +
+                      '<span class="material-symbols-outlined">check</span>' +
+                    '</button>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</footer>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
   }
 
   function setActionBtn(mode, enabled) {
@@ -37,7 +80,6 @@
     if (!root) return;
     var actionBtn = root.querySelector('#sp-action-btn');
     var skipBtn = root.querySelector('#sp-skip-btn');
-    var explainBtn = root.querySelector('#sp-explain-btn');
     var footer = root.querySelector('#sp-practice-footer');
     var practiceMain = root.querySelector('.sp-practice-main');
     if (!actionBtn) return;
@@ -55,9 +97,7 @@
 
     if (skipBtn) {
       skipBtn.hidden = mode !== 'check' || (window._feVocabSession && window._feVocabSession.passive);
-      skipBtn.disabled = window._feVocabSession && window._feVocabSession.hearts && window._feVocabSession.hearts.isGameOver;
     }
-    if (explainBtn) explainBtn.hidden = true;
 
     var isFeedback = mode === 'continue';
     var isCorrect = window._feVocabSession && window._feVocabSession._lastCorrect === true;
@@ -96,33 +136,42 @@
     var header = root.querySelector('.sp-practice-header');
     if (!header) return;
     var progressEl = header.querySelector('.sp-session-progress');
-    if (progressEl && practiceUI) {
-      progressEl.outerHTML = practiceUI.SessionProgressBar(s.sessionCorrect || 0, s.sessionTotal || 1);
-    }
-    var heartsEl = header.querySelector('.sp-hearts-bar');
-    if (heartsEl && s.hearts && practiceUI) {
-      heartsEl.outerHTML = practiceUI.HeartsBar(s.hearts.currentLives, s.hearts.maxLives);
+    if (progressEl) {
+      progressEl.outerHTML = progressBarHtml(s.sessionCorrect || 0, s.sessionTotal || 1);
     }
   }
 
   function showFeedback(correct, correctAnswer) {
     var root = getMount();
-    if (!root || !screenRenderer) return;
+    if (!root) return;
     var feedbackMount = root.querySelector('#sp-feedback-mount');
     if (!feedbackMount) return;
     var result = { correct: !!correct, correctAnswer: correctAnswer || '' };
-    feedbackMount.innerHTML = screenRenderer.FeedbackSheet(result, 'practice');
-    window._feVocabSession._lastCorrect = correct;
+
+    if (screenRenderer && screenRenderer.FeedbackSheet) {
+      feedbackMount.innerHTML = screenRenderer.FeedbackSheet(result, {});
+    } else {
+      feedbackMount.innerHTML =
+        '<div class="sp-feedback-sheet ' + (correct ? 'sp-feedback--correct' : 'sp-feedback--incorrect') + '">' +
+          '<div class="sp-feedback-icon" aria-hidden="true">' + mi(correct ? 'check_circle' : 'cancel') + '</div>' +
+          '<div class="sp-feedback-body">' +
+            '<p class="sp-feedback-title">' + (correct ? 'Correct!' : 'Not quite.') + '</p>' +
+            (!correct && correctAnswer ? '<p class="sp-feedback-answer"><span>Correct:</span> ' + esc(correctAnswer) + '</p>' : '') +
+          '</div>' +
+        '</div>';
+    }
+
+    if (window._feVocabSession) window._feVocabSession._lastCorrect = correct;
     setActionBtn('continue', true);
   }
 
   function bindEvents(fe) {
     var root = getMount();
-    if (!root || root._feVocabBound) return;
-    root._feVocabBound = true;
+    if (!root) return;
 
     var actionBtn = root.querySelector('#sp-action-btn');
-    if (actionBtn) {
+    if (actionBtn && !actionBtn._feVocabBound) {
+      actionBtn._feVocabBound = true;
       actionBtn.addEventListener('click', function() {
         var s = window._feVocabSession;
         if (!s) return;
@@ -135,7 +184,8 @@
     }
 
     var skipBtn = root.querySelector('#sp-skip-btn');
-    if (skipBtn) {
+    if (skipBtn && !skipBtn._feVocabBound) {
+      skipBtn._feVocabBound = true;
       skipBtn.addEventListener('click', function() {
         var s = window._feVocabSession;
         if (!s || !s.onSkip) return;
@@ -144,7 +194,8 @@
     }
 
     var exitBtn = root.querySelector('[data-action="exit-session"]');
-    if (exitBtn) {
+    if (exitBtn && !exitBtn._feVocabBound) {
+      exitBtn._feVocabBound = true;
       exitBtn.addEventListener('click', function() {
         var s = window._feVocabSession;
         if (!s) return;
@@ -159,67 +210,16 @@
     }
   }
 
-  function buildShellHtml(opts) {
-    opts = opts || {};
-    var node = { nodeId: 'vocab-' + (opts.categoryId || 'practice'), title: opts.lessonTitle || '' };
-    if (!practiceUI) return '<div id="sp-screen-mount"></div>';
-    return '<div class="sp-lesson fe-vocab-sp-lesson"><div class="sp-lesson-mount fe-vocab-sp-mount" id="feVocabSpMount">' +
-      practiceUI.PracticeSession(node, {
-        completed: opts.completed || 0,
-        total: opts.total || 1,
-        lives: opts.lives || 5,
-        maxLives: opts.maxLives || 5
-      }) +
-    '</div></div>';
-  }
-
   function ensureSession(fe, container, opts) {
+    if (!container) return null;
     opts = opts || {};
-    if (!practiceUI || !heartsMod) return null;
 
     var total = opts.sessionTotal || 1;
     var completed = opts.sessionCorrect || 0;
 
     container.innerHTML = buildShellHtml({
-      categoryId: opts.categoryId,
-      lessonTitle: opts.lessonTitle,
       completed: completed,
-      total: total,
-      lives: 5,
-      maxLives: 5
-    });
-
-    var hearts = heartsMod.usePracticeHearts({
-      maxLives: 5,
-      onGameOver: function() {
-        var s = window._feVocabSession;
-        if (!s) return;
-        var screenMount = getScreenMount();
-        if (screenMount) {
-          screenMount.innerHTML =
-            '<div class="sp-result-screen sp-result-screen--failed">' +
-              '<div class="sp-result-icon sp-result-icon--failed">' + mi('heart_broken') + '</div>' +
-              '<h2 class="sp-result-title">Out of lives</h2>' +
-              '<p class="sp-result-subtitle">You ran out of hearts. Try again or go back to the map.</p>' +
-              '<button type="button" class="sp-btn sp-btn--primary sp-btn--labeled" id="fe-vocab-retry-btn">' +
-                '<span class="material-symbols-outlined">refresh</span><span class="sp-btn-label">Try again</span>' +
-              '</button>' +
-              '<button type="button" class="sp-btn sp-btn--ghost sp-btn--labeled" id="fe-vocab-back-btn" style="margin-top:8px">' +
-                '<span class="material-symbols-outlined">arrow_back</span><span class="sp-btn-label">Back to map</span>' +
-              '</button>' +
-            '</div>';
-          var retryBtn = document.getElementById('fe-vocab-retry-btn');
-          var backBtn = document.getElementById('fe-vocab-back-btn');
-          if (retryBtn) retryBtn.addEventListener('click', function() {
-            if (s.onRetry) s.onRetry();
-          });
-          if (backBtn) backBtn.addEventListener('click', function() {
-            fe.openCategory(s.categoryId);
-          });
-        }
-        setActionBtn('check', false);
-        hideActionBtn();
-      }
+      total: total
     });
 
     window._feVocabSession = {
@@ -234,7 +234,6 @@
       passive: !!opts.passive,
       sessionCorrect: completed,
       sessionTotal: total,
-      hearts: hearts,
       questionIndex: 0,
       _lastCorrect: null,
       onCheck: null,
@@ -249,30 +248,11 @@
       setActionBtn('continue', true);
       var skipBtn = getMount() && getMount().querySelector('#sp-skip-btn');
       if (skipBtn) skipBtn.hidden = true;
-      var actionBtn = getMount() && getMount().querySelector('#sp-action-btn');
-      if (actionBtn) {
-        actionBtn.dataset.mode = 'continue';
-        var icon = actionBtn.querySelector('.material-symbols-outlined');
-        if (icon) icon.textContent = 'arrow_forward';
-        actionBtn.classList.add('sp-btn--continue-mode');
-        actionBtn.setAttribute('aria-label', 'Continue');
-      }
     } else {
       setActionBtn('check', false);
     }
 
     return getScreenMount();
-  }
-
-  function actionBtnHidden() {
-    var root = getMount();
-    var btn = root && root.querySelector('#sp-action-btn');
-    return btn && btn.hidden;
-  }
-
-  function hideActionBtn() {
-    var btn = getMount() && getMount().querySelector('#sp-action-btn');
-    if (btn) btn.hidden = true;
   }
 
   function mountInstruction(screenRoot, text) {
@@ -285,29 +265,28 @@
     screenRoot.insertBefore(el, screenRoot.firstChild);
   }
 
-  function renderMcqScreen(exercise, questionNum, total) {
+  function renderMcqScreen(exercise) {
     var options = exercise.options || [];
     var letters = 'ABCDEFGHIJ';
     var optHtml = '';
     options.forEach(function(opt, i) {
       var letter = letters.charAt(i);
-      var label = String(opt).replace(/^[A-D]\)\s*/i, '').trim() || opt;
-      optHtml += '<button type="button" class="sp-option-btn" data-value="' + esc(opt) + '" data-letter="' + letter + '">' +
+      var raw = String(opt);
+      var label = raw.replace(/^[A-D]\)\s*/i, '').trim() || raw;
+      optHtml += '<button type="button" class="sp-option-btn" data-value="' + escAttr(raw) + '" data-letter="' + letter + '">' +
         '<span class="sp-option-num">' + letter + '</span>' +
         '<span class="sp-option-label">' + esc(label) + '</span>' +
       '</button>';
     });
 
-    var sentence = exercise.sentence || '';
-    var html = '<div class="sp-screen sp-screen--choice" data-format="vocab_mcq">' +
+    return '<div class="sp-screen sp-screen--choice" data-format="vocab_mcq">' +
       '<div class="sp-prompt-row sp-prompt-row--choice">' +
-        '<p class="sp-prompt-sentence sp-speakable-sentence">' + esc(sentence) + '</p>' +
+        '<p class="sp-prompt-sentence sp-speakable-sentence">' + esc(exercise.sentence || '') + '</p>' +
       '</div>' +
       '<div class="sp-option-grid sp-option-grid--quad" id="fe-vocab-mcq-options">' +
         optHtml +
       '</div>' +
     '</div>';
-    return html;
   }
 
   function renderWriteScreen(exercise) {
@@ -326,32 +305,31 @@
     '</div>';
   }
 
-  function bindMcqSelection(onReady) {
+  function bindMcqSelection() {
     var root = getScreenMount();
     if (!root) return;
     var screen = root.querySelector('.sp-screen');
     root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+      if (btn._feVocabBound) return;
+      btn._feVocabBound = true;
       btn.addEventListener('click', function() {
         if (screen && screen.classList.contains('sp-screen--locked')) return;
         root.querySelectorAll('.sp-option-btn').forEach(function(b) {
           b.classList.remove('sp-option-btn--selected');
         });
         btn.classList.add('sp-option-btn--selected');
-        if (onReady) onReady(true);
         setActionBtn('check', true);
       });
     });
   }
 
-  function bindWriteInput(onReady) {
+  function bindWriteInput() {
     var input = document.getElementById('fe-vocab-write-input');
-    if (!input) return;
-    function sync() {
-      var ready = input.value.trim().length > 0;
-      if (onReady) onReady(ready);
-      setActionBtn('check', ready);
-    }
-    input.addEventListener('input', sync);
+    if (!input || input._feVocabBound) return;
+    input._feVocabBound = true;
+    input.addEventListener('input', function() {
+      setActionBtn('check', input.value.trim().length > 0);
+    });
     input.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' && input.value.trim()) {
         var s = window._feVocabSession;
@@ -362,9 +340,11 @@
   }
 
   function lockScreen() {
-    var screen = getScreenMount() && getScreenMount().querySelector('.sp-screen');
+    var root = getScreenMount();
+    if (!root) return;
+    var screen = root.querySelector('.sp-screen');
     if (screen) screen.classList.add('sp-screen--locked');
-    getScreenMount().querySelectorAll('.sp-option-btn').forEach(function(btn) {
+    root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
       btn.disabled = true;
     });
     var input = document.getElementById('fe-vocab-write-input');
@@ -385,15 +365,12 @@
 
   function destroy() {
     window._feVocabSession = null;
-    var mount = getMount();
-    if (mount) mount._feVocabBound = false;
   }
 
   window.FastExercisesVocabSession = {
     ensureSession: ensureSession,
     destroy: destroy,
     getScreenMount: getScreenMount,
-    getSessionRoot: getSessionRoot,
     mountInstruction: mountInstruction,
     renderMcqScreen: renderMcqScreen,
     renderWriteScreen: renderWriteScreen,

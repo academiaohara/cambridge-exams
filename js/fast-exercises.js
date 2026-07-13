@@ -277,7 +277,10 @@
       var layout = document.querySelector('.dashboard-layout');
       var center = document.querySelector('.dashboard-center');
       if (layout) layout.classList.toggle('dashboard-layout--lesson-focus', !!active);
-      if (center) center.classList.toggle('course-center--lesson-focus', !!active);
+      if (center) {
+        center.classList.toggle('fe-vocab-lesson-focus', !!active);
+        center.classList.remove('course-center--lesson-focus');
+      }
     },
 
     _ensureVocabCenterSection: function() {
@@ -297,7 +300,7 @@
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
               ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
               : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + sidebars.left + '</div>') +
-            '<div class="dashboard-center dashboard-center--course course-center--lesson-focus fe-vocab-sp-center">' +
+            '<div class="dashboard-center dashboard-center--course fe-vocab-lesson-focus fe-vocab-sp-center">' +
               '<div class="fe-section fe-section--merged-path fe-section--vocab-exercise" id="feCenterSection"></div>' +
             '</div>' +
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -312,6 +315,14 @@
         centerSection = document.getElementById('feCenterSection');
       } else {
         centerSection.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise';
+      }
+
+      var layout = document.querySelector('.dashboard-layout');
+      if (layout) layout.classList.add('dashboard-layout--lesson-focus');
+      var centerCol = centerSection.closest('.dashboard-center');
+      if (centerCol) {
+        centerCol.classList.add('fe-vocab-lesson-focus', 'fe-vocab-sp-center');
+        centerCol.classList.remove('course-center--lesson-focus');
       }
 
       this._setVocabLessonFocus(true);
@@ -387,9 +398,9 @@
         if (instruction && screenRoot) session.mountInstruction(screenRoot, instruction);
 
         if (ex.type === 'write-verb' || ex.type === 'transform') {
-          session.bindWriteInput(function() {});
+          session.bindWriteInput();
         } else {
-          session.bindMcqSelection(function() {});
+          session.bindMcqSelection();
         }
         session.setActionBtn('check', false);
       }
@@ -432,7 +443,6 @@
         }
 
         session.lockScreen();
-        if (!isCorrect && s.hearts) s.hearts.loseLife(1, { screenId: 'q' + qi });
         if (isCorrect) {
           s.correctCount++;
           session.incrementProgress();
@@ -459,16 +469,6 @@
           return;
         }
         renderQuestion(s.questionIndex);
-      };
-
-      s.onRetry = function() {
-        if (s.hearts) s.hearts.resetLives(5);
-        s.correctCount = 0;
-        s.questionIndex = 0;
-        s.sessionCorrect = 0;
-        session.updateHeader();
-        renderQuestion(0);
-        session.setActionBtn('check', false);
       };
 
       renderQuestion(0);
