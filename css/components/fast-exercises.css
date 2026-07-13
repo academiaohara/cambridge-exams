@@ -2465,13 +2465,13 @@
   display: none;
 }
 
-.pv-conv-line:not(.pv-conv-line--visible):not(.pv-conv-line--hidden) {
+.pv-conv-story-wrap:not(.pv-conv-story-wrap--drag):not(.pv-conv-story-wrap--fill) .pv-conv-line:not(.pv-conv-line--visible):not(.pv-conv-line--hidden) {
   display: flex;
   opacity: 0;
   pointer-events: none;
 }
 
-.pv-conv-line--visible {
+.pv-conv-story-wrap:not(.pv-conv-story-wrap--drag):not(.pv-conv-story-wrap--fill) .pv-conv-line--visible {
   display: flex;
   opacity: 1;
   pointer-events: auto;
@@ -2493,7 +2493,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pv-conv-line--visible,
+  .pv-conv-story-wrap:not(.pv-conv-story-wrap--drag):not(.pv-conv-story-wrap--fill) .pv-conv-line--visible,
   .pv-conv-story-wrap--enter .pv-conv-block {
     animation: none;
   }
@@ -2560,6 +2560,22 @@
   width: 100%;
   flex: 1;
   min-width: 0;
+}
+
+.pv-conv-story-wrap--listen .pv-conversations-slides,
+.pv-conv-story-wrap--drag .pv-conversations-slides {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pv-conv-story-wrap--listen .pv-conversations-slides .pv-conv-block,
+.pv-conv-story-wrap--drag .pv-conversations-slides .pv-conv-block {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 0;
 }
 
 .pv-conv-story-wrap .pv-conv-block {
@@ -2921,18 +2937,21 @@
   flex-shrink: 0;
 }
 
-/* ── Drag conv: fixed header + scrollable dialogue ───────────────────── */
-.pv-conv-story-wrap--drag {
-  flex: 1;
+/* ── Drag / listen conv: fixed header + scrollable dialogue ─────────── */
+.pv-conv-story-wrap--drag,
+.pv-conv-story-wrap--listen {
+  flex: 1 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 0;
 }
 
-.pv-conv-block--drag {
-  flex: 1;
+.pv-conv-block--drag,
+.pv-conv-block--story {
+  flex: 1 1 0;
   min-height: 0;
+  height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -2940,15 +2959,20 @@
 
 .pv-conv-drag-fixed {
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .pv-conv-dialogue--scroll {
-  flex: 1;
+  flex: 1 1 0;
+  height: 0;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  overflow-anchor: none;
+  padding: 16px 20px 24px;
+  scroll-padding-block: 24px;
 }
 
 .pv-chips-title {
@@ -8701,21 +8725,40 @@
   padding-inline: 0;
 }
 
-.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-block--drag) {
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-block--drag),
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-block--story) {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
-.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-block--drag) .sp-exercise-card {
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-block--drag) .sp-exercise-card,
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-block--story) .sp-exercise-card {
   overflow: hidden;
   padding: 0;
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
 }
 
-.fe-section--vocab-exercise .sp-screen--vocab-passive:has(.pv-conv-block--drag) {
-  flex: 1;
+.fe-section--vocab-exercise .sp-practice-body:has(.pv-conv-block--drag),
+.fe-section--vocab-exercise .sp-practice-body:has(.pv-conv-block--story) {
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fe-section--vocab-exercise .sp-screen--vocab-passive:has(.pv-conv-block--drag),
+.fe-section--vocab-exercise .sp-screen--vocab-passive:has(.pv-conv-block--story) {
+  flex: 1 1 0;
+  height: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -8723,6 +8766,16 @@
 .fe-section--vocab-exercise .sp-screen--vocab-passive .pv-conv-block,
 .fe-section--vocab-exercise .sp-screen--vocab-passive .wf-explanation-wrap {
   max-width: 100%;
+}
+
+.fe-section--vocab-exercise .sp-screen--vocab-passive:has(.pv-conv-story-wrap--drag) .pv-gallery-single-wrap,
+.fe-section--vocab-exercise .sp-screen--vocab-passive:has(.pv-conv-story-wrap--listen) .pv-gallery-single-wrap {
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .fe-vocab-sp-gallery .pv-gallery-card {
