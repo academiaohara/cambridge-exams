@@ -3806,7 +3806,11 @@
       var self = this;
       var linesHtml = self._buildConvStoryLinesHtml(conv.lines || [], textProcessor);
       return '<div class="pv-conv-block pv-conv-slide pv-conv-slide-active">' +
-        '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span></div>' +
+        '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' +
+          '<button type="button" class="pv-conv-restart-btn" aria-label="Replay conversation" title="Replay conversation">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">replay</span>' +
+          '</button>' +
+        '</div>' +
         '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
       '</div>';
     },
@@ -3944,6 +3948,29 @@
       if (this._convStoryAutoRunning) this._convStoryAutoStep(slideEl);
     },
 
+    _convStoryRestart: function(slideEl) {
+      if (!slideEl) return;
+      this._convStoryStopAuto();
+
+      var lines = slideEl.querySelectorAll('.pv-conv-line');
+      lines.forEach(function(line, li) {
+        line.removeAttribute('data-spoken');
+        line.classList.remove('pv-conv-line--speaking');
+        if (li === 0) {
+          line.classList.remove('pv-conv-line--hidden');
+          line.classList.add('pv-conv-line--visible');
+        } else {
+          line.classList.add('pv-conv-line--hidden');
+          line.classList.remove('pv-conv-line--visible');
+        }
+      });
+
+      var legacyBtn = document.getElementById('pv-conv-legacy-next') || document.getElementById('id-conv-legacy-next');
+      if (legacyBtn) legacyBtn.disabled = true;
+
+      this._convStoryStartAuto(slideEl);
+    },
+
     _convStoryStartAuto: function(slideEl) {
       var self = this;
       this._convStoryStopAuto();
@@ -3989,6 +4016,16 @@
             self._convStoryAdvance(slide);
           });
         }
+      });
+
+      root.querySelectorAll('.pv-conv-restart-btn').forEach(function(btn) {
+        if (btn._convRestartBound) return;
+        btn._convRestartBound = true;
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var slide = btn.closest('.pv-conv-slide');
+          if (slide) self._convStoryRestart(slide);
+        });
       });
 
       if (opts.passive) {
