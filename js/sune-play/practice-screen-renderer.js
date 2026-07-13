@@ -61,9 +61,13 @@
     return result;
   }
 
+  function normalizeVerbPromptDisplay(verbRef) {
+    return String(verbRef || '').trim().replace(/^_+\s*/, '');
+  }
+
   function renderVerbRef(verbRef) {
     if (!verbRef) return '';
-    var trimmed = String(verbRef).trim();
+    var trimmed = normalizeVerbPromptDisplay(verbRef);
     if (trimmed.indexOf('/') !== -1) {
       return '<span class="sp-gap-verb-ref">' + renderSlashHintMarkup(trimmed) + '</span>';
     }
@@ -1492,14 +1496,11 @@
 
   function renderMc4OptionStandalone(screen) {
     var p = screen.payload || {};
+    var multiCls = p.gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
     var html = '<div class="sp-screen sp-screen--choice sp-screen--mc-standalone" data-format="mc_4_option">';
     html += '<div class="sp-prompt-row sp-prompt-row--choice">';
-    html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
-      esc(p.sentenceBefore || '') +
-      ' <span class="sp-gap-anchor">' +
-        '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
-      '</span> ' +
-      esc(p.sentenceAfter || '') + '</p>';
+    html += '<p class="sp-prompt-sentence' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+      renderChoicePromptSentence(p) + '</p>';
     html += '</div>';
     html += '<div class="sp-option-grid sp-option-grid--quad" id="sp-mc-option-grid">';
     (p.options || []).forEach(function(opt, i) {
@@ -1560,9 +1561,7 @@
   function bindMc4OptionStandalone(root, screen, onChange) {
     var payload = screen.payload || {};
     bindSentenceSpeak(root, function() {
-      var slot = root.querySelector('#sp-choice-slot');
-      var chosen = slot ? slot.textContent.trim() : '';
-      return buildGapSentence(payload.sentenceBefore, chosen, payload.sentenceAfter);
+      return getGroupedChoiceSpeakText(payload, root);
     });
     root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -1573,7 +1572,11 @@
         btn.classList.add('sp-option-btn--selected');
         var letter = btn.getAttribute('data-letter') || '';
         var optText = getMcOptionText(payload.options, letter);
-        setChoiceSlotContent(root, optText);
+        if (payload.gapCount > 1 && payload.optionGapDisplayValues) {
+          applyGroupedChoiceSelection(root, payload, optText);
+        } else {
+          setChoiceSlotContent(root, optText);
+        }
         onChange();
         if (optText) speakText(optText);
       });
