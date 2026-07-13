@@ -278,7 +278,7 @@
       }
       var writeInstruction = '';
       if (exercise.type === 'transform' && hint) {
-        writeInstruction = 'Use ' + hint + ' to form the correct word.';
+        writeInstruction = 'Complete the gap.';
       } else if (hint && !useVerbPrompt) {
         writeInstruction = 'Complete the gap. Hint: ' + hint;
       }
@@ -290,7 +290,7 @@
           answer: exercise.correct,
           acceptedAnswers: [exercise.correct],
           preselectedVerb: useVerbPrompt ? verbPrompt : '',
-          verbPrompt: useVerbPrompt ? verbPrompt : '',
+          verbPrompt: (exercise.type === 'transform' && hint) ? String(hint).toUpperCase() : (useVerbPrompt ? verbPrompt : ''),
           instruction: writeInstruction,
           explanation: exercise.explanation || ''
         }
@@ -325,6 +325,7 @@
         sentenceAfter: promptParts.sentenceAfter,
         segments: promptParts.segments,
         gapCount: promptParts.gapCount,
+        rootWord: exercise.root || '',
         optionGapDisplayValues: buildOptionGapDisplayMap(shuffledOptions, exercise.correct, promptParts.gapCount),
         options: mcOptions,
         answer: findMcAnswerLetter(mcOptions, exercise.correct),

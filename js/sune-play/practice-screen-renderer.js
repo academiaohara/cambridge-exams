@@ -71,7 +71,12 @@
     if (trimmed.indexOf('/') !== -1) {
       return '<span class="sp-gap-verb-ref">' + renderSlashHintMarkup(trimmed) + '</span>';
     }
-    return '<span class="sp-gap-verb-ref"><span class="sp-hint-word">' + esc(trimmed) + '</span></span>';
+    return '<span class="sp-gap-verb-ref"><span class="sp-hint-word sp-wf-root-tile">' + esc(trimmed) + '</span></span>';
+  }
+
+  function renderWfRootTile(rootWord) {
+    if (!rootWord) return '';
+    return '<span class="sp-wf-root-tile" aria-label="Root word">' + esc(rootWord) + '</span>';
   }
 
   function countGaps(sentence) {
@@ -1561,7 +1566,10 @@
   function renderMc4OptionStandalone(screen) {
     var p = screen.payload || {};
     var multiCls = p.gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
-    var html = '<div class="sp-screen sp-screen--choice sp-screen--mc-standalone" data-format="mc_4_option">';
+    var html = '<div class="sp-screen sp-screen--choice sp-screen--mc-standalone' + (p.rootWord ? ' sp-screen--wf-mc' : '') + '" data-format="mc_4_option">';
+    if (p.rootWord) {
+      html += '<div class="sp-wf-root-row">' + renderWfRootTile(p.rootWord) + '</div>';
+    }
     html += '<div class="sp-prompt-row sp-prompt-row--choice">';
     html += '<p class="sp-prompt-sentence' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
       renderChoicePromptSentence(p) + '</p>';

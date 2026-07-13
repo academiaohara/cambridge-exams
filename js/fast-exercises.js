@@ -447,7 +447,7 @@
     _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked) {
       if (!levelUnlocked || lessonUnlocked === false || !lesson.points || !lesson.points[pi]) return false;
       var point = lesson.points[pi];
-      var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz') && pi === lesson.points.length - 1;
+      var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz' || point.type === 'wf-mixed') && pi === lesson.points.length - 1;
       if (!isLastGate) return true;
       for (var prev = 0; prev < pi; prev++) {
         if (this._isTheoryPointType(lesson.points[prev].type)) continue;
@@ -622,6 +622,9 @@
       } else if (point.type === 'wf-transform') {
         dotClass += ' fe-dot-wf-transform';
         dotIcon = _mi('transform');
+      } else if (point.type === 'wf-mixed') {
+        dotClass += ' fe-dot-wf-mixed';
+        dotIcon = _mi('shuffle');
       } else if (point.type === 'id-quiz') {
         dotClass += ' fe-dot-id-quiz';
         dotIcon = _mi('quiz');
@@ -849,7 +852,8 @@
       'id-quiz': 'Choose the correct answer for each question.',
       'wf-explanation': 'Read the explanation and learn the different word forms.',
       'wf-multiple-choice': 'Choose the correct form of the word.',
-      'wf-transform': 'Write the correct form of the word in CAPITALS.',
+      'wf-transform': 'Write the correct form of the word.',
+      'wf-mixed': 'Complete each exercise using the word forms from this lesson.',
       'vocab-flashcards': 'Tap the card to reveal the meaning. Mark whether you know the word.',
       'explanation': 'Read the explanation carefully.',
       'exercise': 'Complete each question below.',
@@ -1139,6 +1143,7 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-explanation fe-dot-mini">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-mixed fe-dot-mini">' + _mi('shuffle') + '</span> ' + 'Mixed' + '</span>' +
         '</div>';
       } else if (!isCourseVocab && categoryId === 'collocations') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
@@ -2441,7 +2446,7 @@
       }
 
       // ── Word Formation point types ──────────────────────────────────────
-      var wfTypes = ['wf-explanation', 'wf-multiple-choice', 'wf-transform'];
+      var wfTypes = ['wf-explanation', 'wf-multiple-choice', 'wf-transform', 'wf-mixed'];
       if (wfTypes.indexOf(pointType) !== -1) {
         if (!lessonData || (!lessonData.wordForms && !lessonData.multipleChoiceExercises && !lessonData.transformExercises)) {
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
@@ -2461,6 +2466,8 @@
           this._renderWfMultipleChoice(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'wf-transform') {
           this._renderWfTransform(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'wf-mixed') {
+          this._renderWfMixed(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
         this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
         return;
@@ -4751,7 +4758,8 @@
       var normalizedMc = exercises.map(function(ex) {
         return {
           type: 'multiple-choice',
-          sentence: (ex.root ? ('Root: ' + ex.root + ' — ') : '') + (ex.sentence || ''),
+          sentence: ex.sentence || '',
+          root: ex.root || '',
           options: ex.options || [],
           correct: ex.correct
         };
@@ -4772,7 +4780,7 @@
         questionsHtml +=
           '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
             '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
-            '<div class="wf-mc-root-label">' + _mi('text_fields') + ' ' + 'Root word: ' + '<strong>' + self._escapeHTML(ex.root || '') + '</strong></div>' +
+            (ex.root ? '<div class="wf-mc-root-row"><span class="wf-root-tile">' + self._escapeHTML(ex.root) + '</span></div>' : '') +
             '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
             '<div class="fe-quiz-options">' + optHtml + '</div>' +
             '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
@@ -4845,12 +4853,11 @@
           '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
             '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
             '<div class="wf-transform-sentence">' + self._escapeHTML((ex.sentence || '').replace(/\s*\([A-Z]+\)\s*$/, '')) + '</div>' +
-            '<div class="wf-transform-root-row">' +
-              _mi('text_fields') + ' ' +
-              '<span class="wf-transform-root-word">' + self._escapeHTML(ex.root || '') + '</span>' +
-            '</div>' +
-            '<div class="pv-write-row">' +
-              '<input type="text" class="pv-write-input wf-transform-input" id="wf-tr-' + qi + '" placeholder="' + 'Type the correct form…' + '" />' +
+            '<div class="pv-write-row wf-transform-write-row">' +
+              '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group">' +
+                '<input type="text" class="pv-write-input wf-transform-input sp-gap-inline-input sp-gap-underline-input" id="wf-tr-' + qi + '" placeholder="' + 'Type the correct form…' + '" />' +
+              '</span>' +
+              (ex.root ? '<span class="wf-root-tile wf-root-tile--inline">' + self._escapeHTML(ex.root) + '</span>' : '') +
               '<button class="pv-write-btn" onclick="FastExercises._checkWfTransform(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Check' + '</button>' +
             '</div>' +
             '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
@@ -4899,9 +4906,51 @@
       var isCorrect = typed === correct;
       input.disabled = true;
       input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
-      var btn = input.parentElement && input.parentElement.querySelector('.pv-write-btn');
+      var btn = input.closest('.pv-write-row') && input.closest('.pv-write-row').querySelector('.pv-write-btn');
       if (btn) btn.disabled = true;
       this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
+    // ── WORD FORMATION: MIXED PRACTICE ──────────────────────────────────
+    _renderWfMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      var mc = (lessonData && lessonData.multipleChoiceExercises) || [];
+      var tr = (lessonData && lessonData.transformExercises) || [];
+      var mixed = [];
+
+      mc.forEach(function(ex) {
+        mixed.push({
+          type: 'multiple-choice',
+          sentence: ex.sentence || '',
+          root: ex.root || '',
+          options: ex.options || [],
+          correct: ex.correct
+        });
+      });
+      tr.forEach(function(ex) {
+        mixed.push({
+          type: 'transform',
+          sentence: (ex.sentence || '').replace(/\s*\([A-Z]+\)\s*$/, ''),
+          hint: ex.root || '',
+          correct: ex.correct
+        });
+      });
+      mixed = mixed.sort(function() { return Math.random() - 0.5; });
+
+      if (mixed.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var pointMx = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
+      var pointLabelMx = pointMx ? (pointMx.label || '') : '';
+      if (self._runVocabQuizSession(container, mixed, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelMx)) {
+        return;
+      }
+
+      this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+      container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
     },
 
     // ── WORD FORMATION INFO MODAL ────────────────────────────────────────
