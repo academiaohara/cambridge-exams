@@ -4368,16 +4368,40 @@
       var self = this;
       this._currentLessonData = lessonData;
       var fillIns = (lessonData && lessonData.fillInExercises) || [];
-      var convs   = (lessonData && lessonData.conversations) || [];
 
-      // Build mixed list: take up to 4 fill-in exercises (every other one)
       var mixed = [];
-      for (var fi = 0; fi < fillIns.length && mixed.length < 4; fi += 2) {
-        mixed.push({ kind: 'fillin', data: fillIns[fi] });
+      var convExercises = self._getConvGapWriteExercises(lessonData);
+      convExercises = convExercises.sort(function() { return Math.random() - 0.5; }).slice(0, 4);
+      mixed = mixed.concat(convExercises);
+
+      for (var fi = 0; fi < fillIns.length && mixed.length < 8; fi += 2) {
+        var fillEx = fillIns[fi];
+        if (fillEx && (fillEx.type === 'multiple-choice' || (fillEx.options && fillEx.options.length))) {
+          mixed.push(fillEx);
+        }
       }
-      // Add drag gaps extracted from conversation lines (up to 4)
+
+      mixed = mixed.sort(function() { return Math.random() - 0.5; });
+
+      if (mixed.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var pointPm = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
+      var pointLabelPm = pointPm ? (pointPm.label || '') : '';
+      if (self._runVocabQuizSession(container, mixed, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelPm)) {
+        return;
+      }
+
+      // Legacy fallback: rebuild drag-single items for non-session UI
+      var legacyMixed = [];
+      for (var lfi = 0; lfi < fillIns.length && legacyMixed.length < 4; lfi += 2) {
+        legacyMixed.push({ kind: 'fillin', data: fillIns[lfi] });
+      }
       var gapCount = 0;
-      convs.forEach(function(conv) {
+      (lessonData.conversations || []).forEach(function(conv) {
         (conv.lines || []).forEach(function(line) {
           if (gapCount >= 4) return;
           var m = line.text.match(/\[([^\]]+)\]/);
@@ -4387,41 +4411,16 @@
             if (sepIdx === -1) sepIdx = inner.indexOf('/');
             var phrasalVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
             var rawSentence = line.text.replace(/\[([^\]]+)\]/g, '_____');
-            mixed.push({ kind: 'drag-single', data: { sentence: rawSentence, correct: phrasalVerb, speaker: line.speaker } });
+            legacyMixed.push({ kind: 'drag-single', data: { sentence: rawSentence, correct: phrasalVerb, speaker: line.speaker } });
             gapCount++;
           }
         });
       });
-
-      // Shuffle mixed array
-      mixed = mixed.sort(function() { return Math.random() - 0.5; });
+      mixed = legacyMixed.sort(function() { return Math.random() - 0.5; });
 
       if (mixed.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
         container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
-        return;
-      }
-
-      var normalizedMixed = mixed.map(function(item) {
-        if (item.kind === 'fillin') {
-          var ex = item.data;
-          return {
-            type: ex.type || 'multiple-choice',
-            sentence: ex.sentence || '',
-            options: ex.options || [],
-            correct: ex.correct
-          };
-        }
-        return {
-          type: 'write-verb',
-          sentence: item.data.sentence || '',
-          correct: item.data.correct || '',
-          hint: item.data.speaker || ''
-        };
-      });
-      var pointPm = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
-      var pointLabelPm = pointPm ? (pointPm.label || '') : '';
-      if (self._runVocabQuizSession(container, normalizedMixed, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelPm)) {
         return;
       }
 
