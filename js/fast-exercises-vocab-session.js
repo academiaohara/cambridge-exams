@@ -157,8 +157,113 @@
     return letter;
   }
 
+  function parseConvBracket(inner) {
+    var sepIdx = inner.indexOf('|');
+    if (sepIdx === -1) sepIdx = inner.indexOf('/');
+    return {
+      displayForm: (sepIdx !== -1 ? inner.slice(0, sepIdx) : inner).trim(),
+      answer: (sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner).trim()
+    };
+  }
+
+  function convLineFilledText(text) {
+    return String(text || '').replace(/\[([^\]]+)\]/g, function(match, inner) {
+      return parseConvBracket(inner).displayForm;
+    });
+  }
+
+  function buildConvGapWriteExercises(conversations) {
+    var exercises = [];
+    (conversations || []).forEach(function(conv, convIdx) {
+      (conv.lines || []).forEach(function(line, lineIdx) {
+        if (!/\[([^\]]+)\]/.test(line.text || '')) return;
+        var bracket = (line.text.match(/\[([^\]]+)\]/) || [])[1];
+        if (!bracket) return;
+        var parsed = parseConvBracket(bracket);
+        var accepted = [];
+        [parsed.answer, parsed.displayForm].forEach(function(val) {
+          var trimmed = String(val || '').trim();
+          if (trimmed && accepted.indexOf(trimmed) === -1) accepted.push(trimmed);
+        });
+        exercises.push({
+          type: 'conversation-gap',
+          conversationTitle: conv.title || '',
+          conversationIndex: convIdx,
+          activeLineIndex: lineIdx,
+          lines: (conv.lines || []).map(function(entry) {
+            return { speaker: entry.speaker || '', text: entry.text || '' };
+          }),
+          correct: parsed.answer,
+          acceptedAnswers: accepted,
+          hint: line.speaker || '',
+          explanation: ''
+        });
+      });
+    });
+    return exercises;
+  }
+
+  function isConversationGapExercise(ex) {
+    return !!(ex && ex.type === 'conversation-gap' && ex.lines && ex.lines.length);
+  }
+
+  function buildConversationGapLinesPayload(lines, activeLineIndex) {
+    var speakers = {};
+    var speakerIdx = 0;
+    return (lines || []).map(function(line, li) {
+      if (!(line.speaker in speakers)) speakers[line.speaker] = speakerIdx++;
+      var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+      var rawText = line.text || '';
+      var isActive = li === activeLineIndex;
+      var match = rawText.match(/\[([^\]]+)\]/);
+      if (!match) {
+        return {
+          speaker: line.speaker || '',
+          side: side,
+          mode: 'plain',
+          text: convLineFilledText(rawText),
+          isActive: isActive
+        };
+      }
+      var parsed = parseConvBracket(match[1]);
+      if (isActive) {
+        return {
+          speaker: line.speaker || '',
+          side: side,
+          mode: 'gap',
+          before: rawText.slice(0, match.index),
+          after: rawText.slice(match.index + match[0].length),
+          isActive: true
+        };
+      }
+      return {
+        speaker: line.speaker || '',
+        side: side,
+        mode: 'plain',
+        text: convLineFilledText(rawText),
+        isActive: false
+      };
+    });
+  }
+
   function exerciseToScreen(exercise, index) {
     var id = 'vocab-screen-' + index;
+
+    if (isConversationGapExercise(exercise)) {
+      return {
+        screenId: id,
+        formatType: 'conversation_gap_fill',
+        payload: {
+          conversationTitle: exercise.conversationTitle || '',
+          lines: buildConversationGapLinesPayload(exercise.lines, exercise.activeLineIndex),
+          activeLineIndex: exercise.activeLineIndex,
+          answer: exercise.correct,
+          acceptedAnswers: exercise.acceptedAnswers || [exercise.correct],
+          instruction: '',
+          explanation: exercise.explanation || ''
+        }
+      };
+    }
 
     if (isWriteExercise(exercise)) {
       var writeSentence = normalizeGapSentence(exercise.sentence || '');
@@ -468,6 +573,8 @@
         return p.instruction || 'Choose the option that best fits.';
       case 'mc_4_option':
         return p.instruction || 'Choose the option that best fits.';
+      case 'conversation_gap_fill':
+        return p.instruction || '';
       case 'free_text_gap_fill':
       case 'preselected_verb_gap_fill':
         return p.instruction || (p.verbPrompt || p.preselectedVerb
@@ -499,7 +606,9 @@
     var screenRoot = screenMount.querySelector('.sp-screen');
     var instruction = (screen.payload && screen.payload.instruction) || getScreenInstruction(screen);
     if (!instruction && s.instruction && s.questionIndex === 0) instruction = s.instruction;
-    if (instruction && screenRoot) mountInstruction(screenRoot, instruction);
+    if (instruction && screenRoot && screen.formatType !== 'conversation_gap_fill') {
+      mountInstruction(screenRoot, instruction);
+    }
 
     if (screenRoot) {
       renderer.bindScreen(screenRoot, screen, function() {
@@ -601,6 +710,15 @@
   function getExplainContext(screen) {
     if (!screen || !screen.payload) return '';
     var p = screen.payload;
+    if (screen.formatType === 'conversation_gap_fill' && p.lines) {
+      var active = null;
+      for (var i = 0; i < p.lines.length; i++) {
+        if (p.lines[i].isActive) { active = p.lines[i]; break; }
+      }
+      if (active && active.mode === 'gap') {
+        return ((active.before || '') + ' ___ ' + (active.after || '')).replace(/\s+/g, ' ').trim();
+      }
+    }
     if (p.sentence) return p.sentence;
     if (screen.formatType === 'mc_4_option') {
       return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
@@ -750,7 +868,7 @@
   function startQuizSession(fe, container, opts) {
     opts = opts || {};
     var exercises = (opts.exercises || []).filter(function(ex) {
-      return isWriteExercise(ex) || isMcqExercise(ex);
+      return isConversationGapExercise(ex) || isWriteExercise(ex) || isMcqExercise(ex);
     });
     if (!exercises.length || !container) return false;
 
@@ -884,6 +1002,7 @@
   }
 
   window.FastExercisesVocabSession = {
+    buildConvGapWriteExercises: buildConvGapWriteExercises,
     ensureSession: function(fe, container, opts) {
       if (opts && opts.passive) {
         return startPassiveSession(fe, container, {

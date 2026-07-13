@@ -2899,7 +2899,10 @@
     _renderIdFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
       this._currentLessonData = lessonData;
-      var exercises = (lessonData && lessonData.fillInExercises) || [];
+      var exercises = self._getConvGapWriteExercises(lessonData);
+      if (!exercises.length) {
+        exercises = (lessonData && lessonData.fillInExercises) || [];
+      }
 
       if (exercises.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
@@ -3804,11 +3807,20 @@
       });
     },
 
+    _getConvGapWriteExercises: function(lessonData) {
+      var session = window.FastExercisesVocabSession;
+      if (!session || !session.buildConvGapWriteExercises || !lessonData) return [];
+      return session.buildConvGapWriteExercises(lessonData.conversations || []);
+    },
+
     // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
     _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
       this._currentLessonData = lessonData;
-      var exercises = (lessonData && lessonData.fillInExercises) || [];
+      var exercises = self._getConvGapWriteExercises(lessonData);
+      if (!exercises.length) {
+        exercises = (lessonData && lessonData.fillInExercises) || [];
+      }
 
       if (exercises.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);

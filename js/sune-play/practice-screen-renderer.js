@@ -1337,6 +1337,7 @@
   function PracticeScreenRenderer(screen) {
     if (!screen) return '<p class="sp-empty">No screen loaded.</p>';
     switch (screen.formatType) {
+      case 'conversation_gap_fill': return renderConversationGapFill(screen);
       case 'two_option_choice': return renderTwoOption(screen);
       case 'free_text_gap_fill':
       case 'conjugation_gap_fill':
@@ -2730,6 +2731,52 @@
     return html;
   }
 
+  function renderConvGapAvatar(speaker) {
+    var initial = String(speaker || '').charAt(0).toUpperCase() || '?';
+    return '<div class="pv-conv-avatar" aria-hidden="true">' + esc(initial) + '</div>';
+  }
+
+  function renderConversationGapLine(line, lineIdx) {
+    var side = line.side === 'right' ? 'right' : 'left';
+    var stateClass = line.isActive ? 'pv-conv-line--active' : 'pv-conv-line--inactive';
+    var textHtml = '';
+
+    if (line.mode === 'gap') {
+      textHtml = esc(line.before || '') +
+        '<input type="text" class="sp-gap-inline-input sp-gap-underline-input sp-conv-gap-input"' +
+        (line.isActive ? ' id="sp-gap-input"' : ' data-gap-idx="' + lineIdx + '"') +
+        ' autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Complete ' + esc(line.speaker || 'this line') + '\'s message">' +
+        esc(line.after || '');
+    } else {
+      textHtml = esc(line.text || '');
+    }
+
+    return '<div class="pv-conv-line pv-conv-' + side + ' ' + stateClass + '" data-line-idx="' + lineIdx + '">' +
+      renderConvGapAvatar(line.speaker) +
+      '<div class="pv-conv-bubble">' +
+        '<span class="pv-conv-name">' + esc(line.speaker || '') + '</span>' +
+        '<span class="pv-conv-text">' + textHtml + '</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderConversationGapFill(screen) {
+    var p = screen.payload || {};
+    var titleHtml = p.conversationTitle
+      ? '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + esc(p.conversationTitle) + '</span></div>'
+      : '';
+    var linesHtml = (p.lines || []).map(function(line, idx) {
+      return renderConversationGapLine(line, idx);
+    }).join('');
+
+    return '<div class="sp-screen sp-screen--conversation-gap pv-conv-story-wrap fe-vocab-sp-conversations">' +
+      '<div class="pv-conv-block">' +
+        titleHtml +
+        '<div class="pv-conv-dialogue pv-conv-dialogue--fill">' + linesHtml + '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
   function renderGapFill(screen) {
     var p = screen.payload || {};
     if (isWordBankSequentialPayload(p)) {
@@ -3711,6 +3758,15 @@
       el.addEventListener('input', onChange);
     });
 
+    if (format === 'conversation_gap_fill') {
+      bindGapInputs(root, onChange);
+      var convInput = root.querySelector('.sp-conv-gap-input');
+      if (convInput) {
+        resizeUnderlineGapInput(convInput);
+        requestAnimationFrame(function() { convInput.focus(); });
+      }
+    }
+
     if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill' || format === 'word_bank_gap_fill') {
       if (format === 'word_bank_gap_fill' && isWordBankSequentialPayload(screen.payload)) {
         bindWordBankSequentialGapFill(root, screen, onChange);
@@ -4411,6 +4467,9 @@
     if (f === 'word_bank_tick') {
       return root.querySelectorAll('.sp-wbt-chip.sp-wbt-chip--selected').length > 0;
     }
+    if (f === 'conversation_gap_fill') {
+      return allGapInputsFilled(root);
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill' || f === 'word_bank_gap_fill') {
       if (f === 'word_bank_gap_fill' && isWordBankSequentialPayload(screen.payload)) {
         return isWordBankSeqReady(root, screen);
@@ -4641,6 +4700,7 @@
         markWordBankTickResults(root, wbtPayload, wbtSelected);
         break;
       }
+      case 'conversation_gap_fill':
       case 'free_text_gap_fill':
       case 'conjugation_gap_fill':
       case 'word_bank_gap_fill':

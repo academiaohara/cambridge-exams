@@ -2604,6 +2604,55 @@
   border-radius: 14px 14px 4px 14px;
 }
 
+.pv-conv-dialogue--fill {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0 4px;
+}
+
+.pv-conv-line--inactive {
+  opacity: 0.42;
+  filter: grayscale(0.15);
+  pointer-events: none;
+}
+
+.pv-conv-line--inactive .pv-conv-text {
+  background: #eef2f7;
+}
+
+.pv-conv-line--inactive.pv-conv-right .pv-conv-text {
+  background: #e8f0fb;
+}
+
+.pv-conv-line--active {
+  opacity: 1;
+}
+
+.pv-conv-line--active .pv-conv-text {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.22);
+}
+
+.sp-screen--conversation-gap .sp-conv-gap-input {
+  display: inline-block;
+  min-width: 6.5rem;
+  max-width: 100%;
+  margin: 0 2px;
+  vertical-align: baseline;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.55);
+  border-radius: 0;
+  padding: 0 2px 1px;
+}
+
+.sp-screen--conversation-gap .sp-conv-gap-input:focus {
+  outline: none;
+  border-bottom-color: var(--cat-color, #3b82f6);
+}
+
 .pv-highlight {
   color: var(--cat-color, #3b82f6);
   font-weight: 800;
@@ -8555,6 +8604,32 @@
   font-size: 0.85rem;
   color: var(--text-medium, #64748b);
   text-align: center;
+}
+
+.fe-section--vocab-exercise .sp-screen--conversation-gap {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  align-self: stretch;
+}
+
+.fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap) {
+  padding-inline: 0;
+}
+
+.fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap) .sp-exercise-card {
+  padding: 0;
+  max-width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.fe-section--vocab-exercise .sp-screen--conversation-gap .pv-conv-block {
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 .fe-vocab-sp-trophy {
