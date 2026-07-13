@@ -1017,6 +1017,7 @@ button.sp-vocab-word-card:focus-visible {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow: hidden;
 }
 
 .sp-exercise-card {
@@ -1067,7 +1068,22 @@ button.sp-vocab-word-card:focus-visible {
   padding: 0;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--conversation-gap) .sp-screen--conversation-gap {
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) .sp-screen--passage-gap {
+  flex: 1;
+  min-height: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.sp-practice-main .sp-screen--conversation-gap {
   flex: 1;
   min-height: 0;
   justify-content: flex-start;
@@ -4802,6 +4818,11 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   flex: 1;
   min-height: 0;
   height: 100%;
+  overflow: hidden;
+}
+
+.dashboard-layout--lesson-focus .sp-practice-header {
+  flex-shrink: 0;
 }
 
 /* ─── Practice session — mobile ─────────────────────────────────────── */

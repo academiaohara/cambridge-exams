@@ -68,10 +68,25 @@ body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) #feCenter
 body:has(#feCenterSection.fe-section--vocab-exercise .sp-screen--conversation-gap) #feCenterSection .sp-practice-main,
 body:has(#feCenterSection.fe-section--vocab-exercise .pv-conv-story-wrap--fill) #feCenterSection .sp-practice-main {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+body:has(#feCenterSection.fe-section--vocab-exercise .sp-screen--conversation-gap) #feCenterSection .sp-practice-body {
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 body:has(#feCenterSection.fe-section--vocab-exercise .sp-screen--conversation-gap) #feCenterSection .sp-exercise-card {
   overflow: hidden;
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
 }
 
 @media (min-width: 768px) {
