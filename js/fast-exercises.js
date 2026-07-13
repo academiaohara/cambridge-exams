@@ -314,14 +314,14 @@
         if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
         centerSection = document.getElementById('feCenterSection');
       } else {
-        centerSection.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise';
+        centerSection.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise course-unit-content';
       }
 
       var layout = document.querySelector('.dashboard-layout');
       if (layout) layout.classList.add('dashboard-layout--lesson-focus');
       var centerCol = centerSection.closest('.dashboard-center');
       if (centerCol) {
-        centerCol.classList.add('course-center--lesson-focus', 'fe-vocab-sp-center');
+        centerCol.classList.add('dashboard-center--course', 'course-center--lesson-focus', 'fe-vocab-sp-center');
         centerCol.classList.remove('fe-vocab-lesson-focus');
       }
 
@@ -2246,7 +2246,7 @@
 
       await self._waitLoading(loadingStart);
 
-      container.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise';
+      container.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise course-unit-content';
       theoryModule.startTheorySession(self, container, {
         categoryId: categoryId,
         unitData: unitData,

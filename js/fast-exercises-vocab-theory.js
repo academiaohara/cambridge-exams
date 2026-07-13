@@ -240,8 +240,10 @@
     if (!cards.length) return false;
 
     container.innerHTML =
-      '<div id="sp-lesson-mount" class="sp-lesson-mount">' +
-        '<div class="sp-lesson sp-lesson--theory"></div>' +
+      '<div class="course-unit-content">' +
+        '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content">' +
+          '<div class="sp-lesson sp-lesson--theory"></div>' +
+        '</div>' +
       '</div>';
 
     var mount = container.querySelector('#sp-lesson-mount');
