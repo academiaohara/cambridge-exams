@@ -6176,9 +6176,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   .dashboard-center--mobile-hub .tests-mode-title-row,
   .dashboard-center--learning-stage .tests-mode-title-row {
     flex-shrink: 0;
-    margin-left: var(--mobile-hub-pad-x);
-    margin-right: var(--mobile-hub-pad-x);
-    margin-top: 10px;
+    margin: 12px auto 14px;
+    width: 100%;
+    max-width: 520px;
+    box-sizing: border-box;
   }
 
   .dashboard-center--mobile-hub .fe-section--merged-path.fe-section--course-vocab {
