@@ -6017,7 +6017,7 @@
         streakEl.classList.toggle('dict-mcq-duo-streak--cold', !(state.sessionStreak > 0));
       }
       var total = state.questions.length;
-      var done = state.questionIndex;
+      var done = state.questionIndex + (state.answered ? 1 : 0);
       var pct = total > 0 ? Math.round((done / total) * 100) : 0;
       var fill = header.querySelector('.dict-mcq-duo-progress-fill');
       if (fill) fill.style.width = pct + '%';
