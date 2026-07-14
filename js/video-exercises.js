@@ -46,6 +46,9 @@
 
     _saveProgress: function(progress) {
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (e) { /* ignore */ }
+      if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
+        SyncManager.notifyAppProgressDirty();
+      }
     },
 
     _getExerciseProgress: function(exerciseId) {

@@ -47,7 +47,16 @@
   function _saveCompleted(set) {
     try {
       localStorage.setItem(_COMPLETED_KEY, JSON.stringify(Array.from(set)));
+      if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
+        SyncManager.notifyAppProgressDirty();
+      }
     } catch (e) { /* ignore */ }
+  }
+
+  function _persistMixedSession() {
+    if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
+      SyncManager.notifyAppProgressDirty();
+    }
   }
 
   // ── public API ────────────────────────────────────────────────────────────
@@ -167,6 +176,7 @@
 
       try { localStorage.setItem(_PLAN_KEY, JSON.stringify(plan)); } catch (e) { /* ignore */ }
       try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
+      _persistMixedSession();
 
       if (opts.refreshPage && typeof DashboardNav !== 'undefined' && DashboardNav.openTests) {
         DashboardNav.openTests(AppState.currentLevel || 'C1', 'Random', { skipHistory: true });

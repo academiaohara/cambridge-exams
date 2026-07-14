@@ -1,6 +1,6 @@
 // js/sync-manager.js
-// Offline-first sync — exam parts (practice / exam / mixed), section timers,
-// and fast-learning map progress → Supabase user_progress. Local wins on newer updatedAt.
+// Offline-first sync — exam parts, section timers, fast learning, course path,
+// Sune Play state, mixed test sessions, video stories → Supabase user_progress.
 (function () {
   'use strict';
 
@@ -15,6 +15,16 @@
 
   var FAST_LS_KEY = 'cambridge_fast_exercises';
   var FAST_DIRTY_KEY = 'cambridge_fast_exercises_needs_cloud_sync';
+  var VOCAB_STREAKS_KEY = 'cambridge_vocab_streaks';
+  var WORDLE_KEY = 'cambridge_wordle_progress';
+  var MIXED_PLAN_KEY = 'cambridge_mixed_plan';
+  var MIXED_COMPLETED_KEY = 'cambridge_mixed_completed';
+  var VIDEO_KEY = 'cambridge_video_exercises';
+  var APP_DIRTY_KEY = 'cambridge_app_progress_needs_cloud_sync';
+  var COURSE_LEVELS = ['B1', 'B2', 'C1'];
+
+  /** cambridge_mixed_{level}_{section}_sectimer — mixed mode has no examId in key */
+  var RE_MIXED_SECTIMER = /^cambridge_mixed_([^_]+)_(reading|listening|writing|speaking)_sectimer$/;
 
   /** Old SyncManager.saveProgress payload (camelCase metadata + flat answers). */
   function _legacySyncShape(entry) {
@@ -49,6 +59,138 @@
     return { mode: m[1], level: m[2], examId: m[3], section: m[4] };
   }
 
+  function _parseMixedSectimerKey(key) {
+    var m = RE_MIXED_SECTIMER.exec(key);
+    if (!m) return null;
+    return { mode: 'mixed', level: m[1], examId: 'session', section: m[2] };
+  }
+
+  function _safeParse(raw, fallback) {
+    try { return raw ? JSON.parse(raw) : (fallback || {}); }
+    catch (e) { return fallback || {}; }
+  }
+
+  function _cloudIsNewer(cloudIso, localIso) {
+    try {
+      if (!cloudIso) return false;
+      if (!localIso) return true;
+      return new Date(cloudIso).getTime() > new Date(localIso).getTime();
+    } catch (e) { return false; }
+  }
+
+  function _collectCoursePathSnapshot(level) {
+    var snapshot = {
+      courseProgress: _safeParse(localStorage.getItem('cambridge_course_progress_' + level)),
+      sectionProgress: _safeParse(localStorage.getItem('cambridge_course_section_progress_' + level)),
+      sectionOpened: _safeParse(localStorage.getItem('cambridge_course_section_opened_' + level)),
+      exState: _safeParse(localStorage.getItem('course_ex_state_' + level)),
+      reviewAnswers: _safeParse(localStorage.getItem('cambridge_review_answers_' + level)),
+      reviewSectionState: _safeParse(localStorage.getItem('cambridge_review_section_state_' + level)),
+      updatedAt: new Date().toISOString()
+    };
+    try {
+      var idx = localStorage.getItem('cambridge_course_path_advance_index');
+      var pending = localStorage.getItem('cambridge_course_path_advance_pending');
+      if (idx != null) snapshot.pathAdvanceIndex = idx;
+      if (pending != null) snapshot.pathAdvancePending = pending;
+    } catch (e) { /* ignore */ }
+    return snapshot;
+  }
+
+  function _restoreCoursePathSnapshot(row) {
+    if (!row || !row.section || !row.answers) return;
+    var level = row.section;
+    var data = row.answers;
+    var localUpdated = null;
+    try {
+      var metaKey = 'cambridge_course_path_sync_' + level;
+      localUpdated = localStorage.getItem(metaKey);
+    } catch (e) { /* ignore */ }
+    if (!_cloudIsNewer(row.completed_at, localUpdated || data.updatedAt)) return;
+
+    try {
+      if (data.courseProgress) localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(data.courseProgress));
+      if (data.sectionProgress) localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(data.sectionProgress));
+      if (data.sectionOpened) localStorage.setItem('cambridge_course_section_opened_' + level, JSON.stringify(data.sectionOpened));
+      if (data.exState) localStorage.setItem('course_ex_state_' + level, JSON.stringify(data.exState));
+      if (data.reviewAnswers) localStorage.setItem('cambridge_review_answers_' + level, JSON.stringify(data.reviewAnswers));
+      if (data.reviewSectionState) localStorage.setItem('cambridge_review_section_state_' + level, JSON.stringify(data.reviewSectionState));
+      if (data.pathAdvanceIndex != null) localStorage.setItem('cambridge_course_path_advance_index', String(data.pathAdvanceIndex));
+      if (data.pathAdvancePending != null) localStorage.setItem('cambridge_course_path_advance_pending', String(data.pathAdvancePending));
+      localStorage.setItem('cambridge_course_path_sync_' + level, row.completed_at || data.updatedAt || new Date().toISOString());
+    } catch (e) { /* ignore */ }
+  }
+
+  function _restoreSuneStateRow(row) {
+    if (!row || !row.exam_id || !row.answers) return;
+    var unitId = row.exam_id;
+    var key = 'sune_play_progress_' + unitId;
+    var data = row.answers;
+    var localUpdated = null;
+    try { localUpdated = localStorage.getItem('sune_play_sync_' + unitId); } catch (e) { /* ignore */ }
+    if (!_cloudIsNewer(row.completed_at, localUpdated || data.updatedAt)) return;
+
+    try {
+      var merged = _safeParse(localStorage.getItem(key), { completedNodes: {}, completedExercises: {}, theoryCompleted: false });
+      if (data.completedNodes) merged.completedNodes = Object.assign({}, merged.completedNodes, data.completedNodes);
+      if (data.completedExercises) merged.completedExercises = Object.assign({}, merged.completedExercises, data.completedExercises);
+      if (data.theoryCompleted) merged.theoryCompleted = true;
+      if (data.testScores) merged.testScores = data.testScores;
+      if (data.testScore) merged.testScore = data.testScore;
+      localStorage.setItem(key, JSON.stringify(merged));
+      if (data.theoryCompleted || localStorage.getItem('sune_play_theory_' + unitId) === 'complete') {
+        localStorage.setItem('sune_play_theory_' + unitId, 'complete');
+      }
+      localStorage.setItem('sune_play_sync_' + unitId, row.completed_at || data.updatedAt || new Date().toISOString());
+    } catch (e) { /* ignore */ }
+  }
+
+  function _restoreMixedSessionRow(row) {
+    if (!row || !row.answers) return;
+    var data = row.answers;
+    var localUpdated = null;
+    try { localUpdated = localStorage.getItem('cambridge_mixed_session_sync'); } catch (e) { /* ignore */ }
+    if (!_cloudIsNewer(row.completed_at, localUpdated || data.updatedAt)) return;
+    try {
+      if (data.plan) localStorage.setItem(MIXED_PLAN_KEY, JSON.stringify(data.plan));
+      if (data.completed) localStorage.setItem(MIXED_COMPLETED_KEY, JSON.stringify(data.completed));
+      localStorage.setItem('cambridge_mixed_session_sync', row.completed_at || data.updatedAt || new Date().toISOString());
+    } catch (e) { /* ignore */ }
+  }
+
+  function _restoreVideoProgressRow(row) {
+    if (!row || !row.answers) return;
+    var data = row.answers.progress || row.answers;
+    var localUpdated = null;
+    try { localUpdated = localStorage.getItem('cambridge_video_exercises_sync'); } catch (e) { /* ignore */ }
+    if (!_cloudIsNewer(row.completed_at, localUpdated || row.answers.updatedAt)) return;
+    try {
+      localStorage.setItem(VIDEO_KEY, JSON.stringify(data));
+      localStorage.setItem('cambridge_video_exercises_sync', row.completed_at || row.answers.updatedAt || new Date().toISOString());
+    } catch (e) { /* ignore */ }
+  }
+
+  function _restoreFastExtrasFromBlob(merged) {
+    if (!merged || typeof merged !== 'object') return;
+    try {
+      if (merged._vocabStreaks) localStorage.setItem(VOCAB_STREAKS_KEY, JSON.stringify(merged._vocabStreaks));
+      if (merged._wordleProgress) localStorage.setItem(WORDLE_KEY, JSON.stringify(merged._wordleProgress));
+    } catch (e) { /* ignore */ }
+  }
+
+  function _collectSuneUnitIds() {
+    var ids = [];
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf('sune_play_progress_') === 0) {
+          ids.push(k.slice('sune_play_progress_'.length));
+        }
+      }
+    } catch (e) { /* ignore */ }
+    return ids;
+  }
+
   function _localIsNewer(local, cloudIso) {
     try {
       var lu = local && local.updatedAt ? new Date(local.updatedAt).getTime() : 0;
@@ -72,6 +214,24 @@
           localStorage.setItem('cambridge_course_progress_' + row.level, JSON.stringify(prog));
         } catch (e) { /* ignore */ }
       }
+      return;
+    }
+
+    if (section === 'theory') {
+      if (answers.completed) {
+        try {
+          var spTheoryKey = 'sune_play_progress_' + row.exam_id;
+          var spTheoryProg = JSON.parse(localStorage.getItem(spTheoryKey) || '{}');
+          spTheoryProg.theoryCompleted = true;
+          localStorage.setItem(spTheoryKey, JSON.stringify(spTheoryProg));
+          localStorage.setItem('sune_play_theory_' + row.exam_id, 'complete');
+        } catch (e) { /* ignore */ }
+      }
+      return;
+    }
+
+    if (section === 'sune_state') {
+      _restoreSuneStateRow(row);
       return;
     }
 
@@ -114,7 +274,11 @@
         var rs = JSON.parse(localStorage.getItem(rsKey) || '{}');
         var reviewSkey = row.exam_id + '_' + secIdx;
         ra[reviewSkey] = score;
-        rs[reviewSkey] = { score: score, total: total, answers: {} };
+        rs[reviewSkey] = {
+          score: score,
+          total: total,
+          answers: answers.answers && typeof answers.answers === 'object' ? answers.answers : (answers.answerPayload || {})
+        };
         localStorage.setItem(raKey, JSON.stringify(ra));
         localStorage.setItem(rsKey, JSON.stringify(rs));
       } catch (e) { /* ignore */ }
@@ -234,6 +398,25 @@
       this.requestSyncSoon();
     },
 
+    notifyAppProgressDirty: function () {
+      try { localStorage.setItem(APP_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
+      this.requestSyncSoon();
+    },
+
+    pushAllLocalToCloud: async function () {
+      try { localStorage.setItem(FAST_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
+      try { localStorage.setItem(APP_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
+      if (typeof CrosswordSync !== 'undefined') {
+        var cwAll = CrosswordSync.getAll();
+        Object.keys(cwAll).forEach(function (id) {
+          if (cwAll[id]) cwAll[id].synced = false;
+        });
+        CrosswordSync._persist(cwAll);
+        await CrosswordSync._push();
+      }
+      await this._sync();
+    },
+
     restoreFromCloud: async function () {
       var client = Auth && Auth._client;
       var user = Auth && Auth.getUser();
@@ -248,6 +431,10 @@
 
         result.data.forEach(function (row) {
           if (row.mode === 'course') {
+            if (row.exam_id === 'path') {
+              _restoreCoursePathSnapshot(row);
+              return;
+            }
             _applyCourseProgressRow(row);
             return;
           }
@@ -262,12 +449,28 @@
               }
               var cloudIso = row.completed_at;
               var localIso = localObj && localObj._fastProgressUpdatedAt;
-              if (localIso && cloudIso && new Date(localIso) >= new Date(cloudIso)) { return; }
+              if (localIso && cloudIso && new Date(localIso) >= new Date(cloudIso)) {
+                _restoreFastExtrasFromBlob(row.answers);
+                return;
+              }
               var merged = JSON.parse(JSON.stringify(row.answers));
+              _restoreFastExtrasFromBlob(merged);
               merged._fastProgressUpdatedAt = cloudIso || new Date().toISOString();
+              delete merged._vocabStreaks;
+              delete merged._wordleProgress;
               localStorage.setItem(FAST_LS_KEY, JSON.stringify(merged));
               try { localStorage.removeItem(FAST_DIRTY_KEY); } catch (e2) { /* ignore */ }
             } catch (e) { /* ignore */ }
+            return;
+          }
+
+          if (row.mode === 'mixed' && row.exam_id === 'session' && row.section === 'state') {
+            _restoreMixedSessionRow(row);
+            return;
+          }
+
+          if (row.mode === 'video' && row.exam_id === 'all' && row.section === 'state') {
+            _restoreVideoProgressRow(row);
             return;
           }
 
@@ -277,7 +480,9 @@
           if (typeof sect === 'string' && sect.indexOf('_sectimer') !== -1) {
             var baseSec = sect.replace('_sectimer', '');
             if (!EXAM_SECTIONS[baseSec]) { return; }
-            var tKey = 'cambridge_' + row.mode + '_' + row.level + '_' + row.exam_id + '_' + baseSec + '_sectimer';
+            var tKey = (row.mode === 'mixed' && row.exam_id === 'session')
+              ? ('cambridge_mixed_' + row.level + '_' + baseSec + '_sectimer')
+              : ('cambridge_' + row.mode + '_' + row.level + '_' + row.exam_id + '_' + baseSec + '_sectimer');
             var seconds = 0;
             if (row.answers && typeof row.answers === 'object') {
               seconds = parseInt(row.answers._sectimerSeconds != null ? row.answers._sectimerSeconds : row.answers.seconds, 10) || 0;
@@ -357,18 +562,33 @@
           if (self._sectimerSyncedVal[k] !== raw) {
             tasks.push({ kind: 'sectimer', key: k, parsed: parsedTimer, seconds: parseInt(raw, 10) || 0, rawVal: raw });
           }
+          return;
+        }
+
+        var parsedMixedTimer = _parseMixedSectimerKey(k);
+        if (parsedMixedTimer && raw.indexOf('{') === -1) {
+          if (self._sectimerSyncedVal[k] !== raw) {
+            tasks.push({ kind: 'sectimer', key: k, parsed: parsedMixedTimer, seconds: parseInt(raw, 10) || 0, rawVal: raw });
+          }
         }
       });
 
       try {
         if (localStorage.getItem(FAST_DIRTY_KEY) === '1') {
-          var fRaw = localStorage.getItem(FAST_LS_KEY);
-          if (fRaw) {
-            try {
-              JSON.parse(fRaw);
-              tasks.push({ kind: 'fast', raw: fRaw });
-            } catch (e) { /* ignore */ }
-          }
+          tasks.push({ kind: 'fast', raw: localStorage.getItem(FAST_LS_KEY) || '{}' });
+        }
+      } catch (e) { /* ignore */ }
+
+      try {
+        if (localStorage.getItem(APP_DIRTY_KEY) === '1') {
+          COURSE_LEVELS.forEach(function (level) {
+            tasks.push({ kind: 'coursePath', level: level });
+          });
+          _collectSuneUnitIds().forEach(function (unitId) {
+            tasks.push({ kind: 'suneState', unitId: unitId });
+          });
+          tasks.push({ kind: 'mixedSession' });
+          tasks.push({ kind: 'videoProgress' });
         }
       } catch (e) { /* ignore */ }
 
@@ -448,6 +668,10 @@
           } else if (item.kind === 'fast') {
             var fObj = JSON.parse(item.raw);
             delete fObj._fastProgressUpdatedAt;
+            delete fObj._vocabStreaks;
+            delete fObj._wordleProgress;
+            fObj._vocabStreaks = _safeParse(localStorage.getItem(VOCAB_STREAKS_KEY));
+            fObj._wordleProgress = _safeParse(localStorage.getItem(WORDLE_KEY));
             var lvl = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
             var rowF = {
               user_id: user.id,
@@ -470,6 +694,105 @@
                 localStorage.setItem(FAST_LS_KEY, JSON.stringify(curF));
               } catch (e5) { /* ignore */ }
             }
+          } else if (item.kind === 'coursePath') {
+            var snapshot = _collectCoursePathSnapshot(item.level);
+            var rowCp = {
+              user_id: user.id,
+              level: item.level,
+              exam_id: 'path',
+              section: item.level,
+              part: 1,
+              answers: snapshot,
+              score: null,
+              mode: 'course',
+              completed_at: snapshot.updatedAt
+            };
+            var resCp = await client.from('user_progress').upsert(rowCp, { onConflict: 'user_id,exam_id,section,part,mode' });
+            if (!resCp.error) {
+              success++;
+              try { localStorage.setItem('cambridge_course_path_sync_' + item.level, snapshot.updatedAt); } catch (e6) { /* ignore */ }
+            }
+          } else if (item.kind === 'suneState') {
+            var spKey = 'sune_play_progress_' + item.unitId;
+            var spRaw = localStorage.getItem(spKey);
+            if (!spRaw) continue;
+            var spObj = _safeParse(spRaw, { completedNodes: {}, completedExercises: {}, theoryCompleted: false });
+            var spUpdated = new Date().toISOString();
+            spObj.updatedAt = spUpdated;
+            var spLevel = spObj._level;
+            if (!spLevel) {
+              for (var li = 0; li < COURSE_LEVELS.length; li++) {
+                var lvlGuess = COURSE_LEVELS[li];
+                var cp = _safeParse(localStorage.getItem('cambridge_course_progress_' + lvlGuess));
+                var sp = _safeParse(localStorage.getItem('cambridge_course_section_progress_' + lvlGuess));
+                if (cp[item.unitId] || sp[item.unitId]) { spLevel = lvlGuess; break; }
+              }
+            }
+            if (!spLevel) spLevel = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'B1';
+            var rowSp = {
+              user_id: user.id,
+              level: spLevel,
+              exam_id: item.unitId,
+              section: 'sune_state',
+              part: 1,
+              answers: spObj,
+              score: null,
+              mode: 'course',
+              completed_at: spUpdated
+            };
+            var resSp = await client.from('user_progress').upsert(rowSp, { onConflict: 'user_id,exam_id,section,part,mode' });
+            if (!resSp.error) {
+              success++;
+              try { localStorage.setItem('sune_play_sync_' + item.unitId, spUpdated); } catch (e7) { /* ignore */ }
+            }
+          } else if (item.kind === 'mixedSession') {
+            var mixedPlan = null;
+            var mixedCompleted = [];
+            try {
+              var planRaw = localStorage.getItem(MIXED_PLAN_KEY);
+              if (planRaw) mixedPlan = JSON.parse(planRaw);
+              mixedCompleted = _safeParse(localStorage.getItem(MIXED_COMPLETED_KEY), []);
+            } catch (e8) { /* ignore */ }
+            if (!mixedPlan && !mixedCompleted.length) continue;
+            var mixedUpdated = new Date().toISOString();
+            var rowMx = {
+              user_id: user.id,
+              level: (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1',
+              exam_id: 'session',
+              section: 'state',
+              part: 1,
+              answers: { plan: mixedPlan, completed: mixedCompleted, updatedAt: mixedUpdated },
+              score: null,
+              mode: 'mixed',
+              completed_at: mixedUpdated
+            };
+            var resMx = await client.from('user_progress').upsert(rowMx, { onConflict: 'user_id,exam_id,section,part,mode' });
+            if (!resMx.error) {
+              success++;
+              try { localStorage.setItem('cambridge_mixed_session_sync', mixedUpdated); } catch (e9) { /* ignore */ }
+            }
+          } else if (item.kind === 'videoProgress') {
+            var videoRaw = localStorage.getItem(VIDEO_KEY);
+            if (!videoRaw) continue;
+            var videoObj = _safeParse(videoRaw);
+            if (!Object.keys(videoObj).length) continue;
+            var videoUpdated = new Date().toISOString();
+            var rowVid = {
+              user_id: user.id,
+              level: (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1',
+              exam_id: 'all',
+              section: 'state',
+              part: 1,
+              answers: { progress: videoObj, updatedAt: videoUpdated },
+              score: null,
+              mode: 'video',
+              completed_at: videoUpdated
+            };
+            var resVid = await client.from('user_progress').upsert(rowVid, { onConflict: 'user_id,exam_id,section,part,mode' });
+            if (!resVid.error) {
+              success++;
+              try { localStorage.setItem('cambridge_video_exercises_sync', videoUpdated); } catch (e10) { /* ignore */ }
+            }
           }
         } catch (err) {
           console.warn('[SyncManager] sync error', item, err);
@@ -479,9 +802,13 @@
       if (success === tasks.length) {
         this._setStatus('synced');
         this._pending = false;
+        try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm) { /* ignore */ }
         setTimeout(this._clearStatus.bind(this), 3000);
       } else if (success > 0) {
         this._setStatus('synced');
+        if (success >= tasks.length - 1) {
+          try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm2) { /* ignore */ }
+        }
         setTimeout(this._clearStatus.bind(this), 3000);
       } else {
         this._setStatus('error');

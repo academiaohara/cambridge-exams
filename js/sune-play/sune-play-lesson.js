@@ -59,6 +59,9 @@
 
   function saveProgress(unitId, progress) {
     try { localStorage.setItem(getProgressKey(unitId), JSON.stringify(progress)); } catch (e) { /* ignore */ }
+    if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
+      SyncManager.notifyAppProgressDirty();
+    }
   }
 
   function syncExerciseProgressToSupabase(sectionIdx, score, total) {
@@ -379,6 +382,9 @@
     lessonState.progress.theoryCompleted = true;
     theory.markTheoryCompleted(lessonState.unitId);
     saveProgress(lessonState.unitId, lessonState.progress);
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._saveCourseTheoryToSupabase) {
+      DashboardNav._saveCourseTheoryToSupabase(lessonState.level, lessonState.unitId);
+    }
     if (lessonState.pendingNodeId) {
       var pendingNode = lessonState.pendingNodeId;
       var pendingExercise = lessonState.pendingExerciseId || null;
