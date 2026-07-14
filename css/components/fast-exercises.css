@@ -4219,7 +4219,7 @@
   flex-wrap: wrap;
 }
 
-.wf-dict-form-top .dict-speak-btn {
+.wf-dict-form-top [class*="-level-badge"] {
   margin-left: auto;
   flex-shrink: 0;
 }
@@ -4541,7 +4541,7 @@
   flex-wrap: wrap;
 }
 
-.colloc-dict-form-top .dict-speak-btn {
+.colloc-dict-form-top [class*="-level-badge"] {
   margin-left: auto;
   flex-shrink: 0;
 }
@@ -4750,6 +4750,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.pv-dict-form-top [class*="-level-badge"] {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .pv-dict-verb {
@@ -5140,11 +5145,17 @@
   gap: 8px;
 }
 
+.id-dict-idiom-row [class*="-level-badge"] {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .id-dict-idiom {
   font-weight: 700;
   color: #065f46;
   font-size: 0.97rem;
   flex: 1;
+  min-width: 0;
 }
 
 .id-dict-def {

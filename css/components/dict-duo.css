@@ -297,7 +297,9 @@
 }
 
 .dict-duo [class*="-dict-base"] .vocab-dict-levels,
-.dict-duo [class*="-dict-base"] [class*="-level-badge"] {
+.dict-duo [class*="-dict-base"] [class*="-level-badge"],
+.dict-duo [class*="-dict-form-top"] [class*="-level-badge"],
+.dict-duo .id-dict-idiom-row [class*="-level-badge"] {
   margin-left: auto;
   display: inline-flex;
   align-items: center;
@@ -326,11 +328,14 @@
 
 .dict-duo [class*="-dict-derived"],
 .dict-duo .pv-dict-verb,
-.dict-duo .id-dict-phrase {
+.dict-duo .colloc-dict-phrase,
+.dict-duo .id-dict-idiom {
   font-family: var(--duo-font-display);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--duo-secondary);
+  flex: 1;
+  min-width: 0;
 }
 
 .dict-duo [class*="-dict-def"] {

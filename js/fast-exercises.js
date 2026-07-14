@@ -5193,20 +5193,19 @@
           derivedHtml +=
             '<div class="wf-dict-form">' +
               '<div class="wf-dict-form-top">' +
-                '<span class="wf-dict-derived">' + self._escapeHTML(e.derived) + '</span>' +
+                self._dictDuoTtsWord(e.derived, 'wf-dict-derived') +
                 '<span class="wf-dict-level-badge wf-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
                 wtBadge +
                 morph +
-                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.derived) + '\')" title="Listen to pronunciation">' +
-                  '<span class="material-symbols-outlined">volume_up</span>' +
-                '</button>' +
               '</div>' +
-              '<span class="wf-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+              '<span class="wf-dict-def">' +
+                self._dictDuoTtsSpan(e.definition, 'wf-dict-def-text', 'Listen to definition') +
+              '</span>' +
             '</div>';
         });
         html +=
           '<div class="wf-dict-entry">' +
-            '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
+            '<div class="wf-dict-base">' + self._dictDuoTtsWord(base, 'wf-dict-word') + '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
           '</div>';
       });
@@ -5515,24 +5514,25 @@
         var phrasesHtml = '';
         group.forEach(function(e) {
           var exHtml = e.example
-            ? '<div class="colloc-dict-example">' + self._escapeHTML(e.example) + '</div>'
+            ? '<div class="colloc-dict-example">' +
+                self._dictDuoTtsSpan(e.example, 'colloc-dict-example-text', 'Listen to example') +
+              '</div>'
             : '';
           phrasesHtml +=
             '<div class="colloc-dict-form">' +
               '<div class="colloc-dict-form-top">' +
-                '<span class="colloc-dict-phrase">' + self._escapeHTML(e.phrase) + '</span>' +
+                self._dictDuoTtsWord(e.phrase, 'colloc-dict-phrase') +
                 '<span class="colloc-dict-level-badge colloc-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
-                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.phrase) + '\')" title="Listen to pronunciation">' +
-                  '<span class="material-symbols-outlined">volume_up</span>' +
-                '</button>' +
               '</div>' +
-              '<span class="colloc-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+              '<span class="colloc-dict-def">' +
+                self._dictDuoTtsSpan(e.definition, 'colloc-dict-def-text', 'Listen to definition') +
+              '</span>' +
               exHtml +
             '</div>';
         });
         html +=
           '<div class="colloc-dict-entry">' +
-            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) + '</div>' +
+            '<div class="colloc-dict-base">' + self._dictDuoTtsWord(group[0].word, 'colloc-dict-word') + '</div>' +
             '<div class="colloc-dict-forms">' + phrasesHtml + '</div>' +
           '</div>';
       });
@@ -5645,26 +5645,25 @@
           if (e.examples && e.examples.length) {
             examplesHtml = '<ul class="pv-dict-examples">' +
               e.examples.map(function(ex) {
-                return '<li>' + self._escapeHTML(ex) + '</li>';
+                return '<li>' + self._dictDuoTtsSpan(ex, 'pv-dict-example-text', 'Listen to example') + '</li>';
               }).join('') +
             '</ul>';
           }
           verbsHtml +=
             '<div class="pv-dict-form">' +
               '<div class="pv-dict-form-top">' +
-                '<span class="pv-dict-verb">' + self._escapeHTML(e.verb) + '</span>' +
+                self._dictDuoTtsWord(e.verb, 'pv-dict-verb') +
                 '<span class="pv-dict-level-badge pv-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
-                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.verb) + '\')" title="Listen to pronunciation">' +
-                  '<span class="material-symbols-outlined">volume_up</span>' +
-                '</button>' +
               '</div>' +
-              '<span class="pv-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+              '<span class="pv-dict-def">' +
+                self._dictDuoTtsSpan(e.definition, 'pv-dict-def-text', 'Listen to definition') +
+              '</span>' +
               examplesHtml +
             '</div>';
         });
         html +=
           '<div class="pv-dict-entry">' +
-            '<div class="pv-dict-base">' + self._escapeHTML(mainVerb) + '</div>' +
+            '<div class="pv-dict-base">' + self._dictDuoTtsWord(mainVerb, 'pv-dict-word') + '</div>' +
             '<div class="pv-dict-forms">' + verbsHtml + '</div>' +
           '</div>';
       });
@@ -5913,13 +5912,12 @@
         html +=
           '<div class="id-dict-entry id-entry-' + (e.level || '').toLowerCase() + '">' +
             '<div class="id-dict-idiom-row">' +
-              '<span class="id-dict-idiom">' + self._escapeHTML(e.idiom) + '</span>' +
+              self._dictDuoTtsWord(e.idiom, 'id-dict-idiom') +
               '<span class="id-dict-level-badge id-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.idiom) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>' +
             '</div>' +
-            '<span class="id-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+            '<span class="id-dict-def">' +
+              self._dictDuoTtsSpan(e.definition, 'id-dict-def-text', 'Listen to definition') +
+            '</span>' +
           '</div>';
       });
 
