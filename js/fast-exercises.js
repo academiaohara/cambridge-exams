@@ -6203,6 +6203,13 @@
       return this._dictMcqPracticeConfigs[dictId] || null;
     },
 
+    _dictFormatDefinition: function(text) {
+      if (!text || typeof text !== 'string') return text || '';
+      var trimmed = text.trim();
+      if (!trimmed) return trimmed;
+      return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+    },
+
     _closeDictMcqModal: function(dictId) {
       var modalIds = {
         vocab: 'vocab-dict-modal',
@@ -6399,9 +6406,9 @@
     _buildDictMcqQuestion: function(entry, pool, settings, config) {
       var self = this;
       var answerField = config.answerField;
-      var correctAnswer = (entry[answerField] || '').trim();
+      var correctAnswer = this._dictFormatDefinition((entry[answerField] || '').trim());
       var distractorPool = pool.filter(function(e) {
-        return (e[answerField] || '').trim() !== correctAnswer;
+        return (e[answerField] || '').trim() !== (entry[answerField] || '').trim();
       });
 
       if (settings.sameLevelDistractors && config.levelField) {
@@ -6427,7 +6434,7 @@
       var distractors = this._dictMcqShuffle(distractorPool).slice(0, settings.optionCount - 1);
       var optionItems = [{ text: correctAnswer, correct: true }];
       distractors.forEach(function(e) {
-        optionItems.push({ text: (e[answerField] || '').trim(), correct: false });
+        optionItems.push({ text: self._dictFormatDefinition((e[answerField] || '').trim()), correct: false });
       });
       var shuffled = this._dictMcqShuffle(optionItems);
       var correctIndex = -1;
@@ -6989,9 +6996,22 @@
     },
 
     // ── VOCABULARY DICTIONARY ─────────────────────────────────────────────
-    _showVocabDictionary: async function() {
+    _showVocabDictionary: async function(options) {
+      options = options || {};
       var existing = document.getElementById('vocab-dict-modal');
-      if (existing) { this._closeDictMcqModal('vocab'); return; }
+      if (existing) {
+        if (options.startPractice) {
+          if (!this._vocabDictEntries || !this._vocabDictEntries.length) {
+            this._vocabDictEntries = (this._vocabDictCache && this._vocabDictCache.entries) || [];
+          }
+          if (!this._dictMcqPractice || this._dictMcqPractice.dictId !== 'vocab') {
+            this._toggleDictMcqPractice('vocab');
+          }
+          return;
+        }
+        this._closeDictMcqModal('vocab');
+        return;
+      }
 
       if (!this._vocabDictCache) {
         try {
@@ -7045,6 +7065,10 @@
         var searchEl = document.getElementById('vocab-dict-search');
         if (searchEl) searchEl.focus();
       }, 100);
+
+      if (options.startPractice) {
+        this._toggleDictMcqPractice('vocab');
+      }
     },
 
     _filterVocabDict: function(query) {
@@ -7102,7 +7126,7 @@
           formsHtml +=
             '<div class="vocab-dict-form">' +
               '<span class="vocab-dict-def"><strong>Definition:</strong> ' +
-                self._dictDuoTtsSpan(e.definition || missingValuePlaceholder, 'vocab-dict-def-text', 'Listen to definition') +
+                self._dictDuoTtsSpan(self._dictFormatDefinition(e.definition || missingValuePlaceholder), 'vocab-dict-def-text', 'Listen to definition') +
               '</span>' +
               '<span class="vocab-dict-example"><strong>Example:</strong> ' +
                 self._dictDuoTtsSpan(e.example || missingValuePlaceholder, 'vocab-dict-example-text', 'Listen to example') +
