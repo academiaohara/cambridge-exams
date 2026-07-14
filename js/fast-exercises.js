@@ -5544,9 +5544,22 @@
       resultsEl.innerHTML = html;
     },
 
-    _showPvDictionary: async function() {
+    _showPvDictionary: async function(options) {
+      options = options || {};
       var existing = document.getElementById('pv-dict-modal');
-      if (existing) { this._closeDictMcqModal('pv'); return; }
+      if (existing) {
+        if (options.startPractice) {
+          if (!this._pvDictEntries || !this._pvDictEntries.length) {
+            this._pvDictEntries = (this._pvDictCache && this._pvDictCache.entries) || [];
+          }
+          if (!this._dictMcqPractice || this._dictMcqPractice.dictId !== 'pv') {
+            this._toggleDictMcqPractice('pv');
+          }
+          return;
+        }
+        this._closeDictMcqModal('pv');
+        return;
+      }
 
       // Load dictionary data
       if (!this._pvDictCache) {
@@ -5602,6 +5615,10 @@
         var searchEl = document.getElementById('pv-dict-search');
         if (searchEl) searchEl.focus();
       }, 100);
+
+      if (options.startPractice) {
+        this._toggleDictMcqPractice('pv');
+      }
     },
 
     _filterPvDict: function(query) {
@@ -5830,9 +5847,22 @@
       }
     },
 
-    _showIdDictionary: async function() {
+    _showIdDictionary: async function(options) {
+      options = options || {};
       var existing = document.getElementById('id-dict-modal');
-      if (existing) { this._closeDictMcqModal('idioms'); return; }
+      if (existing) {
+        if (options.startPractice) {
+          if (!this._idDictEntries || !this._idDictEntries.length) {
+            this._idDictEntries = (this._idDictCache && this._idDictCache.entries) || [];
+          }
+          if (!this._dictMcqPractice || this._dictMcqPractice.dictId !== 'idioms') {
+            this._toggleDictMcqPractice('idioms');
+          }
+          return;
+        }
+        this._closeDictMcqModal('idioms');
+        return;
+      }
 
       if (!this._idDictCache) {
         try {
@@ -5885,6 +5915,10 @@
         var searchEl = document.getElementById('id-dict-search');
         if (searchEl) searchEl.focus();
       }, 100);
+
+      if (options.startPractice) {
+        this._toggleDictMcqPractice('idioms');
+      }
     },
 
     _filterIdDict: function(query) {
@@ -6642,9 +6676,19 @@
       if (modal) modal.remove();
     },
 
-    _showIrregularVerbsDictionary: async function() {
+    _showIrregularVerbsDictionary: async function(options) {
+      options = options || {};
       var existing = document.getElementById('irv-dict-modal');
       if (existing) {
+        if (options.startPractice) {
+          if (!this._irvDictEntries || !this._irvDictEntries.length) {
+            this._irvDictEntries = (this._irvDictCache && this._irvDictCache.entries) || [];
+          }
+          if (!this._irvPracticeState || !this._irvPracticeState.active) {
+            this._startIrvPracticeMode();
+          }
+          return;
+        }
         this._closeIrvDictModal();
         return;
       }
@@ -6694,6 +6738,10 @@
         var searchEl = document.getElementById('irv-dict-search');
         if (searchEl) searchEl.focus();
       }, 100);
+
+      if (options.startPractice) {
+        this._startIrvPracticeMode();
+      }
     },
 
     _filterIrvDict: function(query) {
