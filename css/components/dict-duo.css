@@ -111,7 +111,8 @@
 .dict-duo [class*="-dict-header"] {
   background: var(--duo-surface);
   border-bottom: 2px solid var(--duo-surface-muted);
-  padding: 16px 18px 14px;
+  padding: 10px 16px;
+  min-height: 0;
 }
 
 .dict-duo [class*="-dict-title"] {
@@ -468,6 +469,22 @@
   text-transform: none;
   letter-spacing: 0;
   font-weight: 700;
+}
+
+.dict-duo [class*="-dict-header"] .dict-mcq-practice-btn,
+.dict-duo [class*="-dict-header"] .irv-dict-practice-btn {
+  padding: 6px 10px;
+  border-bottom-width: 3px;
+  box-shadow: 0 2px 0 var(--duo-primary-dark);
+}
+
+.dict-duo [class*="-dict-header"] .dict-mcq-practice-btn--back {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+.dict-duo [class*="-dict-header"] .irv-dict-close {
+  padding: 4px;
 }
 
 .dict-duo .dict-mcq-practice-btn:hover,
@@ -983,10 +1000,12 @@
   border-color: var(--duo-secondary);
 }
 
-.dict-duo .irv-input-correct {
-  border-color: var(--duo-primary);
-  background: var(--duo-primary-tint);
-  color: var(--duo-primary);
+.dict-duo .irv-input-correct,
+.dict-duo .irv-input-showing-correct {
+  border-color: var(--duo-correct);
+  background: var(--duo-correct-tint);
+  color: var(--duo-correct-dark);
+  font-weight: 700;
 }
 
 .dict-duo .irv-practice-btn-primary {
