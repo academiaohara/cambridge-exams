@@ -680,19 +680,17 @@
   color: var(--duo-text-muted);
 }
 
-.dict-mcq-term-block {
+.dict-mcq-prompt--duo .dict-mcq-term-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-top: 6px;
 }
 
-.dict-mcq-prompt--duo .dict-mcq-term-row {
-  display: none;
-}
-
-.dict-mcq-prompt--duo .dict-mcq-term {
+.dict-mcq-prompt--duo .dict-mcq-term,
+.dict-mcq-prompt--duo .dict-tts-word.dict-mcq-term {
   font-family: var(--duo-font-display);
   font-size: clamp(1.35rem, 4.5vw, 1.75rem);
   font-weight: 700;
@@ -700,12 +698,19 @@
   line-height: 1.15;
 }
 
+.dict-mcq-prompt--duo .dict-tts-word.dict-mcq-term:hover,
+.dict-mcq-prompt--duo .dict-tts-word.dict-mcq-term:focus-visible {
+  color: var(--duo-secondary-dark);
+}
+
 .dict-mcq-prompt--duo .dict-mcq-level {
+  flex-shrink: 0;
   background: var(--duo-secondary-tint);
   color: var(--duo-secondary-dark);
   border-radius: 99px;
   padding: 4px 12px;
   font-size: 0.75rem;
+  font-weight: 700;
 }
 
 .dict-mcq-options--duo {
@@ -1122,6 +1127,17 @@
   min-height: 0;
 }
 
+/* Vocabulary dictionary: keep modal width when practice mode is active */
+#vocab-dict-modal.dict-duo-practice-active {
+  padding: 16px !important;
+  align-items: center !important;
+}
+
+#vocab-dict-modal.dict-duo-practice-active .vocab-dict-box {
+  max-width: 680px !important;
+  width: 100% !important;
+}
+
 @media (max-width: 600px) {
   .dict-duo [class*="-dict-search-row"] {
     grid-template-columns: 1fr minmax(108px, 120px);
@@ -1155,6 +1171,15 @@
     height: auto !important;
     min-height: 70vh;
     border-radius: var(--duo-radius-lg) !important;
+  }
+
+  #vocab-dict-modal.dict-duo-practice-active {
+    padding: 16px !important;
+  }
+
+  #vocab-dict-modal.dict-duo-practice-active .vocab-dict-box {
+    max-width: 680px !important;
+    width: 100% !important;
   }
 }
 
