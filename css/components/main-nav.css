@@ -482,26 +482,26 @@ button.stats-bar-item.is-active {
   right: 20px;
   width: 16px;
   height: 16px;
-  background: #fff8e6;
-  border-left: 2px solid #f0e0b8;
-  border-top: 2px solid #f0e0b8;
+  background: var(--bg-light, #F4F7FF);
+  border-left: 2px solid var(--border-light, #e8ecf4);
+  border-top: 2px solid var(--border-light, #e8ecf4);
   transform: rotate(45deg);
   border-radius: 2px 0 0 0;
 }
 
 .dict-popover-inner {
-  background: #fff8e6;
-  border: 2px solid #f0e0b8;
+  background: var(--bg-light, #F4F7FF);
+  border: 2px solid var(--border-light, #e8ecf4);
   border-radius: 16px;
   padding: 16px 14px 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(45, 46, 95, 0.12);
 }
 
 .dict-popover-title {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 1rem;
-  font-weight: 800;
-  color: #ce7c3a;
+  font-weight: 700;
+  color: var(--text-dark, #2D2E5F);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -510,7 +510,7 @@ button.stats-bar-item.is-active {
 
 .dict-popover-title .material-symbols-outlined {
   font-size: 1.3rem;
-  color: #ff9600;
+  color: var(--secondary, #1E9D8E);
 }
 
 .dict-popover-grid {
@@ -525,30 +525,31 @@ button.stats-bar-item.is-active {
   align-items: center;
   gap: 6px;
   padding: 12px 8px;
-  border: 2px solid #ebebeb;
+  border: 2px solid var(--border-light, #e8ecf4);
   border-bottom-width: 4px;
   border-radius: 14px;
-  background: #fff;
+  background: var(--white, #fff);
   cursor: pointer;
   font-family: 'Nunito', sans-serif;
-  transition: background 0.15s, transform 0.15s;
+  transition: background 0.15s, transform 0.15s, border-color 0.15s;
 }
 
 .dict-popover-card:hover {
-  background: #fff;
-  transform: translateY(-1px);
-  border-color: #f0d090;
+  background: var(--white, #fff);
+  border-color: var(--secondary, #1E9D8E);
+  transform: translateY(-2px);
 }
 
 .dict-popover-card .material-symbols-outlined {
   font-size: 1.3rem;
-  color: #ff9600;
+  color: var(--secondary, #1E9D8E);
 }
 
 .dict-popover-card span:last-child {
   font-size: 0.72rem;
   font-weight: 800;
-  color: #3c3c3c;
+  color: var(--text-dark, #2D2E5F);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
   text-align: center;
   line-height: 1.2;
 }
