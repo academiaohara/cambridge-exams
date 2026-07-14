@@ -6110,6 +6110,7 @@
         termField: 'derived',
         answerField: 'definition',
         levelField: 'level',
+        posField: 'wordType',
         speakField: 'derived',
         promptVerb: 'What is the meaning of',
         termSubtitle: function(entry) {
@@ -6134,6 +6135,7 @@
         termField: 'verb',
         answerField: 'definition',
         levelField: 'level',
+        defaultPos: 'verb',
         speakField: 'verb',
         promptVerb: 'What is the meaning of',
         getEntries: function(self) { return self._pvDictEntries || []; },
@@ -6152,6 +6154,7 @@
         termField: 'idiom',
         answerField: 'definition',
         levelField: 'level',
+        defaultPos: 'phrase',
         speakField: 'idiom',
         promptVerb: 'What does this idiom mean',
         getEntries: function(self) { return self._idDictEntries || []; },
@@ -6170,6 +6173,7 @@
         termField: 'phrase',
         answerField: 'definition',
         levelField: 'level',
+        defaultPos: 'phrase',
         speakField: 'phrase',
         promptVerb: 'What is the meaning of',
         termSubtitle: function(entry) {
@@ -6362,6 +6366,36 @@
       return filtered.length >= settings.optionCount ? filtered : entries.slice();
     },
 
+    _inferVocabPos: function(entry) {
+      var word = (entry.word || '').toLowerCase().trim();
+      var def = (entry.definition || '').trim();
+      var dl = def.toLowerCase();
+
+      if (/^to\s+/.test(dl)) return 'verb';
+      if (/^(a|an|the)\s+/.test(dl)) return 'noun';
+      if (/^(if|when)\s+/.test(dl)) return 'phrase';
+      if (/^(in |with |without )/.test(dl)) return 'adverb';
+      if (/^(feeling|relating|done|having|not |open |capable|how |sleeping|someone|something|they |people|your |worse|harmful|sudden|used |you |it |his |her |equally|completely)/.test(dl)) {
+        return 'adjective';
+      }
+      if (/(tion|ness|ment|ity|ism|ist|ance|ence|ship|hood|dom)$/.test(word)) return 'noun';
+      if (/ly$/.test(word)) return 'adverb';
+      if (/(able|ible|ful|less|ive|ous|al|ic|ant|ent|ary|ish|like|y|ed)$/.test(word)) return 'adjective';
+      if (/ing$/.test(word) && !/^to\s+/.test(dl)) return 'noun';
+      return 'other';
+    },
+
+    _getDictEntryPos: function(entry, config) {
+      if (!entry || !config) return 'other';
+      if (config.defaultPos) return config.defaultPos;
+      if (config.posField) {
+        var pos = (entry[config.posField] || '').toLowerCase().trim();
+        if (pos) return pos === 'other' ? 'other' : pos;
+      }
+      if (config.termField === 'word') return this._inferVocabPos(entry);
+      return 'other';
+    },
+
     _buildDictMcqQuestion: function(entry, pool, settings, config) {
       var self = this;
       var answerField = config.answerField;
@@ -6377,6 +6411,16 @@
         });
         if (sameLevel.length >= settings.optionCount - 1) {
           distractorPool = sameLevel;
+        }
+      }
+
+      var entryPos = this._getDictEntryPos(entry, config);
+      if (entryPos && entryPos !== 'other') {
+        var samePos = distractorPool.filter(function(e) {
+          return self._getDictEntryPos(e, config) === entryPos;
+        });
+        if (samePos.length >= settings.optionCount - 1) {
+          distractorPool = samePos;
         }
       }
 
