@@ -6357,6 +6357,20 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   color: rgba(255, 255, 255, 0.88);
 }
 
+.dashboard-center--vocab-hub .cw-section-header {
+  flex-wrap: nowrap;
+}
+
+.dashboard-center--vocab-hub .cw-section-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.vocab-mode-header-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .course-vocab-section-card {
   cursor: pointer;
   width: 100%;
