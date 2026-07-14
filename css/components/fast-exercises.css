@@ -8367,11 +8367,14 @@
 .irv-practice-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
 .irv-practice-btn-primary {
-  background: #2563eb;
+  background: var(--brand-orange, #ff9600);
   color: #fff;
-  border-color: #2563eb;
+  border-color: var(--brand-orange-dark, #e68600);
 }
-.irv-practice-btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+.irv-practice-btn-primary:hover:not(:disabled) {
+  background: var(--brand-orange, #ff9600);
+  filter: brightness(1.06);
+}
 
 .irv-practice-complete {
   text-align: center;
@@ -8680,11 +8683,14 @@
 .dict-mcq-btn:hover:not(:disabled) { background: #f1f5f9; }
 .dict-mcq-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .dict-mcq-btn-primary {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: var(--brand-orange, #ff9600);
+  border-color: var(--brand-orange-dark, #e68600);
   color: #fff;
 }
-.dict-mcq-btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+.dict-mcq-btn-primary:hover:not(:disabled) {
+  background: var(--brand-orange, #ff9600);
+  filter: brightness(1.06);
+}
 
 .dict-mcq-complete,
 .dict-mcq-empty {
