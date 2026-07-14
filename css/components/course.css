@@ -6173,11 +6173,13 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     box-shadow: 0 4px 0 #e08600;
   }
 
+  .dashboard-center--mobile-hub .tests-section-cards,
+  .dashboard-center--mobile-hub .tests-section-cards-grid,
   .dashboard-center--mobile-hub .tests-full-exam-bar,
   .dashboard-center--learning-stage .tests-full-exam-bar {
     flex-shrink: 0;
     width: 100%;
-    max-width: 520px;
+    max-width: none;
     box-sizing: border-box;
   }
 
