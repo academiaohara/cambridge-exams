@@ -113,6 +113,26 @@
   border-bottom: 2px solid var(--duo-surface-muted);
   padding: 10px 16px;
   min-height: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.dict-duo .dict-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dict-duo [class*="-dict-icon"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .dict-duo [class*="-dict-title"] {
@@ -120,6 +140,38 @@
   font-weight: 700;
   color: var(--duo-text);
   letter-spacing: -0.01em;
+  margin: 0;
+  min-width: 0;
+  line-height: 1.2;
+  align-self: center;
+}
+
+.dict-duo .gd-dict-close {
+  margin-left: auto;
+}
+
+.dict-duo .dict-home-close {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.dict-duo .gd-dict-word.dict-tts-word {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+}
+
+.dict-duo .gd-dict-definition.dict-tts-hit {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.5;
+}
+
+.dict-duo .gd-dict-example-text.dict-tts-hit {
+  font-size: inherit;
+  font-style: inherit;
+  color: inherit;
 }
 
 .dict-duo [class*="-dict-icon"] .material-symbols-outlined {
