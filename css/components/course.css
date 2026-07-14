@@ -6173,10 +6173,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     box-shadow: 0 4px 0 #e08600;
   }
 
-  .dashboard-center--mobile-hub .tests-mode-title-row,
-  .dashboard-center--learning-stage .tests-mode-title-row {
+  .dashboard-center--mobile-hub .tests-full-exam-bar,
+  .dashboard-center--learning-stage .tests-full-exam-bar {
     flex-shrink: 0;
-    margin: 12px auto 14px;
     width: 100%;
     max-width: 520px;
     box-sizing: border-box;
