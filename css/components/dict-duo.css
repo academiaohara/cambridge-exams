@@ -4,18 +4,18 @@
 .dict-duo,
 .dict-home-box--duo,
 .dict-popover-inner {
-  --duo-primary: var(--primary, #2D2E5F);
-  --duo-primary-dark: var(--primary-dark, #1e1f42);
-  --duo-primary-tint: rgba(45, 46, 95, 0.08);
+  --duo-primary: var(--brand-orange, #ff9600);
+  --duo-primary-dark: var(--brand-orange-dark, #e68600);
+  --duo-primary-tint: rgba(255, 150, 0, 0.14);
   --duo-secondary: var(--secondary, #1E9D8E);
   --duo-secondary-dark: #157a6e;
   --duo-secondary-tint: rgba(30, 157, 142, 0.12);
   --duo-warm: var(--accent-amber, #FFD28E);
-  --duo-warm-dark: #e5a830;
+  --duo-warm-dark: #e68600;
   --duo-warm-tint: rgba(255, 210, 142, 0.35);
-  --duo-correct: var(--duo-primary);
-  --duo-correct-dark: var(--duo-primary-dark);
-  --duo-correct-tint: var(--duo-primary-tint);
+  --duo-correct: var(--secondary, #1E9D8E);
+  --duo-correct-dark: #157a6e;
+  --duo-correct-tint: rgba(30, 157, 142, 0.14);
   --duo-error: var(--incorrect, #ef4444);
   --duo-error-dark: #b91c1c;
   --duo-error-tint: rgba(239, 68, 68, 0.1);
@@ -125,45 +125,112 @@
   color: var(--duo-secondary) !important;
 }
 
-/* ── Playful search bar ── */
+/* ── Playful search bar (stable layout) ── */
 .dict-duo [class*="-dict-search-row"] {
   background: var(--duo-surface);
-  padding: 14px 16px 10px;
+  padding: 12px 16px 10px;
   border-bottom: none;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr minmax(118px, 132px);
   gap: 10px;
+  align-items: stretch;
 }
 
-.dict-duo [class*="-dict-search-icon"] .material-symbols-outlined {
-  font-size: 1.35rem;
-  color: var(--duo-secondary);
+.dict-duo [class*="-dict-search-icon"] {
+  display: none;
 }
 
 .dict-duo [class*="-dict-search"] {
-  flex: 1 1 200px;
-  padding: 14px 16px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 14px;
   border: 2px solid var(--duo-surface-muted);
   border-bottom-width: 4px;
-  border-radius: var(--duo-radius);
+  border-radius: var(--duo-radius-sm);
   font-size: 1rem;
   font-weight: 600;
   color: var(--duo-text);
   background: var(--duo-surface);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dict-duo [class*="-dict-search"]:focus {
   outline: none;
-  border-color: var(--duo-secondary);
-  border-bottom-color: var(--duo-secondary-dark);
-  transform: scale(1.01);
-  box-shadow: 0 4px 0 var(--duo-secondary-tint);
+  border-color: var(--duo-primary);
+  border-bottom-color: var(--duo-primary-dark);
+  box-shadow: 0 3px 0 var(--duo-primary-tint);
+}
+
+.dict-duo [class*="-level-filter"],
+.dict-duo .dict-duo-level-select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 28px 12px 12px;
+  border: 2px solid var(--duo-surface-muted);
+  border-bottom-width: 4px;
+  border-radius: var(--duo-radius-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: var(--duo-font-body);
+  color: var(--duo-text);
+  background: var(--duo-surface);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234a4b7c' d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.2s ease;
+}
+
+.dict-duo [class*="-level-filter"]:focus,
+.dict-duo .dict-duo-level-select:focus {
+  outline: none;
+  border-color: var(--duo-primary);
+  border-bottom-color: var(--duo-primary-dark);
+}
+
+.dict-duo .dict-filter-wrap {
+  display: block;
+  min-width: 0;
+}
+
+.dict-duo .dict-filter-wrap select {
+  width: 100%;
+}
+
+.dict-duo .wf-dict-search-row {
+  grid-template-columns: 1fr minmax(100px, 118px) minmax(100px, 118px);
+}
+
+.dict-duo .gd-dict-search-row {
+  grid-template-columns: 1fr auto;
+}
+
+.dict-duo .gd-dict-search-btn {
+  border: 2px solid var(--duo-primary-dark);
+  border-bottom-width: 4px;
+  border-radius: var(--duo-radius-sm);
+  background: var(--duo-primary);
+  color: var(--duo-surface);
+  font-weight: 800;
+  padding: 10px 16px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--duo-primary-dark);
+}
+
+.dict-duo .vocab-dict-word {
+  display: block;
+  width: 100%;
 }
 
 .dict-duo [class*="-dict-count"] {
   font-weight: 700;
   color: var(--duo-text-muted);
-  padding: 4px 20px 0;
+  padding: 6px 20px 0;
+  min-height: 1.6em;
+  flex-shrink: 0;
 }
 
 /* ── Flashcard entries ── */
@@ -193,12 +260,24 @@
   font-weight: 700;
   color: var(--duo-text);
   border-bottom: 2px dashed var(--duo-surface-muted);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   margin-bottom: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 10px;
-  flex-wrap: wrap;
+}
+
+.dict-duo-speak-center,
+.dict-mcq-speak-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.dict-duo [class*="-dict-base"] .dict-speak-btn {
+  margin: 0;
 }
 
 .dict-duo [class*="-dict-derived"],
@@ -282,9 +361,9 @@
 /* ── Circular audio button (secondary accent) ── */
 .dict-duo .dict-speak-btn,
 .dict-duo .dict-mcq-speak-btn {
-  width: var(--duo-touch);
-  height: var(--duo-touch);
-  min-width: var(--duo-touch);
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
   padding: 0;
   border-radius: 50%;
   background: var(--duo-secondary);
@@ -293,6 +372,7 @@
   border-bottom-width: 4px;
   box-shadow: 0 3px 0 var(--duo-secondary-dark);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
+  flex-shrink: 0;
 }
 
 .dict-duo .dict-speak-btn:hover,
@@ -314,49 +394,6 @@
   font-size: 1.25rem;
 }
 
-/* ── Favorite star ── */
-.dict-duo-fav-btn,
-.dict-duo .dict-duo-fav-btn {
-  width: var(--duo-touch);
-  height: var(--duo-touch);
-  min-width: var(--duo-touch);
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--duo-surface-muted);
-  transition: transform 0.2s ease, color 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.dict-duo .dict-duo-fav-btn {
-  margin-left: auto;
-}
-
-.dict-duo-fav-btn .material-symbols-outlined {
-  font-size: 1.5rem;
-  font-variation-settings: 'FILL' 0, 'wght' 600;
-  transition: font-variation-settings 0.2s ease;
-}
-
-.dict-duo-fav-btn:hover {
-  transform: scale(1.12);
-  color: var(--duo-warm-dark);
-}
-
-.dict-duo-fav-btn.is-fav {
-  color: var(--duo-warm-dark);
-  animation: duoPop 0.35s ease;
-}
-
-.dict-duo-fav-btn.is-fav .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 600;
-}
-
 /* ── Practice mode toggle ── */
 .dict-duo .dict-mcq-practice-btn,
 .dict-duo .irv-dict-practice-btn {
@@ -367,12 +404,21 @@
   border-radius: var(--duo-radius-sm);
   font-family: var(--duo-font-body);
   font-weight: 800;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   padding: 10px 14px;
   box-shadow: 0 3px 0 var(--duo-primary-dark);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
+  white-space: nowrap;
+}
+
+.dict-duo .dict-mcq-practice-btn--back {
+  font-size: 0.82rem;
+  padding: 8px 12px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 
 .dict-duo .dict-mcq-practice-btn:hover,
@@ -394,15 +440,17 @@
 .dict-mcq-session--duo {
   display: flex;
   flex-direction: column;
-  min-height: 55vh;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
   padding: 0;
 }
 
 .dict-mcq-duo-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px 10px;
+  gap: 8px;
+  padding: 10px 14px;
   background: var(--duo-surface);
   border-bottom: 2px solid var(--duo-surface-muted);
   flex-shrink: 0;
@@ -411,12 +459,18 @@
 .dict-mcq-duo-streak {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 3px;
+  min-width: 44px;
+  padding: 4px 8px;
+  border-radius: 99px;
+  background: var(--duo-warm-tint);
+  border: 2px solid var(--duo-warm);
   font-family: var(--duo-font-display);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--duo-warm-dark);
-  min-width: 48px;
+  flex-shrink: 0;
 }
 
 .dict-mcq-duo-streak-icon {
@@ -426,6 +480,8 @@
 
 .dict-mcq-duo-streak--cold {
   color: var(--duo-text-muted);
+  background: var(--duo-surface-muted);
+  border-color: #d5dae6;
 }
 
 .dict-mcq-duo-streak--cold .dict-mcq-duo-streak-icon {
@@ -439,24 +495,28 @@
 }
 
 .dict-mcq-duo-progress-track {
-  height: 14px;
+  height: 12px;
   background: var(--duo-surface-muted);
-  border: 2px solid #d5dae6;
+  border: 2px solid #e0e4ee;
   border-radius: 99px;
   overflow: hidden;
 }
 
 .dict-mcq-duo-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--duo-primary), #4a4b7c);
+  background: linear-gradient(90deg, var(--duo-primary), #ffb347);
   border-radius: 99px;
   transition: width 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
 }
 
 .dict-mcq-duo-hearts {
   display: flex;
-  gap: 2px;
+  gap: 1px;
   flex-shrink: 0;
+  padding: 3px 6px;
+  border-radius: 99px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 2px solid rgba(239, 68, 68, 0.15);
 }
 
 .dict-mcq-duo-heart {
@@ -465,7 +525,7 @@
 }
 
 .dict-mcq-duo-heart .material-symbols-outlined {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-variation-settings: 'FILL' 1;
 }
 
@@ -483,8 +543,11 @@
 
 .dict-mcq-duo-body {
   flex: 1;
-  padding: 24px 20px 100px;
-  overflow-y: auto;
+  min-height: 0;
+  padding: 12px 14px 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .dict-mcq-duo-body.dict-mcq-duo-body--correct {
@@ -496,32 +559,56 @@
 }
 
 .dict-mcq-setup--duo {
-  padding: 32px 20px 40px;
+  padding: 28px 20px 32px;
   text-align: center;
 }
 
 .dict-mcq-setup--duo .dict-mcq-setup-title {
   font-family: var(--duo-font-display);
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   color: var(--duo-text);
+  margin-bottom: 8px;
 }
 
 .dict-mcq-setup--duo .dict-mcq-setup-desc {
-  font-size: 1rem;
-  margin-bottom: 28px;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  color: var(--duo-text-muted);
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dict-mcq-diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .dict-mcq-diff-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   border: 2px solid var(--duo-surface-muted);
   border-bottom-width: 4px;
   border-radius: var(--duo-radius);
-  padding: 20px 14px;
-  transition: transform 0.1s ease, border-color 0.15s ease;
+  padding: 18px 12px;
+  background: var(--duo-surface);
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.dict-mcq-diff-emoji {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 6px;
 }
 
 .dict-mcq-diff-btn:hover {
-  border-color: var(--duo-secondary);
-  background: var(--duo-secondary-tint);
+  border-color: var(--duo-primary);
+  background: var(--duo-primary-tint);
   transform: translateY(-2px);
 }
 
@@ -537,22 +624,36 @@
 
 .dict-mcq-prompt--duo {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .dict-mcq-prompt--duo .dict-mcq-prompt-label {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--duo-text-muted);
 }
 
+.dict-mcq-term-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.dict-mcq-prompt--duo .dict-mcq-term-row {
+  display: none;
+}
+
 .dict-mcq-prompt--duo .dict-mcq-term {
   font-family: var(--duo-font-display);
-  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
   font-weight: 700;
   color: var(--duo-text);
+  line-height: 1.15;
 }
 
 .dict-mcq-prompt--duo .dict-mcq-level {
@@ -566,23 +667,28 @@
 .dict-mcq-options--duo {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
   max-width: 560px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .dict-mcq-options--duo .dict-mcq-option {
-  min-height: var(--duo-touch);
-  padding: 16px 18px;
+  min-height: 0;
+  padding: 12px 14px;
   border: 2px solid var(--duo-surface-muted);
   border-bottom-width: 4px;
-  border-radius: var(--duo-radius);
+  border-radius: var(--duo-radius-sm);
   background: var(--duo-surface);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--duo-text);
   text-align: left;
   cursor: pointer;
+  line-height: 1.35;
   transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
@@ -598,10 +704,10 @@
 }
 
 .dict-mcq-options--duo .dict-mcq-option-correct {
-  border-color: var(--duo-primary) !important;
-  border-bottom-color: var(--duo-primary-dark) !important;
-  background: var(--duo-primary-tint) !important;
-  color: var(--duo-primary) !important;
+  border-color: var(--duo-correct) !important;
+  border-bottom-color: var(--duo-correct-dark) !important;
+  background: var(--duo-correct-tint) !important;
+  color: var(--duo-correct-dark) !important;
   animation: duoPop 0.35s ease;
 }
 
@@ -615,15 +721,16 @@
 
 .dict-mcq-feedback--duo {
   text-align: center;
-  margin: 16px auto 0;
+  margin: 8px auto 0;
   max-width: 560px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  min-height: 1.6em;
+  min-height: 1.4em;
+  flex-shrink: 0;
 }
 
 .dict-mcq-feedback--duo.dict-mcq-feedback-correct {
-  color: var(--duo-primary);
+  color: var(--duo-correct-dark);
 }
 
 .dict-mcq-feedback--duo.dict-mcq-feedback-wrong {
@@ -632,30 +739,31 @@
 
 /* Fixed continue footer */
 .dict-mcq-duo-footer {
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
-  background: linear-gradient(to top, var(--duo-bg) 70%, transparent);
+  flex-shrink: 0;
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+  background: var(--duo-surface);
   border-top: 2px solid var(--duo-surface-muted);
+  display: flex;
+  justify-content: center;
   z-index: 2;
 }
 
 .dict-mcq-duo-footer .dict-mcq-btn-primary {
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  display: flex;
+  width: auto;
+  min-width: 200px;
+  max-width: 280px;
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
   background: var(--duo-primary);
   color: var(--duo-surface);
   border: 2px solid var(--duo-primary-dark);
   border-bottom-width: 4px;
-  border-radius: var(--duo-radius);
-  min-height: var(--duo-touch);
-  padding: 14px 24px;
+  border-radius: var(--duo-radius-sm);
+  min-height: 48px;
+  padding: 12px 32px;
   font-family: var(--duo-font-body);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -936,8 +1044,83 @@
 
 @keyframes duoFlashCorrect {
   0%   { background-color: transparent; }
-  30%  { background-color: var(--duo-primary-tint); }
+  30%  { background-color: var(--duo-correct-tint); }
   100% { background-color: transparent; }
+}
+
+/* ── Practice fullscreen layout ── */
+.dict-duo-practice-active {
+  padding: 0 !important;
+  align-items: stretch !important;
+}
+
+.dict-duo-practice-active .dict-duo,
+.dict-duo-practice-active [class*="-dict-box"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  max-height: 100dvh !important;
+  height: 100dvh !important;
+  border-radius: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.dict-duo--practice-active [class*="-dict-results"],
+.dict-duo--practice-active [class*="-dict-body"] {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.dict-duo--practice-active .dict-mcq-session--duo {
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 600px) {
+  .dict-duo [class*="-dict-search-row"] {
+    grid-template-columns: 1fr minmax(108px, 120px);
+    gap: 8px;
+    padding: 10px 12px 8px;
+  }
+
+  .dict-duo [class*="-dict-search"] {
+    font-size: 16px;
+  }
+
+  .dict-mcq-diff-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+
+  .dict-mcq-options--duo .dict-mcq-option {
+    font-size: 0.88rem;
+    padding: 10px 12px;
+  }
+
+  .dict-mcq-duo-footer .dict-mcq-btn-primary {
+    min-width: 180px;
+    min-height: 44px;
+    padding: 10px 28px;
+  }
+}
+
+@media (min-width: 601px) {
+  .dict-duo-practice-active {
+    padding: 12px !important;
+  }
+
+  .dict-duo-practice-active .dict-duo,
+  .dict-duo-practice-active [class*="-dict-box"] {
+    max-height: 92vh !important;
+    height: auto !important;
+    min-height: 70vh;
+    border-radius: var(--duo-radius-lg) !important;
+  }
 }
 
 @keyframes duoHeartBreak {
@@ -958,28 +1141,12 @@
 .dict-duo [class*="-dict-entry"]:nth-child(4) { animation-delay: 0.08s; }
 .dict-duo [class*="-dict-entry"]:nth-child(5) { animation-delay: 0.1s; }
 
-@media (max-width: 600px) {
-  .dict-mcq-duo-body {
-    padding: 20px 14px 96px;
-  }
-
-  .dict-duo [class*="-dict-search"] {
-    font-size: 16px; /* prevent iOS zoom */
-  }
-
-  .dict-mcq-options--duo .dict-mcq-option {
-    font-size: 0.95rem;
-    padding: 14px 16px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .dict-duo [class*="-dict-entry"],
   .dict-mcq-duo-body--correct,
   .dict-mcq-duo-body--wrong,
   .dict-mcq-option-correct,
   .dict-mcq-option-wrong,
-  .dict-duo-fav-btn.is-fav,
   .dict-mcq-duo-streak-icon,
   .dict-duo-confetti-piece {
     animation: none !important;
