@@ -818,6 +818,8 @@
 }
 
 .dict-mcq-duo-footer .dict-mcq-btn-primary:hover:not(:disabled) {
+  background: var(--duo-primary);
+  border-color: var(--duo-primary-dark);
   filter: brightness(1.06);
 }
 
@@ -926,6 +928,12 @@
   box-shadow: 0 4px 0 var(--duo-primary-dark);
 }
 
+.dict-mcq-complete--duo .dict-mcq-btn-primary:hover:not(:disabled) {
+  background: var(--duo-primary);
+  border-color: var(--duo-primary-dark);
+  filter: brightness(1.06);
+}
+
 .dict-mcq-complete--duo .dict-mcq-btn:not(.dict-mcq-btn-primary) {
   background: var(--duo-surface);
   border: 2px solid var(--duo-surface-muted);
@@ -983,6 +991,12 @@
   border-radius: var(--duo-radius-sm);
   box-shadow: 0 3px 0 var(--duo-primary-dark);
   min-height: var(--duo-touch);
+}
+
+.dict-duo .irv-practice-btn-primary:hover:not(:disabled) {
+  background: var(--duo-primary);
+  border-color: var(--duo-primary-dark);
+  filter: brightness(1.06);
 }
 
 /* ── Mobile launcher & popover (Sune brand) ── */
