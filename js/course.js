@@ -102,6 +102,69 @@
       return { levelId: stage.levelId, etapaKey: stage.etapaKey };
     },
 
+    _vocabHubMode: 'lessons',
+
+    _getVocabHubModeMeta: function() {
+      var mode = DashboardNav._vocabHubMode || 'lessons';
+      var isPractice = mode === 'practice';
+      return {
+        mode: isPractice ? 'practice' : 'lessons',
+        isPractice: isPractice,
+        label: isPractice ? 'Practice' : 'Lessons',
+        icon: isPractice ? 'bolt' : 'menu_book',
+        subtitle: isPractice
+          ? 'Quick drills to boost your word knowledge'
+          : 'Phrasal verbs, idioms and word formation'
+      };
+    },
+
+    _buildVocabHubModeKickerHtml: function() {
+      var meta = DashboardNav._getVocabHubModeMeta();
+      return '<div class="cw-section-kicker tests-mode-kicker vocab-mode-kicker">' +
+        '<span class="material-symbols-outlined tests-mode-kicker-icon" aria-hidden="true">' + meta.icon + '</span>' +
+        '<span>' + meta.label + '</span>' +
+      '</div>';
+    },
+
+    _buildVocabHubModeHeaderToggleHtml: function() {
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var mode = DashboardNav._vocabHubMode || 'lessons';
+      var lessonsActive = mode !== 'practice' ? ' active' : '';
+      var practiceActive = mode === 'practice' ? ' active' : '';
+      return '<div class="tests-mode-header-toggle vocab-mode-header-toggle" role="group" aria-label="Vocabulary hub mode">' +
+        '<button type="button" class="tests-mode-header-btn vocab-mode-header-btn' + lessonsActive + '" data-vocab-mode="lessons" onclick="DashboardNav.setVocabHubMode(\'lessons\')" aria-label="Lessons" title="Lessons">' +
+          _mi('menu_book') +
+        '</button>' +
+        '<button type="button" class="tests-mode-header-btn vocab-mode-header-btn' + practiceActive + '" data-vocab-mode="practice" onclick="DashboardNav.setVocabHubMode(\'practice\')" aria-label="Practice" title="Practice">' +
+          _mi('bolt') +
+        '</button>' +
+      '</div>';
+    },
+
+    _refreshVocabHubModeChrome: function() {
+      var mode = DashboardNav._vocabHubMode || 'lessons';
+      document.querySelectorAll('.vocab-mode-header-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-vocab-mode') === mode);
+      });
+
+      var kicker = document.querySelector('.vocab-mode-kicker');
+      if (kicker) kicker.outerHTML = DashboardNav._buildVocabHubModeKickerHtml();
+
+      var subtitle = document.querySelector('.course-vocab-header-subtitle');
+      if (subtitle) subtitle.textContent = DashboardNav._getVocabHubModeMeta().subtitle;
+    },
+
+    setVocabHubMode: async function(mode) {
+      DashboardNav._vocabHubMode = mode === 'practice' ? 'practice' : 'lessons';
+      DashboardNav._refreshVocabHubModeChrome();
+
+      var hubPage = document.getElementById('courseHubPage');
+      if (!hubPage) return;
+
+      hubPage.innerHTML = DashboardNav._buildInlinePawLoadingHtml();
+      hubPage.innerHTML = await DashboardNav._buildCourseVocabCategoryCardsHtml({ main: true });
+    },
+
     _buildCourseSectionDuoHeaderHtml: function(sectionId, backOnclick) {
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var SECTION_META = DashboardNav._courseSectionMeta();
@@ -109,6 +172,22 @@
       var title = sectionId === 'learning'
         ? 'Learning Path'
         : (sectionId === 'vocabulary' ? meta.label : (meta.label + ' Path'));
+
+      if (sectionId === 'vocabulary') {
+        var vocabModeMeta = DashboardNav._getVocabHubModeMeta();
+        return '<div class="cw-section-header cw-section-header--duo cw-section-header--level cw-section-header--vocab" style="--cw-header-color:' + meta.headerColor + '">' +
+          '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' +
+            _mi('arrow_back') +
+          '</button>' +
+          '<div class="cw-section-header-text">' +
+            DashboardNav._buildVocabHubModeKickerHtml() +
+            '<div class="cw-section-title">' + title + '</div>' +
+            '<div class="course-vocab-header-subtitle">' + vocabModeMeta.subtitle + '</div>' +
+          '</div>' +
+          DashboardNav._buildVocabHubModeHeaderToggleHtml() +
+        '</div>';
+      }
+
       return '<div class="cw-section-header cw-section-header--duo cw-section-header--level" style="--cw-header-color:' + meta.headerColor + '">' +
         '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' +
           _mi('arrow_back') +
@@ -327,6 +406,7 @@
             : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
           '<div class="dashboard-center dashboard-center--crossword dashboard-center--course' +
             (isSectionListView ? ' dashboard-center--learning-stages' : '') +
+            (isVocabListView ? ' dashboard-center--vocab-hub' : '') +
             (isMobileHubView ? ' dashboard-center--mobile-hub' : '') +
             (isLearningStageView ? ' dashboard-center--learning-stage' : '') +
           '" id="courseDashboardCenter">' +
@@ -2146,28 +2226,51 @@
       return DashboardNav._buildCourseEtapaCardsHtml(section, levelId);
     },
 
-    _renderCourseVocabDuoCard: function(opts) {
+    _courseVocabCardTheme: function(themeKey, accentFallback) {
+      var themes = {
+        'phrasal-verbs': { bg: '#f5fbff', border: '#7bb8f7', title: '#1a4d8c', accent: '#3b82f6' },
+        'idioms': { bg: '#fff8ee', border: '#ffca6b', title: '#8a4b00', accent: '#f59e0b' },
+        'word-formation': { bg: '#fff1f2', border: '#fca5a5', title: '#7f1d1d', accent: '#e11d48' },
+        'vocabulary': { bg: '#f0fdf4', border: '#6ee7b7', title: '#14532d', accent: '#10b981' },
+        'irregular-verbs': { bg: '#faf5ff', border: '#c4b5fd', title: '#4c1d95', accent: '#8b5cf6' }
+      };
+      var theme = themes[themeKey] || {
+        bg: '#f8fafc',
+        border: '#cbd5e1',
+        title: '#0f172a',
+        accent: accentFallback || '#10b981'
+      };
+      return theme;
+    },
+
+    _renderCourseVocabSectionCard: function(opts) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      var color = opts.color || '#10b981';
+      var theme = self._courseVocabCardTheme(opts.themeKey, opts.color);
       var statusText = opts.status || opts.desc || '';
       var statusClass = opts.statusClass || '';
-      if (!statusClass && opts.pct >= 100) statusClass = 'mode-card-status-done';
+      if (!statusClass && opts.pct >= 100) statusClass = 'course-vocab-section-card-desc--done';
       if (!statusText && opts.pct > 0) {
         statusText = opts.pct >= 100 ? 'Completed!' : opts.pct + '% complete';
       }
+      var ctaLabel = opts.cta || 'Start';
 
-      return '<div class="mode-card course-vocab-duo-card" onclick="' + opts.onclick + '" role="button" tabindex="0">' +
-        '<div class="mode-card-body">' +
-          '<div class="mode-card-title-row">' +
-            '<span class="mode-card-title">' + self._escapeHTML(opts.title) + '</span>' +
-            (opts.badge ? '<span class="mode-card-super">' + self._escapeHTML(opts.badge) + '</span>' : '') +
+      return '<div class="tests-section-card course-vocab-section-card course-vocab-section-card--' + (opts.themeKey || 'default') + '"' +
+        ' style="--tests-card-bg:' + theme.bg + ';--tests-card-border:' + theme.border + ';--tests-card-title:' + theme.title + ';--tests-card-accent:' + theme.accent + '"' +
+        ' onclick="' + opts.onclick + '" role="button" tabindex="0">' +
+        '<div class="tests-section-card-body">' +
+          '<div class="tests-section-card-title-row">' +
+            '<span class="material-symbols-outlined tests-section-card-icon">' + opts.icon + '</span>' +
+            '<h3 class="tests-section-card-title">' + self._escapeHTML(opts.title) + '</h3>' +
+            (opts.badge ? '<span class="course-vocab-section-card-badge">' + self._escapeHTML(opts.badge) + '</span>' : '') +
           '</div>' +
-          '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
+          '<p class="course-vocab-section-card-desc ' + statusClass + '">' + self._escapeHTML(statusText) + '</p>' +
+          '<div class="tests-section-card-footer">' +
+            '<span class="tests-section-play-btn">' + _mi('play_arrow') + '<span>' + self._escapeHTML(ctaLabel) + '</span></span>' +
+          '</div>' +
         '</div>' +
-        '<div class="mode-card-icon-wrap">' +
-          '<div class="mode-card-icon" style="color:' + color + '">' + _mi(opts.icon) + '</div>' +
-          (opts.notification ? '<span class="mode-card-icon-badge">' + self._escapeHTML(String(opts.notification)) + '</span>' : '') +
+        '<div class="course-vocab-section-card-art" aria-hidden="true">' +
+          '<span class="material-symbols-outlined course-vocab-section-card-art-icon">' + opts.icon + '</span>' +
         '</div>' +
       '</div>';
     },
@@ -2180,68 +2283,78 @@
         { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48', desc: 'Prefixes, suffixes and word roots' }
       ];
 
+      var hubMode = DashboardNav._vocabHubMode || 'lessons';
       var catData = [];
-      for (var i = 0; i < catDefs.length; i++) {
-        var cat = catDefs[i];
-        var pct = 0;
-        var totalPoints = 0;
-        try {
-          var data = await FastExercises._loadCategoryData(cat.id);
-          pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
-          totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
-        } catch (e) { /* ignore */ }
-        catData.push({ cat: cat, pct: pct, totalPoints: totalPoints });
+      if (hubMode !== 'practice') {
+        for (var i = 0; i < catDefs.length; i++) {
+          var cat = catDefs[i];
+          var pct = 0;
+          var totalPoints = 0;
+          try {
+            var data = await FastExercises._loadCategoryData(cat.id);
+            pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
+            totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
+          } catch (e) { /* ignore */ }
+          catData.push({ cat: cat, pct: pct, totalPoints: totalPoints });
+        }
       }
 
-      var html = '<div class="course-vocab-hub course-vocab-hub--duo">';
-      html += '<p class="course-vocab-section-heading">Your collections</p>';
-      html += '<div class="course-vocab-duo-cards">';
-      for (var j = 0; j < catData.length; j++) {
-        var cd = catData[j];
-        var scopeLabel = cd.totalPoints > 0
-          ? cd.totalPoints + ' items · B1 to C1'
-          : 'B1 to C1';
-        html += DashboardNav._renderCourseVocabDuoCard({
-          title: cd.cat.name,
-          desc: cd.cat.desc,
-          status: cd.pct >= 100 ? 'Completed!' : (cd.pct > 0 ? cd.pct + '% complete · ' + scopeLabel : scopeLabel),
-          pct: cd.pct,
-          icon: cd.cat.icon,
-          color: cd.cat.color,
-          onclick: 'FastExercises.openCategory(\'' + cd.cat.id + '\')'
+      var html = '<div class="course-vocab-hub course-vocab-hub--themed">';
+      html += '<div class="course-vocab-section-cards-grid">';
+
+      if (hubMode === 'practice') {
+        html += DashboardNav._renderCourseVocabSectionCard({
+          themeKey: 'vocabulary',
+          icon: 'library_books',
+          title: 'Vocabulary',
+          desc: 'Boost your word knowledge with quick quizzes',
+          cta: 'Practice',
+          onclick: 'FastExercises._showVocabDictionary({ startPractice: true })'
         });
+        html += DashboardNav._renderCourseVocabSectionCard({
+          themeKey: 'idioms',
+          icon: 'record_voice_over',
+          title: 'Idioms',
+          desc: 'Practise idiomatic expressions in context',
+          cta: 'Practice',
+          onclick: 'FastExercises._showIdDictionary({ startPractice: true })'
+        });
+        html += DashboardNav._renderCourseVocabSectionCard({
+          themeKey: 'phrasal-verbs',
+          icon: 'auto_stories',
+          title: 'Phrasal Verbs',
+          desc: 'Master common phrasal verbs with MCQ drills',
+          cta: 'Practice',
+          onclick: 'FastExercises._showPvDictionary({ startPractice: true })'
+        });
+        html += DashboardNav._renderCourseVocabSectionCard({
+          themeKey: 'irregular-verbs',
+          icon: 'sync',
+          title: 'Irregular Verbs',
+          desc: 'Type past forms and build your verb memory',
+          cta: 'Practice',
+          onclick: 'FastExercises._showIrregularVerbsDictionary({ startPractice: true })'
+        });
+      } else {
+        for (var j = 0; j < catData.length; j++) {
+          var cd = catData[j];
+          var scopeLabel = cd.totalPoints > 0
+            ? cd.totalPoints + ' items · B1 to C1'
+            : 'B1 to C1';
+          html += DashboardNav._renderCourseVocabSectionCard({
+            themeKey: cd.cat.id,
+            title: cd.cat.name,
+            desc: cd.cat.desc,
+            status: cd.pct >= 100 ? 'Completed!' : (cd.pct > 0 ? cd.pct + '% complete · ' + scopeLabel : scopeLabel),
+            pct: cd.pct,
+            icon: cd.cat.icon,
+            color: cd.cat.color,
+            cta: 'Open lesson',
+            onclick: 'FastExercises.openCategory(\'' + cd.cat.id + '\')'
+          });
+        }
       }
-      html += '</div>';
-      html += '<p class="course-vocab-section-heading">Fast vocabulary</p>';
-      html += '<div class="course-vocab-duo-cards">';
-      html += DashboardNav._renderCourseVocabDuoCard({
-        icon: 'library_books',
-        title: 'Vocabulary',
-        desc: 'Boost your word knowledge with quick quizzes',
-        color: '#10b981',
-        onclick: 'FastExercises._showVocabDictionary({ startPractice: true })'
-      });
-      html += DashboardNav._renderCourseVocabDuoCard({
-        icon: 'record_voice_over',
-        title: 'Idioms',
-        desc: 'Practise idiomatic expressions in context',
-        color: '#f59e0b',
-        onclick: 'FastExercises._showIdDictionary({ startPractice: true })'
-      });
-      html += DashboardNav._renderCourseVocabDuoCard({
-        icon: 'auto_stories',
-        title: 'Phrasal Verbs',
-        desc: 'Master common phrasal verbs with MCQ drills',
-        color: '#3b82f6',
-        onclick: 'FastExercises._showPvDictionary({ startPractice: true })'
-      });
-      html += DashboardNav._renderCourseVocabDuoCard({
-        icon: 'sync',
-        title: 'Irregular Verbs',
-        desc: 'Type past forms and build your verb memory',
-        color: '#8b5cf6',
-        onclick: 'FastExercises._showIrregularVerbsDictionary({ startPractice: true })'
-      });
+
       html += '</div></div>';
       return html;
     },
