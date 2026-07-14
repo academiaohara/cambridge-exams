@@ -5079,8 +5079,10 @@
       modal.innerHTML =
         '<div class="wf-dict-box dict-duo">' +
           '<div class="wf-dict-header">' +
-            '<span class="wf-dict-icon">' + _mi('menu_book') + '</span>' +
-            '<h2 class="wf-dict-title">Word Formation Dictionary</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="wf-dict-icon">' + _mi('menu_book') + '</span>' +
+              '<h2 class="wf-dict-title">Word Formation Dictionary</h2>' +
+            '</div>' +
             '<button class="dict-mcq-practice-btn" id="wf-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'wf\')">Practice mode</button>' +
             '<button class="wf-dict-close" onclick="FastExercises._closeDictMcqModal(\'wf\')">' +
               '<span class="material-symbols-outlined">close</span>' +
@@ -5428,8 +5430,10 @@
       modal.innerHTML =
         '<div class="colloc-dict-box dict-duo">' +
           '<div class="colloc-dict-header">' +
-            '<span class="colloc-dict-icon">' + _mi('menu_book') + '</span>' +
-            '<h2 class="colloc-dict-title">Collocations Dictionary</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="colloc-dict-icon">' + _mi('menu_book') + '</span>' +
+              '<h2 class="colloc-dict-title">Collocations Dictionary</h2>' +
+            '</div>' +
             '<button class="dict-mcq-practice-btn" id="colloc-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'colloc\')">Practice mode</button>' +
             '<button class="colloc-dict-close" onclick="FastExercises._closeDictMcqModal(\'colloc\')">' +
               '<span class="material-symbols-outlined">close</span>' +
@@ -5559,8 +5563,10 @@
       modal.innerHTML =
         '<div class="pv-dict-box dict-duo">' +
           '<div class="pv-dict-header">' +
-            '<span class="pv-dict-icon">' + _mi('menu_book') + '</span>' +
-            '<h2 class="pv-dict-title">Phrasal Verbs Dictionary</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="pv-dict-icon">' + _mi('menu_book') + '</span>' +
+              '<h2 class="pv-dict-title">Phrasal Verbs Dictionary</h2>' +
+            '</div>' +
             '<button class="dict-mcq-practice-btn" id="pv-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'pv\')">Practice mode</button>' +
             '<button class="pv-dict-close" onclick="FastExercises._closeDictMcqModal(\'pv\')">' +
               '<span class="material-symbols-outlined">close</span>' +
@@ -5684,8 +5690,10 @@
       modal.innerHTML =
         '<div class="gd-dict-box dict-duo">' +
           '<div class="gd-dict-header">' +
-            '<span class="gd-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
-            '<h2 class="gd-dict-title">General Dictionary</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="gd-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
+              '<h2 class="gd-dict-title">General Dictionary</h2>' +
+            '</div>' +
             '<button class="gd-dict-close" onclick="document.getElementById(\'gd-dict-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
@@ -5766,16 +5774,17 @@
         var allMeaningsHTML = '';
         var synonymsList = [];
 
+        var self = this;
         info.meanings.forEach(function(meaning) {
           var defs = meaning.definitions.slice(0, 2);
           defs.forEach(function(def) {
             var exHtml = def.example
-              ? '<div class="gd-dict-example">"' + FastExercises._escapeHTML(def.example) + '"</div>'
+              ? '<div class="gd-dict-example">"' + self._dictDuoTtsSpan(def.example, 'gd-dict-example-text', 'Listen to example') + '"</div>'
               : '';
             allMeaningsHTML +=
               '<div class="gd-dict-meaning">' +
                 '<span class="gd-dict-pos">' + FastExercises._escapeHTML(meaning.partOfSpeech) + '</span>' +
-                '<p class="gd-dict-definition">' + FastExercises._escapeHTML(def.definition) + '</p>' +
+                self._dictDuoTtsSpan(def.definition, 'gd-dict-definition', 'Listen to definition') +
                 exHtml +
               '</div>';
             if (def.synonyms && def.synonyms.length > 0) {
@@ -5808,11 +5817,8 @@
         body.innerHTML =
           '<div class="gd-dict-result">' +
             '<div class="gd-dict-word-row">' +
-              '<span class="gd-dict-word">' + FastExercises._escapeHTML(info.word) + '</span>' +
+              self._dictDuoTtsWord(info.word, 'gd-dict-word') +
               '<span class="gd-dict-phonetic">' + FastExercises._escapeHTML(info.phonetic || '') + '</span>' +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + FastExercises._jsStr(info.word) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>' +
             '</div>' +
             allMeaningsHTML +
             synonymsHTML +
@@ -5842,7 +5848,10 @@
       modal.innerHTML =
         '<div class="id-dict-box dict-duo">' +
           '<div class="id-dict-header">' +
-            '<span class="id-dict-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
+            '<div class="dict-header-brand">' +
+              '<span class="id-dict-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
+              '<h2 class="id-dict-title">Idioms Dictionary</h2>' +
+            '</div>' +
             '<button class="dict-mcq-practice-btn" id="id-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'idioms\')">Practice mode</button>' +
             '<button class="id-dict-close" onclick="FastExercises._closeDictMcqModal(\'idioms\')">' +
               '<span class="material-symbols-outlined">close</span>' +
@@ -6603,8 +6612,10 @@
       modal.innerHTML =
         '<div class="irv-dict-box dict-duo">' +
           '<div class="irv-dict-header">' +
-            '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
-            '<h2 class="irv-dict-title">Irregular Verbs</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
+              '<h2 class="irv-dict-title">Irregular Verbs</h2>' +
+            '</div>' +
             '<div class="irv-dict-header-actions">' +
               '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
               '<button class="irv-dict-close" onclick="FastExercises._closeIrvDictModal()">' +
@@ -6952,8 +6963,10 @@
       modal.innerHTML =
         '<div class="vocab-dict-box dict-duo">' +
           '<div class="vocab-dict-header">' +
-            '<span class="vocab-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
-            '<h2 class="vocab-dict-title">Vocabulary Dictionary</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="vocab-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
+              '<h2 class="vocab-dict-title">Vocabulary Dictionary</h2>' +
+            '</div>' +
             '<button class="dict-mcq-practice-btn" id="vocab-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'vocab\')">Practice mode</button>' +
             '<button class="vocab-dict-close" onclick="FastExercises._closeDictMcqModal(\'vocab\')">' +
               '<span class="material-symbols-outlined">close</span>' +
@@ -10062,10 +10075,12 @@
       modal.id = 'dict-home-modal';
       modal.className = 'dict-home-overlay';
       modal.innerHTML =
-        '<div class="dict-home-box dict-home-box--duo">' +
+        '<div class="dict-home-box dict-home-box--duo dict-duo">' +
           '<div class="dict-home-header dict-home-header--duo">' +
-            '<span class="dict-home-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
-            '<h2 class="dict-home-title">Dictionaries</h2>' +
+            '<div class="dict-header-brand">' +
+              '<span class="dict-home-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
+              '<h2 class="dict-home-title">Dictionaries</h2>' +
+            '</div>' +
             '<button class="dict-home-close" onclick="document.getElementById(\'dict-home-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
