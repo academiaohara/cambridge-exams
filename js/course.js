@@ -2307,7 +2307,7 @@
           themeKey: 'vocabulary',
           icon: 'library_books',
           title: 'Vocabulary',
-          desc: 'Boost your word knowledge with quick quizzes',
+          desc: 'Quick practice on words and meanings',
           cta: 'Practice',
           onclick: 'FastExercises._showVocabDictionary({ startPractice: true })'
         });
@@ -2315,7 +2315,7 @@
           themeKey: 'idioms',
           icon: 'record_voice_over',
           title: 'Idioms',
-          desc: 'Practise idiomatic expressions in context',
+          desc: 'Common idioms used in everyday English',
           cta: 'Practice',
           onclick: 'FastExercises._showIdDictionary({ startPractice: true })'
         });
@@ -2323,7 +2323,7 @@
           themeKey: 'phrasal-verbs',
           icon: 'auto_stories',
           title: 'Phrasal Verbs',
-          desc: 'Master common phrasal verbs with MCQ drills',
+          desc: 'Everyday phrasal verbs you will hear and use',
           cta: 'Practice',
           onclick: 'FastExercises._showPvDictionary({ startPractice: true })'
         });
@@ -2331,7 +2331,7 @@
           themeKey: 'irregular-verbs',
           icon: 'sync',
           title: 'Irregular Verbs',
-          desc: 'Type past forms and build your verb memory',
+          desc: 'Past and past participle forms you will need',
           cta: 'Practice',
           onclick: 'FastExercises._showIrregularVerbsDictionary({ startPractice: true })'
         });
