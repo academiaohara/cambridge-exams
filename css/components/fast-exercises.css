@@ -8490,6 +8490,248 @@
   }
 }
 
+/* ── DICTIONARY MCQ PRACTICE ─────────────────────────────────────────────── */
+.dict-mcq-practice-btn {
+  margin-left: auto;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dict-mcq-practice-btn:hover { filter: brightness(1.08); }
+
+.dict-mcq-setup {
+  padding: 24px 20px 28px;
+  text-align: center;
+}
+.dict-mcq-setup-title {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+}
+.dict-mcq-setup-desc {
+  margin: 0 0 20px;
+  color: var(--text-medium, #64748b);
+  font-size: 0.92rem;
+}
+.dict-mcq-diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.dict-mcq-diff-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 10px;
+  border: 2px solid rgba(45, 46, 95, 0.1);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+.dict-mcq-diff-btn:hover {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.04);
+  transform: translateY(-1px);
+}
+.dict-mcq-diff-label {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+}
+.dict-mcq-diff-desc {
+  font-size: 0.75rem;
+  color: var(--text-medium, #64748b);
+  line-height: 1.3;
+}
+
+.dict-mcq-session {
+  padding: 16px 20px 24px;
+}
+.dict-mcq-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+  font-weight: 600;
+}
+.dict-mcq-prompt {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.dict-mcq-prompt-label {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-medium, #64748b);
+  margin-bottom: 8px;
+}
+.dict-mcq-term-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dict-mcq-term {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+}
+.dict-mcq-level {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+.dict-mcq-subtitle {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+}
+.dict-mcq-subtitle em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--text-dark, #334155);
+}
+.dict-mcq-speak-btn {
+  flex-shrink: 0;
+}
+
+.dict-mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.dict-mcq-option {
+  text-align: left;
+  padding: 14px 16px;
+  border: 2px solid rgba(45, 46, 95, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-dark, #0f172a);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.dict-mcq-option:hover:not(:disabled) {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.04);
+}
+.dict-mcq-option:disabled { cursor: default; }
+.dict-mcq-option-correct {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.08) !important;
+  color: #15803d;
+}
+.dict-mcq-option-wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.06) !important;
+  color: #b91c1c;
+}
+
+.dict-mcq-feedback {
+  text-align: center;
+  margin: 14px auto 0;
+  max-width: 640px;
+  font-size: 0.9rem;
+  min-height: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.dict-mcq-feedback-correct { color: #15803d; font-weight: 700; }
+.dict-mcq-feedback-wrong { color: #b91c1c; }
+.dict-mcq-feedback .material-symbols-outlined { font-size: 1.2rem; }
+
+.dict-mcq-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+.dict-mcq-btn {
+  border: 1px solid rgba(45, 46, 95, 0.12);
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-dark, #334155);
+}
+.dict-mcq-btn:hover:not(:disabled) { background: #f1f5f9; }
+.dict-mcq-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.dict-mcq-btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+.dict-mcq-btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+
+.dict-mcq-complete,
+.dict-mcq-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+.dict-mcq-complete .material-symbols-outlined,
+.dict-mcq-empty .material-symbols-outlined {
+  font-size: 3rem;
+  color: #f59e0b;
+  display: block;
+  margin-bottom: 12px;
+}
+.dict-mcq-empty .material-symbols-outlined { color: #94a3b8; }
+.dict-mcq-complete h3 {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.dict-mcq-complete-diff {
+  color: var(--text-medium, #64748b);
+  font-size: 0.88rem;
+  margin: 0 0 4px;
+}
+.dict-mcq-complete p {
+  margin: 0 0 20px;
+  color: var(--text-medium, #64748b);
+}
+.dict-mcq-complete-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .dict-mcq-diff-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+  }
+  .dict-mcq-term { font-size: 1.25rem; }
+  .dict-mcq-practice-btn {
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    VOCABULARY — Learning-style map dots & integrated exercises
    ══════════════════════════════════════════════════════════════════════════ */

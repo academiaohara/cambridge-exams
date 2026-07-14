@@ -5062,7 +5062,7 @@
 
     _showWfDictionary: async function() {
       var existing = document.getElementById('wf-dict-modal');
-      if (existing) { existing.remove(); return; }
+      if (existing) { this._closeDictMcqModal('wf'); return; }
 
       // Load dictionary data
       if (!this._wfDictCache) {
@@ -5081,7 +5081,8 @@
           '<div class="wf-dict-header">' +
             '<span class="wf-dict-icon">' + _mi('menu_book') + '</span>' +
             '<h2 class="wf-dict-title">Word Formation Dictionary</h2>' +
-            '<button class="wf-dict-close" onclick="document.getElementById(\'wf-dict-modal\').remove()">' +
+            '<button class="dict-mcq-practice-btn" id="wf-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'wf\')">Practice mode</button>' +
+            '<button class="wf-dict-close" onclick="FastExercises._closeDictMcqModal(\'wf\')">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
@@ -5125,10 +5126,11 @@
         '</div>';
 
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.remove();
+        if (e.target === modal) FastExercises._closeDictMcqModal('wf');
       });
       document.body.appendChild(modal);
 
+      this._dictMcqPractice = null;
       // Store entries for filtering
       this._wfDictEntries = entries;
       this._renderWfDictResults('', '', '');
@@ -5413,7 +5415,7 @@
 
     _showCollocDictionary: async function() {
       var existing = document.getElementById('colloc-dict-modal');
-      if (existing) { existing.remove(); return; }
+      if (existing) { this._closeDictMcqModal('colloc'); return; }
 
       // Load dictionary data
       if (!this._collocDictCache) {
@@ -5432,7 +5434,8 @@
           '<div class="colloc-dict-header">' +
             '<span class="colloc-dict-icon">' + _mi('menu_book') + '</span>' +
             '<h2 class="colloc-dict-title">Collocations Dictionary</h2>' +
-            '<button class="colloc-dict-close" onclick="document.getElementById(\'colloc-dict-modal\').remove()">' +
+            '<button class="dict-mcq-practice-btn" id="colloc-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'colloc\')">Practice mode</button>' +
+            '<button class="colloc-dict-close" onclick="FastExercises._closeDictMcqModal(\'colloc\')">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
@@ -5456,10 +5459,11 @@
         '</div>';
 
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.remove();
+        if (e.target === modal) FastExercises._closeDictMcqModal('colloc');
       });
       document.body.appendChild(modal);
 
+      this._dictMcqPractice = null;
       // Store entries for filtering
       this._collocDictEntries = entries;
       this._renderCollocDictResults('', '');
@@ -5543,7 +5547,7 @@
 
     _showPvDictionary: async function() {
       var existing = document.getElementById('pv-dict-modal');
-      if (existing) { existing.remove(); return; }
+      if (existing) { this._closeDictMcqModal('pv'); return; }
 
       // Load dictionary data
       if (!this._pvDictCache) {
@@ -5562,7 +5566,8 @@
           '<div class="pv-dict-header">' +
             '<span class="pv-dict-icon">' + _mi('menu_book') + '</span>' +
             '<h2 class="pv-dict-title">Phrasal Verbs Dictionary</h2>' +
-            '<button class="pv-dict-close" onclick="document.getElementById(\'pv-dict-modal\').remove()">' +
+            '<button class="dict-mcq-practice-btn" id="pv-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'pv\')">Practice mode</button>' +
+            '<button class="pv-dict-close" onclick="FastExercises._closeDictMcqModal(\'pv\')">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
@@ -5584,10 +5589,11 @@
         '</div>';
 
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.remove();
+        if (e.target === modal) FastExercises._closeDictMcqModal('pv');
       });
       document.body.appendChild(modal);
 
+      this._dictMcqPractice = null;
       // Store entries for filtering
       this._pvDictEntries = entries;
       this._renderPvDictResults('', '');
@@ -5829,7 +5835,7 @@
 
     _showIdDictionary: async function() {
       var existing = document.getElementById('id-dict-modal');
-      if (existing) { existing.remove(); return; }
+      if (existing) { this._closeDictMcqModal('idioms'); return; }
 
       if (!this._idDictCache) {
         try {
@@ -5846,7 +5852,8 @@
         '<div class="id-dict-box">' +
           '<div class="id-dict-header">' +
             '<span class="id-dict-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
-            '<button class="id-dict-close" onclick="document.getElementById(\'id-dict-modal\').remove()">' +
+            '<button class="dict-mcq-practice-btn" id="id-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'idioms\')">Practice mode</button>' +
+            '<button class="id-dict-close" onclick="FastExercises._closeDictMcqModal(\'idioms\')">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
@@ -5868,10 +5875,11 @@
         '</div>';
 
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.remove();
+        if (e.target === modal) FastExercises._closeDictMcqModal('idioms');
       });
       document.body.appendChild(modal);
 
+      this._dictMcqPractice = null;
       this._idDictEntries = entries;
       this._renderIdDictResults('', '');
 
@@ -5926,6 +5934,482 @@
       });
 
       resultsEl.innerHTML = html;
+    },
+
+    // ── DICTIONARY MCQ PRACTICE (shared) ─────────────────────────────────
+    _dictMcqPractice: null,
+
+    _dictMcqDifficultySettings: {
+      easy: {
+        label: 'Easy',
+        description: '3 options · A2–B1 words',
+        optionCount: 3,
+        levels: ['A1', 'A2', 'B1'],
+        sameLevelDistractors: false
+      },
+      medium: {
+        label: 'Medium',
+        description: '4 options · all levels',
+        optionCount: 4,
+        levels: null,
+        sameLevelDistractors: true
+      },
+      hard: {
+        label: 'Hard',
+        description: '5 options · B2–C1 words',
+        optionCount: 5,
+        levels: ['B2', 'C1'],
+        sameLevelDistractors: true
+      }
+    },
+
+    _dictMcqPracticeConfigs: {
+      vocab: {
+        modalId: 'vocab-dict-modal',
+        practiceBtnId: 'vocab-dict-practice-btn',
+        bodyId: 'vocab-dict-results',
+        searchRowClass: 'vocab-dict-search-row',
+        countId: 'vocab-dict-count',
+        termField: 'word',
+        answerField: 'definition',
+        levelField: 'level',
+        speakField: 'word',
+        promptVerb: 'What is the meaning of',
+        getEntries: function(self) { return self._vocabDictEntries || []; },
+        refreshBrowse: function(self) {
+          var q = (document.getElementById('vocab-dict-search') || {}).value || '';
+          var level = (document.getElementById('vocab-dict-level') || {}).value || '';
+          self._renderVocabDictResults(q, level);
+        }
+      },
+      wf: {
+        modalId: 'wf-dict-modal',
+        practiceBtnId: 'wf-dict-practice-btn',
+        bodyId: 'wf-dict-results',
+        searchRowClass: 'wf-dict-search-row',
+        countId: 'wf-dict-count',
+        termField: 'derived',
+        answerField: 'definition',
+        levelField: 'level',
+        speakField: 'derived',
+        promptVerb: 'What is the meaning of',
+        termSubtitle: function(entry) {
+          var base = entry.base || '';
+          var type = entry.type || entry.wordType || '';
+          return base ? ('from <em>' + base + '</em>' + (type ? ' · ' + type : '')) : '';
+        },
+        getEntries: function(self) { return self._wfDictEntries || []; },
+        refreshBrowse: function(self) {
+          var q = (document.getElementById('wf-dict-search') || {}).value || '';
+          var level = (document.getElementById('wf-dict-level') || {}).value || '';
+          var type = (document.getElementById('wf-dict-type-filter') || {}).value || '';
+          self._renderWfDictResults(q, level, type);
+        }
+      },
+      pv: {
+        modalId: 'pv-dict-modal',
+        practiceBtnId: 'pv-dict-practice-btn',
+        bodyId: 'pv-dict-results',
+        searchRowClass: 'pv-dict-search-row',
+        countId: 'pv-dict-count',
+        termField: 'verb',
+        answerField: 'definition',
+        levelField: 'level',
+        speakField: 'verb',
+        promptVerb: 'What is the meaning of',
+        getEntries: function(self) { return self._pvDictEntries || []; },
+        refreshBrowse: function(self) {
+          var q = (document.getElementById('pv-dict-search') || {}).value || '';
+          var level = (document.getElementById('pv-dict-level') || {}).value || '';
+          self._renderPvDictResults(q, level);
+        }
+      },
+      idioms: {
+        modalId: 'id-dict-modal',
+        practiceBtnId: 'id-dict-practice-btn',
+        bodyId: 'id-dict-results',
+        searchRowClass: 'id-dict-search-row',
+        countId: 'id-dict-count',
+        termField: 'idiom',
+        answerField: 'definition',
+        levelField: 'level',
+        speakField: 'idiom',
+        promptVerb: 'What does this idiom mean',
+        getEntries: function(self) { return self._idDictEntries || []; },
+        refreshBrowse: function(self) {
+          var q = (document.getElementById('id-dict-search') || {}).value || '';
+          var level = (document.getElementById('id-dict-level') || {}).value || '';
+          self._renderIdDictResults(q, level);
+        }
+      },
+      colloc: {
+        modalId: 'colloc-dict-modal',
+        practiceBtnId: 'colloc-dict-practice-btn',
+        bodyId: 'colloc-dict-results',
+        searchRowClass: 'colloc-dict-search-row',
+        countId: 'colloc-dict-count',
+        termField: 'phrase',
+        answerField: 'definition',
+        levelField: 'level',
+        speakField: 'phrase',
+        promptVerb: 'What is the meaning of',
+        termSubtitle: function(entry) {
+          return entry.word ? ('collocation with <em>' + entry.word + '</em>') : '';
+        },
+        getEntries: function(self) { return self._collocDictEntries || []; },
+        refreshBrowse: function(self) {
+          var q = (document.getElementById('colloc-dict-search') || {}).value || '';
+          var level = (document.getElementById('colloc-dict-level') || {}).value || '';
+          self._renderCollocDictResults(q, level);
+        }
+      }
+    },
+
+    _dictMcqShuffle: function(list) {
+      var arr = list.slice();
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+      return arr;
+    },
+
+    _getDictMcqConfig: function(dictId) {
+      return this._dictMcqPracticeConfigs[dictId] || null;
+    },
+
+    _closeDictMcqModal: function(dictId) {
+      var modalIds = {
+        vocab: 'vocab-dict-modal',
+        wf: 'wf-dict-modal',
+        pv: 'pv-dict-modal',
+        idioms: 'id-dict-modal',
+        colloc: 'colloc-dict-modal'
+      };
+      this._dictMcqPractice = null;
+      var modal = document.getElementById(modalIds[dictId] || '');
+      if (modal) modal.remove();
+    },
+
+    _toggleDictMcqPractice: function(dictId) {
+      var config = this._getDictMcqConfig(dictId);
+      if (!config) return;
+
+      if (this._dictMcqPractice && this._dictMcqPractice.dictId === dictId) {
+        this._exitDictMcqPractice(dictId);
+        return;
+      }
+
+      this._dictMcqPractice = { dictId: dictId, phase: 'setup' };
+      this._setDictMcqPracticeUi(dictId, true);
+      this._renderDictMcqSetup(dictId);
+    },
+
+    _exitDictMcqPractice: function(dictId) {
+      var config = this._getDictMcqConfig(dictId);
+      this._dictMcqPractice = null;
+      this._setDictMcqPracticeUi(dictId, false);
+      if (config && config.refreshBrowse) config.refreshBrowse(this);
+    },
+
+    _setDictMcqPracticeUi: function(dictId, inPractice) {
+      var config = this._getDictMcqConfig(dictId);
+      if (!config) return;
+
+      var btn = document.getElementById(config.practiceBtnId);
+      var count = document.getElementById(config.countId);
+      var modal = document.getElementById(config.modalId);
+      var searchRow = modal && modal.querySelector('.' + config.searchRowClass);
+
+      if (btn) {
+        if (inPractice) {
+          btn.setAttribute('aria-label', 'Back to dictionary');
+          btn.innerHTML = _backButtonContent('Dictionary');
+        } else {
+          btn.setAttribute('aria-label', 'Practice mode');
+          btn.textContent = 'Practice mode';
+        }
+      }
+      if (searchRow) searchRow.style.display = inPractice ? 'none' : '';
+      if (count) count.style.display = inPractice ? 'none' : '';
+    },
+
+    _renderDictMcqSetup: function(dictId) {
+      var self = this;
+      var config = this._getDictMcqConfig(dictId);
+      var bodyEl = document.getElementById(config.bodyId);
+      if (!bodyEl) return;
+
+      var entries = config.getEntries(this).filter(function(e) {
+        return (e[config.answerField] || '').trim().length > 0 &&
+               (e[config.termField] || '').trim().length > 0;
+      });
+
+      if (entries.length < 4) {
+        bodyEl.innerHTML =
+          '<div class="dict-mcq-empty">' +
+            '<span class="material-symbols-outlined">info</span>' +
+            '<p>Not enough entries to start practice.</p>' +
+          '</div>';
+        return;
+      }
+
+      var diffHtml = '';
+      Object.keys(this._dictMcqDifficultySettings).forEach(function(key) {
+        var d = self._dictMcqDifficultySettings[key];
+        diffHtml +=
+          '<button type="button" class="dict-mcq-diff-btn" data-diff="' + key + '" onclick="FastExercises._selectDictMcqDifficulty(\'' + dictId + '\', \'' + key + '\')">' +
+            '<span class="dict-mcq-diff-label">' + d.label + '</span>' +
+            '<span class="dict-mcq-diff-desc">' + d.description + '</span>' +
+          '</button>';
+      });
+
+      bodyEl.innerHTML =
+        '<div class="dict-mcq-setup">' +
+          '<h3 class="dict-mcq-setup-title">Choose difficulty</h3>' +
+          '<p class="dict-mcq-setup-desc">Pick the correct definition for each term.</p>' +
+          '<div class="dict-mcq-diff-grid">' + diffHtml + '</div>' +
+        '</div>';
+    },
+
+    _selectDictMcqDifficulty: function(dictId, difficulty) {
+      var config = this._getDictMcqConfig(dictId);
+      var settings = this._dictMcqDifficultySettings[difficulty];
+      if (!config || !settings) return;
+
+      var entries = config.getEntries(this).filter(function(e) {
+        return (e[config.answerField] || '').trim().length > 0 &&
+               (e[config.termField] || '').trim().length > 0;
+      });
+
+      var pool = this._filterDictMcqPool(entries, settings, config);
+      if (pool.length < settings.optionCount) {
+        pool = entries.slice();
+      }
+      if (pool.length < settings.optionCount) {
+        var bodyEl = document.getElementById(config.bodyId);
+        if (bodyEl) {
+          bodyEl.innerHTML =
+            '<div class="dict-mcq-empty">' +
+              '<span class="material-symbols-outlined">info</span>' +
+              '<p>Not enough entries for this difficulty. Try another level.</p>' +
+            '</div>';
+        }
+        return;
+      }
+
+      var sessionSize = Math.min(10, pool.length);
+      var selected = this._dictMcqShuffle(pool).slice(0, sessionSize);
+      var questions = [];
+      for (var i = 0; i < selected.length; i++) {
+        questions.push(this._buildDictMcqQuestion(selected[i], pool, settings, config));
+      }
+
+      this._dictMcqPractice = {
+        dictId: dictId,
+        difficulty: difficulty,
+        phase: 'playing',
+        questions: questions,
+        questionIndex: 0,
+        answered: false,
+        selectedIndex: -1,
+        correctCount: 0
+      };
+
+      this._renderDictMcqQuestion();
+    },
+
+    _filterDictMcqPool: function(entries, settings, config) {
+      if (!settings.levels || !settings.levels.length) return entries.slice();
+      var levelField = config.levelField;
+      var filtered = entries.filter(function(e) {
+        return settings.levels.indexOf(e[levelField] || '') !== -1;
+      });
+      return filtered.length >= settings.optionCount ? filtered : entries.slice();
+    },
+
+    _buildDictMcqQuestion: function(entry, pool, settings, config) {
+      var self = this;
+      var answerField = config.answerField;
+      var correctAnswer = (entry[answerField] || '').trim();
+      var distractorPool = pool.filter(function(e) {
+        return (e[answerField] || '').trim() !== correctAnswer;
+      });
+
+      if (settings.sameLevelDistractors && config.levelField) {
+        var level = entry[config.levelField] || '';
+        var sameLevel = distractorPool.filter(function(e) {
+          return (e[config.levelField] || '') === level;
+        });
+        if (sameLevel.length >= settings.optionCount - 1) {
+          distractorPool = sameLevel;
+        }
+      }
+
+      var distractors = this._dictMcqShuffle(distractorPool).slice(0, settings.optionCount - 1);
+      var optionItems = [{ text: correctAnswer, correct: true }];
+      distractors.forEach(function(e) {
+        optionItems.push({ text: (e[answerField] || '').trim(), correct: false });
+      });
+      var shuffled = this._dictMcqShuffle(optionItems);
+      var correctIndex = -1;
+      for (var oi = 0; oi < shuffled.length; oi++) {
+        if (shuffled[oi].correct) { correctIndex = oi; break; }
+      }
+
+      return {
+        entry: entry,
+        term: (entry[config.termField] || '').trim(),
+        subtitle: config.termSubtitle ? config.termSubtitle(entry) : '',
+        level: config.levelField ? (entry[config.levelField] || '') : '',
+        correctAnswer: correctAnswer,
+        options: shuffled.map(function(item) { return item.text; }),
+        correctIndex: correctIndex
+      };
+    },
+
+    _renderDictMcqQuestion: function() {
+      var state = this._dictMcqPractice;
+      if (!state || state.phase !== 'playing') return;
+
+      var config = this._getDictMcqConfig(state.dictId);
+      var bodyEl = document.getElementById(config.bodyId);
+      if (!bodyEl) return;
+
+      if (state.questionIndex >= state.questions.length) {
+        this._renderDictMcqComplete();
+        return;
+      }
+
+      var q = state.questions[state.questionIndex];
+      var self = this;
+      var optionsHtml = q.options.map(function(opt, idx) {
+        return '<button type="button" class="dict-mcq-option" id="dict-mcq-opt-' + idx + '" onclick="FastExercises._answerDictMcqPractice(' + idx + ')">' +
+          self._escapeHTML(opt) +
+        '</button>';
+      }).join('');
+
+      var speakBtn = '';
+      if (config.speakField && q.term) {
+        speakBtn =
+          '<button class="dict-speak-btn dict-mcq-speak-btn" onclick="FastExercises._speakWord(\'' + this._jsStr(q.term) + '\')" title="Listen">' +
+            '<span class="material-symbols-outlined">volume_up</span>' +
+          '</button>';
+      }
+
+      bodyEl.innerHTML =
+        '<div class="dict-mcq-session">' +
+          '<div class="dict-mcq-top">' +
+            '<div class="dict-mcq-progress">Question ' + (state.questionIndex + 1) + ' of ' + state.questions.length + '</div>' +
+            '<div class="dict-mcq-score">Score: ' + state.correctCount + '/' + state.questionIndex + '</div>' +
+          '</div>' +
+          '<div class="dict-mcq-prompt">' +
+            '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
+            '<div class="dict-mcq-term-row">' +
+              '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>' +
+              speakBtn +
+              (q.level ? '<span class="dict-mcq-level">' + this._escapeHTML(q.level) + '</span>' : '') +
+            '</div>' +
+            (q.subtitle ? '<div class="dict-mcq-subtitle">' + q.subtitle + '</div>' : '') +
+          '</div>' +
+          '<div class="dict-mcq-options" id="dict-mcq-options">' + optionsHtml + '</div>' +
+          '<div class="dict-mcq-feedback" id="dict-mcq-feedback" aria-live="polite"></div>' +
+          '<div class="dict-mcq-actions">' +
+            '<button class="dict-mcq-btn dict-mcq-btn-primary" id="dict-mcq-next" onclick="FastExercises._nextDictMcqQuestion()" disabled>Next</button>' +
+            '<button class="dict-mcq-btn" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
+          '</div>' +
+        '</div>';
+
+      state.answered = false;
+      state.selectedIndex = -1;
+    },
+
+    _answerDictMcqPractice: function(optionIndex) {
+      var state = this._dictMcqPractice;
+      if (!state || state.phase !== 'playing' || state.answered) return;
+
+      var q = state.questions[state.questionIndex];
+      if (!q) return;
+
+      state.answered = true;
+      state.selectedIndex = optionIndex;
+      var isCorrect = optionIndex === q.correctIndex;
+      if (isCorrect) state.correctCount++;
+
+      for (var i = 0; i < q.options.length; i++) {
+        var btn = document.getElementById('dict-mcq-opt-' + i);
+        if (!btn) continue;
+        btn.disabled = true;
+        if (i === q.correctIndex) {
+          btn.classList.add('dict-mcq-option-correct');
+        } else if (i === optionIndex && !isCorrect) {
+          btn.classList.add('dict-mcq-option-wrong');
+        }
+      }
+
+      var feedbackEl = document.getElementById('dict-mcq-feedback');
+      if (feedbackEl) {
+        feedbackEl.className = 'dict-mcq-feedback ' + (isCorrect ? 'dict-mcq-feedback-correct' : 'dict-mcq-feedback-wrong');
+        feedbackEl.innerHTML = isCorrect
+          ? '<span class="material-symbols-outlined">check_circle</span> Correct!'
+          : '<span class="material-symbols-outlined">cancel</span> The correct answer was: <strong>' + this._escapeHTML(q.correctAnswer) + '</strong>';
+      }
+
+      var scoreEl = document.querySelector('.dict-mcq-score');
+      if (scoreEl) {
+        scoreEl.textContent = 'Score: ' + state.correctCount + '/' + (state.questionIndex + 1);
+      }
+
+      var nextBtn = document.getElementById('dict-mcq-next');
+      if (nextBtn) nextBtn.disabled = false;
+    },
+
+    _nextDictMcqQuestion: function() {
+      var state = this._dictMcqPractice;
+      if (!state || !state.answered) return;
+      state.questionIndex++;
+      this._renderDictMcqQuestion();
+    },
+
+    _renderDictMcqComplete: function() {
+      var state = this._dictMcqPractice;
+      if (!state) return;
+
+      var config = this._getDictMcqConfig(state.dictId);
+      var bodyEl = document.getElementById(config.bodyId);
+      if (!bodyEl) return;
+
+      var total = state.questions.length;
+      var pct = total ? Math.round((state.correctCount / total) * 100) : 0;
+      var diffLabel = (this._dictMcqDifficultySettings[state.difficulty] || {}).label || state.difficulty;
+
+      bodyEl.innerHTML =
+        '<div class="dict-mcq-complete">' +
+          '<span class="material-symbols-outlined">trophy</span>' +
+          '<h3>Practice complete</h3>' +
+          '<p class="dict-mcq-complete-diff">' + diffLabel + ' mode</p>' +
+          '<p>Score: <strong>' + state.correctCount + '/' + total + '</strong> (' + pct + '%)</p>' +
+          '<div class="dict-mcq-complete-actions">' +
+            '<button class="dict-mcq-btn dict-mcq-btn-primary" onclick="FastExercises._exitDictMcqPractice(\'' + state.dictId + '\')">Back to dictionary</button>' +
+            '<button class="dict-mcq-btn" onclick="FastExercises._restartDictMcqPractice()">Try again</button>' +
+          '</div>' +
+        '</div>';
+
+      state.phase = 'complete';
+    },
+
+    _restartDictMcqPractice: function() {
+      var state = this._dictMcqPractice;
+      if (!state) return;
+      var dictId = state.dictId;
+      var difficulty = state.difficulty;
+      if (difficulty) {
+        this._selectDictMcqDifficulty(dictId, difficulty);
+      } else {
+        this._renderDictMcqSetup(dictId);
+      }
     },
 
     // ── IRREGULAR VERBS DICTIONARY ────────────────────────────────────────
@@ -6292,7 +6776,7 @@
     // ── VOCABULARY DICTIONARY ─────────────────────────────────────────────
     _showVocabDictionary: async function() {
       var existing = document.getElementById('vocab-dict-modal');
-      if (existing) { existing.remove(); return; }
+      if (existing) { this._closeDictMcqModal('vocab'); return; }
 
       if (!this._vocabDictCache) {
         try {
@@ -6310,7 +6794,8 @@
           '<div class="vocab-dict-header">' +
             '<span class="vocab-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
             '<h2 class="vocab-dict-title">Vocabulary Dictionary</h2>' +
-            '<button class="vocab-dict-close" onclick="document.getElementById(\'vocab-dict-modal\').remove()">' +
+            '<button class="dict-mcq-practice-btn" id="vocab-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'vocab\')">Practice mode</button>' +
+            '<button class="vocab-dict-close" onclick="FastExercises._closeDictMcqModal(\'vocab\')">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
@@ -6333,10 +6818,11 @@
         '</div>';
 
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.remove();
+        if (e.target === modal) FastExercises._closeDictMcqModal('vocab');
       });
       document.body.appendChild(modal);
 
+      this._dictMcqPractice = null;
       this._vocabDictEntries = entries;
       this._renderVocabDictResults('', '');
 
