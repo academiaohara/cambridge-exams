@@ -6490,7 +6490,7 @@
         feedbackEl.className = 'dict-mcq-feedback dict-mcq-feedback--duo ' + (isCorrect ? 'dict-mcq-feedback-correct' : 'dict-mcq-feedback-wrong');
         feedbackEl.innerHTML = isCorrect
           ? '<span class="material-symbols-outlined">check_circle</span> Correct! +' + this._dictDuoXpPerCorrect + ' XP'
-          : '<span class="material-symbols-outlined">cancel</span> The correct answer was: <strong>' + this._escapeHTML(q.correctAnswer) + '</strong>';
+          : '<span class="material-symbols-outlined">cancel</span> Incorrect';
       }
 
       this._dictDuoUpdateHeader(state);
