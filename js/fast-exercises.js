@@ -5931,6 +5931,31 @@
     _dictDuoMaxHearts: 5,
     _dictDuoXpPerCorrect: 10,
 
+    _dictDuoTtsWord: function(word, className) {
+      var t = (word || '').trim();
+      if (!t) return '';
+      return '<button type="button" class="dict-tts-word ' + (className || '') + '" ' +
+        'onclick="FastExercises._speakWord(\'' + this._jsStr(t) + '\')" ' +
+        'aria-label="Listen to ' + this._escapeHTML(t) + '">' +
+        this._escapeHTML(word) +
+      '</button>';
+    },
+
+    _dictDuoTtsSpan: function(text, className, ariaLabel) {
+      var t = (text || '').trim();
+      var display = text || '';
+      if (!t || t === '—') {
+        return '<span class="' + (className || '') + '">' + this._escapeHTML(display) + '</span>';
+      }
+      var label = ariaLabel || ('Listen to ' + t);
+      return '<span class="dict-tts-hit ' + (className || '') + '" role="button" tabindex="0" ' +
+        'onclick="FastExercises._speakWord(\'' + this._jsStr(t) + '\')" ' +
+        'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();FastExercises._speakWord(\'' + this._jsStr(t) + '\')}" ' +
+        'title="Listen" aria-label="' + this._escapeHTML(label) + '">' +
+        this._escapeHTML(display) +
+      '</span>';
+    },
+
     _dictDuoRenderHearts: function(current, max) {
       max = max || this._dictDuoMaxHearts;
       var html = '<div class="dict-mcq-duo-hearts" aria-label="' + current + ' lives remaining">';
@@ -7019,27 +7044,31 @@
       groupOrder.forEach(function(key) {
         var group = groups[key];
         var baseWord = (group[0] && group[0].word) || '';
+        var levels = [];
+        group.forEach(function(e) {
+          if (e.level && levels.indexOf(e.level) === -1) levels.push(e.level);
+        });
+        var levelHtml = levels.map(function(lvl) {
+          return '<span class="vocab-dict-level-badge vocab-level-' + (lvl || '').toLowerCase() + '">' + self._escapeHTML(lvl) + '</span>';
+        }).join('');
         var formsHtml = '';
         group.forEach(function(e) {
           formsHtml +=
             '<div class="vocab-dict-form">' +
-              '<div class="vocab-dict-form-top">' +
-                '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
-              '</div>' +
-              '<span class="vocab-dict-def"><strong>Definition:</strong> ' + self._escapeHTML(e.definition || missingValuePlaceholder) + '</span>' +
-              '<span class="vocab-dict-example"><strong>Example:</strong> ' + self._escapeHTML(e.example || missingValuePlaceholder) + '</span>' +
+              '<span class="vocab-dict-def"><strong>Definition:</strong> ' +
+                self._dictDuoTtsSpan(e.definition || missingValuePlaceholder, 'vocab-dict-def-text', 'Listen to definition') +
+              '</span>' +
+              '<span class="vocab-dict-example"><strong>Example:</strong> ' +
+                self._dictDuoTtsSpan(e.example || missingValuePlaceholder, 'vocab-dict-example-text', 'Listen to example') +
+              '</span>' +
             '</div>';
         });
 
         html +=
           '<div class="vocab-dict-entry">' +
             '<div class="vocab-dict-base">' +
-              '<span class="vocab-dict-word">' + self._escapeHTML(baseWord) + '</span>' +
-              '<div class="dict-duo-speak-center">' +
-                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(baseWord) + '\')" title="Listen to pronunciation" aria-label="Listen to pronunciation">' +
-                  '<span class="material-symbols-outlined">volume_up</span>' +
-                '</button>' +
-              '</div>' +
+              self._dictDuoTtsWord(baseWord, 'vocab-dict-word') +
+              (levelHtml ? '<span class="vocab-dict-levels">' + levelHtml + '</span>' : '') +
             '</div>' +
             '<div class="vocab-dict-forms">' + formsHtml + '</div>' +
           '</div>';
