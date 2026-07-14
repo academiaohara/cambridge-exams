@@ -11,10 +11,10 @@
   };
 
   var SECTION_CARD_THEME = {
-    reading:   { bg: '#ebf6fd', border: '#7bb8f7', title: '#1a4d8c', accent: '#6ea7ef' },
-    listening: { bg: '#f3eafc', border: '#c097eb', title: '#4c1d95', accent: '#a06dcb' },
-    writing:   { bg: '#f0f8ef', border: '#71b268', title: '#2d5a28', accent: '#68ad5c' },
-    speaking:  { bg: '#fff4e0', border: '#ffca6b', title: '#8a4b00', accent: '#e28000' }
+    reading:   { bg: '#f5fbff', border: '#7bb8f7', title: '#1a4d8c', accent: '#6ea7ef' },
+    listening: { bg: '#faf5ff', border: '#c097eb', title: '#4c1d95', accent: '#a06dcb' },
+    writing:   { bg: '#f7fcf6', border: '#71b268', title: '#2d5a28', accent: '#68ad5c' },
+    speaking:  { bg: '#fff8ee', border: '#ffca6b', title: '#8a4b00', accent: '#e28000' }
   };
 
   function _mi(name) {
