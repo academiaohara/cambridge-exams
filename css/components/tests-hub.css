@@ -14,6 +14,11 @@
   flex-wrap: nowrap;
 }
 
+.dashboard-center--tests-hub .cw-section-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .cw-section-header--tests.cw-section-header--level,
 .cw-section-header--tests.cw-section-header--picker {
   background: var(--cw-header-color, #58cc02);
@@ -23,85 +28,91 @@
   box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #58cc02) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #58cc02) 22%, transparent);
 }
 
-/* Practice / Simulation bar — below header, not inside it */
-.tests-mode-bar {
+/* Practice / Simulation — icon toggle inside header */
+.tests-mode-header-toggle {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  margin: 12px 16px 0;
-  padding: 0;
-}
-
-.tests-mode-toggle-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 4px;
   margin-left: auto;
   flex-shrink: 0;
-}
-
-.tests-mode-toggle {
-  display: flex;
-  flex: 1 1 auto;
-  min-width: 0;
-  background: #fff;
-  border: 2px solid #e5e7eb;
-  border-bottom-width: 3px;
-  border-radius: 16px;
   padding: 4px;
-  gap: 4px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.tests-mode-toggle-btn {
+.tests-mode-header-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 1 1 0;
-  gap: 6px;
-  padding: 10px 12px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
   border: none;
-  border-radius: 12px;
+  border-radius: 11px;
   background: transparent;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: #94a3b8;
+  color: rgba(255, 255, 255, 0.58);
   cursor: pointer;
   transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.1s;
-  white-space: nowrap;
 }
 
-.tests-mode-toggle-btn .material-symbols-outlined {
-  font-size: 1.05rem;
+.tests-mode-header-btn .material-symbols-outlined {
+  font-size: 1.2rem;
 }
 
-.tests-mode-toggle-btn--practice.active {
-  background: #58cc02;
-  color: #fff;
-  box-shadow: 0 3px 0 #46a302;
+.tests-mode-header-btn.active {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--cw-header-color, #3b82f6);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
 }
 
-.tests-mode-toggle-btn--simulation.active {
-  background: #ce82ff;
-  color: #fff;
-  box-shadow: 0 3px 0 #a855f7;
+.tests-mode-header-btn:not(.active):hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.14);
 }
 
-.tests-mode-toggle-btn:not(.active):hover {
-  color: #64748b;
-  background: #f8fafc;
-}
-
-.tests-mode-toggle-btn:active {
+.tests-mode-header-btn:active {
   transform: translateY(1px);
 }
 
+/* Mode title row — below header */
+.tests-mode-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+  margin: -4px 0 16px;
+  padding: 0;
+}
+
+.tests-mode-title-row-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tests-mode-title-icon {
+  font-size: 1.35rem;
+  color: var(--cw-header-color, #3b82f6);
+  flex-shrink: 0;
+}
+
+.tests-mode-title-label {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1e293b;
+  white-space: nowrap;
+}
+
 .tests-mode-help-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
   border: 2px solid #e5e7eb;
   border-bottom-width: 3px;
   background: #fff;
@@ -115,6 +126,12 @@
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
+.tests-mode-help-btn--inline {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+
 .tests-mode-help-btn:hover {
   border-color: #1cb0f6;
 }
@@ -125,12 +142,12 @@
 }
 
 .tests-mode-help-btn .material-symbols-outlined {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 @media (min-width: 769px) {
-  .dashboard-center--tests-hub .tests-mode-bar {
-    margin: 0 0 16px;
+  .dashboard-center--tests-hub .tests-mode-title-row {
+    margin-bottom: 16px;
     max-width: 520px;
   }
 
@@ -722,7 +739,6 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  align-self: center;
   padding: 14px 28px;
   border: none;
   border-radius: 16px;
@@ -736,11 +752,28 @@
   cursor: pointer;
   box-shadow: 0 4px 0 #a855f7;
   transition: transform 0.1s, box-shadow 0.1s;
+  flex-shrink: 0;
+}
+
+.tests-full-exam-btn--inline {
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 3px 0 #a855f7;
+}
+
+.tests-full-exam-btn--inline .material-symbols-outlined {
+  font-size: 1.1rem;
 }
 
 .tests-full-exam-btn:active {
   transform: translateY(2px);
   box-shadow: 0 2px 0 #a855f7;
+}
+
+.tests-full-exam-btn--inline:active {
+  box-shadow: 0 1px 0 #a855f7;
 }
 
 .tests-section-cards-grid {
@@ -1047,11 +1080,6 @@
 }
 
 @media (max-width: 900px) {
-  .tests-mode-bar {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-
   .tests-section-card-art {
     width: 112px;
   }
@@ -1076,22 +1104,25 @@
 }
 
 @media (max-width: 768px) {
-  .dashboard-center--tests-hub .tests-mode-bar {
-    margin-top: 10px;
-    margin-bottom: 0;
+  .dashboard-center--tests-hub .tests-mode-title-row {
+    margin: 0 var(--mobile-hub-pad-x, 16px) 12px;
+  }
+
+  .dashboard-center--tests-hub .tests-mode-header-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dashboard-center--tests-hub .tests-mode-header-btn .material-symbols-outlined {
+    font-size: 1.1rem;
   }
 
   .dashboard-center--tests-hub .cw-page-content {
     padding-top: 14px;
   }
 
-  .tests-mode-toggle-btn {
-    font-size: 0.78rem;
-    padding: 9px 8px;
-  }
-
-  .tests-mode-toggle-btn span {
-    display: inline;
+  .tests-mode-title-label {
+    font-size: 1rem;
   }
 
   .tests-mode-help-cards {
@@ -1160,22 +1191,18 @@
     padding: 14px 14px 12px;
   }
 
-  /* Ensure section card title row wraps nicely */
+  /* Section card title row wraps nicely */
   .tests-section-card-title-row {
     gap: 6px;
   }
 
-  /* Mode toggle: make buttons fill available space */
-  .tests-mode-toggle-btn {
-    padding: 8px 10px;
-    font-size: 0.74rem;
+  .tests-full-exam-btn--inline {
+    padding: 8px 12px;
+    font-size: 0.72rem;
   }
 
-  .tests-full-exam-btn {
-    padding: 12px 20px;
-    font-size: 0.88rem;
-    width: 100%;
-    justify-content: center;
+  .tests-full-exam-btn--inline span {
+    display: none;
   }
 }
 
@@ -1201,14 +1228,5 @@
 
   .tests-section-card-title {
     font-size: 0.95rem;
-  }
-
-  /* Stack the mode toggle buttons */
-  .tests-mode-toggle-btn span {
-    display: none;
-  }
-
-  .tests-mode-toggle-btn {
-    padding: 8px 12px;
   }
 }

@@ -110,6 +110,7 @@
       var headerTitle = 'Choose a Level';
       var headerClass = ' cw-section-header--picker cw-section-header--tests cw-section-header--duo';
       var headerStyle = ' style="--cw-header-color:#58cc02"';
+      var headerColor = '#58cc02';
       var backOnclick = '';
 
       if (isRandomTest) {
@@ -117,6 +118,7 @@
         headerTitle = 'Random Mix';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + randomMeta.headerColor + '"';
+        headerColor = randomMeta.headerColor;
         backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeExamId) {
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
@@ -125,12 +127,14 @@
         headerTitle = 'Choose a Section';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
+        headerColor = examMeta.headerColor;
         backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
         headerTitle = meta.difficulty;
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
+        headerColor = meta.headerColor;
         backOnclick = 'DashboardNav.openTests()';
       }
 
@@ -157,8 +161,9 @@
               '<div class="cw-section-header-text">' +
                 '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
               '</div>' +
+              DashboardNav._buildTestsModeHeaderToggleHtml() +
             '</div>' +
-            DashboardNav._buildTestsModeBarHtml() +
+            DashboardNav._buildTestsModeTitleRowHtml(activeExamId, headerColor) +
             '<div class="cw-page-content" id="testsCenterScroll">' +
               '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
@@ -211,9 +216,7 @@
       var hubPage = document.getElementById('testsHubPage');
       if (!hubPage) return;
 
-      document.querySelectorAll('.tests-mode-toggle-btn').forEach(function(btn) {
-        btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
-      });
+      DashboardNav._refreshTestsModeChrome();
 
       var path = window.location.pathname || '';
       var segments = path.split('/').filter(Boolean);
@@ -279,7 +282,7 @@
               '</ul>' +
             '</div>' +
           '</div>' +
-          '<p class="tests-mode-help-foot">Switch anytime with the toggle above. Your progress is saved in both modes.</p>' +
+          '<p class="tests-mode-help-foot">Switch anytime with the icons in the header. Your progress is saved in both modes.</p>' +
           '<button type="button" class="tests-mode-help-cta" onclick="DashboardNav.closeTestsModeHelp()">Got it!</button>' +
         '</div>';
 
@@ -294,27 +297,70 @@
       if (overlay) overlay.remove();
     },
 
-    _buildTestsModeBarHtml: function() {
+    _buildTestsModeHeaderToggleHtml: function() {
       var mode = AppState.currentMode || 'practice';
       var practiceActive = mode !== 'exam' ? ' active' : '';
       var examActive = mode === 'exam' ? ' active' : '';
-      return '<div class="tests-mode-bar">' +
-        '<div class="tests-mode-toggle" role="group" aria-label="Test attempt mode">' +
-          '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--practice' + practiceActive + '" data-mode="practice" onclick="DashboardNav.setTestsMode(\'practice\')">' +
-            _mi('edit_note') + '<span>Practice</span>' +
+      return '<div class="tests-mode-header-toggle" role="group" aria-label="Test attempt mode">' +
+          '<button type="button" class="tests-mode-header-btn tests-mode-header-btn--practice' + practiceActive + '" data-mode="practice" onclick="DashboardNav.setTestsMode(\'practice\')" aria-label="Practice" title="Practice">' +
+            _mi('edit_note') +
           '</button>' +
-          '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--simulation' + examActive + '" data-mode="exam" onclick="DashboardNav.setTestsMode(\'exam\')">' +
-            _mi('timer') + '<span>Simulation</span>' +
+          '<button type="button" class="tests-mode-header-btn tests-mode-header-btn--simulation' + examActive + '" data-mode="exam" onclick="DashboardNav.setTestsMode(\'exam\')" aria-label="Simulation" title="Simulation">' +
+            _mi('timer') +
+          '</button>' +
+        '</div>';
+    },
+
+    _buildTestsModeTitleRowHtml: function(examId, headerColor) {
+      var mode = AppState.currentMode || 'practice';
+      var isExamMode = mode === 'exam';
+      var label = isExamMode ? 'Simulation' : 'Practice';
+      var icon = isExamMode ? 'timer' : 'edit_note';
+      var rowStyle = headerColor ? ' style="--cw-header-color:' + headerColor + '"' : '';
+      var fullExamBtn = (isExamMode && examId && examId !== 'Random')
+        ? '<button type="button" class="tests-full-exam-btn tests-full-exam-btn--inline" onclick="Exercise.startFullExam(\'' + examId + '\')">' +
+            _mi('play_circle') + '<span>Start Full Exam</span>' +
+          '</button>'
+        : '';
+      return '<div class="tests-mode-title-row"' + rowStyle + '>' +
+        '<div class="tests-mode-title-row-left">' +
+          '<span class="material-symbols-outlined tests-mode-title-icon" aria-hidden="true">' + icon + '</span>' +
+          '<h2 class="tests-mode-title-label">' + label + '</h2>' +
+          '<button type="button" class="tests-mode-help-btn tests-mode-help-btn--inline" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
+            _mi('help') +
           '</button>' +
         '</div>' +
-        '<button type="button" class="tests-mode-help-btn" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
-          _mi('help') +
-        '</button>' +
+        fullExamBtn +
       '</div>';
     },
 
-    _buildTestsModeToggleHtml: function() {
-      return DashboardNav._buildTestsModeBarHtml();
+    _refreshTestsModeChrome: function(examId) {
+      var mode = AppState.currentMode || 'practice';
+      document.querySelectorAll('.tests-mode-header-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+      });
+
+      if (examId === undefined) {
+        var path = window.location.pathname || '';
+        var segments = path.split('/').filter(Boolean);
+        examId = null;
+        if (segments[0] === 'tests' && segments.length >= 3) {
+          var levelIdx = 1;
+          if (segments[1] === 'practice' || segments[1] === 'simulation') levelIdx = 2;
+          if (segments[levelIdx + 1] && /^test-\d+$/i.test(segments[levelIdx + 1])) {
+            examId = segments[levelIdx + 1].replace('test-', 'Test');
+          }
+        }
+      }
+
+      var titleRow = document.querySelector('.tests-mode-title-row');
+      if (titleRow) {
+        var header = document.querySelector('.cw-section-header--tests');
+        var headerColor = header
+          ? getComputedStyle(header).getPropertyValue('--cw-header-color').trim()
+          : '';
+        titleRow.outerHTML = DashboardNav._buildTestsModeTitleRowHtml(examId, headerColor || null);
+      }
     },
 
     _buildTestsLevelCardsHtml: function() {
@@ -567,15 +613,7 @@
       var isB1 = levelId === 'B1';
       var readingLabel = isB1 ? 'READING' : 'READING & UOE';
 
-      var html = '<div class="tests-section-cards">';
-
-      if (isExamMode) {
-        html += '<button type="button" class="tests-full-exam-btn" onclick="Exercise.startFullExam(\'' + exam.id + '\')">' +
-          _mi('play_circle') + '<span>Start Full Exam</span>' +
-        '</button>';
-      }
-
-      html += '<div class="tests-section-cards-grid">';
+      var html = '<div class="tests-section-cards"><div class="tests-section-cards-grid">';
 
       SECTION_KEYS.forEach(function(sectionKey) {
         var section = exam.sections && exam.sections[sectionKey];
