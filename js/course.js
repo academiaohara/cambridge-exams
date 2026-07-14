@@ -106,7 +106,9 @@
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var SECTION_META = DashboardNav._courseSectionMeta();
       var meta = SECTION_META[sectionId] || SECTION_META.learning;
-      var title = sectionId === 'learning' ? 'Learning Path' : (meta.label + ' Path');
+      var title = sectionId === 'learning'
+        ? 'Learning Path'
+        : (sectionId === 'vocabulary' ? meta.label : (meta.label + ' Path'));
       return '<div class="cw-section-header cw-section-header--duo cw-section-header--level" style="--cw-header-color:' + meta.headerColor + '">' +
         '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' +
           _mi('arrow_back') +
@@ -2144,50 +2146,30 @@
       return DashboardNav._buildCourseEtapaCardsHtml(section, levelId);
     },
 
-    _renderCourseVocabFastCard: function(opts) {
+    _renderCourseVocabDuoCard: function(opts) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var color = opts.color || '#10b981';
-      return '<button type="button" class="course-section-card" style="--course-card-color:' + color + '" onclick="' + opts.onclick + '">' +
-        '<span class="course-section-card-icon">' + _mi(opts.icon) + '</span>' +
-        '<span class="course-section-card-body">' +
-          '<span class="course-section-card-title">' + self._escapeHTML(opts.title) + '</span>' +
-          '<span class="course-section-card-desc">' + self._escapeHTML(opts.desc) + '</span>' +
-        '</span>' +
-      '</button>';
-    },
-
-    _renderCourseVocabCategoryCard: function(opts) {
-      var self = this;
-      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      var cat = opts.cat;
-      var pct = opts.pct || 0;
-      var totalPoints = opts.totalPoints || 0;
-      var done = pct >= 100;
-      var openOnclick = 'FastExercises.openCategory(\'' + cat.id + '\')';
-      var scopeLabel = totalPoints > 0 ? (totalPoints + ' items · B1 to C1') : 'B1 to C1';
-
-      var cardClass = 'course-etapa-card';
-      if (done) cardClass += ' course-etapa-card--done';
-      else cardClass += ' course-etapa-card--available';
-      cardClass += ' course-etapa-card--interactive';
-
-      var html = '<div class="' + cardClass + '" onclick="' + openOnclick + '" role="button" tabindex="0">';
-      html += '<div class="course-etapa-card-main">';
-      html += '<div class="course-etapa-card-details">' + scopeLabel + ' · VIEW DETAILS</div>';
-      html += '<div class="course-etapa-card-title-row">';
-      html += '<div class="course-etapa-card-title">' + self._escapeHTML(cat.name) + '</div>';
-      if (done) {
-        html += '<div class="course-etapa-card-status">' + _mi('check_circle') + ' COMPLETED!</div>';
-      } else if (pct > 0) {
-        html += '<div class="course-etapa-progress"><div class="course-etapa-progress-fill" style="width:' + Math.max(pct, 8) + '%">' + pct + '%</div></div>';
+      var statusText = opts.status || opts.desc || '';
+      var statusClass = opts.statusClass || '';
+      if (!statusClass && opts.pct >= 100) statusClass = 'mode-card-status-done';
+      if (!statusText && opts.pct > 0) {
+        statusText = opts.pct >= 100 ? 'Completed!' : opts.pct + '% complete';
       }
-      html += '</div>';
-      if (!done) {
-        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(cat.desc) + '</div>';
-      }
-      html += '</div></div>';
-      return html;
+
+      return '<div class="mode-card course-vocab-duo-card" onclick="' + opts.onclick + '" role="button" tabindex="0">' +
+        '<div class="mode-card-body">' +
+          '<div class="mode-card-title-row">' +
+            '<span class="mode-card-title">' + self._escapeHTML(opts.title) + '</span>' +
+            (opts.badge ? '<span class="mode-card-super">' + self._escapeHTML(opts.badge) + '</span>' : '') +
+          '</div>' +
+          '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
+        '</div>' +
+        '<div class="mode-card-icon-wrap">' +
+          '<div class="mode-card-icon" style="color:' + color + '">' + _mi(opts.icon) + '</div>' +
+          (opts.notification ? '<span class="mode-card-icon-badge">' + self._escapeHTML(String(opts.notification)) + '</span>' : '') +
+        '</div>' +
+      '</div>';
     },
 
     _buildCourseVocabCategoryCardsHtml: async function(options) {
@@ -2211,32 +2193,54 @@
         catData.push({ cat: cat, pct: pct, totalPoints: totalPoints });
       }
 
-      var html = '<div class="course-vocab-hub course-vocab-categories--main">';
-      html += '<p class="course-vocab-section-heading">Vocabulary path</p>';
-      html += '<div class="course-etapas-page course-etapas-page--unified" data-section="vocabulary">';
+      var html = '<div class="course-vocab-hub course-vocab-hub--duo">';
+      html += '<p class="course-vocab-section-heading">Your collections</p>';
+      html += '<div class="course-vocab-duo-cards">';
       for (var j = 0; j < catData.length; j++) {
-        html += DashboardNav._renderCourseVocabCategoryCard({
-          cat: catData[j].cat,
-          pct: catData[j].pct,
-          totalPoints: catData[j].totalPoints
+        var cd = catData[j];
+        var scopeLabel = cd.totalPoints > 0
+          ? cd.totalPoints + ' items · B1 to C1'
+          : 'B1 to C1';
+        html += DashboardNav._renderCourseVocabDuoCard({
+          title: cd.cat.name,
+          desc: cd.cat.desc,
+          status: cd.pct >= 100 ? 'Completed!' : (cd.pct > 0 ? cd.pct + '% complete · ' + scopeLabel : scopeLabel),
+          pct: cd.pct,
+          icon: cd.cat.icon,
+          color: cd.cat.color,
+          onclick: 'FastExercises.openCategory(\'' + cd.cat.id + '\')'
         });
       }
       html += '</div>';
       html += '<p class="course-vocab-section-heading">Fast vocabulary</p>';
-      html += '<div class="course-vocab-mode-cards">';
-      html += DashboardNav._renderCourseVocabFastCard({
-        icon: 'menu_book',
-        title: 'Vocabulary dictionary',
-        desc: 'Browse words, definitions and examples',
+      html += '<div class="course-vocab-duo-cards">';
+      html += DashboardNav._renderCourseVocabDuoCard({
+        icon: 'library_books',
+        title: 'Vocabulary',
+        desc: 'Boost your word knowledge with quick quizzes',
         color: '#10b981',
-        onclick: 'FastExercises._showVocabDictionary()'
-      });
-      html += DashboardNav._renderCourseVocabFastCard({
-        icon: 'school',
-        title: 'Practice mode',
-        desc: 'Multiple-choice quiz from the dictionary',
-        color: '#0ea5e9',
         onclick: 'FastExercises._showVocabDictionary({ startPractice: true })'
+      });
+      html += DashboardNav._renderCourseVocabDuoCard({
+        icon: 'record_voice_over',
+        title: 'Idioms',
+        desc: 'Practise idiomatic expressions in context',
+        color: '#f59e0b',
+        onclick: 'FastExercises._showIdDictionary({ startPractice: true })'
+      });
+      html += DashboardNav._renderCourseVocabDuoCard({
+        icon: 'auto_stories',
+        title: 'Phrasal Verbs',
+        desc: 'Master common phrasal verbs with MCQ drills',
+        color: '#3b82f6',
+        onclick: 'FastExercises._showPvDictionary({ startPractice: true })'
+      });
+      html += DashboardNav._renderCourseVocabDuoCard({
+        icon: 'sync',
+        title: 'Irregular Verbs',
+        desc: 'Type past forms and build your verb memory',
+        color: '#8b5cf6',
+        onclick: 'FastExercises._showIrregularVerbsDictionary({ startPractice: true })'
       });
       html += '</div></div>';
       return html;
