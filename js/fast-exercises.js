@@ -6416,15 +6416,9 @@
         '</button>';
       }).join('');
 
-      var speakBtn = '';
-      if (config.speakField && q.term) {
-        speakBtn =
-          '<div class="dict-mcq-speak-center">' +
-            '<button class="dict-speak-btn dict-mcq-speak-btn" onclick="FastExercises._speakWord(\'' + this._jsStr(q.term) + '\')" title="Listen" aria-label="Listen to pronunciation">' +
-              '<span class="material-symbols-outlined">volume_up</span>' +
-            '</button>' +
-          '</div>';
-      }
+      var termHtml = (config.speakField && q.term)
+        ? this._dictDuoTtsWord(q.term, 'dict-mcq-term')
+        : '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>';
 
       bodyEl.innerHTML =
         '<div class="dict-mcq-session dict-mcq-session--duo">' +
@@ -6432,11 +6426,10 @@
           '<div class="dict-mcq-duo-body" id="dict-mcq-duo-body">' +
             '<div class="dict-mcq-prompt dict-mcq-prompt--duo">' +
               '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
-              '<div class="dict-mcq-term-block">' +
-                '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>' +
+              '<div class="dict-mcq-term-row">' +
+                termHtml +
                 (q.level ? '<span class="dict-mcq-level">' + this._escapeHTML(q.level) + '</span>' : '') +
               '</div>' +
-              speakBtn +
               (q.subtitle ? '<div class="dict-mcq-subtitle">' + q.subtitle + '</div>' : '') +
             '</div>' +
             '<div class="dict-mcq-options dict-mcq-options--duo" id="dict-mcq-options">' + optionsHtml + '</div>' +
