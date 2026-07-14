@@ -5086,12 +5086,10 @@
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
-          '<div class="wf-dict-search-row">' +
-            '<span class="wf-dict-search-icon">' + _mi('search') + '</span>' +
+            '<div class="wf-dict-search-row">' +
             '<input type="text" class="wf-dict-search" id="wf-dict-search" placeholder="Search root word or derived form…" oninput="FastExercises._filterWfDict(this.value)" />' +
             '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
-              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
-              '<select class="wf-dict-level-filter" id="wf-dict-level" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
+              '<select class="wf-dict-level-filter dict-duo-level-select" id="wf-dict-level" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
                 '<option value="">All Levels</option>' +
                 '<option value="B1">B1</option>' +
                 '<option value="B2">B2</option>' +
@@ -5099,8 +5097,7 @@
               '</select>' +
             '</label>' +
             '<label class="dict-filter-wrap dict-filter-wrap--type" title="Word type">' +
-              '<span class="material-symbols-outlined dict-filter-wrap-icon">bookmark</span>' +
-              '<select class="wf-dict-type-filter" id="wf-dict-type-filter" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
+              '<select class="wf-dict-type-filter dict-duo-level-select" id="wf-dict-type-filter" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
                 '<option value="">All Types</option>' +
                 '<option value="noun">Noun</option>' +
                 '<option value="verb">Verb</option>' +
@@ -5209,9 +5206,7 @@
         });
         html +=
           '<div class="wf-dict-entry">' +
-            '<div class="wf-dict-base">' + self._escapeHTML(base) +
-              self._dictDuoFavBtnHtml('wf', base) +
-            '</div>' +
+            '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
           '</div>';
       });
@@ -5441,12 +5436,10 @@
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
-          '<div class="colloc-dict-search-row">' +
-            '<span class="colloc-dict-search-icon">' + _mi('search') + '</span>' +
+            '<div class="colloc-dict-search-row">' +
             '<input type="text" class="colloc-dict-search" id="colloc-dict-search" placeholder="Search word or phrase…" oninput="FastExercises._filterCollocDict(this.value)" />' +
             '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
-              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
-              '<select class="colloc-dict-level-filter" id="colloc-dict-level" onchange="FastExercises._filterCollocDict(document.getElementById(\'colloc-dict-search\').value)">' +
+              '<select class="colloc-dict-level-filter dict-duo-level-select" id="colloc-dict-level" onchange="FastExercises._filterCollocDict(document.getElementById(\'colloc-dict-search\').value)">' +
                 '<option value="">All Levels</option>' +
                 '<option value="A1">A1</option>' +
                 '<option value="A2">A2</option>' +
@@ -5539,9 +5532,7 @@
         });
         html +=
           '<div class="colloc-dict-entry">' +
-            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) +
-              self._dictDuoFavBtnHtml('colloc', group[0].word) +
-            '</div>' +
+            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) + '</div>' +
             '<div class="colloc-dict-forms">' + phrasesHtml + '</div>' +
           '</div>';
       });
@@ -5576,11 +5567,9 @@
             '</button>' +
           '</div>' +
           '<div class="pv-dict-search-row">' +
-            '<span class="pv-dict-search-icon">' + _mi('search') + '</span>' +
             '<input type="text" class="pv-dict-search" id="pv-dict-search" placeholder="Search phrasal verb or keyword…" oninput="FastExercises._filterPvDict(this.value)" />' +
             '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
-              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
-              '<select class="pv-dict-level-filter" id="pv-dict-level" onchange="FastExercises._filterPvDict(document.getElementById(\'pv-dict-search\').value)">' +
+              '<select class="pv-dict-level-filter dict-duo-level-select" id="pv-dict-level" onchange="FastExercises._filterPvDict(document.getElementById(\'pv-dict-search\').value)">' +
                 '<option value="">All Levels</option>' +
                 '<option value="B1">B1</option>' +
                 '<option value="B2">B2</option>' +
@@ -5675,9 +5664,7 @@
         });
         html +=
           '<div class="pv-dict-entry">' +
-            '<div class="pv-dict-base">' + self._escapeHTML(mainVerb) +
-              self._dictDuoFavBtnHtml('pv', mainVerb) +
-            '</div>' +
+            '<div class="pv-dict-base">' + self._escapeHTML(mainVerb) + '</div>' +
             '<div class="pv-dict-forms">' + verbsHtml + '</div>' +
           '</div>';
       });
@@ -5705,7 +5692,6 @@
             '</button>' +
           '</div>' +
           '<div class="gd-dict-search-row">' +
-            '<span class="gd-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
             '<input type="text" class="gd-dict-search" id="gd-dict-search" placeholder="Type a word or phrasal verb…" />' +
             '<button class="gd-dict-search-btn" onclick="FastExercises._searchGeneralDict(document.getElementById(\'gd-dict-search\').value)">Search</button>' +
           '</div>' +
@@ -5864,11 +5850,9 @@
             '</button>' +
           '</div>' +
           '<div class="id-dict-search-row">' +
-            '<span class="id-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
             '<input type="text" class="id-dict-search" id="id-dict-search" placeholder="Search idiom or keyword…" oninput="FastExercises._filterIdDict(this.value)" />' +
             '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
-              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
-              '<select class="id-dict-level-filter" id="id-dict-level" onchange="FastExercises._filterIdDict(document.getElementById(\'id-dict-search\').value)">' +
+              '<select class="id-dict-level-filter dict-duo-level-select" id="id-dict-level" onchange="FastExercises._filterIdDict(document.getElementById(\'id-dict-search\').value)">' +
                 '<option value="">All Levels</option>' +
                 '<option value="B1">B1</option>' +
                 '<option value="B2">B2</option>' +
@@ -5931,7 +5915,6 @@
             '<div class="id-dict-idiom-row">' +
               '<span class="id-dict-idiom">' + self._escapeHTML(e.idiom) + '</span>' +
               '<span class="id-dict-level-badge id-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
-              self._dictDuoFavBtnHtml('idioms', e.idiom) +
               '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.idiom) + '\')" title="Listen to pronunciation">' +
                 '<span class="material-symbols-outlined">volume_up</span>' +
               '</button>' +
@@ -5947,35 +5930,6 @@
     _dictMcqPractice: null,
     _dictDuoMaxHearts: 5,
     _dictDuoXpPerCorrect: 10,
-
-    _dictDuoFavKey: function(dictId, term) {
-      return 'sune-dict-fav:' + dictId + ':' + (term || '').toLowerCase().trim();
-    },
-
-    _dictDuoIsFav: function(dictId, term) {
-      try { return localStorage.getItem(this._dictDuoFavKey(dictId, term)) === '1'; } catch (e) { return false; }
-    },
-
-    _dictDuoToggleFav: function(dictId, term, btn) {
-      try {
-        var key = this._dictDuoFavKey(dictId, term);
-        var next = localStorage.getItem(key) !== '1';
-        if (next) localStorage.setItem(key, '1');
-        else localStorage.removeItem(key);
-        if (btn) {
-          btn.classList.toggle('is-fav', next);
-          btn.setAttribute('aria-pressed', next ? 'true' : 'false');
-        }
-      } catch (e) {}
-    },
-
-    _dictDuoFavBtnHtml: function(dictId, term) {
-      var isFav = this._dictDuoIsFav(dictId, term);
-      return '<button type="button" class="dict-duo-fav-btn' + (isFav ? ' is-fav' : '') + '" ' +
-        'aria-pressed="' + (isFav ? 'true' : 'false') + '" aria-label="Save to favorites" ' +
-        'onclick="FastExercises._dictDuoToggleFav(\'' + dictId + '\', \'' + this._jsStr(term) + '\', this)">' +
-        '<span class="material-symbols-outlined">star</span></button>';
-    },
 
     _dictDuoRenderHearts: function(current, max) {
       max = max || this._dictDuoMaxHearts;
@@ -6075,21 +6029,24 @@
         description: '3 options · A2–B1 words',
         optionCount: 3,
         levels: ['A1', 'A2', 'B1'],
-        sameLevelDistractors: false
+        sameLevelDistractors: false,
+        emoji: '🌱'
       },
       medium: {
         label: 'Medium',
-        description: '4 options · all levels',
-        optionCount: 4,
+        description: '3 options · all levels',
+        optionCount: 3,
         levels: null,
-        sameLevelDistractors: true
+        sameLevelDistractors: true,
+        emoji: '🌿'
       },
       hard: {
         label: 'Hard',
-        description: '5 options · B2–C1 words',
-        optionCount: 5,
+        description: '3 options · B2–C1 words',
+        optionCount: 3,
         levels: ['B2', 'C1'],
-        sameLevelDistractors: true
+        sameLevelDistractors: true,
+        emoji: '🔥'
       }
     },
 
@@ -6256,11 +6213,18 @@
       if (btn) {
         if (inPractice) {
           btn.setAttribute('aria-label', 'Back to dictionary');
-          btn.innerHTML = _backButtonContent('Dictionary');
+          btn.textContent = 'Dictionary';
+          btn.classList.add('dict-mcq-practice-btn--back');
         } else {
           btn.setAttribute('aria-label', 'Practice mode');
           btn.textContent = 'Practice mode';
+          btn.classList.remove('dict-mcq-practice-btn--back');
         }
+      }
+      if (modal) {
+        modal.classList.toggle('dict-duo-practice-active', inPractice);
+        var box = modal.querySelector('[class*="-dict-box"]');
+        if (box) box.classList.toggle('dict-duo--practice-active', inPractice);
       }
       if (searchRow) searchRow.style.display = inPractice ? 'none' : '';
       if (count) count.style.display = inPractice ? 'none' : '';
@@ -6277,7 +6241,7 @@
                (e[config.termField] || '').trim().length > 0;
       });
 
-      if (entries.length < 4) {
+      if (entries.length < 3) {
         bodyEl.innerHTML =
           '<div class="dict-mcq-empty">' +
             '<span class="material-symbols-outlined">info</span>' +
@@ -6291,6 +6255,7 @@
         var d = self._dictMcqDifficultySettings[key];
         diffHtml +=
           '<button type="button" class="dict-mcq-diff-btn" data-diff="' + key + '" onclick="FastExercises._selectDictMcqDifficulty(\'' + dictId + '\', \'' + key + '\')">' +
+            '<span class="dict-mcq-diff-emoji" aria-hidden="true">' + (d.emoji || '') + '</span>' +
             '<span class="dict-mcq-diff-label">' + d.label + '</span>' +
             '<span class="dict-mcq-diff-desc">' + d.description + '</span>' +
           '</button>';
@@ -6429,9 +6394,11 @@
       var speakBtn = '';
       if (config.speakField && q.term) {
         speakBtn =
-          '<button class="dict-speak-btn dict-mcq-speak-btn" onclick="FastExercises._speakWord(\'' + this._jsStr(q.term) + '\')" title="Listen">' +
-            '<span class="material-symbols-outlined">volume_up</span>' +
-          '</button>';
+          '<div class="dict-mcq-speak-center">' +
+            '<button class="dict-speak-btn dict-mcq-speak-btn" onclick="FastExercises._speakWord(\'' + this._jsStr(q.term) + '\')" title="Listen" aria-label="Listen to pronunciation">' +
+              '<span class="material-symbols-outlined">volume_up</span>' +
+            '</button>' +
+          '</div>';
       }
 
       bodyEl.innerHTML =
@@ -6440,11 +6407,11 @@
           '<div class="dict-mcq-duo-body" id="dict-mcq-duo-body">' +
             '<div class="dict-mcq-prompt dict-mcq-prompt--duo">' +
               '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
-              '<div class="dict-mcq-term-row">' +
+              '<div class="dict-mcq-term-block">' +
                 '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>' +
-                speakBtn +
                 (q.level ? '<span class="dict-mcq-level">' + this._escapeHTML(q.level) + '</span>' : '') +
               '</div>' +
+              speakBtn +
               (q.subtitle ? '<div class="dict-mcq-subtitle">' + q.subtitle + '</div>' : '') +
             '</div>' +
             '<div class="dict-mcq-options dict-mcq-options--duo" id="dict-mcq-options">' + optionsHtml + '</div>' +
@@ -6626,8 +6593,7 @@
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
-          '<div class="irv-dict-search-row" id="irv-dict-search-row">' +
-            '<span class="irv-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
+            '<div class="irv-dict-search-row" id="irv-dict-search-row">' +
             '<input type="text" class="irv-dict-search" id="irv-dict-search" placeholder="Search infinitive or form…" oninput="FastExercises._filterIrvDict(this.value)" />' +
           '</div>' +
           '<div class="irv-dict-count" id="irv-dict-count">' + entries.length + ' entries</div>' +
@@ -6718,6 +6684,7 @@
         if (btn) {
           btn.setAttribute('aria-label', 'Practice mode');
           btn.textContent = 'Practice mode';
+          btn.classList.remove('dict-mcq-practice-btn--back');
         }
         if (searchRow) searchRow.style.display = '';
         if (count) count.style.display = '';
@@ -6756,7 +6723,8 @@
       var count = document.getElementById('irv-dict-count');
       if (btn) {
         btn.setAttribute('aria-label', 'Back to dictionary');
-        btn.innerHTML = _backButtonContent('Dictionary');
+        btn.textContent = 'Dictionary';
+        btn.classList.add('dict-mcq-practice-btn--back');
       }
       if (searchRow) searchRow.style.display = 'none';
       if (count) count.style.display = 'none';
@@ -6978,11 +6946,9 @@
             '</button>' +
           '</div>' +
           '<div class="vocab-dict-search-row">' +
-            '<span class="vocab-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
             '<input type="text" class="vocab-dict-search" id="vocab-dict-search" placeholder="Search word or definition…" oninput="FastExercises._filterVocabDict(this.value)" />' +
             '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
-              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
-              '<select class="vocab-dict-level-filter" id="vocab-dict-level" onchange="FastExercises._filterVocabDict(document.getElementById(\'vocab-dict-search\').value)">' +
+              '<select class="vocab-dict-level-filter dict-duo-level-select" id="vocab-dict-level" onchange="FastExercises._filterVocabDict(document.getElementById(\'vocab-dict-search\').value)">' +
                 '<option value="">All Levels</option>' +
                 '<option value="A2">A2</option>' +
                 '<option value="B1">B1</option>' +
@@ -7068,11 +7034,12 @@
         html +=
           '<div class="vocab-dict-entry">' +
             '<div class="vocab-dict-base">' +
-              self._escapeHTML(baseWord) +
-              self._dictDuoFavBtnHtml('vocab', baseWord) +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(baseWord) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>' +
+              '<span class="vocab-dict-word">' + self._escapeHTML(baseWord) + '</span>' +
+              '<div class="dict-duo-speak-center">' +
+                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(baseWord) + '\')" title="Listen to pronunciation" aria-label="Listen to pronunciation">' +
+                  '<span class="material-symbols-outlined">volume_up</span>' +
+                '</button>' +
+              '</div>' +
             '</div>' +
             '<div class="vocab-dict-forms">' + formsHtml + '</div>' +
           '</div>';
