@@ -2144,6 +2144,19 @@
       return DashboardNav._buildCourseEtapaCardsHtml(section, levelId);
     },
 
+    _renderCourseVocabFastCard: function(opts) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var color = opts.color || '#10b981';
+      return '<button type="button" class="course-section-card" style="--course-card-color:' + color + '" onclick="' + opts.onclick + '">' +
+        '<span class="course-section-card-icon">' + _mi(opts.icon) + '</span>' +
+        '<span class="course-section-card-body">' +
+          '<span class="course-section-card-title">' + self._escapeHTML(opts.title) + '</span>' +
+          '<span class="course-section-card-desc">' + self._escapeHTML(opts.desc) + '</span>' +
+        '</span>' +
+      '</button>';
+    },
+
     _renderCourseVocabCategoryCard: function(opts) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
@@ -2198,7 +2211,9 @@
         catData.push({ cat: cat, pct: pct, totalPoints: totalPoints });
       }
 
-      var html = '<div class="course-etapas-page course-etapas-page--unified" data-section="vocabulary">';
+      var html = '<div class="course-vocab-hub course-vocab-categories--main">';
+      html += '<p class="course-vocab-section-heading">Vocabulary path</p>';
+      html += '<div class="course-etapas-page course-etapas-page--unified" data-section="vocabulary">';
       for (var j = 0; j < catData.length; j++) {
         html += DashboardNav._renderCourseVocabCategoryCard({
           cat: catData[j].cat,
@@ -2207,6 +2222,23 @@
         });
       }
       html += '</div>';
+      html += '<p class="course-vocab-section-heading">Fast vocabulary</p>';
+      html += '<div class="course-vocab-mode-cards">';
+      html += DashboardNav._renderCourseVocabFastCard({
+        icon: 'menu_book',
+        title: 'Vocabulary dictionary',
+        desc: 'Browse words, definitions and examples',
+        color: '#10b981',
+        onclick: 'FastExercises._showVocabDictionary()'
+      });
+      html += DashboardNav._renderCourseVocabFastCard({
+        icon: 'school',
+        title: 'Practice mode',
+        desc: 'Multiple-choice quiz from the dictionary',
+        color: '#0ea5e9',
+        onclick: 'FastExercises._showVocabDictionary({ startPractice: true })'
+      });
+      html += '</div></div>';
       return html;
     },
 

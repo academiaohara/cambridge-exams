@@ -6331,6 +6331,18 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   margin-right: auto;
 }
 
+.course-vocab-section-heading {
+  margin: 0 0 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2d2e5f;
+}
+
+.course-vocab-hub .course-vocab-section-heading:not(:first-child) {
+  margin-top: 28px;
+}
+
 .course-vocab-mode-cards {
   display: flex;
   flex-direction: column;
