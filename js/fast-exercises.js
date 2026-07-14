@@ -5077,7 +5077,7 @@
       modal.id = 'wf-dict-modal';
       modal.className = 'wf-dict-overlay';
       modal.innerHTML =
-        '<div class="wf-dict-box">' +
+        '<div class="wf-dict-box dict-duo">' +
           '<div class="wf-dict-header">' +
             '<span class="wf-dict-icon">' + _mi('menu_book') + '</span>' +
             '<h2 class="wf-dict-title">Word Formation Dictionary</h2>' +
@@ -5209,7 +5209,9 @@
         });
         html +=
           '<div class="wf-dict-entry">' +
-            '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
+            '<div class="wf-dict-base">' + self._escapeHTML(base) +
+              self._dictDuoFavBtnHtml('wf', base) +
+            '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
           '</div>';
       });
@@ -5430,7 +5432,7 @@
       modal.id = 'colloc-dict-modal';
       modal.className = 'colloc-dict-overlay';
       modal.innerHTML =
-        '<div class="colloc-dict-box">' +
+        '<div class="colloc-dict-box dict-duo">' +
           '<div class="colloc-dict-header">' +
             '<span class="colloc-dict-icon">' + _mi('menu_book') + '</span>' +
             '<h2 class="colloc-dict-title">Collocations Dictionary</h2>' +
@@ -5537,7 +5539,9 @@
         });
         html +=
           '<div class="colloc-dict-entry">' +
-            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) + '</div>' +
+            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) +
+              self._dictDuoFavBtnHtml('colloc', group[0].word) +
+            '</div>' +
             '<div class="colloc-dict-forms">' + phrasesHtml + '</div>' +
           '</div>';
       });
@@ -5562,7 +5566,7 @@
       modal.id = 'pv-dict-modal';
       modal.className = 'pv-dict-overlay';
       modal.innerHTML =
-        '<div class="pv-dict-box">' +
+        '<div class="pv-dict-box dict-duo">' +
           '<div class="pv-dict-header">' +
             '<span class="pv-dict-icon">' + _mi('menu_book') + '</span>' +
             '<h2 class="pv-dict-title">Phrasal Verbs Dictionary</h2>' +
@@ -5671,7 +5675,9 @@
         });
         html +=
           '<div class="pv-dict-entry">' +
-            '<div class="pv-dict-base">' + self._escapeHTML(mainVerb) + '</div>' +
+            '<div class="pv-dict-base">' + self._escapeHTML(mainVerb) +
+              self._dictDuoFavBtnHtml('pv', mainVerb) +
+            '</div>' +
             '<div class="pv-dict-forms">' + verbsHtml + '</div>' +
           '</div>';
       });
@@ -5690,7 +5696,7 @@
       modal.id = 'gd-dict-modal';
       modal.className = 'gd-dict-overlay';
       modal.innerHTML =
-        '<div class="gd-dict-box">' +
+        '<div class="gd-dict-box dict-duo">' +
           '<div class="gd-dict-header">' +
             '<span class="gd-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
             '<h2 class="gd-dict-title">General Dictionary</h2>' +
@@ -5849,7 +5855,7 @@
       modal.id = 'id-dict-modal';
       modal.className = 'id-dict-overlay';
       modal.innerHTML =
-        '<div class="id-dict-box">' +
+        '<div class="id-dict-box dict-duo">' +
           '<div class="id-dict-header">' +
             '<span class="id-dict-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
             '<button class="dict-mcq-practice-btn" id="id-dict-practice-btn" onclick="FastExercises._toggleDictMcqPractice(\'idioms\')">Practice mode</button>' +
@@ -5925,6 +5931,7 @@
             '<div class="id-dict-idiom-row">' +
               '<span class="id-dict-idiom">' + self._escapeHTML(e.idiom) + '</span>' +
               '<span class="id-dict-level-badge id-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+              self._dictDuoFavBtnHtml('idioms', e.idiom) +
               '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.idiom) + '\')" title="Listen to pronunciation">' +
                 '<span class="material-symbols-outlined">volume_up</span>' +
               '</button>' +
@@ -5938,6 +5945,129 @@
 
     // ── DICTIONARY MCQ PRACTICE (shared) ─────────────────────────────────
     _dictMcqPractice: null,
+    _dictDuoMaxHearts: 5,
+    _dictDuoXpPerCorrect: 10,
+
+    _dictDuoFavKey: function(dictId, term) {
+      return 'sune-dict-fav:' + dictId + ':' + (term || '').toLowerCase().trim();
+    },
+
+    _dictDuoIsFav: function(dictId, term) {
+      try { return localStorage.getItem(this._dictDuoFavKey(dictId, term)) === '1'; } catch (e) { return false; }
+    },
+
+    _dictDuoToggleFav: function(dictId, term, btn) {
+      try {
+        var key = this._dictDuoFavKey(dictId, term);
+        var next = localStorage.getItem(key) !== '1';
+        if (next) localStorage.setItem(key, '1');
+        else localStorage.removeItem(key);
+        if (btn) {
+          btn.classList.toggle('is-fav', next);
+          btn.setAttribute('aria-pressed', next ? 'true' : 'false');
+        }
+      } catch (e) {}
+    },
+
+    _dictDuoFavBtnHtml: function(dictId, term) {
+      var isFav = this._dictDuoIsFav(dictId, term);
+      return '<button type="button" class="dict-duo-fav-btn' + (isFav ? ' is-fav' : '') + '" ' +
+        'aria-pressed="' + (isFav ? 'true' : 'false') + '" aria-label="Save to favorites" ' +
+        'onclick="FastExercises._dictDuoToggleFav(\'' + dictId + '\', \'' + this._jsStr(term) + '\', this)">' +
+        '<span class="material-symbols-outlined">star</span></button>';
+    },
+
+    _dictDuoRenderHearts: function(current, max) {
+      max = max || this._dictDuoMaxHearts;
+      var html = '<div class="dict-mcq-duo-hearts" aria-label="' + current + ' lives remaining">';
+      for (var i = 0; i < max; i++) {
+        var filled = i < current;
+        html += '<span class="dict-mcq-duo-heart' + (filled ? '' : ' dict-mcq-duo-heart--empty') + '">' +
+          '<span class="material-symbols-outlined">favorite</span></span>';
+      }
+      return html + '</div>';
+    },
+
+    _dictDuoRenderHeader: function(state) {
+      var total = state.questions.length;
+      var done = state.questionIndex + (state.answered ? 1 : 0);
+      var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+      var streakCls = state.sessionStreak > 0 ? '' : ' dict-mcq-duo-streak--cold';
+      return '<header class="dict-mcq-duo-header">' +
+        '<div class="dict-mcq-duo-streak' + streakCls + '">' +
+          '<span class="dict-mcq-duo-streak-icon" aria-hidden="true">🔥</span>' +
+          '<span class="dict-mcq-duo-streak-count">' + (state.sessionStreak || 0) + '</span>' +
+        '</div>' +
+        '<div class="dict-mcq-duo-progress-wrap">' +
+          '<div class="dict-mcq-duo-progress-track">' +
+            '<div class="dict-mcq-duo-progress-fill" style="width:' + pct + '%"></div>' +
+          '</div>' +
+        '</div>' +
+        this._dictDuoRenderHearts(state.hearts, state.maxHearts) +
+      '</header>';
+    },
+
+    _dictDuoUpdateHeader: function(state) {
+      var header = document.querySelector('.dict-mcq-duo-header');
+      if (!header || !state) return;
+      var streakEl = header.querySelector('.dict-mcq-duo-streak');
+      var streakCount = header.querySelector('.dict-mcq-duo-streak-count');
+      if (streakCount) streakCount.textContent = String(state.sessionStreak || 0);
+      if (streakEl) {
+        streakEl.classList.toggle('dict-mcq-duo-streak--cold', !(state.sessionStreak > 0));
+      }
+      var total = state.questions.length;
+      var done = state.questionIndex + (state.answered ? 1 : 0);
+      var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+      var fill = header.querySelector('.dict-mcq-duo-progress-fill');
+      if (fill) fill.style.width = pct + '%';
+      var heartsWrap = header.querySelector('.dict-mcq-duo-hearts');
+      if (heartsWrap) {
+        heartsWrap.outerHTML = this._dictDuoRenderHearts(state.hearts, state.maxHearts);
+      }
+    },
+
+    _dictDuoPlayFeedback: function(type) {
+      try {
+        var Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        var ctx = this._dictDuoAudioCtx;
+        if (!ctx) { ctx = new Ctx(); this._dictDuoAudioCtx = ctx; }
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        if (type === 'correct') osc.frequency.value = 880;
+        else if (type === 'wrong') osc.frequency.value = 220;
+        else osc.frequency.value = 660;
+        gain.gain.value = type === 'wrong' ? 0.1 : 0.08;
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+        osc.stop(ctx.currentTime + 0.2);
+      } catch (e) {}
+    },
+
+    _dictDuoSpawnConfetti: function(container) {
+      if (!container) return;
+      var existing = container.querySelector('.dict-duo-confetti');
+      if (existing) existing.remove();
+      var wrap = document.createElement('div');
+      wrap.className = 'dict-duo-confetti';
+      wrap.setAttribute('aria-hidden', 'true');
+      var colors = ['#2D2E5F', '#1E9D8E', '#FFD28E', '#FFB8AD', '#818cf8'];
+      for (var i = 0; i < 24; i++) {
+        var p = document.createElement('span');
+        p.className = 'dict-duo-confetti-piece';
+        p.style.left = (Math.random() * 100) + '%';
+        p.style.background = colors[i % colors.length];
+        p.style.animationDelay = (Math.random() * 0.8) + 's';
+        p.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+        wrap.appendChild(p);
+      }
+      container.insertBefore(wrap, container.firstChild);
+      setTimeout(function() { if (wrap.parentNode) wrap.remove(); }, 4000);
+    },
+
 
     _dictMcqDifficultySettings: {
       easy: {
@@ -6167,9 +6297,9 @@
       });
 
       bodyEl.innerHTML =
-        '<div class="dict-mcq-setup">' +
+        '<div class="dict-mcq-setup dict-mcq-setup--duo">' +
           '<h3 class="dict-mcq-setup-title">Choose difficulty</h3>' +
-          '<p class="dict-mcq-setup-desc">Pick the correct definition for each term.</p>' +
+          '<p class="dict-mcq-setup-desc">Pick the correct definition for each term. Earn XP and keep your streak alive!</p>' +
           '<div class="dict-mcq-diff-grid">' + diffHtml + '</div>' +
         '</div>';
     },
@@ -6215,7 +6345,12 @@
         questionIndex: 0,
         answered: false,
         selectedIndex: -1,
-        correctCount: 0
+        correctCount: 0,
+        hearts: this._dictDuoMaxHearts,
+        maxHearts: this._dictDuoMaxHearts,
+        sessionStreak: 0,
+        xp: 0,
+        outOfHearts: false
       };
 
       this._renderDictMcqQuestion();
@@ -6300,26 +6435,25 @@
       }
 
       bodyEl.innerHTML =
-        '<div class="dict-mcq-session">' +
-          '<div class="dict-mcq-top">' +
-            '<div class="dict-mcq-progress">Question ' + (state.questionIndex + 1) + ' of ' + state.questions.length + '</div>' +
-            '<div class="dict-mcq-score">Score: ' + state.correctCount + '/' + state.questionIndex + '</div>' +
-          '</div>' +
-          '<div class="dict-mcq-prompt">' +
-            '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
-            '<div class="dict-mcq-term-row">' +
-              '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>' +
-              speakBtn +
-              (q.level ? '<span class="dict-mcq-level">' + this._escapeHTML(q.level) + '</span>' : '') +
+        '<div class="dict-mcq-session dict-mcq-session--duo">' +
+          this._dictDuoRenderHeader(state) +
+          '<div class="dict-mcq-duo-body" id="dict-mcq-duo-body">' +
+            '<div class="dict-mcq-prompt dict-mcq-prompt--duo">' +
+              '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
+              '<div class="dict-mcq-term-row">' +
+                '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>' +
+                speakBtn +
+                (q.level ? '<span class="dict-mcq-level">' + this._escapeHTML(q.level) + '</span>' : '') +
+              '</div>' +
+              (q.subtitle ? '<div class="dict-mcq-subtitle">' + q.subtitle + '</div>' : '') +
             '</div>' +
-            (q.subtitle ? '<div class="dict-mcq-subtitle">' + q.subtitle + '</div>' : '') +
+            '<div class="dict-mcq-options dict-mcq-options--duo" id="dict-mcq-options">' + optionsHtml + '</div>' +
+            '<div class="dict-mcq-feedback dict-mcq-feedback--duo" id="dict-mcq-feedback" aria-live="polite"></div>' +
           '</div>' +
-          '<div class="dict-mcq-options" id="dict-mcq-options">' + optionsHtml + '</div>' +
-          '<div class="dict-mcq-feedback" id="dict-mcq-feedback" aria-live="polite"></div>' +
-          '<div class="dict-mcq-actions">' +
-            '<button class="dict-mcq-btn dict-mcq-btn-primary" id="dict-mcq-next" onclick="FastExercises._nextDictMcqQuestion()" disabled>Next</button>' +
-            '<button class="dict-mcq-btn" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
-          '</div>' +
+          '<footer class="dict-mcq-duo-footer">' +
+            '<button class="dict-mcq-btn dict-mcq-btn-primary" id="dict-mcq-next" onclick="FastExercises._nextDictMcqQuestion()" disabled>Continue</button>' +
+            '<button class="dict-mcq-btn dict-mcq-btn-ghost" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
+          '</footer>' +
         '</div>';
 
       state.answered = false;
@@ -6336,7 +6470,24 @@
       state.answered = true;
       state.selectedIndex = optionIndex;
       var isCorrect = optionIndex === q.correctIndex;
-      if (isCorrect) state.correctCount++;
+      if (isCorrect) {
+        state.correctCount++;
+        state.sessionStreak = (state.sessionStreak || 0) + 1;
+        state.xp = (state.xp || 0) + this._dictDuoXpPerCorrect;
+        this._dictDuoPlayFeedback('correct');
+      } else {
+        state.sessionStreak = 0;
+        state.hearts = Math.max(0, (state.hearts || 0) - 1);
+        if (state.hearts <= 0) state.outOfHearts = true;
+        this._dictDuoPlayFeedback('wrong');
+      }
+
+      var bodyFlash = document.getElementById('dict-mcq-duo-body');
+      if (bodyFlash) {
+        bodyFlash.classList.remove('dict-mcq-duo-body--correct', 'dict-mcq-duo-body--wrong');
+        void bodyFlash.offsetWidth;
+        bodyFlash.classList.add(isCorrect ? 'dict-mcq-duo-body--correct' : 'dict-mcq-duo-body--wrong');
+      }
 
       for (var i = 0; i < q.options.length; i++) {
         var btn = document.getElementById('dict-mcq-opt-' + i);
@@ -6351,24 +6502,28 @@
 
       var feedbackEl = document.getElementById('dict-mcq-feedback');
       if (feedbackEl) {
-        feedbackEl.className = 'dict-mcq-feedback ' + (isCorrect ? 'dict-mcq-feedback-correct' : 'dict-mcq-feedback-wrong');
+        feedbackEl.className = 'dict-mcq-feedback dict-mcq-feedback--duo ' + (isCorrect ? 'dict-mcq-feedback-correct' : 'dict-mcq-feedback-wrong');
         feedbackEl.innerHTML = isCorrect
-          ? '<span class="material-symbols-outlined">check_circle</span> Correct!'
+          ? '<span class="material-symbols-outlined">check_circle</span> Correct! +' + this._dictDuoXpPerCorrect + ' XP'
           : '<span class="material-symbols-outlined">cancel</span> The correct answer was: <strong>' + this._escapeHTML(q.correctAnswer) + '</strong>';
       }
 
-      var scoreEl = document.querySelector('.dict-mcq-score');
-      if (scoreEl) {
-        scoreEl.textContent = 'Score: ' + state.correctCount + '/' + (state.questionIndex + 1);
-      }
+      this._dictDuoUpdateHeader(state);
 
       var nextBtn = document.getElementById('dict-mcq-next');
-      if (nextBtn) nextBtn.disabled = false;
+      if (nextBtn) {
+        nextBtn.disabled = false;
+        if (state.outOfHearts) nextBtn.textContent = 'See results';
+      }
     },
 
     _nextDictMcqQuestion: function() {
       var state = this._dictMcqPractice;
       if (!state || !state.answered) return;
+      if (state.outOfHearts) {
+        this._renderDictMcqComplete();
+        return;
+      }
       state.questionIndex++;
       this._renderDictMcqQuestion();
     },
@@ -6382,20 +6537,43 @@
       if (!bodyEl) return;
 
       var total = state.questions.length;
-      var pct = total ? Math.round((state.correctCount / total) * 100) : 0;
+      var answered = state.outOfHearts ? state.questionIndex + 1 : total;
+      var pct = answered ? Math.round((state.correctCount / answered) * 100) : 0;
       var diffLabel = (this._dictMcqDifficultySettings[state.difficulty] || {}).label || state.difficulty;
+      var xp = state.xp || (state.correctCount * this._dictDuoXpPerCorrect);
+      var wrongCount = Math.max(0, answered - state.correctCount);
+      var outMsg = state.outOfHearts ? '<p class="dict-mcq-complete-diff">Out of hearts — keep practicing!</p>' : '';
 
       bodyEl.innerHTML =
-        '<div class="dict-mcq-complete">' +
-          '<span class="material-symbols-outlined">trophy</span>' +
-          '<h3>Practice complete</h3>' +
+        '<div class="dict-mcq-complete dict-mcq-complete--duo">' +
+          '<span class="material-symbols-outlined trophy-icon">emoji_events</span>' +
+          '<h3>Lesson complete!</h3>' +
+          '<div class="dict-mcq-duo-xp-badge">⚡ +' + xp + ' XP</div>' +
+          outMsg +
           '<p class="dict-mcq-complete-diff">' + diffLabel + ' mode</p>' +
-          '<p>Score: <strong>' + state.correctCount + '/' + total + '</strong> (' + pct + '%)</p>' +
+          '<div class="dict-mcq-duo-stats">' +
+            '<div class="dict-mcq-duo-stat">' +
+              '<span class="dict-mcq-duo-stat-value">' + state.correctCount + '/' + answered + '</span>' +
+              '<span class="dict-mcq-duo-stat-label">Correct</span>' +
+            '</div>' +
+            '<div class="dict-mcq-duo-stat">' +
+              '<span class="dict-mcq-duo-stat-value">' + wrongCount + '</span>' +
+              '<span class="dict-mcq-duo-stat-label">Mistakes</span>' +
+            '</div>' +
+            '<div class="dict-mcq-duo-stat">' +
+              '<span class="dict-mcq-duo-stat-value">' + pct + '%</span>' +
+              '<span class="dict-mcq-duo-stat-label">Accuracy</span>' +
+            '</div>' +
+          '</div>' +
           '<div class="dict-mcq-complete-actions">' +
             '<button class="dict-mcq-btn dict-mcq-btn-primary" onclick="FastExercises._exitDictMcqPractice(\'' + state.dictId + '\')">Back to dictionary</button>' +
             '<button class="dict-mcq-btn" onclick="FastExercises._restartDictMcqPractice()">Try again</button>' +
           '</div>' +
         '</div>';
+
+      this._dictDuoPlayFeedback('complete');
+      var completeEl = bodyEl.querySelector('.dict-mcq-complete--duo');
+      if (completeEl) this._dictDuoSpawnConfetti(completeEl);
 
       state.phase = 'complete';
     },
@@ -6440,7 +6618,7 @@
       modal.id = 'irv-dict-modal';
       modal.className = 'irv-dict-overlay';
       modal.innerHTML =
-        '<div class="irv-dict-box">' +
+        '<div class="irv-dict-box dict-duo">' +
           '<div class="irv-dict-header">' +
             '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
             '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
@@ -6790,7 +6968,7 @@
       modal.id = 'vocab-dict-modal';
       modal.className = 'vocab-dict-overlay';
       modal.innerHTML =
-        '<div class="vocab-dict-box">' +
+        '<div class="vocab-dict-box dict-duo">' +
           '<div class="vocab-dict-header">' +
             '<span class="vocab-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
             '<h2 class="vocab-dict-title">Vocabulary Dictionary</h2>' +
@@ -6891,6 +7069,7 @@
           '<div class="vocab-dict-entry">' +
             '<div class="vocab-dict-base">' +
               self._escapeHTML(baseWord) +
+              self._dictDuoFavBtnHtml('vocab', baseWord) +
               '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(baseWord) + '\')" title="Listen to pronunciation">' +
                 '<span class="material-symbols-outlined">volume_up</span>' +
               '</button>' +
