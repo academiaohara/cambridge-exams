@@ -6525,6 +6525,9 @@
         var data = JSON.parse(localStorage.getItem(this._vocabStreaksKey)) || {};
         data[levelId + '/' + lessonId] = streaks;
         localStorage.setItem(this._vocabStreaksKey, JSON.stringify(data));
+        if (typeof SyncManager !== 'undefined' && SyncManager.notifyFastLearningDirty) {
+          SyncManager.notifyFastLearningDirty();
+        }
       } catch (e) {}
     },
 
@@ -8890,6 +8893,9 @@
         var progress = this._getWlProgress();
         progress[pKey] = Object.assign({}, progress[pKey] || {}, data, { lastPlayed: new Date().toISOString() });
         localStorage.setItem(WL_PROGRESS_KEY, JSON.stringify(progress));
+        if (typeof SyncManager !== 'undefined' && SyncManager.notifyFastLearningDirty) {
+          SyncManager.notifyFastLearningDirty();
+        }
       } catch (e) {}
     },
 

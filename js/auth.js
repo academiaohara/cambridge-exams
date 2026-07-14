@@ -296,6 +296,7 @@
 
       if (typeof SyncManager !== 'undefined') {
         await SyncManager.restoreFromCloud();
+        await SyncManager.pushAllLocalToCloud();
       }
       if (typeof StreakManager !== 'undefined') {
         await StreakManager.restoreFromCloud();

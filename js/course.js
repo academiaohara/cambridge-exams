@@ -887,6 +887,18 @@
           localStorage.setItem('cambridge_course_progress_' + levelId, JSON.stringify(progressByLevel[levelId]));
         } catch (e) {}
       });
+      var syncTasks = [];
+      Object.keys(progressByLevel).forEach(function(levelId) {
+        var prog = progressByLevel[levelId];
+        Object.keys(prog).forEach(function(unitId) {
+          if (prog[unitId]) {
+            syncTasks.push(DashboardNav._saveCourseUnitCompleteToSupabase(levelId, unitId));
+          }
+        });
+      });
+      if (syncTasks.length) {
+        await Promise.all(syncTasks);
+      }
       try {
         localStorage.removeItem('cambridge_course_path_advance_index');
         localStorage.removeItem('cambridge_course_path_advance_pending');
@@ -6790,6 +6802,7 @@
         if ((prev.type === 'grammar' || prev.type === 'vocabulary' || prev.type === 'review') && !prog[prev.id]) {
           prog[prev.id] = true;
           changed = true;
+          DashboardNav._saveCourseUnitCompleteToSupabase(level, prev.id);
         }
         if (prev.type === 'grammar' || prev.type === 'vocabulary') {
           unitsToMark.push(prev);
@@ -6815,6 +6828,7 @@
       try {
         localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(prog));
       } catch(e) {}
+      DashboardNav._notifyCourseProgressDirty();
     },
 
     _markCourseSectionOpened: function(level, unitId, sectionIdx) {
@@ -6826,6 +6840,7 @@
       try {
         localStorage.setItem('cambridge_course_section_opened_' + level, JSON.stringify(opened));
       } catch(e) {}
+      DashboardNav._notifyCourseProgressDirty();
     },
 
     _checkCourseUnitAllDone: function(level, unitId) {
@@ -7262,9 +7277,23 @@
           mode: 'course',
           completed_at: payload.completedAt || new Date().toISOString()
         }, { onConflict: 'user_id,exam_id,section,part,mode' });
+        DashboardNav._notifyCourseProgressDirty();
       } catch (e) {
         console.warn('[DashboardNav] Failed to save course progress to Supabase:', e);
       }
+    },
+
+    _notifyCourseProgressDirty: function() {
+      if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
+        SyncManager.notifyAppProgressDirty();
+      }
+    },
+
+    _saveCourseTheoryToSupabase: async function(level, unitId) {
+      await DashboardNav._upsertCourseProgressToSupabase(level, unitId, 'theory', {
+        answers: { completed: true },
+        completedAt: new Date().toISOString()
+      });
     },
 
     _saveCourseUnitCompleteToSupabase: async function(level, unitId) {
@@ -7286,7 +7315,19 @@
 
     _saveReviewSectionToSupabase: async function(unitId, sectionIdx, score, total) {
       var level = DashboardNav._courseLevel || 'C1';
-      await DashboardNav._saveSunePlayExerciseToSupabase(level, unitId, sectionIdx, score, total);
+      var answersPayload = {};
+      try {
+        var stateKey = 'cambridge_review_section_state_' + level;
+        var stateData = JSON.parse(localStorage.getItem(stateKey) || '{}');
+        var entry = stateData[unitId + '_' + sectionIdx];
+        if (entry && entry.answers) answersPayload = entry.answers;
+      } catch (e) {}
+      var section = DashboardNav._formatCourseProgressSection(sectionIdx);
+      await DashboardNav._upsertCourseProgressToSupabase(level, unitId, section, {
+        answers: { passed: true, score: score, total: total, answers: answersPayload },
+        score: score,
+        completedAt: new Date().toISOString()
+      });
     },
 
     _cuExStateKey: function(level) {
@@ -7355,6 +7396,7 @@
         var skey = unitId + '_' + sectionIdx;
         stateData[skey] = { score: correctItems, total: totalItems, answers: DashboardNav._getReviewSectionAnswers(sec) };
         localStorage.setItem(stateKey, JSON.stringify(stateData));
+        DashboardNav._notifyCourseProgressDirty();
       } catch(e) {}
     },
 

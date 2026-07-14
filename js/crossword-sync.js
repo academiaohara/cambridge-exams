@@ -98,6 +98,8 @@
             wordsTotal:       row.words_total,
             progressPct:      row.progress_pct,
             hintsUsed:        row.hints_used,
+            lettersXp:        (row.cell_state && row.cell_state._lettersXp) || 0,
+            earnedLetters:    (row.cell_state && row.cell_state._earnedLetters) || {},
             timeSpentSeconds: row.time_spent_seconds,
             cellState:        row.cell_state || {},
             lockedCells:      (row.cell_state && row.cell_state._locked)   || {},
@@ -201,7 +203,9 @@
           time_spent_seconds: v.timeSpentSeconds,
           cell_state:         Object.assign({}, v.cellState || {}, {
             _locked:   v.lockedCells   || {},
-            _revealed: v.revealedCells || {}
+            _revealed: v.revealedCells || {},
+            _lettersXp: v.lettersXp || 0,
+            _earnedLetters: v.earnedLetters || {}
           }),
           last_played:        v.lastPlayed
         };
