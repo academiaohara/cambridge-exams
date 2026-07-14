@@ -6,58 +6,47 @@
       "vocab": {
         "path": "data/vocabulary/dictionary.json",
         "totalEntries": 4623,
-        "allMatches": 3682,
-        "strong": 3682,
+        "allMatches": 0,
+        "strong": 0,
         "weakOnly": 0,
-        "strongPct": 79.6,
-        "weakOnlyPct": 0.0,
-        "vocabPatterns": {
-          "an_term": 1375,
-          "to_term": 822,
-          "term_is": 521,
-          "other": 324,
-          "term_means": 279,
-          "if_term": 259,
-          "the_term": 88,
-          "something_term": 13,
-          "term_word_meta": 1
-        }
+        "strongPct": 0.0,
+        "weakOnlyPct": 0.0
       },
       "wf": {
         "path": "data/word-formation/dictionary.json",
         "totalEntries": 1153,
-        "allMatches": 367,
-        "strong": 367,
+        "allMatches": 0,
+        "strong": 0,
         "weakOnly": 0,
-        "strongPct": 31.8,
+        "strongPct": 0.0,
         "weakOnlyPct": 0.0
       },
       "pv": {
         "path": "data/phrasal-verbs/dictionary.json",
         "totalEntries": 305,
-        "allMatches": 46,
-        "strong": 8,
-        "weakOnly": 38,
-        "strongPct": 2.6,
-        "weakOnlyPct": 12.5
+        "allMatches": 40,
+        "strong": 0,
+        "weakOnly": 40,
+        "strongPct": 0.0,
+        "weakOnlyPct": 13.1
       },
       "idioms": {
         "path": "data/idioms/dictionary.json",
         "totalEntries": 142,
-        "allMatches": 30,
-        "strong": 4,
-        "weakOnly": 26,
-        "strongPct": 2.8,
-        "weakOnlyPct": 18.3
+        "allMatches": 27,
+        "strong": 0,
+        "weakOnly": 27,
+        "strongPct": 0.0,
+        "weakOnlyPct": 19.0
       },
       "colloc": {
         "path": "data/collocations/dictionary.json",
         "totalEntries": 1553,
-        "allMatches": 295,
-        "strong": 31,
-        "weakOnly": 264,
-        "strongPct": 2.0,
-        "weakOnlyPct": 17.0
+        "allMatches": 266,
+        "strong": 0,
+        "weakOnly": 266,
+        "strongPct": 0.0,
+        "weakOnlyPct": 17.1
       }
     },
     "totalEntries": {
@@ -68,9 +57,9 @@
       "colloc": 1553
     },
     "totals": {
-      "allMatches": 4420,
-      "strong": 4092,
-      "weakOnly": 328
+      "allMatches": 333,
+      "strong": 0,
+      "weakOnly": 333
     }
   },
   "findings": [
@@ -289,6 +278,39 @@
         }
       ],
       "matchSummary": "[weak] term:checks (term_word)"
+    },
+    {
+      "dictId": "pv",
+      "index": 37,
+      "term": "club together",
+      "base": null,
+      "definition": "If people each contribute money so it can be used to buy something together.",
+      "level": "B2",
+      "tier": "weak",
+      "matches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "together",
+          "sourceTerm": "club together",
+          "sourceWord": "together",
+          "variant": "together",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "strongMatches": [],
+      "weakMatches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "together",
+          "sourceTerm": "club together",
+          "sourceWord": "together",
+          "variant": "together",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "matchSummary": "[weak] term:together (term_word)"
     },
     {
       "dictId": "pv",
@@ -802,6 +824,39 @@
         }
       ],
       "matchSummary": "[weak] term:piles (term_word)"
+    },
+    {
+      "dictId": "pv",
+      "index": 162,
+      "term": "read up (on/about)",
+      "base": null,
+      "definition": "To get information on a subject by reading extensively.",
+      "level": "B1",
+      "tier": "weak",
+      "matches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "reading",
+          "sourceTerm": "read up (on/about)",
+          "sourceWord": "read",
+          "variant": "reading",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "strongMatches": [],
+      "weakMatches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "reading",
+          "sourceTerm": "read up (on/about)",
+          "sourceWord": "read",
+          "variant": "reading",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "matchSummary": "[weak] term:reading (term_word)"
     },
     {
       "dictId": "pv",
@@ -1546,6 +1601,39 @@
         }
       ],
       "matchSummary": "[weak] term:clean (term_word)"
+    },
+    {
+      "dictId": "idioms",
+      "index": 42,
+      "term": "gain/get/have/take the upper hand",
+      "base": null,
+      "definition": "To take control or advantage over a person or situation.",
+      "level": "C1",
+      "tier": "weak",
+      "matches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "take",
+          "sourceTerm": "gain/get/have/take the upper hand",
+          "sourceWord": "take",
+          "variant": "take",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "strongMatches": [],
+      "weakMatches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "take",
+          "sourceTerm": "gain/get/have/take the upper hand",
+          "sourceWord": "take",
+          "variant": "take",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "matchSummary": "[weak] term:take (term_word)"
     },
     {
       "dictId": "idioms",
@@ -3016,6 +3104,75 @@
     },
     {
       "dictId": "colloc",
+      "index": 102,
+      "term": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+      "base": "belief",
+      "definition": "Widely or firmly held views.",
+      "level": "B2",
+      "tier": "weak",
+      "matches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "widely",
+          "sourceTerm": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+          "sourceWord": "widely",
+          "variant": "widely",
+          "label": "term",
+          "strength": "weak"
+        },
+        {
+          "matchType": "term_word",
+          "matchedText": "held",
+          "sourceTerm": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+          "sourceWord": "held",
+          "variant": "held",
+          "label": "term",
+          "strength": "weak"
+        },
+        {
+          "matchType": "term_word",
+          "matchedText": "firmly",
+          "sourceTerm": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+          "sourceWord": "firm",
+          "variant": "firmly",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "strongMatches": [],
+      "weakMatches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "widely",
+          "sourceTerm": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+          "sourceWord": "widely",
+          "variant": "widely",
+          "label": "term",
+          "strength": "weak"
+        },
+        {
+          "matchType": "term_word",
+          "matchedText": "held",
+          "sourceTerm": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+          "sourceWord": "held",
+          "variant": "held",
+          "label": "term",
+          "strength": "weak"
+        },
+        {
+          "matchType": "term_word",
+          "matchedText": "firmly",
+          "sourceTerm": "Popular/Widely held/Widespread/Firm/Strong/Growing belief",
+          "sourceWord": "firm",
+          "variant": "firmly",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "matchSummary": "[weak] term:widely (term_word); [weak] term:held (term_word); [weak] term:firmly (term_word)"
+    },
+    {
+      "dictId": "colloc",
       "index": 103,
       "term": "Bend sth into (shape/a circle/etc)",
       "base": "bend",
@@ -3097,6 +3254,39 @@
         }
       ],
       "matchSummary": "[weak] term:friend (term_word)"
+    },
+    {
+      "dictId": "colloc",
+      "index": 122,
+      "term": "Better than nothing",
+      "base": "better",
+      "definition": "Having something is preferable to having nothing.",
+      "level": "B1",
+      "tier": "weak",
+      "matches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "nothing",
+          "sourceTerm": "Better than nothing",
+          "sourceWord": "nothing",
+          "variant": "nothing",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "strongMatches": [],
+      "weakMatches": [
+        {
+          "matchType": "term_word",
+          "matchedText": "nothing",
+          "sourceTerm": "Better than nothing",
+          "sourceWord": "nothing",
+          "variant": "nothing",
+          "label": "term",
+          "strength": "weak"
+        }
+      ],
+      "matchSummary": "[weak] term:nothing (term_word)"
     },
     {
       "dictId": "colloc",
