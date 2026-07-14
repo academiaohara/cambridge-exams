@@ -8115,6 +8115,23 @@
   flex-shrink: 0;
 }
 
+.irv-dict-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  flex: 1;
+  margin: 0;
+  min-width: 0;
+}
+
+.irv-dict-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
 .irv-dict-icon .material-symbols-outlined {
   font-size: 1.4rem;
   color: #2563eb;
@@ -8202,7 +8219,7 @@
   background: #2563eb;
   color: #fff;
   font-size: 0.86rem;
-  text-align: left;
+  text-align: center;
   padding: 10px 12px;
   z-index: 1;
   width: 33.333%;
@@ -8232,7 +8249,7 @@
 }
 
 .irv-col-word {
-  display: block;
+  display: inline-block;
   min-width: 0;
   max-width: 100%;
   white-space: nowrap;
@@ -8244,6 +8261,7 @@
   font-size: clamp(0.74rem, 2.8vw, 0.92rem);
   line-height: 1.12;
   min-height: 1.12em;
+  padding: 2px 6px;
 }
 
 .irv-dict-empty {
@@ -8464,11 +8482,7 @@
     font-size: clamp(0.62rem, 2.7vw, 0.82rem);
   }
 
-  .dict-speak-btn {
-    padding: 2px 4px;
-  }
-
-  .dict-speak-btn .material-symbols-outlined {
+  .irv-dict-title {
     font-size: 1rem;
   }
 

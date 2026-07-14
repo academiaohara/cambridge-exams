@@ -6604,10 +6604,13 @@
         '<div class="irv-dict-box dict-duo">' +
           '<div class="irv-dict-header">' +
             '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
-            '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
-            '<button class="irv-dict-close" onclick="FastExercises._closeIrvDictModal()">' +
-              '<span class="material-symbols-outlined">close</span>' +
-            '</button>' +
+            '<h2 class="irv-dict-title">Irregular Verbs</h2>' +
+            '<div class="irv-dict-header-actions">' +
+              '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
+              '<button class="irv-dict-close" onclick="FastExercises._closeIrvDictModal()">' +
+                '<span class="material-symbols-outlined">close</span>' +
+              '</button>' +
+            '</div>' +
           '</div>' +
             '<div class="irv-dict-search-row" id="irv-dict-search-row">' +
             '<input type="text" class="irv-dict-search" id="irv-dict-search" placeholder="Search infinitive or form…" oninput="FastExercises._filterIrvDict(this.value)" />' +
@@ -6663,12 +6666,7 @@
         var pastParticiple = e.pastParticiple || '';
         var buildFormCell = function(word) {
           return '<div class="irv-col-form">' +
-            '<span class="irv-col-word">' + self._escapeHTML(word) + '</span>' +
-            (word ? (
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(word) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>'
-            ) : '') +
+            self._dictDuoTtsSpan(word, 'irv-col-word') +
           '</div>';
         };
         return '<tr>' +
