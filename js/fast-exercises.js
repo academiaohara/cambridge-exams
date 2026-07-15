@@ -7274,16 +7274,36 @@
         return;
       }
 
+      var senseNumberByIndex = [];
+      var senseCountByWord = {};
+      var senseCounter = {};
+      entries.forEach(function(entry, idx) {
+        var key = (entry.word || '').toLowerCase().trim();
+        senseCounter[key] = (senseCounter[key] || 0) + 1;
+        senseNumberByIndex[idx] = senseCounter[key];
+        senseCountByWord[key] = senseCounter[key];
+      });
+
       var html = '';
       filtered.forEach(function(e) {
         var word = e.word || '';
+        var wordKey = word.toLowerCase().trim();
+        var entryIdx = entries.indexOf(e);
+        var senseNum = entryIdx >= 0 ? senseNumberByIndex[entryIdx] : 1;
+        var senseCount = senseCountByWord[wordKey] || 1;
+        var senseHtml = senseCount > 1
+          ? '<sup class="vocab-dict-sense-num" aria-label="Sense ' + senseNum + '">' + senseNum + '</sup>'
+          : '';
         var levelHtml = e.level
           ? '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level) + '</span>'
           : '';
         html +=
           '<div class="vocab-dict-entry">' +
             '<div class="vocab-dict-base">' +
-              self._dictDuoTtsWord(word, 'vocab-dict-word') +
+              '<span class="vocab-dict-word-wrap">' +
+                self._dictDuoTtsWord(word, 'vocab-dict-word') +
+                senseHtml +
+              '</span>' +
               levelHtml +
             '</div>' +
             '<div class="vocab-dict-forms">' +
