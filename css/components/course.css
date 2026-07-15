@@ -6199,6 +6199,29 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     overflow-y: auto;
   }
 
+  /* Vocabulary hub header — kicker + title left-aligned, no subtitle */
+  .dashboard-center--vocab-hub .cw-section-header {
+    justify-content: flex-start;
+    text-align: left;
+    gap: 8px;
+  }
+
+  .dashboard-center--vocab-hub .cw-section-header-text {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .dashboard-center--vocab-hub .cw-section-header .cw-section-title {
+    font-size: 1rem;
+  }
+
+  .dashboard-center--vocab-hub .course-vocab-header-subtitle {
+    display: none;
+  }
+
   /* Vocabulary / stage list cards */
   .dashboard-center--mobile-hub .course-etapas-page {
     padding-top: 0;
@@ -6521,10 +6544,6 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
   .course-vocab-section-card-art-icon {
     font-size: 2.4rem;
-  }
-
-  .course-vocab-header-subtitle {
-    font-size: 0.76rem;
   }
 }
 
