@@ -6008,6 +6008,29 @@
       return html + '</div>';
     },
 
+    _dictDuoGetDailyStreak: function() {
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      return streak ? (streak.currentStreak || 0) : 0;
+    },
+
+    _dictDuoRenderSetupHeader: function(dictId) {
+      var meta = this._dictMcqPracticeMeta[dictId] || { title: 'Practice', icon: 'quiz' };
+      var streakCount = this._dictDuoGetDailyStreak();
+      var streakCls = streakCount > 0 ? '' : ' dict-mcq-duo-streak--cold';
+      return '<header class="dict-mcq-setup-header">' +
+        '<div class="dict-mcq-setup-brand">' +
+          '<span class="dict-mcq-setup-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">' + meta.icon + '</span>' +
+          '</span>' +
+          '<h2 class="dict-mcq-setup-brand-title">' + this._escapeHTML(meta.title) + '</h2>' +
+        '</div>' +
+        '<div class="dict-mcq-duo-streak dict-mcq-setup-streak' + streakCls + '" aria-label="' + streakCount + ' day streak">' +
+          '<span class="dict-mcq-duo-streak-icon" aria-hidden="true">🔥</span>' +
+          '<span class="dict-mcq-duo-streak-count">' + streakCount + '</span>' +
+        '</div>' +
+      '</header>';
+    },
+
     _dictDuoRenderHeader: function(state) {
       var total = state.questions.length;
       var done = state.questionIndex + (state.answered ? 1 : 0);
@@ -6091,29 +6114,43 @@
 
     _dictMcqDifficultySettings: {
       easy: {
-        label: 'Easy',
-        description: '3 options · A2–B1 words',
+        label: 'Fácil',
+        description: '3 opciones · palabras A2–B1',
+        rangeBadge: 'A2–B1',
         optionCount: 3,
         levels: ['A1', 'A2', 'B1'],
         sameLevelDistractors: false,
-        emoji: '🌱'
+        icon: 'eco',
+        colorClass: 'easy'
       },
       medium: {
-        label: 'Medium',
-        description: '3 options · all levels',
+        label: 'Medio',
+        description: '3 opciones · todos los niveles',
+        rangeBadge: 'A2–C1',
         optionCount: 3,
         levels: null,
         sameLevelDistractors: true,
-        emoji: '🌿'
+        icon: 'bolt',
+        colorClass: 'medium'
       },
       hard: {
-        label: 'Hard',
-        description: '3 options · B2–C1 words',
+        label: 'Difícil',
+        description: '3 opciones · palabras B2–C1',
+        rangeBadge: 'B2–C1',
         optionCount: 3,
         levels: ['B2', 'C1'],
         sameLevelDistractors: true,
-        emoji: '🔥'
+        icon: 'local_fire_department',
+        colorClass: 'hard'
       }
+    },
+
+    _dictMcqPracticeMeta: {
+      vocab: { title: 'Vocabulario', icon: 'menu_book' },
+      wf: { title: 'Formación de palabras', icon: 'text_fields' },
+      pv: { title: 'Phrasal verbs', icon: 'auto_stories' },
+      idioms: { title: 'Idioms', icon: 'record_voice_over' },
+      colloc: { title: 'Colocaciones', icon: 'link' }
     },
 
     _dictMcqPracticeConfigs: {
@@ -6266,7 +6303,7 @@
         return;
       }
 
-      this._dictMcqPractice = { dictId: dictId, phase: 'setup' };
+      this._dictMcqPractice = { dictId: dictId, phase: 'setup', selectedDifficulty: null };
       this._setDictMcqPracticeUi(dictId, true);
       this._renderDictMcqSetup(dictId);
     },
@@ -6330,20 +6367,77 @@
       var diffHtml = '';
       Object.keys(this._dictMcqDifficultySettings).forEach(function(key) {
         var d = self._dictMcqDifficultySettings[key];
+        var colorClass = d.colorClass || key;
         diffHtml +=
-          '<button type="button" class="dict-mcq-diff-btn" data-diff="' + key + '" onclick="FastExercises._selectDictMcqDifficulty(\'' + dictId + '\', \'' + key + '\')">' +
-            '<span class="dict-mcq-diff-emoji" aria-hidden="true">' + (d.emoji || '') + '</span>' +
-            '<span class="dict-mcq-diff-label">' + d.label + '</span>' +
-            '<span class="dict-mcq-diff-desc">' + d.description + '</span>' +
+          '<button type="button" class="dict-mcq-diff-card dict-mcq-diff-card--' + colorClass + '" ' +
+            'role="radio" aria-checked="false" data-diff="' + key + '" ' +
+            'onclick="FastExercises._selectDictMcqDifficultyCard(\'' + dictId + '\', \'' + key + '\')">' +
+            '<span class="dict-mcq-diff-card-icon" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">' + (d.icon || 'star') + '</span>' +
+            '</span>' +
+            '<span class="dict-mcq-diff-label">' + self._escapeHTML(d.label) + '</span>' +
+            '<span class="dict-mcq-diff-badge">' + self._escapeHTML(d.rangeBadge || '') + '</span>' +
           '</button>';
       });
 
       bodyEl.innerHTML =
-        '<div class="dict-mcq-setup dict-mcq-setup--duo">' +
-          '<h3 class="dict-mcq-setup-title">Choose difficulty</h3>' +
-          '<p class="dict-mcq-setup-desc">Pick the correct definition for each term. Earn XP and keep your streak alive!</p>' +
-          '<div class="dict-mcq-diff-grid">' + diffHtml + '</div>' +
+        '<div class="dict-mcq-session dict-mcq-session--duo dict-mcq-session--setup">' +
+          this._dictDuoRenderSetupHeader(dictId) +
+          '<div class="dict-mcq-setup dict-mcq-setup--duo">' +
+            '<h3 class="dict-mcq-setup-title">Elige la dificultad</h3>' +
+            '<p class="dict-mcq-setup-desc">Elige la definición correcta de cada término. Gana XP y mantén tu racha.</p>' +
+            '<div class="dict-mcq-diff-grid" role="radiogroup" aria-label="Difficulty level">' + diffHtml + '</div>' +
+          '</div>' +
+          '<footer class="dict-mcq-duo-footer dict-mcq-setup-footer">' +
+            '<button type="button" class="dict-mcq-btn dict-mcq-btn-primary dict-mcq-setup-start" ' +
+              'id="dict-mcq-setup-start" disabled ' +
+              'onclick="FastExercises._startDictMcqFromSetup(\'' + dictId + '\')">' +
+              'Elige un nivel para empezar' +
+            '</button>' +
+          '</footer>' +
         '</div>';
+    },
+
+    _selectDictMcqDifficultyCard: function(dictId, difficulty) {
+      if (!this._dictMcqPractice || this._dictMcqPractice.dictId !== dictId || this._dictMcqPractice.phase !== 'setup') {
+        return;
+      }
+      if (!this._dictMcqDifficultySettings[difficulty]) return;
+
+      this._dictMcqPractice.selectedDifficulty = difficulty;
+
+      var cards = document.querySelectorAll('.dict-mcq-diff-card');
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var isSelected = card.getAttribute('data-diff') === difficulty;
+        card.classList.toggle('dict-mcq-diff-card--selected', isSelected);
+        card.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+      }
+
+      this._updateDictMcqSetupStartBtn();
+    },
+
+    _updateDictMcqSetupStartBtn: function() {
+      var state = this._dictMcqPractice;
+      var btn = document.getElementById('dict-mcq-setup-start');
+      if (!btn || !state || state.phase !== 'setup') return;
+
+      var difficulty = state.selectedDifficulty;
+      if (!difficulty) {
+        btn.disabled = true;
+        btn.textContent = 'Elige un nivel para empezar';
+        return;
+      }
+
+      var settings = this._dictMcqDifficultySettings[difficulty];
+      btn.disabled = false;
+      btn.textContent = 'Empezar · ' + (settings ? settings.label : difficulty);
+    },
+
+    _startDictMcqFromSetup: function(dictId) {
+      var state = this._dictMcqPractice;
+      if (!state || state.dictId !== dictId || state.phase !== 'setup' || !state.selectedDifficulty) return;
+      this._selectDictMcqDifficulty(dictId, state.selectedDifficulty);
     },
 
     _selectDictMcqDifficulty: function(dictId, difficulty) {
