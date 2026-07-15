@@ -7274,45 +7274,28 @@
         return;
       }
 
-      var groups = {};
-      var groupOrder = [];
-      filtered.forEach(function(e) {
-        var key = (e.word || '').toLowerCase().trim();
-        if (!groups[key]) { groups[key] = []; groupOrder.push(key); }
-        groups[key].push(e);
-      });
-
       var html = '';
-      groupOrder.forEach(function(key) {
-        var group = groups[key];
-        var baseWord = (group[0] && group[0].word) || '';
-        var levels = [];
-        group.forEach(function(e) {
-          if (e.level && levels.indexOf(e.level) === -1) levels.push(e.level);
-        });
-        var levelHtml = levels.map(function(lvl) {
-          return '<span class="vocab-dict-level-badge vocab-level-' + (lvl || '').toLowerCase() + '">' + self._escapeHTML(lvl) + '</span>';
-        }).join('');
-        var formsHtml = '';
-        group.forEach(function(e) {
-          formsHtml +=
-            '<div class="vocab-dict-form">' +
-              '<span class="vocab-dict-def"><strong>Definition:</strong> ' +
-                self._dictDuoTtsSpan(self._dictFormatDefinition(e.definition || missingValuePlaceholder), 'vocab-dict-def-text', 'Listen to definition') +
-              '</span>' +
-              '<span class="vocab-dict-example"><strong>Example:</strong> ' +
-                self._dictDuoTtsSpan(e.example || missingValuePlaceholder, 'vocab-dict-example-text', 'Listen to example') +
-              '</span>' +
-            '</div>';
-        });
-
+      filtered.forEach(function(e) {
+        var word = e.word || '';
+        var levelHtml = e.level
+          ? '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level) + '</span>'
+          : '';
         html +=
           '<div class="vocab-dict-entry">' +
             '<div class="vocab-dict-base">' +
-              self._dictDuoTtsWord(baseWord, 'vocab-dict-word') +
-              (levelHtml ? '<span class="vocab-dict-levels">' + levelHtml + '</span>' : '') +
+              self._dictDuoTtsWord(word, 'vocab-dict-word') +
+              levelHtml +
             '</div>' +
-            '<div class="vocab-dict-forms">' + formsHtml + '</div>' +
+            '<div class="vocab-dict-forms">' +
+              '<div class="vocab-dict-form">' +
+                '<span class="vocab-dict-def"><strong>Definition:</strong> ' +
+                  self._dictDuoTtsSpan(self._dictFormatDefinition(e.definition || missingValuePlaceholder), 'vocab-dict-def-text', 'Listen to definition') +
+                '</span>' +
+                '<span class="vocab-dict-example"><strong>Example:</strong> ' +
+                  self._dictDuoTtsSpan(e.example || missingValuePlaceholder, 'vocab-dict-example-text', 'Listen to example') +
+                '</span>' +
+              '</div>' +
+            '</div>' +
           '</div>';
       });
 
