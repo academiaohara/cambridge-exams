@@ -2226,6 +2226,17 @@
       return DashboardNav._buildCourseEtapaCardsHtml(section, levelId);
     },
 
+    _courseVocabSectionArt: function(themeKey) {
+      var art = {
+        'vocabulary': 'Assets/images/vocabulary.svg',
+        'idioms': 'Assets/images/idioms.svg',
+        'phrasal-verbs': 'Assets/images/phrasal verbs.svg',
+        'word-formation': 'Assets/images/wordformation.svg',
+        'irregular-verbs': 'Assets/images/irregular verbs.svg'
+      };
+      return art[themeKey] || '';
+    },
+
     _courseVocabCardTheme: function(themeKey, accentFallback) {
       var themes = {
         'phrasal-verbs': { bg: '#f5fbff', border: '#7bb8f7', title: '#1a4d8c', accent: '#3b82f6' },
@@ -2247,6 +2258,7 @@
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var theme = self._courseVocabCardTheme(opts.themeKey, opts.color);
+      var artSrc = self._courseVocabSectionArt(opts.themeKey);
       var statusText = opts.status || opts.desc || '';
       var statusClass = opts.statusClass || '';
       if (!statusClass && opts.pct >= 100) statusClass = 'course-vocab-section-card-desc--done';
@@ -2270,7 +2282,10 @@
           '</div>' +
         '</div>' +
         '<div class="course-vocab-section-card-art" aria-hidden="true">' +
-          '<span class="material-symbols-outlined course-vocab-section-card-art-icon">' + opts.icon + '</span>' +
+          (artSrc
+            ? '<img src="' + artSrc + '" alt="" class="tests-section-card-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">'
+            : '') +
+          '<span class="material-symbols-outlined course-vocab-section-card-art-icon tests-section-card-fallback' + (artSrc ? '' : ' is-visible') + '">' + opts.icon + '</span>' +
         '</div>' +
       '</div>';
     },
