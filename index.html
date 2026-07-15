@@ -419,10 +419,14 @@
     <!-- Onboarding: level selection + placement test (shown once for new users / guests) -->
     <div id="onboarding-screen" class="onboarding-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="onboarding-title">
       <header class="onboarding-header">
-        <button type="button" class="preauth-back-btn" onclick="Onboarding.handleHeaderBack()" aria-label="Volver">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-        </button>
-        <img src="Assets/images/sunelogoreduced2.svg" class="preauth-brand-logo" alt="Sune English">
+        <a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Auth.navigateTo('/')">
+          <img src="Assets/images/sunelogoreduced2.svg" class="preauth-brand-logo" alt="Sune English">
+        </a>
+        <div class="onboarding-header-actions">
+          <button type="button" id="onboarding-close-btn" class="auth-screen-close" onclick="Onboarding.handleHeaderClose()" aria-label="Cerrar">
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+          </button>
+        </div>
       </header>
 
       <div id="onboarding-path-step" class="onboarding-path-step">
@@ -458,11 +462,6 @@
       </div>
 
       <div id="onboarding-level-step" class="onboarding-level-step" style="display:none;">
-        <div class="onboarding-level-header">
-          <button type="button" class="preauth-back-btn" onclick="Onboarding.backToPathSelection()" aria-label="Volver">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          </button>
-        </div>
         <div class="onboarding-body">
           <div class="onboarding-prompt">
             <img src="Assets/images/Cabezasune.svg" alt="" class="onboarding-mascot" aria-hidden="true">
@@ -480,9 +479,6 @@
 
       <div id="onboarding-placement-step" class="onboarding-placement-step" style="display:none;">
         <div class="onboarding-placement-header">
-          <button type="button" class="preauth-back-btn" onclick="Onboarding.confirmBackToLevelSelection()" aria-label="Volver">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          </button>
           <div>
             <h2 class="onboarding-placement-title">Test de ubicación</h2>
             <p id="onboarding-placement-subtitle" class="onboarding-placement-subtitle">Responde las preguntas para confirmar tu nivel</p>

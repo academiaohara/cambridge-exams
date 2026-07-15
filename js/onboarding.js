@@ -134,11 +134,6 @@
     if (pathStep) pathStep.style.display = step === 'path' ? 'flex' : 'none';
     if (levelStep) levelStep.style.display = step === 'level' ? 'flex' : 'none';
     if (placementStep) placementStep.style.display = step === 'placement' ? 'flex' : 'none';
-
-    var globalBack = document.querySelector('#onboarding-screen .onboarding-header .preauth-back-btn');
-    if (globalBack) {
-      globalBack.style.visibility = step === 'path' ? 'visible' : 'hidden';
-    }
   }
 
   function getPlacementScore() {
@@ -274,7 +269,7 @@
       document.body.classList.remove('onboarding-open');
     },
 
-    handleHeaderBack: function () {
+    handleHeaderClose: function () {
       var placementStep = document.getElementById('onboarding-placement-step');
       var levelStep = document.getElementById('onboarding-level-step');
       if (placementStep && placementStep.style.display !== 'none') {
