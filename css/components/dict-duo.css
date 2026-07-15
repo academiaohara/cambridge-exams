@@ -662,8 +662,8 @@
 .dict-mcq-duo-body {
   flex: 1;
   min-height: 0;
-  padding: 12px 14px 8px;
-  overflow: hidden;
+  padding: 16px 14px 8px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -674,6 +674,37 @@
 
 .dict-mcq-duo-body.dict-mcq-duo-body--wrong {
   animation: duoShake 0.4s ease;
+}
+
+.dict-mcq-question-card .dict-mcq-level-badge.vocab-level-a2,
+.dict-mcq-question-card .dict-mcq-level-badge.vocab-level-b1,
+.dict-mcq-question-card .dict-mcq-level-badge.wf-level-b1,
+.dict-mcq-question-card .dict-mcq-level-badge.pv-level-b1,
+.dict-mcq-question-card .dict-mcq-level-badge.id-level-b1,
+.dict-mcq-question-card .dict-mcq-level-badge.colloc-level-b1 {
+  background: var(--duo-secondary-tint);
+  color: var(--duo-secondary-dark);
+  border-color: rgba(30, 157, 142, 0.25);
+}
+
+.dict-mcq-question-card .dict-mcq-level-badge.vocab-level-b2,
+.dict-mcq-question-card .dict-mcq-level-badge.wf-level-b2,
+.dict-mcq-question-card .dict-mcq-level-badge.pv-level-b2,
+.dict-mcq-question-card .dict-mcq-level-badge.id-level-b2,
+.dict-mcq-question-card .dict-mcq-level-badge.colloc-level-b2 {
+  background: var(--duo-warm-tint);
+  color: #9a6b00;
+  border-color: rgba(229, 168, 48, 0.35);
+}
+
+.dict-mcq-question-card .dict-mcq-level-badge.vocab-level-c1,
+.dict-mcq-question-card .dict-mcq-level-badge.wf-level-c1,
+.dict-mcq-question-card .dict-mcq-level-badge.pv-level-c1,
+.dict-mcq-question-card .dict-mcq-level-badge.id-level-c1,
+.dict-mcq-question-card .dict-mcq-level-badge.colloc-level-c1 {
+  background: rgba(45, 46, 95, 0.08);
+  color: var(--duo-text);
+  border-color: rgba(45, 46, 95, 0.15);
 }
 
 .dict-mcq-setup--duo {
@@ -965,6 +996,72 @@
   flex-shrink: 0;
 }
 
+/* Question card */
+.dict-mcq-question-card {
+  flex-shrink: 0;
+  margin: 0 auto 20px;
+  max-width: 560px;
+  width: 100%;
+  padding: 20px 18px 18px;
+  background: var(--duo-surface);
+  border: 2px solid var(--duo-surface-muted);
+  border-bottom-width: 4px;
+  border-radius: var(--duo-radius);
+  text-align: center;
+}
+
+.dict-mcq-question-card .dict-mcq-prompt-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--duo-text-muted);
+  margin-bottom: 10px;
+}
+
+.dict-mcq-question-term-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dict-mcq-question-card .dict-mcq-term,
+.dict-mcq-question-card .dict-tts-word.dict-mcq-term {
+  font-family: var(--duo-font-display);
+  font-size: clamp(1.75rem, 5.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--duo-text);
+  line-height: 1.1;
+}
+
+.dict-mcq-question-card .dict-tts-word.dict-mcq-term:hover,
+.dict-mcq-question-card .dict-tts-word.dict-mcq-term:focus-visible {
+  color: var(--duo-secondary-dark);
+}
+
+.dict-mcq-level-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+}
+
+.dict-mcq-question-card .dict-mcq-subtitle {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--duo-text-muted);
+  line-height: 1.4;
+}
+
 .dict-mcq-prompt--duo .dict-mcq-prompt-label {
   font-size: 0.82rem;
   font-weight: 700;
@@ -1009,19 +1106,22 @@
 .dict-mcq-options--duo {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
   min-height: 0;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 560px;
   width: 100%;
   margin: 0 auto;
 }
 
 .dict-mcq-options--duo .dict-mcq-option {
-  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
   padding: 12px 14px;
-  border: 2px solid var(--duo-surface-muted);
+  border: 2px solid #d5dae6;
   border-bottom-width: 4px;
   border-radius: var(--duo-radius-sm);
   background: var(--duo-surface);
@@ -1031,61 +1131,201 @@
   text-align: left;
   cursor: pointer;
   line-height: 1.35;
-  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.dict-mcq-options--duo .dict-mcq-option:hover:not(:disabled) {
-  border-color: var(--duo-secondary);
-  background: var(--duo-secondary-tint);
+.dict-mcq-option-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--duo-bg);
+  border: 2px solid #e0e4ee;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--duo-text-muted);
+  flex-shrink: 0;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.dict-mcq-option-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Rest / hover / selected — neutral blues, NOT brand orange */
+.dict-mcq-options--duo .dict-mcq-option:hover:not(:disabled):not(.dict-mcq-option--correct):not(.dict-mcq-option--wrong) {
+  border-color: #a8b4cc;
+  background: #f8f9fc;
   transform: translateY(-1px);
 }
 
-.dict-mcq-options--duo .dict-mcq-option:active:not(:disabled) {
-  transform: translateY(3px);
+.dict-mcq-options--duo .dict-mcq-option:active:not(:disabled):not(.dict-mcq-option--correct):not(.dict-mcq-option--wrong) {
+  transform: translateY(2px);
   border-bottom-width: 2px;
 }
 
-.dict-mcq-options--duo .dict-mcq-option-correct {
-  border-color: var(--duo-correct) !important;
-  border-bottom-color: var(--duo-correct-dark) !important;
-  background: var(--duo-correct-tint) !important;
-  color: var(--duo-correct-dark) !important;
+.dict-mcq-options--duo .dict-mcq-option--selected {
+  border-color: #1cb0f6;
+  border-bottom-color: #1899d6;
+  background: rgba(28, 176, 246, 0.08);
+  transform: scale(1.01);
+}
+
+.dict-mcq-options--duo .dict-mcq-option--selected .dict-mcq-option-letter {
+  background: rgba(28, 176, 246, 0.14);
+  border-color: rgba(28, 176, 246, 0.35);
+  color: #1482b8;
+}
+
+/* Confirmed states — semantic green / red only */
+.dict-mcq-options--duo .dict-mcq-option--correct {
+  border-color: #58cc02 !important;
+  border-bottom-color: #46a302 !important;
+  background: rgba(88, 204, 2, 0.12) !important;
+  color: #3b8f02 !important;
   animation: duoPop 0.35s ease;
 }
 
-.dict-mcq-options--duo .dict-mcq-option-wrong {
-  border-color: var(--duo-error) !important;
-  border-bottom-color: var(--duo-error-dark) !important;
-  background: var(--duo-error-tint) !important;
-  color: var(--duo-error-dark) !important;
+.dict-mcq-options--duo .dict-mcq-option--correct .dict-mcq-option-letter {
+  background: rgba(88, 204, 2, 0.18);
+  border-color: rgba(88, 204, 2, 0.35);
+  color: #3b8f02;
+}
+
+.dict-mcq-options--duo .dict-mcq-option--wrong {
+  border-color: #ef4444 !important;
+  border-bottom-color: #b91c1c !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #b91c1c !important;
   animation: duoShake 0.4s ease;
 }
 
+.dict-mcq-options--duo .dict-mcq-option--wrong .dict-mcq-option-letter {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #b91c1c;
+}
+
+.dict-mcq-options--duo .dict-mcq-option--dimmed {
+  opacity: 0.55;
+  border-bottom-width: 2px;
+  cursor: default;
+}
+
+.dict-mcq-options--duo .dict-mcq-option:disabled {
+  cursor: default;
+}
+
+.dict-mcq-options--duo .dict-mcq-option:focus-visible {
+  outline: 3px solid #1cb0f6;
+  outline-offset: 2px;
+}
+
+/* Legacy class aliases */
+.dict-mcq-options--duo .dict-mcq-option-correct {
+  border-color: #58cc02 !important;
+  border-bottom-color: #46a302 !important;
+  background: rgba(88, 204, 2, 0.12) !important;
+  color: #3b8f02 !important;
+}
+
+.dict-mcq-options--duo .dict-mcq-option-wrong {
+  border-color: #ef4444 !important;
+  border-bottom-color: #b91c1c !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #b91c1c !important;
+}
+
 .dict-mcq-feedback--duo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
-  margin: 8px auto 0;
+  margin: 12px auto 0;
   max-width: 560px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   min-height: 1.4em;
   flex-shrink: 0;
 }
 
+.dict-mcq-feedback--duo .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.dict-mcq-feedback--duo.dict-mcq-feedback--correct {
+  color: #3b8f02;
+}
+
+.dict-mcq-feedback--duo.dict-mcq-feedback--wrong {
+  color: #b91c1c;
+}
+
 .dict-mcq-feedback--duo.dict-mcq-feedback-correct {
-  color: var(--duo-correct-dark);
+  color: #3b8f02;
 }
 
 .dict-mcq-feedback--duo.dict-mcq-feedback-wrong {
-  color: var(--duo-error-dark);
+  color: #b91c1c;
 }
 
-/* Fixed continue footer */
+/* Fixed continue footer — brand orange reserved for CTA */
 .dict-mcq-duo-footer {
   flex-shrink: 0;
   padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(to top, var(--duo-bg) 70%, transparent);
   border-top: 2px solid var(--duo-surface-muted);
   z-index: 2;
+}
+
+.dict-mcq-play-footer .dict-mcq-continue-btn {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--duo-primary);
+  color: var(--duo-surface);
+  border: 2px solid var(--duo-primary-dark);
+  border-bottom-width: 5px;
+  border-radius: var(--duo-radius);
+  min-height: var(--duo-touch);
+  padding: 14px 24px;
+  font-family: var(--duo-font-body);
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: none;
+  transition: transform 0.1s ease, border-bottom-width 0.1s ease, filter 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.dict-mcq-play-footer .dict-mcq-continue-btn:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+.dict-mcq-play-footer .dict-mcq-continue-btn:active:not(:disabled) {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.dict-mcq-play-footer .dict-mcq-continue-btn:disabled {
+  background: #e8ecf4;
+  color: #8b93a8;
+  border-color: #d5dae6;
+  border-bottom-color: #c5cad6;
+  opacity: 1;
+  cursor: not-allowed;
+  filter: none;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .dict-mcq-duo-footer .dict-mcq-btn-primary {
@@ -1123,7 +1363,12 @@
 }
 
 .dict-mcq-duo-footer .dict-mcq-btn-primary:disabled {
-  opacity: 0.4;
+  background: #e8ecf4;
+  color: #8b93a8;
+  border-color: #d5dae6;
+  border-bottom-color: #c5cad6;
+  box-shadow: none;
+  opacity: 1;
   cursor: not-allowed;
 }
 
@@ -1399,7 +1644,7 @@
 
 @keyframes duoFlashCorrect {
   0%   { background-color: transparent; }
-  30%  { background-color: var(--duo-correct-tint); }
+  30%  { background-color: rgba(88, 204, 2, 0.12); }
   100% { background-color: transparent; }
 }
 
@@ -1546,6 +1791,8 @@
   .dict-duo [class*="-dict-entry"],
   .dict-mcq-duo-body--correct,
   .dict-mcq-duo-body--wrong,
+  .dict-mcq-option--correct,
+  .dict-mcq-option--wrong,
   .dict-mcq-option-correct,
   .dict-mcq-option-wrong,
   .dict-mcq-duo-streak-icon,
