@@ -5357,6 +5357,24 @@
   gap: 8px;
 }
 
+.vocab-dict-word-wrap {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1px;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.vocab-dict-sense-num {
+  font-size: 0.62em;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-medium, #64748b);
+  margin-top: 0.2em;
+  margin-left: 1px;
+  flex-shrink: 0;
+}
+
 .vocab-dict-forms {
   display: flex;
   flex-direction: column;
