@@ -2341,6 +2341,14 @@
           onclick: 'FastExercises._showPvDictionary({ startPractice: true })'
         });
         html += DashboardNav._renderCourseVocabSectionCard({
+          themeKey: 'word-formation',
+          icon: 'text_fields',
+          title: 'Word Formation',
+          desc: 'Prefixes, suffixes and word roots',
+          cta: 'Practice',
+          onclick: 'FastExercises._showWfDictionary({ startPractice: true })'
+        });
+        html += DashboardNav._renderCourseVocabSectionCard({
           themeKey: 'irregular-verbs',
           icon: 'sync',
           title: 'Irregular Verbs',
