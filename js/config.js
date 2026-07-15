@@ -4,7 +4,7 @@
     GITHUB_USER: 'academiaohara',
     REPO_NAME: 'cambridge-exams',
     BRANCH: 'main',
-    APP_VERSION: '3.2.0',
+    APP_VERSION: '3.2.1',
     BUILD_ID: 'dev',
     MIN_LOADING_MS: 0,
 

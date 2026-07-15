@@ -2230,11 +2230,12 @@
       var art = {
         'vocabulary': 'Assets/images/vocabulary.svg',
         'idioms': 'Assets/images/idioms.svg',
-        'phrasal-verbs': 'Assets/images/phrasal verbs.svg',
+        'phrasal-verbs': 'Assets/images/phrasal-verbs.svg',
         'word-formation': 'Assets/images/wordformation.svg',
-        'irregular-verbs': 'Assets/images/irregular verbs.svg'
+        'irregular-verbs': 'Assets/images/irregular-verbs.svg'
       };
-      return art[themeKey] || '';
+      var src = art[themeKey] || '';
+      return src ? encodeURI(src) : '';
     },
 
     _courseVocabCardTheme: function(themeKey, accentFallback) {
