@@ -5,7 +5,7 @@
     REPO_NAME: 'cambridge-exams',
     BRANCH: 'main',
     APP_VERSION: '3.2.1',
-    BUILD_ID: 'dev',
+    BUILD_ID: '98c07548',
     MIN_LOADING_MS: 0,
 
     /**
