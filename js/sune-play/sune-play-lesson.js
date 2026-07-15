@@ -271,11 +271,12 @@
 
   function showSessionExitConfirm(onLeave) {
     if (typeof DashboardNav !== 'undefined' && DashboardNav._showLearningExitConfirm) {
-      DashboardNav._showLearningExitConfirm(onLeave, {
+      var texts = (lessonState && lessonState.exitConfirmTexts) || {
         message: 'Are you sure you want to leave? You will have to start the exercise from scratch.',
         stayLabel: 'Keep learning',
         leaveLabel: 'Leave'
-      });
+      };
+      DashboardNav._showLearningExitConfirm(onLeave, texts);
       return;
     }
     onLeave();
@@ -1591,7 +1592,9 @@
     var mount = opts.mount;
     if (!unitData || !mount) return;
 
-    applyLessonFocus();
+    if (!mount.closest('#onboarding-screen')) {
+      applyLessonFocus();
+    }
 
     var progress = loadProgress(unitId);
     if (theory.isTheoryCompleted(unitId)) progress.theoryCompleted = true;
@@ -1608,7 +1611,8 @@
       theoryOnly: opts.startSection === 'theory',
       pendingNodeId: opts.startNodeId || null,
       pendingExerciseId: opts.startExerciseId || null,
-      onTestScoreUpdate: opts.onTestScoreUpdate || null
+      onTestScoreUpdate: opts.onTestScoreUpdate || null,
+      exitConfirmTexts: opts.exitConfirmTexts || null
     };
 
     if (!opts.startExerciseId && (unitData.type === 'review' || unitData.type === 'progress_test')) {

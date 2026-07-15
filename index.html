@@ -419,7 +419,7 @@
     <!-- Onboarding: level selection + placement test (shown once for new users / guests) -->
     <div id="onboarding-screen" class="onboarding-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="onboarding-title">
       <header class="onboarding-header">
-        <button type="button" class="preauth-back-btn" onclick="Auth.navigateTo('/')" aria-label="Volver">
+        <button type="button" class="preauth-back-btn" onclick="Onboarding.handleHeaderBack()" aria-label="Volver">
           <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
         </button>
         <img src="Assets/images/sunelogoreduced2.svg" class="preauth-brand-logo" alt="Sune English">
@@ -480,12 +480,12 @@
 
       <div id="onboarding-placement-step" class="onboarding-placement-step" style="display:none;">
         <div class="onboarding-placement-header">
-          <button type="button" class="preauth-back-btn" onclick="Onboarding.backToLevelSelection()" aria-label="Back">
+          <button type="button" class="preauth-back-btn" onclick="Onboarding.confirmBackToLevelSelection()" aria-label="Volver">
             <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
           </button>
           <div>
-            <h2 class="onboarding-placement-title">Placement test</h2>
-            <p id="onboarding-placement-subtitle" class="onboarding-placement-subtitle">Answer the questions to confirm your level</p>
+            <h2 class="onboarding-placement-title">Test de ubicación</h2>
+            <p id="onboarding-placement-subtitle" class="onboarding-placement-subtitle">Responde las preguntas para confirmar tu nivel</p>
           </div>
         </div>
         <div id="onboarding-placement-loading" class="onboarding-placement-loading" style="display:none;">
@@ -493,7 +493,7 @@
         </div>
         <div id="onboarding-placement-content" class="onboarding-placement-content"></div>
         <footer class="onboarding-footer onboarding-placement-footer">
-          <button type="button" id="onboarding-placement-finish-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.finishPlacementTest()">FINISH TEST</button>
+          <button type="button" id="onboarding-placement-finish-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.finishPlacementTest()">TERMINAR TEST</button>
         </footer>
       </div>
     </div>
