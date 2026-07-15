@@ -560,8 +560,11 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
+  min-width: 0;
+  width: 100%;
   height: 100%;
   padding: 0;
+  overflow: hidden;
 }
 
 .dict-mcq-duo-header {
@@ -662,10 +665,22 @@
 .dict-mcq-duo-body {
   flex: 1;
   min-height: 0;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   padding: 16px 14px 8px;
+  overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior-x: none;
   display: flex;
   flex-direction: column;
+}
+
+.dict-mcq-duo-body > * {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .dict-mcq-duo-body.dict-mcq-duo-body--correct {
@@ -1102,6 +1117,8 @@
 .dict-mcq-option-text {
   flex: 1;
   min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Rest / hover / selected — neutral blues, NOT brand orange */
@@ -1736,6 +1753,7 @@
 
   .dict-mcq-duo-body {
     padding: 10px 12px 6px;
+    overflow-x: hidden;
   }
 
   .dict-mcq-question-card {
