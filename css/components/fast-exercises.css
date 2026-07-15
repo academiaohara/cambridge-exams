@@ -8792,7 +8792,8 @@
 @media (max-width: 600px) {
   .dict-mcq-diff-grid {
     grid-template-columns: 1fr;
-    max-width: 280px;
+    max-width: none;
+    width: 100%;
   }
   .dict-mcq-term { font-size: 1.25rem; }
   .dict-mcq-practice-btn {
