@@ -176,9 +176,6 @@
       if (sectionId === 'vocabulary') {
         var vocabModeMeta = DashboardNav._getVocabHubModeMeta();
         return '<div class="cw-section-header cw-section-header--duo cw-section-header--level cw-section-header--vocab" style="--cw-header-color:' + meta.headerColor + '">' +
-          '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' +
-            _mi('arrow_back') +
-          '</button>' +
           '<div class="cw-section-header-text">' +
             DashboardNav._buildVocabHubModeKickerHtml() +
             '<div class="cw-section-title">' + title + '</div>' +
