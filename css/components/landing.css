@@ -8,30 +8,6 @@
   flex-shrink: 0;
 }
 
-.preauth-back-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: none;
-  color: #afafaf;
-  cursor: pointer;
-  border-radius: 8px;
-  padding: 0;
-  flex-shrink: 0;
-}
-
-.preauth-back-btn:hover {
-  color: #777;
-  background: #f7f7f7;
-}
-
-.preauth-back-btn .material-symbols-outlined {
-  font-size: 1.5rem;
-}
-
 .preauth-brand-logo {
   height: 40px;
   width: auto;
