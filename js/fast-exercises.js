@@ -6596,9 +6596,13 @@
 
       var q = state.questions[state.questionIndex];
       var self = this;
+      var optionLetters = ['A', 'B', 'C', 'D'];
       var optionsHtml = q.options.map(function(opt, idx) {
-        return '<button type="button" class="dict-mcq-option" id="dict-mcq-opt-' + idx + '" onclick="FastExercises._answerDictMcqPractice(' + idx + ')">' +
-          self._escapeHTML(opt) +
+        return '<button type="button" class="dict-mcq-option" id="dict-mcq-opt-' + idx + '" ' +
+          'data-index="' + idx + '" aria-pressed="false" ' +
+          'onclick="FastExercises._selectDictMcqOption(' + idx + ')">' +
+          '<span class="dict-mcq-option-letter" aria-hidden="true">' + (optionLetters[idx] || '') + '</span>' +
+          '<span class="dict-mcq-option-text">' + self._escapeHTML(opt) + '</span>' +
         '</button>';
       }).join('');
 
@@ -6606,24 +6610,29 @@
         ? this._dictDuoTtsWord(q.term, 'dict-mcq-term')
         : '<span class="dict-mcq-term">' + this._escapeHTML(q.term) + '</span>';
 
+      var levelBadge = q.level
+        ? '<span class="dict-mcq-level-badge vocab-level-' + q.level.toLowerCase() + '">' + this._escapeHTML(q.level) + '</span>'
+        : '';
+
       bodyEl.innerHTML =
-        '<div class="dict-mcq-session dict-mcq-session--duo">' +
+        '<div class="dict-mcq-session dict-mcq-session--duo dict-mcq-session--playing">' +
           this._dictDuoRenderHeader(state) +
           '<div class="dict-mcq-duo-body" id="dict-mcq-duo-body">' +
-            '<div class="dict-mcq-prompt dict-mcq-prompt--duo">' +
+            '<div class="dict-mcq-question-card">' +
               '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
-              '<div class="dict-mcq-term-row">' +
+              '<div class="dict-mcq-question-term-row">' +
                 termHtml +
-                (q.level ? '<span class="dict-mcq-level">' + this._escapeHTML(q.level) + '</span>' : '') +
+                levelBadge +
               '</div>' +
               (q.subtitle ? '<div class="dict-mcq-subtitle">' + q.subtitle + '</div>' : '') +
             '</div>' +
-            '<div class="dict-mcq-options dict-mcq-options--duo" id="dict-mcq-options">' + optionsHtml + '</div>' +
+            '<div class="dict-mcq-options dict-mcq-options--duo" id="dict-mcq-options" role="listbox" aria-label="Answer options">' + optionsHtml + '</div>' +
             '<div class="dict-mcq-feedback dict-mcq-feedback--duo" id="dict-mcq-feedback" aria-live="polite"></div>' +
           '</div>' +
-          '<footer class="dict-mcq-duo-footer">' +
-            '<button class="dict-mcq-btn dict-mcq-btn-primary" id="dict-mcq-next" onclick="FastExercises._nextDictMcqQuestion()" disabled>Continue</button>' +
-            '<button class="dict-mcq-btn dict-mcq-btn-ghost" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
+          '<footer class="dict-mcq-duo-footer dict-mcq-play-footer">' +
+            '<button type="button" class="dict-mcq-btn dict-mcq-btn-primary dict-mcq-continue-btn" id="dict-mcq-next" ' +
+              'onclick="FastExercises._nextDictMcqQuestion()" disabled>Continuar</button>' +
+            '<button type="button" class="dict-mcq-btn dict-mcq-btn-ghost" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
           '</footer>' +
         '</div>';
 
@@ -6631,16 +6640,38 @@
       state.selectedIndex = -1;
     },
 
-    _answerDictMcqPractice: function(optionIndex) {
+    _selectDictMcqOption: function(optionIndex) {
       var state = this._dictMcqPractice;
       if (!state || state.phase !== 'playing' || state.answered) return;
 
       var q = state.questions[state.questionIndex];
+      if (!q || optionIndex < 0 || optionIndex >= q.options.length) return;
+
+      state.selectedIndex = optionIndex;
+
+      for (var i = 0; i < q.options.length; i++) {
+        var btn = document.getElementById('dict-mcq-opt-' + i);
+        if (!btn) continue;
+        var isSelected = i === optionIndex;
+        btn.classList.toggle('dict-mcq-option--selected', isSelected);
+        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      }
+
+      var nextBtn = document.getElementById('dict-mcq-next');
+      if (nextBtn) nextBtn.disabled = false;
+    },
+
+    _confirmDictMcqAnswer: function() {
+      var state = this._dictMcqPractice;
+      if (!state || state.phase !== 'playing' || state.answered || state.selectedIndex < 0) return;
+
+      var q = state.questions[state.questionIndex];
       if (!q) return;
 
+      var optionIndex = state.selectedIndex;
       state.answered = true;
-      state.selectedIndex = optionIndex;
       var isCorrect = optionIndex === q.correctIndex;
+
       if (isCorrect) {
         state.correctCount++;
         state.sessionStreak = (state.sessionStreak || 0) + 1;
@@ -6664,19 +6695,23 @@
         var btn = document.getElementById('dict-mcq-opt-' + i);
         if (!btn) continue;
         btn.disabled = true;
+        btn.classList.remove('dict-mcq-option--selected');
         if (i === q.correctIndex) {
-          btn.classList.add('dict-mcq-option-correct');
+          btn.classList.add('dict-mcq-option--correct');
         } else if (i === optionIndex && !isCorrect) {
-          btn.classList.add('dict-mcq-option-wrong');
+          btn.classList.add('dict-mcq-option--wrong');
+        } else {
+          btn.classList.add('dict-mcq-option--dimmed');
         }
       }
 
       var feedbackEl = document.getElementById('dict-mcq-feedback');
       if (feedbackEl) {
-        feedbackEl.className = 'dict-mcq-feedback dict-mcq-feedback--duo ' + (isCorrect ? 'dict-mcq-feedback-correct' : 'dict-mcq-feedback-wrong');
+        feedbackEl.className = 'dict-mcq-feedback dict-mcq-feedback--duo ' +
+          (isCorrect ? 'dict-mcq-feedback--correct' : 'dict-mcq-feedback--wrong');
         feedbackEl.innerHTML = isCorrect
-          ? '<span class="material-symbols-outlined">check_circle</span> Correct! +' + this._dictDuoXpPerCorrect + ' XP'
-          : '<span class="material-symbols-outlined">cancel</span> Incorrect';
+          ? '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> ¡Correcto! +' + this._dictDuoXpPerCorrect + ' XP'
+          : '<span class="material-symbols-outlined" aria-hidden="true">cancel</span> Incorrecto — la respuesta correcta está marcada en verde';
       }
 
       this._dictDuoUpdateHeader(state);
@@ -6684,13 +6719,23 @@
       var nextBtn = document.getElementById('dict-mcq-next');
       if (nextBtn) {
         nextBtn.disabled = false;
-        if (state.outOfHearts) nextBtn.textContent = 'See results';
+        nextBtn.textContent = state.outOfHearts ? 'Ver resultados' : 'Continuar';
       }
+    },
+
+    _answerDictMcqPractice: function(optionIndex) {
+      this._selectDictMcqOption(optionIndex);
+      this._confirmDictMcqAnswer();
     },
 
     _nextDictMcqQuestion: function() {
       var state = this._dictMcqPractice;
-      if (!state || !state.answered) return;
+      if (!state) return;
+      if (!state.answered) {
+        if (state.selectedIndex < 0) return;
+        this._confirmDictMcqAnswer();
+        return;
+      }
       if (state.outOfHearts) {
         this._renderDictMcqComplete();
         return;
