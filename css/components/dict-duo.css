@@ -706,7 +706,7 @@
 }
 
 .dict-mcq-duo-body.dict-mcq-duo-body--wrong {
-  animation: duoShake 0.4s ease;
+  animation: duoFlashWrong 0.4s ease;
 }
 
 .dict-mcq-question-card .dict-mcq-level-badge.vocab-level-a2,
@@ -1628,6 +1628,12 @@
 @keyframes duoFlashCorrect {
   0%   { background-color: transparent; }
   30%  { background-color: rgba(88, 204, 2, 0.12); }
+  100% { background-color: transparent; }
+}
+
+@keyframes duoFlashWrong {
+  0%   { background-color: transparent; }
+  30%  { background-color: rgba(239, 68, 68, 0.12); }
   100% { background-color: transparent; }
 }
 
