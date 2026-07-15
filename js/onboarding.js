@@ -134,6 +134,11 @@
     if (pathStep) pathStep.style.display = step === 'path' ? 'flex' : 'none';
     if (levelStep) levelStep.style.display = step === 'level' ? 'flex' : 'none';
     if (placementStep) placementStep.style.display = step === 'placement' ? 'flex' : 'none';
+
+    var globalBack = document.querySelector('#onboarding-screen .onboarding-header .preauth-back-btn');
+    if (globalBack) {
+      globalBack.style.visibility = step === 'path' ? 'visible' : 'hidden';
+    }
   }
 
   function getPlacementScore() {
@@ -171,12 +176,26 @@
     };
   }
 
+  var PLACEMENT_EXIT_TEXTS = {
+    message: '¿Seguro que quieres salir? Tendrás que empezar el test de nuevo.',
+    stayLabel: 'Seguir con el test',
+    leaveLabel: 'Salir'
+  };
+
   function destroyPlacementLesson() {
     if (typeof SunePlayLesson !== 'undefined' && SunePlayLesson.destroy) {
       SunePlayLesson.destroy();
     }
     var placementStep = document.getElementById('onboarding-placement-step');
     if (placementStep) placementStep.classList.remove('onboarding-placement-step--sune-play');
+  }
+
+  function showPlacementExitConfirm(onLeave) {
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._showLearningExitConfirm) {
+      DashboardNav._showLearningExitConfirm(onLeave, PLACEMENT_EXIT_TEXTS);
+      return;
+    }
+    onLeave();
   }
 
   function updatePlacementFinishButton(score) {
@@ -255,6 +274,22 @@
       document.body.classList.remove('onboarding-open');
     },
 
+    handleHeaderBack: function () {
+      var placementStep = document.getElementById('onboarding-placement-step');
+      var levelStep = document.getElementById('onboarding-level-step');
+      if (placementStep && placementStep.style.display !== 'none') {
+        this.confirmBackToLevelSelection();
+        return;
+      }
+      if (levelStep && levelStep.style.display !== 'none') {
+        this.backToPathSelection();
+        return;
+      }
+      if (typeof Auth !== 'undefined' && Auth.navigateTo) {
+        Auth.navigateTo('/');
+      }
+    },
+
     selectPath: function (path) {
       document.querySelectorAll('.onboarding-path-option').forEach(function (btn) {
         btn.classList.toggle('selected', btn.getAttribute('data-path') === path);
@@ -303,6 +338,16 @@
       if (placementStep) placementStep.classList.remove('onboarding-placement-step--sune-play', 'onboarding-placement-step--ready');
     },
 
+    confirmBackToLevelSelection: function () {
+      if (_placementUsesSunePlay) {
+        showPlacementExitConfirm(function () {
+          Onboarding.backToLevelSelection();
+        });
+        return;
+      }
+      this.backToLevelSelection();
+    },
+
     complete: function () {
       if (!_selectedLevel) return;
       this.startPlacementTest();
@@ -339,7 +384,7 @@
       var cfg = getLevelConfig(_selectedLevel);
       var subtitle = document.getElementById('onboarding-placement-subtitle');
       if (subtitle && cfg) {
-        subtitle.textContent = 'Progress Test · ' + cfg.equiv;
+        subtitle.textContent = 'Test de ubicación · ' + cfg.equiv;
       }
 
       try {
@@ -396,6 +441,7 @@
                 : null,
               mount: mount,
               backFn: 'Onboarding.backToLevelSelection()',
+              exitConfirmTexts: PLACEMENT_EXIT_TEXTS,
               onTestScoreUpdate: function (score) { updatePlacementFinishButton(score); }
             });
             if (finishBtn) finishBtn.disabled = true;
