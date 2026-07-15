@@ -5060,9 +5060,22 @@
     // ── WORD FORMATION DICTIONARY ─────────────────────────────────────────
     _wfDictCache: null,
 
-    _showWfDictionary: async function() {
+    _showWfDictionary: async function(options) {
+      options = options || {};
       var existing = document.getElementById('wf-dict-modal');
-      if (existing) { this._closeDictMcqModal('wf'); return; }
+      if (existing) {
+        if (options.startPractice) {
+          if (!this._wfDictEntries || !this._wfDictEntries.length) {
+            this._wfDictEntries = (this._wfDictCache && this._wfDictCache.entries) || [];
+          }
+          if (!this._dictMcqPractice || this._dictMcqPractice.dictId !== 'wf') {
+            this._toggleDictMcqPractice('wf');
+          }
+          return;
+        }
+        this._closeDictMcqModal('wf');
+        return;
+      }
 
       // Load dictionary data
       if (!this._wfDictCache) {
@@ -5140,6 +5153,10 @@
         var searchEl = document.getElementById('wf-dict-search');
         if (searchEl) searchEl.focus();
       }, 100);
+
+      if (options.startPractice) {
+        this._toggleDictMcqPractice('wf');
+      }
     },
 
     _filterWfDict: function(query) {
@@ -6008,29 +6025,6 @@
       return html + '</div>';
     },
 
-    _dictDuoGetDailyStreak: function() {
-      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
-      return streak ? (streak.currentStreak || 0) : 0;
-    },
-
-    _dictDuoRenderSetupHeader: function(dictId) {
-      var meta = this._dictMcqPracticeMeta[dictId] || { title: 'Practice', icon: 'quiz' };
-      var streakCount = this._dictDuoGetDailyStreak();
-      var streakCls = streakCount > 0 ? '' : ' dict-mcq-duo-streak--cold';
-      return '<header class="dict-mcq-setup-header">' +
-        '<div class="dict-mcq-setup-brand">' +
-          '<span class="dict-mcq-setup-icon" aria-hidden="true">' +
-            '<span class="material-symbols-outlined">' + meta.icon + '</span>' +
-          '</span>' +
-          '<h2 class="dict-mcq-setup-brand-title">' + this._escapeHTML(meta.title) + '</h2>' +
-        '</div>' +
-        '<div class="dict-mcq-duo-streak dict-mcq-setup-streak' + streakCls + '" aria-label="' + streakCount + ' day streak">' +
-          '<span class="dict-mcq-duo-streak-icon" aria-hidden="true">🔥</span>' +
-          '<span class="dict-mcq-duo-streak-count">' + streakCount + '</span>' +
-        '</div>' +
-      '</header>';
-    },
-
     _dictDuoRenderHeader: function(state) {
       var total = state.questions.length;
       var done = state.questionIndex + (state.answered ? 1 : 0);
@@ -6114,8 +6108,8 @@
 
     _dictMcqDifficultySettings: {
       easy: {
-        label: 'Fácil',
-        description: '3 opciones · palabras A2–B1',
+        label: 'Easy',
+        description: '3 options · A2–B1 words',
         rangeBadge: 'A2–B1',
         optionCount: 3,
         levels: ['A1', 'A2', 'B1'],
@@ -6124,8 +6118,8 @@
         colorClass: 'easy'
       },
       medium: {
-        label: 'Medio',
-        description: '3 opciones · todos los niveles',
+        label: 'Medium',
+        description: '3 options · all levels',
         rangeBadge: 'A2–C1',
         optionCount: 3,
         levels: null,
@@ -6134,8 +6128,8 @@
         colorClass: 'medium'
       },
       hard: {
-        label: 'Difícil',
-        description: '3 opciones · palabras B2–C1',
+        label: 'Hard',
+        description: '3 options · B2–C1 words',
         rangeBadge: 'B2–C1',
         optionCount: 3,
         levels: ['B2', 'C1'],
@@ -6143,14 +6137,6 @@
         icon: 'local_fire_department',
         colorClass: 'hard'
       }
-    },
-
-    _dictMcqPracticeMeta: {
-      vocab: { title: 'Vocabulario', icon: 'menu_book' },
-      wf: { title: 'Formación de palabras', icon: 'text_fields' },
-      pv: { title: 'Phrasal verbs', icon: 'auto_stories' },
-      idioms: { title: 'Idioms', icon: 'record_voice_over' },
-      colloc: { title: 'Colocaciones', icon: 'link' }
     },
 
     _dictMcqPracticeConfigs: {
@@ -6382,17 +6368,16 @@
 
       bodyEl.innerHTML =
         '<div class="dict-mcq-session dict-mcq-session--duo dict-mcq-session--setup">' +
-          this._dictDuoRenderSetupHeader(dictId) +
           '<div class="dict-mcq-setup dict-mcq-setup--duo">' +
-            '<h3 class="dict-mcq-setup-title">Elige la dificultad</h3>' +
-            '<p class="dict-mcq-setup-desc">Elige la definición correcta de cada término. Gana XP y mantén tu racha.</p>' +
+            '<h3 class="dict-mcq-setup-title">Choose difficulty</h3>' +
+            '<p class="dict-mcq-setup-desc">Pick the correct definition for each term. Earn XP and keep your streak alive!</p>' +
             '<div class="dict-mcq-diff-grid" role="radiogroup" aria-label="Difficulty level">' + diffHtml + '</div>' +
           '</div>' +
           '<footer class="dict-mcq-duo-footer dict-mcq-setup-footer">' +
             '<button type="button" class="dict-mcq-btn dict-mcq-btn-primary dict-mcq-setup-start" ' +
               'id="dict-mcq-setup-start" disabled ' +
               'onclick="FastExercises._startDictMcqFromSetup(\'' + dictId + '\')">' +
-              'Elige un nivel para empezar' +
+              'Choose a level to start' +
             '</button>' +
           '</footer>' +
         '</div>';
@@ -6425,13 +6410,13 @@
       var difficulty = state.selectedDifficulty;
       if (!difficulty) {
         btn.disabled = true;
-        btn.textContent = 'Elige un nivel para empezar';
+        btn.textContent = 'Choose a level to start';
         return;
       }
 
       var settings = this._dictMcqDifficultySettings[difficulty];
       btn.disabled = false;
-      btn.textContent = 'Empezar · ' + (settings ? settings.label : difficulty);
+      btn.textContent = 'Start · ' + (settings ? settings.label : difficulty);
     },
 
     _startDictMcqFromSetup: function(dictId) {
@@ -6631,7 +6616,7 @@
           '</div>' +
           '<footer class="dict-mcq-duo-footer dict-mcq-play-footer">' +
             '<button type="button" class="dict-mcq-btn dict-mcq-btn-primary dict-mcq-continue-btn" id="dict-mcq-next" ' +
-              'onclick="FastExercises._nextDictMcqQuestion()" disabled>Continuar</button>' +
+              'onclick="FastExercises._nextDictMcqQuestion()" disabled>Continue</button>' +
             '<button type="button" class="dict-mcq-btn dict-mcq-btn-ghost" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
           '</footer>' +
         '</div>';
@@ -6710,8 +6695,8 @@
         feedbackEl.className = 'dict-mcq-feedback dict-mcq-feedback--duo ' +
           (isCorrect ? 'dict-mcq-feedback--correct' : 'dict-mcq-feedback--wrong');
         feedbackEl.innerHTML = isCorrect
-          ? '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> ¡Correcto! +' + this._dictDuoXpPerCorrect + ' XP'
-          : '<span class="material-symbols-outlined" aria-hidden="true">cancel</span> Incorrecto — la respuesta correcta está marcada en verde';
+          ? '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Correct! +' + this._dictDuoXpPerCorrect + ' XP'
+          : '<span class="material-symbols-outlined" aria-hidden="true">cancel</span> Incorrect — the correct answer is highlighted in green';
       }
 
       this._dictDuoUpdateHeader(state);
@@ -6719,7 +6704,7 @@
       var nextBtn = document.getElementById('dict-mcq-next');
       if (nextBtn) {
         nextBtn.disabled = false;
-        nextBtn.textContent = state.outOfHearts ? 'Ver resultados' : 'Continuar';
+        nextBtn.textContent = state.outOfHearts ? 'See results' : 'Continue';
       }
     },
 

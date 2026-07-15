@@ -730,58 +730,6 @@
   line-height: 1.45;
 }
 
-/* Setup session header: icon + title + daily streak */
-.dict-mcq-setup-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 14px;
-  background: var(--duo-surface);
-  border-bottom: 2px solid var(--duo-surface-muted);
-  flex-shrink: 0;
-}
-
-.dict-mcq-setup-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-.dict-mcq-setup-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background: var(--duo-secondary-tint);
-  border: 2px solid rgba(30, 157, 142, 0.2);
-  flex-shrink: 0;
-}
-
-.dict-mcq-setup-icon .material-symbols-outlined {
-  font-size: 1.25rem;
-  color: var(--duo-secondary-dark);
-}
-
-.dict-mcq-setup-brand-title {
-  margin: 0;
-  font-family: var(--duo-font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--duo-text);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.dict-mcq-setup-streak {
-  flex-shrink: 0;
-}
-
 .dict-mcq-session--setup {
   display: flex;
   flex-direction: column;
