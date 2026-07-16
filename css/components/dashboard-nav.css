@@ -1957,7 +1957,7 @@ margin-top: -2px;
   }
 }
 
-.dashboard-layout--wordle-scroll .cw-section-header--wordle {
+.dashboard-layout--wordle-scroll .cw-section-header--wordle:not(.cw-section-header--level) {
   background: #a855f7;
 }
 
@@ -1994,8 +1994,13 @@ margin-top: -2px;
   box-sizing: border-box;
 }
 
-.cw-section-header--wordle {
+.cw-section-header--wordle:not(.cw-section-header--level) {
   background: #a855f7;
+}
+
+.cw-section-header--wordle.cw-section-header--level {
+  background: var(--cw-header-color, #a855f7);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #a855f7) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #a855f7) 22%, transparent);
 }
 
 .cw-section-header--level {
