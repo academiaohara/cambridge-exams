@@ -1003,6 +1003,7 @@ button.sp-vocab-word-card:focus-visible {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  margin-bottom: 20px;
   border: 2px solid var(--sp-duo-blue);
   border-bottom-width: 4px;
   border-bottom-color: var(--sp-duo-blue-dark);
