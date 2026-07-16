@@ -29,11 +29,49 @@
 
   function _testsLevelMeta() {
     return {
-      'B1': { label: 'B1', difficulty: 'Preliminary (PET)', iconColor: '#2563eb', headerColor: '#3b82f6', cardBg: '#eff6ff', cardBorder: '#93c5fd', cardText: '#1e3a8a', icon: 'school' },
-      'B2': { label: 'B2', difficulty: 'First (FCE)', iconColor: '#d97706', headerColor: '#f59e0b', cardBg: '#fffbeb', cardBorder: '#fcd34d', cardText: '#78350f', icon: 'school' },
-      'C1': { label: 'C1', difficulty: 'Advanced (CAE)', iconColor: '#dc2626', headerColor: '#ef4444', cardBg: '#fff1f2', cardBorder: '#fca5a5', cardText: '#7f1d1d', icon: 'school' },
-      'C2': { label: 'C2', difficulty: 'Proficiency (CPE)', iconColor: '#7c3aed', headerColor: '#8b5cf6', cardBg: '#f5f3ff', cardBorder: '#c4b5fd', cardText: '#4c1d95', icon: 'school' }
+      'B1': { label: 'B1', difficulty: 'Preliminary (PET)', iconColor: '#1cb0f6', headerColor: '#1cb0f6', cardBg: '#e8f7ff', cardBorder: '#84d8ff', cardShadow: '#46b4e8', cardText: '#1899d6', ringTrack: '#c5ecff', icon: 'school' },
+      'B2': { label: 'B2', difficulty: 'First (FCE)', iconColor: '#ce82ff', headerColor: '#ce82ff', cardBg: '#f6eeff', cardBorder: '#d8b4fe', cardShadow: '#a855f7', cardText: '#a855f7', ringTrack: '#ead4ff', icon: 'school' },
+      'C1': { label: 'C1', difficulty: 'Advanced (CAE)', iconColor: '#ff86d0', headerColor: '#ff86d0', cardBg: '#fff0f8', cardBorder: '#ffb8e4', cardShadow: '#e84aa8', cardText: '#e84aa8', ringTrack: '#ffd8ef', icon: 'school' },
+      'C2': { label: 'C2', difficulty: 'Proficiency (CPE)', iconColor: '#ff9600', headerColor: '#ff9600', cardBg: '#fff8ee', cardBorder: '#ffc966', cardShadow: '#e08600', cardText: '#e08600', ringTrack: '#ffe4b8', icon: 'school' }
     };
+  }
+
+  function _getTestsLevelAvgScale(level) {
+    if (typeof ScoreCalculator === 'undefined') return null;
+    var exams = window.EXAMS_DATA[level] || [];
+    var scaleTotal = 0;
+    var scaleCount = 0;
+    var prevLevel = AppState.currentLevel;
+    AppState.currentLevel = level;
+    try {
+      exams.forEach(function(exam) {
+        if (exam.status !== 'available') return;
+        try {
+          ScoreCalculator.getAllSkillScores(exam.id).forEach(function(score) {
+            if (score.raw > 0) {
+              scaleTotal += score.scale;
+              scaleCount++;
+            }
+          });
+        } catch (e) { /* ignore */ }
+      });
+    } finally {
+      AppState.currentLevel = prevLevel;
+    }
+    return scaleCount ? Math.round(scaleTotal / scaleCount) : null;
+  }
+
+  function _buildTestsLevelProgressRing(completed, total, meta) {
+    var pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
+    var dash = (pct * 0.999).toFixed(1);
+    return '<div class="tests-level-card-ring" aria-hidden="true">' +
+      '<svg viewBox="0 0 40 40" class="tests-level-card-ring-svg">' +
+        '<circle class="tests-level-card-ring-track" cx="20" cy="20" r="16" style="stroke:' + meta.ringTrack + '"></circle>' +
+        '<circle class="tests-level-card-ring-fill" cx="20" cy="20" r="16" ' +
+          'style="stroke:' + meta.iconColor + ';stroke-dasharray:' + dash + ' 100"></circle>' +
+      '</svg>' +
+      '<span class="tests-level-card-ring-label" style="color:' + meta.cardText + '">' + completed + '/' + total + '</span>' +
+    '</div>';
   }
 
   function _getExamProgressState(exam) {
@@ -361,33 +399,39 @@
         return (window.EXAMS_DATA[lvl] || []).some(function(e) { return e.status === 'available'; });
       });
 
-      var html = '<div class="cw-level-cards desktop-mode-cards tests-level-cards">';
+      var html = '<div class="cw-level-cards tests-level-cards">';
       availableLevels.forEach(function(lvl) {
         var meta = LEVEL_META[lvl] || LEVEL_META['B2'];
         var exams = window.EXAMS_DATA[lvl] || [];
         var available = exams.filter(function(e) { return e.status === 'available'; });
         var completed = 0;
-        var inProgress = 0;
         available.forEach(function(exam) {
-          var state = _getExamProgressState(exam);
-          if (state === 'done') completed++;
-          else if (state === 'progress') inProgress++;
+          if (_getExamProgressState(exam) === 'done') completed++;
         });
-        var statusText = completed > 0
-          ? completed + ' / ' + available.length + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
-          : available.length + ' tests · ' + meta.difficulty;
-        var statusClass = completed > 0 ? 'mode-card-status-done' : '';
+        var avgScale = _getTestsLevelAvgScale(lvl);
+        var gradeInfo = (avgScale !== null && typeof ScoreCalculator !== 'undefined')
+          ? ScoreCalculator.getGradeInfo(avgScale, lvl)
+          : null;
+        var avgHtml = avgScale !== null
+          ? '<div class="tests-level-card-avg">' +
+              '<span class="tests-level-card-avg-value" style="color:' + meta.cardText + '">' + avgScale + '</span>' +
+              '<span class="tests-level-card-avg-label">Cambridge scale' +
+                (gradeInfo && gradeInfo.cefr ? ' · ' + self._escapeHTML(gradeInfo.cefr) : '') +
+              '</span>' +
+            '</div>'
+          : '<div class="tests-level-card-avg tests-level-card-avg--empty">' +
+              '<span class="tests-level-card-avg-label">Complete tests to see your average</span>' +
+            '</div>';
 
-        html += '<div class="mode-card mode-card--tests-level" data-tests-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="DashboardNav.openTests(\'' + lvl + '\')" role="button" tabindex="0">' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-title-row">' +
-              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
-            '</div>' +
-            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
-          '</div>' +
-          '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon">' + _mi(meta.icon) + '</div>' +
+        html += '<div class="tests-level-card" data-tests-level="' + lvl.toLowerCase() + '"' +
+          ' style="--tl-bg:' + meta.cardBg + ';--tl-border:' + meta.cardBorder + ';--tl-shadow:' + meta.cardShadow + ';--tl-accent:' + meta.cardText + '"' +
+          ' onclick="DashboardNav.openTests(\'' + lvl + '\')" role="button" tabindex="0"' +
+          ' aria-label="' + self._escapeHTML(meta.label) + ', ' + completed + ' of ' + available.length + ' tests completed' +
+            (avgScale !== null ? ', average scale ' + avgScale : '') + '">' +
+          _buildTestsLevelProgressRing(completed, available.length, meta) +
+          '<div class="tests-level-card-main">' +
+            '<span class="tests-level-card-badge" style="color:' + meta.cardText + '">' + self._escapeHTML(meta.label) + '</span>' +
+            avgHtml +
           '</div>' +
         '</div>';
       });
