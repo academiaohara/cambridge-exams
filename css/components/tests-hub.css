@@ -1224,6 +1224,10 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 }
 
 @media (max-width: 768px) {
+  .tests-path-row {
+    align-items: stretch;
+  }
+
   .tests-path-row-sections {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1244,7 +1248,13 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     justify-content: center;
   }
 
+  .tests-path-section-img,
+  .tests-path-section-fallback {
+    order: 1;
+  }
+
   .tests-path-section-label {
+    order: 2;
     font-size: 0.52rem;
     max-width: 100%;
     overflow: hidden;
@@ -1258,14 +1268,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   }
 
   .tests-path-section-score-detail {
-    font-size: 0.46rem;
-    text-align: center;
-    line-height: 1.1;
-    max-width: 100%;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    display: none;
   }
 
   .tests-path-section-stars {
@@ -1294,9 +1297,10 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     width: 68px;
     min-width: 68px;
     max-width: 68px;
-    height: 48px;
-    min-height: 48px;
-    max-height: 48px;
+    height: auto;
+    min-height: 56px;
+    max-height: none;
+    align-self: stretch;
     padding: 0;
     border-radius: 10px;
   }
@@ -1369,9 +1373,10 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     width: 60px;
     min-width: 60px;
     max-width: 60px;
-    height: 44px;
+    height: auto;
     min-height: 44px;
-    max-height: 44px;
+    max-height: none;
+    align-self: stretch;
     padding: 0;
   }
 
