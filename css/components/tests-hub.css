@@ -9,11 +9,43 @@
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
+  gap: var(--tests-hub-scroll-gap, 14px);
+  --tests-hub-scroll-gap: 14px;
+}
+
+/* No document scroll — only the inner list area scrolls */
+html:has(.dashboard-center--tests-hub),
+body:has(.dashboard-center--tests-hub) {
+  overflow: hidden;
+  height: 100%;
+}
+
+body:has(.dashboard-center--tests-hub) #app,
+body:has(.dashboard-center--tests-hub) .app-container,
+body:has(.dashboard-center--tests-hub) #main-content {
+  overflow: hidden;
+  height: 100%;
+  min-height: 0;
+}
+
+body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+  box-sizing: border-box;
 }
 
 @media (min-width: 769px) {
+  body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
+    height: calc(100dvh - var(--dashboard-top-spacing, 28px));
+    max-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
+  }
+
   .dashboard-center--tests-hub {
-    max-height: calc(100dvh - var(--dashboard-top-spacing, 28px) - 12px);
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
   }
 }
 
@@ -40,6 +72,53 @@
   padding-top: 0;
   position: relative;
   z-index: 0;
+  scrollbar-gutter: stable;
+}
+
+/* Tests hub scrollbar — Duolingo-style, always visible on desktop */
+.dashboard-center--tests-hub .tests-hub-scroll {
+  --scroll-size-y: 7px;
+  --scroll-thumb: rgba(88, 204, 2, 0.34);
+  --scroll-thumb-hover: rgba(88, 204, 2, 0.52);
+  --scroll-thumb-active: rgba(88, 204, 2, 0.62);
+  --scroll-track: rgba(45, 46, 95, 0.06);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+.dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar {
+  width: var(--scroll-size-y);
+}
+
+.dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+  border-radius: var(--scroll-radius, 999px);
+  margin: 10px 0 10px 2px;
+}
+
+.dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: var(--scroll-radius, 999px);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+.dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb:active {
+  background: var(--scroll-thumb-active);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dashboard-center--tests-hub .tests-hub-scroll {
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+  }
+
+  .dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+  }
 }
 
 .dashboard-center--tests-hub .cw-page-content > .mobile-nav-top-bar {
@@ -501,9 +580,11 @@
 
 /* Mobile: one scroll region inside cw-page-content (stats bar scrolls away there) */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  html:has(.dashboard-center--tests-hub),
-  body:has(.dashboard-center--tests-hub) {
-    overflow: hidden;
+  body:has(.dashboard-center--tests-hub) .app-container {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100dvh;
+    max-height: 100dvh;
   }
 
   .dashboard-center--tests-hub .cw-page-content > .mobile-nav-top-bar {
