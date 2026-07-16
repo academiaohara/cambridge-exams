@@ -882,7 +882,7 @@
 .tests-path-row-sections {
   display: flex;
   align-items: stretch;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 8px;
   flex: 1;
   min-width: 0;
@@ -918,6 +918,7 @@
   }
 
   .tests-path-section {
+    flex: 1;
     min-width: 118px;
     padding: 10px 14px 10px 16px;
   }
