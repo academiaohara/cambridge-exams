@@ -457,6 +457,11 @@
   max-width: 100%;
 }
 
+.tests-path-map {
+  align-self: stretch;
+  width: 100%;
+}
+
 /* ── Random Test path card (Duolingo style) ── */
 .tests-random-path-card {
   display: flex;
@@ -735,14 +740,14 @@
 .tests-path-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   width: 100%;
 }
 
 .tests-path-row {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  align-items: stretch;
+  gap: 8px;
   width: 100%;
   min-width: 0;
   position: relative;
@@ -759,7 +764,7 @@
   transform: translateY(-50%);
   width: 5px;
   height: 70%;
-  min-height: 28px;
+  min-height: 36px;
   border-radius: 999px;
   background: var(--cw-icon-color, #1cb0f6);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 22%, transparent);
@@ -767,15 +772,10 @@
 
 .tests-path-row-main,
 .tests-path-section {
-  --path-cell-size: 44px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--path-cell-size);
-  height: var(--path-cell-size);
-  min-width: var(--path-cell-size);
-  min-height: var(--path-cell-size);
   padding: 0;
   border: 2px solid #e5e7eb;
   border-bottom-width: 3px;
@@ -788,11 +788,21 @@
 
 .tests-path-row-main {
   flex-shrink: 0;
+  width: auto;
+  min-width: 76px;
+  min-height: 52px;
+  padding: 10px 16px;
   background: #f3f4f6;
   border-color: #e5e7eb;
   border-bottom-color: #d1d5db;
   box-shadow: 0 3px 0 #d1d5db;
   color: #6b7280;
+}
+
+.tests-path-section {
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
 }
 
 .tests-path-row-main:hover,
@@ -828,22 +838,17 @@
 }
 
 .tests-path-cell-face--test {
-  flex-direction: column;
-  gap: 0;
+  flex-direction: row;
 }
 
-.tests-path-test-line {
-  font-size: 0.52rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: #6b7280;
-}
-
-.tests-path-test-line--num {
-  font-size: 0.78rem;
+.tests-path-test-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
   font-weight: 900;
-  margin-top: 1px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #6b7280;
+  white-space: nowrap;
 }
 
 .tests-path-cell-face--hover {
@@ -877,7 +882,7 @@
   box-shadow: 0 3px 0 color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 55%, #fff);
 }
 
-.tests-path-row--current .tests-path-row-main .tests-path-test-line {
+.tests-path-row--current .tests-path-row-main .tests-path-test-label {
   color: var(--cw-card-text, #1e3a8a);
 }
 
@@ -899,12 +904,12 @@
 }
 
 .tests-path-row-sections {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 8px;
   flex: 1;
   min-width: 0;
-  justify-content: flex-end;
 }
 
 .tests-path-section {
@@ -920,10 +925,10 @@
 }
 
 .tests-path-section-img {
-  width: 26px;
-  height: 26px;
-  max-width: 26px;
-  max-height: 26px;
+  width: 32px;
+  height: 32px;
+  max-width: 32px;
+  max-height: 32px;
   object-fit: contain;
   pointer-events: none;
 }
@@ -934,7 +939,7 @@
 
 .tests-path-section-fallback {
   display: none;
-  font-size: 1.15rem;
+  font-size: 1.45rem;
   color: var(--tps-accent, #1cb0f6);
   font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 48;
 }
@@ -962,41 +967,56 @@
 }
 
 @media (max-width: 768px) {
-  .tests-path-row-main,
-  .tests-path-section {
-    --path-cell-size: 40px;
+  .tests-path-row-main {
+    min-width: 68px;
+    min-height: 48px;
+    padding: 8px 12px;
     border-radius: 10px;
   }
 
-  .tests-path-cell-face--default {
-    font-size: 0.58rem;
+  .tests-path-section {
+    min-height: 48px;
+    border-radius: 10px;
+  }
+
+  .tests-path-test-label {
+    font-size: 0.76rem;
   }
 
   .tests-path-cell-face--hover {
-    font-size: 0.58rem;
+    font-size: 0.62rem;
   }
 
   .tests-path-section-img {
-    width: 22px;
-    height: 22px;
-    max-width: 22px;
-    max-height: 22px;
+    width: 28px;
+    height: 28px;
+    max-width: 28px;
+    max-height: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .tests-path-row,
   .tests-path-row-sections {
-    gap: 5px;
+    gap: 6px;
   }
 
-  .tests-path-row-main,
+  .tests-path-row-main {
+    min-width: 60px;
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+
   .tests-path-section {
-    --path-cell-size: 36px;
+    min-height: 44px;
   }
 
-  .tests-path-cell-face--default {
-    font-size: 0.52rem;
+  .tests-path-test-label {
+    font-size: 0.7rem;
+  }
+
+  .tests-path-cell-face--hover {
+    font-size: 0.58rem;
   }
 }
 
