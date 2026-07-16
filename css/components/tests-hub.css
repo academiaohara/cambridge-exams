@@ -1141,9 +1141,38 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   white-space: nowrap;
 }
 
+.tests-path-section-stars {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  line-height: 1;
+}
+
+.tests-path-section-star {
+  font-size: 0.62rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  line-height: 1;
+  color: var(--tps-accent, #1cb0f6);
+  opacity: 0.28;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+}
+
+.tests-path-section-star--filled {
+  opacity: 1;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+}
+
 @media (min-width: 769px) {
   .tests-path-section-label {
     font-size: 0.78rem;
+  }
+
+  .tests-path-section-star {
+    font-size: 0.72rem;
+    width: 0.72rem;
+    height: 0.72rem;
   }
 
   .tests-path-section {
@@ -1198,6 +1227,16 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .tests-path-section-stars {
+    gap: 0;
+  }
+
+  .tests-path-section-star {
+    font-size: 0.48rem;
+    width: 0.48rem;
+    height: 0.48rem;
   }
 
   .tests-path-section-img,
