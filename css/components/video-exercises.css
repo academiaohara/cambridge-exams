@@ -1148,12 +1148,42 @@ body.ve-modal-open {
 
 @media (max-width: 768px) {
   .dashboard-center--subpage:has(.ve-hub) {
-    padding-left: max(18px, env(safe-area-inset-left));
-    padding-right: max(18px, env(safe-area-inset-right));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    overflow-x: clip;
+    box-sizing: border-box;
   }
 
   .ve-hub {
-    padding: 6px 0 48px;
+    padding: 6px 0 12px;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    box-sizing: border-box;
+  }
+
+  .ve-series-header,
+  .ve-chapter-list,
+  .ve-chapter-row {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .ve-series-progress-row {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .ve-series-overall-progress {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ve-series-overall-label {
+    font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
   .ve-series-header {
@@ -1182,6 +1212,7 @@ body.ve-modal-open {
     align-items: stretch;
     gap: 12px;
     padding: 14px 16px;
+    overflow: hidden;
   }
 
   .ve-chapter-row-info {
@@ -1241,10 +1272,14 @@ body.ve-modal-open {
     justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 2px 0;
+    box-sizing: border-box;
   }
 
   .ve-chapter-steps::-webkit-scrollbar {
