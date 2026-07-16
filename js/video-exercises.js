@@ -239,7 +239,10 @@
       return '<div class="' + rowCls + '" data-exercise-id="' + esc(item.id) + '">' +
         '<div class="ve-chapter-row-info">' +
           '<div class="ve-chapter-row-top">' +
-            '<span class="ve-chapter-ep">Ep. ' + epNum + '</span>' +
+            '<span class="ve-chapter-ep" aria-label="Episode ' + epNum + '">' +
+              '<span class="ve-chapter-ep-label">Ep.</span>' +
+              '<span class="ve-chapter-ep-num">' + epNum + '</span>' +
+            '</span>' +
             statusLabel +
           '</div>' +
           '<h3 class="ve-chapter-title">' + esc(item.title) + '</h3>' +
