@@ -141,26 +141,6 @@
     return map;
   }
 
-  function parseVerbPromptHint(hint) {
-    var trimmed = String(hint || '').trim();
-    if (!/^_/.test(trimmed)) return { particle: '', display: trimmed };
-    var particle = trimmed.replace(/^_+\s*/, '').trim();
-    return { particle: particle, display: particle };
-  }
-
-  function stripHintParticleFromSentence(sentence, particle) {
-    if (!particle) return sentence;
-    var normalized = normalizeGapSentence(sentence);
-    var chunks = normalized.split(/(_{2,}|\.{3,})/);
-    if (chunks.length < 3) return sentence;
-    var afterGap = chunks[2] || '';
-    var particleEsc = particle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var stripped = afterGap.replace(new RegExp('^\\s*' + particleEsc + '(?=\\s|$|[,.!?;:])', 'i'), '');
-    if (stripped === afterGap) return sentence;
-    chunks[2] = stripped;
-    return chunks.join('').replace(/\s+/g, ' ').trim();
-  }
-
   function buildMcOptions(options) {
     return (options || []).map(function(opt, i) {
       var text = String(opt).replace(/^[A-D]\)\s*/i, '').trim() || String(opt);
@@ -289,28 +269,24 @@
       var writeSentence = normalizeGapSentence(exercise.sentence || '');
       if (!GAP_RE.test(writeSentence)) writeSentence = (writeSentence + ' ___').trim();
       var hint = exercise.hint || exercise.root || '';
-      var useVerbPrompt = hint && /^_/.test(hint);
-      var verbPrompt = hint;
-      if (useVerbPrompt) {
-        var parsedHint = parseVerbPromptHint(hint);
-        writeSentence = stripHintParticleFromSentence(writeSentence, parsedHint.particle);
-        verbPrompt = parsedHint.display;
-      }
+      var isPhrasalParticleHint = hint && /^_/.test(hint);
       var writeInstruction = '';
       if (exercise.type === 'transform' && hint) {
         writeInstruction = 'Complete the gap.';
-      } else if (hint && !useVerbPrompt) {
+      } else if (isPhrasalParticleHint) {
+        writeInstruction = 'Type the verb to form the correct phrasal verb.';
+      } else if (hint) {
         writeInstruction = 'Complete the gap. Hint: ' + hint;
       }
       return {
         screenId: id,
-        formatType: useVerbPrompt ? 'preselected_verb_gap_fill' : 'free_text_gap_fill',
+        formatType: 'free_text_gap_fill',
         payload: {
           sentence: writeSentence,
           answer: exercise.correct,
           acceptedAnswers: [exercise.correct],
-          preselectedVerb: useVerbPrompt ? verbPrompt : '',
-          verbPrompt: (exercise.type === 'transform' && hint) ? String(hint).toUpperCase() : (useVerbPrompt ? verbPrompt : ''),
+          preselectedVerb: '',
+          verbPrompt: (exercise.type === 'transform' && hint) ? String(hint).toUpperCase() : '',
           instruction: writeInstruction,
           explanation: exercise.explanation || ''
         }
