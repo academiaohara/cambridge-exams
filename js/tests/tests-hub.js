@@ -61,28 +61,28 @@
     return scaleCount ? Math.round(scaleTotal / scaleCount) : null;
   }
 
-  var PATH_SECTION_ORDER = ['listening', 'reading', 'writing', 'speaking'];
+  var PATH_SECTION_ORDER = ['reading', 'listening', 'writing', 'speaking'];
 
-  function _getSectionState(section) {
-    if (!section) return 'pending';
-    var done = (section.completed || []).length;
-    var prog = (section.inProgress || []).length;
-    var total = section.total || 0;
-    if (total > 0 && done >= total) return 'done';
-    if (done > 0 || prog > 0) return 'progress';
-    return 'pending';
+  function _getTestsExamScoreLabel(examId, levelId) {
+    if (typeof ScoreCalculator === 'undefined') return '';
+    var scores = ScoreCalculator.getAllSkillScores(examId);
+    var withData = scores.filter(function(s) { return s.raw > 0; });
+    if (!withData.length) return '';
+    var avg = Math.round(withData.reduce(function(sum, s) { return sum + s.scale; }, 0) / withData.length);
+    var gradeInfo = ScoreCalculator.getGradeInfo(avg, levelId);
+    return String(avg) + (gradeInfo && gradeInfo.cefr ? ' · ' + gradeInfo.cefr : '');
   }
 
-  function _getTestsSectionTooltip(examId, sectionKey, section, levelId) {
-    if (typeof ScoreCalculator === 'undefined') return '';
+  function _getTestsSectionHoverLabel(examId, sectionKey, section, levelId) {
+    if (typeof ScoreCalculator === 'undefined') return '—';
     var display = ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section);
     if (display.type === 'scale') {
       var gradeInfo = ScoreCalculator.getGradeInfo(display.value, levelId);
-      return display.value + ' Cambridge scale' + (gradeInfo && gradeInfo.cefr ? ' · ' + gradeInfo.cefr : '');
+      return String(display.value) + (gradeInfo && gradeInfo.cefr ? ' · ' + gradeInfo.cefr : '');
     }
-    if (!section || !section.total) return 'Not started';
-    if (display.value === '0/' + section.total) return 'Not started';
-    return display.value + ' parts done';
+    if (!section || !section.total) return '—';
+    if (display.value === '0/' + section.total) return '—';
+    return display.value;
   }
 
   function _buildTestsPathSectionBtn(exam, sectionKey, levelId, testLocked) {
@@ -92,13 +92,12 @@
     var theme = SECTION_CARD_THEME[sectionKey] || SECTION_CARD_THEME.reading;
     var artSrc = SECTION_ART[sectionKey];
     var iconName = typeof Utils !== 'undefined' ? Utils.getMaterialIcon(sectionKey) : 'menu_book';
-    var state = _getSectionState(section);
     var lockInfo = DashboardNav._getTestsSectionLockInfo(sectionKey);
     var isLocked = testLocked || lockInfo.locked;
-    var tooltip = _getTestsSectionTooltip(exam.id, sectionKey, section, levelId);
+    var hoverLabel = _getTestsSectionHoverLabel(exam.id, sectionKey, section, levelId);
     var label = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
 
-    var btnClass = 'tests-path-section tests-path-section--' + sectionKey + ' tests-path-section--' + state;
+    var btnClass = 'tests-path-section tests-path-section--' + sectionKey;
     if (isLocked) btnClass += ' tests-path-section--locked';
 
     var onclick;
@@ -112,12 +111,14 @@
 
     return '<button type="button" class="' + btnClass + '"' +
       ' onclick="' + onclick + '"' +
-      ' aria-label="' + _escape(label) + (tooltip ? ', ' + _escape(tooltip) : '') + '"' +
-      ' style="--tps-bg:' + theme.bg + ';--tps-border:' + theme.border + ';--tps-accent:' + theme.accent + '">' +
-      '<img src="' + artSrc + '" alt="" class="tests-path-section-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">' +
-      '<span class="material-symbols-outlined tests-path-section-fallback">' + iconName + '</span>' +
+      ' aria-label="' + _escape(label) + '"' +
+      ' style="--tps-bg:' + theme.bg + ';--tps-border:' + theme.border + ';--tps-accent:' + theme.accent + ';--tps-title:' + theme.title + '">' +
+      '<span class="tests-path-cell-face tests-path-cell-face--default" aria-hidden="true">' +
+        '<img src="' + artSrc + '" alt="" class="tests-path-section-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">' +
+        '<span class="material-symbols-outlined tests-path-section-fallback">' + iconName + '</span>' +
+      '</span>' +
+      '<span class="tests-path-cell-face tests-path-cell-face--hover">' + _escape(hoverLabel) + '</span>' +
       (isLocked ? '<span class="tests-path-section-lock">' + _mi('lock') + '</span>' : '') +
-      (tooltip ? '<span class="tests-path-section-tip">' + _escape(tooltip) + '</span>' : '') +
     '</button>';
   }
 
@@ -533,27 +534,30 @@
       available.forEach(function(exam, idx) {
         var state = _getExamProgressState(exam);
         var isCurrent = idx === firstIncompleteIdx;
-        var testNum = String(exam.number).padStart(3, '0');
+        var testLabel = 'Test ' + exam.number;
+        var scoreLabel = _getTestsExamScoreLabel(exam.id, levelId);
         var locked = !hasExamsPack && idx > 0;
 
-        var rowClass = 'tests-path-row';
-        if (state === 'done') rowClass += ' tests-path-row--done';
-        else if (state === 'progress') rowClass += ' tests-path-row--progress';
-        else rowClass += ' tests-path-row--pending';
-        if (isCurrent && state !== 'done') rowClass += ' tests-path-row--current';
+        var rowClass = 'tests-path-row tests-path-row--' + state;
+        if (isCurrent) rowClass += ' tests-path-row--current';
         if (locked) rowClass += ' tests-path-row--locked';
 
         var mainOnclick = locked
           ? 'Dashboard.showExamsUpgradeGate()'
           : 'DashboardNav.openTests(\'' + levelId + '\', \'' + exam.id + '\')';
 
-        html += '<div class="' + rowClass + '" role="listitem">';
-        html += '<button type="button" class="tests-path-row-main" onclick="' + mainOnclick + '" aria-label="Test ' + testNum + '">';
-        html += '<span class="tests-path-row-num">' + testNum + '</span>';
+        html += '<div class="' + rowClass + '"' + (isCurrent ? ' id="tests-path-current"' : '') + ' role="listitem">';
+        if (isCurrent) html += '<span class="tests-path-row-marker" aria-hidden="true"></span>';
+        html += '<button type="button" class="tests-path-row-main" onclick="' + mainOnclick + '" aria-label="' + self._escapeHTML(testLabel) + '">';
+        html += '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--test">';
+        html += '<span class="tests-path-test-line">Test</span>';
+        html += '<span class="tests-path-test-line tests-path-test-line--num">' + exam.number + '</span>';
+        html += '</span>';
+        html += '<span class="tests-path-cell-face tests-path-cell-face--hover">' + self._escapeHTML(scoreLabel || '—') + '</span>';
         if (locked) html += '<span class="tests-path-row-lock">' + _mi('lock') + '</span>';
         html += '</button>';
 
-        html += '<div class="tests-path-row-sections" role="group" aria-label="Test ' + testNum + ' sections">';
+        html += '<div class="tests-path-row-sections" role="group" aria-label="' + self._escapeHTML(testLabel) + ' sections">';
         PATH_SECTION_ORDER.forEach(function(sectionKey) {
           html += _buildTestsPathSectionBtn(exam, sectionKey, levelId, locked);
         });
@@ -837,19 +841,18 @@
 
     _scrollTestsPathToCurrent: function() {
       requestAnimationFrame(function() {
-        var current = document.querySelector('.tests-path-map .tests-path-row--current');
+        var current = document.getElementById('tests-path-current')
+          || document.querySelector('.tests-path-map .tests-path-row--current');
         if (!current) return;
         var scrollRoot = document.getElementById('testsCenterScroll');
         if (scrollRoot && scrollRoot.scrollHeight > scrollRoot.clientHeight) {
           var rootRect = scrollRoot.getBoundingClientRect();
           var cellRect = current.getBoundingClientRect();
-          var targetTop = scrollRoot.scrollTop + (cellRect.top - rootRect.top) - (rootRect.height / 2) + (cellRect.height / 2);
+          var targetTop = scrollRoot.scrollTop + (cellRect.top - rootRect.top) - 24;
           scrollRoot.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
           return;
         }
-        var rect = current.getBoundingClientRect();
-        var targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
-        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+        current.scrollIntoView({ block: 'start', behavior: 'smooth' });
       });
     }
   });
