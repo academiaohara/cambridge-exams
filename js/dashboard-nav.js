@@ -580,13 +580,26 @@
 
     _cwLevelMeta: function() {
       return {
-        'A2':  { label: 'A2',   difficulty: 'Easy',          iconColor: '#059669', headerColor: '#10b981', cardBg: '#ecfdf5', cardBorder: '#6ee7b7', cardText: '#064e3b', icon: 'star' },
-        'B1':  { label: 'B1',   difficulty: 'Pre-Intermediate', iconColor: '#2563eb', headerColor: '#3b82f6', cardBg: '#eff6ff', cardBorder: '#93c5fd', cardText: '#1e3a8a', icon: 'star' },
-        'B2':  { label: 'B2',   difficulty: 'Intermediate',  iconColor: '#d97706', headerColor: '#f59e0b', cardBg: '#fffbeb', cardBorder: '#fcd34d', cardText: '#78350f', icon: 'star' },
-        'C1':  { label: 'C1',   difficulty: 'Advanced',      iconColor: '#dc2626', headerColor: '#ef4444', cardBg: '#fff1f2', cardBorder: '#fca5a5', cardText: '#7f1d1d', icon: 'star' },
-        'C2':  { label: 'C2',   difficulty: 'Expert',        iconColor: '#7c3aed', headerColor: '#8b5cf6', cardBg: '#f5f3ff', cardBorder: '#c4b5fd', cardText: '#4c1d95', icon: 'star' },
-        'mix': { label: 'Mix',  difficulty: 'Mixed',         iconColor: '#0369a1', headerColor: '#0ea5e9', cardBg: '#f0f9ff', cardBorder: '#7dd3fc', cardText: '#0c4a6e', icon: 'shuffle' }
+        'A2':  { label: 'A2',   difficulty: 'Easy',          iconColor: '#059669', headerColor: '#10b981', cardBg: '#ecfdf5', cardBorder: '#6ee7b7', cardShadow: '#059669', cardText: '#064e3b', ringTrack: '#a7f3d0', icon: 'star' },
+        'B1':  { label: 'B1',   difficulty: 'Pre-Intermediate', iconColor: '#2563eb', headerColor: '#3b82f6', cardBg: '#eff6ff', cardBorder: '#93c5fd', cardShadow: '#2563eb', cardText: '#1e3a8a', ringTrack: '#bfdbfe', icon: 'star' },
+        'B2':  { label: 'B2',   difficulty: 'Intermediate',  iconColor: '#d97706', headerColor: '#f59e0b', cardBg: '#fffbeb', cardBorder: '#fcd34d', cardShadow: '#d97706', cardText: '#78350f', ringTrack: '#fde68a', icon: 'star' },
+        'C1':  { label: 'C1',   difficulty: 'Advanced',      iconColor: '#dc2626', headerColor: '#ef4444', cardBg: '#fff1f2', cardBorder: '#fca5a5', cardShadow: '#dc2626', cardText: '#7f1d1d', ringTrack: '#fecaca', icon: 'star' },
+        'C2':  { label: 'C2',   difficulty: 'Expert',        iconColor: '#7c3aed', headerColor: '#8b5cf6', cardBg: '#f5f3ff', cardBorder: '#c4b5fd', cardShadow: '#7c3aed', cardText: '#4c1d95', ringTrack: '#ddd6fe', icon: 'star' },
+        'mix': { label: 'Mix',  difficulty: 'Mixed',         iconColor: '#0369a1', headerColor: '#0ea5e9', cardBg: '#f0f9ff', cardBorder: '#7dd3fc', cardShadow: '#0369a1', cardText: '#0c4a6e', ringTrack: '#bae6fd', icon: 'shuffle' }
       };
+    },
+
+    _buildCwLevelProgressRing: function(completed, total, meta) {
+      var pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
+      var dash = (pct * 0.999).toFixed(1);
+      return '<div class="cw-game-level-card-ring" aria-hidden="true">' +
+        '<svg viewBox="0 0 40 40" class="cw-game-level-card-ring-svg">' +
+          '<circle class="cw-game-level-card-ring-track" cx="20" cy="20" r="16" style="stroke:' + meta.ringTrack + '"></circle>' +
+          '<circle class="cw-game-level-card-ring-fill" cx="20" cy="20" r="16" ' +
+            'style="stroke:' + meta.iconColor + ';stroke-dasharray:' + dash + ' 100"></circle>' +
+        '</svg>' +
+        '<span class="cw-game-level-card-ring-label" style="color:' + meta.cardText + '">' + completed + '/' + total + '</span>' +
+      '</div>';
     },
 
     _buildCrosswordDailyBannerHtml: function(progress) {
@@ -667,11 +680,10 @@
 
     _buildWordleLevelCardsHtml: function(allEntries, progress) {
       var self = this;
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var LEVEL_META = this._wlLevelMeta();
       var availableLevels = ['A2', 'B1', 'B2', 'C1'];
 
-      var html = '<div class="cw-level-cards desktop-mode-cards">';
+      var html = '<div class="cw-level-cards cw-game-level-cards cw-game-level-cards--wordle">';
       availableLevels.forEach(function(lvl) {
         var meta = LEVEL_META[lvl] || LEVEL_META['B2'];
         var levelEntries = allEntries.filter(function(e) { return e.levelId === lvl; });
@@ -685,20 +697,17 @@
         });
         var total = levelEntries.length;
         var statusText = completed > 0
-          ? completed + ' / ' + total + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
+          ? completed + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
           : total + ' levels · ' + meta.difficulty;
-        var statusClass = completed > 0 ? 'mode-card-status-done' : '';
 
-        html += '<div class="mode-card mode-card--cw-level mode-card--wordle-level" data-wl-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="DashboardNav.openWordleSection(null, \'' + lvl + '\')" role="button" tabindex="0">' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-title-row">' +
-              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
-            '</div>' +
-            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
-          '</div>' +
-          '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon" style="color:#a855f7">' + _mi(meta.icon) + '</div>' +
+        html += '<div class="cw-game-level-card cw-game-level-card--wordle" data-wl-level="' + lvl.toLowerCase() + '"' +
+          ' style="--cw-lvl-bg:' + meta.cardBg + ';--cw-lvl-border:' + meta.cardBorder + ';--cw-lvl-shadow:' + meta.cardShadow + ';--cw-lvl-accent:' + meta.cardText + '"' +
+          ' onclick="DashboardNav.openWordleSection(null, \'' + lvl + '\')" role="button" tabindex="0"' +
+          ' aria-label="' + self._escapeHTML(meta.label) + ' Wordle, ' + completed + ' of ' + total + ' completed">' +
+          self._buildCwLevelProgressRing(completed, total, meta) +
+          '<div class="cw-game-level-card-main">' +
+            '<span class="cw-game-level-card-badge" style="color:' + meta.cardText + '">' + self._escapeHTML(meta.label) + '</span>' +
+            '<div class="cw-game-level-card-status' + (completed > 0 ? ' cw-game-level-card-status--done' : '') + '">' + self._escapeHTML(statusText) + '</div>' +
           '</div>' +
         '</div>';
       });
@@ -790,16 +799,28 @@
       DashboardNav.openCrosswordList();
     },
 
+    _wlPlayBack: function() {
+      var state = history.state;
+      if (state && state.view === 'wordlePlay' && state.level) {
+        history.back();
+        return;
+      }
+      if (state && state.level) {
+        DashboardNav.openWordleSection(null, state.level);
+        return;
+      }
+      DashboardNav.openWordleSection();
+    },
+
     _buildCrosswordLevelCardsHtml: function(allEntries, progress) {
       var self = this;
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var LEVEL_META = this._cwLevelMeta();
       var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'mix'];
       var availableLevels = CEFR_ORDER.filter(function(lvl) {
         return allEntries.some(function(e) { return e.levelId === lvl; });
       });
 
-      var html = '<div class="cw-level-cards desktop-mode-cards">';
+      var html = '<div class="cw-level-cards cw-game-level-cards">';
       availableLevels.forEach(function(lvl) {
         var meta = LEVEL_META[lvl] || LEVEL_META['B2'];
         var levelEntries = allEntries.filter(function(e) { return e.levelId === lvl; });
@@ -813,20 +834,17 @@
         });
         var total = levelEntries.length;
         var statusText = completed > 0
-          ? completed + ' / ' + total + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
+          ? completed + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
           : total + ' puzzles · ' + meta.difficulty;
-        var statusClass = completed > 0 ? 'mode-card-status-done' : '';
 
-        html += '<div class="mode-card mode-card--cw-level" data-cw-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="DashboardNav.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0">' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-title-row">' +
-              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
-            '</div>' +
-            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
-          '</div>' +
-          '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon">' + _mi(meta.icon) + '</div>' +
+        html += '<div class="cw-game-level-card" data-cw-level="' + lvl.toLowerCase() + '"' +
+          ' style="--cw-lvl-bg:' + meta.cardBg + ';--cw-lvl-border:' + meta.cardBorder + ';--cw-lvl-shadow:' + meta.cardShadow + ';--cw-lvl-accent:' + meta.cardText + '"' +
+          ' onclick="DashboardNav.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0"' +
+          ' aria-label="' + self._escapeHTML(meta.label) + ' crosswords, ' + completed + ' of ' + total + ' completed">' +
+          self._buildCwLevelProgressRing(completed, total, meta) +
+          '<div class="cw-game-level-card-main">' +
+            '<span class="cw-game-level-card-badge" style="color:' + meta.cardText + '">' + self._escapeHTML(meta.label) + '</span>' +
+            '<div class="cw-game-level-card-status' + (completed > 0 ? ' cw-game-level-card-status--done' : '') + '">' + self._escapeHTML(statusText) + '</div>' +
           '</div>' +
         '</div>';
       });
@@ -948,10 +966,13 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword" id="cwDashboardCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub" id="cwDashboardCenter">' +
             mobileTopBarHtml +
-            '<div class="cw-section-header' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
+            '<div class="cw-section-header cw-section-header--duo' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
+              (activeLevel
+                ? '<button type="button" class="cw-section-back" onclick="DashboardNav.openCrosswordList()" aria-label="Back">' + _mi('arrow_back') + '</button>'
+                : '') +
               '<div class="cw-section-header-text">' +
                 (activeLevel
                   ? '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Crosswords</div>'
@@ -1046,10 +1067,13 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword" id="wlDashboardCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub" id="wlDashboardCenter">' +
             mobileTopBarHtml +
-            '<div class="cw-section-header cw-section-header--wordle' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
+            '<div class="cw-section-header cw-section-header--wordle cw-section-header--duo' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
+              (activeLevel
+                ? '<button type="button" class="cw-section-back" onclick="DashboardNav.openWordleSection()" aria-label="Back">' + _mi('arrow_back') + '</button>'
+                : '') +
               '<div class="cw-section-header-text">' +
                 (activeLevel
                   ? '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Wordle</div>'
