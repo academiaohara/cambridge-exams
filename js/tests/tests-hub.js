@@ -113,7 +113,8 @@
       ' onclick="' + onclick + '"' +
       ' aria-label="' + _escape(label) + '"' +
       ' style="--tps-bg:' + theme.bg + ';--tps-border:' + theme.border + ';--tps-accent:' + theme.accent + ';--tps-title:' + theme.title + '">' +
-      '<span class="tests-path-cell-face tests-path-cell-face--default" aria-hidden="true">' +
+      '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--section" aria-hidden="true">' +
+        '<span class="tests-path-section-label">' + _escape(label) + '</span>' +
         '<img src="' + artSrc + '" alt="" class="tests-path-section-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">' +
         '<span class="material-symbols-outlined tests-path-section-fallback">' + iconName + '</span>' +
       '</span>' +
@@ -547,7 +548,6 @@
           : 'DashboardNav.openTests(\'' + levelId + '\', \'' + exam.id + '\')';
 
         html += '<div class="' + rowClass + '"' + (isCurrent ? ' id="tests-path-current"' : '') + ' role="listitem">';
-        if (isCurrent) html += '<span class="tests-path-row-marker" aria-hidden="true"></span>';
         html += '<button type="button" class="tests-path-row-main" onclick="' + mainOnclick + '" aria-label="' + self._escapeHTML(testLabel) + '">';
         html += '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--test">';
         html += '<span class="tests-path-test-label">' + self._escapeHTML(testLabel) + '</span>';
