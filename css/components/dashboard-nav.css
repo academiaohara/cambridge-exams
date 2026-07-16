@@ -2300,6 +2300,42 @@ margin-top: -2px;
   box-shadow: 0 2px 0 #c4b5fd;
 }
 
+.cw-path-cell--locked {
+  border-color: #d1d5db;
+  background: #e5e7eb;
+  color: #94a3b8;
+  box-shadow: 0 5px 0 #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.88;
+}
+
+.cw-path-cell--locked:hover {
+  transform: none;
+  box-shadow: 0 5px 0 #cbd5e1;
+}
+
+.cw-path-cell--locked:focus {
+  transform: none;
+  box-shadow: 0 5px 0 #cbd5e1;
+}
+
+.cw-path-cell--locked .cw-path-cell-num {
+  color: #94a3b8;
+}
+
+.cw-path-cell-lock {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.cw-path-cell-lock .material-symbols-outlined {
+  font-size: clamp(0.55rem, 22cqw, 0.85rem);
+  color: #94a3b8;
+}
+
 .cw-path-next-level {
   width: min(100%, 320px);
 }
@@ -2365,9 +2401,19 @@ margin-top: -2px;
   padding-top: 28px;
 }
 
-.cw-section-header--duo {
+.cw-section-header--duo:not(.cw-section-header--level):not(.cw-section-header--wordle) {
   border: none;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.cw-section-header--wordle.cw-section-header--duo:not(.cw-section-header--level) {
+  border: none;
+  box-shadow: 0 4px 0 color-mix(in srgb, #a855f7 72%, #000), 0 8px 24px color-mix(in srgb, #a855f7 22%, transparent);
+}
+
+.cw-section-header--duo.cw-section-header--level {
+  border: none;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #3b82f6) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #3b82f6) 22%, transparent);
 }
 
 .cw-wordle-duo-progress {
@@ -3042,7 +3088,7 @@ margin-top: -2px;
   }
 
   .cw-path-grid {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 8px;
     width: 100%;
     padding: 4px 0 8px;
@@ -3222,6 +3268,7 @@ margin-top: -2px;
   }
 
   .cw-path-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 8px;
     padding: 4px 2px 10px;
     width: 100%;
@@ -3245,6 +3292,7 @@ margin-top: -2px;
     padding: 4px 0 calc(20px + env(safe-area-inset-bottom));
   }
   .cw-path-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 7px;
   }
   .cw-list-header {

@@ -8435,6 +8435,22 @@
     _openMixedCrossword: async function(levelId, cwIndex, options) {
       var self = this;
       options = options || {};
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._getCrosswordEntries && DashboardNav._isCwPathCellUnlocked) {
+        var cwEntries = DashboardNav._getCrosswordEntries().filter(function(e) { return e.levelId === levelId; });
+        var cwIdx = -1;
+        for (var ci = 0; ci < cwEntries.length; ci++) {
+          if (cwEntries[ci].cwIndex === cwIndex) { cwIdx = ci; break; }
+        }
+        var cwProgress = (typeof CrosswordSync !== 'undefined' && CrosswordSync.getAll)
+          ? CrosswordSync.getAll()
+          : (typeof DashboardNav !== 'undefined' && DashboardNav._getCwProgress ? DashboardNav._getCwProgress() : {});
+        if (cwIdx >= 0 && !DashboardNav._isCwPathCellUnlocked(cwEntries, cwProgress, cwIdx)) {
+          if (typeof DashboardNav !== 'undefined' && DashboardNav.openCrosswordList) {
+            DashboardNav.openCrosswordList(null, levelId);
+          }
+          return;
+        }
+      }
       AppState.currentView = 'crosswordPlay';
       if (!options.fromRoute && typeof Router !== 'undefined') {
         var playState = { view: 'crosswordPlay', level: levelId, cwIndex: cwIndex };
@@ -9932,6 +9948,22 @@
     _openWordleLevel: async function(levelId, wlIndex, options) {
       options = options || {};
       var self = this;
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._getWordleEntries && DashboardNav._isWlPathCellUnlocked) {
+        var wlEntries = DashboardNav._getWordleEntries().filter(function(e) { return e.levelId === levelId; });
+        var wlIdx = -1;
+        for (var wi = 0; wi < wlEntries.length; wi++) {
+          if (wlEntries[wi].wlIndex === wlIndex) { wlIdx = wi; break; }
+        }
+        var wlProgress = (typeof DashboardNav !== 'undefined' && DashboardNav._getWlProgress)
+          ? DashboardNav._getWlProgress()
+          : {};
+        if (wlIdx >= 0 && !DashboardNav._isWlPathCellUnlocked(wlEntries, wlProgress, wlIdx)) {
+          if (typeof DashboardNav !== 'undefined' && DashboardNav.openWordleSection) {
+            DashboardNav.openWordleSection(null, levelId);
+          }
+          return;
+        }
+      }
       AppState.currentView = 'wordlePlay';
       if (!options.fromRoute && typeof Router !== 'undefined') {
         var playState = { view: 'wordlePlay', level: levelId, wlIndex: wlIndex };

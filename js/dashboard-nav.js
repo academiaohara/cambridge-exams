@@ -638,6 +638,30 @@
       return ORDER[idx + 1];
     },
 
+    _isCwPathCellUnlocked: function(entries, progress, idx) {
+      if (!entries || idx < 0 || idx >= entries.length) return false;
+      if (idx === 0) return true;
+      var entry = entries[idx];
+      var pKey = entry.levelId + '_cw' + entry.cwIndex;
+      var prog = progress[pKey];
+      if (prog && (prog.completed || (prog.wordsCorrect || prog.wordsComplete || 0) > 0)) return true;
+      var prev = entries[idx - 1];
+      var prevProg = progress[prev.levelId + '_cw' + prev.cwIndex];
+      return !!(prevProg && prevProg.completed);
+    },
+
+    _isWlPathCellUnlocked: function(entries, progress, idx) {
+      if (!entries || idx < 0 || idx >= entries.length) return false;
+      if (idx === 0) return true;
+      var entry = entries[idx];
+      var pKey = entry.levelId + '_wl' + entry.wlIndex;
+      var prog = progress[pKey];
+      if (prog && (prog.completed || (prog.guesses || 0) > 0)) return true;
+      var prev = entries[idx - 1];
+      var prevProg = progress[prev.levelId + '_wl' + prev.wlIndex];
+      return !!(prevProg && prevProg.completed);
+    },
+
     _wlProgressKey: 'cambridge_wordle_progress',
 
     _getWlProgress: function() {
@@ -724,6 +748,7 @@
       var firstIncompleteIdx = -1;
       entries.forEach(function(entry, idx) {
         if (firstIncompleteIdx !== -1) return;
+        if (!self._isWlPathCellUnlocked(entries, progress, idx)) return;
         var p = progress[entry.levelId + '_wl' + entry.wlIndex];
         if (!p || !p.completed) firstIncompleteIdx = idx;
       });
@@ -745,17 +770,25 @@
         var prog = progress[pKey];
         var isCompleted = !!(prog && prog.completed);
         var isInProgress = !!(prog && !isCompleted && (prog.guesses || 0) > 0);
-        var isCurrent = idx === firstIncompleteIdx;
+        var isLocked = !self._isWlPathCellUnlocked(entries, progress, idx);
+        var isCurrent = idx === firstIncompleteIdx && !isLocked;
         var levelNum = String(idx + 1).padStart(3, '0');
 
         var cellClass = 'cw-path-cell';
-        if (isCompleted) cellClass += ' cw-path-cell--done';
+        if (isLocked) cellClass += ' cw-path-cell--locked';
+        else if (isCompleted) cellClass += ' cw-path-cell--done';
         else if (isInProgress) cellClass += ' cw-path-cell--progress';
         else cellClass += ' cw-path-cell--pending';
         if (isCurrent && !isCompleted) cellClass += ' cw-path-cell--current';
 
-        html += '<button type="button" class="' + cellClass + '" onclick="FastExercises._openWordleLevel(\'' + entry.levelId + '\',' + entry.wlIndex + ')" title="' + self._escapeHTML(entry.title) + '" aria-label="Wordle ' + levelNum + '">';
+        var onclick = isLocked
+          ? ''
+          : ' onclick="FastExercises._openWordleLevel(\'' + entry.levelId + '\',' + entry.wlIndex + ')"';
+        html += '<button type="button" class="' + cellClass + '"' + onclick +
+          (isLocked ? ' disabled' : '') +
+          ' title="' + self._escapeHTML(entry.title) + '" aria-label="Wordle ' + levelNum + (isLocked ? ' (locked)' : '') + '">';
         html += '<span class="cw-path-cell-num">' + levelNum + '</span>';
+        if (isLocked) html += '<span class="cw-path-cell-lock">' + _mi('lock') + '</span>';
         html += '</button>';
       });
 
@@ -861,6 +894,7 @@
       var firstIncompleteIdx = -1;
       entries.forEach(function(entry, idx) {
         if (firstIncompleteIdx !== -1) return;
+        if (!self._isCwPathCellUnlocked(entries, progress, idx)) return;
         var p = progress[entry.levelId + '_cw' + entry.cwIndex];
         if (!p || !p.completed) firstIncompleteIdx = idx;
       });
@@ -882,17 +916,25 @@
         var prog = progress[pKey];
         var isCompleted = !!(prog && prog.completed);
         var isInProgress = !!(prog && !isCompleted && (prog.wordsCorrect || prog.wordsComplete || 0) > 0);
-        var isCurrent = idx === firstIncompleteIdx;
+        var isLocked = !self._isCwPathCellUnlocked(entries, progress, idx);
+        var isCurrent = idx === firstIncompleteIdx && !isLocked;
         var levelNum = String(idx + 1).padStart(3, '0');
 
         var cellClass = 'cw-path-cell';
-        if (isCompleted) cellClass += ' cw-path-cell--done';
+        if (isLocked) cellClass += ' cw-path-cell--locked';
+        else if (isCompleted) cellClass += ' cw-path-cell--done';
         else if (isInProgress) cellClass += ' cw-path-cell--progress';
         else cellClass += ' cw-path-cell--pending';
         if (isCurrent && !isCompleted) cellClass += ' cw-path-cell--current';
 
-        html += '<button type="button" class="' + cellClass + '" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" title="' + self._escapeHTML(entry.title) + '" aria-label="Crossword ' + levelNum + '">';
+        var onclick = isLocked
+          ? ''
+          : ' onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')"';
+        html += '<button type="button" class="' + cellClass + '"' + onclick +
+          (isLocked ? ' disabled' : '') +
+          ' title="' + self._escapeHTML(entry.title) + '" aria-label="Crossword ' + levelNum + (isLocked ? ' (locked)' : '') + '">';
         html += '<span class="cw-path-cell-num">' + levelNum + '</span>';
+        if (isLocked) html += '<span class="cw-path-cell-lock">' + _mi('lock') + '</span>';
         html += '</button>';
       });
 
