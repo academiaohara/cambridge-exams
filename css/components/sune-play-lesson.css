@@ -21,6 +21,9 @@
   --sp-correct-tint: rgba(88, 204, 2, 0.12);
   --sp-incorrect: #ef4444;
   --sp-incorrect-tint: rgba(239, 68, 68, 0.12);
+  --sp-header-control: 40px;
+  --sp-progress-height: 12px;
+  --sp-card-padding: clamp(16px, 4vw, 24px);
 }
 
 .sp-lesson {
@@ -909,6 +912,10 @@ button.sp-vocab-word-card:focus-visible {
 .sp-header-btn {
   width: var(--sp-header-control);
   height: var(--sp-header-control);
+  min-width: var(--sp-header-control);
+  min-height: var(--sp-header-control);
+  aspect-ratio: 1;
+  padding: 0;
   border: 2px solid var(--sp-duo-blue);
   background: var(--sp-duo-blue-light);
   border-radius: 50%;
@@ -919,7 +926,15 @@ button.sp-vocab-word-card:focus-visible {
   box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
   flex-shrink: 0;
   color: var(--sp-duo-blue-dark);
+  box-sizing: border-box;
+  overflow: hidden;
   transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.1s ease;
+}
+
+.sp-header-btn .material-symbols-outlined {
+  font-size: 22px;
+  line-height: 1;
+  display: block;
 }
 
 .sp-header-btn:hover {
@@ -949,9 +964,10 @@ button.sp-vocab-word-card:focus-visible {
 
 .sp-session-progress-fill {
   height: 100%;
+  min-width: 0;
   background: linear-gradient(90deg, var(--sp-duo-blue), #2eb8f7);
   border-radius: 99px;
-  transition: width 0.3s;
+  transition: width 0.3s ease;
 }
 
 .sp-hearts-bar {
