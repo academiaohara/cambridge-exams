@@ -252,7 +252,7 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--tests-hub">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--tests-hub"' + headerStyle + '>' +
             '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
               (backOnclick
                 ? '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
@@ -263,7 +263,7 @@
               '</div>' +
               DashboardNav._buildTestsModeHeaderToggleHtml() +
             '</div>' +
-            '<div class="cw-page-content scroll-visible tests-hub-scroll" id="testsCenterScroll">' +
+            '<div class="cw-page-content tests-hub-scroll" id="testsCenterScroll">' +
               mobileTopBarHtml +
               '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
