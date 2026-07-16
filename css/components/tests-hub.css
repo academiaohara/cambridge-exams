@@ -8,13 +8,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
-}
-
-@media (min-width: 769px) {
-  .dashboard-center--tests-hub {
-    max-height: calc(100dvh - var(--dashboard-top-spacing, 28px) - 12px);
-  }
+  overflow: visible;
 }
 
 .dashboard-center--tests-hub .cw-section-header {
@@ -27,11 +21,10 @@
 }
 
 .dashboard-center--tests-hub .cw-page-content {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
+  flex: none;
+  min-height: auto;
+  overflow: visible;
+  overscroll-behavior: auto;
   padding-top: 16px;
 }
 
@@ -478,9 +471,24 @@
   max-width: 100%;
 }
 
-.tests-path-map {
-  align-self: stretch;
-  width: 100%;
+.dashboard-center--tests-hub .cw-path-map {
+  min-height: 0;
+}
+
+/* Single page scroll on mobile — override shared mobile-hub inner scroll trap */
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .dashboard-center--tests-hub.dashboard-center--mobile-hub {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .dashboard-center--tests-hub.dashboard-center--mobile-hub .cw-page-content {
+    flex: none;
+    min-height: auto;
+    overflow: visible;
+    overscroll-behavior: auto;
+  }
 }
 
 /* ── Random Test path card (Duolingo style) ── */
@@ -1098,7 +1106,7 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 0;
 }
 
 .tests-full-exam-btn {
