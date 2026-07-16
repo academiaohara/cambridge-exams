@@ -325,6 +325,66 @@
     return null;
   }
 
+  function _findNextPartForExam(exam) {
+    if (!exam || !exam.sections) return null;
+    for (var si = 0; si < SECTION_KEYS.length; si++) {
+      var sectionKey = SECTION_KEYS[si];
+      var section = exam.sections[sectionKey];
+      if (!section) continue;
+      var inProgress = section.inProgress || [];
+      if (inProgress.length > 0) {
+        return { section: sectionKey, part: inProgress[0] };
+      }
+      var completed = section.completed || [];
+      var total = section.total || 0;
+      for (var i = 1; i <= total; i++) {
+        if (completed.indexOf(i) === -1) {
+          return { section: sectionKey, part: i };
+        }
+      }
+    }
+    return null;
+  }
+
+  function _findContinueTestForLevel(levelId) {
+    var unfinished = _findLastUnfinishedTestForLevel(levelId);
+    if (unfinished) return unfinished;
+
+    var mode = AppState.currentMode || 'practice';
+    var exams = window.EXAMS_DATA[levelId] || [];
+    var available = exams.filter(function(e) { return e.status === 'available'; });
+    if (!available.length) return null;
+
+    var idx = _resolveCurrentTestIndex(available, levelId);
+    var exam = available[idx];
+    if (!exam || _getExamProgressState(exam) === 'done') {
+      exam = null;
+      for (var ei = 0; ei < available.length; ei++) {
+        if (_getExamProgressState(available[ei]) !== 'done') {
+          exam = available[ei];
+          break;
+        }
+      }
+    }
+    if (!exam) return null;
+
+    var nextPart = _findNextPartForExam(exam);
+    if (!nextPart) return null;
+
+    var result = {
+      levelId: levelId,
+      examId: exam.id,
+      section: nextPart.section,
+      part: nextPart.part,
+      mode: mode,
+      exam: exam
+    };
+    if (typeof Exercise !== 'undefined' && Exercise.detectPartMode) {
+      result.mode = Exercise.detectPartMode(result.examId, result.section, result.part, levelId);
+    }
+    return result;
+  }
+
   function _buildTestsLevelContinueHtml(levelId, meta, unfinished) {
     if (!unfinished || !unfinished.exam) return '';
     var testLabel = 'Test ' + (unfinished.exam.number || unfinished.examId.replace('Test', ''));
@@ -699,8 +759,8 @@
               '<span class="tests-level-card-avg-label">Complete tests to see your average</span>' +
             '</div>';
 
-        var unfinished = _findLastUnfinishedTestForLevel(lvl);
-        var continueHtml = _buildTestsLevelContinueHtml(lvl, meta, unfinished);
+        var continueTarget = _findContinueTestForLevel(lvl);
+        var continueHtml = _buildTestsLevelContinueHtml(lvl, meta, continueTarget);
 
         html += '<div class="tests-level-col">';
         html += '<div class="tests-level-card" data-tests-level="' + lvl.toLowerCase() + '"' +
