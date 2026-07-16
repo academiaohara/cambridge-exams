@@ -2573,6 +2573,7 @@ body.auth-screen-open #app {
   .profile-duo-stat-card,
   .profile-duo-achievement,
   .profile-duo-settings-card,
+  .profile-duo-tool-chip,
   .premium-pack-card,
   .premium-duration-btn {
     transition-duration: 0.01ms !important;
@@ -2937,6 +2938,188 @@ body.auth-screen-open #app {
   text-transform: lowercase;
 }
 
+.profile-duo-stat-card--action {
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.profile-duo-stat-card--action:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.profile-duo-stat-card--action:active {
+  transform: scale(0.98);
+}
+
+.profile-duo-mobile-tools {
+  display: none;
+  margin-bottom: 24px;
+}
+
+.profile-duo-tool-row-card {
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.profile-duo-tool-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 18px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-duo-tool-row-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-duo-tool-row-icon--lang {
+  background: #ddf4ff;
+  color: #1cb0f6;
+}
+
+.profile-duo-tool-row-icon .material-symbols-outlined {
+  font-size: 1.35rem;
+}
+
+.profile-duo-tool-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.profile-duo-tool-row-body strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #3c3c3c;
+}
+
+.profile-duo-tool-row-body small {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9a9a9a;
+}
+
+.profile-duo-tool-row-value {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #1cb0f6;
+  flex-shrink: 0;
+}
+
+.profile-duo-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.profile-duo-tool-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 14px 12px;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  background: #fff;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.profile-duo-tool-chip:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.profile-duo-tool-chip:active {
+  transform: scale(0.98);
+}
+
+.profile-duo-tool-chip-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-duo-tool-chip-icon .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+.profile-duo-tool-chip--streak .profile-duo-tool-chip-icon {
+  background: #fff4eb;
+  color: var(--brand-orange, #f47417);
+}
+
+.profile-duo-tool-chip--calc .profile-duo-tool-chip-icon {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.profile-duo-tool-chip--grades .profile-duo-tool-chip-icon {
+  background: #ddf4ff;
+  color: #1cb0f6;
+}
+
+.profile-duo-tool-chip--dict .profile-duo-tool-chip-icon {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.profile-duo-tool-chip-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #3c3c3c;
+}
+
+.profile-duo-tool-chip-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand-orange, #f47417);
+  line-height: 1;
+}
+
+.profile-duo-mobile-quicklinks {
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.profile-duo-mobile-tip {
+  margin-bottom: 8px;
+}
+
+.profile-duo-mobile-tip .profile-duo-side-illust {
+  width: 72px;
+  margin-left: -8px;
+}
+
+@media (max-width: 768px) {
+  .profile-duo-mobile-tools {
+    display: block;
+  }
+}
+
 .profile-duo-achievements {
   margin-bottom: 28px;
 }
@@ -3270,6 +3453,15 @@ body.auth-screen-open #app {
   .profile-duo-avatar {
     width: 72px;
     height: 72px;
+  }
+
+  .profile-duo-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .profile-duo-tool-chip {
+    padding: 12px;
   }
 
   .profile-duo-setting-row {
