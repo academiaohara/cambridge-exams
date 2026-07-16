@@ -1615,6 +1615,15 @@
       exitConfirmTexts: opts.exitConfirmTexts || null
     };
 
+    if (typeof TileThemes !== 'undefined') {
+      var tileRoot = mount.closest('.course-unit-content') || mount;
+      TileThemes.applyResolved(tileRoot, {
+        unitData: unitData,
+        categoryId: opts.categoryId,
+        tileTheme: opts.tileTheme
+      });
+    }
+
     if (!opts.startExerciseId && (unitData.type === 'review' || unitData.type === 'progress_test')) {
       var resolvedExerciseId = resolveReviewStartExerciseId(unitData, progress);
       if (resolvedExerciseId) {

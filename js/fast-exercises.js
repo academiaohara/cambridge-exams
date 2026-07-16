@@ -330,6 +330,9 @@
       }
 
       this._setVocabLessonFocus(true);
+      if (typeof TileThemes !== 'undefined' && this._currentCategory) {
+        TileThemes.apply(centerSection, this._currentCategory);
+      }
       return centerSection;
     },
 
@@ -1250,6 +1253,10 @@
       if (isCourseVocab) this._clearVocabPracticeSession();
       if (isCourseVocab && typeof DashboardNav !== 'undefined') DashboardNav._startGradeCarousel();
       if (isCourseVocab && typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
+      if (typeof TileThemes !== 'undefined') {
+        var feSec = document.getElementById('feCenterSection');
+        if (feSec) TileThemes.apply(feSec, categoryId);
+      }
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
       var self = this;
@@ -2383,6 +2390,9 @@
       this._currentPointIndex = pointIndex;
 
       if (isCourseVocab) this._hideVocabMapChrome();
+      if (isCourseVocab && typeof TileThemes !== 'undefined') {
+        TileThemes.apply(container, categoryId);
+      }
 
       var loadingStart = this._showLoading(container);
 

@@ -231,9 +231,13 @@
     var cards = (opts.unitData.theory && opts.unitData.theory.cards) || [];
     if (!cards.length) return false;
 
+    var themeAttr = (typeof TileThemes !== 'undefined' && opts.categoryId)
+      ? (' data-tile-theme="' + opts.categoryId + '"')
+      : '';
+
     container.innerHTML =
-      '<div class="course-unit-content">' +
-        '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content">' +
+      '<div class="course-unit-content"' + themeAttr + '>' +
+        '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"' + themeAttr + '>' +
           '<div class="sp-lesson sp-lesson--theory"></div>' +
         '</div>' +
       '</div>';
