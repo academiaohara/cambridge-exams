@@ -85,6 +85,47 @@
     return display.value;
   }
 
+  function _buildTestsSectionStarsHtml(filledCount) {
+    var maxStars = 5;
+    var html = '<span class="tests-path-section-stars" aria-hidden="true">';
+    for (var i = 0; i < maxStars; i++) {
+      html += '<span class="material-symbols-outlined tests-path-section-star' +
+        (i < filledCount ? ' tests-path-section-star--filled' : '') + '">star</span>';
+    }
+    html += '</span>';
+    return html;
+  }
+
+  function _getTestsSectionScoreDetail(examId, sectionKey, section, levelId) {
+    if (typeof ScoreCalculator === 'undefined') return null;
+    var display = ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section);
+    if (display.type !== 'scale') return null;
+    var gradeInfo = ScoreCalculator.getGradeInfo(display.value, levelId);
+    var scaleCefr = String(display.value) + (gradeInfo && gradeInfo.cefr ? ' · ' + gradeInfo.cefr : '');
+    if (gradeInfo && gradeInfo.result && gradeInfo.result !== 'Below Level') {
+      return gradeInfo.result + ' · ' + scaleCefr;
+    }
+    return scaleCefr;
+  }
+
+  function _getTestsSectionScoreContent(examId, sectionKey, section, levelId) {
+    if (typeof ScoreCalculator === 'undefined') {
+      return { html: '—', ariaDetail: '', title: '' };
+    }
+    var display = ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section);
+    if (display.type === 'scale') {
+      var starCount = ScoreCalculator.getGradeStarCount(display.value, levelId);
+      var detail = _getTestsSectionScoreDetail(examId, sectionKey, section, levelId) || '';
+      return {
+        html: _buildTestsSectionStarsHtml(starCount),
+        ariaDetail: detail,
+        title: detail
+      };
+    }
+    var fallback = _getTestsSectionScoreLabel(examId, sectionKey, section, levelId);
+    return { html: _escape(fallback), ariaDetail: fallback !== '—' ? fallback : '', title: '' };
+  }
+
   function _buildTestsPathSectionBtn(exam, sectionKey, levelId, testLocked) {
     var section = exam.sections && exam.sections[sectionKey];
     if (!section) return '';
@@ -94,9 +135,9 @@
     var iconName = typeof Utils !== 'undefined' ? Utils.getMaterialIcon(sectionKey) : 'menu_book';
     var lockInfo = DashboardNav._getTestsSectionLockInfo(sectionKey);
     var isLocked = testLocked || lockInfo.locked;
-    var scoreLabel = _getTestsSectionScoreLabel(exam.id, sectionKey, section, levelId);
+    var scoreContent = _getTestsSectionScoreContent(exam.id, sectionKey, section, levelId);
     var label = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
-    var ariaLabel = label + (scoreLabel && scoreLabel !== '—' ? ': ' + scoreLabel : '');
+    var ariaLabel = label + (scoreContent.ariaDetail ? ': ' + scoreContent.ariaDetail : '');
 
     var btnClass = 'tests-path-section tests-path-section--' + sectionKey;
     if (isLocked) btnClass += ' tests-path-section--locked';
@@ -113,9 +154,10 @@
     return '<button type="button" class="' + btnClass + '"' +
       ' onclick="' + onclick + '"' +
       ' aria-label="' + _escape(ariaLabel) + '"' +
+      (scoreContent.title ? ' title="' + _escape(scoreContent.title) + '"' : '') +
       ' style="--tps-bg:' + theme.bg + ';--tps-border:' + theme.border + ';--tps-accent:' + theme.accent + ';--tps-title:' + theme.title + '">' +
       '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--section" aria-hidden="true">' +
-        '<span class="tests-path-section-label">' + _escape(scoreLabel) + '</span>' +
+        '<span class="tests-path-section-label">' + scoreContent.html + '</span>' +
         '<img src="' + artSrc + '" alt="" class="tests-path-section-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">' +
         '<span class="material-symbols-outlined tests-path-section-fallback">' + iconName + '</span>' +
       '</span>' +

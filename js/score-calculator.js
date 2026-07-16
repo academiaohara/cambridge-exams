@@ -1206,6 +1206,16 @@
       return getGradeInfo(overall, examType);
     },
 
+    /** Map Cambridge scale to 0–5 filled stars (always out of 5 in the UI). */
+    getGradeStarCount: function(overall, examType) {
+      var grades = conversionData[examType] && conversionData[examType].grades;
+      if (!grades || !grades.length) return 0;
+      for (var i = 0; i < grades.length; i++) {
+        if (overall >= grades[i].min) return 5 - i;
+      }
+      return 0;
+    },
+
     /** Skills shown in dashboards / grade charts (B1 & A2 have no separate Use of English paper). */
     getSkillsForExamLevel: function(level) {
       var key = level || 'C1';
