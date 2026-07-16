@@ -878,16 +878,6 @@
   visibility: visible;
 }
 
-.tests-path-section:hover .tests-path-cell-face--default,
-.tests-path-section:focus-visible .tests-path-cell-face--default {
-  display: none;
-}
-
-.tests-path-section:hover .tests-path-cell-face--hover,
-.tests-path-section:focus-visible .tests-path-cell-face--hover {
-  display: flex;
-}
-
 .tests-path-row--current .tests-path-row-main {
   border-color: var(--cw-icon-color, #1cb0f6);
   border-bottom-color: color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 75%, #000);
@@ -939,10 +929,11 @@
 }
 
 .tests-path-section-label {
-  display: none;
+  display: block;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.68rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--tps-title, #374151);
@@ -951,7 +942,7 @@
 
 @media (min-width: 769px) {
   .tests-path-section-label {
-    display: block;
+    font-size: 0.78rem;
   }
 
   .tests-path-section {
@@ -996,7 +987,29 @@
   }
 
   .tests-path-cell-face--section {
+    flex-direction: column;
+    gap: 2px;
     justify-content: center;
+  }
+
+  .tests-path-section-label {
+    font-size: 0.52rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tests-path-section-img,
+  .tests-path-section-fallback.is-visible {
+    width: 22px;
+    height: 22px;
+    max-width: 22px;
+    max-height: 22px;
+    margin-left: 0;
+  }
+
+  .tests-path-section-fallback.is-visible {
+    font-size: 1.1rem;
   }
 
   .tests-path-row-main {
@@ -1013,14 +1026,6 @@
   .tests-path-cell-face--hover {
     font-size: 0.62rem;
   }
-
-  .tests-path-section-img {
-    width: 28px;
-    height: 28px;
-    max-width: 28px;
-    max-height: 28px;
-    margin-left: 0;
-  }
 }
 
 .tests-path-section {
@@ -1028,11 +1033,6 @@
   border-color: var(--tps-border, #e5e5e5);
   border-bottom-color: color-mix(in srgb, var(--tps-border, #d0d0d0) 80%, #9ca3af);
   box-shadow: 0 3px 0 color-mix(in srgb, var(--tps-border, #d0d0d0) 65%, #fff);
-}
-
-.tests-path-section .tests-path-cell-face--hover {
-  color: var(--tps-title, #374151);
-  font-size: 0.62rem;
 }
 
 .tests-path-section-img {
@@ -1095,10 +1095,6 @@
 
   .tests-path-test-label {
     font-size: 0.7rem;
-  }
-
-  .tests-path-cell-face--hover {
-    font-size: 0.58rem;
   }
 }
 
