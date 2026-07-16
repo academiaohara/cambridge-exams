@@ -466,6 +466,9 @@
       }
       
       this.markPartInProgress(examId, section, part);
+      if (typeof DashboardNav !== 'undefined' && DashboardNav.setLastActiveTest) {
+        DashboardNav.setLastActiveTest(AppState.currentLevel, examId);
+      }
       
       let fileName = '';
       if (section === 'reading') fileName = `reading${part}.json`;

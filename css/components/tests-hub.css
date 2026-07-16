@@ -918,7 +918,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 
 .tests-path-row {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 8px;
   width: 100%;
   min-width: 0;
@@ -1033,11 +1033,57 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   visibility: visible;
 }
 
+.tests-path-row--pending .tests-path-row-main {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  border-bottom-color: #d1d5db;
+  box-shadow: 0 3px 0 #d1d5db;
+}
+
+.tests-path-row--pending .tests-path-test-label {
+  color: #6b7280;
+}
+
+.tests-path-row--progress .tests-path-row-main {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-color: #fcd34d;
+  border-bottom-color: #f59e0b;
+  box-shadow: 0 3px 0 #f59e0b;
+}
+
+.tests-path-row--progress .tests-path-test-label {
+  color: #b45309;
+}
+
+.tests-path-row--done .tests-path-row-main {
+  background: linear-gradient(135deg, #ecfdf5 0%, #dcfce7 100%);
+  border-color: #86efac;
+  border-bottom-color: #22c55e;
+  box-shadow: 0 3px 0 #22c55e;
+}
+
+.tests-path-row--done .tests-path-test-label {
+  color: #166534;
+}
+
 .tests-path-row--current .tests-path-row-main {
   border-color: var(--cw-icon-color, #1cb0f6);
   border-bottom-color: color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 75%, #000);
-  background: color-mix(in srgb, var(--cw-card-bg, #eff6ff) 65%, #f3f4f6);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 55%, #fff);
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 55%, #fff),
+    0 0 0 2px color-mix(in srgb, var(--cw-icon-color, #1cb0f6) 30%, transparent);
+}
+
+.tests-path-row--current.tests-path-row--pending .tests-path-row-main {
+  background: color-mix(in srgb, var(--cw-card-bg, #eff6ff) 55%, #f3f4f6);
+}
+
+.tests-path-row--current.tests-path-row--progress .tests-path-row-main {
+  background: color-mix(in srgb, var(--cw-card-bg, #eff6ff) 35%, #fef3c7);
+}
+
+.tests-path-row--current.tests-path-row--done .tests-path-row-main {
+  background: color-mix(in srgb, var(--cw-card-bg, #eff6ff) 35%, #dcfce7);
 }
 
 .tests-path-row--current .tests-path-row-main .tests-path-test-label {
