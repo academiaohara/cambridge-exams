@@ -430,14 +430,118 @@
       return Math.max(current + 1, 365);
     },
 
-    _buildProfileStatCard: function (icon, colorClass, value, label) {
-      return '<div class="profile-duo-stat-card profile-duo-stat-card--' + colorClass + '">' +
+    _buildProfileStatCard: function (icon, colorClass, value, label, opts) {
+      opts = opts || {};
+      var tag = opts.onclick ? 'button' : 'div';
+      var attrs = 'class="profile-duo-stat-card profile-duo-stat-card--' + colorClass + (opts.onclick ? ' profile-duo-stat-card--action' : '') + '"';
+      if (opts.onclick) {
+        attrs += ' type="button" onclick="' + opts.onclick + '" aria-label="' + this._escapeHtml(opts.ariaLabel || label) + '"';
+      }
+      return '<' + tag + ' ' + attrs + '>' +
         '<div class="profile-duo-stat-icon" aria-hidden="true">' +
           '<span class="material-symbols-outlined">' + icon + '</span>' +
         '</div>' +
         '<div class="profile-duo-stat-value">' + this._escapeHtml(String(value)) + '</div>' +
         '<div class="profile-duo-stat-label">' + this._escapeHtml(label) + '</div>' +
+      '</' + tag + '>';
+    },
+
+    _getCurrentTranslateLangLabel: function () {
+      if (typeof MainNav !== 'undefined' && MainNav._getCurrentTranslateLang && MainNav._getTranslateLangLabel) {
+        return MainNav._getTranslateLangLabel(MainNav._getCurrentTranslateLang());
+      }
+      if (typeof Tools !== 'undefined' && Tools.getTranslateLang && Tools.getTranslateLanguages) {
+        var code = Tools.getTranslateLang();
+        var langs = Tools.getTranslateLanguages();
+        var found = langs.find(function (l) { return l.code === code; });
+        return found ? found.label : String(code || 'es').toUpperCase();
+      }
+      return 'Español';
+    },
+
+    _buildProfileQuickLinksHtml: function (hidePlans) {
+      return '<div class="profile-duo-side-links">' +
+        '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openGradeEvolution()">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">query_stats</span>' +
+          '<span>Grade evolution</span>' +
+          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+        '</button>' +
+        '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openStreakSection()">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>' +
+          '<span>Streak calendar</span>' +
+          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+        '</button>' +
+        '<button type="button" class="profile-duo-side-link" onclick="openScoreCalculator(event)">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">calculate</span>' +
+          '<span>Score calculator</span>' +
+          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+        '</button>' +
+        (hidePlans ? '' :
+          '<button type="button" class="profile-duo-side-link" onclick="UserProfile.renderPremiumSection()">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>' +
+            '<span>View plans</span>' +
+            '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+          '</button>') +
       '</div>';
+    },
+
+    _buildProfileMobileToolsHtml: function (hidePlans, stats) {
+      var langLabel = this._getCurrentTranslateLangLabel();
+      return '<section class="profile-duo-mobile-tools" aria-labelledby="profile-duo-tools-title">' +
+        '<h2 id="profile-duo-tools-title" class="profile-duo-section-title">Tools &amp; settings</h2>' +
+        '<div class="profile-duo-settings-card profile-duo-tool-row-card">' +
+          '<button type="button" class="profile-duo-tool-row" onclick="DashboardNav.openMobileLangModal()">' +
+            '<span class="profile-duo-tool-row-icon profile-duo-tool-row-icon--lang" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">translate</span>' +
+            '</span>' +
+            '<span class="profile-duo-tool-row-body">' +
+              '<strong>Language</strong>' +
+              '<small>Instructions &amp; translations</small>' +
+            '</span>' +
+            '<span class="profile-duo-tool-row-value">' + this._escapeHtml(langLabel) + '</span>' +
+            '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+          '</button>' +
+        '</div>' +
+        '<div class="profile-duo-tools-grid" role="group" aria-label="Quick tools">' +
+          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--streak" onclick="DashboardNav.openStreakSection()">' +
+            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">local_fire_department</span>' +
+            '</span>' +
+            '<span class="profile-duo-tool-chip-label">Streak</span>' +
+            '<span class="profile-duo-tool-chip-value">' + stats.streakCount + '</span>' +
+          '</button>' +
+          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--calc" onclick="openScoreCalculator(event)">' +
+            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">calculate</span>' +
+            '</span>' +
+            '<span class="profile-duo-tool-chip-label">Calculator</span>' +
+          '</button>' +
+          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--grades" onclick="DashboardNav.openGradeEvolution()">' +
+            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">query_stats</span>' +
+            '</span>' +
+            '<span class="profile-duo-tool-chip-label">Grades</span>' +
+          '</button>' +
+          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--dict" onclick="DashboardNav.openMobileDictionaries()">' +
+            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">menu_book</span>' +
+            '</span>' +
+            '<span class="profile-duo-tool-chip-label">Dictionary</span>' +
+          '</button>' +
+        '</div>' +
+        '<div class="profile-duo-side-card profile-duo-mobile-quicklinks">' +
+          '<div class="sw-duo-header">' +
+            '<span class="sw-duo-title">Quick links</span>' +
+          '</div>' +
+          this._buildProfileQuickLinksHtml(hidePlans) +
+        '</div>' +
+        '<div class="profile-duo-side-hero-wrap profile-duo-mobile-tip">' +
+          '<img src="Assets/images/asomado.svg" alt="" class="profile-duo-side-illust" aria-hidden="true">' +
+          '<div class="sidebar-widget-duo profile-duo-side-card profile-duo-side-card--hero">' +
+            '<p class="profile-duo-side-hero-text">Keep practising every day to grow your streak and track your Cambridge scores.</p>' +
+          '</div>' +
+        '</div>' +
+      '</section>';
     },
 
     _buildProfileAchievementCard: function (opts) {
@@ -476,29 +580,7 @@
           '<div class="sw-duo-header">' +
             '<span class="sw-duo-title">Quick links</span>' +
           '</div>' +
-          '<div class="profile-duo-side-links">' +
-            '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openGradeEvolution()">' +
-              '<span class="material-symbols-outlined" aria-hidden="true">query_stats</span>' +
-              '<span>Grade evolution</span>' +
-              '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-            '</button>' +
-            '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openStreakSection()">' +
-              '<span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>' +
-              '<span>Streak calendar</span>' +
-              '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-            '</button>' +
-            '<button type="button" class="profile-duo-side-link" onclick="openScoreCalculator(event)">' +
-              '<span class="material-symbols-outlined" aria-hidden="true">calculate</span>' +
-              '<span>Score calculator</span>' +
-              '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-            '</button>' +
-            (hidePlans ? '' :
-              '<button type="button" class="profile-duo-side-link" onclick="UserProfile.renderPremiumSection()">' +
-                '<span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>' +
-                '<span>View plans</span>' +
-                '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-              '</button>') +
-          '</div>' +
+          this._buildProfileQuickLinksHtml(hidePlans) +
         '</div>' +
       '</div>';
 
@@ -571,16 +653,25 @@
           '</div>';
       }
 
+      var streakLabel = stats.streakCount === 1 ? 'day streak' : 'days streak';
       var statsGrid =
         '<section class="profile-duo-stats" aria-labelledby="profile-duo-stats-title">' +
           '<h2 id="profile-duo-stats-title" class="profile-duo-section-title">Statistics</h2>' +
           '<div class="profile-duo-stats-grid">' +
-            this._buildProfileStatCard('local_fire_department', 'streak', stats.streakCount, stats.streakCount === 1 ? 'day streak' : 'days streak') +
+            this._buildProfileStatCard('local_fire_department', 'streak', stats.streakCount, streakLabel, {
+              onclick: 'DashboardNav.openStreakSection()',
+              ariaLabel: 'View streak calendar, ' + stats.streakCount + ' ' + streakLabel
+            }) +
             this._buildProfileStatCard('bolt', 'level', stats.level, stats.availableCount + ' tests') +
             this._buildProfileStatCard('shield', 'done', stats.completedParts, stats.inProgressParts + ' in progress') +
-            this._buildProfileStatCard('emoji_events', 'score', stats.avgScale !== null ? stats.avgScale : '–', 'avg scale') +
+            this._buildProfileStatCard('emoji_events', 'score', stats.avgScale !== null ? stats.avgScale : '–', 'avg scale', {
+              onclick: 'openScoreCalculator(event)',
+              ariaLabel: 'Open score calculator'
+            }) +
           '</div>' +
         '</section>';
+
+      var mobileToolsHtml = this._buildProfileMobileToolsHtml(hidePlans, stats);
 
       var streakMilestone = this._nextStreakMilestone(stats.streakCount);
       var achievements =
@@ -644,6 +735,7 @@
           '</header>' +
           promoBanner +
           statsGrid +
+          mobileToolsHtml +
           '<section class="profile-duo-achievements" aria-labelledby="profile-duo-achievements-title">' +
             '<div class="profile-duo-section-header">' +
               '<h2 id="profile-duo-achievements-title" class="profile-duo-section-title">Progress</h2>' +

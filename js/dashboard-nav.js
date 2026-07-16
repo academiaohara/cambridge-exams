@@ -219,6 +219,10 @@
       } else if (typeof Tools !== 'undefined' && Tools.setTranslateLang) {
         Tools.setTranslateLang(code);
       }
+      var langValueEl = document.querySelector('.profile-duo-tool-row-value');
+      if (langValueEl && typeof UserProfile !== 'undefined' && UserProfile._getCurrentTranslateLangLabel) {
+        langValueEl.textContent = UserProfile._getCurrentTranslateLangLabel();
+      }
     },
 
     openMobileDictionaries: function() {
