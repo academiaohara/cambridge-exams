@@ -22,6 +22,20 @@
     return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
   }
 
+  var QUOTE_PAIR_RE = /^What does\s+[\u201c\u201d\u2018\u2019"'](.+?)[\u201c\u201d\u2018\u2019"'](.*)$/;
+
+  function parseQuotedMeaningQuestion(question) {
+    var match = String(question || '').match(QUOTE_PAIR_RE);
+    if (!match) return null;
+    return { prefix: 'What does ', term: match[1], suffix: match[2] };
+  }
+
+  function splitGapQuestion(question) {
+    var match = String(question || '').match(/^(.+?)(_{2,}|\.{3,})(.*)$/);
+    if (!match) return null;
+    return { before: match[1], after: match[3] || '' };
+  }
+
   function formatVideoTime(sec) {
     if (!isFinite(sec) || sec < 0) return '0:00';
     var m = Math.floor(sec / 60);
@@ -749,6 +763,9 @@
 
       var sec = session.section;
       var questionBody = this._renderQuestionBody(q);
+      var questionClass = q.type === 'fill_gap_choice'
+        ? 'sp-prompt-sentence sp-prompt-sentence--inline-gap ve-question-text'
+        : 've-question-text';
 
       this._renderModal(
         this._modalHeader({ showProgress: true }) +
@@ -757,7 +774,7 @@
             '<div class="sp-practice-body">' +
               '<div class="sp-exercise-card" id="ve-question-card">' +
                 '<p class="sp-session-instruction ve-quiz-instruction">' + esc(sec.instructions || sec.title) + '</p>' +
-                '<p class="ve-question-text">' + esc(q.question) + '</p>' +
+                '<p class="' + questionClass + '">' + this._renderQuestionText(q) + '</p>' +
                 questionBody +
               '</div>' +
             '</div>' +
@@ -786,6 +803,38 @@
         session._selectedMC = null;
         this._setActionBtn('check', false);
       }
+    },
+
+    _renderQuestionText: function(q) {
+      var text = q.question || '';
+
+      if (q.type === 'fill_gap_choice') {
+        var gapParts = splitGapQuestion(text);
+        if (!gapParts) return esc(text);
+        return esc(gapParts.before) +
+          ' <span class="sp-gap-anchor">' +
+            '<span class="sp-gap-slot" id="ve-choice-slot"></span>' +
+          '</span> ' +
+          esc(gapParts.after);
+      }
+
+      var quoted = parseQuotedMeaningQuestion(text);
+      if (quoted) {
+        return esc(quoted.prefix) +
+          '<span class="sp-hint-word">' + esc(quoted.term) + '</span>' +
+          esc(quoted.suffix);
+      }
+
+      return esc(text);
+    },
+
+    _setChoiceSlotContent: function(text) {
+      var slot = document.getElementById('ve-choice-slot');
+      if (!slot) return;
+      var anchor = slot.closest('.sp-gap-anchor');
+      slot.textContent = text || '';
+      if (anchor) anchor.classList.toggle('sp-gap-anchor--filled', !!text);
+      slot.classList.remove('sp-gap-slot--correct', 'sp-gap-slot--incorrect');
     },
 
     _renderQuestionBody: function(q) {
@@ -831,6 +880,12 @@
       });
       btn.classList.add('sp-option-btn--selected');
       session._selectedMC = selected;
+
+      var q = this._currentQuestion();
+      if (q && q.type === 'fill_gap_choice') {
+        this._setChoiceSlotContent(selected);
+      }
+
       this._setActionBtn('check', true);
     },
 
@@ -980,6 +1035,15 @@
           btn.classList.add('sp-option-btn--incorrect');
         }
       });
+
+      var slot = document.getElementById('ve-choice-slot');
+      if (slot) {
+        if (selected) slot.textContent = selected;
+        var anchor = slot.closest('.sp-gap-anchor');
+        if (anchor && selected) anchor.classList.add('sp-gap-anchor--filled');
+        slot.classList.toggle('sp-gap-slot--correct', isCorrect);
+        slot.classList.toggle('sp-gap-slot--incorrect', !isCorrect);
+      }
     },
 
     _showFeedback: function(isCorrect, q) {

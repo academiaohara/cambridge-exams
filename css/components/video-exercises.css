@@ -827,6 +827,25 @@ body.ve-modal-open {
   width: 100%;
 }
 
+.ve-modal-quiz .ve-question-text .sp-hint-word {
+  padding: 4px 12px;
+  border-color: #dbeafe;
+  border-bottom-color: #bfdbfe;
+  background: #f8fbff;
+  box-shadow: 0 2px 0 #bfdbfe;
+  color: #1465a0;
+  font-size: 0.95em;
+}
+
+.ve-modal-quiz .ve-question-text .sp-gap-slot {
+  border-bottom-color: #1899d6;
+  color: #1899d6;
+}
+
+.ve-modal-quiz .ve-question-text .sp-gap-anchor--filled .sp-gap-slot {
+  font-weight: 700;
+}
+
 .ve-modal-quiz .sp-option-grid {
   width: 100%;
   max-width: 18rem;
