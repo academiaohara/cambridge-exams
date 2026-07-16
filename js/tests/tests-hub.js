@@ -107,35 +107,22 @@
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
 
-      var headerTitle = 'Choose a Level';
+      var isGridView = !!(activeLevel && !isRandomTest);
+      var headerTitle = 'Choose a level';
       var headerClass = ' cw-section-header--picker cw-section-header--tests cw-section-header--duo';
       var headerStyle = ' style="--cw-header-color:#58cc02"';
-      var headerColor = '#58cc02';
       var backOnclick = '';
 
       if (isRandomTest) {
         var randomMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
-        headerTitle = 'Random Mix';
+        headerTitle = 'Random mix';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + randomMeta.headerColor + '"';
-        headerColor = randomMeta.headerColor;
         backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
-      } else if (activeExamId) {
-        var examMatch = exams.find(function(e) { return e.id === activeExamId; });
-        var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
-        var examMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
-        headerTitle = 'Choose a Section';
-        headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
-        headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
-        headerColor = examMeta.headerColor;
-        backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
-      } else if (activeLevel) {
-        var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
-        headerTitle = meta.difficulty;
-        headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
-        headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
-        headerColor = meta.headerColor;
-        backOnclick = 'DashboardNav.openTests()';
+      } else if (isGridView) {
+        var gridMeta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
+        headerClass += ' cw-section-header--tests-grid cw-section-header--compact';
+        headerStyle = ' style="--cw-header-color:' + gridMeta.headerColor + '"';
       }
 
       var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
@@ -152,8 +139,9 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--tests-hub">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--tests-hub' + (isGridView ? ' dashboard-center--tests-grid' : '') + '">' +
             mobileTopBarHtml +
+            (isGridView ? '' :
             '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
               (backOnclick
                 ? '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
@@ -163,7 +151,8 @@
                 '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
               '</div>' +
               DashboardNav._buildTestsModeHeaderToggleHtml() +
-            '</div>' +
+            '</div>') +
+            (isGridView ? DashboardNav._buildTestsGridModeBarHtml(activeLevel) : '') +
             '<div class="cw-page-content" id="testsCenterScroll">' +
               '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
@@ -185,14 +174,18 @@
       await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
 
       var bodyHtml = '';
+      var pendingExamId = null;
       if (isRandomTest) {
         bodyHtml = DashboardNav._buildRandomTestPageHtml(activeLevel || level);
-      } else if (activeExamId) {
-        bodyHtml = DashboardNav._buildTestsSectionCardsHtml(exams, activeExamId, activeLevel || level);
       } else if (activeLevel) {
-        bodyHtml = DashboardNav._buildTestsPathMapHtml(exams, activeLevel);
+        bodyHtml = typeof TestGrid !== 'undefined'
+          ? TestGrid.buildHtml(exams, activeLevel)
+          : DashboardNav._buildTestsPathMapHtml(exams, activeLevel);
+        if (activeExamId) pendingExamId = activeExamId;
       } else {
-        bodyHtml = DashboardNav._buildTestsLevelCardsHtml();
+        bodyHtml = typeof LevelSelect !== 'undefined'
+          ? LevelSelect.buildHtml()
+          : DashboardNav._buildTestsLevelCardsHtml();
       }
 
       if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
@@ -201,8 +194,14 @@
 
       hubPage.innerHTML = bodyHtml;
 
-      if (activeLevel && !activeExamId) {
-        DashboardNav._scrollTestsPathToCurrent();
+      if (activeLevel && !isRandomTest && typeof TestGrid !== 'undefined') {
+        TestGrid.init();
+      }
+
+      if (pendingExamId && typeof SectionSheet !== 'undefined') {
+        requestAnimationFrame(function() {
+          SectionSheet.open(pendingExamId, activeLevel, { skipHistory: true });
+        });
       }
     },
 
@@ -220,10 +219,12 @@
 
       var path = window.location.pathname || '';
       var segments = path.split('/').filter(Boolean);
-      if (segments[0] === 'tests' && segments.length >= 3) {
+      if (segments[0] === 'tests' && segments.length >= 2) {
         var levelIdx = 1;
         if (segments[1] === 'practice' || segments[1] === 'simulation') levelIdx = 2;
-        var level = (segments[levelIdx] || AppState.currentLevel || 'C1').toUpperCase();
+        var level = (segments[levelIdx] || '').toUpperCase();
+        if (!level || !window.EXAMS_DATA[level]) return;
+
         if (segments[levelIdx + 1] && segments[levelIdx + 1].toLowerCase() === 'random') {
           hubPage.innerHTML = DashboardNav._buildRandomTestPageHtml(level);
           var randomState = { view: 'testsHub', mode: mode, level: level, examId: 'Random' };
@@ -231,11 +232,27 @@
           return;
         }
         if (segments[levelIdx + 1] && /^test-\d+$/i.test(segments[levelIdx + 1])) {
-          var examId = segments[levelIdx + 1].replace('test-', 'Test');
+          var examId = segments[levelIdx + 1].replace(/^test-/i, 'Test');
           var exams = window.EXAMS_DATA[level] || [];
-          hubPage.innerHTML = DashboardNav._buildTestsSectionCardsHtml(exams, examId, level);
+          hubPage.innerHTML = typeof TestGrid !== 'undefined'
+            ? TestGrid.buildHtml(exams, level)
+            : DashboardNav._buildTestsPathMapHtml(exams, level);
+          if (typeof TestGrid !== 'undefined') TestGrid.init();
+          if (typeof SectionSheet !== 'undefined') {
+            requestAnimationFrame(function() {
+              SectionSheet.open(examId, level, { skipHistory: true });
+            });
+          }
           var examState = { view: 'testsHub', mode: mode, level: level, examId: examId };
           history.replaceState(examState, '', Router.stateToPath(examState));
+        } else {
+          var gridExams = window.EXAMS_DATA[level] || [];
+          hubPage.innerHTML = typeof TestGrid !== 'undefined'
+            ? TestGrid.buildHtml(gridExams, level)
+            : DashboardNav._buildTestsPathMapHtml(gridExams, level);
+          if (typeof TestGrid !== 'undefined') TestGrid.init();
+          var gridState = { view: 'testsHub', mode: mode, level: level };
+          history.replaceState(gridState, '', Router.stateToPath(gridState));
         }
       }
     },
@@ -311,17 +328,61 @@
       var mode = AppState.currentMode || 'practice';
       var practiceActive = mode !== 'exam' ? ' active' : '';
       var examActive = mode === 'exam' ? ' active' : '';
-      return '<button type="button" class="tests-mode-help-btn tests-mode-help-btn--header" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
+      return '<div class="tests-mode-header-actions">' +
+        '<button type="button" class="tests-mode-help-btn tests-mode-help-btn--header tests-mode-desktop-only" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
           _mi('help') +
         '</button>' +
-        '<div class="tests-mode-header-toggle" role="group" aria-label="Test attempt mode">' +
+        '<div class="tests-mode-header-toggle tests-mode-desktop-only" role="group" aria-label="Test attempt mode">' +
           '<button type="button" class="tests-mode-header-btn tests-mode-header-btn--practice' + practiceActive + '" data-mode="practice" onclick="DashboardNav.setTestsMode(\'practice\')" aria-label="Practice" title="Practice">' +
             _mi('edit_note') +
           '</button>' +
           '<button type="button" class="tests-mode-header-btn tests-mode-header-btn--simulation' + examActive + '" data-mode="exam" onclick="DashboardNav.setTestsMode(\'exam\')" aria-label="Simulation" title="Simulation">' +
             _mi('timer') +
           '</button>' +
-        '</div>';
+        '</div>' +
+        '<div class="tests-mode-mobile-menu">' +
+          '<button type="button" class="tests-mode-overflow-btn" onclick="DashboardNav.toggleTestsModeMenu(event)" aria-label="More options" aria-haspopup="true" aria-expanded="false">' +
+            _mi('more_vert') +
+          '</button>' +
+          '<div class="tests-mode-overflow-panel" hidden>' +
+            '<button type="button" class="tests-mode-overflow-item' + practiceActive + '" onclick="DashboardNav.setTestsMode(\'practice\'); DashboardNav.closeTestsModeMenu()">' + _mi('edit_note') + ' Practice</button>' +
+            '<button type="button" class="tests-mode-overflow-item' + examActive + '" onclick="DashboardNav.setTestsMode(\'exam\'); DashboardNav.closeTestsModeMenu()">' + _mi('timer') + ' Simulation</button>' +
+            '<button type="button" class="tests-mode-overflow-item" onclick="DashboardNav.showTestsModeHelp(); DashboardNav.closeTestsModeMenu()">' + _mi('help') + ' Help</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _buildTestsGridModeBarHtml: function(levelId) {
+      var meta = (typeof TestTokens !== 'undefined' && TestTokens.LEVEL_META[levelId])
+        ? TestTokens.LEVEL_META[levelId]
+        : { accent: '#3b82f6' };
+      return '<div class="tests-grid-mode-bar" style="--test-level-accent:' + meta.accent + '">' +
+        DashboardNav._buildTestsModeKickerHtml() +
+        DashboardNav._buildTestsModeHeaderToggleHtml() +
+      '</div>';
+    },
+
+    toggleTestsModeMenu: function(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      var panel = document.querySelector('.tests-mode-overflow-panel');
+      var btn = document.querySelector('.tests-mode-overflow-btn');
+      if (!panel) return;
+      var open = panel.hasAttribute('hidden');
+      if (open) {
+        panel.removeAttribute('hidden');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+        document.addEventListener('click', DashboardNav.closeTestsModeMenu, { once: true });
+      } else {
+        DashboardNav.closeTestsModeMenu();
+      }
+    },
+
+    closeTestsModeMenu: function() {
+      var panel = document.querySelector('.tests-mode-overflow-panel');
+      var btn = document.querySelector('.tests-mode-overflow-btn');
+      if (panel) panel.setAttribute('hidden', '');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     },
 
     _buildTestsModeKickerHtml: function() {
@@ -346,53 +407,24 @@
       document.querySelectorAll('.tests-mode-header-btn').forEach(function(btn) {
         btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
       });
+      document.querySelectorAll('.tests-mode-overflow-item').forEach(function(btn) {
+        var itemMode = btn.textContent.indexOf('Simulation') !== -1 ? 'exam' : (btn.textContent.indexOf('Practice') !== -1 ? 'practice' : null);
+        if (itemMode) btn.classList.toggle('active', itemMode === mode);
+      });
 
       var kicker = document.querySelector('.tests-mode-kicker');
       if (kicker) {
         kicker.outerHTML = DashboardNav._buildTestsModeKickerHtml();
       }
+
+      if (typeof SectionSheet !== 'undefined' && SectionSheet.refresh) {
+        SectionSheet.refresh();
+      }
     },
 
     _buildTestsLevelCardsHtml: function() {
-      var self = this;
-      var LEVEL_META = _testsLevelMeta();
-      var LEVEL_ORDER = ['B1', 'B2', 'C1', 'C2'];
-      var availableLevels = LEVEL_ORDER.filter(function(lvl) {
-        return (window.EXAMS_DATA[lvl] || []).some(function(e) { return e.status === 'available'; });
-      });
-
-      var html = '<div class="cw-level-cards desktop-mode-cards tests-level-cards">';
-      availableLevels.forEach(function(lvl) {
-        var meta = LEVEL_META[lvl] || LEVEL_META['B2'];
-        var exams = window.EXAMS_DATA[lvl] || [];
-        var available = exams.filter(function(e) { return e.status === 'available'; });
-        var completed = 0;
-        var inProgress = 0;
-        available.forEach(function(exam) {
-          var state = _getExamProgressState(exam);
-          if (state === 'done') completed++;
-          else if (state === 'progress') inProgress++;
-        });
-        var statusText = completed > 0
-          ? completed + ' / ' + available.length + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
-          : available.length + ' tests · ' + meta.difficulty;
-        var statusClass = completed > 0 ? 'mode-card-status-done' : '';
-
-        html += '<div class="mode-card mode-card--tests-level" data-tests-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="DashboardNav.openTests(\'' + lvl + '\')" role="button" tabindex="0">' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-title-row">' +
-              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
-            '</div>' +
-            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
-          '</div>' +
-          '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon">' + _mi(meta.icon) + '</div>' +
-          '</div>' +
-        '</div>';
-      });
-      html += '</div>';
-      return html;
+      if (typeof LevelSelect !== 'undefined') return LevelSelect.buildHtml();
+      return '<div class="fe-map-empty">Level select unavailable.</div>';
     },
 
     _buildTestsPathMapHtml: function(exams, levelId) {
