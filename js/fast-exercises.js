@@ -1198,13 +1198,21 @@
       }
 
       var courseVocabHeaderHtml = isCourseVocab
-        ? '<div class="cw-section-header cw-section-header--duo cw-section-header--vocab cw-section-header--level" style="--cw-header-color:' + catMeta.color + '">' +
-            '<button type="button" class="cw-section-back" onclick="' + _backFn + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
-            '<div class="cw-section-header-text">' +
-              '<div class="cw-section-title">' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
-            '</div>' +
-            infoBtnHtml +
-          '</div>'
+        ? (typeof DashboardNav !== 'undefined' && DashboardNav._buildCourseHubHeaderHtml
+          ? DashboardNav._buildCourseHubHeaderHtml({
+              variant: 'vocab-category',
+              headerColor: catMeta.color,
+              title: data.name || catMeta.name,
+              backOnclick: _backFn,
+              actionsHtml: infoBtnHtml
+            })
+          : '<div class="cw-section-header cw-section-header--duo cw-section-header--vocab cw-section-header--level" style="--cw-header-color:' + catMeta.color + '">' +
+              '<button type="button" class="cw-section-back" onclick="' + _backFn + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+              '<div class="cw-section-header-text">' +
+                '<div class="cw-section-title">' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
+              '</div>' +
+              infoBtnHtml +
+            '</div>')
         : '';
 
       var subpageInfoBtnHtml = infoBtnHtml.replace(/cw-section-info-btn/g, 'subpage-info-btn');

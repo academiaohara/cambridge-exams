@@ -165,34 +165,110 @@
       hubPage.innerHTML = await DashboardNav._buildCourseVocabCategoryCardsHtml({ main: true });
     },
 
-    _buildCourseSectionDuoHeaderHtml: function(sectionId, backOnclick) {
+    _buildCourseHubHeaderHtml: function(opts) {
+      opts = opts || {};
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      var SECTION_META = DashboardNav._courseSectionMeta();
-      var meta = SECTION_META[sectionId] || SECTION_META.learning;
-      var title = sectionId === 'learning'
-        ? 'Learning Path'
-        : (sectionId === 'vocabulary' ? meta.label : (meta.label + ' Path'));
+      var self = this;
 
-      if (sectionId === 'vocabulary') {
-        var vocabModeMeta = DashboardNav._getVocabHubModeMeta();
-        return '<div class="cw-section-header cw-section-header--duo cw-section-header--level cw-section-header--vocab" style="--cw-header-color:' + meta.headerColor + '">' +
-          '<div class="cw-section-header-text">' +
-            DashboardNav._buildVocabHubModeKickerHtml() +
-            '<div class="cw-section-title">' + title + '</div>' +
-            '<div class="course-vocab-header-subtitle">' + vocabModeMeta.subtitle + '</div>' +
-          '</div>' +
-          DashboardNav._buildVocabHubModeHeaderToggleHtml() +
+      var variant = opts.variant || 'hub';
+      var headerColor = opts.headerColor || '#3b82f6';
+      var title = opts.title || '';
+      var subtitle = opts.subtitle || '';
+      var kicker = opts.kicker || '';
+      var kickerIcon = opts.kickerIcon || '';
+      var backOnclick = opts.backOnclick || '';
+      var actionsHtml = opts.actionsHtml || '';
+
+      var variantClass = ' cw-section-header--hub';
+      if (variant === 'vocabulary' || variant === 'vocab-category') variantClass += ' cw-section-header--vocab';
+      if (variant === 'learning-stage') variantClass += ' cw-section-header--learning';
+      if (variant === 'learning-path') variantClass += ' cw-section-header--learning-path';
+
+      var kickerHtml = '';
+      if (variant === 'vocabulary') {
+        kickerHtml = DashboardNav._buildVocabHubModeKickerHtml();
+        if (!actionsHtml) actionsHtml = DashboardNav._buildVocabHubModeHeaderToggleHtml();
+        if (!subtitle) subtitle = DashboardNav._getVocabHubModeMeta().subtitle;
+      } else if (kicker) {
+        kickerHtml = '<div class="cw-section-kicker tests-mode-kicker">' +
+          (kickerIcon ? '<span class="material-symbols-outlined tests-mode-kicker-icon" aria-hidden="true">' + kickerIcon + '</span>' : '') +
+          '<span>' + kicker + '</span>' +
         '</div>';
       }
 
-      return '<div class="cw-section-header cw-section-header--duo cw-section-header--level" style="--cw-header-color:' + meta.headerColor + '">' +
-        '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' +
-          _mi('arrow_back') +
-        '</button>' +
+      var backHtml = backOnclick
+        ? '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
+        : '';
+
+      var subtitleClass = variant === 'vocabulary'
+        ? 'course-vocab-header-subtitle'
+        : 'course-hub-header-subtitle';
+      var subtitleHtml = subtitle
+        ? '<div class="cw-section-subtitle ' + subtitleClass + '">' + (typeof self._escapeHTML === 'function' ? self._escapeHTML(subtitle) : subtitle) + '</div>'
+        : '';
+
+      return '<div class="cw-section-header cw-section-header--duo cw-section-header--level' + variantClass + '" style="--cw-header-color:' + headerColor + '">' +
+        backHtml +
         '<div class="cw-section-header-text">' +
-          '<div class="cw-section-title">' + title + '</div>' +
+          kickerHtml +
+          (title ? '<div class="cw-section-title">' + (typeof self._escapeHTML === 'function' ? self._escapeHTML(title) : title) + '</div>' : '') +
+          subtitleHtml +
         '</div>' +
+        actionsHtml +
       '</div>';
+    },
+
+    _getLearningPathHeaderSubtitle: async function() {
+      var allStages = await DashboardNav._buildGlobalLearningStages();
+      if (!allStages.length) return '';
+      var levels = [];
+      allStages.forEach(function(s) {
+        if (levels.indexOf(s.levelId) === -1) levels.push(s.levelId);
+      });
+      var stageWord = allStages.length === 1 ? 'Stage' : 'Stages';
+      if (levels.length <= 1) {
+        return allStages.length + ' ' + stageWord + ' \u2022 ' + (levels[0] || 'B1');
+      }
+      return allStages.length + ' ' + stageWord + ' \u2022 ' + levels[0] + ' \u2192 ' + levels[levels.length - 1];
+    },
+
+    _getLearningStageHeaderMeta: async function(levelId, etapaKey) {
+      var stageNumMatch = String(etapaKey || '').match(/^stage-(\d+)$/);
+      var title = stageNumMatch ? ('Stage ' + stageNumMatch[1]) : ('Stage ' + (etapaKey || ''));
+      var subtitle = '';
+      if (!levelId || !etapaKey) return { title: title, subtitle: subtitle };
+
+      if (!DashboardNav._courseIndexData || DashboardNav._courseLevel !== levelId) {
+        await DashboardNav._loadCourseIndexForLevel(levelId);
+      }
+      var stageOffset = await DashboardNav._getGlobalStageOffset(levelId);
+      var etapasList = DashboardNav._getCourseEtapasList('learning', DashboardNav._courseIndexData, stageOffset);
+      var resolvedKey = DashboardNav._resolveCourseEtapaKey('learning', levelId, etapaKey);
+      var etapa = etapasList.find(function(e) { return e.type === 'etapa' && e.key === String(resolvedKey); });
+      if (etapa) subtitle = DashboardNav._getEtapaTitle(etapa);
+      return { title: title, subtitle: subtitle };
+    },
+
+    _buildCourseSectionDuoHeaderHtml: function(sectionId, backOnclick) {
+      var SECTION_META = DashboardNav._courseSectionMeta();
+      var meta = SECTION_META[sectionId] || SECTION_META.learning;
+
+      if (sectionId === 'vocabulary') {
+        return DashboardNav._buildCourseHubHeaderHtml({
+          variant: 'vocabulary',
+          headerColor: meta.headerColor,
+          title: meta.label
+        });
+      }
+
+      return DashboardNav._buildCourseHubHeaderHtml({
+        variant: 'learning-path',
+        headerColor: meta.headerColor,
+        title: 'Learning Path',
+        kicker: 'Learning Path',
+        kickerIcon: 'menu_book',
+        backOnclick: backOnclick
+      });
     },
 
     _buildCourseStagesListHeaderHtml: function(backOnclick) {
@@ -396,6 +472,36 @@
         ? AppLoadingScreen.markShown()
         : Date.now();
 
+      var hubHeaderHtml = '';
+      if (isSectionListView) {
+        var listMeta = SECTION_META[activeSection] || SECTION_META.learning;
+        var listSubtitle = '';
+        if (isStageListView) {
+          listSubtitle = await DashboardNav._getLearningPathHeaderSubtitle();
+        }
+        hubHeaderHtml = DashboardNav._buildCourseHubHeaderHtml({
+          variant: isStageListView ? 'learning-path' : 'vocabulary',
+          headerColor: listMeta.headerColor,
+          title: isStageListView ? 'Learning Path' : listMeta.label,
+          kicker: isStageListView ? 'Learning Path' : '',
+          kickerIcon: isStageListView ? 'menu_book' : '',
+          subtitle: isStageListView ? listSubtitle : '',
+          backOnclick: isStageListView ? 'DashboardNav._resumeCurrentLearningPoint()' : 'loadDashboard()'
+        });
+      } else if (isLearningStageView) {
+        var stageLvlMeta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
+        var stageMeta = await DashboardNav._getLearningStageHeaderMeta(activeLevel, activeEtapaKey);
+        hubHeaderHtml = DashboardNav._buildCourseHubHeaderHtml({
+          variant: 'learning-stage',
+          headerColor: stageLvlMeta.headerColor,
+          title: stageMeta.title,
+          kicker: 'Lessons',
+          kickerIcon: 'menu_book',
+          subtitle: stageMeta.subtitle,
+          backOnclick: backOnclick
+        });
+      }
+
       content.innerHTML =
         '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -408,11 +514,8 @@
             (isLearningStageView ? ' dashboard-center--learning-stage' : '') +
           '" id="courseDashboardCenter">' +
             mobileTopBarHtml +
-            (isSectionListView
-              ? DashboardNav._buildCourseSectionDuoHeaderHtml(
-                  activeSection,
-                  isStageListView ? 'DashboardNav._resumeCurrentLearningPoint()' : 'loadDashboard()'
-                )
+            (hubHeaderHtml
+              ? hubHeaderHtml
               : '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
                 (activeSection === 'learning'
                   ? '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
