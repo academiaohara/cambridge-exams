@@ -550,8 +550,7 @@
         if (isCurrent) html += '<span class="tests-path-row-marker" aria-hidden="true"></span>';
         html += '<button type="button" class="tests-path-row-main" onclick="' + mainOnclick + '" aria-label="' + self._escapeHTML(testLabel) + '">';
         html += '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--test">';
-        html += '<span class="tests-path-test-line">Test</span>';
-        html += '<span class="tests-path-test-line tests-path-test-line--num">' + exam.number + '</span>';
+        html += '<span class="tests-path-test-label">' + self._escapeHTML(testLabel) + '</span>';
         html += '</span>';
         html += '<span class="tests-path-cell-face tests-path-cell-face--hover">' + self._escapeHTML(scoreLabel || '—') + '</span>';
         if (locked) html += '<span class="tests-path-row-lock">' + _mi('lock') + '</span>';
