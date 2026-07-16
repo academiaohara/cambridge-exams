@@ -356,9 +356,12 @@
     };
   }
 
-  function buildLessonShellHtml(innerHtml) {
-    return '<div class="course-unit-content">' +
-      '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content">' +
+  function buildLessonShellHtml(innerHtml, categoryId) {
+    var themeAttr = (typeof TileThemes !== 'undefined' && categoryId)
+      ? (' data-tile-theme="' + categoryId + '"')
+      : '';
+    return '<div class="course-unit-content"' + themeAttr + '>' +
+      '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"' + themeAttr + '>' +
         '<div class="sp-lesson">' + (innerHtml || '') + '</div>' +
       '</div>' +
     '</div>';
@@ -377,7 +380,7 @@
       })
       : '<div class="sp-practice-session"><div id="sp-screen-mount"></div></div>';
 
-    return buildLessonShellHtml(sessionHtml);
+    return buildLessonShellHtml(sessionHtml, opts.categoryId);
   }
 
   function buildCompleteHtml(opts) {
@@ -390,18 +393,19 @@
           livesLeft: opts.livesLeft || 0,
           xp: opts.xp || 0,
           passed: true
-        })
+        }),
+        opts.categoryId
       );
     }
-    return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--complete"><h2 class="sp-result-title">Point complete!</h2></div>');
+    return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--complete"><h2 class="sp-result-title">Point complete!</h2></div>', opts.categoryId);
   }
 
   function buildFailedHtml(opts) {
     var node = { nodeId: 'vocab-point', title: opts.pointLabel || opts.lessonTitle || 'Vocabulary', shortTitle: opts.pointLabel || 'this point' };
     if (practiceUI && practiceUI.PracticeFailedScreen) {
-      return buildLessonShellHtml(practiceUI.PracticeFailedScreen(node));
+      return buildLessonShellHtml(practiceUI.PracticeFailedScreen(node), opts.categoryId);
     }
-    return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--failed"><h2 class="sp-result-title">Out of lives</h2></div>');
+    return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--failed"><h2 class="sp-result-title">Out of lives</h2></div>', opts.categoryId);
   }
 
   function setActionBtn(mode, enabled) {
@@ -861,7 +865,8 @@
       correctCount: s.correctCount || 0,
       total: s.screens.length,
       livesLeft: s.hearts ? s.hearts.currentLives : 0,
-      xp: (s.correctCount || 0) * 10
+      xp: (s.correctCount || 0) * 10,
+      categoryId: s.categoryId
     });
 
     bindResultEvents(s.fe, 'complete');
@@ -880,7 +885,8 @@
 
     s.container.innerHTML = buildFailedHtml({
       pointLabel: s.pointLabel,
-      lessonTitle: s.lessonTitle
+      lessonTitle: s.lessonTitle,
+      categoryId: s.categoryId
     });
 
     bindResultEvents(s.fe, 'failed');

@@ -1582,8 +1582,8 @@
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
           '</div>' +
         '</div>' +
-        '<div class="course-unit-content">' +
-          '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"></div>' +
+        '<div class="course-unit-content" data-tile-theme="tests">' +
+          '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content" data-tile-theme="tests"></div>' +
         '</div>';
 
       if (typeof SunePlayLesson === 'undefined') return;
@@ -2911,6 +2911,11 @@
         ? '<button type="button" class="cu-reset-btn" onclick="DashboardNav._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + CU_RESET_ICON_SVG + '<span>Restart</span></button>'
         : '';
 
+      var tileThemeKey = (typeof TileThemes !== 'undefined')
+        ? TileThemes.resolve({ unitData: unitData })
+        : 'learning';
+      var tileThemeAttr = ' data-tile-theme="' + tileThemeKey + '"';
+
       var html =
         '<div class="subpage-header subpage-header--course-unit">' +
           (courseSection === 'learning'
@@ -2922,7 +2927,7 @@
           '</div>' +
           resetUnitBtn +
         '</div>' +
-        '<div class="course-unit-content">';
+        '<div class="course-unit-content"' + tileThemeAttr + '>';
 
       if (unitData.type === 'grammar') {
         html += DashboardNav._renderGrammarUnit(unitData);

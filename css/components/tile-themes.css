@@ -1,0 +1,144 @@
+/* css/components/tile-themes.css */
+/* Category-based colours for hint-word tiles and gap pills */
+
+/* ── Learning (grammar / course) ─────────────────────────────────────── */
+[data-tile-theme="learning"] {
+  --tile-accent: #3b82f6;
+  --tile-border: #7bb8f7;
+  --tile-border-deep: #60a5fa;
+  --tile-pill-bg: #f5fbff;
+  --tile-hint-text: #1a4d8c;
+  --tile-num-bg: #dbeafe;
+  --tile-num-text: #1e40af;
+  --tile-focus-shadow: rgba(59, 130, 246, 0.12);
+}
+
+/* ── Phrasal verbs ───────────────────────────────────────────────────── */
+[data-tile-theme="phrasal-verbs"] {
+  --tile-accent: #3b82f6;
+  --tile-border: #7bb8f7;
+  --tile-border-deep: #60a5fa;
+  --tile-pill-bg: #f5fbff;
+  --tile-hint-text: #1a4d8c;
+  --tile-num-bg: #dbeafe;
+  --tile-num-text: #1e40af;
+  --tile-focus-shadow: rgba(59, 130, 246, 0.12);
+}
+
+/* ── Idioms ──────────────────────────────────────────────────────────── */
+[data-tile-theme="idioms"] {
+  --tile-accent: #f59e0b;
+  --tile-border: #ffca6b;
+  --tile-border-deep: #fbbf24;
+  --tile-pill-bg: #fff8ee;
+  --tile-hint-text: #8a4b00;
+  --tile-num-bg: #ffedd5;
+  --tile-num-text: #92400e;
+  --tile-focus-shadow: rgba(245, 158, 11, 0.14);
+}
+
+/* ── Word formation ──────────────────────────────────────────────────── */
+[data-tile-theme="word-formation"] {
+  --tile-accent: #e11d48;
+  --tile-border: #fca5a5;
+  --tile-border-deep: #fda4af;
+  --tile-pill-bg: #fff1f2;
+  --tile-hint-text: #be185d;
+  --tile-num-bg: #ffe4e6;
+  --tile-num-text: #9f1239;
+  --tile-focus-shadow: rgba(225, 29, 72, 0.12);
+}
+
+/* ── Tests (exams) ───────────────────────────────────────────────────── */
+[data-tile-theme="tests"] {
+  --tile-accent: #6ea7ef;
+  --tile-border: #7bb8f7;
+  --tile-border-deep: #60a5fa;
+  --tile-pill-bg: #f5fbff;
+  --tile-hint-text: #1a4d8c;
+  --tile-num-bg: #dbeafe;
+  --tile-num-text: #1e40af;
+  --tile-focus-shadow: rgba(110, 167, 239, 0.14);
+}
+
+/* ── Hint word chips (parenthetical clues, slash hints) ───────────────── */
+[data-tile-theme] .cu-hint-word,
+[data-tile-theme] .cu-hint-pill-word,
+[data-tile-theme] .cu-wf-pill-word,
+[data-tile-theme] .sp-hint-word {
+  background: var(--white, #fff);
+  border-color: var(--tile-border);
+  border-bottom-color: var(--tile-border-deep);
+  box-shadow: 0 2px 0 var(--tile-border-deep);
+  color: var(--tile-hint-text);
+}
+
+/* ── Gap pills ───────────────────────────────────────────────────────── */
+[data-tile-theme] .cu-hint-pill,
+[data-tile-theme] .cu-hint-slash-field {
+  background: var(--tile-pill-bg);
+  border-color: var(--tile-border);
+}
+
+[data-tile-theme] .cu-hint-pill:focus-within,
+[data-tile-theme] .cu-hint-slash-field:focus-within {
+  border-color: var(--tile-accent);
+  box-shadow: 0 0 0 3px var(--tile-focus-shadow);
+}
+
+[data-tile-theme] .cu-hint-pill-num {
+  background: var(--tile-num-bg);
+  color: var(--tile-num-text);
+}
+
+[data-tile-theme] .cu-hint-pill-input:focus,
+[data-tile-theme] .cu-hint-pill-slash-wrap input.cu-hint-pill-input:focus,
+[data-tile-theme] .cu-hint-pill-slash-wrap textarea.cu-hint-pill-input:focus {
+  border-color: var(--tile-accent) !important;
+}
+
+/* ── Word-formation root tiles ───────────────────────────────────────── */
+[data-tile-theme] .wf-root-tile,
+[data-tile-theme] .sp-wf-root-tile {
+  background: var(--white, #fff);
+  border-color: var(--tile-border);
+  border-bottom-color: var(--tile-border-deep);
+  box-shadow: 0 2px 0 var(--tile-border-deep);
+  color: var(--tile-hint-text);
+}
+
+/* ── Exam reading pills ──────────────────────────────────────────────── */
+[data-tile-theme] .reading-type2-oc-pill,
+[data-tile-theme] .reading-type3-wf-pill {
+  background: var(--tile-pill-bg);
+  border-color: var(--tile-border);
+}
+
+[data-tile-theme] .reading-type2-oc-pill:focus-within,
+[data-tile-theme] .reading-type3-wf-pill:focus-within,
+[data-tile-theme] .c1-reading3 .reading-type3-wf-pill:focus-within,
+[data-tile-theme] .b1-reading6 .reading-type2-oc-pill:focus-within {
+  border-color: var(--tile-accent);
+  box-shadow: 0 0 0 3px var(--tile-focus-shadow);
+}
+
+[data-tile-theme] .reading-type3-wf-pill .cu-hint-pill-input:focus,
+[data-tile-theme] .c1-reading3 .reading-type3-wf-pill .cu-hint-pill-input:focus {
+  border-color: var(--tile-accent) !important;
+}
+
+[data-tile-theme] .reading-type2-oc-pill .cu-hint-pill-num,
+[data-tile-theme] .reading-type3-wf-pill .cu-hint-pill-num,
+[data-tile-theme] .c1-reading3 .reading-type3-wf-pill .cu-hint-pill-num {
+  background: var(--tile-num-bg);
+  color: var(--tile-num-text);
+  border-color: var(--tile-border);
+}
+
+/* Mobile underline-style pills inherit accent on focus */
+@media (max-width: 768px) {
+  [data-tile-theme] textarea.cu-hint-pill-input:focus {
+    border-bottom-color: var(--tile-accent) !important;
+    background: var(--tile-focus-shadow) !important;
+  }
+}

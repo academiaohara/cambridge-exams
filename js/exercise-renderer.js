@@ -39,7 +39,7 @@
     },
 
     wrapExerciseCenter: function(innerHtml) {
-      return '<div class="exercise-page-wrapper"><div class="exercise-container">' + innerHtml + '</div></div>';
+      return '<div class="exercise-page-wrapper"><div class="exercise-container" data-tile-theme="tests">' + innerHtml + '</div></div>';
     },
 
     setCenterContent: function(centerHtml, showTools) {
@@ -364,7 +364,7 @@
 
       const exerciseInnerHtml = `
         <div class="exercise-page-wrapper">
-          <div class="exercise-container">
+          <div class="exercise-container" data-tile-theme="tests">
             <div class="exercise-header">
               <div class="exercise-header-top">
                 <h2 class="exercise-heading">${levelName} - ${isMixed ? 'Random Test' : sectionTitle}</h2>
