@@ -89,8 +89,9 @@
     var maxStars = 5;
     var html = '<span class="tests-path-section-stars" aria-hidden="true">';
     for (var i = 0; i < maxStars; i++) {
-      html += '<span class="material-symbols-outlined tests-path-section-star' +
-        (i < filledCount ? ' tests-path-section-star--filled' : '') + '">star</span>';
+      var filled = i < filledCount;
+      html += '<i class="' + (filled ? 'fas' : 'far') + ' fa-star tests-path-section-star' +
+        (filled ? ' tests-path-section-star--filled' : '') + '" aria-hidden="true"></i>';
     }
     html += '</span>';
     return html;
@@ -101,8 +102,8 @@
     var display = ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section);
     if (display.type !== 'scale') return null;
     var gradeInfo = ScoreCalculator.getGradeInfo(display.value, levelId);
-    var scaleCefr = String(display.value) + (gradeInfo && gradeInfo.cefr ? ' · ' + gradeInfo.cefr : '');
-    if (gradeInfo && gradeInfo.result && gradeInfo.result !== 'Below Level') {
+    var scaleCefr = String(display.value) + (gradeInfo && gradeInfo.cefr && gradeInfo.cefr !== '-' ? ' · ' + gradeInfo.cefr : '');
+    if (gradeInfo && gradeInfo.result) {
       return gradeInfo.result + ' · ' + scaleCefr;
     }
     return scaleCefr;
@@ -110,20 +111,22 @@
 
   function _getTestsSectionScoreContent(examId, sectionKey, section, levelId) {
     if (typeof ScoreCalculator === 'undefined') {
-      return { html: '—', ariaDetail: '', title: '' };
+      return { html: '—', ariaDetail: '' };
     }
     var display = ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section);
     if (display.type === 'scale') {
       var starCount = ScoreCalculator.getGradeStarCount(display.value, levelId);
       var detail = _getTestsSectionScoreDetail(examId, sectionKey, section, levelId) || '';
       return {
-        html: _buildTestsSectionStarsHtml(starCount),
-        ariaDetail: detail,
-        title: detail
+        html: '<span class="tests-path-section-score">' +
+          _buildTestsSectionStarsHtml(starCount) +
+          '<span class="tests-path-section-score-detail">' + _escape(detail) + '</span>' +
+          '</span>',
+        ariaDetail: detail
       };
     }
     var fallback = _getTestsSectionScoreLabel(examId, sectionKey, section, levelId);
-    return { html: _escape(fallback), ariaDetail: fallback !== '—' ? fallback : '', title: '' };
+    return { html: _escape(fallback), ariaDetail: fallback !== '—' ? fallback : '' };
   }
 
   function _buildTestsPathSectionBtn(exam, sectionKey, levelId, testLocked) {
@@ -154,7 +157,6 @@
     return '<button type="button" class="' + btnClass + '"' +
       ' onclick="' + onclick + '"' +
       ' aria-label="' + _escape(ariaLabel) + '"' +
-      (scoreContent.title ? ' title="' + _escape(scoreContent.title) + '"' : '') +
       ' style="--tps-bg:' + theme.bg + ';--tps-border:' + theme.border + ';--tps-accent:' + theme.accent + ';--tps-title:' + theme.title + '">' +
       '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--section" aria-hidden="true">' +
         '<span class="tests-path-section-label">' + scoreContent.html + '</span>' +
