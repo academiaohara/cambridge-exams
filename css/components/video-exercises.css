@@ -828,17 +828,19 @@ body.ve-modal-open {
 }
 
 .ve-modal-quiz .ve-question-text .sp-hint-word {
-  padding: 4px 12px;
-  border-color: #dbeafe;
-  border-bottom-color: #bfdbfe;
+  padding: 4px 14px;
+  border: 2px solid #dbeafe;
+  border-bottom: 3px solid #bfdbfe;
+  border-radius: 10px;
   background: #f8fbff;
   box-shadow: 0 2px 0 #bfdbfe;
   color: #1465a0;
   font-size: 0.95em;
+  font-weight: 700;
 }
 
-.ve-modal-quiz .ve-question-text .sp-gap-slot {
-  border-bottom-color: #1899d6;
+.ve-modal-quiz .ve-question-text .sp-gap-anchor .sp-gap-slot {
+  border-bottom: 2px dashed #1899d6;
   color: #1899d6;
 }
 
