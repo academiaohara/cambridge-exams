@@ -3318,11 +3318,20 @@
     padding: 12px 14px;
     gap: 8px;
     border-radius: 16px;
+    justify-content: space-between;
+    text-align: left;
   }
 
   .dashboard-center--tests-hub .cw-section-header-text {
     flex: 1;
     min-width: 0;
+    width: auto;
+    padding: 0;
+    text-align: left;
+  }
+
+  .dashboard-center--tests-hub .cw-section-header--level .cw-section-header-text {
+    padding-left: 48px;
   }
 
   .dashboard-center--tests-hub .cw-section-title {
