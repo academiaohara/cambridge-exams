@@ -598,12 +598,7 @@
     },
 
     buildMobileTopBarHtml: function() {
-      return '<header class="mobile-nav-top-bar" aria-label="Mobile stats">' +
-        '<a class="mobile-nav-top-brand" href="/course/learning" onclick="event.preventDefault(); DashboardNav.openCourseSection(\'learning\')">' +
-          '<img src="Assets/images/sunelogoreduced2.svg" class="mobile-nav-top-logo" alt="Sune English">' +
-        '</a>' +
-        '<div class="mobile-nav-top-stats">' + this.buildStatsBarHtml() + '</div>' +
-      '</header>';
+      return '';
     },
 
     buildMobileBottomNavHtml: function(activeId) {

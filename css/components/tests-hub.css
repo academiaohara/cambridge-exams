@@ -604,10 +604,6 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     max-height: 100dvh;
   }
 
-  .dashboard-center--tests-hub .cw-page-content > .mobile-nav-top-bar {
-    display: flex !important;
-  }
-
   .dashboard-center--tests-hub.dashboard-center--mobile-hub {
     height: 100dvh;
     max-height: 100dvh;
