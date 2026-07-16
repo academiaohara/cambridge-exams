@@ -1979,8 +1979,10 @@ margin-top: -2px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
-  padding: 18px 20px 20px;
+  padding: 20px 22px;
+  min-height: 64px;
   margin: 0 0 16px;
   border-radius: 18px;
   background: #2D2E5F;
@@ -1989,6 +1991,7 @@ margin-top: -2px;
   position: sticky;
   top: var(--dashboard-top-spacing, 28px);
   z-index: 4;
+  box-sizing: border-box;
 }
 
 .cw-section-header--wordle {
@@ -2023,6 +2026,7 @@ margin-top: -2px;
 }
 
 .cw-section-header-text {
+  flex: 1;
   min-width: 0;
 }
 

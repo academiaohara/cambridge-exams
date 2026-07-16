@@ -5012,10 +5012,12 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   gap: 12px;
   max-width: 720px;
   margin: 0 auto 14px;
-  padding: 10px 14px;
+  padding: 16px 18px;
+  min-height: 52px;
   border-radius: 12px;
   border: 1px dashed #fbbf24;
   background: #fffbeb;
+  box-sizing: border-box;
 }
 
 .course-admin-toolbar-label {
@@ -6023,8 +6025,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 /* ── Course hub (Duolingo-style, shared with tests/crosswords) ─────────── */
 
 .dashboard-center--course .cw-section-header {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
+  justify-content: space-between;
 }
 
 .dashboard-center--learning-no-header .cw-page-content {
@@ -6071,7 +6074,17 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     margin-right: var(--mobile-hub-pad-x);
     margin-top: var(--learning-stage-header-gap);
     margin-bottom: 0;
-    padding: 12px 14px 14px;
+    padding: 18px 18px;
+    min-height: 60px;
+  }
+
+  .dashboard-center--course .cw-section-header .cw-section-header-text {
+    order: -1;
+  }
+
+  .dashboard-center--course .cw-section-header .cw-section-back {
+    order: 1;
+    margin-left: auto;
   }
 
   .dashboard-center--mobile-hub .cw-section-header .cw-section-title,
@@ -6120,10 +6133,11 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   }
 
   .dashboard-center--learning-stage .course-etapa-map .course-etapa-header {
-    gap: 10px;
-    padding: 10px 12px;
+    gap: 12px;
+    padding: 14px 16px;
+    min-height: 52px;
     border-radius: 12px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .dashboard-center--learning-stage .course-etapa-header-title {
@@ -7216,7 +7230,8 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   gap: 14px;
   width: 100%;
   margin: 0;
-  padding: 14px 18px;
+  padding: 16px 20px;
+  min-height: 56px;
   border-radius: 14px;
   box-sizing: border-box;
   position: relative;
@@ -7273,7 +7288,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-etapa-header-title {
   font-size: 1.05rem;
   font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 .course-etapa-header-guide {
@@ -7633,8 +7648,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   }
 
   .course-etapa-map .course-etapa-header {
-    flex-wrap: wrap;
-    padding: 12px 14px;
+    flex-wrap: nowrap;
+    padding: 14px 16px;
+    min-height: 52px;
   }
 
   .course-etapa-header-title {
