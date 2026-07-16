@@ -253,7 +253,6 @@
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
           '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--tests-hub">' +
-            mobileTopBarHtml +
             '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
               (backOnclick
                 ? '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
@@ -265,6 +264,7 @@
               DashboardNav._buildTestsModeHeaderToggleHtml() +
             '</div>' +
             '<div class="cw-page-content" id="testsCenterScroll">' +
+              mobileTopBarHtml +
               '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
             mobileNavHtml +
