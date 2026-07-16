@@ -481,7 +481,7 @@
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
 
-      var headerTitle = 'Choose a Level';
+      var headerTitle = 'Tests';
       var headerClass = ' cw-section-header--picker cw-section-header--tests cw-section-header--duo';
       var headerStyle = ' style="--cw-header-color:#58cc02"';
       var headerColor = '#58cc02';
@@ -498,14 +498,14 @@
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
         var examMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
-        headerTitle = 'Choose a Section';
+        headerTitle = 'Test ' + examNum;
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
         headerColor = examMeta.headerColor;
         backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
-        headerTitle = meta.difficulty;
+        headerTitle = meta.label.toLowerCase();
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
         headerColor = meta.headerColor;
@@ -542,6 +542,7 @@
               '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
             mobileNavHtml +
+            DashboardNav._buildTestsModeHelpFabHtml() +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
@@ -681,14 +682,17 @@
       };
     },
 
+    _buildTestsModeHelpFabHtml: function() {
+      return '<button type="button" class="tests-mode-help-btn tests-mode-help-fab" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
+        _mi('help') +
+      '</button>';
+    },
+
     _buildTestsModeHeaderToggleHtml: function() {
       var mode = AppState.currentMode || 'practice';
       var practiceActive = mode !== 'exam' ? ' active' : '';
       var examActive = mode === 'exam' ? ' active' : '';
-      return '<button type="button" class="tests-mode-help-btn tests-mode-help-btn--header" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
-          _mi('help') +
-        '</button>' +
-        '<div class="tests-mode-header-toggle" role="group" aria-label="Test attempt mode">' +
+      return '<div class="tests-mode-header-toggle" role="group" aria-label="Test attempt mode">' +
           '<button type="button" class="tests-mode-header-btn tests-mode-header-btn--practice' + practiceActive + '" data-mode="practice" onclick="DashboardNav.setTestsMode(\'practice\')" aria-label="Practice" title="Practice">' +
             _mi('edit_note') +
           '</button>' +
