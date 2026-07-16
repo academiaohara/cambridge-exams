@@ -8,36 +8,31 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 769px) {
+  .dashboard-center--tests-hub {
+    max-height: calc(100dvh - var(--dashboard-top-spacing, 28px) - 12px);
+  }
 }
 
 .dashboard-center--tests-hub .cw-section-header {
   flex-wrap: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  top: auto;
   z-index: 5;
+  margin-bottom: 0;
 }
 
-/* Mask scrolling content behind the sticky header (page bg #F4F7FF from main.css) */
-.dashboard-center--tests-hub .cw-section-header::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: 20px;
-  background: #F4F7FF;
-  pointer-events: none;
-}
-
-@media (min-width: 769px) {
-  .dashboard-center--tests-hub .cw-section-header::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 100%;
-    height: calc(var(--dashboard-top-spacing, 28px) + 6px);
-    background: #F4F7FF;
-    pointer-events: none;
-  }
+.dashboard-center--tests-hub .cw-page-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-top: 16px;
 }
 
 .dashboard-center--tests-hub .cw-section-header-text {
