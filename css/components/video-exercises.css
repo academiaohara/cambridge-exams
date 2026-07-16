@@ -171,6 +171,14 @@
   border: 1px solid #b8e8fc;
   border-radius: 999px;
   padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ve-chapter-ep-num {
+  font-variant-numeric: tabular-nums;
 }
 
 .ve-level-badge {
@@ -1139,33 +1147,114 @@ body.ve-modal-open {
 /* ─── Responsive ────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  .dashboard-center--subpage:has(.ve-hub) {
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-right));
+  }
+
+  .ve-hub {
+    padding: 6px 0 48px;
+  }
+
   .ve-series-header {
-    padding: 18px 16px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+    gap: 12px;
+  }
+
+  .ve-series-tagline,
+  .ve-series-meta-row {
+    display: none;
   }
 
   .ve-series-title {
     font-size: 1.45rem;
+    margin: 0;
   }
 
-  .ve-chapter-desc {
+  .ve-chapter-desc,
+  .ve-chapter-tags {
     display: none;
   }
 
   .ve-chapter-row {
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
-    padding: 16px;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .ve-chapter-row-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .ve-chapter-row-top {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    gap: 0;
+  }
+
+  .ve-chapter-status {
+    display: none;
+  }
+
+  .ve-chapter-ep {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 12px;
+    justify-content: center;
+    font-size: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    background: #eef8ff;
+    border: 2px solid #b8e8fc;
+    box-shadow: 0 2px 0 #b8e8fc;
+  }
+
+  .ve-chapter-ep-label {
+    display: none;
+  }
+
+  .ve-chapter-ep-num {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1899d6;
+    line-height: 1;
+  }
+
+  .ve-chapter-title {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.25;
+    text-align: left;
   }
 
   .ve-chapter-steps {
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 2px 0;
+  }
+
+  .ve-chapter-steps::-webkit-scrollbar {
+    display: none;
   }
 
   .ve-step-circle {
     width: 44px;
     height: 44px;
+    flex-shrink: 0;
   }
 
   .ve-modal-overlay {
@@ -1222,6 +1311,15 @@ body.ve-modal-open {
 }
 
 @media (max-width: 480px) {
+  .dashboard-center--subpage:has(.ve-hub) {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  .ve-series-header {
+    padding: 14px 16px;
+  }
+
   .ve-series-header-top {
     gap: 12px;
   }
@@ -1234,6 +1332,29 @@ body.ve-modal-open {
 
   .ve-series-title {
     font-size: 1.3rem;
+  }
+
+  .ve-chapter-row {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .ve-chapter-row-info {
+    gap: 10px;
+  }
+
+  .ve-chapter-ep {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .ve-chapter-ep-num {
+    font-size: 0.95rem;
+  }
+
+  .ve-chapter-title {
+    font-size: 0.95rem;
   }
 
   .ve-step-circle {
