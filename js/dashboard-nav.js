@@ -120,6 +120,7 @@
       ];
 
       var html = '<div class="mobile-level-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-level-title">' +
+        '<div class="mobile-level-modal-handle" aria-hidden="true"></div>' +
         '<button class="mobile-level-modal-close" onclick="DashboardNav.closeMobileLevelModal()" aria-label="Close level picker">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
@@ -178,20 +179,21 @@
         ? Tools.getTranslateLanguages()
         : [{ code: 'es', label: 'Español' }];
 
-      var html = '<div class="mobile-level-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-lang-title">' +
+      var html = '<div class="mobile-level-modal-card mobile-lang-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-lang-title">' +
+        '<div class="mobile-level-modal-handle" aria-hidden="true"></div>' +
         '<button class="mobile-level-modal-close" onclick="DashboardNav.closeMobileLangModal()" aria-label="Close language picker">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
         '<div class="mobile-level-modal-kicker">Language</div>' +
         '<h2 id="mobile-lang-title">Instructions &amp; translations</h2>' +
-        '<div class="mobile-level-modal-options">';
+        '<div class="mobile-lang-modal-list" role="listbox" aria-labelledby="mobile-lang-title">';
 
       langs.forEach(function(lang) {
         var isActive = lang.code === currentLang;
-        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="DashboardNav.selectMobileLang(\'' + lang.code + '\')">' +
-          '<span class="material-symbols-outlined">language</span>' +
-          '<strong>' + lang.label + '</strong>' +
-          '<small>' + lang.code.toUpperCase() + '</small>' +
+        html += '<button class="mobile-lang-option' + (isActive ? ' active' : '') + '" role="option" aria-selected="' + (isActive ? 'true' : 'false') + '" onclick="DashboardNav.selectMobileLang(\'' + lang.code + '\')">' +
+          '<span class="mobile-lang-option-code" aria-hidden="true">' + lang.code.toUpperCase() + '</span>' +
+          '<span class="mobile-lang-option-label">' + lang.label + '</span>' +
+          '<span class="material-symbols-outlined mobile-lang-option-check" aria-hidden="true">' + (isActive ? 'check_circle' : 'radio_button_unchecked') + '</span>' +
         '</button>';
       });
 
@@ -205,6 +207,11 @@
         if (e.target === modal) DashboardNav.closeMobileLangModal();
       });
       document.body.appendChild(modal);
+
+      var activeOpt = modal.querySelector('.mobile-lang-option.active');
+      if (activeOpt && activeOpt.scrollIntoView) {
+        try { activeOpt.scrollIntoView({ block: 'center' }); } catch (e) { /* ignore */ }
+      }
     },
 
     closeMobileLangModal: function() {

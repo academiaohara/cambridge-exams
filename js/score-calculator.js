@@ -163,6 +163,12 @@
         window.addEventListener('resize', this._popoverResizeHandler);
         window.addEventListener('scroll', this._popoverResizeHandler, true);
       }
+      if (!this._popoverKeyHandler) {
+        this._popoverKeyHandler = function(e) {
+          if (e.key === 'Escape') self.closeInputPopover();
+        };
+        document.addEventListener('keydown', this._popoverKeyHandler);
+      }
     },
 
     closeInputPopover: function() {
@@ -178,6 +184,10 @@
         btn.classList.remove('is-active');
         btn.setAttribute('aria-expanded', 'false');
       });
+      if (this._popoverKeyHandler) {
+        document.removeEventListener('keydown', this._popoverKeyHandler);
+        this._popoverKeyHandler = null;
+      }
       this._popoverTrigger = null;
     },
 
