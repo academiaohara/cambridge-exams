@@ -73,7 +73,7 @@
     return String(avg) + (gradeInfo && gradeInfo.cefr ? ' · ' + gradeInfo.cefr : '');
   }
 
-  function _getTestsSectionHoverLabel(examId, sectionKey, section, levelId) {
+  function _getTestsSectionScoreLabel(examId, sectionKey, section, levelId) {
     if (typeof ScoreCalculator === 'undefined') return '—';
     var display = ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section);
     if (display.type === 'scale') {
@@ -94,8 +94,9 @@
     var iconName = typeof Utils !== 'undefined' ? Utils.getMaterialIcon(sectionKey) : 'menu_book';
     var lockInfo = DashboardNav._getTestsSectionLockInfo(sectionKey);
     var isLocked = testLocked || lockInfo.locked;
-    var hoverLabel = _getTestsSectionHoverLabel(exam.id, sectionKey, section, levelId);
+    var scoreLabel = _getTestsSectionScoreLabel(exam.id, sectionKey, section, levelId);
     var label = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+    var ariaLabel = label + (scoreLabel && scoreLabel !== '—' ? ': ' + scoreLabel : '');
 
     var btnClass = 'tests-path-section tests-path-section--' + sectionKey;
     if (isLocked) btnClass += ' tests-path-section--locked';
@@ -111,14 +112,13 @@
 
     return '<button type="button" class="' + btnClass + '"' +
       ' onclick="' + onclick + '"' +
-      ' aria-label="' + _escape(label) + '"' +
+      ' aria-label="' + _escape(ariaLabel) + '"' +
       ' style="--tps-bg:' + theme.bg + ';--tps-border:' + theme.border + ';--tps-accent:' + theme.accent + ';--tps-title:' + theme.title + '">' +
       '<span class="tests-path-cell-face tests-path-cell-face--default tests-path-cell-face--section" aria-hidden="true">' +
-        '<span class="tests-path-section-label">' + _escape(label) + '</span>' +
+        '<span class="tests-path-section-label">' + _escape(scoreLabel) + '</span>' +
         '<img src="' + artSrc + '" alt="" class="tests-path-section-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">' +
         '<span class="material-symbols-outlined tests-path-section-fallback">' + iconName + '</span>' +
       '</span>' +
-      '<span class="tests-path-cell-face tests-path-cell-face--hover">' + _escape(hoverLabel) + '</span>' +
       (isLocked ? '<span class="tests-path-section-lock">' + _mi('lock') + '</span>' : '') +
     '</button>';
   }
