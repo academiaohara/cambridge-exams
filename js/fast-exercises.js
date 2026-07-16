@@ -3847,10 +3847,7 @@
     _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
       this._currentLessonData = lessonData;
-      var exercises = self._getConvGapWriteExercises(lessonData);
-      if (!exercises.length) {
-        exercises = (lessonData && lessonData.fillInExercises) || [];
-      }
+      var exercises = (lessonData && lessonData.fillInExercises) || [];
 
       if (exercises.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
