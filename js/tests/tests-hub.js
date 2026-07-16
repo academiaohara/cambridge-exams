@@ -154,6 +154,82 @@
     return 'pending';
   }
 
+  function _lastActiveStorageKey(levelId) {
+    var mode = AppState.currentMode || 'practice';
+    return 'cambridge_last_active_' + mode + '_' + levelId;
+  }
+
+  function _setLastActiveExamId(levelId, examId) {
+    if (!levelId || !examId || examId === 'Random') return;
+    try {
+      localStorage.setItem(_lastActiveStorageKey(levelId), JSON.stringify({
+        examId: examId,
+        updatedAt: new Date().toISOString()
+      }));
+    } catch (e) { /* ignore */ }
+  }
+
+  function _getLastActiveExamId(levelId, available) {
+    var mode = AppState.currentMode || 'practice';
+    var storedId = null;
+
+    try {
+      var raw = localStorage.getItem(_lastActiveStorageKey(levelId));
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        storedId = (parsed && parsed.examId) ? parsed.examId : raw;
+      }
+    } catch (e) { /* ignore */ }
+
+    if (storedId && available.some(function(e) { return e.id === storedId; })) {
+      return storedId;
+    }
+
+    var prefix = 'cambridge_' + mode + '_' + levelId + '_';
+    var bestExamId = null;
+    var bestTime = 0;
+    var keyPattern = new RegExp('^cambridge_(?:practice|exam)_' + levelId + '_(Test\\d+)_');
+
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (!key || key.indexOf(prefix) !== 0) continue;
+        var match = key.match(keyPattern);
+        if (!match) continue;
+        var examId = match[1];
+        if (!available.some(function(e) { return e.id === examId; })) continue;
+        try {
+          var data = JSON.parse(localStorage.getItem(key));
+          if (data && data.updatedAt) {
+            var t = Date.parse(data.updatedAt);
+            if (!isNaN(t) && t > bestTime) {
+              bestTime = t;
+              bestExamId = examId;
+            }
+          }
+        } catch (e2) { /* ignore */ }
+      }
+    } catch (e3) { /* ignore */ }
+
+    return bestExamId;
+  }
+
+  function _resolveCurrentTestIndex(available, levelId) {
+    var lastActiveId = _getLastActiveExamId(levelId, available);
+    if (lastActiveId) {
+      var lastIdx = available.findIndex(function(e) { return e.id === lastActiveId; });
+      if (lastIdx !== -1) return lastIdx;
+    }
+
+    var firstIncompleteIdx = -1;
+    available.forEach(function(exam, idx) {
+      if (firstIncompleteIdx !== -1) return;
+      if (_getExamProgressState(exam) !== 'done') firstIncompleteIdx = idx;
+    });
+    if (firstIncompleteIdx === -1) firstIncompleteIdx = available.length - 1;
+    return firstIncompleteIdx;
+  }
+
   Object.assign(window.DashboardNav, {
     openTests: async function(levelFilter, examId, options) {
       options = options || {};
@@ -188,6 +264,10 @@
         activeLevel = AppState.currentLevel || 'C1';
       }
       if (activeLevel) AppState.currentLevel = activeLevel;
+
+      if (activeExamId && activeLevel && !isRandomTest) {
+        _setLastActiveExamId(activeLevel, activeExamId);
+      }
 
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
@@ -511,12 +591,7 @@
         ? AccessControl.effectiveHasExamsPack()
         : !!AppState.hasExamsPack;
 
-      var firstIncompleteIdx = -1;
-      available.forEach(function(exam, idx) {
-        if (firstIncompleteIdx !== -1) return;
-        if (_getExamProgressState(exam) !== 'done') firstIncompleteIdx = idx;
-      });
-      if (firstIncompleteIdx === -1) firstIncompleteIdx = available.length - 1;
+      var currentIdx = _resolveCurrentTestIndex(available, levelId);
 
       var html = '<div class="cw-path-map tests-path-map" data-level="' + levelId + '" style="' +
         '--cw-header-color:' + meta.headerColor + ';' +
@@ -534,7 +609,7 @@
 
       available.forEach(function(exam, idx) {
         var state = _getExamProgressState(exam);
-        var isCurrent = idx === firstIncompleteIdx;
+        var isCurrent = idx === currentIdx;
         var testLabel = 'Test ' + exam.number;
         var scoreLabel = _getTestsExamScoreLabel(exam.id, levelId);
         var locked = !hasExamsPack && idx > 0;
@@ -836,6 +911,10 @@
         '<div class="cw-sidebar-prog-track"><div class="cw-sidebar-prog-fill" style="width:' + pct + '%"></div></div>' +
         '<div class="cw-sidebar-prog-label">' + pct + '% tests completed</div>' +
       '</div>';
+    },
+
+    setLastActiveTest: function(levelId, examId) {
+      _setLastActiveExamId(levelId || AppState.currentLevel, examId);
     },
 
     _scrollTestsPathToCurrent: function() {
