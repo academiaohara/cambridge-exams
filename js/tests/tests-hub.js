@@ -263,7 +263,7 @@
               '</div>' +
               DashboardNav._buildTestsModeHeaderToggleHtml() +
             '</div>' +
-            '<div class="cw-page-content" id="testsCenterScroll">' +
+            '<div class="cw-page-content scroll-visible tests-hub-scroll" id="testsCenterScroll">' +
               mobileTopBarHtml +
               '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
