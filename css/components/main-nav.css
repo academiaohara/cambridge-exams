@@ -1055,12 +1055,13 @@ button.stats-bar-item.is-active {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 2px;
   margin: 0;
-  padding: 6px 8px max(6px, env(safe-area-inset-bottom));
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
   border-radius: 0;
   border: none;
   border-top: 2px solid #e5e5e5;
   background: #fff;
   box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 .mobile-bottom-nav--duo .mobile-bottom-nav-btn {
@@ -1237,13 +1238,13 @@ body.mobile-popover-open {
     font-size: 2.5rem;
   }
 
-  .dashboard-center,
-  .dashboard-center--subpage {
-    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  .dashboard-center:has(.mobile-bottom-nav--duo),
+  .dashboard-center--subpage:has(.mobile-bottom-nav--duo) {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
   }
 
-  .dashboard-home {
-    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  .dashboard-home:has(.mobile-bottom-nav--duo) {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Mobile popovers as bottom sheets */
