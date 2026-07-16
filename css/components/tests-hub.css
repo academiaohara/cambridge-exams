@@ -75,13 +75,13 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   scrollbar-gutter: stable;
 }
 
-/* Tests hub scrollbar — Duolingo-style, always visible on desktop */
+/* Tests hub scrollbar — header color, hover-reveal on desktop */
 .dashboard-center--tests-hub .tests-hub-scroll {
   --scroll-size-y: 7px;
-  --scroll-thumb: rgba(88, 204, 2, 0.34);
-  --scroll-thumb-hover: rgba(88, 204, 2, 0.52);
-  --scroll-thumb-active: rgba(88, 204, 2, 0.62);
-  --scroll-track: rgba(45, 46, 95, 0.06);
+  --scroll-thumb: color-mix(in srgb, var(--cw-header-color, #58cc02) 34%, transparent);
+  --scroll-thumb-hover: color-mix(in srgb, var(--cw-header-color, #58cc02) 52%, transparent);
+  --scroll-thumb-active: color-mix(in srgb, var(--cw-header-color, #58cc02) 62%, transparent);
+  --scroll-track: transparent;
   scrollbar-width: thin;
   scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
@@ -93,7 +93,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 .dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-track {
   background: var(--scroll-track);
   border-radius: var(--scroll-radius, 999px);
-  margin: 10px 0 10px 2px;
+  margin: 10px 0 10px 8px;
 }
 
 .dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb {
@@ -101,6 +101,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   border-radius: var(--scroll-radius, 999px);
   border: 2px solid transparent;
   background-clip: padding-box;
+  transition: var(--scroll-transition, background 0.22s ease);
 }
 
 .dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb:hover {
@@ -113,11 +114,27 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 
 @media (hover: hover) and (pointer: fine) {
   .dashboard-center--tests-hub .tests-hub-scroll {
+    scrollbar-color: transparent transparent;
+  }
+
+  .dashboard-center--tests-hub .tests-hub-scroll:hover {
     scrollbar-color: var(--scroll-thumb) var(--scroll-track);
   }
 
   .dashboard-center--tests-hub .tests-hub-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  .dashboard-center--tests-hub .tests-hub-scroll:hover::-webkit-scrollbar-thumb {
     background: var(--scroll-thumb);
+  }
+
+  .dashboard-center--tests-hub .tests-hub-scroll:hover::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
+  }
+
+  .dashboard-center--tests-hub .tests-hub-scroll:hover::-webkit-scrollbar-thumb:active {
+    background: var(--scroll-thumb-active);
   }
 }
 
@@ -132,7 +149,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 }
 
 .dashboard-center--tests-hub .tests-hub-page {
-  padding-top: 16px;
+  padding-top: 0;
 }
 
 .dashboard-center--tests-hub .cw-section-header-text {
@@ -618,7 +635,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   }
 
   .dashboard-center--tests-hub .tests-hub-page {
-    padding-top: 14px;
+    padding-top: 0;
   }
 }
 
@@ -926,13 +943,17 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 .tests-path-row-main {
   display: grid;
   flex-shrink: 0;
-  width: auto;
+  width: 76px;
   min-width: 76px;
+  max-width: 76px;
+  height: 52px;
   min-height: 52px;
-  padding: 10px 16px;
+  max-height: 52px;
+  padding: 0;
   background: #f3f4f6;
   border-color: #e5e7eb;
   border-bottom-color: #d1d5db;
+  border-bottom-width: 3px;
   box-shadow: 0 3px 0 #d1d5db;
   color: #6b7280;
 }
@@ -954,8 +975,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 
 .tests-path-row-main:active,
 .tests-path-section:active {
-  transform: translateY(1px);
-  border-bottom-width: 2px;
+  transform: translateY(2px);
   box-shadow: none;
 }
 
@@ -986,6 +1006,7 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   font-family: 'Nunito', sans-serif;
   font-size: 0.82rem;
   font-weight: 900;
+  font-variant-numeric: tabular-nums;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #6b7280;
@@ -1147,9 +1168,13 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   }
 
   .tests-path-row-main {
+    width: 68px;
     min-width: 68px;
+    max-width: 68px;
+    height: 48px;
     min-height: 48px;
-    padding: 8px 12px;
+    max-height: 48px;
+    padding: 0;
     border-radius: 10px;
   }
 
@@ -1218,9 +1243,13 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   }
 
   .tests-path-row-main {
+    width: 60px;
     min-width: 60px;
+    max-width: 60px;
+    height: 44px;
     min-height: 44px;
-    padding: 8px 10px;
+    max-height: 44px;
+    padding: 0;
   }
 
   .tests-path-section {
