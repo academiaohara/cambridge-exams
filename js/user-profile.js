@@ -441,8 +441,10 @@
         '<div class="profile-duo-stat-icon" aria-hidden="true">' +
           '<span class="material-symbols-outlined">' + icon + '</span>' +
         '</div>' +
-        '<div class="profile-duo-stat-value">' + this._escapeHtml(String(value)) + '</div>' +
-        '<div class="profile-duo-stat-label">' + this._escapeHtml(label) + '</div>' +
+        '<div class="profile-duo-stat-body">' +
+          '<div class="profile-duo-stat-value">' + this._escapeHtml(String(value)) + '</div>' +
+          '<div class="profile-duo-stat-label">' + this._escapeHtml(label) + '</div>' +
+        '</div>' +
       '</' + tag + '>';
     },
 
@@ -460,28 +462,20 @@
     },
 
     _buildProfileQuickLinksHtml: function (hidePlans) {
+      function link(onclick, iconClass, icon, label) {
+        return '<button type="button" class="profile-duo-side-link" onclick="' + onclick + '">' +
+          '<span class="profile-duo-side-link-icon profile-duo-side-link-icon--' + iconClass + '" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">' + icon + '</span>' +
+          '</span>' +
+          '<span class="profile-duo-side-link-label">' + label + '</span>' +
+          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+        '</button>';
+      }
       return '<div class="profile-duo-side-links">' +
-        '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openGradeEvolution()">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">query_stats</span>' +
-          '<span>Grade evolution</span>' +
-          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-        '</button>' +
-        '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openStreakSection()">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>' +
-          '<span>Streak calendar</span>' +
-          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-        '</button>' +
-        '<button type="button" class="profile-duo-side-link" onclick="openScoreCalculator(event)">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">calculate</span>' +
-          '<span>Score calculator</span>' +
-          '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-        '</button>' +
-        (hidePlans ? '' :
-          '<button type="button" class="profile-duo-side-link" onclick="UserProfile.renderPremiumSection()">' +
-            '<span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>' +
-            '<span>View plans</span>' +
-            '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
-          '</button>') +
+        link('DashboardNav.openGradeEvolution()', 'grades', 'query_stats', 'Grade evolution') +
+        link('DashboardNav.openStreakSection()', 'streak', 'local_fire_department', 'Streak calendar') +
+        link('openScoreCalculator(event)', 'calc', 'calculate', 'Score calculator') +
+        (hidePlans ? '' : link('UserProfile.renderPremiumSection()', 'plans', 'workspace_premium', 'View plans')) +
       '</div>';
     },
 
@@ -612,6 +606,10 @@
       var name = profile.full_name || (user && (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))) || (user && user.email) || 'Guest';
       var email = profile.email || (user && user.email) || '';
       var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
+      var animalAvatar = profile.animal_avatar || '';
+      if (!animalAvatar) {
+        try { animalAvatar = localStorage.getItem('cambridge_animal_avatar') || ''; } catch (e) { /* ignore */ }
+      }
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
       var joinDate = this._formatJoinDate(profile.created_at || (user && user.created_at));
 
@@ -624,9 +622,14 @@
         ? AccessControl.effectiveHasExamsPack()
         : AppState.hasExamsPack;
 
-      var avatarHtml = avatarUrl
-        ? '<img class="profile-duo-avatar-img" src="' + this._escapeHtml(avatarUrl) + '" alt="">'
-        : '<span class="profile-duo-avatar-initials" aria-hidden="true">' + this._escapeHtml(initials) + '</span>';
+      var avatarHtml;
+      if (avatarUrl) {
+        avatarHtml = '<img class="profile-duo-avatar-img" src="' + this._escapeHtml(avatarUrl) + '" alt="">';
+      } else if (animalAvatar) {
+        avatarHtml = '<img class="profile-duo-avatar-img" src="/Assets/images/Profiles/' + this._escapeHtml(animalAvatar) + '" alt="">';
+      } else {
+        avatarHtml = '<span class="profile-duo-avatar-initials" aria-hidden="true">' + this._escapeHtml(initials) + '</span>';
+      }
 
       var badgeHtml = '';
       if (!hidePlans) {
@@ -714,23 +717,32 @@
 
       var signOutBtn = isGuest
         ? '<button type="button" class="profile-duo-signin-btn" onclick="Auth._showAuthModal()">Sign in</button>'
-        : '<button type="button" class="profile-duo-signout-btn" onclick="Auth.signOut()">Sign out</button>';
+        : '<button type="button" class="profile-duo-signout-btn" onclick="Auth.signOut()">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">logout</span>' +
+            '<span>Sign out</span>' +
+          '</button>';
 
       var profileCenterHtml =
         '<div class="profile-duo-page">' +
           '<header class="profile-duo-header">' +
-            '<div class="profile-duo-header-main">' +
-              '<h1 class="profile-duo-name">' + this._escapeHtml(name) + '</h1>' +
-              (email ? '<p class="profile-duo-handle">' + this._escapeHtml(email) + '</p>' : '') +
-              (joinDate ? '<p class="profile-duo-joined">' + this._escapeHtml(joinDate) + '</p>' : '') +
-              '<div class="profile-duo-badges">' + badgeHtml + '</div>' +
-              '<div class="profile-duo-header-actions">' + signOutBtn + '</div>' +
-            '</div>' +
-            '<div class="profile-duo-header-side">' +
-              '<div class="profile-duo-avatar">' + avatarHtml + '</div>' +
-              '<div class="profile-duo-level-pills">' +
+            '<div class="profile-duo-hero" aria-hidden="true"></div>' +
+            '<div class="profile-duo-header-inner">' +
+              '<div class="profile-duo-avatar-wrap">' +
+                '<div class="profile-duo-avatar">' + avatarHtml + '</div>' +
                 '<span class="profile-duo-level-pill profile-duo-level-pill--' + stats.level.toLowerCase() + '">' + stats.level + '</span>' +
               '</div>' +
+              '<div class="profile-duo-header-main">' +
+                '<h1 class="profile-duo-name">' + this._escapeHtml(name) + '</h1>' +
+                (email ? '<p class="profile-duo-handle">' + this._escapeHtml(email) + '</p>' : '') +
+                (joinDate
+                  ? '<p class="profile-duo-joined">' +
+                      '<span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>' +
+                      '<span>' + this._escapeHtml(joinDate) + '</span>' +
+                    '</p>'
+                  : '') +
+                '<div class="profile-duo-badges">' + badgeHtml + '</div>' +
+              '</div>' +
+              '<div class="profile-duo-header-actions">' + signOutBtn + '</div>' +
             '</div>' +
           '</header>' +
           promoBanner +
@@ -778,6 +790,7 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('profile');
       if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
+      try { window.scrollTo(0, 0); } catch (e) { /* ignore */ }
 
       var profState = { view: 'profile' };
       history.pushState(profState, '', Router.stateToPath(profState));
@@ -911,6 +924,15 @@
     },
 
     // ── Premium Plans Section (rendered inside main-content) ───────────
+    closePremiumSection: function () {
+      if (this._premiumBackToProfile) {
+        this._premiumBackToProfile = false;
+        this.renderProfileSection();
+        return;
+      }
+      if (typeof loadDashboard === 'function') loadDashboard();
+    },
+
     renderPremiumSection: function () {
       if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
         this.renderProfileSection();
@@ -919,6 +941,8 @@
 
       var content = document.getElementById('main-content');
       if (!content) return;
+
+      this._premiumBackToProfile = (typeof AppState !== 'undefined' && AppState.currentView === 'profile');
 
       var durationOptions = [
         { key: 'm1', label: '1 month', badge: '' },
@@ -930,7 +954,7 @@
 
       var html = '<div class="premium-plans-section">' +
         '<div class="profile-section-header premium-plans-page-header">' +
-          '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
+          '<button class="btn-back" onclick="UserProfile.closePremiumSection()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
           '<div class="premium-plans-header-titles">' +
             '<h2><span class="material-symbols-outlined premium-plans-header-icon" aria-hidden="true">workspace_premium</span> Choose your Pack</h2>' +
             '<p class="premium-plans-header-desc">Select duration and unlock exactly what you need</p>' +
@@ -947,7 +971,12 @@
         '<div class="premium-packs-grid" id="premium-packs-grid">' + this._renderPremiumPackCards(selectedDuration) + '</div>' +
       '</div>';
 
-      content.innerHTML = html;
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('plans') : '';
+
+      content.innerHTML = html + mobileNavHtml;
+      if (typeof AppState !== 'undefined') AppState.currentView = 'premium';
+      try { window.scrollTo(0, 0); } catch (e) { /* ignore */ }
       var premState = { view: 'premium' };
       history.pushState(premState, '', Router.stateToPath(premState));
 
