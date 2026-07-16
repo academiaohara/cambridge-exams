@@ -258,6 +258,96 @@
     return bestExamId;
   }
 
+  function _capitalizeSection(section) {
+    if (!section) return '';
+    return section.charAt(0).toUpperCase() + section.slice(1);
+  }
+
+  function _findLastUnfinishedTestForLevel(levelId) {
+    var mode = AppState.currentMode || 'practice';
+    var prefix = 'cambridge_' + mode + '_' + levelId + '_';
+    var keyPattern = new RegExp('^' + prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(Test\\d+)_(reading|listening|writing|speaking)_(\\d+)$');
+    var exams = window.EXAMS_DATA[levelId] || [];
+    var availableById = {};
+    exams.forEach(function(exam) {
+      if (exam.status === 'available') availableById[exam.id] = exam;
+    });
+
+    var bestPart = null;
+    var bestTime = 0;
+
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (!key || key.indexOf(prefix) !== 0) continue;
+        var match = key.match(keyPattern);
+        if (!match) continue;
+        var examId = match[1];
+        if (!availableById[examId]) continue;
+        try {
+          var data = JSON.parse(localStorage.getItem(key));
+          if (!data || data.answersChecked) continue;
+          var t = data.updatedAt ? Date.parse(data.updatedAt) : 0;
+          if (!isNaN(t) && t > bestTime) {
+            bestTime = t;
+            bestPart = {
+              levelId: levelId,
+              examId: examId,
+              section: match[2],
+              part: parseInt(match[3], 10),
+              mode: mode,
+              exam: availableById[examId]
+            };
+          }
+        } catch (e2) { /* ignore */ }
+      }
+    } catch (e3) { /* ignore */ }
+
+    if (bestPart) {
+      if (typeof Exercise !== 'undefined' && Exercise.detectPartMode) {
+        bestPart.mode = Exercise.detectPartMode(bestPart.examId, bestPart.section, bestPart.part, levelId);
+      }
+      return bestPart;
+    }
+
+    var available = exams.filter(function(e) { return e.status === 'available'; });
+    var lastActiveId = _getLastActiveExamId(levelId, available);
+    if (lastActiveId && availableById[lastActiveId] && _getExamProgressState(availableById[lastActiveId]) === 'progress') {
+      return {
+        levelId: levelId,
+        examId: lastActiveId,
+        mode: mode,
+        exam: availableById[lastActiveId],
+        openExamOnly: true
+      };
+    }
+
+    return null;
+  }
+
+  function _buildTestsLevelContinueHtml(levelId, meta, unfinished) {
+    if (!unfinished || !unfinished.exam) return '';
+    var testLabel = 'Test ' + (unfinished.exam.number || unfinished.examId.replace('Test', ''));
+    var subLabel = unfinished.openExamOnly
+      ? 'Pick up where you left off'
+      : _capitalizeSection(unfinished.section) + ' · Part ' + unfinished.part;
+    var onclick = unfinished.openExamOnly
+      ? 'DashboardNav.continueUnfinishedTest(\'' + levelId + '\', \'' + unfinished.examId + '\')'
+      : 'DashboardNav.continueUnfinishedTest(\'' + levelId + '\', \'' + unfinished.examId + '\', \'' + unfinished.section + '\', ' + unfinished.part + ', \'' + unfinished.mode + '\')';
+
+    return '<button type="button" class="tests-level-continue"' +
+      ' style="--tl-accent:' + meta.cardText + ';--tl-border:' + meta.cardBorder + '"' +
+      ' onclick="event.stopPropagation(); ' + onclick + '"' +
+      ' aria-label="Continue ' + _escape(testLabel) + '">' +
+      _mi('play_circle') +
+      '<span class="tests-level-continue-body">' +
+        '<span class="tests-level-continue-label">Continue</span>' +
+        '<span class="tests-level-continue-title">' + _escape(testLabel) + '</span>' +
+        '<span class="tests-level-continue-sub">' + _escape(subLabel) + '</span>' +
+      '</span>' +
+    '</button>';
+  }
+
   function _resolveCurrentTestIndex(available, levelId) {
     var lastActiveId = _getLastActiveExamId(levelId, available);
     if (lastActiveId) {
@@ -609,6 +699,10 @@
               '<span class="tests-level-card-avg-label">Complete tests to see your average</span>' +
             '</div>';
 
+        var unfinished = _findLastUnfinishedTestForLevel(lvl);
+        var continueHtml = _buildTestsLevelContinueHtml(lvl, meta, unfinished);
+
+        html += '<div class="tests-level-col">';
         html += '<div class="tests-level-card" data-tests-level="' + lvl.toLowerCase() + '"' +
           ' style="--tl-bg:' + meta.cardBg + ';--tl-border:' + meta.cardBorder + ';--tl-shadow:' + meta.cardShadow + ';--tl-accent:' + meta.cardText + '"' +
           ' onclick="DashboardNav.openTests(\'' + lvl + '\')" role="button" tabindex="0"' +
@@ -620,6 +714,8 @@
             avgHtml +
           '</div>' +
         '</div>';
+        html += continueHtml;
+        html += '</div>';
       });
       html += '</div>';
       return html;
@@ -959,6 +1055,21 @@
 
     setLastActiveTest: function(levelId, examId) {
       _setLastActiveExamId(levelId || AppState.currentLevel, examId);
+    },
+
+    continueUnfinishedTest: function(levelId, examId, section, part, mode) {
+      if (!levelId || !examId) return;
+      AppState.currentLevel = levelId;
+      if (typeof App !== 'undefined' && App.restoreExamStatuses) {
+        App.restoreExamStatuses();
+      }
+      if (section && part) {
+        if (typeof Exercise !== 'undefined' && Exercise.openPart) {
+          Exercise.openPart(examId, section, part, mode || AppState.currentMode || 'practice');
+        }
+        return;
+      }
+      DashboardNav.openTests(levelId, examId);
     },
 
     _scrollTestsPathToCurrent: function() {
