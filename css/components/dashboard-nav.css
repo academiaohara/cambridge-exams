@@ -2943,6 +2943,11 @@ margin-top: -2px;
     text-align: center;
   }
 
+  .cw-section-header--hub {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   .cw-section-back {
     position: absolute;
     left: 16px;
@@ -2950,11 +2955,24 @@ margin-top: -2px;
     transform: translateY(-50%);
   }
 
+  .cw-section-header--hub .cw-section-back {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+
   .cw-section-header-text {
     width: 100%;
     padding: 0 52px;
     box-sizing: border-box;
     text-align: center;
+  }
+
+  .cw-section-header--hub .cw-section-header-text {
+    width: auto;
+    padding: 0;
+    text-align: left;
   }
 
   .cw-list-page,
