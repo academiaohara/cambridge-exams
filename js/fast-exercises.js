@@ -9906,9 +9906,10 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
             : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword" id="wlPlayCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub" id="wlPlayCenter">' +
             mobileTopBarHtml +
             '<div class="cw-section-header cw-section-header--wordle cw-section-header--level cw-section-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
+              '<button type="button" class="cw-section-back" onclick="DashboardNav._wlPlayBack()" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
                 '<div class="cw-section-title">Guess the Word</div>' +
               '</div>' +
