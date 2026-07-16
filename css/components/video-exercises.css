@@ -423,15 +423,32 @@ body.ve-modal-open {
   flex-shrink: 0;
 }
 
+.sp-practice-header.ve-modal-header {
+  padding: 12px 16px 10px;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
 .ve-modal-header--video {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px 10px;
+  border-bottom: none;
 }
 
 .sp-practice-header.ve-modal-header--video {
   padding: 14px 16px 10px;
+}
+
+.ve-modal-header .sp-session-progress {
+  align-self: center;
+  justify-content: center;
+}
+
+.ve-modal-header .sp-session-progress-track {
+  height: var(--sp-progress-height);
 }
 
 .ve-modal-header-title {
@@ -482,6 +499,7 @@ body.ve-modal-open {
   justify-content: flex-start;
   min-height: 0;
   overflow: hidden;
+  margin-top: 0;
 }
 
 .ve-modal-video-frame {
@@ -545,15 +563,15 @@ body.ve-modal-open {
 .ve-video-bottom {
   flex-shrink: 0;
   background: #fff;
-  border-top: 1px solid #e8ecf4;
+  border-top: none;
   padding-bottom: env(safe-area-inset-bottom);
 }
 
 .ve-video-controls {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 6px;
+  padding: 10px 16px 14px;
 }
 
 .ve-video-controls[hidden] {
@@ -568,38 +586,58 @@ body.ve-modal-open {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
+  height: 8px;
   border-radius: 999px;
-  background: #e8ecf4;
+  background: linear-gradient(
+    to right,
+    #1cb0f6 0%,
+    #1cb0f6 var(--seek-pct, 0%),
+    #e8ecf4 var(--seek-pct, 0%),
+    #e8ecf4 100%
+  );
   outline: none;
   cursor: pointer;
+  accent-color: #1cb0f6;
+}
+
+.ve-video-seek::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: transparent;
 }
 
 .ve-video-seek::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
+  margin-top: -4px;
   border-radius: 50%;
   background: #1cb0f6;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(24, 153, 214, 0.35);
+  border: 2.5px solid #fff;
+  box-shadow: 0 1px 6px rgba(24, 153, 214, 0.45);
   cursor: pointer;
 }
 
 .ve-video-seek::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #1cb0f6;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(24, 153, 214, 0.35);
+  border: 2.5px solid #fff;
+  box-shadow: 0 1px 6px rgba(24, 153, 214, 0.45);
   cursor: pointer;
 }
 
 .ve-video-seek::-moz-range-track {
-  height: 6px;
+  height: 8px;
   border-radius: 999px;
-  background: #e8ecf4;
+  background: transparent;
+}
+
+.ve-video-seek::-moz-range-progress {
+  height: 8px;
+  border-radius: 999px 0 0 999px;
+  background: #1cb0f6;
 }
 
 .ve-video-controls-bar {
@@ -748,6 +786,9 @@ body.ve-modal-open {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .ve-modal-quiz .sp-practice-body {
@@ -996,6 +1037,9 @@ body.ve-modal-open {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .ve-section-complete-body {

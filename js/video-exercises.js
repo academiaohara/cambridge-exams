@@ -548,9 +548,16 @@
         timeEl.textContent = formatVideoTime(current) + ' / ' + formatVideoTime(total);
       }
 
+      function paintSeekFill(pct) {
+        if (!seek) return;
+        seek.style.setProperty('--seek-pct', pct + '%');
+      }
+
       function updateSeekBar() {
         if (!seek || isSeeking || !isFinite(video.duration) || video.duration <= 0) return;
-        seek.value = String((video.currentTime / video.duration) * 100);
+        var pct = (video.currentTime / video.duration) * 100;
+        seek.value = String(pct);
+        paintSeekFill(pct);
         updateTimeDisplay();
       }
 
@@ -576,6 +583,7 @@
       video.onloadedmetadata = function() {
         updateSeekBar();
         updateTimeDisplay();
+        if (seek) paintSeekFill(parseFloat(seek.value) || 0);
       };
       video.addEventListener('webkitbeginfullscreen', function(e) {
         e.preventDefault();
@@ -601,7 +609,8 @@
       if (seek) {
         seek.addEventListener('input', function() {
           isSeeking = true;
-          var pct = parseFloat(seek.value) / 100;
+          var pct = parseFloat(seek.value);
+          paintSeekFill(pct);
           if (isFinite(video.duration)) {
             updateTimeDisplay();
           }
@@ -656,7 +665,10 @@
       if (!video) return;
       video.currentTime = 0;
       var seek = document.getElementById('ve-video-seek');
-      if (seek) seek.value = '0';
+      if (seek) {
+        seek.value = '0';
+        seek.style.setProperty('--seek-pct', '0%');
+      }
       var timeEl = document.getElementById('ve-video-time');
       if (timeEl) timeEl.textContent = '0:00 / ' + formatVideoTime(video.duration);
       video.play();
