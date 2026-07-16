@@ -962,6 +962,38 @@
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .dashboard-center--course-vocab .fe-bottom-bar,
+  .fe-section--course-vocab .fe-bottom-bar {
+    gap: 10px;
+    padding: 0;
+    margin: 0 0 10px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .dashboard-center--course-vocab .fe-bottom-breadcrumb,
+  .dashboard-center--course-vocab .fe-bottom-continue-btn,
+  .fe-section--course-vocab .fe-bottom-breadcrumb,
+  .fe-section--course-vocab .fe-bottom-continue-btn {
+    display: none !important;
+  }
+
+  .dashboard-center--course-vocab .fe-bottom-progress,
+  .fe-section--course-vocab .fe-bottom-progress {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dashboard-center--course-vocab .fe-bottom-progress-bg,
+  .fe-section--course-vocab .fe-bottom-progress-bg {
+    height: 8px;
+  }
+}
+
 /* ── Point Views (Explanation, Exercise) ──────────────────────────────── */
 .fe-point-view {
   max-width: 720px;
