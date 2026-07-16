@@ -8,53 +8,52 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: visible;
-  --tests-hub-header-backdrop: #f7f7f7;
-  --tests-hub-sticky-top: 0;
+  overflow: hidden;
 }
 
+@media (min-width: 769px) {
+  .dashboard-center--tests-hub {
+    max-height: calc(100dvh - var(--dashboard-top-spacing, 28px) - 12px);
+  }
+}
+
+/* Header sits outside the scroll container — never moves while list scrolls */
 .dashboard-center--tests-hub .cw-section-header.cw-section-header--tests.cw-section-header--duo {
   flex-wrap: nowrap;
   flex-shrink: 0;
-  position: sticky;
-  top: var(--tests-hub-sticky-top);
-  z-index: 30;
+  position: relative;
+  top: auto;
+  z-index: 2;
   margin-bottom: 0;
-  isolation: isolate;
   box-shadow:
     0 4px 0 color-mix(in srgb, var(--cw-header-color, #58cc02) 72%, #000),
     0 8px 24px color-mix(in srgb, var(--cw-header-color, #58cc02) 22%, transparent);
 }
 
-/* Solid backdrop above sticky header — hides scrolled content (stats bar, rows) above */
-.dashboard-center--tests-hub .cw-section-header.cw-section-header--tests.cw-section-header--duo::before {
-  content: '';
-  position: absolute;
-  left: -32px;
-  right: -32px;
-  bottom: 100%;
-  height: 100vh;
-  background: var(--tests-hub-header-backdrop);
-  z-index: -1;
-  pointer-events: none;
-}
-
-@media (min-width: 769px) {
-  .dashboard-center--tests-hub.dashboard-center--mobile-hub .cw-section-header.cw-section-header--tests.cw-section-header--duo {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-  }
-}
-
 .dashboard-center--tests-hub .cw-page-content {
-  flex: none;
-  min-height: auto;
-  overflow: visible;
-  overscroll-behavior: auto;
-  padding-top: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-top: 0;
   position: relative;
   z-index: 0;
+}
+
+.dashboard-center--tests-hub .cw-page-content > .mobile-nav-top-bar {
+  flex-shrink: 0;
+  position: relative;
+  top: auto;
+  z-index: auto;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2px;
+}
+
+.dashboard-center--tests-hub .tests-hub-page {
+  padding-top: 16px;
 }
 
 .dashboard-center--tests-hub .cw-section-header-text {
@@ -500,52 +499,45 @@
   min-height: 0;
 }
 
-/* Single page scroll on mobile — override shared mobile-hub inner scroll trap */
+/* Mobile: one scroll region inside cw-page-content (stats bar scrolls away there) */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  /* overflow-x: hidden on body breaks position:sticky — use clip for tests hub */
   html:has(.dashboard-center--tests-hub),
   body:has(.dashboard-center--tests-hub) {
-    overflow-x: clip;
+    overflow: hidden;
   }
 
-  .dashboard-center--tests-hub {
-    --tests-hub-sticky-top: env(safe-area-inset-top, 0px);
-  }
-
-  .dashboard-center--tests-hub .mobile-nav-top-bar {
+  .dashboard-center--tests-hub .cw-page-content > .mobile-nav-top-bar {
     display: flex !important;
   }
 
   .dashboard-center--tests-hub.dashboard-center--mobile-hub {
-    height: auto;
-    max-height: none;
-    overflow: visible;
-  }
-
-  /* Stats bar scrolls away — only the section header stays pinned */
-  .dashboard-center--tests-hub.dashboard-center--mobile-hub .mobile-nav-top-bar {
-    position: relative;
-    top: auto;
-    z-index: auto;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 2px;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
   }
 
   .dashboard-center--tests-hub.dashboard-center--mobile-hub .cw-section-header.cw-section-header--tests.cw-section-header--duo {
-    position: sticky;
-    top: var(--tests-hub-sticky-top);
-    z-index: 30;
     margin-left: var(--mobile-hub-pad-x, 16px);
     margin-right: var(--mobile-hub-pad-x, 16px);
     margin-top: var(--learning-stage-header-gap, 10px);
   }
 
   .dashboard-center--tests-hub.dashboard-center--mobile-hub .cw-page-content {
-    flex: none;
-    min-height: auto;
-    overflow: visible;
-    overscroll-behavior: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-left: var(--mobile-hub-pad-x, 16px);
+    padding-right: var(--mobile-hub-pad-x, 16px);
+    padding-top: 0;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+  }
+
+  .dashboard-center--tests-hub .tests-hub-page {
+    padding-top: 14px;
   }
 }
 
@@ -1712,10 +1704,6 @@
 
   .dashboard-center--tests-hub .tests-mode-header-btn .material-symbols-outlined {
     font-size: 1.1rem;
-  }
-
-  .dashboard-center--tests-hub .cw-page-content {
-    padding-top: 14px;
   }
 
   .tests-mode-help-cards {
