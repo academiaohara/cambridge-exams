@@ -2917,9 +2917,20 @@ margin-top: -2px;
 }
 
 @media (min-width: 901px) {
-  .cw-level-stats-fab {
-    right: max(24px, calc((100vw - 920px) / 2 + 24px));
-    bottom: 32px;
+  .cw-section-header .cw-level-stats-fab {
+    position: static;
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 42px;
+    height: 42px;
+    box-shadow: 0 3px 0 color-mix(in srgb, var(--cw-fab-color, #a855f7) 72%, #000);
+  }
+
+  .cw-section-header .cw-level-stats-fab .material-symbols-outlined {
+    font-size: 1.25rem;
   }
 }
 
