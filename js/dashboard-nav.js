@@ -1216,11 +1216,11 @@
                   ? '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Crosswords</div>'
                   : '<div class="cw-section-title">Choose a Level</div>') +
               '</div>' +
+              (activeLevel ? this._buildLevelStatsFabHtml('crossword', activeLevel) : '') +
             '</div>' +
             '<div class="cw-page-content" id="cwCenterScroll">' +
               '<div class="cw-list-page" id="cwListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
-            (activeLevel ? this._buildLevelStatsFabHtml('crossword', activeLevel) : '') +
             mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -1318,11 +1318,11 @@
                   ? '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Wordle</div>'
                   : '<div class="cw-section-title">Choose a Level</div>') +
               '</div>' +
+              (activeLevel ? this._buildLevelStatsFabHtml('wordle', activeLevel) : '') +
             '</div>' +
             '<div class="cw-page-content" id="wlCenterScroll">' +
               '<div class="cw-list-page" id="wlListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
-            (activeLevel ? this._buildLevelStatsFabHtml('wordle', activeLevel) : '') +
             mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
