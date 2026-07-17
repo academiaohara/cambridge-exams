@@ -129,11 +129,17 @@
       return typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
     },
 
+    /** Compact letter-row modal (B1 R4, C1 R7 gapped text; C1 R8 multiple matching). */
+    _usesCompactLetterModal: function() {
+      if (typeof Utils === 'undefined') return false;
+      return Utils.isDuoGappedTextReading() || Utils.isC1Reading8();
+    },
+
     _syncPanelVariant: function(forceOff) {
       var panel = document.querySelector('#question-nav-overlay .question-nav-panel');
       if (!panel) return;
-      var useB1r4 = forceOff === false ? false : this._isB1Reading4();
-      panel.classList.toggle('qnav-b1r4', useB1r4);
+      var useCompact = forceOff === false ? false : this._usesCompactLetterModal();
+      panel.classList.toggle('qnav-b1r4', useCompact);
     },
 
     _headerActionsHtml: function() {
@@ -377,7 +383,10 @@
     _buildPart8: function(question, qNum, isChecked, userAnswer) {
       var texts = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts) || {};
       var keys = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
-      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
+      var gridCls = this._usesCompactLetterModal()
+        ? 'qnav-opts-grid qnav-opts-grid-b1r4'
+        : 'qnav-opts-grid qnav-opts-grid-part8';
+      var html = '<div class="' + gridCls + '">';
       keys.forEach(function(key) {
         var isSelected = userAnswer === key;
         var cls = 'qnav-opt-btn';
