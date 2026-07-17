@@ -71,8 +71,11 @@
 
     _applyPreferences: function (profile) {
       if (profile.preferred_level) {
-        AppState.currentLevel = profile.preferred_level;
         try { localStorage.setItem('preferred_level', profile.preferred_level); } catch (e) {}
+        // Keep the pinned exercise level while the user is mid-test.
+        if (AppState.currentView !== 'exercise') {
+          AppState.currentLevel = profile.preferred_level;
+        }
       }
       if (profile.preferred_mode) {
         this.setPreferredMode(profile.preferred_mode);

@@ -153,7 +153,8 @@
             localStorage.setItem('preferred_mode', state.mode);
           }
         }
-        Exercise.openPart(state.examId, state.section, state.part);
+        var exerciseOpts = state.level ? { level: state.level } : undefined;
+        Exercise.openPart(state.examId, state.section, state.part, exerciseOpts);
       } else if (state.view === 'profile') {
         Dashboard.render();
         if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
@@ -304,7 +305,8 @@
       if (initialState.view === 'exercise' && initialState.examId && initialState.section && initialState.part) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        Exercise.openPart(initialState.examId, initialState.section, initialState.part);
+        Exercise.openPart(initialState.examId, initialState.section, initialState.part,
+          initialState.level ? { level: initialState.level } : undefined);
       } else if (initialState.view === 'testsHub') {
         if (typeof Landing !== 'undefined') Landing.hide();
         var _testsAppEl = document.getElementById('app'); if (_testsAppEl) _testsAppEl.style.display = '';

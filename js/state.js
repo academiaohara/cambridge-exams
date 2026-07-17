@@ -10,6 +10,8 @@
   // Estado global de la aplicación
   window.AppState = {
     currentLevel: 'C1',
+    /** Level pinned for the active test exercise session (prevents C1/B1 mixups on next/prev). */
+    exerciseLevel: null,
     currentExercise: null,
     currentSection: null,
     currentPart: null,
