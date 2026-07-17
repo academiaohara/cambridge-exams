@@ -9929,6 +9929,7 @@
               '<div class="cw-section-header-text">' +
                 '<div class="cw-section-title">Guess the Word</div>' +
               '</div>' +
+              '<button type="button" class="cw-section-stats-btn" onclick="FastExercises._wdlOpenStatsModal()" aria-label="Statistics">' + _mi('bar_chart') + '</button>' +
             '</div>' +
             '<div class="cw-page-content" id="wlWordlePage"></div>' +
             mobileNavHtml +
@@ -10001,6 +10002,214 @@
     _wdlCanSubmit: function(state) {
       if (!state || !state.target) return false;
       return state.currentInput.length === state.target.length;
+    },
+
+    _wdlFormatLocalDate: function(d) {
+      var month = String(d.getMonth() + 1).padStart(2, '0');
+      var day = String(d.getDate()).padStart(2, '0');
+      return d.getFullYear() + '-' + month + '-' + day;
+    },
+
+    _computeWlStats: function() {
+      var progress = this._getWlProgress();
+      var played = 0;
+      var wins = 0;
+      var fails = 0;
+      var distribution = [0, 0, 0, 0, 0, 0];
+      var winDatesSet = {};
+      var playDatesSet = {};
+
+      Object.keys(progress).forEach(function(key) {
+        var p = progress[key];
+        if (!p || !p.guessHistory || !p.guessHistory.length) return;
+        played++;
+        var dateStr = p.lastPlayed ? p.lastPlayed.split('T')[0] : null;
+        if (dateStr) playDatesSet[dateStr] = true;
+        if (p.completed) {
+          wins++;
+          var g = p.guesses || p.guessHistory.length;
+          if (g >= 1 && g <= 6) distribution[g - 1]++;
+          if (dateStr) winDatesSet[dateStr] = true;
+        } else if (p.guessHistory.length >= 6) {
+          fails++;
+        }
+      });
+
+      var winPct = played > 0 ? Math.round((wins / played) * 100) : 0;
+      var formatDate = FastExercises._wdlFormatLocalDate;
+      var today = new Date();
+      var currentStreak = 0;
+      var streakDate = new Date(today);
+      if (!winDatesSet[formatDate(today)]) {
+        streakDate.setDate(streakDate.getDate() - 1);
+      }
+      while (winDatesSet[formatDate(streakDate)]) {
+        currentStreak++;
+        streakDate.setDate(streakDate.getDate() - 1);
+      }
+
+      var winDates = Object.keys(winDatesSet).sort();
+      var maxStreak = 0;
+      var run = 0;
+      var prev = null;
+      winDates.forEach(function(dateStr) {
+        if (!prev) {
+          run = 1;
+        } else {
+          var prevD = new Date(prev + 'T12:00:00');
+          var currD = new Date(dateStr + 'T12:00:00');
+          var diff = Math.round((currD - prevD) / 86400000);
+          run = diff === 1 ? run + 1 : 1;
+        }
+        if (run > maxStreak) maxStreak = run;
+        prev = dateStr;
+      });
+
+      var calDays = [];
+      for (var i = 27; i >= 0; i--) {
+        var cd = new Date(today);
+        cd.setDate(today.getDate() - i);
+        var ds = formatDate(cd);
+        calDays.push({
+          date: ds,
+          active: !!playDatesSet[ds],
+          won: !!winDatesSet[ds]
+        });
+      }
+
+      return {
+        played: played,
+        wins: wins,
+        winPct: winPct,
+        currentStreak: currentStreak,
+        maxStreak: maxStreak,
+        distribution: distribution,
+        fails: fails,
+        calDays: calDays
+      };
+    },
+
+    _wdlBuildSolvedHtml: function(state) {
+      var stats = FastExercises._computeWlStats();
+      var guessCount = state.guesses.length;
+      var triesLabel = guessCount === 1 ? 'try' : 'tries';
+      var bannerText = stats.currentStreak > 0
+        ? 'You\'re on a ' + stats.currentStreak + '-day streak — keep it going!'
+        : 'Play again tomorrow to start a streak!';
+
+      return '<div class="wdl-solved-card">' +
+        '<div class="wdl-solved-icon" aria-hidden="true"><span class="material-symbols-outlined">emoji_events</span></div>' +
+        '<div class="wdl-solved-title">Solved!</div>' +
+        '<div class="wdl-solved-subtitle">You got it in ' + guessCount + ' ' + triesLabel + '</div>' +
+        '<div class="wdl-solved-banner">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">celebration</span>' +
+          '<span>' + bannerText + '</span>' +
+        '</div>' +
+        '<div class="wdl-solved-stats">' +
+          '<div class="wdl-solved-stat"><div class="wdl-solved-stat-val">' + stats.played + '</div><div class="wdl-solved-stat-lbl">Played</div></div>' +
+          '<div class="wdl-solved-stat wdl-solved-stat--highlight"><div class="wdl-solved-stat-val">' + stats.winPct + '%</div><div class="wdl-solved-stat-lbl">Win %</div></div>' +
+          '<div class="wdl-solved-stat"><div class="wdl-solved-stat-val">' + stats.currentStreak + '</div><div class="wdl-solved-stat-lbl">Streak</div></div>' +
+        '</div>' +
+        '<button type="button" class="wdl-solved-stats-btn" onclick="FastExercises._wdlOpenStatsModal()">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">bar_chart</span> View Statistics' +
+        '</button>' +
+      '</div>';
+    },
+
+    _wdlBuildFailedHtml: function(state) {
+      return '<div class="wdl-failed-card">' +
+        '<div class="wdl-failed-icon" aria-hidden="true"><span class="material-symbols-outlined">sentiment_dissatisfied</span></div>' +
+        '<div class="wdl-failed-title">Out of tries</div>' +
+        '<div class="wdl-failed-answer">The answer was <strong>' + FastExercises._escapeHTML(state.target.toLowerCase()) + '</strong></div>' +
+        '<button type="button" class="wdl-solved-stats-btn wdl-solved-stats-btn--muted" onclick="FastExercises._wdlOpenStatsModal()">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">bar_chart</span> View Statistics' +
+        '</button>' +
+      '</div>';
+    },
+
+    _wdlBuildStatsDistHtml: function(stats) {
+      var totalWins = stats.wins || 0;
+      var maxCount = 0;
+      var rows = [];
+      var gi;
+      for (gi = 0; gi < 6; gi++) {
+        if (stats.distribution[gi] > maxCount) maxCount = stats.distribution[gi];
+      }
+      if (stats.fails > maxCount) maxCount = stats.fails;
+
+      for (gi = 0; gi < 6; gi++) {
+        var count = stats.distribution[gi];
+        var pct = totalWins > 0 ? Math.round((count / totalWins) * 100) : 0;
+        var barPct = maxCount > 0 ? Math.round((count / maxCount) * 100) : 0;
+        rows.push(
+          '<div class="wdl-dist-row">' +
+            '<span class="wdl-dist-num">' + (gi + 1) + '</span>' +
+            '<div class="wdl-dist-bar-wrap"><div class="wdl-dist-bar" style="width:' + barPct + '%"></div></div>' +
+            '<span class="wdl-dist-count">' + count + ' (' + pct + '%)</span>' +
+          '</div>'
+        );
+      }
+      var failPct = stats.played > 0 ? Math.round((stats.fails / stats.played) * 100) : 0;
+      var failBarPct = maxCount > 0 ? Math.round((stats.fails / maxCount) * 100) : 0;
+      rows.push(
+        '<div class="wdl-dist-row">' +
+          '<span class="wdl-dist-num">X</span>' +
+          '<div class="wdl-dist-bar-wrap"><div class="wdl-dist-bar wdl-dist-bar--fail" style="width:' + failBarPct + '%"></div></div>' +
+          '<span class="wdl-dist-count">' + stats.fails + ' (' + failPct + '%)</span>' +
+        '</div>'
+      );
+      return rows.join('');
+    },
+
+    _wdlBuildStatsCalHtml: function(calDays) {
+      var html = '<div class="bento-cal-grid wdl-stats-cal">';
+      calDays.forEach(function(day) {
+        var cls = 'bento-cal-day';
+        if (day.won) cls += ' wdl-cal-won';
+        else if (day.active) cls += ' wdl-cal-played';
+        html += '<div class="' + cls + '" title="' + day.date + '"></div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    _wdlOpenStatsModal: function() {
+      var existing = document.querySelector('.wdl-stats-modal-overlay');
+      if (existing) existing.remove();
+
+      var stats = FastExercises._computeWlStats();
+      var distHtml = FastExercises._wdlBuildStatsDistHtml(stats);
+      var calHtml = FastExercises._wdlBuildStatsCalHtml(stats.calDays);
+
+      var el = document.createElement('div');
+      el.className = 'wdl-stats-modal-overlay';
+      el.innerHTML =
+        '<div class="wdl-stats-modal">' +
+          '<button class="wdl-stats-modal-close" type="button" aria-label="Close statistics"><span class="material-symbols-outlined">close</span></button>' +
+          '<div class="wdl-stats-modal-icon" aria-hidden="true"><span class="material-symbols-outlined">bar_chart</span></div>' +
+          '<div class="wdl-stats-modal-title">Statistics</div>' +
+          '<div class="wdl-stats-summary">' +
+            '<div class="wdl-stats-summary-item"><div class="wdl-stats-summary-val">' + stats.played + '</div><div class="wdl-stats-summary-lbl">Played</div></div>' +
+            '<div class="wdl-stats-summary-item wdl-stats-summary-item--main"><div class="wdl-stats-summary-val">' + stats.winPct + '%</div><div class="wdl-stats-summary-lbl">Win %</div></div>' +
+            '<div class="wdl-stats-summary-item"><div class="wdl-stats-summary-val">' + stats.currentStreak + '</div><div class="wdl-stats-summary-lbl">Streak</div></div>' +
+            '<div class="wdl-stats-summary-item"><div class="wdl-stats-summary-val">' + stats.maxStreak + '</div><div class="wdl-stats-summary-lbl">Best</div></div>' +
+          '</div>' +
+          '<div class="wdl-stats-section-title">Guess Distribution</div>' +
+          '<div class="wdl-stats-dist">' + distHtml + '</div>' +
+          '<div class="wdl-stats-section-title">Last 28 days</div>' +
+          calHtml +
+        '</div>';
+
+      document.body.appendChild(el);
+      el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+      var closeBtn = el.querySelector('.wdl-stats-modal-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          el.remove();
+        });
+      }
     },
 
     _wdlBindPlayEvents: function(pageEl) {
@@ -10219,10 +10428,11 @@
         }
       }
 
+      var gameOver = state.solved || state.guesses.length >= MAX_GUESSES;
       var msgHtml = state.solved
-        ? '<span class="vocab-cw-wordle-solved">' + _mi('check_circle') + ' Solved!</span>'
+        ? FastExercises._wdlBuildSolvedHtml(state)
         : (state.guesses.length >= MAX_GUESSES
-            ? '<span class="vocab-cw-wordle-failed">Answer: <strong>' + FastExercises._escapeHTML(state.target.toLowerCase()) + '</strong></span>'
+            ? FastExercises._wdlBuildFailedHtml(state)
             : '');
 
       var actionsHtml = '';
@@ -10234,14 +10444,14 @@
       }
       actionsHtml += '<button type="button" class="wdl-duo-btn wdl-duo-btn--retry" onclick="FastExercises._wdlReset()">' + _mi('restart_alt') + '<span>Retry</span></button>';
 
-      var keyboardHtml = isMobile
+      var keyboardHtml = isMobile && !gameOver
         ? '<div id="wdl-mobile-keyboard" class="wdl-mobile-keyboard" role="group" aria-label="Letter keyboard">' +
             FastExercises._wdlBuildMobileKeyboardHtml() +
           '</div>'
         : '';
 
       pageEl.innerHTML =
-        '<div class="cw-wordle-duo">' +
+        '<div class="cw-wordle-duo' + (gameOver ? ' cw-wordle-duo--game-over' : '') + '">' +
           '<div class="cw-wordle-duo-progress" aria-hidden="true">' +
             '<div class="cw-wordle-duo-progress-fill" style="width:' + progressPct + '%"></div>' +
           '</div>' +
