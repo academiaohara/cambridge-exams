@@ -73,6 +73,12 @@
   color: var(--tile-hint-text);
 }
 
+/* C1 Reading Part 3 stem badges use dedicated Duolingo colours in reading-type3.css */
+[data-tile-theme] .c1-reading3 .reading-type3-wf-pill .cu-hint-pill-word.cu-wf-pill-word {
+  box-shadow: none;
+  border-bottom-width: 2px;
+}
+
 /* ── Gap pills ───────────────────────────────────────────────────────── */
 [data-tile-theme] .cu-hint-pill,
 [data-tile-theme] .cu-hint-slash-field {
