@@ -1023,9 +1023,7 @@
         if (lockInfo.badge) html += lockInfo.badge;
         html += '</div>';
 
-        var partsPerRow = sectionKey === 'reading' ? 4 : 0;
-        html += '<div class="tests-section-card-parts' + (partsPerRow ? ' tests-section-card-parts--grid' : '') + '"' +
-          (partsPerRow ? ' style="--tests-parts-cols:' + partsPerRow + '"' : '') + '>';
+        html += '<div class="tests-section-card-parts tests-section-card-parts--grid" style="--tests-parts-cols:4">';
         for (var i = 1; i <= section.total; i++) {
           var chipClass = 'tests-part-chip';
           if (section.completed && section.completed.indexOf(i) !== -1) chipClass += ' tests-part-chip--done';
