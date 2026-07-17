@@ -1,4 +1,5 @@
 -- sql/funding-survey.sql
+-- ⚠️  ARCHIVO ANTIGUO — usa sql/setup-database.sql (incluye esta tabla).
 -- Run in Supabase SQL Editor to store funding preference survey responses.
 
 CREATE TABLE IF NOT EXISTS public.funding_survey_responses (

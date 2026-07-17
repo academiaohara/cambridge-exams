@@ -1,4 +1,6 @@
 -- ═══════════════════════════════════════════════════════════════
+-- ⚠️  ARCHIVO ANTIGUO — usa sql/setup-database.sql (incluye esta tabla).
+-- ═══════════════════════════════════════════════════════════════
 -- TABLE: crossword_progress
 -- Run this in the Supabase SQL Editor
 -- ═══════════════════════════════════════════════════════════════

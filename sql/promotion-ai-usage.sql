@@ -1,4 +1,5 @@
 -- sql/promotion-ai-usage.sql
+-- ⚠️  ARCHIVO ANTIGUO — usa sql/setup-database.sql (incluye ai_usage_daily y RPC).
 -- Run in Supabase SQL Editor when enabling PROMOTION_MODE (server env + CONFIG flag).
 
 CREATE TABLE IF NOT EXISTS public.ai_usage_daily (
