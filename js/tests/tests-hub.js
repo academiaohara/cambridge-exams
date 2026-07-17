@@ -999,7 +999,7 @@
       var isB1 = levelId === 'B1';
       var readingLabel = isB1 ? 'READING' : 'READING & UOE';
 
-      var html = '<div class="tests-section-cards tests-section-cards--fit-viewport">' + self._buildTestsFullExamBarHtml(examId) + '<div class="tests-section-cards-grid">';
+      var html = '<div class="tests-section-cards">' + self._buildTestsFullExamBarHtml(examId) + '<div class="tests-section-cards-grid">';
 
       SECTION_KEYS.forEach(function(sectionKey) {
         var section = exam.sections && exam.sections[sectionKey];
