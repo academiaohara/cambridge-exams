@@ -78,6 +78,99 @@
     } catch (e) { return false; }
   }
 
+  function _objectHasKeys(obj) {
+    return !!(obj && typeof obj === 'object' && Object.keys(obj).length > 0);
+  }
+
+  function _shouldApplyCloudRow(cloudIso, localSyncIso, hasLocalData, fallbackLocalIso) {
+    if (!hasLocalData) return true;
+    if (localSyncIso) return _cloudIsNewer(cloudIso, localSyncIso);
+    if (fallbackLocalIso) return _cloudIsNewer(cloudIso, fallbackLocalIso);
+    return true;
+  }
+
+  function _hasLocalCoursePathData(level) {
+    try {
+      var keys = [
+        'cambridge_course_progress_' + level,
+        'cambridge_course_section_progress_' + level,
+        'cambridge_course_section_opened_' + level,
+        'course_ex_state_' + level,
+        'cambridge_review_answers_' + level,
+        'cambridge_review_section_state_' + level
+      ];
+      for (var i = 0; i < keys.length; i++) {
+        var raw = localStorage.getItem(keys[i]);
+        if (!raw || raw === '{}' || raw === '[]') continue;
+        var parsed = JSON.parse(raw);
+        if (_objectHasKeys(parsed)) return true;
+      }
+    } catch (e) { /* ignore */ }
+    return false;
+  }
+
+  function _coursePathSnapshotHasData(snapshot) {
+    if (!snapshot || typeof snapshot !== 'object') return false;
+    return (
+      _objectHasKeys(snapshot.courseProgress) ||
+      _objectHasKeys(snapshot.sectionProgress) ||
+      _objectHasKeys(snapshot.sectionOpened) ||
+      _objectHasKeys(snapshot.exState) ||
+      _objectHasKeys(snapshot.reviewAnswers) ||
+      _objectHasKeys(snapshot.reviewSectionState)
+    );
+  }
+
+  function _hasLocalSuneData(unitId) {
+    try {
+      var raw = localStorage.getItem('sune_play_progress_' + unitId);
+      if (!raw) return false;
+      var parsed = JSON.parse(raw);
+      if (parsed.theoryCompleted) return true;
+      if (_objectHasKeys(parsed.completedNodes)) return true;
+      if (_objectHasKeys(parsed.completedExercises)) return true;
+    } catch (e) { /* ignore */ }
+    return false;
+  }
+
+  function _hasLocalMixedSessionData() {
+    try {
+      if (localStorage.getItem(MIXED_PLAN_KEY)) return true;
+      var completed = _safeParse(localStorage.getItem(MIXED_COMPLETED_KEY), []);
+      return Array.isArray(completed) && completed.length > 0;
+    } catch (e) { return false; }
+  }
+
+  function _hasLocalVideoData() {
+    try {
+      var raw = localStorage.getItem(VIDEO_KEY);
+      if (!raw || raw === '{}') return false;
+      return _objectHasKeys(JSON.parse(raw));
+    } catch (e) { return false; }
+  }
+
+  function _hasLocalFastData() {
+    try {
+      var raw = localStorage.getItem(FAST_LS_KEY);
+      if (!raw || raw === '{}') return false;
+      var parsed = JSON.parse(raw);
+      return Object.keys(parsed).some(function (key) {
+        return key.charAt(0) !== '_' && parsed[key] != null;
+      });
+    } catch (e) { return false; }
+  }
+
+  function _hasLocalAppProgressData() {
+    for (var i = 0; i < COURSE_LEVELS.length; i++) {
+      if (_hasLocalCoursePathData(COURSE_LEVELS[i])) return true;
+    }
+    var suneIds = _collectSuneUnitIds();
+    for (var j = 0; j < suneIds.length; j++) {
+      if (_hasLocalSuneData(suneIds[j])) return true;
+    }
+    return _hasLocalMixedSessionData() || _hasLocalVideoData();
+  }
+
   function _collectCoursePathSnapshot(level) {
     var snapshot = {
       courseProgress: _safeParse(localStorage.getItem('cambridge_course_progress_' + level)),
@@ -106,7 +199,7 @@
       var metaKey = 'cambridge_course_path_sync_' + level;
       localUpdated = localStorage.getItem(metaKey);
     } catch (e) { /* ignore */ }
-    if (!_cloudIsNewer(row.completed_at, localUpdated || data.updatedAt)) return;
+    if (!_shouldApplyCloudRow(row.completed_at, localUpdated, _hasLocalCoursePathData(level), data.updatedAt)) return;
 
     try {
       if (data.courseProgress) localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(data.courseProgress));
@@ -128,7 +221,7 @@
     var data = row.answers;
     var localUpdated = null;
     try { localUpdated = localStorage.getItem('sune_play_sync_' + unitId); } catch (e) { /* ignore */ }
-    if (!_cloudIsNewer(row.completed_at, localUpdated || data.updatedAt)) return;
+    if (!_shouldApplyCloudRow(row.completed_at, localUpdated, _hasLocalSuneData(unitId), data.updatedAt)) return;
 
     try {
       var merged = _safeParse(localStorage.getItem(key), { completedNodes: {}, completedExercises: {}, theoryCompleted: false });
@@ -150,7 +243,7 @@
     var data = row.answers;
     var localUpdated = null;
     try { localUpdated = localStorage.getItem('cambridge_mixed_session_sync'); } catch (e) { /* ignore */ }
-    if (!_cloudIsNewer(row.completed_at, localUpdated || data.updatedAt)) return;
+    if (!_shouldApplyCloudRow(row.completed_at, localUpdated, _hasLocalMixedSessionData(), data.updatedAt)) return;
     try {
       if (data.plan) localStorage.setItem(MIXED_PLAN_KEY, JSON.stringify(data.plan));
       if (data.completed) localStorage.setItem(MIXED_COMPLETED_KEY, JSON.stringify(data.completed));
@@ -163,7 +256,7 @@
     var data = row.answers.progress || row.answers;
     var localUpdated = null;
     try { localUpdated = localStorage.getItem('cambridge_video_exercises_sync'); } catch (e) { /* ignore */ }
-    if (!_cloudIsNewer(row.completed_at, localUpdated || row.answers.updatedAt)) return;
+    if (!_shouldApplyCloudRow(row.completed_at, localUpdated, _hasLocalVideoData(), row.answers.updatedAt)) return;
     try {
       localStorage.setItem(VIDEO_KEY, JSON.stringify(data));
       localStorage.setItem('cambridge_video_exercises_sync', row.completed_at || row.answers.updatedAt || new Date().toISOString());
@@ -404,8 +497,12 @@
     },
 
     pushAllLocalToCloud: async function () {
-      try { localStorage.setItem(FAST_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
-      try { localStorage.setItem(APP_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
+      if (_hasLocalFastData()) {
+        try { localStorage.setItem(FAST_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
+      }
+      if (_hasLocalAppProgressData()) {
+        try { localStorage.setItem(APP_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
+      }
       if (typeof CrosswordSync !== 'undefined') {
         var cwAll = CrosswordSync.getAll();
         Object.keys(cwAll).forEach(function (id) {
@@ -696,6 +793,7 @@
             }
           } else if (item.kind === 'coursePath') {
             var snapshot = _collectCoursePathSnapshot(item.level);
+            if (!_coursePathSnapshotHasData(snapshot)) continue;
             var rowCp = {
               user_id: user.id,
               level: item.level,
