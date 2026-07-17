@@ -480,7 +480,10 @@
     },
 
     restoreIfLocalEmpty: async function () {
-      var client = Auth && Auth._client;
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = Auth && Auth.getClient ? Auth.getClient() : (Auth && Auth._client);
       var user = Auth && Auth.getUser();
       if (!client || !user) return false;
       if (_hasAnyLocalProgressData() || _hasUnsyncedExamParts()) return false;
@@ -573,7 +576,10 @@
     },
 
     restoreFromCloud: async function () {
-      var client = Auth && Auth._client;
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = Auth && Auth.getClient ? Auth.getClient() : (Auth && Auth._client);
       var user = Auth && Auth.getUser();
       if (!client || !user) { return; }
 
@@ -682,7 +688,10 @@
     },
 
     _sync: async function () {
-      var client = Auth && Auth._client;
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = Auth && Auth.getClient ? Auth.getClient() : (Auth && Auth._client);
       var user = Auth && Auth.getUser();
       if (!client || !user) { return; }
 

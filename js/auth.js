@@ -11,7 +11,7 @@
     _hideTimeout: null,
 
     initClient: function () {
-      if (!window.supabase) {
+      if (!window.supabase || typeof window.supabase.createClient !== 'function') {
         console.warn('[Auth] Supabase JS library not loaded');
         return;
       }
@@ -19,10 +19,98 @@
         console.warn('[Auth] SUPABASE_CONFIG missing — authentication disabled');
         return;
       }
-      this._client = window.supabase.createClient(
-        SUPABASE_CONFIG.URL,
-        SUPABASE_CONFIG.ANON_KEY
-      );
+
+      var url = SUPABASE_CONFIG.URL;
+      var anonKey = SUPABASE_CONFIG.ANON_KEY;
+
+      this._client = window.supabase.createClient(url, anonKey, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+          storage: window.localStorage
+        },
+        global: {
+          headers: {
+            apikey: anonKey
+          },
+          fetch: this._createSupabaseFetch(anonKey)
+        }
+      });
+    },
+
+  /** Ensure every Supabase REST call carries apikey (header + query fallback). */
+    _createSupabaseFetch: function (anonKey) {
+      return function (input, init) {
+        init = init || {};
+        var headers = new Headers(init.headers || {});
+        if (!headers.has('apikey')) {
+          headers.set('apikey', anonKey);
+        }
+
+        var requestUrl = typeof input === 'string'
+          ? input
+          : (input && input.url ? input.url : String(input));
+
+        if (requestUrl.indexOf('supabase.co') !== -1 && requestUrl.indexOf('apikey=') === -1) {
+          var sep = requestUrl.indexOf('?') === -1 ? '?' : '&';
+          requestUrl = requestUrl + sep + 'apikey=' + encodeURIComponent(anonKey);
+          input = requestUrl;
+        }
+
+        return fetch(input, Object.assign({}, init, { headers: headers }));
+      };
+    },
+
+    getClient: function () {
+      if (!this._client) { this.initClient(); }
+      return this._client;
+    },
+
+    /** Re-attach in-memory session after site data was cleared without reload. */
+    ensureSessionOnClient: async function () {
+      var client = this.getClient();
+      if (!client) { return false; }
+
+      try {
+        var current = await client.auth.getSession();
+        if (current.data && current.data.session) {
+          this._session = current.data.session;
+          this._persistToken(current.data.session.access_token);
+          return true;
+        }
+
+        if (!this._session || !this._session.access_token || !this._session.refresh_token) {
+          return true;
+        }
+
+        var restored = await client.auth.setSession({
+          access_token: this._session.access_token,
+          refresh_token: this._session.refresh_token
+        });
+
+        if (restored.error) {
+          console.warn('[Auth] Could not restore session after storage clear:', restored.error.message);
+          this._handleStaleSession();
+          return false;
+        }
+
+        if (restored.data && restored.data.session) {
+          this._session = restored.data.session;
+          this._persistToken(restored.data.session.access_token);
+        }
+        return true;
+      } catch (e) {
+        console.warn('[Auth] ensureSessionOnClient error:', e);
+        return false;
+      }
+    },
+
+    _handleStaleSession: function () {
+      this._session = null;
+      this._clearToken();
+      this._onSignOut();
+      this.renderSignInButton();
     },
 
     init: async function () {
@@ -295,6 +383,7 @@
       }
 
       if (typeof SyncManager !== 'undefined') {
+        await Auth.ensureSessionOnClient();
         await SyncManager.restoreFromCloud();
       }
       if (typeof StreakManager !== 'undefined') {
