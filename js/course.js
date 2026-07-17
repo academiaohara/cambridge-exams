@@ -966,6 +966,7 @@
           localStorage.setItem('cambridge_course_progress_' + levelId, JSON.stringify(progressByLevel[levelId]));
         } catch (e) {}
       });
+      DashboardNav._notifyCourseProgressDirty();
       var syncTasks = [];
       Object.keys(progressByLevel).forEach(function(levelId) {
         var prog = progressByLevel[levelId];
@@ -6952,6 +6953,7 @@
       try {
         localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog));
       } catch(e) {}
+      DashboardNav._notifyCourseProgressDirty();
       DashboardNav._saveCourseUnitCompleteToSupabase(level, unitId);
       if (DashboardNav._courseIndexData && DashboardNav._courseIndexData.items) {
         var item = DashboardNav._courseIndexData.items.find(function(i) { return i.id === unitId; });
@@ -6985,6 +6987,7 @@
       }
       if (changed) {
         try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
+        DashboardNav._notifyCourseProgressDirty();
       }
       if (unitsToMark.length) {
         await DashboardNav._ensureCourseUnitMeta(level, unitsToMark);
@@ -7441,7 +7444,7 @@
       if (!client || !user) return;
       payload = payload || {};
       try {
-        await client.from('user_progress').upsert({
+        var result = await client.from('user_progress').upsert({
           user_id: user.id,
           level: level,
           exam_id: unitId,
@@ -7452,7 +7455,9 @@
           mode: 'course',
           completed_at: payload.completedAt || new Date().toISOString()
         }, { onConflict: 'user_id,exam_id,section,part,mode' });
-        DashboardNav._notifyCourseProgressDirty();
+        if (result.error) {
+          console.warn('[DashboardNav] Failed to save course progress to Supabase:', result.error.message || result.error);
+        }
       } catch (e) {
         console.warn('[DashboardNav] Failed to save course progress to Supabase:', e);
       }
@@ -7524,6 +7529,7 @@
         state[skey] = { checked: true, score: score, total: total };
         localStorage.setItem(key, JSON.stringify(state));
       } catch(e) {}
+      DashboardNav._notifyCourseProgressDirty();
       DashboardNav._saveCuExToSupabase(level, unitId, sectionIdx, score, total);
     },
 

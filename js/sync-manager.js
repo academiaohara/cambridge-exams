@@ -160,6 +160,17 @@
     } catch (e) { return false; }
   }
 
+  function _logSyncError(context, error, extra) {
+    if (!error) return;
+    var msg = '[SyncManager] ' + context + ': ' + (error.message || String(error));
+    if (error.code) msg += ' (' + error.code + ')';
+    console.warn(msg, extra || '');
+  }
+
+  function _hasAnyLocalProgressData() {
+    return _hasLocalFastData() || _hasLocalAppProgressData();
+  }
+
   function _hasLocalAppProgressData() {
     for (var i = 0; i < COURSE_LEVELS.length; i++) {
       if (_hasLocalCoursePathData(COURSE_LEVELS[i])) return true;
@@ -171,7 +182,23 @@
     return _hasLocalMixedSessionData() || _hasLocalVideoData();
   }
 
-  function _collectCoursePathSnapshot(level) {
+  function _hasUnsyncedExamParts() {
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (!k || !k.startsWith('cambridge_')) continue;
+        var parsedPart = _parseExamPartKey(k);
+        if (!parsedPart) continue;
+        var raw = localStorage.getItem(k);
+        if (!raw) continue;
+        try {
+          var entry = JSON.parse(raw);
+          if (_isExercisePartBlob(entry) && !entry.synced) return true;
+        } catch (e) { /* ignore */ }
+      }
+    } catch (e) { /* ignore */ }
+    return false;
+  }
     var snapshot = {
       courseProgress: _safeParse(localStorage.getItem('cambridge_course_progress_' + level)),
       sectionProgress: _safeParse(localStorage.getItem('cambridge_course_section_progress_' + level)),
@@ -424,7 +451,10 @@
       this._running = true;
       this._intervalId = setInterval(this._sync.bind(this), this._syncIntervalMs);
       this._bindFlushListeners();
-      this._sync();
+      var self = this;
+      this.restoreIfLocalEmpty().finally(function () {
+        self._sync();
+      });
     },
 
     stop: function () {
@@ -444,7 +474,22 @@
       this._requestSyncTimer = setTimeout(function () {
         self._requestSyncTimer = null;
         self._sync();
-      }, 2500);
+      }, 400);
+    },
+
+    restoreIfLocalEmpty: async function () {
+      var client = Auth && Auth._client;
+      var user = Auth && Auth.getUser();
+      if (!client || !user) return false;
+      if (_hasAnyLocalProgressData() || _hasUnsyncedExamParts()) return false;
+      await this.restoreFromCloud();
+      if (typeof App !== 'undefined' && App.restoreExamStatuses) {
+        App.restoreExamStatuses();
+      }
+      if (typeof App !== 'undefined' && App.refreshProgressUI) {
+        App.refreshProgressUI();
+      }
+      return true;
     },
 
     flush: function () {
@@ -460,7 +505,11 @@
       this._flushListenersBound = true;
       var self = this;
       document.addEventListener('visibilitychange', function () {
-        if (document.visibilityState === 'hidden') { self.flush(); }
+        if (document.visibilityState === 'hidden') {
+          self.flush();
+        } else if (document.visibilityState === 'visible') {
+          self.restoreIfLocalEmpty();
+        }
       });
     },
 
@@ -488,15 +537,22 @@
 
     notifyFastLearningDirty: function () {
       try { localStorage.setItem(FAST_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
-      this.requestSyncSoon();
+      if (Auth && Auth.getUser()) {
+        this.flush();
+      }
     },
 
     notifyAppProgressDirty: function () {
       try { localStorage.setItem(APP_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
-      this.requestSyncSoon();
+      if (Auth && Auth.getUser()) {
+        this.flush();
+      }
     },
 
     pushAllLocalToCloud: async function () {
+      if (!_hasLocalFastData() && !_hasLocalAppProgressData() && !_hasUnsyncedExamParts()) {
+        return;
+      }
       if (_hasLocalFastData()) {
         try { localStorage.setItem(FAST_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
       }
@@ -524,7 +580,12 @@
           .from('user_progress')
           .select('*')
           .eq('user_id', user.id);
-        if (result.error || !result.data) { return; }
+        if (result.error || !result.data) {
+          if (result.error) {
+            console.warn('[SyncManager] restoreFromCloud query failed:', result.error.message || result.error);
+          }
+          return;
+        }
 
         result.data.forEach(function (row) {
           if (row.mode === 'course') {
@@ -714,7 +775,9 @@
               completed_at: e.updatedAt || new Date().toISOString()
             };
             var res = await client.from('user_progress').upsert(row, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!res.error) {
+            if (res.error) {
+              _logSyncError('examPart upsert failed', res.error, row);
+            } else {
               success++;
               try {
                 var cur = JSON.parse(localStorage.getItem(item.key) || '{}');
@@ -736,7 +799,9 @@
               completed_at: new Date().toISOString()
             };
             var res2 = await client.from('user_progress').upsert(row2, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!res2.error) {
+            if (res2.error) {
+              _logSyncError('sectimer upsert failed', res2.error, row2);
+            } else {
               success++;
               self._sectimerSyncedVal[item.key] = item.rawVal;
             }
@@ -754,7 +819,9 @@
               completed_at: e3.updatedAt
             };
             var res3 = await client.from('user_progress').upsert(row3, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!res3.error) {
+            if (res3.error) {
+              _logSyncError('legacy upsert failed', res3.error, row3);
+            } else {
               success++;
               try {
                 var cur3 = JSON.parse(localStorage.getItem(item.key) || '{}');
@@ -782,7 +849,9 @@
               completed_at: new Date().toISOString()
             };
             var resF = await client.from('user_progress').upsert(rowF, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!resF.error) {
+            if (resF.error) {
+              _logSyncError('fast learning upsert failed', resF.error, rowF);
+            } else {
               success++;
               try {
                 localStorage.removeItem(FAST_DIRTY_KEY);
@@ -806,7 +875,9 @@
               completed_at: snapshot.updatedAt
             };
             var resCp = await client.from('user_progress').upsert(rowCp, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!resCp.error) {
+            if (resCp.error) {
+              _logSyncError('course path upsert failed', resCp.error, rowCp);
+            } else {
               success++;
               try { localStorage.setItem('cambridge_course_path_sync_' + item.level, snapshot.updatedAt); } catch (e6) { /* ignore */ }
             }
@@ -839,7 +910,9 @@
               completed_at: spUpdated
             };
             var resSp = await client.from('user_progress').upsert(rowSp, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!resSp.error) {
+            if (resSp.error) {
+              _logSyncError('sune state upsert failed', resSp.error, rowSp);
+            } else {
               success++;
               try { localStorage.setItem('sune_play_sync_' + item.unitId, spUpdated); } catch (e7) { /* ignore */ }
             }
@@ -865,7 +938,9 @@
               completed_at: mixedUpdated
             };
             var resMx = await client.from('user_progress').upsert(rowMx, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!resMx.error) {
+            if (resMx.error) {
+              _logSyncError('mixed session upsert failed', resMx.error, rowMx);
+            } else {
               success++;
               try { localStorage.setItem('cambridge_mixed_session_sync', mixedUpdated); } catch (e9) { /* ignore */ }
             }
@@ -887,7 +962,9 @@
               completed_at: videoUpdated
             };
             var resVid = await client.from('user_progress').upsert(rowVid, { onConflict: 'user_id,exam_id,section,part,mode' });
-            if (!resVid.error) {
+            if (resVid.error) {
+              _logSyncError('video progress upsert failed', resVid.error, rowVid);
+            } else {
               success++;
               try { localStorage.setItem('cambridge_video_exercises_sync', videoUpdated); } catch (e10) { /* ignore */ }
             }
