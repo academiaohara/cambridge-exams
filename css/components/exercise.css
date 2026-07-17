@@ -1057,28 +1057,29 @@
 
 /* Word-formation explanations: grammar rule + transform chip */
 .explanation-card-header:has(.explanation-wf-chip) {
-  align-items: flex-start;
-}
-
-.explanation-card-header:has(.explanation-wf-chip) .explanation-card-number {
-  margin-top: 2px;
+  align-items: center;
 }
 
 .explanation-card-text:has(.explanation-wf-chip) {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .explanation-card-rule {
-  display: block;
+  flex: 1;
+  min-width: 0;
 }
 
 .explanation-wf-chip {
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
   gap: 6px;
   padding: 4px 8px;
   border-radius: 12px;
@@ -1621,6 +1622,14 @@
   .explanations-panel {
     padding: 14px;
     border-radius: 16px;
+  }
+
+  .explanation-wf-chip {
+    display: none !important;
+  }
+
+  .explanation-card-text:has(.explanation-wf-chip) {
+    display: block;
   }
 }
 
