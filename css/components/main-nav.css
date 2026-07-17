@@ -1183,15 +1183,26 @@ button.stats-bar-item.is-active {
 }
 
 .mobile-menu-sheet-close {
-  display: grid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   width: 36px;
   height: 36px;
-  place-items: center;
+  padding: 0;
   border: 2px solid #e5e5e5;
   border-radius: 10px;
   background: #fff;
   color: #777;
   cursor: pointer;
+}
+
+.mobile-menu-sheet-close .material-symbols-outlined {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1;
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+  transform: translate(-0.5px, 0.5px);
 }
 
 .mobile-menu-sheet-list {
