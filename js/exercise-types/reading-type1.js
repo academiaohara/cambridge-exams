@@ -23,7 +23,7 @@
         return `
           <span class="reading-type1-gap" data-student-value="${escapedStudent}" data-correct-value="${escapedCorrect}" data-check-class="${colorClass}">
             <span class="reading-type1-gap-number">(${qNum})</span>
-            <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="✓ ' + correctText + '"' : ''}>${answerText}</span>
+            <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="' + correctText.replace(/"/g, '&quot;') + '"' : ''}>${answerText}</span>
           </span>
         `;
       }
@@ -132,7 +132,7 @@
             gap.setAttribute('data-check-class', colorClass);
             gap.innerHTML = `
               <span class="reading-type1-gap-number">(${q.number})</span>
-              <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="✓ ' + correctText + '"' : ''}>${answerText}</span>
+              <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="' + correctText.replace(/"/g, '&quot;') + '"' : ''}>${answerText}</span>
             `;
           }
         });
@@ -170,7 +170,7 @@
           answerEl.classList.remove('reading-type1-show-correct', 'reading-type1-correct', 'reading-type1-incorrect');
           answerEl.classList.add(checkClass);
           if (checkClass === 'reading-type1-incorrect') {
-            answerEl.setAttribute('data-correct', '✓ ' + correctValue);
+            answerEl.setAttribute('data-correct', correctValue);
           } else {
             answerEl.removeAttribute('data-correct');
           }

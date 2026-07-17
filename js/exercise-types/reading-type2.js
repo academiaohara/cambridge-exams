@@ -318,7 +318,7 @@
           self._clearAltBadge(input);
           if (gap && checkClass === 'incorrect' && correctRaw) {
             gap.classList.add('incorrect');
-            gap.setAttribute('data-correct', '\u2713 ' + correctRaw);
+            gap.setAttribute('data-correct', correctRaw);
           }
         }
         self.resizeInput(input);

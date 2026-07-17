@@ -110,7 +110,7 @@
         const colorClass = result.score === 2 ? 'reading-type4-correct' : result.score === 1 ? 'reading-type4-partial' : 'reading-type4-incorrect';
         const displayCorrect = this._formatRoutesDisplay(question.routes);
         const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}" data-correct-label="✓ ${escapedCorrect}"` : '';
+        const dataAttr = result.score < 2 ? ` data-correct="${escapedCorrect}" data-correct-label="${escapedCorrect}"` : '';
         const escapedStudent = String(userAnswer || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const escapedRoutes = String(JSON.stringify(question.routes || [])).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
         const escForTextarea = String(userAnswer || '')
@@ -354,8 +354,8 @@
               wrap.classList.add('incorrect');
               const displayCorrect = this._formatRoutesDisplay(q.routes);
               const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-              wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
-              wrap.setAttribute('data-correct-label', '✓ ' + escapedCorrect);
+              wrap.setAttribute('data-correct', escapedCorrect);
+              wrap.setAttribute('data-correct-label', escapedCorrect);
             }
           }
           // Inject answers panel into the question card

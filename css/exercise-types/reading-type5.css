@@ -412,19 +412,18 @@
   position: absolute;
   bottom: calc(100% + 8px);
   left: 0;
-  background: #fff;
-  color: var(--ex-duo-text, #4b4b4b);
-  border: 2px solid var(--ex-duo-purple, #ce82ff);
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
-  white-space: nowrap;
   display: none;
   z-index: 110;
-  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
   pointer-events: none;
+  white-space: nowrap;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+  padding: 2px 8px;
+  border-radius: 8px;
+  color: var(--ex-duo-purple-dark, #7c3aed);
+  background: var(--ex-duo-purple-light, #f3e8ff);
 }
 
 .reading-type5-gap-wrap[data-correct]:hover::after {
@@ -450,9 +449,8 @@
   position: absolute;
   left: 0;
   top: calc(100% + 8px);
-  width: max-content;
-  min-width: min(280px, calc(100vw - 32px));
-  max-width: min(400px, calc(100vw - 24px));
+  min-width: 0;
+  max-width: min(280px, calc(100vw - 24px));
   z-index: 100;
   padding: 0;
   border-radius: 16px;
@@ -475,6 +473,8 @@
   left: auto;
   top: auto;
   margin: 0;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .reading-type5-gap-panel::before {
@@ -596,7 +596,7 @@
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .reading-type5-gap-panel {
-    min-width: min(260px, calc(100vw - 24px));
+    min-width: 0;
     max-width: calc(100vw - 24px);
   }
 

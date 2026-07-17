@@ -89,7 +89,7 @@
         var escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         var answerText = userAnswer || '_____';
         var escapedAnswer = this._escapeHtml(answerText);
-        var dataAttr = !isCorrect ? ' data-correct="✓ ' + escapedCorrect + '"' : '';
+        var dataAttr = !isCorrect ? ' data-correct="' + escapedCorrect + '"' : '';
         var innerChecked = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
           '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswer + '</span>' +
           stemHint;
@@ -152,7 +152,7 @@
           gap.setAttribute('data-check-class', colorClass);
           this._clearAltBadgeForGap(gap);
           gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
-          if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
+          if (!isCorrect) gap.setAttribute('data-correct', escapedCorrect);
           else gap.removeAttribute('data-correct');
           var inner = '<span class="cu-hint-pill-num">' + q.number + '</span>' +
             '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswerText + '</span>' +
@@ -188,7 +188,7 @@
           answerEl.classList.add(checkClass);
           if (checkClass === 'reading-type3-incorrect') {
             gap.classList.add('incorrect');
-            gap.setAttribute('data-correct', '✓ ' + correctRaw);
+            gap.setAttribute('data-correct', correctRaw);
           } else {
             gap.classList.remove('incorrect');
             gap.removeAttribute('data-correct');
