@@ -24,7 +24,8 @@
 
       if (!AppState.currentExercise) return;
 
-      if (typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise)) {
+      if (typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise) &&
+          !Utils.isC1Reading8()) {
         if (typeof ExerciseRenderer !== 'undefined') {
           ExerciseRenderer.toggleView(Utils.duoMatchingResultsView(AppState.currentExercise));
         }
