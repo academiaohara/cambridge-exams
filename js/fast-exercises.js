@@ -8110,6 +8110,23 @@
       window.addEventListener('orientationchange', onResize);
     },
 
+    _bindCwPlayWheelScroll: function() {
+      var main = document.getElementById('vocab-cw-main');
+      if (!main || main.getAttribute('data-cw-play-wheel-bound')) return;
+      main.setAttribute('data-cw-play-wheel-bound', '1');
+      main.addEventListener('wheel', function(e) {
+        if (e.ctrlKey || e.metaKey) return;
+        var canScroll = main.scrollHeight > main.clientHeight + 1;
+        if (canScroll) {
+          main.scrollTop += e.deltaY;
+          e.preventDefault();
+          return;
+        }
+        window.scrollBy({ top: e.deltaY, left: 0, behavior: 'auto' });
+        e.preventDefault();
+      }, { passive: false, capture: true });
+    },
+
     _cwFocusCwInput: function() {
       if (FastExercises._cwIsMobilePlay()) return;
       var stripInput = document.getElementById('cw-strip-input');
@@ -9185,6 +9202,7 @@
       if (stripTabD) stripTabD.addEventListener('click', function() { FastExercises._cwShowClueTab('down'); });
 
       FastExercises._cwBindMobileResize();
+      FastExercises._bindCwPlayWheelScroll();
       if (FastExercises._cwIsMobilePlay()) {
         var firstAcross = FastExercises._cwGetWordsInDir('across');
         if (firstAcross.length) {

@@ -370,6 +370,14 @@
     },
 
     _findCwListScrollTarget: function(el) {
+      var playMain = document.getElementById('vocab-cw-main');
+      if (playMain && (!el || playMain.contains(el))) {
+        var playOverflow = window.getComputedStyle(playMain).overflowY;
+        if ((playOverflow === 'auto' || playOverflow === 'scroll' || playOverflow === 'overlay') &&
+            playMain.scrollHeight > playMain.clientHeight + 1) {
+          return playMain;
+        }
+      }
       var center = el && el.closest ? el.closest('.dashboard-center--mobile-hub, .dashboard-center--crossword') : null;
       if (center) {
         var pageContent = center.querySelector('.cw-page-content, .cw-center-scroll, #cwCenterScroll, #wlCenterScroll, #cwPlayScroll');

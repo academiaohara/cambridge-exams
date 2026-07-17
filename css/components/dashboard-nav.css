@@ -2107,6 +2107,48 @@ margin-top: -2px;
   height: auto;
 }
 
+/* Crossword play: inner scroll so wheel works over letter tiles and header */
+body:has(.dashboard-layout--crossword-play) #cwPlayCenter.dashboard-center--crossword-play {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
+  overflow: hidden;
+}
+
+body:has(.dashboard-layout--crossword-play) #cwPlayScroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body:has(.dashboard-layout--crossword-play) .vocab-cw-play-section,
+body:has(.dashboard-layout--crossword-play) .vocab-cw-play-section .vocab-cw-layout {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body:has(.dashboard-layout--crossword-play) .vocab-cw-play-section .vocab-cw-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  body:has(.dashboard-layout--crossword-play) #cwPlayCenter.dashboard-center--crossword-play {
+    max-height: 100dvh;
+  }
+}
+
 .dashboard-layout--crossword-play,
 .dashboard-layout--wordle-play {
   padding-top: 8px;
