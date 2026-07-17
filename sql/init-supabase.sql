@@ -1,4 +1,9 @@
 -- sql/init-supabase.sql
+-- ⚠️  ARCHIVO ANTIGUO — usa sql/setup-database.sql en su lugar.
+--     Ese archivo unifica todo (profiles, user_progress, streaks, crucigramas,
+--     encuesta, IA) y es seguro ejecutarlo varias veces.
+--     Este fichero se mantiene solo por compatibilidad con documentación antigua.
+--
 -- Supabase database setup for Cambridge Exams
 -- Run this in the Supabase SQL editor (Dashboard → SQL Editor → New query)
 
@@ -18,7 +23,8 @@ CREATE TABLE IF NOT EXISTS public.profiles (
 ALTER TABLE public.profiles
   ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'user',
   ADD COLUMN IF NOT EXISTS has_theory_pack BOOLEAN DEFAULT FALSE,
-  ADD COLUMN IF NOT EXISTS has_exams_pack BOOLEAN DEFAULT FALSE;
+  ADD COLUMN IF NOT EXISTS has_exams_pack BOOLEAN DEFAULT FALSE,
+  ADD COLUMN IF NOT EXISTS animal_avatar TEXT;
 
 UPDATE public.profiles SET role = 'admin', has_theory_pack = TRUE, has_exams_pack = TRUE
   WHERE email = 'illanlinos@gmail.com';
