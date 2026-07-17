@@ -393,14 +393,10 @@
       }
       if (top < margin) top = margin;
 
-      var triggerCenter = rect.left + rect.width / 2;
-      var arrowLeft = Math.max(16, Math.min(popW - 16, triggerCenter - left - 6));
-
       panel.style.left = left + 'px';
       panel.style.top = top + 'px';
       panel.style.right = 'auto';
       panel.style.bottom = 'auto';
-      panel.style.setProperty('--rt5-gap-arrow-left', arrowLeft + 'px');
       panel.classList.toggle('reading-type5-gap-panel--above', opensAbove);
     },
 
@@ -444,7 +440,6 @@
       panel.style.bottom = '';
       panel.style.visibility = '';
       panel.style.pointerEvents = '';
-      panel.style.removeProperty('--rt5-gap-arrow-left');
       panel.removeAttribute('data-rt5-width');
     },
 
