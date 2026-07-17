@@ -369,6 +369,43 @@
       '</button>';
     },
 
+    _findCwListScrollTarget: function(el) {
+      var center = el && el.closest ? el.closest('.dashboard-center--mobile-hub, .dashboard-center--crossword') : null;
+      if (center) {
+        var pageContent = center.querySelector('.cw-page-content, .cw-center-scroll, #cwCenterScroll, #wlCenterScroll, #cwPlayScroll');
+        if (pageContent) {
+          var overflowY = window.getComputedStyle(pageContent).overflowY;
+          if ((overflowY === 'auto' || overflowY === 'scroll' || overflowY === 'overlay') &&
+              pageContent.scrollHeight > pageContent.clientHeight + 1) {
+            return pageContent;
+          }
+        }
+      }
+      return document.scrollingElement || document.documentElement;
+    },
+
+    _applyCwListWheelDelta: function(target, deltaY) {
+      if (!target || target === document.documentElement || target === document.scrollingElement) {
+        window.scrollBy({ top: deltaY, left: 0, behavior: 'auto' });
+        return;
+      }
+      target.scrollTop += deltaY;
+    },
+
+    _bindCwLevelStatsFabWheelScroll: function(root) {
+      var scope = root || document;
+      scope.querySelectorAll('.cw-level-stats-fab:not([data-cw-wheel-bound])').forEach(function(fab) {
+        if (window.getComputedStyle(fab).position !== 'fixed') return;
+        fab.setAttribute('data-cw-wheel-bound', '1');
+        fab.addEventListener('wheel', function(e) {
+          if (e.ctrlKey || e.metaKey) return;
+          var target = DashboardNav._findCwListScrollTarget(fab);
+          DashboardNav._applyCwListWheelDelta(target, e.deltaY);
+          e.preventDefault();
+        }, { passive: false });
+      });
+    },
+
     _levelFabColor: function(gameType, levelId) {
       if (gameType === 'wordle') {
         var wlMeta = this._wlLevelMeta();
@@ -1258,6 +1295,8 @@
       if (activeLevel) {
         this._scrollCrosswordPathToCurrent();
       }
+
+      this._bindCwLevelStatsFabWheelScroll(content);
     },
 
     openWordleSection: async function(page, levelFilter, options) {
@@ -1360,6 +1399,8 @@
       if (activeLevel) {
         this._scrollWordlePathToCurrent();
       }
+
+      this._bindCwLevelStatsFabWheelScroll(content);
     },
 
     openQuickstepsChooser: function() {
