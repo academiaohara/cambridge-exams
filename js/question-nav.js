@@ -25,7 +25,7 @@
       if (!AppState.currentExercise) return;
 
       if (typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise) &&
-          !Utils.isC1Reading8()) {
+          !Utils.usesC1ReadingBottomPanel()) {
         if (typeof ExerciseRenderer !== 'undefined') {
           ExerciseRenderer.toggleView(Utils.duoMatchingResultsView(AppState.currentExercise));
         }
@@ -129,10 +129,10 @@
       return typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
     },
 
-    /** Compact letter-row modal (B1 R4, C1 R7 gapped text; C1 R8 multiple matching). */
+    /** Compact letter-row modal (B1 R4, C1 R7 gapped text). */
     _usesCompactLetterModal: function() {
       if (typeof Utils === 'undefined') return false;
-      return Utils.isDuoGappedTextReading() || Utils.isC1Reading8();
+      return Utils.isDuoGappedTextReading();
     },
 
     _syncPanelVariant: function(forceOff) {
@@ -324,6 +324,15 @@
     },
 
     _buildPart6: function(question, qNum, isChecked, userAnswer) {
+      if (typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading()) {
+        var texts = (AppState.currentExercise && AppState.currentExercise.content &&
+          AppState.currentExercise.content.texts) || {};
+        var keys = (question.options || Object.keys(texts)).slice().sort(function(a, b) {
+          return String(a).localeCompare(String(b));
+        });
+        return this._buildQnavTextOptionRows(qNum, keys, texts, question, isChecked, userAnswer, 'answerPart6');
+      }
+
       var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
       (question.options || []).forEach(function(opt) {
         var isSelected = userAnswer === opt;
@@ -380,9 +389,55 @@
         .replace(/'/g, '&#39;');
     },
 
+    _getTextOptionLabel: function(key, rawText) {
+      var r = String(rawText || '').replace(/\r\n/g, '\n');
+      if (r.startsWith('### ')) {
+        var nl = r.indexOf('\n');
+        return nl !== -1 ? r.substring(4, nl).trim() : r.substring(4).trim();
+      }
+      var stripped = r
+        .replace(/\[\/?\d+\]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      if (stripped.length > 140) {
+        var cut = stripped.substring(0, 140);
+        var lastSpace = cut.lastIndexOf(' ');
+        if (lastSpace > 80) cut = cut.substring(0, lastSpace);
+        return cut + '…';
+      }
+      return stripped || ('Text ' + key);
+    },
+
+    _buildQnavTextOptionRows: function(qNum, keys, texts, question, isChecked, userAnswer, answerFn) {
+      var self = this;
+      var html = '<div class="qnav-options">';
+      keys.forEach(function(key) {
+        var isSelected = userAnswer === key;
+        var cls = 'qnav-option';
+        if (isChecked) {
+          cls += key === question.correct ? ' correct' : (isSelected ? ' incorrect' : '');
+          cls += ' disabled';
+        } else if (isSelected) {
+          cls += ' selected';
+        }
+        var onclick = isChecked ? '' : 'onclick="QuestionNav.' + answerFn + '(' + qNum + ', \'' + key + '\')"';
+        var label = self._getTextOptionLabel(key, texts[key]);
+        html += '<button class="' + cls + '" ' + onclick + '>' +
+          '<span class="qnav-option-letter">' + self._escapeHtml(key) + '</span>' +
+          '<span class="qnav-option-text">' + self._escapeHtml(label) + '</span>' +
+          '</button>';
+      });
+      html += '</div>';
+      return html;
+    },
+
     _buildPart8: function(question, qNum, isChecked, userAnswer) {
       var texts = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts) || {};
       var keys = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
+      if (typeof Utils !== 'undefined' && Utils.isC1Reading8()) {
+        return this._buildQnavTextOptionRows(qNum, keys, texts, question, isChecked, userAnswer, 'answerPart8');
+      }
+
       var gridCls = this._usesCompactLetterModal()
         ? 'qnav-opts-grid qnav-opts-grid-b1r4'
         : 'qnav-opts-grid qnav-opts-grid-part8';
