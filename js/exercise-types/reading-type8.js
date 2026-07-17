@@ -11,6 +11,11 @@
       return typeof Utils !== 'undefined' && Utils.isDuoMultipleMatchingReading();
     },
 
+    _showsAnswerPreview: function() {
+      return this._hasDuoMatchingUi() &&
+        !(typeof Utils !== 'undefined' && Utils.isC1Reading8());
+    },
+
     _b1PreviewEscape: function(text) {
       return String(text == null ? '' : text)
         .replace(/&/g, '&amp;')
@@ -20,6 +25,7 @@
     },
 
     _setB1Reading2Preview: function(qNum, letter, rawText) {
+      if (!this._showsAnswerPreview()) return;
       var el = document.querySelector('.b1-reading2-preview[data-qpreview="' + qNum + '"]');
       if (!el) return;
       if (!letter) {

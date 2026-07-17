@@ -358,6 +358,14 @@
       return false;
     },
 
+    /** C1 Reading Part 8 — answer via bottom panel; no answer paragraph under question cards. */
+    isC1Reading8: function(section, part) {
+      if (typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      return section === 'reading' && AppState.currentLevel === 'C1' && part === 8;
+    },
+
     /** B1 Reading 2 swaps People/Options tabs; C1/B2 keep Text/Questions order. */
     usesDuoMatchingSwappedLayout: function(exercise) {
       return !!(exercise && exercise._b1PetReading2Ui);
