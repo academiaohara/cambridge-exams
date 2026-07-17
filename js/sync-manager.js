@@ -748,7 +748,9 @@
         }
       }
 
-      if (pushed > 0) {
+      // Only clear the dirty flag when everything was pushed, so failed rows
+      // are retried on the next sync instead of being silently lost.
+      if (failed === 0) {
         try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm) { /* ignore */ }
       }
       return { ok: failed === 0, pushed: pushed, failed: failed };
@@ -950,8 +952,10 @@
         }
       } catch (e) { /* ignore */ }
 
+      var hadAppTasks = false;
       try {
         if (localStorage.getItem(APP_DIRTY_KEY) === '1') {
+          hadAppTasks = true;
           COURSE_LEVELS.forEach(function (level) {
             tasks.push({ kind: 'coursePath', level: level });
           });
@@ -967,6 +971,9 @@
 
       this._setStatus('syncing');
       var success = 0;
+      var failed = 0;
+      var appFailed = 0;
+      var APP_KINDS = { coursePath: 1, suneState: 1, mixedSession: 1, videoProgress: 1 };
 
       for (var t = 0; t < tasks.length; t++) {
         var item = tasks[t];
@@ -989,6 +996,7 @@
             };
             var res = await client.from('user_progress').upsert(row, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (res.error) {
+              failed++;
               _logSyncError('examPart upsert failed', res.error, row);
             } else {
               success++;
@@ -1013,6 +1021,7 @@
             };
             var res2 = await client.from('user_progress').upsert(row2, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (res2.error) {
+              failed++;
               _logSyncError('sectimer upsert failed', res2.error, row2);
             } else {
               success++;
@@ -1033,6 +1042,7 @@
             };
             var res3 = await client.from('user_progress').upsert(row3, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (res3.error) {
+              failed++;
               _logSyncError('legacy upsert failed', res3.error, row3);
             } else {
               success++;
@@ -1063,6 +1073,7 @@
             };
             var resF = await client.from('user_progress').upsert(rowF, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (resF.error) {
+              failed++;
               _logSyncError('fast learning upsert failed', resF.error, rowF);
             } else {
               success++;
@@ -1089,6 +1100,8 @@
             };
             var resCp = await client.from('user_progress').upsert(rowCp, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (resCp.error) {
+              failed++;
+              appFailed++;
               _logSyncError('course path upsert failed', resCp.error, rowCp);
             } else {
               success++;
@@ -1124,6 +1137,8 @@
             };
             var resSp = await client.from('user_progress').upsert(rowSp, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (resSp.error) {
+              failed++;
+              appFailed++;
               _logSyncError('sune state upsert failed', resSp.error, rowSp);
             } else {
               success++;
@@ -1152,6 +1167,8 @@
             };
             var resMx = await client.from('user_progress').upsert(rowMx, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (resMx.error) {
+              failed++;
+              appFailed++;
               _logSyncError('mixed session upsert failed', resMx.error, rowMx);
             } else {
               success++;
@@ -1176,6 +1193,8 @@
             };
             var resVid = await client.from('user_progress').upsert(rowVid, { onConflict: 'user_id,exam_id,section,part,mode' });
             if (resVid.error) {
+              failed++;
+              appFailed++;
               _logSyncError('video progress upsert failed', resVid.error, rowVid);
             } else {
               success++;
@@ -1183,20 +1202,21 @@
             }
           }
         } catch (err) {
+          failed++;
+          if (item && APP_KINDS[item.kind]) { appFailed++; }
           console.warn('[SyncManager] sync error', item, err);
         }
       }
 
-      if (success === tasks.length) {
+      // Clear the app dirty flag only when every app-progress push succeeded,
+      // so failed rows are retried on the next sync instead of being lost.
+      if (hadAppTasks && appFailed === 0) {
+        try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm) { /* ignore */ }
+      }
+
+      if (failed === 0) {
         this._setStatus('synced');
         this._pending = false;
-        try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm) { /* ignore */ }
-        setTimeout(this._clearStatus.bind(this), 3000);
-      } else if (success > 0) {
-        this._setStatus('synced');
-        if (success >= tasks.length - 1) {
-          try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm2) { /* ignore */ }
-        }
         setTimeout(this._clearStatus.bind(this), 3000);
       } else {
         this._setStatus('error');

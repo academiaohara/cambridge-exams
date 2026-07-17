@@ -385,6 +385,14 @@
       if (typeof ProgressStore !== 'undefined') {
         await Auth.ensureSessionOnClient();
         await ProgressStore.restoreAll();
+        // Push local-only progress (e.g. created as guest or while offline)
+        // that the cloud does not have yet.
+        if (typeof CrosswordSync !== 'undefined' && CrosswordSync._push) {
+          try { await CrosswordSync._push(); } catch (e) { /* ignore */ }
+        }
+        if (typeof StreakManager !== 'undefined' && StreakManager._syncToCloud) {
+          try { await StreakManager._syncToCloud(); } catch (e) { /* ignore */ }
+        }
       } else if (typeof SyncManager !== 'undefined') {
         await Auth.ensureSessionOnClient();
         await SyncManager.restoreFromCloud();

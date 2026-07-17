@@ -6,6 +6,13 @@
   var FAST_DEBOUNCE_MS = 120;
   var APP_DEBOUNCE_MS = 120;
 
+  var FAST_DIRTY_KEY = 'cambridge_fast_exercises_needs_cloud_sync';
+  var APP_DIRTY_KEY = 'cambridge_app_progress_needs_cloud_sync';
+
+  function _markDirty(key) {
+    try { localStorage.setItem(key, '1'); } catch (e) { /* ignore */ }
+  }
+
   var _fastTimer = null;
   var _appTimer = null;
   var _pushingFast = false;
@@ -94,6 +101,9 @@
 
     /** Wordle / fast exercises / vocab — save to cloud immediately. */
     onFastLearningChanged: function () {
+      // Always mark dirty, so guest progress is pushed after a later sign-in
+      // and failed pushes are retried by the periodic sync.
+      _markDirty(FAST_DIRTY_KEY);
       if (!_isAuthenticated()) return;
       if (_fastTimer) clearTimeout(_fastTimer);
       var self = this;
@@ -105,6 +115,9 @@
 
     /** Course / Sune Play / mixed / video — save to cloud immediately. */
     onAppProgressChanged: function () {
+      // Always mark dirty, so guest progress is pushed after a later sign-in
+      // and failed pushes are retried by the periodic sync.
+      _markDirty(APP_DIRTY_KEY);
       if (!_isAuthenticated()) return;
       if (_appTimer) clearTimeout(_appTimer);
       var self = this;

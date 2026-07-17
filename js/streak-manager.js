@@ -57,7 +57,7 @@
             total_days_active: this.data.totalDaysActive || 0,
             active_dates: this.data.activeDates || [],
             updated_at: new Date().toISOString()
-          })
+          }, { onConflict: 'user_id' })
           .select();
         if (result.error) {
           console.warn('[StreakManager] cloud sync error:', result.error.message || result.error);
