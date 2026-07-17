@@ -6,11 +6,11 @@
   var PLACEMENT_PASS_PCT = 60;
 
   var ONBOARDING_LEVELS = [
-    { code: 'tier1', name: 'Elemental', equiv: 'B1 Preliminary', bars: 1, courseLevel: 'B1' },
-    { code: 'tier2', name: 'Principiante', equiv: 'B2 First', bars: 2, courseLevel: 'B2' },
-    { code: 'tier3', name: 'Intermedio', equiv: 'B2 First', bars: 3, courseLevel: 'B2' },
-    { code: 'tier4', name: 'Avanzado', equiv: 'C1 Advanced', bars: 4, courseLevel: 'C1' },
-    { code: 'tier5', name: 'Experto', equiv: 'C1 Advanced', bars: 5, courseLevel: 'C1' }
+    { code: 'tier1', name: 'Elementary', equiv: 'B1 Preliminary', bars: 1, courseLevel: 'B1' },
+    { code: 'tier2', name: 'Beginner', equiv: 'B2 First', bars: 2, courseLevel: 'B2' },
+    { code: 'tier3', name: 'Intermediate', equiv: 'B2 First', bars: 3, courseLevel: 'B2' },
+    { code: 'tier4', name: 'Advanced', equiv: 'C1 Advanced', bars: 4, courseLevel: 'C1' },
+    { code: 'tier5', name: 'Expert', equiv: 'C1 Advanced', bars: 5, courseLevel: 'C1' }
   ];
 
   var _selectedLevel = null;
@@ -172,9 +172,9 @@
   }
 
   var PLACEMENT_EXIT_TEXTS = {
-    message: '¿Seguro que quieres salir? Tendrás que empezar el test de nuevo.',
-    stayLabel: 'Seguir con el test',
-    leaveLabel: 'Salir'
+    message: 'Are you sure you want to leave? You will have to start the test again.',
+    stayLabel: 'Stay on the test',
+    leaveLabel: 'Leave'
   };
 
   function destroyPlacementLesson() {
@@ -379,7 +379,7 @@
       var cfg = getLevelConfig(_selectedLevel);
       var subtitle = document.getElementById('onboarding-placement-subtitle');
       if (subtitle && cfg) {
-        subtitle.textContent = 'Test de ubicación · ' + cfg.equiv;
+        subtitle.textContent = 'Placement test · ' + cfg.equiv;
       }
 
       try {
@@ -449,7 +449,7 @@
           throw new Error('invalid progress test renderer');
         }
       } catch (e) {
-        contentEl.innerHTML = '<div class="onboarding-placement-error">Could not load the placement test. You will start from Etapa 1.</div>';
+        contentEl.innerHTML = '<div class="onboarding-placement-error">Could not load the placement test. You will start from Stage 1.</div>';
         if (finishBtn) finishBtn.disabled = false;
       }
 

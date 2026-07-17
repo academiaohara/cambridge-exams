@@ -424,7 +424,7 @@
           <img src="Assets/images/sunelogoreduced2.svg" class="preauth-brand-logo" alt="Sune English">
         </a>
         <div class="onboarding-header-actions">
-          <button type="button" id="onboarding-close-btn" class="auth-screen-close" onclick="Onboarding.handleHeaderClose()" aria-label="Cerrar">
+          <button type="button" id="onboarding-close-btn" class="auth-screen-close" onclick="Onboarding.handleHeaderClose()" aria-label="Close">
             <span class="material-symbols-outlined" aria-hidden="true">close</span>
           </button>
         </div>
@@ -435,18 +435,18 @@
           <div class="onboarding-prompt">
             <img src="Assets/images/Cabezasune.svg" alt="" class="onboarding-mascot" aria-hidden="true">
             <div class="onboarding-speech-bubble">
-              <p>¿Cómo quieres empezar?</p>
+              <p>How would you like to get started?</p>
             </div>
           </div>
-          <h2 id="onboarding-path-title" class="sr-only">Elige cómo empezar</h2>
+          <h2 id="onboarding-path-title" class="sr-only">Choose how to get started</h2>
           <div id="onboarding-path-options" class="onboarding-options onboarding-path-options" role="radiogroup" aria-labelledby="onboarding-path-title">
             <button type="button" class="onboarding-option onboarding-path-option" data-path="from-zero" onclick="Onboarding.selectPath('from-zero')">
               <span class="onboarding-path-icon" aria-hidden="true">
                 <span class="material-symbols-outlined">rocket_launch</span>
               </span>
               <span class="onboarding-option-text onboarding-path-option-text">
-                <strong class="onboarding-level-name">Empezar desde cero</strong>
-                <span class="onboarding-path-desc">Comienza con el primer tema de B1</span>
+                <strong class="onboarding-level-name">Start from scratch</strong>
+                <span class="onboarding-path-desc">Begin with the first B1 topic</span>
               </span>
             </button>
             <button type="button" class="onboarding-option onboarding-path-option" data-path="by-level" onclick="Onboarding.selectPath('by-level')">
@@ -454,8 +454,8 @@
                 <span class="material-symbols-outlined">tune</span>
               </span>
               <span class="onboarding-option-text onboarding-path-option-text">
-                <strong class="onboarding-level-name">Ubicarte por tu nivel</strong>
-                <span class="onboarding-path-desc">Elige tu nivel y haz un test de ubicación</span>
+                <strong class="onboarding-level-name">Find your level</strong>
+                <span class="onboarding-path-desc">Choose your level and take a placement test</span>
               </span>
             </button>
           </div>
@@ -467,10 +467,10 @@
           <div class="onboarding-prompt">
             <img src="Assets/images/Cabezasune.svg" alt="" class="onboarding-mascot" aria-hidden="true">
             <div class="onboarding-speech-bubble">
-              <p>¿Para qué nivel de examen te preparas?</p>
+              <p>Which exam level are you preparing for?</p>
             </div>
           </div>
-          <h2 id="onboarding-title" class="sr-only">Elige tu nivel de examen</h2>
+          <h2 id="onboarding-title" class="sr-only">Choose your exam level</h2>
           <div id="onboarding-level-options" class="onboarding-options" role="radiogroup" aria-labelledby="onboarding-title"></div>
         </div>
         <footer class="onboarding-footer">
@@ -481,8 +481,8 @@
       <div id="onboarding-placement-step" class="onboarding-placement-step" style="display:none;">
         <div class="onboarding-placement-header">
           <div>
-            <h2 class="onboarding-placement-title">Test de ubicación</h2>
-            <p id="onboarding-placement-subtitle" class="onboarding-placement-subtitle">Responde las preguntas para confirmar tu nivel</p>
+            <h2 class="onboarding-placement-title">Placement test</h2>
+            <p id="onboarding-placement-subtitle" class="onboarding-placement-subtitle">Answer the questions to confirm your level</p>
           </div>
         </div>
         <div id="onboarding-placement-loading" class="onboarding-placement-loading" style="display:none;">
@@ -490,7 +490,7 @@
         </div>
         <div id="onboarding-placement-content" class="onboarding-placement-content"></div>
         <footer class="onboarding-footer onboarding-placement-footer">
-          <button type="button" id="onboarding-placement-finish-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.finishPlacementTest()">TERMINAR TEST</button>
+          <button type="button" id="onboarding-placement-finish-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.finishPlacementTest()">FINISH TEST</button>
         </footer>
       </div>
     </div>
