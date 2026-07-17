@@ -366,6 +366,19 @@
       return section === 'reading' && AppState.currentLevel === 'C1' && part === 8;
     },
 
+    /** C1 Reading Part 6 — cross-text matching with bottom question panel. */
+    isC1Reading6: function(section, part) {
+      if (typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      return section === 'reading' && AppState.currentLevel === 'C1' && part === 6;
+    },
+
+    /** C1 Reading Parts 6 & 8 — open bottom panel instead of scrolling to Questions tab. */
+    usesC1ReadingBottomPanel: function(section, part) {
+      return this.isC1Reading6(section, part) || this.isC1Reading8(section, part);
+    },
+
     /** B1 Reading 2 swaps People/Options tabs; C1/B2 keep Text/Questions order. */
     usesDuoMatchingSwappedLayout: function(exercise) {
       return !!(exercise && exercise._b1PetReading2Ui);
