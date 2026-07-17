@@ -874,6 +874,40 @@
   padding: 0 1px;
 }
 
+/* C1 Reading Part 7: hover explanation on evidence markers in gapped text */
+.c1-reading7 .evidence-marker.evidence-active {
+  position: relative;
+  cursor: help;
+}
+
+.c1-reading7 .evidence-marker.evidence-active[data-explanation]::after {
+  content: attr(data-explanation);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  white-space: normal;
+  max-width: 300px;
+  min-width: 150px;
+  display: none;
+  z-index: 30;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
+  font-weight: 600;
+  line-height: 1.45;
+  pointer-events: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+.c1-reading7 .evidence-marker.evidence-active[data-explanation]:hover::after {
+  display: block;
+}
+
 /* Options display in explanation-question-display */
 .eq-content {
   display: flex;
