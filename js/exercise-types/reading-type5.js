@@ -156,10 +156,6 @@
         '<button type="button" class="' + trigCls + '" aria-haspopup="listbox" aria-expanded="false"' +
         triggerDisabled + onTrig + '>' + escapeHtml(label) + '</button>' +
         '<span class="reading-type5-gap-panel" role="listbox" aria-label="Question ' + qNum + '">' +
-        '<span class="reading-type5-gap-panel-head">' +
-        '<span class="reading-type5-gap-panel-kicker">Choose answer</span>' +
-        '<span class="reading-type5-gap-panel-qnum">' + qNum + '</span>' +
-        '</span>' +
         '<span class="reading-type5-gap-panel-options">' + choicesHtml + '</span>' +
         '</span>' +
         '</span>'
@@ -309,9 +305,14 @@
     _bindGapPanelReposition: function() {
       if (ReadingType5._gapPanelRepositionBound) return;
       ReadingType5._gapPanelRepositionBound = true;
-      var reposition = function() {
+      var reposition = function(ev) {
         var open = document.querySelector('.reading-type5-gap-wrap.reading-type5-gap-open');
-        if (open) ReadingType5.positionGapPanel(open);
+        if (!open) return;
+        if (ev && ev.type === 'resize') {
+          var panel = open.querySelector('.reading-type5-gap-panel');
+          if (panel) panel.removeAttribute('data-rt5-width');
+        }
+        ReadingType5.positionGapPanel(open);
       };
       window.addEventListener('resize', reposition);
       window.addEventListener('scroll', reposition, true);
@@ -327,6 +328,15 @@
       var rect = sidebar.getBoundingClientRect();
       if (!rect.width || rect.left >= window.innerWidth) return 0;
       return Math.max(0, window.innerWidth - rect.left);
+    },
+
+    _measureGapPanelWidth: function(panel, vw, margin) {
+      var minW = 280;
+      var maxW = Math.min(400, vw - margin * 2);
+      panel.style.width = 'auto';
+      panel.style.maxWidth = 'none';
+      var natural = panel.scrollWidth || panel.offsetWidth || minW;
+      return Math.min(maxW, Math.max(minW, natural));
     },
 
     positionGapPanel: function(wrap) {
@@ -345,7 +355,13 @@
       var rect = trig.getBoundingClientRect();
       var sidebarW = ReadingType5._getExerciseToolsSidebarWidth();
       var availRight = vw - sidebarW - margin;
-      var popW = Math.min(400, Math.max(280, panel.offsetWidth || 320), vw - margin * 2);
+      var cachedW = panel.getAttribute('data-rt5-width');
+      var popW = cachedW
+        ? Math.min(parseInt(cachedW, 10) || 280, vw - margin * 2)
+        : ReadingType5._measureGapPanelWidth(panel, vw, margin);
+      if (!cachedW) panel.setAttribute('data-rt5-width', String(popW));
+      panel.style.width = popW + 'px';
+      panel.style.maxWidth = popW + 'px';
       var popH = panel.offsetHeight || 220;
 
       var left = rect.left;
@@ -368,8 +384,6 @@
 
       panel.style.left = left + 'px';
       panel.style.top = top + 'px';
-      panel.style.width = popW + 'px';
-      panel.style.maxWidth = popW + 'px';
       panel.style.right = 'auto';
       panel.style.bottom = 'auto';
       panel.style.setProperty('--rt5-gap-arrow-left', arrowLeft + 'px');
@@ -392,6 +406,7 @@
       panel.style.visibility = '';
       panel.style.pointerEvents = '';
       panel.style.removeProperty('--rt5-gap-arrow-left');
+      panel.removeAttribute('data-rt5-width');
     },
 
     closeAllGapPopovers: function() {

@@ -450,6 +450,7 @@
   position: absolute;
   left: 0;
   top: calc(100% + 8px);
+  width: max-content;
   min-width: min(280px, calc(100vw - 32px));
   max-width: min(400px, calc(100vw - 24px));
   z-index: 100;
@@ -512,42 +513,6 @@
 
 .reading-type5-gap-wrap.reading-type5-gap-open .reading-type5-gap-panel.reading-type5-gap-panel--above {
   transform-origin: bottom left;
-}
-
-.reading-type5-gap-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 14px;
-  background: linear-gradient(180deg, var(--ex-duo-blue-light, #ddf4ff) 0%, #f0f9ff 100%);
-  border-bottom: 2px solid color-mix(in srgb, var(--ex-duo-blue, #1cb0f6) 22%, #e5e5e5);
-}
-
-.reading-type5-gap-panel-kicker {
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ex-duo-blue-dark, #1899d6);
-}
-
-.reading-type5-gap-panel-qnum {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 28px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: var(--ex-duo-blue, #1cb0f6);
-  color: #fff;
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 800;
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
-  flex-shrink: 0;
 }
 
 .reading-type5-gap-panel-options {
