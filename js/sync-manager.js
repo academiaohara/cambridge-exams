@@ -199,6 +199,8 @@
     } catch (e) { /* ignore */ }
     return false;
   }
+
+  function _collectCoursePathSnapshot(level) {
     var snapshot = {
       courseProgress: _safeParse(localStorage.getItem('cambridge_course_progress_' + level)),
       sectionProgress: _safeParse(localStorage.getItem('cambridge_course_section_progress_' + level)),
