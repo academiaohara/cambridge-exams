@@ -416,8 +416,6 @@
           // Part 7: switch to text view, show all explanations at once
           ExerciseRenderer.toggleView('text');
           if (typeof ReadingType7 !== 'undefined') ReadingType7.applyExplanationMode();
-          // Add tooltips after applyExplanationMode creates new evidence-marker spans in gap texts
-          this._addEvidenceTooltips();
           this._applyAllEvidenceHighlights();
           // Activate all explanation cards at once
           document.querySelectorAll('.explanation-card').forEach(function(card) {
@@ -425,8 +423,6 @@
           });
           this._syncEvidenceActiveQuestionWrapsAll();
         } else {
-          // Add explanation tooltips to evidence markers
-          this._addEvidenceTooltips();
           // Switch to text/transcript view (or questions for B1 L3 gap-fill), activate first question
           var explanationView = (typeof Utils !== 'undefined' && Utils.isB1ListeningSentenceCompletion())
             ? 'questions' : 'text';
@@ -506,7 +502,6 @@
         });
 
         this._clearEvidenceHighlights();
-        this._removeEvidenceTooltips();
 
         // Restore all transcript extract visibility
         document.querySelectorAll('.transcript-extract').forEach(function(div) {
@@ -868,23 +863,6 @@
       });
     },
 
-    _addEvidenceTooltips: function() {
-      var questions = this._getAllQuestions();
-      questions.forEach(function(q) {
-        if (q.explanation) {
-          document.querySelectorAll('.evidence-marker[data-qnum="' + q.number + '"]').forEach(function(span) {
-            span.setAttribute('data-explanation', q.explanation);
-          });
-        }
-      });
-    },
-
-    _removeEvidenceTooltips: function() {
-      document.querySelectorAll('.evidence-marker[data-explanation]').forEach(function(span) {
-        span.removeAttribute('data-explanation');
-      });
-    },
-
     _clearExplanationModeUI: function() {
       const btn = document.getElementById('toggle-explanation-btn');
       if (btn) btn.classList.remove('explanation-active');
@@ -914,7 +892,6 @@
       });
 
       this._clearEvidenceHighlights();
-      this._removeEvidenceTooltips();
 
       document.querySelectorAll('.transcript-extract').forEach(function(div) {
         div.style.display = '';
