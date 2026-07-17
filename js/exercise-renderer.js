@@ -460,6 +460,24 @@
         .replace(/\*([^*]+?)\*/g, '<strong>$1</strong>');
     },
 
+    /** Quoted phrases in explanation copy → highlighted term (quotes removed). */
+    formatExplanationText: function(text) {
+      var self = this;
+      var raw = String(text == null ? '' : text);
+      var re = /\u201c([^\u201d]+)\u201d|"([^"]+)"|\u2018([^\u2019]+)\u2019|'([^']+)'/g;
+      var out = '';
+      var last = 0;
+      var match;
+      while ((match = re.exec(raw)) !== null) {
+        out += self._escapeHtmlAttr(raw.slice(last, match.index));
+        var term = match[1] || match[2] || match[3] || match[4] || '';
+        out += '<span class="explanation-term">' + self._escapeHtmlAttr(term) + '</span>';
+        last = re.lastIndex;
+      }
+      out += self._escapeHtmlAttr(raw.slice(last));
+      return out;
+    },
+
     formatReadingPassageText: function(text) {
       return this.formatReadingEmphasis(this._escapeHtmlAttr(text));
     },
@@ -1776,7 +1794,7 @@
         html += '<div class="explanation-card" data-qnum="' + q.number + '" onclick="ExerciseHandlers.selectExplanationQuestion(' + q.number + ')">';
         html += '<div class="explanation-card-header">';
         html += '<span class="explanation-card-number">' + q.number + '</span>';
-        html += '<span class="explanation-card-text">' + (q.explanation || 'No explanation available') + '</span>';
+        html += '<span class="explanation-card-text">' + ExerciseRenderer.formatExplanationText(q.explanation || 'No explanation available') + '</span>';
         html += '</div>';
         html += '</div>';
       });
