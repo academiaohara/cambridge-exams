@@ -70,6 +70,25 @@
     _exerciseDefaults: null,
     _exerciseDefaultsLevel: null,
 
+    /** Active exam level: pinned session level while in an exercise, else global level. */
+    getActiveLevel: function() {
+      return AppState.exerciseLevel || AppState.currentLevel || 'C1';
+    },
+
+    _resolveExerciseLevel: function(options) {
+      options = options || {};
+      if (options.level) return String(options.level).toUpperCase();
+      if (AppState.exerciseLevel && AppState.currentView === 'exercise') {
+        return AppState.exerciseLevel;
+      }
+      return String(AppState.currentLevel || 'C1').toUpperCase();
+    },
+
+    _applyExerciseLevel: function(level) {
+      AppState.currentLevel = level;
+      AppState.exerciseLevel = level;
+    },
+
     _loadExerciseDefaults: async function() {
       const level = AppState.currentLevel || 'C1';
       if (this._exerciseDefaults !== null && this._exerciseDefaultsLevel === level) {
@@ -273,7 +292,8 @@
       await this.openPart(examId, firstSection, 1);
     },
     
-    startFullSection: async function(examId, section) {
+    startFullSection: async function(examId, section, level) {
+      if (level) this._applyExerciseLevel(String(level).toUpperCase());
       if (section === 'writing' || section === 'speaking') {
         if (typeof AccessControl !== 'undefined') {
           var access = AccessControl.canAccessWritingSpeaking();
@@ -373,6 +393,9 @@
           try { localStorage.setItem('preferred_mode', options.mode); } catch (e) { /* ignore */ }
         }
       }
+
+      var exerciseLevel = this._resolveExerciseLevel(options);
+      this._applyExerciseLevel(exerciseLevel);
 
       AppState.currentView = 'exercise';
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
@@ -1655,6 +1678,7 @@
       AppState.currentSection = null;
       AppState.currentPart = null;
       AppState.currentExamId = null;
+      AppState.exerciseLevel = null;
       AppState.activeTool = null;
       AppState.notes = [];
       AppState.notesIndex = 0;

@@ -42,6 +42,7 @@
     var scaleTotal = 0;
     var scaleCount = 0;
     var prevLevel = AppState.currentLevel;
+    var prevExerciseLevel = AppState.exerciseLevel;
     AppState.currentLevel = level;
     try {
       exams.forEach(function(exam) {
@@ -57,6 +58,7 @@
       });
     } finally {
       AppState.currentLevel = prevLevel;
+      AppState.exerciseLevel = prevExerciseLevel;
     }
     return scaleCount ? Math.round(scaleTotal / scaleCount) : null;
   }
@@ -151,7 +153,7 @@
     } else if (lockInfo.locked) {
       onclick = 'event.stopPropagation(); ' + lockInfo.click;
     } else {
-      onclick = 'event.stopPropagation(); Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')';
+      onclick = 'event.stopPropagation(); Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\', \'' + levelId + '\')';
     }
 
     return '<button type="button" class="' + btnClass + '"' +
@@ -1034,7 +1036,7 @@
           } else if (isLocked) {
             html += '<span class="' + chipClass + ' tests-part-chip--locked" onclick="' + lockInfo.click + '">' + i + '</span>';
           } else {
-            html += '<button type="button" class="' + chipClass + '" onclick="Exercise.openPart(\'' + exam.id + '\', \'' + sectionKey + '\', ' + i + ')">' + i + '</button>';
+            html += '<button type="button" class="' + chipClass + '" onclick="Exercise.openPart(\'' + exam.id + '\', \'' + sectionKey + '\', ' + i + ', { level: \'' + levelId + '\' })">' + i + '</button>';
           }
         }
         html += '</div>';
@@ -1042,7 +1044,7 @@
         html += '<div class="tests-section-card-footer">';
         if (!isLocked) {
           html += '<button type="button" class="tests-section-play-btn" onclick="' +
-            (isExamMode ? 'Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')' : 'Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')') +
+            'Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\', \'' + levelId + '\')' +
             '">' + _mi('play_arrow') + '<span>Play section</span></button>';
           html += '<button type="button" class="tests-section-results-btn" onclick="ScoreCalculator.showSectionResults(\'' + exam.id + '\', \'' + sectionKey + '\')" title="Section results">' +
             _mi('bar_chart') + '</button>';
@@ -1129,7 +1131,7 @@
       }
       if (section && part) {
         if (typeof Exercise !== 'undefined' && Exercise.openPart) {
-          Exercise.openPart(examId, section, part, mode || AppState.currentMode || 'practice');
+          Exercise.openPart(examId, section, part, { level: levelId, mode: mode || AppState.currentMode || 'practice' });
         }
         return;
       }

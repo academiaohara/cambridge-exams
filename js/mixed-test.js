@@ -5,6 +5,7 @@
 
 (function () {
   var _PLAN_KEY      = 'cambridge_mixed_plan';
+  var _PLAN_LEVEL_KEY = 'cambridge_mixed_plan_level';
   var _COMPLETED_KEY = 'cambridge_mixed_completed';
 
   // ── helpers ──────────────────────────────────────────────────────────────
@@ -57,6 +58,44 @@
     if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
       SyncManager.notifyAppProgressDirty();
     }
+  }
+
+  function _loadPlanLevel() {
+    try {
+      return localStorage.getItem(_PLAN_LEVEL_KEY);
+    } catch (e) { return null; }
+  }
+
+  function _savePlanLevel(level) {
+    try {
+      localStorage.setItem(_PLAN_LEVEL_KEY, level);
+    } catch (e) { /* ignore */ }
+  }
+
+  function _clearPlanLevel() {
+    try {
+      localStorage.removeItem(_PLAN_LEVEL_KEY);
+    } catch (e) { /* ignore */ }
+  }
+
+  function _applyStoredPlanLevel() {
+    var storedLevel = _loadPlanLevel();
+    if (!storedLevel) return;
+    if (typeof Exercise !== 'undefined' && Exercise._applyExerciseLevel) {
+      Exercise._applyExerciseLevel(storedLevel);
+    } else {
+      AppState.currentLevel = storedLevel;
+      AppState.exerciseLevel = storedLevel;
+    }
+  }
+
+  function _planMatchesCurrentLevel() {
+    var storedLevel = _loadPlanLevel();
+    if (!storedLevel) return true;
+    var active = (typeof Exercise !== 'undefined' && Exercise.getActiveLevel)
+      ? Exercise.getActiveLevel()
+      : (AppState.currentLevel || 'C1');
+    return String(storedLevel).toUpperCase() === String(active).toUpperCase();
   }
 
   // ── public API ────────────────────────────────────────────────────────────
@@ -175,6 +214,7 @@
       AppState.mixedTestCurrentIndex = 0;
 
       try { localStorage.setItem(_PLAN_KEY, JSON.stringify(plan)); } catch (e) { /* ignore */ }
+      _savePlanLevel(AppState.currentLevel || 'C1');
       try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
       _persistMixedSession();
 
@@ -191,6 +231,10 @@
     restart: function () {
       var plan = AppState.mixedTestPlan || _loadPlan();
       if (!plan || !plan.length) { this.generateNew(); return; }
+      if (!_planMatchesCurrentLevel()) {
+        this.generateNew({ refreshPage: true });
+        return;
+      }
       AppState.mixedTestPlan = plan;
       AppState.mixedTestCurrentIndex = 0;
 
@@ -203,6 +247,10 @@
     startAtIndex: function (index) {
       var plan = AppState.mixedTestPlan || _loadPlan();
       if (!plan || !plan.length) {
+        this.generateNew({ refreshPage: true });
+        return;
+      }
+      if (!_planMatchesCurrentLevel()) {
         this.generateNew({ refreshPage: true });
         return;
       }
@@ -228,6 +276,7 @@
     /** Open the exercise at the current index of the plan. */
     _openCurrent: function () {
       if (!this.isActive()) return;
+      _applyStoredPlanLevel();
       var item = AppState.mixedTestPlan[AppState.mixedTestCurrentIndex];
       if (!item) return;
       AppState.examFullMode = AppState.currentMode === 'exam';
@@ -305,6 +354,7 @@
     clear: function () {
       AppState.mixedTestPlan = null;
       AppState.mixedTestCurrentIndex = 0;
+      _clearPlanLevel();
     },
 
     _showFinishScreen: function () {
