@@ -475,6 +475,7 @@
         link('DashboardNav.openGradeEvolution()', 'grades', 'query_stats', 'Grade evolution') +
         link('DashboardNav.openStreakSection()', 'streak', 'local_fire_department', 'Streak calendar') +
         link('openScoreCalculator(event)', 'calc', 'calculate', 'Score calculator') +
+        link('DashboardNav.openMobileDictionaries()', 'dict', 'menu_book', 'Dictionary') +
         (hidePlans ? '' : link('UserProfile.renderPremiumSection()', 'plans', 'workspace_premium', 'View plans')) +
       '</div>';
     },
@@ -496,44 +497,8 @@
             '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
           '</button>' +
         '</div>' +
-        '<div class="profile-duo-tools-grid" role="group" aria-label="Quick tools">' +
-          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--streak" onclick="DashboardNav.openStreakSection()">' +
-            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
-              '<span class="material-symbols-outlined">local_fire_department</span>' +
-            '</span>' +
-            '<span class="profile-duo-tool-chip-label">Streak</span>' +
-            '<span class="profile-duo-tool-chip-value">' + stats.streakCount + '</span>' +
-          '</button>' +
-          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--calc" onclick="openScoreCalculator(event)">' +
-            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
-              '<span class="material-symbols-outlined">calculate</span>' +
-            '</span>' +
-            '<span class="profile-duo-tool-chip-label">Calculator</span>' +
-          '</button>' +
-          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--grades" onclick="DashboardNav.openGradeEvolution()">' +
-            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
-              '<span class="material-symbols-outlined">query_stats</span>' +
-            '</span>' +
-            '<span class="profile-duo-tool-chip-label">Grades</span>' +
-          '</button>' +
-          '<button type="button" class="profile-duo-tool-chip profile-duo-tool-chip--dict" onclick="DashboardNav.openMobileDictionaries()">' +
-            '<span class="profile-duo-tool-chip-icon" aria-hidden="true">' +
-              '<span class="material-symbols-outlined">menu_book</span>' +
-            '</span>' +
-            '<span class="profile-duo-tool-chip-label">Dictionary</span>' +
-          '</button>' +
-        '</div>' +
         '<div class="profile-duo-side-card profile-duo-mobile-quicklinks">' +
-          '<div class="sw-duo-header">' +
-            '<span class="sw-duo-title">Quick links</span>' +
-          '</div>' +
           this._buildProfileQuickLinksHtml(hidePlans) +
-        '</div>' +
-        '<div class="profile-duo-side-hero-wrap profile-duo-mobile-tip">' +
-          '<img src="Assets/images/asomado.svg" alt="" class="profile-duo-side-illust" aria-hidden="true">' +
-          '<div class="sidebar-widget-duo profile-duo-side-card profile-duo-side-card--hero">' +
-            '<p class="profile-duo-side-hero-text">Keep practising every day to grow your streak and track your Cambridge scores.</p>' +
-          '</div>' +
         '</div>' +
       '</section>';
     },
