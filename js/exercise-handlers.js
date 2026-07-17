@@ -238,7 +238,7 @@
                   const correctOption = question.options.find(opt => opt.startsWith(correctAnswer + ')'));
                   correctText = correctOption ? correctOption.substring(2).trim() : correctAnswer;
                 }
-                gapBox.setAttribute('data-correct', `✓ ${correctText}`);
+                gapBox.setAttribute('data-correct', correctText);
               }
             }
           }

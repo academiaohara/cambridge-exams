@@ -84,7 +84,7 @@
         inputClass += isCorrect ? ' correct' : ' incorrect';
         if (!isCorrect) {
           gapClass += ' incorrect';
-          gapDataAttr = ' data-correct="\u2713 ' + this._formatCorrectAnswer(question.correct) + '"';
+          gapDataAttr = ' data-correct="' + this._formatCorrectAnswer(question.correct) + '"';
         }
         var dataAttrs = ' data-student-value="' + String(userAnswer || '').replace(/"/g, '&quot;') + '"' +
           ' data-check-class="' + (isCorrect ? 'correct' : 'incorrect') + '"' +
@@ -151,7 +151,7 @@
             inputClass += isCorrect ? ' correct' : ' incorrect';
             if (!isCorrect) {
               gapClass += ' incorrect';
-              gapDataAttr = ' data-correct="\u2713 ' + self._formatCorrectAnswer(q.correct) + '"';
+              gapDataAttr = ' data-correct="' + self._formatCorrectAnswer(q.correct) + '"';
             }
             var dataAttrs = ' data-student-value="' + String(userAnswer || '').replace(/"/g, '&quot;') + '"' +
               ' data-check-class="' + (isCorrect ? 'correct' : 'incorrect') + '"' +
@@ -252,7 +252,7 @@
             var gap = input.closest('.listening-type2-gap');
             if (gap) {
               gap.classList.add('incorrect');
-              gap.setAttribute('data-correct', '\u2713 ' + self._formatCorrectAnswer(q.correct));
+              gap.setAttribute('data-correct', self._formatCorrectAnswer(q.correct));
             }
           }
         }
@@ -286,7 +286,7 @@
           self._clearAltBadge(input);
           if (gap && checkClass === 'incorrect' && correctRaw) {
             gap.classList.add('incorrect');
-            gap.setAttribute('data-correct', '\u2713 ' + correctRaw);
+            gap.setAttribute('data-correct', correctRaw);
           } else if (gap) {
             gap.classList.remove('incorrect');
             gap.removeAttribute('data-correct');

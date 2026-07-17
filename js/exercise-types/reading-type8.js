@@ -162,7 +162,7 @@
       
       const displayText = userAnswer || '.........';
       const correctAttr = isChecked && !this.isAnswerCorrect(question, userAnswer)
-        ? `data-correct="✓ ${question.correct}"` : '';
+        ? `data-correct="${question.correct}"` : '';
       
       return `
         <span class="gap-container">
@@ -254,7 +254,7 @@
             gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
 
             if (!isCorrect) {
-              gapBox.setAttribute('data-correct', '✓ ' + q.correct);
+              gapBox.setAttribute('data-correct', q.correct);
             }
           }
         }

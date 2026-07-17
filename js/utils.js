@@ -460,6 +460,11 @@
       return levelNames[level] || level;
     },
     
+    /** Plain correct-answer label for gap hover hints (no checkmark prefix). */
+    correctHintText: function(word) {
+      return String(word == null ? '' : word).trim();
+    },
+
     // Obtener icono Material
     getMaterialIcon: function(section) {
       const iconMap = {

@@ -149,7 +149,10 @@
       var wrapTooltip = '';
       if (isChecked && b1r5 && !showAnswerKey && ua !== question.correct) {
         var tipWord = wordFromQuestionOption(question, question.correct) || question.correct;
-        wrapTooltip = ' data-correct="' + escapeHtml('\u2713 ' + tipWord) + '"';
+        var hint = typeof Utils !== 'undefined' && Utils.correctHintText
+          ? Utils.correctHintText(tipWord)
+          : tipWord;
+        wrapTooltip = ' data-correct="' + escapeHtml(hint) + '"';
       }
       return (
         '<span class="reading-type5-gap-wrap" data-qnum="' + qNum + '"' + wrapTooltip + '>' +
@@ -309,10 +312,11 @@
         var open = document.querySelector('.reading-type5-gap-wrap.reading-type5-gap-open');
         if (!open) return;
         if (ev && ev.type === 'resize') {
-          var panel = open.querySelector('.reading-type5-gap-panel');
-          if (panel) panel.removeAttribute('data-rt5-width');
+          ReadingType5.resetGapPanelWidth(open);
+          ReadingType5.positionGapPanel(open);
+          return;
         }
-        ReadingType5.positionGapPanel(open);
+        ReadingType5.updateGapPanelPosition(open);
       };
       window.addEventListener('resize', reposition);
       window.addEventListener('scroll', reposition, true);
@@ -331,22 +335,40 @@
     },
 
     _measureGapPanelWidth: function(panel, vw, margin) {
-      var minW = 280;
-      var maxW = Math.min(400, vw - margin * 2);
-      panel.style.width = 'auto';
-      panel.style.maxWidth = 'none';
-      var natural = panel.scrollWidth || panel.offsetWidth || minW;
-      return Math.min(maxW, Math.max(minW, natural));
+      var minW = 132;
+      var maxW = Math.min(280, vw - margin * 2);
+      var maxChoice = 0;
+      panel.querySelectorAll('.reading-type5-gap-choice').forEach(function(btn) {
+        btn.style.width = 'max-content';
+        maxChoice = Math.max(maxChoice, btn.scrollWidth || btn.offsetWidth || 0);
+        btn.style.width = '';
+      });
+      var shell = 24;
+      return Math.min(maxW, Math.max(minW, maxChoice + shell));
     },
 
-    positionGapPanel: function(wrap) {
+    _lockGapPanelWidth: function(panel, vw, margin) {
+      var popW = ReadingType5._measureGapPanelWidth(panel, vw, margin);
+      panel.setAttribute('data-rt5-width', String(popW));
+      panel.style.width = popW + 'px';
+      panel.style.minWidth = popW + 'px';
+      panel.style.maxWidth = popW + 'px';
+      return popW;
+    },
+
+    resetGapPanelWidth: function(wrap) {
+      var panel = wrap && wrap.querySelector('.reading-type5-gap-panel');
+      if (!panel) return;
+      panel.removeAttribute('data-rt5-width');
+      panel.style.width = '';
+      panel.style.minWidth = '';
+      panel.style.maxWidth = '';
+    },
+
+    updateGapPanelPosition: function(wrap) {
       var panel = wrap && wrap.querySelector('.reading-type5-gap-panel');
       var trig = wrap && wrap.querySelector('.reading-type5-gap-trigger');
-      if (!panel || !trig) return;
-
-      panel.classList.add('reading-type5-gap-panel--fixed');
-      panel.style.visibility = 'hidden';
-      panel.style.pointerEvents = 'none';
+      if (!panel || !trig || !panel.classList.contains('reading-type5-gap-panel--fixed')) return;
 
       var gap = 8;
       var margin = 12;
@@ -355,22 +377,14 @@
       var rect = trig.getBoundingClientRect();
       var sidebarW = ReadingType5._getExerciseToolsSidebarWidth();
       var availRight = vw - sidebarW - margin;
-      var cachedW = panel.getAttribute('data-rt5-width');
-      var popW = cachedW
-        ? Math.min(parseInt(cachedW, 10) || 280, vw - margin * 2)
-        : ReadingType5._measureGapPanelWidth(panel, vw, margin);
-      if (!cachedW) panel.setAttribute('data-rt5-width', String(popW));
-      panel.style.width = popW + 'px';
-      panel.style.maxWidth = popW + 'px';
-      var popH = panel.offsetHeight || 220;
+      var popW = parseInt(panel.getAttribute('data-rt5-width'), 10) || parseInt(panel.style.width, 10) || 200;
+      var popH = panel.offsetHeight || 180;
 
       var left = rect.left;
       var top = rect.bottom + gap;
       var opensAbove = false;
 
-      if (left + popW > availRight) {
-        left = Math.max(margin, availRight - popW);
-      }
+      if (left + popW > availRight) left = Math.max(margin, availRight - popW);
       if (left < margin) left = margin;
 
       if (top + popH > vh - margin) {
@@ -388,6 +402,30 @@
       panel.style.bottom = 'auto';
       panel.style.setProperty('--rt5-gap-arrow-left', arrowLeft + 'px');
       panel.classList.toggle('reading-type5-gap-panel--above', opensAbove);
+    },
+
+    positionGapPanel: function(wrap) {
+      var panel = wrap && wrap.querySelector('.reading-type5-gap-panel');
+      var trig = wrap && wrap.querySelector('.reading-type5-gap-trigger');
+      if (!panel || !trig) return;
+
+      panel.classList.add('reading-type5-gap-panel--fixed');
+      panel.style.visibility = 'hidden';
+      panel.style.pointerEvents = 'none';
+
+      var margin = 12;
+      var vw = window.innerWidth;
+      var popW;
+      if (panel.getAttribute('data-rt5-width')) {
+        popW = parseInt(panel.getAttribute('data-rt5-width'), 10) || 200;
+        panel.style.width = popW + 'px';
+        panel.style.minWidth = popW + 'px';
+        panel.style.maxWidth = popW + 'px';
+      } else {
+        popW = ReadingType5._lockGapPanelWidth(panel, vw, margin);
+      }
+
+      ReadingType5.updateGapPanelPosition(wrap);
 
       panel.style.visibility = '';
       panel.style.pointerEvents = '';
@@ -400,6 +438,7 @@
       panel.style.left = '';
       panel.style.top = '';
       panel.style.width = '';
+      panel.style.minWidth = '';
       panel.style.maxWidth = '';
       panel.style.right = '';
       panel.style.bottom = '';
@@ -472,7 +511,10 @@
             btn.classList.add('incorrect');
             btn.classList.remove('correct');
             var tipW = wordFromQuestionOption(question, question.correct) || question.correct;
-            wrap.setAttribute('data-correct', '\u2713 ' + tipW);
+            var hintW = typeof Utils !== 'undefined' && Utils.correctHintText
+              ? Utils.correctHintText(tipW)
+              : tipW;
+            wrap.setAttribute('data-correct', hintW);
           }
         }
         return;
@@ -561,7 +603,10 @@
               } else {
                 trig.classList.add('incorrect');
                 var tipW = wordFromQuestionOption(q, q.correct) || q.correct;
-                wrap.setAttribute('data-correct', '\u2713 ' + tipW);
+                var hintW = typeof Utils !== 'undefined' && Utils.correctHintText
+                  ? Utils.correctHintText(tipW)
+                  : tipW;
+                wrap.setAttribute('data-correct', hintW);
               }
             } else if (userAnswer === q.correct) {
               trig.classList.add('correct');
