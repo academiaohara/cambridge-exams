@@ -2884,27 +2884,43 @@ margin-top: -2px;
   }
 }
 
-.cw-section-stats-btn {
+.cw-level-stats-fab {
+  position: fixed;
+  right: 20px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 84px);
+  z-index: 130;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: var(--cw-fab-color, #a855f7);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
   cursor: pointer;
-  flex-shrink: 0;
-  transition: background 0.2s;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-fab-color, #a855f7) 72%, #000), 0 10px 28px color-mix(in srgb, var(--cw-fab-color, #a855f7) 35%, transparent);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
-.cw-section-stats-btn:hover {
-  background: rgba(255, 255, 255, 0.32);
+.cw-level-stats-fab:hover {
+  transform: translateY(-1px);
 }
 
-.cw-section-stats-btn .material-symbols-outlined {
-  font-size: 1.3rem;
+.cw-level-stats-fab:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--cw-fab-color, #a855f7) 72%, #000);
+}
+
+.cw-level-stats-fab .material-symbols-outlined {
+  font-size: 1.45rem;
+}
+
+@media (min-width: 901px) {
+  .cw-level-stats-fab {
+    right: max(24px, calc((100vw - 920px) / 2 + 24px));
+    bottom: 32px;
+  }
 }
 
 .cw-wordle-play-card--duo .vocab-cw-wordle-msg {
@@ -3144,7 +3160,6 @@ margin-top: -2px;
 
 .wdl-stats-modal-icon {
   font-size: 2.5rem;
-  color: #a855f7;
   margin-bottom: 4px;
 }
 
@@ -3158,7 +3173,44 @@ margin-top: -2px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #3c3c3c;
+  margin-bottom: 2px;
+}
+
+.wdl-stats-modal-subtitle {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #afafaf;
   margin-bottom: 16px;
+}
+
+.wdl-stats-modal--wordle .wdl-stats-modal-icon {
+  color: #a855f7;
+}
+
+.wdl-stats-modal--wordle .wdl-stats-summary-item--main {
+  border-color: #d8b4fe;
+  border-bottom-color: #a855f7;
+  background: #faf5ff;
+}
+
+.wdl-stats-modal--wordle .wdl-stats-summary-item--main .wdl-stats-summary-val {
+  color: #a855f7;
+}
+
+.wdl-stats-modal--crossword .wdl-stats-modal-icon {
+  color: #1cb0f6;
+}
+
+.wdl-stats-modal--crossword .wdl-stats-summary-item--main {
+  border-color: #bae6fd;
+  border-bottom-color: #1cb0f6;
+  background: #f0f9ff;
+}
+
+.wdl-stats-modal--crossword .wdl-stats-summary-item--main .wdl-stats-summary-val {
+  color: #1cb0f6;
 }
 
 .wdl-stats-summary {
@@ -3213,11 +3265,23 @@ margin-top: -2px;
   text-align: left;
 }
 
+.wdl-stats-section-hint {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #c4c4c4;
+}
+
 .wdl-stats-dist {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-bottom: 18px;
+}
+
+.wdl-stats-dist--labels .wdl-dist-row {
+  grid-template-columns: 84px 1fr auto;
 }
 
 .wdl-dist-row {
@@ -3232,6 +3296,12 @@ margin-top: -2px;
   font-weight: 800;
   color: #64748b;
   text-align: right;
+}
+
+.wdl-dist-num--text {
+  font-size: 0.68rem;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .wdl-dist-bar-wrap {
@@ -3254,6 +3324,10 @@ margin-top: -2px;
   background: #94a3b8;
 }
 
+.wdl-dist-bar--progress {
+  background: #fbbf24;
+}
+
 .wdl-dist-count {
   font-size: 0.72rem;
   font-weight: 700;
@@ -3267,6 +3341,17 @@ margin-top: -2px;
   border-radius: 6px;
 }
 
+.wdl-cal-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+}
+
 .wdl-cal-played {
   background: #fde68a;
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
@@ -3275,6 +3360,7 @@ margin-top: -2px;
 .wdl-cal-won {
   background: #58cc02;
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  color: #fff;
 }
 
 .mode-card-wordle {

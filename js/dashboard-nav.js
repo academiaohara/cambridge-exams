@@ -354,6 +354,191 @@
       return xp;
     },
 
+    _formatLocalDate: function(d) {
+      var month = String(d.getMonth() + 1).padStart(2, '0');
+      var day = String(d.getDate()).padStart(2, '0');
+      return d.getFullYear() + '-' + month + '-' + day;
+    },
+
+    _buildLevelStatsFabHtml: function(gameType, levelId) {
+      var onclick = gameType === 'wordle'
+        ? 'FastExercises._wdlOpenStatsModal(\'' + this._escapeHTML(levelId) + '\')'
+        : 'DashboardNav._openCwStatsModal(\'' + this._escapeHTML(levelId) + '\')';
+      return '<button type="button" class="cw-level-stats-fab cw-level-stats-fab--' + gameType + '" onclick="' + onclick + '" aria-label="Statistics" style="--cw-fab-color:' + this._levelFabColor(gameType, levelId) + '">' +
+        '<span class="material-symbols-outlined">bar_chart</span>' +
+      '</button>';
+    },
+
+    _levelFabColor: function(gameType, levelId) {
+      if (gameType === 'wordle') {
+        var wlMeta = this._wlLevelMeta();
+        return (wlMeta[levelId] || wlMeta['B2'] || {}).headerColor || '#a855f7';
+      }
+      var cwMeta = this._cwLevelMeta();
+      return (cwMeta[levelId] || cwMeta['B2'] || {}).headerColor || '#1cb0f6';
+    },
+
+    _computeCwLevelStats: function(levelId) {
+      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
+      var entries = this._getCrosswordEntries().filter(function(e) { return e.levelId === levelId; });
+      var totalInLevel = entries.length;
+      var played = 0;
+      var completed = 0;
+      var inProgress = 0;
+      var playDatesCount = {};
+      var winDatesCount = {};
+
+      entries.forEach(function(e) {
+        var key = e.levelId + '_cw' + e.cwIndex;
+        var p = progress[key];
+        if (!p) return;
+        var wordsDone = p.wordsCorrect || p.wordsComplete || 0;
+        if (!p.completed && wordsDone <= 0) return;
+        played++;
+        if (p.completed) completed++;
+        else inProgress++;
+        var dateStr = p.lastPlayed ? p.lastPlayed.slice(0, 10) : null;
+        if (dateStr) {
+          playDatesCount[dateStr] = (playDatesCount[dateStr] || 0) + 1;
+          if (p.completed) winDatesCount[dateStr] = (winDatesCount[dateStr] || 0) + 1;
+        }
+      });
+
+      var remaining = Math.max(0, totalInLevel - completed - inProgress);
+      var completionPct = played > 0 ? Math.round((completed / played) * 100) : 0;
+      var formatDate = DashboardNav._formatLocalDate;
+      var today = new Date();
+      var currentStreak = 0;
+      var streakDate = new Date(today);
+      if (!(winDatesCount[formatDate(today)] > 0)) {
+        streakDate.setDate(streakDate.getDate() - 1);
+      }
+      while ((winDatesCount[formatDate(streakDate)] || 0) > 0) {
+        currentStreak++;
+        streakDate.setDate(streakDate.getDate() - 1);
+      }
+
+      var winDates = Object.keys(winDatesCount).sort();
+      var maxStreak = 0;
+      var run = 0;
+      var prev = null;
+      winDates.forEach(function(dateStr) {
+        if (!prev) {
+          run = 1;
+        } else {
+          var prevD = new Date(prev + 'T12:00:00');
+          var currD = new Date(dateStr + 'T12:00:00');
+          var diff = Math.round((currD - prevD) / 86400000);
+          run = diff === 1 ? run + 1 : 1;
+        }
+        if (run > maxStreak) maxStreak = run;
+        prev = dateStr;
+      });
+
+      var calDays = [];
+      for (var i = 27; i >= 0; i--) {
+        var cd = new Date(today);
+        cd.setDate(today.getDate() - i);
+        var ds = formatDate(cd);
+        calDays.push({
+          date: ds,
+          played: playDatesCount[ds] || 0,
+          won: winDatesCount[ds] || 0
+        });
+      }
+
+      return {
+        levelId: levelId,
+        played: played,
+        completed: completed,
+        inProgress: inProgress,
+        remaining: remaining,
+        totalInLevel: totalInLevel,
+        completionPct: completionPct,
+        currentStreak: currentStreak,
+        maxStreak: maxStreak,
+        calDays: calDays
+      };
+    },
+
+    _buildCwStatsProgressHtml: function(stats) {
+      var total = stats.totalInLevel || 0;
+      var rows = [
+        { label: 'Done', count: stats.completed, cls: '' },
+        { label: 'In Progress', count: stats.inProgress, cls: 'wdl-dist-bar--progress' },
+        { label: 'Left', count: stats.remaining, cls: 'wdl-dist-bar--fail' }
+      ];
+      var maxCount = 0;
+      rows.forEach(function(row) {
+        if (row.count > maxCount) maxCount = row.count;
+      });
+      return rows.map(function(row) {
+        var pct = total > 0 ? Math.round((row.count / total) * 100) : 0;
+        var barPct = maxCount > 0 ? Math.round((row.count / maxCount) * 100) : 0;
+        return '<div class="wdl-dist-row">' +
+          '<span class="wdl-dist-num wdl-dist-num--text">' + row.label + '</span>' +
+          '<div class="wdl-dist-bar-wrap"><div class="wdl-dist-bar ' + row.cls + '" style="width:' + barPct + '%"></div></div>' +
+          '<span class="wdl-dist-count">' + row.count + ' (' + pct + '%)</span>' +
+        '</div>';
+      }).join('');
+    },
+
+    _buildCwStatsCalHtml: function(calDays) {
+      var html = '<div class="bento-cal-grid wdl-stats-cal">';
+      calDays.forEach(function(day) {
+        var cls = 'bento-cal-day wdl-cal-cell';
+        if (day.won > 0) cls += ' wdl-cal-won';
+        else if (day.played > 0) cls += ' wdl-cal-played';
+        var label = day.won > 0 ? String(day.won) : '';
+        var title = day.date + (day.won > 0
+          ? ': ' + day.won + ' completed'
+          : (day.played > 0 ? ': ' + day.played + ' played' : ''));
+        html += '<div class="' + cls + '" title="' + title + '">' + label + '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    _openCwStatsModal: function(levelId) {
+      var existing = document.querySelector('.wdl-stats-modal-overlay');
+      if (existing) existing.remove();
+
+      var stats = this._computeCwLevelStats(levelId);
+      var progressHtml = this._buildCwStatsProgressHtml(stats);
+      var calHtml = this._buildCwStatsCalHtml(stats.calDays);
+      var meta = this._cwLevelMeta();
+      var levelLabel = (meta[levelId] || meta['B2'] || {}).label || levelId;
+
+      var el = document.createElement('div');
+      el.className = 'wdl-stats-modal-overlay';
+      el.innerHTML =
+        '<div class="wdl-stats-modal wdl-stats-modal--crossword">' +
+          '<button class="wdl-stats-modal-close" type="button" aria-label="Close statistics"><span class="material-symbols-outlined">close</span></button>' +
+          '<div class="wdl-stats-modal-icon" aria-hidden="true"><span class="material-symbols-outlined">grid_on</span></div>' +
+          '<div class="wdl-stats-modal-title">' + this._escapeHTML(levelLabel) + ' Crosswords</div>' +
+          '<div class="wdl-stats-modal-subtitle">Statistics</div>' +
+          '<div class="wdl-stats-summary">' +
+            '<div class="wdl-stats-summary-item"><div class="wdl-stats-summary-val">' + stats.played + '</div><div class="wdl-stats-summary-lbl">Played</div></div>' +
+            '<div class="wdl-stats-summary-item wdl-stats-summary-item--main"><div class="wdl-stats-summary-val">' + stats.completionPct + '%</div><div class="wdl-stats-summary-lbl">Done %</div></div>' +
+            '<div class="wdl-stats-summary-item"><div class="wdl-stats-summary-val">' + stats.currentStreak + '</div><div class="wdl-stats-summary-lbl">Streak</div></div>' +
+            '<div class="wdl-stats-summary-item"><div class="wdl-stats-summary-val">' + stats.maxStreak + '</div><div class="wdl-stats-summary-lbl">Best</div></div>' +
+          '</div>' +
+          '<div class="wdl-stats-section-title">Level Progress</div>' +
+          '<div class="wdl-stats-dist wdl-stats-dist--labels">' + progressHtml + '</div>' +
+          '<div class="wdl-stats-section-title">Last 28 days <span class="wdl-stats-section-hint">completed per day</span></div>' +
+          calHtml +
+        '</div>';
+
+      document.body.appendChild(el);
+      if (typeof FastExercises !== 'undefined' && FastExercises._wdlBindStatsModal) {
+        FastExercises._wdlBindStatsModal(el);
+      } else {
+        el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+        var closeBtn = el.querySelector('.wdl-stats-modal-close');
+        if (closeBtn) closeBtn.addEventListener('click', function() { el.remove(); });
+      }
+    },
+
     _buildCrosswordStatsSidebarHtml: function(entries) {
       var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
       var total = entries.length;
@@ -1035,6 +1220,7 @@
             '<div class="cw-page-content" id="cwCenterScroll">' +
               '<div class="cw-list-page" id="cwListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
+            (activeLevel ? this._buildLevelStatsFabHtml('crossword', activeLevel) : '') +
             mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -1136,6 +1322,7 @@
             '<div class="cw-page-content" id="wlCenterScroll">' +
               '<div class="cw-list-page" id="wlListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
+            (activeLevel ? this._buildLevelStatsFabHtml('wordle', activeLevel) : '') +
             mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
