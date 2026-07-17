@@ -1023,7 +1023,7 @@
         if (lockInfo.badge) html += lockInfo.badge;
         html += '</div>';
 
-        html += '<div class="tests-section-card-parts tests-section-card-parts--grid" style="--tests-parts-cols:4">';
+        html += '<div class="tests-section-card-parts tests-section-card-parts--grid">';
         for (var i = 1; i <= section.total; i++) {
           var chipClass = 'tests-part-chip';
           if (section.completed && section.completed.indexOf(i) !== -1) chipClass += ' tests-part-chip--done';

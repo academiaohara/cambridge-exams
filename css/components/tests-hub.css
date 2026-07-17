@@ -307,13 +307,6 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   transform: translateY(1px);
 }
 
-.tests-section-card-parts--grid {
-  display: grid;
-  grid-template-columns: repeat(var(--tests-parts-cols, 4), 34px);
-  gap: 6px;
-  align-items: center;
-}
-
 .tests-mode-help-btn--inline {
   width: 32px;
   height: 32px;
@@ -346,12 +339,6 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
   .dashboard-center--tests-hub .cw-page-content {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .tests-section-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
   }
 }
 
@@ -1517,10 +1504,16 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 }
 
 .tests-section-cards-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
   width: 100%;
+}
+
+@media (min-width: 769px) {
+  .tests-section-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Tests level picker — Duolingo-style Cambridge exam cards */
@@ -1839,6 +1832,13 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
 .tests-section-card-parts {
   display: flex;
   flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.tests-section-card-parts.tests-section-card-parts--grid {
+  display: grid;
+  grid-template-columns: repeat(4, 34px);
   gap: 6px;
   align-items: center;
 }
@@ -2186,8 +2186,8 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     font-size: 0.88rem;
   }
 
-  .tests-section-card-parts--grid {
-    grid-template-columns: repeat(var(--tests-parts-cols, 4), 40px);
+  .tests-section-card-parts.tests-section-card-parts--grid {
+    grid-template-columns: repeat(4, 40px);
   }
 
   /* Section play button: taller for easier tapping */
@@ -2257,8 +2257,8 @@ body:has(.dashboard-center--tests-hub) .dashboard-layout--crossword-scroll {
     font-size: 0.82rem;
   }
 
-  .tests-section-card-parts--grid {
-    grid-template-columns: repeat(var(--tests-parts-cols, 4), 36px);
+  .tests-section-card-parts.tests-section-card-parts--grid {
+    grid-template-columns: repeat(4, 36px);
   }
 
   .tests-section-card {
