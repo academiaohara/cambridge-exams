@@ -9840,7 +9840,9 @@
         var progress = this._getWlProgress();
         progress[pKey] = Object.assign({}, progress[pKey] || {}, data, { lastPlayed: new Date().toISOString() });
         localStorage.setItem(WL_PROGRESS_KEY, JSON.stringify(progress));
-        if (typeof SyncManager !== 'undefined' && SyncManager.notifyFastLearningDirty) {
+        if (typeof ProgressStore !== 'undefined' && ProgressStore.onFastLearningChanged) {
+          ProgressStore.onFastLearningChanged();
+        } else if (typeof SyncManager !== 'undefined' && SyncManager.notifyFastLearningDirty) {
           SyncManager.notifyFastLearningDirty();
         }
       } catch (e) {}

@@ -152,12 +152,18 @@
   function _hasLocalFastData() {
     try {
       var raw = localStorage.getItem(FAST_LS_KEY);
-      if (!raw || raw === '{}') return false;
-      var parsed = JSON.parse(raw);
-      return Object.keys(parsed).some(function (key) {
-        return key.charAt(0) !== '_' && parsed[key] != null;
-      });
+      if (raw && raw !== '{}') {
+        var parsed = JSON.parse(raw);
+        if (Object.keys(parsed).some(function (key) {
+          return key.charAt(0) !== '_' && parsed[key] != null;
+        })) return true;
+      }
+      var wlRaw = localStorage.getItem(WORDLE_KEY);
+      if (wlRaw && wlRaw !== '{}') {
+        return _objectHasKeys(JSON.parse(wlRaw));
+      }
     } catch (e) { return false; }
+    return false;
   }
 
   function _logSyncError(context, error, extra) {
@@ -488,6 +494,12 @@
       if (!client || !user) return false;
       if (_hasAnyLocalProgressData() || _hasUnsyncedExamParts()) return false;
       await this.restoreFromCloud();
+      if (typeof StreakManager !== 'undefined' && StreakManager.restoreFromCloud) {
+        await StreakManager.restoreFromCloud();
+      }
+      if (typeof CrosswordSync !== 'undefined' && CrosswordSync.restoreFromCloud) {
+        await CrosswordSync.restoreFromCloud();
+      }
       if (typeof App !== 'undefined' && App.restoreExamStatuses) {
         App.restoreExamStatuses();
       }
@@ -508,14 +520,6 @@
     _bindFlushListeners: function () {
       if (this._flushListenersBound) { return; }
       this._flushListenersBound = true;
-      var self = this;
-      document.addEventListener('visibilitychange', function () {
-        if (document.visibilityState === 'hidden') {
-          self.flush();
-        } else if (document.visibilityState === 'visible') {
-          self.restoreIfLocalEmpty();
-        }
-      });
     },
 
     saveProgress: function (options) {
@@ -541,6 +545,10 @@
     },
 
     notifyFastLearningDirty: function () {
+      if (typeof ProgressStore !== 'undefined' && ProgressStore.onFastLearningChanged) {
+        ProgressStore.onFastLearningChanged();
+        return;
+      }
       try { localStorage.setItem(FAST_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
       if (Auth && Auth.getUser()) {
         this.flush();
@@ -548,10 +556,202 @@
     },
 
     notifyAppProgressDirty: function () {
+      if (typeof ProgressStore !== 'undefined' && ProgressStore.onAppProgressChanged) {
+        ProgressStore.onAppProgressChanged();
+        return;
+      }
       try { localStorage.setItem(APP_DIRTY_KEY, '1'); } catch (e) { /* ignore */ }
       if (Auth && Auth.getUser()) {
         this.flush();
       }
+    },
+
+    pushFastLearningNow: async function () {
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = Auth && Auth.getClient ? Auth.getClient() : (Auth && Auth._client);
+      var user = Auth && Auth.getUser();
+      if (!client || !user) return { ok: false, reason: 'not_authenticated' };
+
+      var fObj = _safeParse(localStorage.getItem(FAST_LS_KEY), {});
+      var hasFast = _hasLocalFastData();
+      var hasWordle = false;
+      try {
+        var wl = _safeParse(localStorage.getItem(WORDLE_KEY), {});
+        hasWordle = _objectHasKeys(wl);
+      } catch (e) { /* ignore */ }
+      if (!hasFast && !hasWordle) return { ok: false, reason: 'empty' };
+
+      delete fObj._fastProgressUpdatedAt;
+      delete fObj._vocabStreaks;
+      delete fObj._wordleProgress;
+      fObj._vocabStreaks = _safeParse(localStorage.getItem(VOCAB_STREAKS_KEY));
+      fObj._wordleProgress = _safeParse(localStorage.getItem(WORDLE_KEY));
+      var completedAt = new Date().toISOString();
+      var lvl = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
+      var rowF = {
+        user_id: user.id,
+        level: lvl,
+        exam_id: 'fast_learning',
+        section: 'state',
+        part: 1,
+        answers: fObj,
+        score: null,
+        mode: 'fast',
+        completed_at: completedAt
+      };
+      var resF = await client.from('user_progress').upsert(rowF, { onConflict: 'user_id,exam_id,section,part,mode' });
+      if (resF.error) {
+        _logSyncError('fast learning immediate push failed', resF.error, rowF);
+        return { ok: false, error: resF.error };
+      }
+      try {
+        localStorage.removeItem(FAST_DIRTY_KEY);
+        var curF = _safeParse(localStorage.getItem(FAST_LS_KEY), {});
+        curF._fastProgressUpdatedAt = completedAt;
+        localStorage.setItem(FAST_LS_KEY, JSON.stringify(curF));
+      } catch (e5) { /* ignore */ }
+      return { ok: true };
+    },
+
+    pushAppProgressNow: async function () {
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = Auth && Auth.getClient ? Auth.getClient() : (Auth && Auth._client);
+      var user = Auth && Auth.getUser();
+      if (!client || !user) return { ok: false, reason: 'not_authenticated' };
+      if (!_hasLocalAppProgressData()) return { ok: false, reason: 'empty' };
+
+      var pushed = 0;
+      var failed = 0;
+
+      for (var li = 0; li < COURSE_LEVELS.length; li++) {
+        var level = COURSE_LEVELS[li];
+        var snapshot = _collectCoursePathSnapshot(level);
+        if (!_coursePathSnapshotHasData(snapshot)) continue;
+        var rowCp = {
+          user_id: user.id,
+          level: level,
+          exam_id: 'path',
+          section: level,
+          part: 1,
+          answers: snapshot,
+          score: null,
+          mode: 'course',
+          completed_at: snapshot.updatedAt
+        };
+        var resCp = await client.from('user_progress').upsert(rowCp, { onConflict: 'user_id,exam_id,section,part,mode' });
+        if (resCp.error) {
+          failed++;
+          _logSyncError('course path immediate push failed', resCp.error, rowCp);
+        } else {
+          pushed++;
+          try { localStorage.setItem('cambridge_course_path_sync_' + level, snapshot.updatedAt); } catch (e6) { /* ignore */ }
+        }
+      }
+
+      var suneIds = _collectSuneUnitIds();
+      for (var si = 0; si < suneIds.length; si++) {
+        var unitId = suneIds[si];
+        if (!_hasLocalSuneData(unitId)) continue;
+        var spKey = 'sune_play_progress_' + unitId;
+        var spObj = _safeParse(localStorage.getItem(spKey), { completedNodes: {}, completedExercises: {}, theoryCompleted: false });
+        var spUpdated = new Date().toISOString();
+        spObj.updatedAt = spUpdated;
+        var spLevel = spObj._level;
+        if (!spLevel) {
+          for (var lj = 0; lj < COURSE_LEVELS.length; lj++) {
+            var lvlGuess = COURSE_LEVELS[lj];
+            var cp = _safeParse(localStorage.getItem('cambridge_course_progress_' + lvlGuess));
+            var sp = _safeParse(localStorage.getItem('cambridge_course_section_progress_' + lvlGuess));
+            if (cp[unitId] || sp[unitId]) { spLevel = lvlGuess; break; }
+          }
+        }
+        if (!spLevel) spLevel = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'B1';
+        var rowSp = {
+          user_id: user.id,
+          level: spLevel,
+          exam_id: unitId,
+          section: 'sune_state',
+          part: 1,
+          answers: spObj,
+          score: null,
+          mode: 'course',
+          completed_at: spUpdated
+        };
+        var resSp = await client.from('user_progress').upsert(rowSp, { onConflict: 'user_id,exam_id,section,part,mode' });
+        if (resSp.error) {
+          failed++;
+          _logSyncError('sune state immediate push failed', resSp.error, rowSp);
+        } else {
+          pushed++;
+          try { localStorage.setItem('sune_play_sync_' + unitId, spUpdated); } catch (e7) { /* ignore */ }
+        }
+      }
+
+      var mixedPlan = null;
+      var mixedCompleted = [];
+      try {
+        var planRaw = localStorage.getItem(MIXED_PLAN_KEY);
+        if (planRaw) mixedPlan = JSON.parse(planRaw);
+        mixedCompleted = _safeParse(localStorage.getItem(MIXED_COMPLETED_KEY), []);
+      } catch (e8) { /* ignore */ }
+      if (mixedPlan || mixedCompleted.length) {
+        var mixedUpdated = new Date().toISOString();
+        var rowMx = {
+          user_id: user.id,
+          level: (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1',
+          exam_id: 'session',
+          section: 'state',
+          part: 1,
+          answers: { plan: mixedPlan, completed: mixedCompleted, updatedAt: mixedUpdated },
+          score: null,
+          mode: 'mixed',
+          completed_at: mixedUpdated
+        };
+        var resMx = await client.from('user_progress').upsert(rowMx, { onConflict: 'user_id,exam_id,section,part,mode' });
+        if (resMx.error) {
+          failed++;
+          _logSyncError('mixed session immediate push failed', resMx.error, rowMx);
+        } else {
+          pushed++;
+          try { localStorage.setItem('cambridge_mixed_session_sync', mixedUpdated); } catch (e9) { /* ignore */ }
+        }
+      }
+
+      var videoRaw = localStorage.getItem(VIDEO_KEY);
+      if (videoRaw) {
+        var videoObj = _safeParse(videoRaw);
+        if (_objectHasKeys(videoObj)) {
+          var videoUpdated = new Date().toISOString();
+          var rowVid = {
+            user_id: user.id,
+            level: (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1',
+            exam_id: 'all',
+            section: 'state',
+            part: 1,
+            answers: { progress: videoObj, updatedAt: videoUpdated },
+            score: null,
+            mode: 'video',
+            completed_at: videoUpdated
+          };
+          var resVid = await client.from('user_progress').upsert(rowVid, { onConflict: 'user_id,exam_id,section,part,mode' });
+          if (resVid.error) {
+            failed++;
+            _logSyncError('video progress immediate push failed', resVid.error, rowVid);
+          } else {
+            pushed++;
+            try { localStorage.setItem('cambridge_video_exercises_sync', videoUpdated); } catch (e10) { /* ignore */ }
+          }
+        }
+      }
+
+      if (pushed > 0) {
+        try { localStorage.removeItem(APP_DIRTY_KEY); } catch (eRm) { /* ignore */ }
+      }
+      return { ok: failed === 0, pushed: pushed, failed: failed };
     },
 
     pushAllLocalToCloud: async function () {
@@ -615,7 +815,9 @@
               }
               var cloudIso = row.completed_at;
               var localIso = localObj && localObj._fastProgressUpdatedAt;
-              if (localIso && cloudIso && new Date(localIso) >= new Date(cloudIso)) {
+              var localWordle = _safeParse(localStorage.getItem(WORDLE_KEY), {});
+              var localWordleEmpty = !_objectHasKeys(localWordle);
+              if (localIso && cloudIso && new Date(localIso) >= new Date(cloudIso) && !localWordleEmpty) {
                 _restoreFastExtrasFromBlob(row.answers);
                 return;
               }
