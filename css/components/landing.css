@@ -207,18 +207,6 @@ body.landing-open #app {
     margin: 0 auto 28px;
   }
 
-  .landing-screen--mobile-app .landing-mascot-shadow {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 72%;
-    height: 18px;
-    background: rgba(0, 0, 0, 0.12);
-    border-radius: 50%;
-    filter: blur(2px);
-  }
-
   .landing-screen--mobile-app .landing-mascot {
     position: relative;
     z-index: 1;

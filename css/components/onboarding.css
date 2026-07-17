@@ -187,11 +187,6 @@ body.onboarding-open #app {
   width: 100%;
 }
 
-.onboarding-path-option-text {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
 
 .onboarding-path-desc {
   font-size: 0.85rem;
@@ -386,6 +381,14 @@ body.onboarding-open .cu-lesson-exit-overlay {
   gap: 12px;
   flex: 1;
   min-width: 0;
+}
+
+.onboarding-path-option .onboarding-option-text {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
 }
 
 .onboarding-level-name {
