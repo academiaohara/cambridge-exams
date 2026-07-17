@@ -1037,6 +1037,24 @@
   font-weight: 600;
 }
 
+.explanation-card-text .explanation-term {
+  display: inline;
+  padding: 1px 7px;
+  margin: 0 1px;
+  border-radius: 8px;
+  font-weight: 800;
+  color: var(--ex-duo-purple-dark, #7c3aed);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.explanation-card.explanation-active .explanation-card-text .explanation-term {
+  color: #5b21b6;
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ex-duo-purple, #ce82ff) 55%, #fff);
+}
+
 /* Listening transcript in main content area */
 .listening-transcript-main {
   padding: 0;
