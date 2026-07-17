@@ -460,17 +460,17 @@
         .replace(/\*([^*]+?)\*/g, '<strong>$1</strong>');
     },
 
-    /** Quoted phrases in explanation copy → highlighted term (quotes removed). */
+    /** Double-quoted phrases in explanation copy → highlighted term (quotes removed). */
     _formatExplanationQuotedTerms: function(text) {
       var self = this;
       var raw = String(text == null ? '' : text);
-      var re = /\u201c([^\u201d]+)\u201d|"([^"]+)"|\u2018([^\u2019]+)\u2019|'([^']+)'/g;
+      var re = /\u201c([^\u201d]+)\u201d|"([^"]+)"/g;
       var out = '';
       var last = 0;
       var match;
       while ((match = re.exec(raw)) !== null) {
         out += self._escapeHtmlAttr(raw.slice(last, match.index));
-        var term = match[1] || match[2] || match[3] || match[4] || '';
+        var term = match[1] || match[2] || '';
         out += '<span class="explanation-term">' + self._escapeHtmlAttr(term) + '</span>';
         last = re.lastIndex;
       }
