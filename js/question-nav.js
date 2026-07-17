@@ -324,17 +324,19 @@
     },
 
     _buildPart6: function(question, qNum, isChecked, userAnswer) {
+      var keys;
       if (typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading()) {
         var texts = (AppState.currentExercise && AppState.currentExercise.content &&
           AppState.currentExercise.content.texts) || {};
-        var keys = (question.options || Object.keys(texts)).slice().sort(function(a, b) {
+        keys = (question.options || Object.keys(texts)).slice().sort(function(a, b) {
           return String(a).localeCompare(String(b));
         });
-        return this._buildQnavTextOptionRows(qNum, keys, texts, question, isChecked, userAnswer, 'answerPart6');
+      } else {
+        keys = question.options || [];
       }
 
       var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
-      (question.options || []).forEach(function(opt) {
+      keys.forEach(function(opt) {
         var isSelected = userAnswer === opt;
         var cls = 'qnav-opt-btn';
         if (isChecked) {
