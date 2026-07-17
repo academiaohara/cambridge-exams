@@ -461,7 +461,7 @@
     },
 
     /** Quoted phrases in explanation copy → highlighted term (quotes removed). */
-    formatExplanationText: function(text) {
+    _formatExplanationQuotedTerms: function(text) {
       var self = this;
       var raw = String(text == null ? '' : text);
       var re = /\u201c([^\u201d]+)\u201d|"([^"]+)"|\u2018([^\u2019]+)\u2019|'([^']+)'/g;
@@ -476,6 +476,27 @@
       }
       out += self._escapeHtmlAttr(raw.slice(last));
       return out;
+    },
+
+    /** Explanation copy with quoted-term highlights and word-formation transform chips. */
+    formatExplanationText: function(text) {
+      var self = this;
+      var raw = String(text == null ? '' : text).trim();
+      var wfMatch = raw.match(/^(.+?);\s*([A-Z][A-Z'-]*)\s*(?:\u2192|->)\s*([A-Z][A-Z'-]+)\.?$/);
+      if (wfMatch) {
+        var rule = wfMatch[1].trim();
+        var root = wfMatch[2];
+        var result = wfMatch[3];
+        return (
+          '<span class="explanation-card-rule">' + self._formatExplanationQuotedTerms(rule) + '</span>' +
+          '<span class="explanation-wf-chip" role="group" aria-label="' + self._escapeHtmlAttr(root + ' to ' + result) + '">' +
+          '<span class="explanation-wf-root">' + self._escapeHtmlAttr(root) + '</span>' +
+          '<span class="explanation-wf-arrow" aria-hidden="true">\u2192</span>' +
+          '<span class="explanation-wf-result">' + self._escapeHtmlAttr(result) + '</span>' +
+          '</span>'
+        );
+      }
+      return self._formatExplanationQuotedTerms(raw);
     },
 
     formatReadingPassageText: function(text) {
