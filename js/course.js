@@ -7439,9 +7439,12 @@
 
     _upsertCourseProgressToSupabase: async function(level, unitId, section, payload) {
       if (DashboardNav._isRestoringCuAnswers) return;
-      var client = window.Auth && window.Auth._client;
+      var client = window.Auth && window.Auth.getClient ? window.Auth.getClient() : (window.Auth && window.Auth._client);
       var user = window.Auth && window.Auth.getUser();
       if (!client || !user) return;
+      if (typeof window.Auth.ensureSessionOnClient === 'function') {
+        await window.Auth.ensureSessionOnClient();
+      }
       payload = payload || {};
       try {
         var result = await client.from('user_progress').upsert({
