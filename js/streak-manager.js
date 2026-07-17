@@ -40,11 +40,14 @@
 
     /** Push streak data to Supabase user_streaks table. */
     _syncToCloud: async function() {
-      var client = (typeof Auth !== 'undefined') && Auth._client;
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = (typeof Auth !== 'undefined') && (Auth.getClient ? Auth.getClient() : Auth._client);
       var user = (typeof Auth !== 'undefined') && Auth.getUser();
       if (!client || !user || !this.data) { return; }
       try {
-        await client
+        var result = await client
           .from('user_streaks')
           .upsert({
             user_id: user.id,
@@ -56,6 +59,9 @@
             updated_at: new Date().toISOString()
           })
           .select();
+        if (result.error) {
+          console.warn('[StreakManager] cloud sync error:', result.error.message || result.error);
+        }
       } catch (e) {
         console.warn('[StreakManager] cloud sync error:', e);
       }
@@ -63,7 +69,10 @@
 
     /** Restore streak data from Supabase (cloud wins if ahead). */
     restoreFromCloud: async function() {
-      var client = (typeof Auth !== 'undefined') && Auth._client;
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = (typeof Auth !== 'undefined') && (Auth.getClient ? Auth.getClient() : Auth._client);
       var user = (typeof Auth !== 'undefined') && Auth.getUser();
       if (!client || !user) { return; }
       try {

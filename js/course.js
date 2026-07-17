@@ -7464,10 +7464,13 @@
       } catch (e) {
         console.warn('[DashboardNav] Failed to save course progress to Supabase:', e);
       }
+      DashboardNav._notifyCourseProgressDirty();
     },
 
     _notifyCourseProgressDirty: function() {
-      if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
+      if (typeof ProgressStore !== 'undefined' && ProgressStore.onAppProgressChanged) {
+        ProgressStore.onAppProgressChanged();
+      } else if (typeof SyncManager !== 'undefined' && SyncManager.notifyAppProgressDirty) {
         SyncManager.notifyAppProgressDirty();
       }
     },

@@ -127,7 +127,9 @@
       if (!AppState.currentExamId || !AppState.currentSection) return;
       var key = this.getSectionTimerKey(AppState.currentExamId, AppState.currentSection);
       try { localStorage.setItem(key, String(AppState.sectionElapsedSeconds || 0)); } catch(e) { console.warn('Could not save section timer:', e); }
-      if (typeof SyncManager !== 'undefined' && SyncManager.requestSyncSoon) {
+      if (typeof ProgressStore !== 'undefined' && ProgressStore.onExamPartChanged) {
+        ProgressStore.onExamPartChanged();
+      } else if (typeof SyncManager !== 'undefined' && SyncManager.requestSyncSoon) {
         SyncManager.requestSyncSoon();
       }
     },
@@ -153,7 +155,9 @@
         data.synced = false;
       }
       try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) { console.warn('Could not save state:', e); }
-      if (typeof SyncManager !== 'undefined' && SyncManager.requestSyncSoon) {
+      if (typeof ProgressStore !== 'undefined' && ProgressStore.onExamPartChanged) {
+        ProgressStore.onExamPartChanged();
+      } else if (typeof SyncManager !== 'undefined' && SyncManager.requestSyncSoon) {
         SyncManager.requestSyncSoon();
       }
     },

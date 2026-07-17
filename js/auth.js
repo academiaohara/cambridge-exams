@@ -382,22 +382,25 @@
         Onboarding.markPendingForNewUser();
       }
 
-      if (typeof SyncManager !== 'undefined') {
+      if (typeof ProgressStore !== 'undefined') {
+        await Auth.ensureSessionOnClient();
+        await ProgressStore.restoreAll();
+      } else if (typeof SyncManager !== 'undefined') {
         await Auth.ensureSessionOnClient();
         await SyncManager.restoreFromCloud();
-      }
-      if (typeof StreakManager !== 'undefined') {
-        await StreakManager.restoreFromCloud();
-      }
-      if (typeof CrosswordSync !== 'undefined') {
-        CrosswordSync.migrateFromLegacy();
-        await CrosswordSync.restoreFromCloud();
-      }
-      if (typeof App !== 'undefined' && App.restoreExamStatuses) {
-        App.restoreExamStatuses();
-      }
-      if (typeof App !== 'undefined' && App.refreshProgressUI) {
-        App.refreshProgressUI();
+        if (typeof StreakManager !== 'undefined') {
+          await StreakManager.restoreFromCloud();
+        }
+        if (typeof CrosswordSync !== 'undefined') {
+          CrosswordSync.migrateFromLegacy();
+          await CrosswordSync.restoreFromCloud();
+        }
+        if (typeof App !== 'undefined' && App.restoreExamStatuses) {
+          App.restoreExamStatuses();
+        }
+        if (typeof App !== 'undefined' && App.refreshProgressUI) {
+          App.refreshProgressUI();
+        }
       }
       if (typeof SyncManager !== 'undefined') {
         SyncManager.start();

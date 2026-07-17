@@ -63,9 +63,14 @@
     // ── Restore from cloud ────────────────────────────────────────────────────
 
     restoreFromCloud: async function () {
-      var client = (typeof Auth !== 'undefined') && Auth._client;
+      var client = (typeof Auth !== 'undefined') && (Auth.getClient ? Auth.getClient() : Auth._client);
       var user   = (typeof Auth !== 'undefined') && Auth.getUser();
       if (!client || !user) return;
+
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+        client = Auth.getClient ? Auth.getClient() : Auth._client;
+      }
 
       try {
         var res = await client
@@ -179,7 +184,10 @@
     },
 
     _push: async function () {
-      var client = (typeof Auth !== 'undefined') && Auth._client;
+      if (typeof Auth !== 'undefined' && Auth.ensureSessionOnClient) {
+        await Auth.ensureSessionOnClient();
+      }
+      var client = (typeof Auth !== 'undefined') && (Auth.getClient ? Auth.getClient() : Auth._client);
       var user   = (typeof Auth !== 'undefined') && Auth.getUser();
       if (!client || !user) return;
 
