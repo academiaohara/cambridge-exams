@@ -485,6 +485,18 @@
         });
       });
     },
+
+    refreshProgressUI: function () {
+      this.restoreExamStatuses();
+      if (typeof Router === 'undefined' || typeof App === 'undefined') return;
+      var app = document.getElementById('app');
+      if (!app || app.style.display === 'none') return;
+      var state = Router.pathToState();
+      if (!state || state.view === 'landing' || state.view === 'login' || state.view === 'register' || state.view === 'welcome') {
+        return;
+      }
+      this.handleRoute(state);
+    },
     
     updateHeaderModeButtons: function() {
       if (typeof MainNav !== 'undefined' && MainNav.setActive) {

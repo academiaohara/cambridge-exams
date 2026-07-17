@@ -308,6 +308,9 @@
       if (typeof App !== 'undefined' && App.restoreExamStatuses) {
         App.restoreExamStatuses();
       }
+      if (typeof App !== 'undefined' && App.refreshProgressUI) {
+        App.refreshProgressUI();
+      }
       if (typeof SyncManager !== 'undefined') {
         SyncManager.start();
       }
