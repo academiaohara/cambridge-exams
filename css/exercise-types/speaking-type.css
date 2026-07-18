@@ -603,33 +603,39 @@
   }
 }
 
-/* Candidate tab indicator in images view (only the active speaker) */
+/* Candidate A/B task selector tabs in images view */
 .speaking-img-task-selector {
   display: flex;
   align-items: flex-end;
-  gap: 0;
+  gap: 0.25rem;
   padding: 0.65rem 1rem 0;
   border-bottom: 1px solid var(--border-light);
   background: #f1f5f9;
 }
-.speaking-img-task-tab {
+.speaking-img-task-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 1.1rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid transparent;
   border-bottom: none;
   border-radius: 8px 8px 0 0;
+  cursor: pointer;
   font-size: 0.82rem;
   font-weight: 600;
-  background: var(--white);
-  color: var(--primary);
+  background: transparent;
+  color: var(--text-medium);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   margin-bottom: -1px;
-  letter-spacing: 0.01em;
 }
-.speaking-img-task-tab i {
-  font-size: 0.75rem;
-  opacity: 0.85;
+.speaking-img-task-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text-dark);
+}
+.speaking-img-task-btn.active {
+  background: var(--white);
+  border-color: var(--border-light);
+  color: var(--primary);
 }
 
 
@@ -2052,10 +2058,12 @@
   color: var(--text-dark);
 }
 
-.speaking-type-wrapper--b1-duo .speaking-img-task-tab {
+.speaking-type-wrapper--b1-duo .speaking-img-task-btn {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 700;
-  border-color: var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-task-btn.active {
   color: var(--ex-duo-blue-dark, #1899d6);
 }
 
