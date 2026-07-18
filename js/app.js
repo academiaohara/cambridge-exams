@@ -254,11 +254,7 @@
       if (typeof ExamSession !== 'undefined') {
         ExamSession.init();
       }
-      
-      // Cargar nivel guardado
-      const savedLevel = localStorage.getItem('preferred_level') || 'C1';
-      AppState.currentLevel = savedLevel;
-      
+
       // Cargar modo guardado
       const savedMode = localStorage.getItem('preferred_mode') || 'practice';
       if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
@@ -266,12 +262,6 @@
       } else {
         AppState.currentMode = savedMode;
       }
-      
-      document.querySelectorAll('.level-btn').forEach(btn => {
-        if (btn.getAttribute('data-level') === savedLevel) {
-          btn.classList.add('active');
-        }
-      });
 
       await this.syncExamsFromFolders();
       
@@ -280,16 +270,17 @@
       
       // ── URL-based deep-link routing ──────────────────────────
       var initialState = Router.pathToState();
-      
-      // If the URL points to an exercise with a specific level, apply it
-      if (initialState.level) {
-        AppState.currentLevel = initialState.level;
-        // Re-sync for the target level if it changed
-        if (initialState.level !== savedLevel) {
-          await this.syncExamsFromFolders();
-          this.restoreExamStatuses();
+
+      // Default level: last test exercise (local or cloud). URL level wins on deep links.
+      AppState.currentLevel = initialState.level || (
+        (typeof LastTestActivity !== 'undefined') ? LastTestActivity.getLevel() : 'C1'
+      );
+
+      document.querySelectorAll('.level-btn').forEach(btn => {
+        if (btn.getAttribute('data-level') === AppState.currentLevel) {
+          btn.classList.add('active');
         }
-      }
+      });
       
       // If the URL indicates a mode, apply it
       if (initialState.mode) {

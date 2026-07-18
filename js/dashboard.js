@@ -708,7 +708,6 @@
     filterByLevel: function(level) {
       var prevLevel = AppState.currentLevel;
       AppState.currentLevel = level;
-      localStorage.setItem('preferred_level', level);
       if (prevLevel !== level && window.MixedTest && MixedTest.clear) {
         MixedTest.clear();
       }

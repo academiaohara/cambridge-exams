@@ -1643,10 +1643,6 @@
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
         Dashboard.filterByLevel(level);
       }
-      // Sync level with user profile
-      if (typeof UserProfile !== 'undefined' && UserProfile.updateProfile) {
-        UserProfile.updateProfile({ preferred_level: level });
-      }
     },
 
     _buildNextLessonLeftHtml: function(lesson) {
