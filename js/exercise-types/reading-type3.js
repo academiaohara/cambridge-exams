@@ -59,8 +59,11 @@
     },
 
     /** Inline pill (course-style cu-hint-pill); passage keeps the stem word after the gap, so we only wrap number + field. */
-    _renderPill: function(inner) {
-      return '<span class="cu-hint-pill reading-type3-wf-pill">' + inner + '</span>';
+    _renderPill: function(inner, opts) {
+      opts = opts || {};
+      var cls = 'cu-hint-pill reading-type3-wf-pill';
+      if (opts.example) cls += ' reading-type3-gap-pill--example';
+      return '<span class="' + cls + '">' + inner + '</span>';
     },
 
     /** Stem word in capitals (unchanged), shown inside the pill after the input / answer. */
@@ -80,7 +83,7 @@
         var inner = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
           '<span class="reading-type3-answered reading-type3-example-answer">' + exText + '</span>' +
           stemHint;
-        return outerOpen + this._renderPill(inner) + '</span>';
+        return outerOpen + this._renderPill(inner, { example: true }) + '</span>';
       }
 
       if (isChecked) {
