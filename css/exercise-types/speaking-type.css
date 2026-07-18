@@ -68,17 +68,13 @@
   justify-content: center;
 }
 
-/* ── Camera-feed layers (shared by featured tile + thumbnails) ──
-   The blurred avatar backdrop fills the tile like a real webcam background,
-   the shade keeps labels readable, and the portrait sits letterboxed on top. */
+/* ── Tile layers: room background + circular portrait on top ── */
 .speaking-tile-backdrop {
   position: absolute;
-  inset: -28px;
+  inset: 0;
   background-size: cover;
-  background-position: center 20%;
+  background-position: center center;
   background-color: #23233c;
-  filter: blur(26px) saturate(1.25) brightness(0.78);
-  transform: scale(1.12);
   z-index: 0;
 }
 .speaking-tile-backdrop--examiner { background-image: radial-gradient(circle at 50% 30%, #3d3d70 0%, #22224a 70%); }
@@ -240,7 +236,7 @@
   position: absolute;
   z-index: 0;
 }
-.speaking-stage-card .speaking-tile-backdrop { inset: -18px; filter: blur(18px) saturate(1.25) brightness(0.78); }
+.speaking-stage-card .speaking-tile-backdrop { inset: 0; }
 
 /* Gold card (user / candidate) */
 .speaking-stage-card--gold {
@@ -1860,7 +1856,6 @@
 }
 
 .speaking-type-wrapper--b1-duo .speaking-tile-backdrop {
-  filter: blur(22px) saturate(1.1) brightness(1.02);
   background-color: #e8eef7;
 }
 
@@ -2562,7 +2557,6 @@ body.speaking-call-lock {
 /* Keep dark, call-like fallback backdrops in fullscreen (overrides duo pastels) */
 .speaking-type-wrapper--call-fs .speaking-tile-backdrop {
   background-color: #23233c;
-  filter: blur(26px) saturate(1.25) brightness(0.78);
 }
 .speaking-type-wrapper--call-fs .speaking-tile-backdrop--examiner {
   background-image: radial-gradient(circle at 50% 30%, #3d3d70 0%, #22224a 70%);

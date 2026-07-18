@@ -258,24 +258,18 @@
     return CARD_PERSON_ICON;
   }
 
-  // Build the "camera feed" for a participant tile: a blurred room backdrop plus
-  // the portrait letterboxed on top (like a real video call). Falls back to a
-  // circular avatar for remote photos (e.g. Google profile pictures) and to a
-  // person silhouette when no image.
+  // Build the tile: room background image plus circular profile portrait on top.
   function _buildTileMedia(role, featured) {
     var img = _getAssignments()[role];
-    var isLocalPortrait = !!img && img.indexOf('/Assets/') === 0;
     var bgUrl = ROLE_BACKGROUNDS[role];
     var backdrop = bgUrl
       ? '<div class="speaking-tile-backdrop speaking-tile-backdrop--' + role + '" style="background-image:url(\'' + bgUrl + '\')"></div>'
       : '<div class="speaking-tile-backdrop speaking-tile-backdrop--' + role + '"></div>';
     var media;
-    if (isLocalPortrait) {
-      media = '<img src="' + img + '" alt="" class="speaking-tile-video" draggable="false">';
-    } else if (img) {
+    if (img) {
       media = featured
-        ? '<div class="speaking-stage-featured-avatar"><img src="' + img + '" alt="" class="speaking-featured-avatar"></div>'
-        : '<div class="speaking-stage-card-avatar"><img src="' + img + '" alt="" class="speaking-animal-avatar"></div>';
+        ? '<div class="speaking-stage-featured-avatar"><img src="' + img + '" alt="" class="speaking-featured-avatar" draggable="false"></div>'
+        : '<div class="speaking-stage-card-avatar"><img src="' + img + '" alt="" class="speaking-animal-avatar" draggable="false"></div>';
     } else {
       media = featured
         ? '<div class="speaking-stage-featured-avatar">' + CARD_PERSON_ICON + '</div>'
