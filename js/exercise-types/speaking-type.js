@@ -1511,7 +1511,16 @@
       var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
         var input = document.getElementById('speaking-text-input');
-        if (input) input.placeholder = 'Speech not supported';
+        if (input) input.placeholder = 'Speech not supported — type instead';
+        // In fullscreen call mode the input is collapsed: open it so the
+        // user can see the message and type their answer
+        if (this._fullscreenCall && !this._kbOpen) {
+          this._kbOpen = true;
+          var controls = document.querySelector('.speaking-controls--call');
+          if (controls) controls.classList.add('speaking-kb-open');
+          var kb = document.getElementById('speaking-kb-btn');
+          if (kb) kb.classList.add('speaking-call-round-btn--active');
+        }
         return;
       }
 
