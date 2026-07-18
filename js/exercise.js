@@ -555,7 +555,7 @@
           </div>
         </div>`;
       content.innerHTML = (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer._buildExerciseLayoutShell)
-        ? ExerciseRenderer._buildExerciseLayoutShell(loadingInner, '', section !== 'writing' && section !== 'speaking')
+        ? ExerciseRenderer._buildExerciseLayoutShell(loadingInner, '', section !== 'writing')
         : `<div class="exercise-container"><div class="loading-exercise">${loadingPaws}<h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div><div class="exercise-footer">${loadingFooterHTML}</div></div>`;
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer._applyExerciseDashboardChrome) {
         ExerciseRenderer._applyExerciseDashboardChrome();

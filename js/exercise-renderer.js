@@ -323,8 +323,8 @@
         ? this.renderMixedTestProgress()
         : this.renderPartNavigation(section, part, totalParts, examId);
       
-      // Build tools bar HTML (not for writing/speaking)
-      const showTools = section !== 'writing' && section !== 'speaking';
+      // Build tools bar HTML (not for writing; speaking keeps the right sidebar on desktop)
+      const showTools = section !== 'writing';
       const isExamMode = AppState.currentMode === 'exam';
       let toolsBarHTML = '';
       if (showTools) {
