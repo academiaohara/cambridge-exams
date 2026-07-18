@@ -40,7 +40,6 @@
           full_name: (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) || '',
           avatar_url: (user.user_metadata && user.user_metadata.avatar_url) || '',
           animal_avatar: animalAvatar,
-          preferred_level: AppState.currentLevel || 'C1',
           preferred_mode: AppState.currentMode || 'practice',
           preferred_language: 'en',
           role: 'user',
@@ -70,18 +69,14 @@
     },
 
     _applyPreferences: function (profile) {
-      if (profile.preferred_level) {
-        try { localStorage.setItem('preferred_level', profile.preferred_level); } catch (e) {}
-        // Keep the pinned exercise level while the user is mid-test.
-        if (AppState.currentView !== 'exercise') {
-          AppState.currentLevel = profile.preferred_level;
-        }
-      }
       if (profile.preferred_mode) {
         this.setPreferredMode(profile.preferred_mode);
       }
       if (profile.preferred_language) {
         try { localStorage.setItem('preferred_language', profile.preferred_language); } catch (e) {}
+      }
+      if (typeof LastTestActivity !== 'undefined') {
+        LastTestActivity.applyToAppState();
       }
     },
 
@@ -164,14 +159,6 @@
       var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
 
-      var levels = ['B1', 'B2', 'C1'];
-
-      function levelOptions(current) {
-        return levels.map(function (l) {
-          return '<option value="' + l + '"' + (l === current ? ' selected' : '') + '>' + l + '</option>';
-        }).join('');
-      }
-
       var panel = document.createElement('div');
       panel.id = 'user-profile-panel';
       panel.className = 'user-profile-panel';
@@ -191,12 +178,6 @@
             '<div class="profile-email">' + email + '</div>' +
           '</div>' +
         '</div>' +
-        '<div class="profile-prefs">' +
-          '<div class="pref-row">' +
-            '<label>Level</label>' +
-            '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select>' +
-          '</div>' +
-        '</div>' +
         '<div class="profile-sync-status" id="profile-sync-status"></div>' +
         '<button class="premium-plan-btn primary" style="margin:8px 20px;width:calc(100% - 40px)" onclick="UserProfile.closePanel(); UserProfile.renderProfileSection()">' +
           '<i class="fas fa-user-circle"></i> View Full Profile' +
@@ -213,55 +194,7 @@
     },
 
     _refreshPanelValues: function () {
-      var profile = this._profile || {};
-      var lvl = document.getElementById('pref-level');
-      if (lvl) { lvl.value = profile.preferred_level || AppState.currentLevel; }
-    },
-
-    _onPrefChange: async function () {
-      var level = document.getElementById('pref-level');
-      var newLevel = level ? level.value : AppState.currentLevel;
-      var updates = {
-        preferred_level: newLevel
-      };
-      var statusEl = document.getElementById('profile-sync-status');
-      var client = Auth && Auth._client;
-      var user = Auth && Auth.getUser && Auth.getUser();
-      if (!client || !user) {
-        // Guest mode: just apply locally and sync dashboard
-        AppState.currentLevel = newLevel;
-        try { localStorage.setItem('preferred_level', newLevel); } catch (e) {}
-        if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
-          Dashboard.filterByLevel(newLevel);
-        }
-        return;
-      }
-      if (statusEl) { statusEl.textContent = 'Saving…'; statusEl.className = 'profile-sync-status syncing'; }
-      var result = await this.updateProfile(updates);
-      if (statusEl) {
-        if (!result || result.error) {
-          statusEl.textContent = '';
-          var warnIcon = document.createElement('span');
-          warnIcon.className = 'material-symbols-outlined';
-          warnIcon.textContent = 'warning';
-          statusEl.appendChild(warnIcon);
-          statusEl.appendChild(document.createTextNode(' Could not save'));
-          statusEl.className = 'profile-sync-status error';
-        } else {
-          statusEl.textContent = '';
-          var okIcon = document.createElement('span');
-          okIcon.className = 'material-symbols-outlined';
-          okIcon.textContent = 'check_circle';
-          statusEl.appendChild(okIcon);
-          statusEl.appendChild(document.createTextNode(' Saved'));
-          statusEl.className = 'profile-sync-status saved';
-          setTimeout(function () { if (statusEl) { statusEl.textContent = ''; statusEl.className = 'profile-sync-status'; } }, 2000);
-          // Sync level change to dashboard after successful save
-          if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
-            Dashboard.filterByLevel(newLevel);
-          }
-        }
-      }
+      // Panel has no editable prefs besides sign-out / navigation.
     },
 
     // ── Select animal avatar ──────────────────────────────────────────
@@ -378,7 +311,8 @@
     },
 
     _getProfileStats: function () {
-      var level = AppState.currentLevel || 'C1';
+      var level = (typeof LastTestActivity !== 'undefined' ? LastTestActivity.getLevel() : null)
+        || AppState.currentLevel || 'C1';
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       var longestStreak = streak ? (streak.longestStreak || 0) : 0;

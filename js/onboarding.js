@@ -494,13 +494,6 @@
     _finalizeOnboarding: async function (courseLevel, passed, score, options) {
       options = options || {};
       AppState.currentLevel = courseLevel;
-      try {
-        localStorage.setItem('preferred_level', courseLevel);
-      } catch (e) { /* ignore */ }
-
-      if (AppState.isAuthenticated && typeof UserProfile !== 'undefined') {
-        await UserProfile.updateProfile({ preferred_level: courseLevel });
-      }
 
       markDone();
       _pendingNewUser = false;

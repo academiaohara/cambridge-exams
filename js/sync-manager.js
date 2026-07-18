@@ -185,6 +185,7 @@
     for (var j = 0; j < suneIds.length; j++) {
       if (_hasLocalSuneData(suneIds[j])) return true;
     }
+    if (typeof LastTestActivity !== 'undefined' && LastTestActivity.hasLocalData()) return true;
     return _hasLocalMixedSessionData() || _hasLocalVideoData();
   }
 
@@ -627,6 +628,16 @@
       var pushed = 0;
       var failed = 0;
 
+      if (typeof LastTestActivity !== 'undefined' && LastTestActivity.hasLocalData()) {
+        var lastTestRes = await LastTestActivity.pushToCloud(client, user);
+        if (lastTestRes && lastTestRes.error) {
+          failed++;
+          _logSyncError('last test activity immediate push failed', lastTestRes.error);
+        } else if (lastTestRes && lastTestRes.ok) {
+          pushed++;
+        }
+      }
+
       for (var li = 0; li < COURSE_LEVELS.length; li++) {
         var level = COURSE_LEVELS[li];
         var snapshot = _collectCoursePathSnapshot(level);
@@ -844,6 +855,13 @@
             return;
           }
 
+          if (row.mode === 'meta' && row.exam_id === 'last_test' && row.section === 'activity') {
+            if (typeof LastTestActivity !== 'undefined' && LastTestActivity.restoreFromCloudRow) {
+              LastTestActivity.restoreFromCloudRow(row);
+            }
+            return;
+          }
+
           if (!EXAM_MODES[row.mode] || !row.level || !row.exam_id) { return; }
 
           var sect = row.section;
@@ -965,6 +983,10 @@
           tasks.push({ kind: 'mixedSession' });
           tasks.push({ kind: 'videoProgress' });
         }
+        if (typeof LastTestActivity !== 'undefined' && LastTestActivity.hasLocalData()) {
+          hadAppTasks = true;
+          tasks.push({ kind: 'lastTestActivity' });
+        }
       } catch (e) { /* ignore */ }
 
       if (tasks.length === 0) { this._setStatus(''); return; }
@@ -973,7 +995,7 @@
       var success = 0;
       var failed = 0;
       var appFailed = 0;
-      var APP_KINDS = { coursePath: 1, suneState: 1, mixedSession: 1, videoProgress: 1 };
+      var APP_KINDS = { coursePath: 1, suneState: 1, mixedSession: 1, videoProgress: 1, lastTestActivity: 1 };
 
       for (var t = 0; t < tasks.length; t++) {
         var item = tasks[t];
@@ -1173,6 +1195,16 @@
             } else {
               success++;
               try { localStorage.setItem('cambridge_mixed_session_sync', mixedUpdated); } catch (e9) { /* ignore */ }
+            }
+          } else if (item.kind === 'lastTestActivity') {
+            if (typeof LastTestActivity === 'undefined' || !LastTestActivity.hasLocalData()) continue;
+            var lastTestPush = await LastTestActivity.pushToCloud(client, user);
+            if (lastTestPush && lastTestPush.error) {
+              failed++;
+              appFailed++;
+              _logSyncError('last test activity upsert failed', lastTestPush.error);
+            } else if (lastTestPush && lastTestPush.ok) {
+              success++;
             }
           } else if (item.kind === 'videoProgress') {
             var videoRaw = localStorage.getItem(VIDEO_KEY);

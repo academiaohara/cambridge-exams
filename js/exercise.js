@@ -496,6 +496,9 @@
       if (typeof DashboardNav !== 'undefined' && DashboardNav.setLastActiveTest) {
         DashboardNav.setLastActiveTest(AppState.currentLevel, examId);
       }
+      if (typeof LastTestActivity !== 'undefined') {
+        LastTestActivity.record(AppState.currentLevel, examId, section, part, AppState.currentMode || 'practice');
+      }
       
       let fileName = '';
       if (section === 'reading') fileName = `reading${part}.json`;
@@ -675,7 +678,8 @@
         
         Timer.startTimer();
         
-        var exState = { view: 'exercise', examId: examId, section: section, part: part, level: AppState.currentLevel, mode: AppState.currentMode };
+        var activeLevel = this.getActiveLevel();
+        var exState = { view: 'exercise', examId: examId, section: section, part: part, level: activeLevel, mode: AppState.currentMode };
         history.pushState(exState, '', Router.stateToPath(exState));
         
       } catch (error) {
