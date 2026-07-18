@@ -181,6 +181,31 @@
     return CARD_PERSON_ICON;
   }
 
+  // Build the "camera feed" for a participant tile: a blurred backdrop of their
+  // avatar image filling the tile, plus the portrait itself letterboxed on top
+  // (like a real video call). Falls back to a circular avatar for remote photos
+  // (e.g. Google profile pictures) and to a person silhouette when no image.
+  function _buildTileMedia(role, featured) {
+    var img = _getAssignments()[role];
+    var isLocalPortrait = !!img && img.indexOf('/Assets/') === 0;
+    var backdrop = img
+      ? '<div class="speaking-tile-backdrop" style="background-image:url(\'' + img + '\')"></div>'
+      : '<div class="speaking-tile-backdrop speaking-tile-backdrop--' + role + '"></div>';
+    var media;
+    if (isLocalPortrait) {
+      media = '<img src="' + img + '" alt="" class="speaking-tile-video" draggable="false">';
+    } else if (img) {
+      media = featured
+        ? '<div class="speaking-stage-featured-avatar"><img src="' + img + '" alt="" class="speaking-featured-avatar"></div>'
+        : '<div class="speaking-stage-card-avatar"><img src="' + img + '" alt="" class="speaking-animal-avatar"></div>';
+    } else {
+      media = featured
+        ? '<div class="speaking-stage-featured-avatar">' + CARD_PERSON_ICON + '</div>'
+        : '<div class="speaking-stage-card-avatar">' + CARD_PERSON_ICON + '</div>';
+    }
+    return backdrop + '<div class="speaking-tile-shade"></div>' + media;
+  }
+
   // B1 Speaking Part 2: examiner backup prompts if the candidate needs more ideas (main photo turn only)
   var B1_LONG_TURN_BACKUP_PROMPTS = [
     'Could you tell us a bit more about the people in the photograph?',
@@ -247,6 +272,9 @@
     _decisionTask: '',         // B2 decision instruction
     // AI partner for speaking3/4
     _hasAIPartner: false,
+    // Fullscreen call UI (mobile): behaves like a real video call
+    _fullscreenCall: false,
+    _kbOpen: false,            // keyboard/text input visible in fullscreen call
 
     _isB1DuoUi: function(exercise) {
       if (exercise && exercise._b1PetSpeakingUi) return true;
@@ -281,6 +309,7 @@
       this._longTurnMainTurnMicSeconds = 0;
       this._longTurnBackupsPlayed = 0;
       this._isTyping = false;
+      this._exitCallUI();
 
       // Detect phase-based interview mode
       this._interviewMode = !!(content.phases && content.phases.length);
@@ -431,13 +460,11 @@
         : featuredRole === 'examiner' ? 'Examiner'
         : partnerDisplayName;
 
-      // Build featured (big) area with animal avatar
+      // Build featured (big) area — blurred backdrop + portrait, like a camera feed
       var featuredHTML =
         '<div class="speaking-stage-featured" data-role="' + featuredRole + '">' +
-          '<div class="speaking-stage-featured-avatar">' +
-            _getAnimalAvatarHTML(featuredRole, 'speaking-featured-avatar') +
-          '</div>' +
-          '<div class="speaking-stage-featured-label">' + featuredLabel + '</div>' +
+          _buildTileMedia(featuredRole, true) +
+          '<div class="speaking-stage-featured-label"><span class="speaking-label-dot"></span>' + featuredLabel + '</div>' +
           '<div class="speaking-vc-indicator"></div>' +
         '</div>';
 
@@ -451,28 +478,22 @@
           : partnerDisplayName;
         thumbnailCards +=
           '<div class="speaking-stage-card speaking-stage-card--' + cardColor + '" data-role="' + role + '">' +
-            '<div class="speaking-stage-card-avatar">' +
-              _getAnimalAvatarHTML(role) +
-            '</div>' +
+            _buildTileMedia(role, false) +
             '<div class="speaking-stage-card-label">' + label + '</div>' +
             '<div class="speaking-vc-indicator"></div>' +
           '</div>';
       });
 
-      // Build speaking timer (countdown shown in stage)
+      // Build speaking timer (countdown shown in stage; in fullscreen it lives in the top bar)
       var timerHTML = '';
-      if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = this._getSpeakingTotalSeconds();
-        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
-        var mins = Math.floor(remaining / 60);
-        var secs = remaining % 60;
-        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+      if (this._conversationStarted && !this._conversationEnded && !this._fullscreenCall) {
         timerHTML = '<div class="speaking-stage-timer" id="speaking-stage-timer">' +
-          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + this._formatRemainingTime() + '</span>' +
         '</div>';
       }
 
       return '<div class="speaking-videocall speaking-stage">' +
+        this._buildCallTopBar() +
         '<div class="speaking-stage-scene">' +
           timerHTML +
           featuredHTML +
@@ -482,6 +503,69 @@
         '</div>' +
         '<div class="speaking-vc-status" id="speaking-vc-status"></div>' +
         this._buildControls() +
+      '</div>';
+    },
+
+    // ── Fullscreen call helpers (mobile "real video call" experience) ──
+
+    _isMobileViewport: function() {
+      return typeof window.matchMedia === 'function' &&
+        window.matchMedia('(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches;
+    },
+
+    _enterCallUI: function() {
+      if (this._fullscreenCall) return;
+      this._fullscreenCall = true;
+      this._kbOpen = false;
+      var wrapper = document.querySelector('.speaking-type-wrapper');
+      if (wrapper) wrapper.classList.add('speaking-type-wrapper--call-fs');
+      document.documentElement.classList.add('speaking-call-lock');
+      document.body.classList.add('speaking-call-lock');
+    },
+
+    _exitCallUI: function() {
+      if (!this._fullscreenCall && !document.body.classList.contains('speaking-call-lock')) return;
+      this._fullscreenCall = false;
+      this._kbOpen = false;
+      var wrapper = document.querySelector('.speaking-type-wrapper');
+      if (wrapper) wrapper.classList.remove('speaking-type-wrapper--call-fs');
+      document.documentElement.classList.remove('speaking-call-lock');
+      document.body.classList.remove('speaking-call-lock');
+    },
+
+    _formatRemainingTime: function() {
+      var totalSeconds = this._getSpeakingTotalSeconds();
+      var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+      var mins = Math.floor(remaining / 60);
+      var secs = remaining % 60;
+      return (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+    },
+
+    // Top bar shown only in fullscreen call mode: minimize, mode chips, timer
+    _buildCallTopBar: function() {
+      if (!this._fullscreenCall) return '';
+      var self = this;
+      var modes = [
+        { mode: 'videocall', icon: 'fa-video', title: 'Video Call' },
+        { mode: 'chat', icon: 'fa-comments', title: 'Chat' }
+      ];
+      if (this._longTurnMode) modes.push({ mode: 'images', icon: 'fa-images', title: 'Images' });
+      if (this._collaborativeMode) modes.push({ mode: 'options', icon: 'fa-th-list', title: 'Options' });
+      var chips = modes.map(function(m) {
+        return '<button class="speaking-toggle-btn speaking-fs-chip' + (self._viewMode === m.mode ? ' active' : '') + '" data-mode="' + m.mode + '" title="' + m.title + '">' +
+          '<i class="fas ' + m.icon + '"></i>' +
+        '</button>';
+      }).join('');
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded) {
+        timerHTML = '<div class="speaking-call-timer" id="speaking-call-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + this._formatRemainingTime() + '</span>' +
+        '</div>';
+      }
+      return '<div class="speaking-call-topbar">' +
+        '<button class="speaking-call-min-btn" id="speaking-minimize-btn" title="Minimize"><i class="fas fa-chevron-down"></i></button>' +
+        '<div class="speaking-call-modes">' + chips + '</div>' +
+        timerHTML +
       '</div>';
     },
 
@@ -495,18 +579,14 @@
 
       // Build timer for chat mode
       var timerHTML = '';
-      if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = this._getSpeakingTotalSeconds();
-        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
-        var mins = Math.floor(remaining / 60);
-        var secs = remaining % 60;
-        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+      if (this._conversationStarted && !this._conversationEnded && !this._fullscreenCall) {
         timerHTML = '<div class="speaking-chat-timer" id="speaking-chat-timer">' +
-          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + this._formatRemainingTime() + '</span>' +
         '</div>';
       }
 
       return '<div class="speaking-chat">' +
+        this._buildCallTopBar() +
         timerHTML +
         '<div class="speaking-chat-history" id="speaking-chat-history">' +
           (messagesHTML || '<div class="speaking-type-start-msg"><i class="fas fa-comments"></i> ' + 'The conversation has started' + '</div>') +
@@ -558,14 +638,9 @@
 
       // Build timer
       var timerHTML = '';
-      if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = this._getSpeakingTotalSeconds();
-        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
-        var mins = Math.floor(remaining / 60);
-        var secs = remaining % 60;
-        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+      if (this._conversationStarted && !this._conversationEnded && !this._fullscreenCall) {
         timerHTML = '<div class="speaking-chat-timer speaking-images-timer" id="speaking-chat-timer">' +
-          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + this._formatRemainingTime() + '</span>' +
         '</div>';
       }
 
@@ -578,6 +653,7 @@
       }
 
       return '<div class="speaking-images-view">' +
+        this._buildCallTopBar() +
         timerHTML +
         taskSelectorHTML +
         instructionsHTML +
@@ -603,14 +679,9 @@
 
       // Build timer
       var timerHTML = '';
-      if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = this._getSpeakingTotalSeconds();
-        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
-        var mins = Math.floor(remaining / 60);
-        var secs = remaining % 60;
-        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+      if (this._conversationStarted && !this._conversationEnded && !this._fullscreenCall) {
         timerHTML = '<div class="speaking-chat-timer speaking-options-timer" id="speaking-chat-timer">' +
-          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + this._formatRemainingTime() + '</span>' +
         '</div>';
       }
 
@@ -625,6 +696,7 @@
           : '';
 
         return '<div class="speaking-options-view speaking-spider-view">' +
+          this._buildCallTopBar() +
           timerHTML +
           '<div class="speaking-spider-layout">' +
             '<div class="speaking-spider-center">' + this._centralQuestion + '</div>' +
@@ -648,6 +720,7 @@
       }).join('');
 
       return '<div class="speaking-options-view">' +
+        this._buildCallTopBar() +
         timerHTML +
         (taskHTML ? '<div class="speaking-options-header">' + taskHTML + '</div>' : '') +
         '<div class="speaking-options-grid">' + optionsHTML + '</div>' +
@@ -684,8 +757,41 @@
       // (no AI fetching in interview mode — questions are selected locally)
       var current = this._script[this._scriptIndex];
       var isMine = current && current.role === 'candidate';
+
+      // Fullscreen call mode: floating circular controls like a real video call
+      if (this._fullscreenCall) {
+        return '<div class="speaking-controls speaking-controls--call' +
+            (this._kbOpen ? ' speaking-kb-open' : '') +
+            (this._isRecording ? ' speaking-live-rec' : '') + '">' +
+          (isMine ? '<div class="speaking-call-turn-hint" id="speaking-turn-indicator"><i class="fas fa-microphone"></i> ' + 'Your turn — tap the mic to speak' + '</div>' : '') +
+          (!isMine ? '<div class="speaking-skip-row speaking-call-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + 'Skip turn' + '</button></div>' : '') +
+          '<div class="speaking-call-caption-row">' +
+            '<input type="text" class="speaking-text-input" id="speaking-text-input" placeholder="' + 'Type your response...' + '"' + (isMine ? '' : ' disabled') + '>' +
+            '<button class="speaking-send-btn" id="speaking-send-btn"' + (isMine ? '' : ' disabled') + '>' +
+              '<i class="fas fa-paper-plane"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="speaking-call-btn-row">' +
+            '<button class="speaking-call-round-btn' + (this._kbOpen ? ' speaking-call-round-btn--active' : '') + '" id="speaking-kb-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Type instead' + '">' +
+              '<i class="fas fa-keyboard"></i>' +
+            '</button>' +
+            '<button class="speaking-call-round-btn speaking-call-mic" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
+              '<i class="fas fa-microphone"></i>' +
+            '</button>' +
+            '<button class="speaking-call-round-btn speaking-call-end" id="speaking-end-btn" title="' + 'End conversation' + '">' +
+              '<i class="fas fa-phone-slash"></i>' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      }
+
+      // Standard (inline) controls — the end-call button stays active even
+      // when it is not the candidate's turn
+      var expandBtn = (this._isMobileViewport() && !this._conversationEnded)
+        ? '<button class="speaking-expand-btn" id="speaking-expand-btn" title="' + 'Full screen call' + '"><i class="fas fa-expand"></i></button>'
+        : '';
       return '<div class="speaking-controls">' +
-        '<div class="speaking-input-row' + (isMine ? '' : ' speaking-input-disabled') + '">' +
+        '<div class="speaking-input-row">' +
           '<input type="text" class="speaking-text-input" id="speaking-text-input" placeholder="' + 'Type your response...' + '"' + (isMine ? '' : ' disabled') + '>' +
           '<button class="speaking-mic-btn" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
             '<i class="fas fa-microphone"></i>' +
@@ -693,6 +799,7 @@
           '<button class="speaking-send-btn" id="speaking-send-btn"' + (isMine ? '' : ' disabled') + '>' +
             '<i class="fas fa-paper-plane"></i>' +
           '</button>' +
+          expandBtn +
           '<button class="speaking-end-btn" id="speaking-end-btn" title="' + 'End conversation' + '">' +
             '<i class="fas fa-phone-slash"></i>' +
           '</button>' +
@@ -758,6 +865,37 @@
         endBtn.onclick = function() { self._endConversation(); };
       }
 
+      // Fullscreen call: keyboard toggle, minimize, expand
+      var kbBtn = document.getElementById('speaking-kb-btn');
+      if (kbBtn) {
+        kbBtn.onclick = function() {
+          self._kbOpen = !self._kbOpen;
+          var controls = document.querySelector('.speaking-controls--call');
+          if (controls) controls.classList.toggle('speaking-kb-open', self._kbOpen);
+          kbBtn.classList.toggle('speaking-call-round-btn--active', self._kbOpen);
+          if (self._kbOpen) {
+            var inp = document.getElementById('speaking-text-input');
+            if (inp) inp.focus();
+          }
+        };
+      }
+
+      var minBtn = document.getElementById('speaking-minimize-btn');
+      if (minBtn) {
+        minBtn.onclick = function() {
+          self._exitCallUI();
+          self._refreshView();
+        };
+      }
+
+      var expandBtn = document.getElementById('speaking-expand-btn');
+      if (expandBtn) {
+        expandBtn.onclick = function() {
+          self._enterCallUI();
+          self._refreshView();
+        };
+      }
+
       sim.querySelectorAll('.speaking-img-card').forEach(function(card) {
         card.addEventListener('click', function(ev) {
           ev.stopPropagation();
@@ -786,6 +924,10 @@
       this._conversationStarted = true;
       this._scriptIndex = 0;
       this._messages = [];
+      // On mobile, open the immersive fullscreen call UI
+      if (this._isMobileViewport()) {
+        this._enterCallUI();
+      }
       // Start the speaking countdown timer
       this._startSpeakingTimer();
       this._refreshView();
@@ -827,8 +969,8 @@
           var mins = Math.floor(remaining / 60);
           var secs = remaining % 60;
           display.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
-          // Color coding for both videocall and chat timers
-          var timerEl = document.getElementById('speaking-stage-timer') || document.getElementById('speaking-chat-timer');
+          // Color coding for videocall, chat and fullscreen-call timers
+          var timerEl = document.getElementById('speaking-stage-timer') || document.getElementById('speaking-chat-timer') || document.getElementById('speaking-call-timer');
           if (timerEl) {
             timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger');
             if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
@@ -1435,6 +1577,9 @@
       var btn = document.getElementById('speaking-mic-btn');
       if (!btn) return;
       var indicator = document.getElementById('speaking-turn-indicator');
+      // In fullscreen call mode, show the live-caption row while recording
+      var callControls = document.querySelector('.speaking-controls--call');
+      if (callControls) callControls.classList.toggle('speaking-live-rec', this._isRecording);
       if (this._isRecording) {
         btn.classList.add('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-stop"></i>';
@@ -1445,7 +1590,7 @@
         btn.classList.remove('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-microphone"></i>';
         if (indicator) {
-          indicator.innerHTML = '<i class="fas fa-microphone"></i> ' + 'Press the microphone button to speak';
+          indicator.innerHTML = '<i class="fas fa-microphone"></i> ' + (callControls ? 'Your turn — tap the mic to speak' : 'Press the microphone button to speak');
         }
       }
     },
@@ -1456,6 +1601,8 @@
       if (this._conversationEnded) return;
       this._conversationEnded = true;
       this._activeSpeaker = null;
+      // Leave the fullscreen call so the evaluation/score card is visible
+      this._exitCallUI();
       // Stop the speaking countdown timer
       this._stopSpeakingTimer();
       if (this._isRecording) {
@@ -1832,11 +1979,11 @@
         } else {
           el.classList.remove('speaking-stage--speaking');
         }
-        // Update indicator
+        // Update indicator — animated equalizer bars like a live call
         var indicator = el.querySelector('.speaking-vc-indicator');
         if (indicator) {
           if (role === active) {
-            indicator.innerHTML = '<span class="speaking-pulse"></span> ' + 'Speaking...';
+            indicator.innerHTML = '<span class="speaking-eq"><i></i><i></i><i></i><i></i></span><span class="speaking-eq-label">' + 'Speaking…' + '</span>';
             indicator.classList.add('speaking-vc-indicator--active');
           } else {
             indicator.innerHTML = '';
@@ -1883,6 +2030,7 @@
 
     cleanup: function() {
       this._stopSpeakingTimer();
+      this._exitCallUI();
       this._isTyping = false;
       if (this._isRecording) {
         this._isRecording = false;
