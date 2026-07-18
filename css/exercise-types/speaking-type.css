@@ -442,21 +442,23 @@
   top: 0.75rem;
   right: 0.75rem;
   z-index: 10;
-  display: flex; align-items: center; gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #e2e8f0;
-  font-size: 0.85rem;
-  font-weight: 600;
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #f8fafc;
+  font-size: 0.88rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.28);
 }
-.speaking-stage-timer i { font-size: 0.75rem; opacity: 0.8; }
-.speaking-timer-warning { color: #fbbf24; }
-.speaking-timer-danger { color: #ef4444; animation: speaking-timer-blink 1s ease-in-out infinite; }
-.speaking-timer-paused { opacity: 0.72; }
-.speaking-timer-paused i.fa-hourglass-half::before { content: "\f252"; }
+.speaking-stage-timer i { font-size: 0.78rem; opacity: 0.85; }
+.speaking-timer-warning { color: #fbbf24; border-color: rgba(251, 191, 36, 0.35); }
+.speaking-timer-danger { color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); animation: speaking-timer-blink 1s ease-in-out infinite; }
 @keyframes speaking-timer-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
@@ -516,6 +518,14 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  min-height: 0;
+}
+
+.speaking-images-scroll {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
 }
 
 .speaking-images-view .speaking-images-timer {
@@ -556,26 +566,46 @@
   padding: 1rem;
 }
 
-/* Long-turn photo carousel — one large image with prev/next arrows */
+/* Long-turn photo carousel — one large image with prev/next controls */
 .speaking-img-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 1rem;
+  min-height: 0;
+  flex: 1;
+}
+
+.speaking-img-carousel-body {
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  padding: 1rem 0.75rem 1.25rem;
-  min-height: 280px;
 }
 
 .speaking-img-carousel-frame {
-  flex: 1;
-  width: 100%;
-  max-width: min(100%, 760px);
   position: relative;
+  width: 100%;
+  max-width: min(100%, 820px);
+  margin: 0 auto;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(15, 23, 42, 0.18);
-  background: #0f172a;
+  background: #f1f5f9;
   aspect-ratio: 4 / 3;
+  touch-action: none;
+}
+
+.speaking-img-zoom-layer {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  will-change: transform;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
 
 .speaking-img-carousel .speaking-img-main {
@@ -583,7 +613,13 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  background: #0f172a;
+  background: #f1f5f9;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.speaking-img-carousel-frame--zoomed .speaking-img-main {
+  cursor: grab;
 }
 
 .speaking-img-carousel .speaking-img-label {
@@ -591,6 +627,23 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.speaking-img-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.speaking-img-nav-counter {
+  min-width: 3.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-medium);
+  font-variant-numeric: tabular-nums;
 }
 
 .speaking-img-nav {
@@ -618,6 +671,17 @@
 
 .speaking-img-nav:active {
   transform: scale(0.96);
+}
+
+/* Desktop: side-by-side layout with nav below centered */
+@media (min-width: 769px) {
+  .speaking-img-carousel {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .speaking-img-carousel-frame {
+    min-height: 320px;
+  }
 }
 
 /* B1 PET Part 2: one photograph per candidate */
@@ -663,17 +727,31 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .speaking-img-carousel {
-    gap: 0.4rem;
-    padding: 0.75rem 0.5rem 1rem;
-    min-height: 220px;
+    gap: 0.55rem;
+    padding: 0.5rem 0.65rem 0.65rem;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .speaking-img-carousel-body {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .speaking-img-carousel-frame {
+    aspect-ratio: unset;
+    height: 100%;
+    min-height: 200px;
+    max-width: none;
+    border-radius: 10px;
   }
 
   .speaking-img-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 0.9rem;
+    width: 42px;
+    height: 42px;
+    font-size: 0.95rem;
   }
 
   .speaking-images-grid:not(.speaking-images-grid--one) {
@@ -735,13 +813,14 @@
   right: 0.5rem;
   z-index: 10;
   display: flex; align-items: center; gap: 0.35rem;
-  padding: 0.3rem 0.65rem;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.06);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
   color: var(--text-medium);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 .speaking-chat-timer i { font-size: 0.7rem; opacity: 0.7; }
 .speaking-chat-timer.speaking-timer-warning { color: #d97706; }
@@ -2158,6 +2237,23 @@
 .speaking-type-wrapper--b1-duo .speaking-img-carousel-frame {
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  aspect-ratio: unset;
+  min-height: 280px;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-carousel .speaking-img-main {
+  object-fit: cover;
+  background: #fff;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-zoom-layer {
+  height: 100%;
+  min-height: inherit;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-carousel-body {
+  min-height: 280px;
 }
 
 /* Options view (collaborative) */
@@ -2543,14 +2639,16 @@ body.speaking-call-lock {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.3rem 0.65rem;
+  padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
-  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  font-size: 0.8rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  letter-spacing: 0.02em;
 }
 .speaking-call-timer i { font-size: 0.68rem; opacity: 0.8; }
 .speaking-call-timer.speaking-timer-warning { color: #fbbf24; }
@@ -2708,16 +2806,60 @@ body.speaking-call-lock {
 }
 .speaking-type-wrapper--call-fs .speaking-type-start-msg { color: #94a3b8; }
 
-/* ── Images / options views in fullscreen: scrollable content ── */
+/* ── Images / options views in fullscreen: scrollable content, fixed controls ── */
 .speaking-type-wrapper--call-fs .speaking-images-view,
 .speaking-type-wrapper--call-fs .speaking-options-view,
 .speaking-type-wrapper--call-fs .speaking-spider-view {
   background: var(--white, #fff);
+  min-height: 0;
 }
+
+.speaking-type-wrapper--call-fs .speaking-images-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.speaking-type-wrapper--call-fs .speaking-images-view .speaking-controls,
+.speaking-type-wrapper--call-fs .speaking-options-view .speaking-controls {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.speaking-type-wrapper--call-fs .speaking-img-carousel {
+  flex: 1;
+  min-height: 0;
+}
+
+.speaking-type-wrapper--call-fs .speaking-img-carousel-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.speaking-type-wrapper--call-fs .speaking-img-carousel-frame {
+  height: 100%;
+  aspect-ratio: unset;
+  min-height: 180px;
+}
+
 .speaking-type-wrapper--call-fs .speaking-images-grid,
 .speaking-type-wrapper--call-fs .speaking-options-grid,
 .speaking-type-wrapper--call-fs .speaking-spider-layout {
   overflow-y: auto;
   flex: 1;
   min-height: 0;
+}
+
+.speaking-type-wrapper--call-fs.speaking-type-wrapper--b1-duo .speaking-img-carousel-frame {
+  min-height: 0;
+}
+
+.speaking-type-wrapper--call-fs.speaking-type-wrapper--b1-duo .speaking-img-carousel-body {
+  min-height: 0;
+}
+
+.speaking-type-wrapper--call-fs.speaking-type-wrapper--b1-duo .speaking-img-carousel .speaking-img-main {
+  object-fit: cover;
 }

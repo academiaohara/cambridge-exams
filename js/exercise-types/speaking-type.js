@@ -262,6 +262,7 @@
     _longTurnTasks: [],
     _longTurnTaskIndex: 0,
     _longTurnImageIndex: 0,
+    _imgZoomState: { scale: 1, tx: 0, ty: 0 },
     _aiCandidateLabel: null,     // 'A' or 'B' — which label the AI candidate has
     _userCandidateLabel: null,   // 'A' or 'B' — which label the human user has
     _isAIGenerating: false,
@@ -611,17 +612,22 @@
       if (currentImg) {
         imagesHTML =
           '<div class="speaking-img-carousel">' +
-            (hasMultiple
-              ? '<button type="button" class="speaking-img-nav speaking-img-nav--prev" id="speaking-img-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>'
-              : '') +
-            '<div class="speaking-img-carousel-frame">' +
-              '<img src="' + currentImg.url + '" alt="Photo ' + currentImg.label + '" class="speaking-img-main" loading="lazy">' +
-              '<div class="speaking-img-label">Photo ' + currentImg.label +
-                (hasMultiple ? ' (' + (imageIndex + 1) + '/' + images.length + ')' : '') +
+            '<div class="speaking-img-carousel-body">' +
+              '<div class="speaking-img-carousel-frame" id="speaking-img-frame">' +
+                '<div class="speaking-img-zoom-layer" id="speaking-img-zoom">' +
+                  '<img src="' + currentImg.url + '" alt="Photo ' + currentImg.label + '" class="speaking-img-main" id="speaking-img-active" loading="lazy" draggable="false">' +
+                '</div>' +
+                '<div class="speaking-img-label">Photo ' + currentImg.label +
+                  (hasMultiple ? ' (' + (imageIndex + 1) + '/' + images.length + ')' : '') +
+                '</div>' +
               '</div>' +
             '</div>' +
             (hasMultiple
-              ? '<button type="button" class="speaking-img-nav speaking-img-nav--next" id="speaking-img-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>'
+              ? '<div class="speaking-img-nav-row">' +
+                  '<button type="button" class="speaking-img-nav speaking-img-nav--prev" id="speaking-img-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>' +
+                  '<span class="speaking-img-nav-counter">' + (imageIndex + 1) + ' / ' + images.length + '</span>' +
+                  '<button type="button" class="speaking-img-nav speaking-img-nav--next" id="speaking-img-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>' +
+                '</div>'
               : '') +
           '</div>';
       }
@@ -662,9 +668,11 @@
       return '<div class="speaking-images-view">' +
         this._buildCallTopBar() +
         timerHTML +
-        taskSelectorHTML +
-        instructionsHTML +
-        imagesHTML +
+        '<div class="speaking-images-scroll">' +
+          taskSelectorHTML +
+          instructionsHTML +
+          imagesHTML +
+        '</div>' +
         this._buildControls() +
       '</div>';
     },
@@ -674,6 +682,7 @@
       if (taskIndex >= 0 && taskIndex < this._longTurnTasks.length) {
         this._longTurnTaskIndex = taskIndex;
         this._longTurnImageIndex = 0;
+        this._imgZoomState = { scale: 1, tx: 0, ty: 0 };
         this._switchMode('images');
       }
     },
@@ -683,7 +692,100 @@
       if (!task || !task.images || task.images.length <= 1) return;
       var len = task.images.length;
       this._longTurnImageIndex = ((this._longTurnImageIndex || 0) + delta + len) % len;
+      this._imgZoomState = { scale: 1, tx: 0, ty: 0 };
       this._switchMode('images');
+    },
+
+    _touchDistance: function(t1, t2) {
+      var dx = t1.clientX - t2.clientX;
+      var dy = t1.clientY - t2.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    },
+
+    _applyImageZoomTransform: function() {
+      var layer = document.getElementById('speaking-img-zoom');
+      if (!layer) return;
+      var s = this._imgZoomState;
+      layer.style.transform = 'translate(' + s.tx + 'px, ' + s.ty + 'px) scale(' + s.scale + ')';
+      var frame = document.getElementById('speaking-img-frame');
+      if (frame) frame.classList.toggle('speaking-img-carousel-frame--zoomed', s.scale > 1.02);
+    },
+
+    _resetImageZoom: function() {
+      this._imgZoomState = { scale: 1, tx: 0, ty: 0 };
+      this._applyImageZoomTransform();
+    },
+
+    _bindImageCarouselGestures: function() {
+      var self = this;
+      var frame = document.getElementById('speaking-img-frame');
+      if (!frame || frame._speakingGesturesBound) return;
+      frame._speakingGesturesBound = true;
+
+      self._resetImageZoom();
+
+      var touchState = {
+        pinchStartDist: 0,
+        pinchStartScale: 1,
+        panStartX: 0,
+        panStartY: 0,
+        swipeStartX: 0,
+        swipeStartY: 0,
+        swiping: false,
+        pinching: false
+      };
+
+      frame.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+          touchState.pinching = true;
+          touchState.swiping = false;
+          touchState.pinchStartDist = self._touchDistance(e.touches[0], e.touches[1]);
+          touchState.pinchStartScale = self._imgZoomState.scale;
+          e.preventDefault();
+        } else if (e.touches.length === 1) {
+          touchState.swipeStartX = e.touches[0].clientX;
+          touchState.swipeStartY = e.touches[0].clientY;
+          touchState.swiping = self._imgZoomState.scale <= 1.02;
+          if (!touchState.swiping) {
+            touchState.panStartX = e.touches[0].clientX - self._imgZoomState.tx;
+            touchState.panStartY = e.touches[0].clientY - self._imgZoomState.ty;
+          }
+        }
+      }, { passive: false });
+
+      frame.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2 && touchState.pinching) {
+          var dist = self._touchDistance(e.touches[0], e.touches[1]);
+          var scale = Math.min(4, Math.max(1, touchState.pinchStartScale * (dist / touchState.pinchStartDist)));
+          self._imgZoomState.scale = scale;
+          if (scale <= 1) {
+            self._imgZoomState.tx = 0;
+            self._imgZoomState.ty = 0;
+          }
+          self._applyImageZoomTransform();
+          e.preventDefault();
+        } else if (e.touches.length === 1 && self._imgZoomState.scale > 1.02) {
+          self._imgZoomState.tx = e.touches[0].clientX - touchState.panStartX;
+          self._imgZoomState.ty = e.touches[0].clientY - touchState.panStartY;
+          self._applyImageZoomTransform();
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      frame.addEventListener('touchend', function(e) {
+        if (touchState.pinching && e.touches.length < 2) {
+          touchState.pinching = false;
+          if (self._imgZoomState.scale < 1.05) self._resetImageZoom();
+        }
+        if (e.changedTouches.length && touchState.swiping && !touchState.pinching && self._imgZoomState.scale <= 1.02) {
+          var dx = e.changedTouches[0].clientX - touchState.swipeStartX;
+          var dy = e.changedTouches[0].clientY - touchState.swipeStartY;
+          if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            self.navigateLongTurnImage(dx < 0 ? 1 : -1);
+          }
+        }
+        touchState.swiping = false;
+      });
     },
 
     // ── Options view (collaborative task panels for speaking3) ──
@@ -920,6 +1022,8 @@
       if (imgNext) {
         imgNext.onclick = function() { self.navigateLongTurnImage(1); };
       }
+
+      self._bindImageCarouselGestures();
     },
 
     // ── Conversation flow ──
@@ -932,38 +1036,21 @@
       return (ex && ex.time ? ex.time : 10) * 60;
     },
 
-    _isTimerCounting: function() {
-      if (!this._conversationStarted || this._conversationEnded) return false;
-      var current = this._script[this._scriptIndex];
-      if (!current) return false;
-      var b1LongTurn = this._longTurnMode && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
-      if (b1LongTurn) {
-        // B1 Part 2: countdown only during the one-minute photo description (not follow-ups)
-        return !!(current.showImagesOnStart && !current.isFollowUp && (this._isRecording || this._isTyping));
-      }
-      // Other parts: count only while the candidate is actively responding
-      return current.role === 'candidate' && (this._isRecording || this._isTyping);
-    },
-
-    _resetTurnTimer: function() {
-      this._speakingElapsed = 0;
-      this._syncTimerDisplay();
-    },
-
     _syncTimerDisplay: function() {
       var display = document.getElementById('speaking-timer-display');
       if (!display) return;
-      display.textContent = this._formatRemainingTime();
       var totalSeconds = this._getSpeakingTotalSeconds();
       var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+      var mins = Math.floor(remaining / 60);
+      var secs = remaining % 60;
+      display.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
       var timerEl = document.getElementById('speaking-stage-timer')
         || document.getElementById('speaking-chat-timer')
         || document.getElementById('speaking-call-timer');
       if (!timerEl) return;
-      timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger', 'speaking-timer-paused');
+      timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger');
       if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
       else if (remaining <= 60) timerEl.classList.add('speaking-timer-warning');
-      if (!this._isTimerCounting()) timerEl.classList.add('speaking-timer-paused');
     },
 
     _startConversation: function() {
@@ -987,12 +1074,15 @@
       this._speakingTimerInterval = setInterval(function() {
         var totalSeconds = self._getSpeakingTotalSeconds();
         var b1LongTurn = self._longTurnMode && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
-        if (self._isTimerCounting()) {
+        var countTick = b1LongTurn
+          ? self._isRecording
+          : (self._isRecording || self._isTyping);
+        if (countTick) {
           self._speakingElapsed++;
         }
         if (b1LongTurn && self._isRecording) {
           var cur = self._script[self._scriptIndex];
-          if (cur && cur.showImagesOnStart && !cur.isFollowUp) {
+          if (cur && cur.role === 'candidate' && cur.showImagesOnStart && !cur.isFollowUp) {
             self._longTurnMainTurnMicSeconds = (self._longTurnMainTurnMicSeconds || 0) + 1;
             var thresholds = [20, 40, 52];
             var played = self._longTurnBackupsPlayed || 0;
@@ -1051,7 +1141,6 @@
         if (this._longTurnMode && turn.showImagesOnStart && !turn.isFollowUp) {
           this._longTurnMainTurnMicSeconds = 0;
           this._longTurnBackupsPlayed = 0;
-          this._resetTurnTimer();
         }
         // Auto-switch to images mode for the photo-description main turn
         if (this._longTurnMode && turn.showImagesOnStart) {
@@ -1065,9 +1154,6 @@
       // Long-turn partner (AI) turn: generate response via API
       if (this._longTurnMode && turn.role === 'partner' && !turn.text) {
         this._activeSpeaker = 'partner';
-        if (turn.showImagesOnStart && !turn.isFollowUp) {
-          this._resetTurnTimer();
-        }
         // Auto-switch to images mode if this is a main photo description turn
         if (turn.showImagesOnStart) {
           this._switchMode('images');
