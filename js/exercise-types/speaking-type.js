@@ -1602,6 +1602,8 @@
           indicator.innerHTML = '<i class="fas fa-microphone"></i> ' + (callControls ? 'Your turn — tap the mic to speak' : 'Press the microphone button to speak');
         }
       }
+      // Keep the tile speaking-indicator in sync with the recording state
+      this._updateView();
     },
 
     // ── End conversation and evaluate ──
@@ -1981,6 +1983,9 @@
       // Update stage elements (examiner + candidate cards)
       var stageElements = document.querySelectorAll('[data-role]');
       var active = this._activeSpeaker;
+      // When it's the candidate's turn but they are not recording yet,
+      // show "Your turn" instead of a fake speaking indicator
+      var candidateWaiting = active === 'candidate' && !this._isRecording;
       stageElements.forEach(function(el) {
         var role = el.getAttribute('data-role');
         if (role === active) {
@@ -1992,7 +1997,9 @@
         var indicator = el.querySelector('.speaking-vc-indicator');
         if (indicator) {
           if (role === active) {
-            indicator.innerHTML = '<span class="speaking-eq"><i></i><i></i><i></i><i></i></span><span class="speaking-eq-label">' + 'Speaking…' + '</span>';
+            indicator.innerHTML = (role === 'candidate' && candidateWaiting)
+              ? '<i class="fas fa-microphone"></i><span class="speaking-eq-label">' + 'Your turn' + '</span>'
+              : '<span class="speaking-eq"><i></i><i></i><i></i><i></i></span><span class="speaking-eq-label">' + 'Speaking…' + '</span>';
             indicator.classList.add('speaking-vc-indicator--active');
           } else {
             indicator.innerHTML = '';

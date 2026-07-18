@@ -104,6 +104,17 @@
   -webkit-user-drag: none;
 }
 
+/* Soft fade when the featured speaker swaps to avoid abrupt layout jumps */
+.speaking-stage-featured .speaking-tile-video,
+.speaking-stage-featured .speaking-stage-featured-avatar,
+.speaking-stage-featured .speaking-tile-backdrop {
+  animation: speaking-tile-fade 0.35s ease;
+}
+@keyframes speaking-tile-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ── Featured area (big speaker) ── */
 .speaking-stage-featured {
   flex: 1 1 0;
@@ -1702,6 +1713,18 @@
 
 .speaking-type-wrapper--b1-duo .speaking-tile-backdrop {
   filter: blur(22px) saturate(1.1) brightness(1.02);
+  background-color: #e8eef7;
+}
+
+/* Light pastel fallback gradients matching the duo theme */
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop--examiner {
+  background-image: radial-gradient(circle at 50% 30%, #ddf4ff 0%, #b5dff2 75%);
+}
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop--candidate {
+  background-image: radial-gradient(circle at 50% 30%, #e6ffd4 0%, #bfe8a8 75%);
+}
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop--partner {
+  background-image: radial-gradient(circle at 50% 30%, #fff0e6 0%, #f5cfae 75%);
 }
 
 .speaking-type-wrapper--b1-duo .speaking-tile-shade {
@@ -2375,6 +2398,25 @@ body.speaking-call-lock {
   min-height: 0;
   border: none;
   box-shadow: none;
+  background: #16162e;
+}
+
+/* Keep dark, call-like fallback backdrops in fullscreen (overrides duo pastels) */
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop {
+  background-color: #23233c;
+  filter: blur(26px) saturate(1.25) brightness(0.78);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop--examiner {
+  background-image: radial-gradient(circle at 50% 30%, #3d3d70 0%, #22224a 70%);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop--candidate {
+  background-image: radial-gradient(circle at 50% 30%, #1e4b3a 0%, #14322a 70%);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop--partner {
+  background-image: radial-gradient(circle at 50% 30%, #5c4419 0%, #3a2c14 70%);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-shade {
+  background: linear-gradient(180deg, rgba(8,8,20,0.18) 0%, rgba(8,8,20,0) 32%, rgba(8,8,20,0.05) 62%, rgba(8,8,20,0.5) 100%);
 }
 
 .speaking-type-wrapper--call-fs .speaking-stage-featured.speaking-stage--speaking {
