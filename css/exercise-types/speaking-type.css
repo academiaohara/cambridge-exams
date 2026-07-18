@@ -2863,3 +2863,9 @@ body.speaking-call-lock {
 .speaking-type-wrapper--call-fs.speaking-type-wrapper--b1-duo .speaking-img-carousel .speaking-img-main {
   object-fit: cover;
 }
+
+/* Hide exercise tools rail while the immersive mobile call overlay is active */
+html.speaking-call-lock .tools-sidebar--right-column,
+body.speaking-call-lock .tools-sidebar--right-column {
+  display: none !important;
+}
