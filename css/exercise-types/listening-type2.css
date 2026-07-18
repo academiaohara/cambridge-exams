@@ -272,10 +272,11 @@
   font-weight: 600;
 }
 
-/* B1 Listening Part 3 — explanation answer box (full width, white background) */
+/* B1 Listening Part 3 — explanation answer box (wraps answer text, white background) */
 .explanation-question-display .eq-content > .eq-option.eq-option-correct {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
   box-sizing: border-box;
   margin-top: 4px;
   background: #fff;
