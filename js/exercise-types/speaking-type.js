@@ -48,18 +48,52 @@
   // Gender map for voice selection: 'f' = female, 'm' = male
   var AVATAR_GENDER = {
     'Aisha.png': 'f', 'Alex.png': 'm', 'Anna.png': 'f', 'Carla.png': 'f',
-    'Carlos.png': 'm', 'Daniel.png': 'm', 'Elena.png': 'f', 'Emma.png': 'f',
-    'Fatima.png': 'f', 'Jack.png': 'm', 'Javier.png': 'm', 'Kenji.png': 'm',
-    'Lucas.png': 'm', 'Lucia.png': 'f', 'Malik.png': 'm', 'Mateo.png': 'm',
-    'Pierre.png': 'm', 'Priya.png': 'f', 'Sofia.png': 'f', 'Sofía.png': 'f',
-    'John.png': 'm', 'Michael.png': 'm', 'Sarah.png': 'f'
+    'Carlos.png': 'm', 'Chen.png': 'm', 'Clara.png': 'f', 'Dan.png': 'm',
+    'Daniel.png': 'm', 'Elena.png': 'f', 'Emma.png': 'f', 'Fatima.png': 'f',
+    'Jack.png': 'm', 'James.png': 'm', 'Javier.png': 'm', 'Kenji.png': 'm',
+    'Lucas.png': 'm', 'Lucia.png': 'f', 'Malik.png': 'm', 'Maria.png': 'f',
+    'Mateo.png': 'm', 'Miguel.png': 'm', 'Oliver.png': 'm', 'Pierre.png': 'm',
+    'Priya.png': 'f', 'Sarah.png': 'f', 'Sofia.png': 'f', 'Sofía.png': 'f',
+    'Sophie.png': 'f',
+    'John.png': 'm', 'Michael.png': 'm'
   };
+
+  // Default TTS gender when avatar filename is unknown (AI speakers only)
+  var ROLE_DEFAULT_GENDER = { examiner: 'f', partner: 'm' };
 
   // Cached voices for TTS — multiple voices per gender to avoid repetition between roles
   var _cachedVoices = { male: [], female: [], loaded: false };
+  var _roleVoiceCache = {};
 
   // Role-to-voice-index map: ensures examiner and partner use different voices
   var ROLE_VOICE_INDEX = { examiner: 0, partner: 1, candidate: 2 };
+
+  function _classifyVoiceGender(voice) {
+    if (!voice) return null;
+    if (voice.gender === 'female') return 'f';
+    if (voice.gender === 'male') return 'm';
+
+    var n = (voice.name || '').toLowerCase();
+    if (!n) return null;
+
+    if (/\bfemale\b|\bwoman\b|english female|female english/.test(n)) return 'f';
+    if (/\bmale\b|\bman\b|english male|male english/.test(n)) return 'm';
+    if (/fiona|samantha|karen|moira|tessa|victoria|kate|serena|martha|hazel|zira|susan|hannah|jenny|emma|linda|laura|amy|lucy|heather|catherine|nicky|veena|raveena|sonia|libby|sophie|olivia|ava|mia/.test(n)) return 'f';
+    if (/daniel|james|thomas|george|fred|lee|rishi|aaron|david|arthur|brian|guy|ryan|michael|john|paul|mark|richard|simon|gordon|malcolm|nathan|william|harry|alex(?!a)|stephen|steven/.test(n)) return 'm';
+
+    return null;
+  }
+
+  function _sortVoicesByPreference(list) {
+    list.sort(function(a, b) {
+      if (a.localService !== b.localService) return a.localService ? -1 : 1;
+      var aGB = (a.lang || '').indexOf('en-GB') === 0 ? 0 : 1;
+      var bGB = (b.lang || '').indexOf('en-GB') === 0 ? 0 : 1;
+      if (aGB !== bGB) return aGB - bGB;
+      if (a.default !== b.default) return a.default ? -1 : 1;
+      return a.name.localeCompare(b.name);
+    });
+  }
 
   function _loadVoices() {
     if (_cachedVoices.loaded) return;
@@ -67,43 +101,79 @@
     if (!synth) return;
     var voices = synth.getVoices();
     if (!voices || voices.length === 0) return;
-    // Prefer en-GB voices, fallback to any en voice
-    var enVoices = voices.filter(function(v) { return v.lang && v.lang.indexOf('en') === 0; });
-    if (enVoices.length === 0) enVoices = voices;
-    // Collect gendered voices by name heuristics
-    var females = [], males = [], used = [];
-    enVoices.forEach(function(v) {
-      var n = v.name.toLowerCase();
-      if (/female|woman|fiona|samantha|karen|moira|tessa|victoria|kate|serena|martha|hazel/.test(n)) {
-        females.push(v); used.push(v);
-      } else if (/\bmale\b|man\b|daniel|james|thomas|george|oliver|fred|lee|rishi|aaron/.test(n)) {
-        males.push(v); used.push(v);
-      }
+
+    var enVoices = voices.filter(function(v) {
+      return v.lang && (v.lang.indexOf('en-GB') === 0 || v.lang === 'en_GB');
     });
-    // Fill remaining voices (unclassified en voices) evenly to reach at least 3 per gender
-    var others = enVoices.filter(function(v) { return used.indexOf(v) === -1; });
-    var oi = 0;
-    while (females.length < 3 && oi < others.length) { females.push(others[oi++]); }
-    while (males.length < 3 && oi < others.length) { males.push(others[oi++]); }
-    // Final fallback: ensure at least one voice per gender (arrays may alias, but only voice objects are read, never mutated)
-    if (females.length === 0 && males.length > 0) females = males.slice();
-    if (males.length === 0 && females.length > 0) males = females.slice();
+    if (enVoices.length === 0) {
+      enVoices = voices.filter(function(v) { return v.lang && v.lang.indexOf('en') === 0; });
+    }
+    if (enVoices.length === 0) enVoices = voices.slice();
+
+    var females = [], males = [];
+    enVoices.forEach(function(v) {
+      var gender = _classifyVoiceGender(v);
+      if (gender === 'f') females.push(v);
+      else if (gender === 'm') males.push(v);
+    });
+
+    _sortVoicesByPreference(females);
+    _sortVoicesByPreference(males);
     _cachedVoices.female = females;
     _cachedVoices.male = males;
     _cachedVoices.loaded = true;
   }
 
-  function _getVoiceForRole(role) {
-    _loadVoices();
+  function _resetVoiceCache() {
+    _cachedVoices.loaded = false;
+    _roleVoiceCache = {};
+  }
+
+  function _isAISpeakerRole(role) {
+    return role === 'examiner' || role === 'partner';
+  }
+
+  function _getAvatarGenderForRole(role) {
+    if (!_isAISpeakerRole(role)) return null;
     var assignment = _getAssignments()[role];
-    if (!assignment) return null;
-    // Extract filename from path
+    if (!assignment || assignment.indexOf('/Assets/') !== 0) {
+      return ROLE_DEFAULT_GENDER[role] || null;
+    }
     var filename = assignment.split('/').pop();
-    var gender = AVATAR_GENDER[filename];
-    // Use role-based index so examiner and partner use different voices even within same gender
+    return AVATAR_GENDER[filename] || ROLE_DEFAULT_GENDER[role] || null;
+  }
+
+  function _getVoiceForRole(role) {
+    if (!_isAISpeakerRole(role)) return null;
+    if (_roleVoiceCache[role]) return _roleVoiceCache[role];
+
+    _loadVoices();
+    var gender = _getAvatarGenderForRole(role);
+    if (!gender) return null;
+
+    var voiceList = (gender === 'f') ? _cachedVoices.female : _cachedVoices.male;
+    if (!voiceList.length) return null;
+
     var idx = ROLE_VOICE_INDEX[role] || 0;
-    var voiceList = (gender === 'f') ? _cachedVoices.female : (gender === 'm') ? _cachedVoices.male : [];
-    return (voiceList[idx] !== undefined ? voiceList[idx] : voiceList[0]) || null;
+    var voice = voiceList[idx] || voiceList[0] || null;
+
+    // If examiner and partner share gender, pick different voices when possible
+    var otherRole = role === 'examiner' ? 'partner' : 'examiner';
+    if (voice && _getAvatarGenderForRole(otherRole) === gender && voiceList.length > 1) {
+      var cachedOther = _roleVoiceCache[otherRole];
+      if (cachedOther && cachedOther.name === voice.name) {
+        voice = voiceList.find(function(v) { return v.name !== cachedOther.name; }) || voice;
+      } else {
+        var otherIdx = ROLE_VOICE_INDEX[otherRole] || 0;
+        var otherVoice = voiceList[otherIdx];
+        if (otherVoice && otherVoice.name === voice.name) {
+          voice = voiceList[(idx + 1) % voiceList.length] || voice;
+        }
+      }
+    }
+
+    if (voice) _roleVoiceCache[role] = voice;
+    return voice;
   }
 
   // Stable avatar assignments per speaking section (role -> filename)
@@ -174,7 +244,7 @@
     // Pre-load voices for TTS gender matching
     if (window.speechSynthesis) {
       _loadVoices();
-      window.speechSynthesis.onvoiceschanged = function() { _cachedVoices.loaded = false; _loadVoices(); };
+      window.speechSynthesis.onvoiceschanged = function() { _resetVoiceCache(); _loadVoices(); };
     }
   }
 
@@ -1761,21 +1831,53 @@
         return;
       }
 
-      this._synthesis.cancel();
+      var self = this;
 
-      var utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'en-GB';
-      utter.rate = 0.95;
-      var voice = _getVoiceForRole(role);
-      if (voice) utter.voice = voice;
+      function doSpeak() {
+        self._synthesis.cancel();
 
-      function finishUtterance() {
-        if (cb) cb();
+        var utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-GB';
+        utter.rate = 0.95;
+        var voice = _getVoiceForRole(role);
+        if (voice) utter.voice = voice;
+
+        function finishUtterance() {
+          if (cb) cb();
+        }
+
+        utter.onend = finishUtterance;
+        utter.onerror = finishUtterance;
+        self._synthesis.speak(utter);
       }
 
-      utter.onend = finishUtterance;
-      utter.onerror = finishUtterance;
-      this._synthesis.speak(utter);
+      _loadVoices();
+      if (_cachedVoices.loaded && (_cachedVoices.female.length || _cachedVoices.male.length)) {
+        doSpeak();
+        return;
+      }
+
+      var synth = this._synthesis;
+      var spoke = false;
+      function trySpeak() {
+        if (spoke) return;
+        _resetVoiceCache();
+        _loadVoices();
+        if (_cachedVoices.female.length || _cachedVoices.male.length) {
+          spoke = true;
+          synth.removeEventListener('voiceschanged', trySpeak);
+          doSpeak();
+        }
+      }
+
+      synth.addEventListener('voiceschanged', trySpeak);
+      setTimeout(function() {
+        if (!spoke) {
+          spoke = true;
+          synth.removeEventListener('voiceschanged', trySpeak);
+          doSpeak();
+        }
+      }, 300);
     },
 
     _sendTextInput: function() {
