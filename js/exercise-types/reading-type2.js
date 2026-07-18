@@ -15,8 +15,11 @@
       return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     },
 
-    _renderDuoPill: function(inner) {
-      return '<span class="cu-hint-pill reading-type2-oc-pill">' + inner + '</span>';
+    _renderDuoPill: function(inner, opts) {
+      opts = opts || {};
+      var cls = 'cu-hint-pill reading-type2-oc-pill';
+      if (opts.example) cls += ' reading-type2-oc-pill--example';
+      return '<span class="' + cls + '">' + inner + '</span>';
     },
 
     _answerAlternatives: function(correctAnswer) {
@@ -94,7 +97,7 @@
         var exText = this._escapeHtml(userAnswer || '');
         var exInner = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
           '<span class="reading-type2-answered reading-type2-example-answer">' + exText + '</span>';
-        return outerOpen + this._renderDuoPill(exInner) + '</span>';
+        return outerOpen + this._renderDuoPill(exInner, { example: true }) + '</span>';
       }
 
       if (isChecked) {

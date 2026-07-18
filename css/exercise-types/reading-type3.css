@@ -629,12 +629,29 @@
 
 .c1-reading3 .reading-type3-wf-pill.reading-type3-gap-pill--example,
 .c1-reading3 .reading-type3-wf-pill:has(.reading-type3-example-answer) {
+  background: var(--ex-feedback-bg, #fff);
+  border-color: #58cc02;
+  box-shadow: 0 2px 0 #58a700;
   pointer-events: none;
 }
 
-.c1-reading3 .reading-type3-example-answer {
-  color: #065f46;
+.c1-reading3 .reading-type3-wf-pill.reading-type3-gap-pill--example .cu-hint-pill-num,
+.c1-reading3 .reading-type3-wf-pill:has(.reading-type3-example-answer) .cu-hint-pill-num {
+  background: var(--ex-duo-practice, #58cc02);
+  border-color: var(--ex-duo-practice-dark, #58a700);
+  color: #fff;
+}
+
+.c1-reading3 .reading-type3-wf-pill.reading-type3-gap-pill--example .reading-type3-example-answer,
+.c1-reading3 .reading-type3-wf-pill:has(.reading-type3-example-answer) .reading-type3-example-answer {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 700;
+  font-size: 0.95em;
+  color: #3c3c3c;
+  background: transparent;
+  border: none;
+  padding: 3px 8px 4px;
+  min-width: 0;
 }
 
 .reading-text-enhanced--b1r-plain.c1-reading3 .toggle-text-section p {
