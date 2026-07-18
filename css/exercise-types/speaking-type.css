@@ -49,7 +49,7 @@
    VIDEO-CALL VIEW (Stage layout)
    ══════════════════════════════════════ */
 .speaking-videocall {
-  background: #1a1a2e;
+  background: linear-gradient(165deg, #14142b 0%, #0e0e20 60%, #10101f 100%);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0,0,0,0.35);
@@ -68,6 +68,53 @@
   justify-content: center;
 }
 
+/* ── Camera-feed layers (shared by featured tile + thumbnails) ──
+   The blurred avatar backdrop fills the tile like a real webcam background,
+   the shade keeps labels readable, and the portrait sits letterboxed on top. */
+.speaking-tile-backdrop {
+  position: absolute;
+  inset: -28px;
+  background-size: cover;
+  background-position: center 20%;
+  background-color: #23233c;
+  filter: blur(26px) saturate(1.25) brightness(0.78);
+  transform: scale(1.12);
+  z-index: 0;
+}
+.speaking-tile-backdrop--examiner { background-image: radial-gradient(circle at 50% 30%, #3d3d70 0%, #22224a 70%); }
+.speaking-tile-backdrop--candidate { background-image: radial-gradient(circle at 50% 30%, #1e4b3a 0%, #14322a 70%); }
+.speaking-tile-backdrop--partner { background-image: radial-gradient(circle at 50% 30%, #5c4419 0%, #3a2c14 70%); }
+.speaking-tile-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(8,8,20,0.18) 0%, rgba(8,8,20,0) 32%, rgba(8,8,20,0.05) 62%, rgba(8,8,20,0.5) 100%);
+  pointer-events: none;
+}
+.speaking-tile-video {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.35));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Soft fade when the featured speaker swaps to avoid abrupt layout jumps */
+.speaking-stage-featured .speaking-tile-video,
+.speaking-stage-featured .speaking-stage-featured-avatar,
+.speaking-stage-featured .speaking-tile-backdrop {
+  animation: speaking-tile-fade 0.35s ease;
+}
+@keyframes speaking-tile-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ── Featured area (big speaker) ── */
 .speaking-stage-featured {
   flex: 1 1 0;
@@ -81,19 +128,14 @@
   border-radius: 12px;
   overflow: hidden;
   transition: box-shadow 0.3s;
-  background: #2a2a3e;
-}
-.speaking-stage-featured::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('../../Assets/images/fondospeaker.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.1;
-  z-index: 0;
+  background: #23233c;
 }
 .speaking-stage-featured > * { position: relative; z-index: 1; }
+.speaking-stage-featured > .speaking-tile-backdrop,
+.speaking-stage-featured > .speaking-tile-shade {
+  position: absolute;
+  z-index: 0;
+}
 .speaking-stage-featured-avatar {
   --avatar-circle-size: 280px;
   --avatar-img-size: 280px;
@@ -118,17 +160,30 @@
   object-fit: cover;
 }
 .speaking-stage-featured-label {
-  background: rgba(75, 75, 100, 0.75);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(12, 12, 28, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
   color: #fff;
-  font-weight: 800;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.35rem 1.2rem;
-  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
   position: absolute;
   bottom: 0.75rem;
   left: 0.75rem;
+}
+.speaking-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(34,197,94,0.8);
 }
 .speaking-stage-featured .speaking-vc-indicator {
   color: #fff;
@@ -137,6 +192,14 @@
   position: absolute;
   bottom: 0.75rem;
   right: 0.75rem;
+}
+.speaking-stage-featured .speaking-vc-indicator--active {
+  background: rgba(12, 12, 28, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(34,197,94,0.4);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
 }
 .speaking-stage-featured.speaking-stage--speaking {
   box-shadow: 0 0 0 4px rgba(34,197,94,0.85), 0 0 20px rgba(34,197,94,0.3);
@@ -165,44 +228,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem;
+  padding: 0;
   position: relative;
+  background: #23233c;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   transition: box-shadow 0.3s, transform 0.3s;
 }
-.speaking-stage-card::before {
-  content: '';
+.speaking-stage-card > * { position: relative; z-index: 1; }
+.speaking-stage-card > .speaking-tile-backdrop,
+.speaking-stage-card > .speaking-tile-shade {
   position: absolute;
-  inset: 0;
-  border-radius: 12px;
   z-index: 0;
 }
-.speaking-stage-card > * { position: relative; z-index: 1; }
+.speaking-stage-card .speaking-tile-backdrop { inset: -18px; filter: blur(18px) saturate(1.25) brightness(0.78); }
 
 /* Gold card (user / candidate) */
-.speaking-stage-card--gold::before {
-  background: rgba(42, 42, 62, 0.9);
-}
 .speaking-stage-card--gold {
-  border: 2px solid #ca8a04;
+  border: 2px solid rgba(202, 138, 4, 0.85);
   color: #e2e8f0;
 }
 
 /* Blue card (partner / candidate 2) */
-.speaking-stage-card--blue::before {
-  background: rgba(42, 42, 62, 0.9);
-}
 .speaking-stage-card--blue {
-  border: 2px solid #818cf8;
+  border: 2px solid rgba(129, 140, 248, 0.85);
   color: #e2e8f0;
 }
 
 /* Examiner card (when examiner is thumbnail) */
-.speaking-stage-card--examiner::before {
-  background: rgba(42, 42, 62, 0.9);
-}
 .speaking-stage-card--examiner {
-  border: 2px solid #6366f1;
+  border: 2px solid rgba(99, 102, 241, 0.85);
   color: #e2e8f0;
 }
 
@@ -225,6 +279,11 @@
 .speaking-card-icon {
   width: 54px;
   height: 54px;
+  color: #94a3b8;
+}
+.speaking-stage-featured-avatar .speaking-card-icon {
+  width: 60%;
+  height: 60%;
 }
 .speaking-animal-avatar {
   width: var(--avatar-img-size, 100%);
@@ -237,27 +296,44 @@
 /* Card label */
 .speaking-stage-card-label {
   font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
   text-align: left;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  background: rgba(0,0,0,0.45);
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(12, 12, 28, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.1);
   color: #fff;
   position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
+  bottom: 0.45rem;
+  left: 0.45rem;
+  max-width: calc(100% - 0.9rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Card speaking indicator */
+/* Card speaking indicator — floats top-left over the tile */
 .speaking-stage-card .speaking-vc-indicator {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   color: #94a3b8;
-  min-height: 1.3em;
-  margin-top: 0.25rem;
+  position: absolute;
+  top: 0.4rem;
+  left: 0.45rem;
+  z-index: 2;
+  min-height: 0;
 }
+.speaking-stage-card .speaking-vc-indicator--active {
+  background: rgba(12, 12, 28, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+}
+.speaking-stage-card .speaking-vc-indicator .speaking-eq-label { display: none; }
 
 /* Active speaking glow */
 .speaking-stage-card.speaking-stage--speaking {
@@ -273,6 +349,30 @@
   display: flex; align-items: center; gap: 6px;
 }
 .speaking-vc-indicator--active { color: #22c55e; }
+
+/* Animated equalizer bars (active speaker) */
+.speaking-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+}
+.speaking-eq i {
+  display: inline-block;
+  width: 3px;
+  border-radius: 2px;
+  background: #22c55e;
+  animation: speaking-eq-bounce 0.9s ease-in-out infinite;
+}
+.speaking-eq i:nth-child(1) { height: 55%; animation-delay: 0s; }
+.speaking-eq i:nth-child(2) { height: 100%; animation-delay: 0.18s; }
+.speaking-eq i:nth-child(3) { height: 70%; animation-delay: 0.36s; }
+.speaking-eq i:nth-child(4) { height: 90%; animation-delay: 0.54s; }
+@keyframes speaking-eq-bounce {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+.speaking-eq-label { font-weight: 600; }
 
 /* Pulse animation */
 .speaking-pulse {
@@ -358,6 +458,31 @@
 @keyframes speaking-timer-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
+}
+
+/* Expand to fullscreen call (mobile, while minimized) */
+.speaking-expand-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  border: none; border-radius: 50%;
+  background: #475569;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  padding: 0;
+}
+.speaking-expand-btn:hover { transform: scale(1.08); background: #334155; }
+.speaking-type-wrapper--b1-duo .speaking-expand-btn {
+  background: #64748b;
+  box-shadow: 0 3px 0 #475569;
+}
+.speaking-type-wrapper--b1-duo .speaking-expand-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 /* End conversation button */
@@ -691,6 +816,7 @@
   color: #e2e8f0;
 }
 .speaking-text-input:focus { border-color: var(--primary); }
+.speaking-text-input:disabled { opacity: 0.55; }
 
 .speaking-mic-btn,
 .speaking-send-btn {
@@ -1421,6 +1547,7 @@
 
   .speaking-mic-btn,
   .speaking-send-btn,
+  .speaking-expand-btn,
   .speaking-end-btn {
     width: 48px !important;
     height: 48px !important;
@@ -1584,8 +1711,24 @@
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
-.speaking-type-wrapper--b1-duo .speaking-stage-featured::before {
-  opacity: 0.04;
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop {
+  filter: blur(22px) saturate(1.1) brightness(1.02);
+  background-color: #e8eef7;
+}
+
+/* Light pastel fallback gradients matching the duo theme */
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop--examiner {
+  background-image: radial-gradient(circle at 50% 30%, #ddf4ff 0%, #b5dff2 75%);
+}
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop--candidate {
+  background-image: radial-gradient(circle at 50% 30%, #e6ffd4 0%, #bfe8a8 75%);
+}
+.speaking-type-wrapper--b1-duo .speaking-tile-backdrop--partner {
+  background-image: radial-gradient(circle at 50% 30%, #fff0e6 0%, #f5cfae 75%);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-tile-shade {
+  background: linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(0,0,0,0.22) 100%);
 }
 
 .speaking-type-wrapper--b1-duo .speaking-stage-featured-label {
@@ -1616,10 +1759,6 @@
 .speaking-type-wrapper--b1-duo .speaking-stage-card {
   background: #fff;
   box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
-}
-
-.speaking-type-wrapper--b1-duo .speaking-stage-card::before {
-  display: none;
 }
 
 .speaking-type-wrapper--b1-duo .speaking-stage-card--gold {
@@ -2202,4 +2341,326 @@
 .speaking-type-wrapper--b1-duo .speaking-ai-thinking {
   color: var(--ex-duo-blue-dark, #1899d6);
   font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+/* ══════════════════════════════════════
+   FULLSCREEN CALL MODE (mobile)
+   Immersive "real video call" overlay with floating controls.
+   Kept last in the file so it wins specificity ties with the
+   base and B1-duo themes.
+   ══════════════════════════════════════ */
+html.speaking-call-lock,
+body.speaking-call-lock {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+.speaking-type-wrapper--call-fs .speaking-mode-toggle { display: none; }
+
+.speaking-type-wrapper--call-fs #speaking-simulation {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  background: #08081a;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Every view fills the overlay */
+.speaking-type-wrapper--call-fs .speaking-videocall,
+.speaking-type-wrapper--call-fs .speaking-chat,
+.speaking-type-wrapper--call-fs .speaking-images-view,
+.speaking-type-wrapper--call-fs .speaking-options-view,
+.speaking-type-wrapper--call-fs .speaking-spider-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.speaking-type-wrapper--call-fs .speaking-videocall {
+  background: linear-gradient(180deg, #10102a 0%, #08081a 100%);
+}
+
+.speaking-type-wrapper--call-fs .speaking-videocall .speaking-stage-scene {
+  flex: 1;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  background: transparent;
+  padding: 0.6rem;
+}
+
+.speaking-type-wrapper--call-fs .speaking-stage-featured {
+  min-height: 0;
+  border: none;
+  box-shadow: none;
+  background: #16162e;
+}
+
+/* Keep dark, call-like fallback backdrops in fullscreen (overrides duo pastels) */
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop {
+  background-color: #23233c;
+  filter: blur(26px) saturate(1.25) brightness(0.78);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop--examiner {
+  background-image: radial-gradient(circle at 50% 30%, #3d3d70 0%, #22224a 70%);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop--candidate {
+  background-image: radial-gradient(circle at 50% 30%, #1e4b3a 0%, #14322a 70%);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-backdrop--partner {
+  background-image: radial-gradient(circle at 50% 30%, #5c4419 0%, #3a2c14 70%);
+}
+.speaking-type-wrapper--call-fs .speaking-tile-shade {
+  background: linear-gradient(180deg, rgba(8,8,20,0.18) 0%, rgba(8,8,20,0) 32%, rgba(8,8,20,0.05) 62%, rgba(8,8,20,0.5) 100%);
+}
+
+.speaking-type-wrapper--call-fs .speaking-stage-featured.speaking-stage--speaking {
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.75), 0 0 24px rgba(34,197,94,0.25);
+}
+
+/* ── Top bar: minimize, mode chips, timer ── */
+.speaking-call-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: calc(0.55rem + env(safe-area-inset-top, 0px)) 0.75rem 0.55rem;
+  background: rgba(8, 8, 26, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.speaking-call-min-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.speaking-call-min-btn:active { background: rgba(255, 255, 255, 0.25); }
+
+.speaking-call-modes {
+  display: flex;
+  gap: 0.45rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.speaking-call-topbar .speaking-fs-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.speaking-call-topbar .speaking-fs-chip:hover:not(.active) { color: #fff; background: rgba(255, 255, 255, 0.12); }
+.speaking-call-topbar .speaking-fs-chip.active {
+  background: #fff;
+  color: #10102a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.speaking-call-timer {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.speaking-call-timer i { font-size: 0.68rem; opacity: 0.8; }
+.speaking-call-timer.speaking-timer-warning { color: #fbbf24; }
+.speaking-call-timer.speaking-timer-danger { color: #f87171; animation: speaking-timer-blink 1s ease-in-out infinite; }
+
+/* ── Status line stays thin over dark bg ── */
+.speaking-type-wrapper--call-fs .speaking-vc-status {
+  background: transparent;
+  border-top: none;
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+.speaking-type-wrapper--call-fs .speaking-vc-status--yours { color: #e2e8f0; }
+.speaking-type-wrapper--call-fs .speaking-vc-status--speaking { color: #cbd5e1; }
+.speaking-type-wrapper--call-fs .speaking-vc-status--ended { color: #86efac; }
+
+/* ── Floating call controls ── */
+.speaking-controls--call {
+  background: transparent !important;
+  border-top: none !important;
+  padding: 0.5rem 1rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* Chat / images / options views keep a dark strip behind the floating buttons */
+.speaking-type-wrapper--call-fs .speaking-chat .speaking-controls,
+.speaking-type-wrapper--call-fs .speaking-images-view .speaking-controls,
+.speaking-type-wrapper--call-fs .speaking-options-view .speaking-controls {
+  background: rgba(8, 8, 26, 0.94) !important;
+  border-top: none;
+}
+
+.speaking-call-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  width: 100%;
+}
+
+.speaking-call-round-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s, background 0.2s;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  padding: 0;
+  box-sizing: border-box;
+}
+.speaking-call-round-btn:active { transform: scale(0.94); }
+.speaking-call-round-btn:disabled { opacity: 0.35; cursor: default; }
+.speaking-call-round-btn--active {
+  background: #fff;
+  color: #10102a;
+}
+
+.speaking-call-mic {
+  width: 66px;
+  height: 66px;
+  font-size: 1.35rem;
+  background: #22c55e !important;
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+.speaking-call-mic.speaking-mic-recording {
+  background: #ef4444 !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.45);
+}
+
+.speaking-call-end {
+  background: #ef4444 !important;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+}
+
+/* Caption / text input row — hidden until keyboard toggled or recording */
+.speaking-call-caption-row {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.speaking-controls--call.speaking-kb-open .speaking-call-caption-row,
+.speaking-controls--call.speaking-live-rec .speaking-call-caption-row {
+  display: flex;
+  animation: speaking-your-turn-pop 0.2s ease-out;
+}
+.speaking-controls--call .speaking-text-input {
+  background: rgba(20, 20, 44, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f1f5f9;
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+}
+.speaking-controls--call .speaking-text-input::placeholder { color: #94a3b8; }
+.speaking-controls--call.speaking-live-rec .speaking-text-input {
+  border-color: rgba(239, 68, 68, 0.55);
+}
+.speaking-controls--call .speaking-send-btn {
+  width: 42px;
+  height: 42px;
+}
+
+/* Turn hint pill */
+.speaking-call-turn-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 auto;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.16);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #86efac;
+  font-size: 0.8rem;
+  font-weight: 700;
+  animation: speaking-your-turn-pop 0.3s ease-out;
+}
+
+.speaking-call-skip-row .speaking-skip-btn {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #e2e8f0;
+}
+
+.speaking-controls--call .speaking-ai-thinking { color: #c7d2fe; }
+
+/* ── Chat view in fullscreen: dark theme ── */
+.speaking-type-wrapper--call-fs .speaking-chat {
+  background: #08081a;
+}
+.speaking-type-wrapper--call-fs .speaking-chat-history {
+  flex: 1;
+  max-height: none;
+  min-height: 0;
+  background: #0e0e24;
+}
+.speaking-type-wrapper--call-fs .speaking-chat-name { color: #94a3b8; }
+.speaking-type-wrapper--call-fs .speaking-chat-bubble--examiner {
+  background: #1d1d3a;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+.speaking-type-wrapper--call-fs .speaking-type-start-msg { color: #94a3b8; }
+
+/* ── Images / options views in fullscreen: scrollable content ── */
+.speaking-type-wrapper--call-fs .speaking-images-view,
+.speaking-type-wrapper--call-fs .speaking-options-view,
+.speaking-type-wrapper--call-fs .speaking-spider-view {
+  background: var(--white, #fff);
+}
+.speaking-type-wrapper--call-fs .speaking-images-grid,
+.speaking-type-wrapper--call-fs .speaking-options-grid,
+.speaking-type-wrapper--call-fs .speaking-spider-layout {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
