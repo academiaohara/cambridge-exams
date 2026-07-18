@@ -460,17 +460,20 @@
         .replace(/\*([^*]+?)\*/g, '<strong>$1</strong>');
     },
 
-    /** Double-quoted phrases in explanation copy → highlighted term (quotes removed). */
-    _formatExplanationQuotedTerms: function(text) {
+    /** Quoted phrases in explanation copy → highlighted term (quotes removed). */
+    _formatExplanationQuotedTerms: function(text, opts) {
       var self = this;
       var raw = String(text == null ? '' : text);
-      var re = /\u201c([^\u201d]+)\u201d|"([^"]+)"/g;
+      var includeSingleQuotes = !!(opts && opts.singleQuotes);
+      var re = includeSingleQuotes
+        ? /\u201c([^\u201d]+)\u201d|'([^']+)'|"([^"]+)"/g
+        : /\u201c([^\u201d]+)\u201d|"([^"]+)"/g;
       var out = '';
       var last = 0;
       var match;
       while ((match = re.exec(raw)) !== null) {
         out += self._escapeHtmlAttr(raw.slice(last, match.index));
-        var term = match[1] || match[2] || '';
+        var term = match[1] || match[2] || match[3] || '';
         out += '<span class="explanation-term">' + self._escapeHtmlAttr(term) + '</span>';
         last = re.lastIndex;
       }
@@ -479,7 +482,7 @@
     },
 
     /** Explanation copy with quoted-term highlights and word-formation transform chips. */
-    formatExplanationText: function(text) {
+    formatExplanationText: function(text, opts) {
       var self = this;
       var raw = String(text == null ? '' : text).trim();
       var wfMatch = raw.match(/^(.+?);\s*([A-Z][A-Z'-]*)\s*(?:\u2192|->)\s*([A-Z][A-Z'-]+)\.?$/);
@@ -488,7 +491,7 @@
         var root = wfMatch[2];
         var result = wfMatch[3];
         return (
-          '<span class="explanation-card-rule">' + self._formatExplanationQuotedTerms(rule) + '</span>' +
+          '<span class="explanation-card-rule">' + self._formatExplanationQuotedTerms(rule, opts) + '</span>' +
           '<span class="explanation-wf-chip" role="group" aria-label="' + self._escapeHtmlAttr(root + ' to ' + result) + '">' +
           '<span class="explanation-wf-root">' + self._escapeHtmlAttr(root) + '</span>' +
           '<span class="explanation-wf-arrow" aria-hidden="true">\u2192</span>' +
@@ -496,7 +499,7 @@
           '</span>'
         );
       }
-      return self._formatExplanationQuotedTerms(raw);
+      return self._formatExplanationQuotedTerms(raw, opts);
     },
 
     formatReadingPassageText: function(text) {
@@ -1826,14 +1829,21 @@
       }
       if (questions.length === 0) return '';
 
-      var html = '<div class="explanations-panel" id="explanations-panel" style="display:none" lang="en">';
+      var isB1Reading5Explanations =
+        AppState.currentLevel === 'B1' &&
+        AppState.currentSection === 'reading' &&
+        AppState.currentPart === 5;
+      var explanationFormatOpts = isB1Reading5Explanations ? { singleQuotes: true } : null;
+      var panelClass = 'explanations-panel' + (isB1Reading5Explanations ? ' explanations-panel--b1-reading5' : '');
+
+      var html = '<div class="' + panelClass + '" id="explanations-panel" style="display:none" lang="en">';
       html += '<h3><i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">' + ('Show explanations') + '</span></h3>';
 
       questions.forEach(function(q) {
         html += '<div class="explanation-card" data-qnum="' + q.number + '" onclick="ExerciseHandlers.selectExplanationQuestion(' + q.number + ')">';
         html += '<div class="explanation-card-header">';
         html += '<span class="explanation-card-number">' + q.number + '</span>';
-        html += '<span class="explanation-card-text">' + ExerciseRenderer.formatExplanationText(q.explanation || 'No explanation available') + '</span>';
+        html += '<span class="explanation-card-text">' + ExerciseRenderer.formatExplanationText(q.explanation || 'No explanation available', explanationFormatOpts) + '</span>';
         html += '</div>';
         html += '</div>';
       });
