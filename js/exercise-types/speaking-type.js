@@ -38,6 +38,13 @@
     'John.png', 'Michael.png', 'Sarah.png'
   ];
 
+  // Video-call tile backgrounds (Assets/images/Speaking/Backgrounds/) — 1024×1024
+  var ROLE_BACKGROUNDS = {
+    examiner: '/Assets/images/Speaking/Backgrounds/examiner.png',
+    candidate: '/Assets/images/Speaking/Backgrounds/candidate.png',
+    partner: '/Assets/images/Speaking/Backgrounds/partner.png'
+  };
+
   // Gender map for voice selection: 'f' = female, 'm' = male
   var AVATAR_GENDER = {
     'Aisha.png': 'f', 'Alex.png': 'm', 'Anna.png': 'f', 'Carla.png': 'f',
@@ -181,15 +188,16 @@
     return CARD_PERSON_ICON;
   }
 
-  // Build the "camera feed" for a participant tile: a blurred backdrop of their
-  // avatar image filling the tile, plus the portrait itself letterboxed on top
-  // (like a real video call). Falls back to a circular avatar for remote photos
-  // (e.g. Google profile pictures) and to a person silhouette when no image.
+  // Build the "camera feed" for a participant tile: a blurred room backdrop plus
+  // the portrait letterboxed on top (like a real video call). Falls back to a
+  // circular avatar for remote photos (e.g. Google profile pictures) and to a
+  // person silhouette when no image.
   function _buildTileMedia(role, featured) {
     var img = _getAssignments()[role];
     var isLocalPortrait = !!img && img.indexOf('/Assets/') === 0;
-    var backdrop = img
-      ? '<div class="speaking-tile-backdrop" style="background-image:url(\'' + img + '\')"></div>'
+    var bgUrl = ROLE_BACKGROUNDS[role];
+    var backdrop = bgUrl
+      ? '<div class="speaking-tile-backdrop speaking-tile-backdrop--' + role + '" style="background-image:url(\'' + bgUrl + '\')"></div>'
       : '<div class="speaking-tile-backdrop speaking-tile-backdrop--' + role + '"></div>';
     var media;
     if (isLocalPortrait) {
