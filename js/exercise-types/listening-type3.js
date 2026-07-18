@@ -147,10 +147,18 @@
       }).join('');
 
       return '<div class="listening-type3-task' + (isDuoListening ? ' listening-type3-task--duo' : '') + '">' +
-        '<h4 class="listening-type3-task-title">' + self._escapeHtml(meta.title) + '</h4>' +
-        '<p class="listening-type3-instruction">' + self._escapeHtml(meta.instruction) + '</p>' +
-        '<div class="listening-type3-options-list">' + optionsHTML + '</div>' +
-        '<div class="listening-type3-questions">' + questionsHTML + '</div>' +
+        '<div class="listening-type3-task-header">' +
+          '<h4 class="listening-type3-task-title">' + self._escapeHtml(meta.title) + '</h4>' +
+          '<p class="listening-type3-instruction">' + self._escapeHtml(meta.instruction) + '</p>' +
+        '</div>' +
+        '<div class="listening-type3-body">' +
+          '<div class="listening-type3-options-col">' +
+            '<div class="listening-type3-options-list">' + optionsHTML + '</div>' +
+          '</div>' +
+          '<div class="listening-type3-questions-col">' +
+            '<div class="listening-type3-questions">' + questionsHTML + '</div>' +
+          '</div>' +
+        '</div>' +
       '</div>';
     },
 
