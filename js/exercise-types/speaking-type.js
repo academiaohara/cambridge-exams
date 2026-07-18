@@ -468,10 +468,12 @@
           '<div class="speaking-vc-indicator"></div>' +
         '</div>';
 
-      // Build thumbnail cards for non-featured participants
+      // Build thumbnail cards only for participants who are not currently speaking
       var thumbnailCards = '';
       this._participants.forEach(function(role) {
         if (role === featuredRole) return;
+        // During the conversation, hide cards for people who are not speaking
+        if (self._conversationStarted && role !== self._activeSpeaker) return;
         var cardColor = role === 'candidate' ? 'gold' : (role === 'examiner' ? 'examiner' : 'blue');
         var label = role === 'candidate' ? candidateDisplayName
           : role === 'examiner' ? 'Examiner'
@@ -497,9 +499,9 @@
         '<div class="speaking-stage-scene">' +
           timerHTML +
           featuredHTML +
-          '<div class="speaking-stage-cards">' +
-            thumbnailCards +
-          '</div>' +
+          (thumbnailCards
+            ? '<div class="speaking-stage-cards">' + thumbnailCards + '</div>'
+            : '') +
         '</div>' +
         '<div class="speaking-vc-status" id="speaking-vc-status"></div>' +
         this._buildControls() +
@@ -618,18 +620,20 @@
           '</div>'
         : '';
 
-      // Show only the currently speaking candidate as a tab indicator
+      // Candidate task selector tabs (switch between Candidate A and B photos)
       var taskSelectorHTML = '';
-      if (this._longTurnTasks.length > 0) {
-        var activeTask = this._longTurnTasks[this._longTurnTaskIndex];
-        var activeLabel = activeTask
-          ? (activeTask.candidate || ('Task ' + (this._longTurnTaskIndex + 1)))
-          : ('Task ' + (this._longTurnTaskIndex + 1));
-        taskSelectorHTML = '<div class="speaking-img-task-selector">' +
-          '<span class="speaking-img-task-tab active" aria-current="true">' +
-            '<i class="fas fa-user" aria-hidden="true"></i> ' + activeLabel +
-          '</span>' +
-        '</div>';
+      if (this._longTurnTasks.length > 1) {
+        var self = this;
+        taskSelectorHTML = '<div class="speaking-img-task-selector">';
+        this._longTurnTasks.forEach(function(longTurnTask, i) {
+          var label = longTurnTask.candidate || ('Task ' + (i + 1));
+          var isActive = i === self._longTurnTaskIndex;
+          taskSelectorHTML += '<button type="button" class="speaking-img-task-btn' + (isActive ? ' active' : '') + '" ' +
+            'onclick="SpeakingType.switchLongTurnTask(' + i + ')">' +
+            '<i class="fas fa-images" aria-hidden="true"></i> ' + label +
+          '</button>';
+        });
+        taskSelectorHTML += '</div>';
       }
 
       // Build timer
