@@ -272,6 +272,15 @@
   font-weight: 600;
 }
 
+/* B1 Listening Part 3 — explanation answer box (full width, white background) */
+.explanation-question-display .eq-content > .eq-option.eq-option-correct {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+  background: #fff;
+}
+
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .dashboard-layout--exercise .b1-listening .listening-type2-sentence {
     padding: 12px 14px;

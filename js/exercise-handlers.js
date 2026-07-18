@@ -823,7 +823,7 @@
           typeof ListeningType2._formatCorrectAnswer === 'function')
           ? ListeningType2._formatCorrectAnswer(question.correct)
           : (Array.isArray(question.correct) ? question.correct[0] : question.correct);
-        html += '<span class="eq-option eq-option-correct" style="display:inline-block;margin-top:4px">' + correctDisplay + '</span>';
+        html += '<span class="eq-option eq-option-correct">' + correctDisplay + '</span>';
       }
 
       // Add explanation text
