@@ -524,31 +524,21 @@
 }
 
 .speaking-img-instructions {
-  padding: 1rem 1.25rem 0.5rem;
+  padding: 1rem 1.25rem 0.75rem;
   border-bottom: 1px solid var(--border-light);
-  background: #f8fafc;
+  background: var(--white);
 }
 .speaking-img-instructions-header {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 0.4rem;
-}
-.speaking-img-candidate-badge {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
-  border-radius: 20px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
 }
 .speaking-img-topic {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-dark);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
 }
 .speaking-img-instructions p {
   margin: 0;
@@ -613,39 +603,33 @@
   }
 }
 
-/* Candidate A/B task selector tabs in images view */
+/* Candidate tab indicator in images view (only the active speaker) */
 .speaking-img-task-selector {
   display: flex;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem 0;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0.65rem 1rem 0;
   border-bottom: 1px solid var(--border-light);
-  background: #f8fafc;
+  background: #f1f5f9;
 }
-.speaking-img-task-btn {
+.speaking-img-task-tab {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 1rem;
-  border: 1.5px solid var(--border-light);
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--border-light);
+  border-bottom: none;
   border-radius: 8px 8px 0 0;
-  cursor: pointer;
   font-size: 0.82rem;
   font-weight: 600;
-  background: transparent;
-  color: var(--text-medium);
-  transition: all 0.2s;
-  margin-bottom: -1px;
-}
-.speaking-img-task-btn:hover:not(.active) {
-  background: #eff6ff;
-  border-color: var(--primary);
-  color: var(--primary);
-}
-.speaking-img-task-btn.active {
   background: var(--white);
-  border-color: var(--primary);
-  border-bottom-color: var(--white);
   color: var(--primary);
+  margin-bottom: -1px;
+  letter-spacing: 0.01em;
+}
+.speaking-img-task-tab i {
+  font-size: 0.75rem;
+  opacity: 0.85;
 }
 
 
@@ -1577,10 +1561,6 @@
     padding: 0.48rem 0.7rem;
   }
 
-  .speaking-img-candidate-badge {
-    display: none !important;
-  }
-
   .speaking-img-card {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -2056,51 +2036,27 @@
   box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
 }
 
-.speaking-type-wrapper--b1-duo .speaking-img-instructions,
-.speaking-type-wrapper--b1-duo .speaking-img-task-selector {
-  background: var(--ex-duo-blue-light, #ddf4ff);
+.speaking-type-wrapper--b1-duo .speaking-img-instructions {
+  background: var(--white);
   border-color: var(--ex-duo-border, #e5e5e5);
 }
 
-.speaking-type-wrapper--b1-duo .speaking-img-candidate-badge {
-  background: var(--ex-duo-orange, #f47417);
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-weight: 800;
-  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+.speaking-type-wrapper--b1-duo .speaking-img-task-selector {
+  background: #f1f5f9;
+  border-color: var(--ex-duo-border, #e5e5e5);
 }
 
 .speaking-type-wrapper--b1-duo .speaking-img-topic {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
-  color: var(--ex-duo-blue-dark, #1899d6);
+  color: var(--text-dark);
 }
 
-.speaking-type-wrapper--b1-duo .speaking-img-task-btn {
+.speaking-type-wrapper--b1-duo .speaking-img-task-tab {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 700;
-  border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-radius: 12px;
-  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
-}
-
-.speaking-type-wrapper--b1-duo .speaking-img-task-btn.active {
-  background: var(--ex-duo-blue, #1cb0f6);
-  border-color: var(--ex-duo-blue-dark, #1899d6);
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
-  color: #fff;
-}
-
-.speaking-type-wrapper--b1-duo .speaking-img-card {
-  border: 2px solid var(--ex-duo-orange, #f47417);
-  border-radius: 16px;
-  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 55%, #000);
-  background: var(--ex-duo-orange-light, #fff0e6);
-}
-
-.speaking-type-wrapper--b1-duo .speaking-img-label {
-  background: var(--ex-duo-orange, #f47417);
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-weight: 800;
+  border-color: var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-blue-dark, #1899d6);
 }
 
 /* Options view (collaborative) */

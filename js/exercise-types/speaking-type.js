@@ -598,7 +598,6 @@
     // ── Images view (long-turn photo panels) ──
 
     _buildImagesView: function() {
-      var self = this;
       var task = this._longTurnTasks[this._longTurnTaskIndex];
       var imagesHTML = '';
       if (task && task.images) {
@@ -609,31 +608,28 @@
           '</div>';
         }).join('');
       }
-      var candidateLabel = task ? task.candidate : '';
       var topicLabel = task ? task.topic : '';
       var instructionsHTML = task
         ? '<div class="speaking-img-instructions">' +
             '<div class="speaking-img-instructions-header">' +
-              '<span class="speaking-img-candidate-badge">' + candidateLabel + '</span>' +
               '<span class="speaking-img-topic">' + topicLabel + '</span>' +
             '</div>' +
             '<p>' + task.instructions + '</p>' +
           '</div>'
         : '';
 
-      // Candidate task selector tabs (switch between Candidate A and B photos)
+      // Show only the currently speaking candidate as a tab indicator
       var taskSelectorHTML = '';
-      if (this._longTurnTasks.length > 1) {
-        taskSelectorHTML = '<div class="speaking-img-task-selector">';
-        this._longTurnTasks.forEach(function(task, i) {
-          var label = task.candidate || ('Task ' + (i + 1));
-          var isActive = i === self._longTurnTaskIndex;
-          taskSelectorHTML += '<button class="speaking-img-task-btn' + (isActive ? ' active' : '') + '" ' +
-            'onclick="SpeakingType.switchLongTurnTask(' + i + ')">' +
-            '<i class="fas fa-images"></i> ' + label +
-          '</button>';
-        });
-        taskSelectorHTML += '</div>';
+      if (this._longTurnTasks.length > 0) {
+        var activeTask = this._longTurnTasks[this._longTurnTaskIndex];
+        var activeLabel = activeTask
+          ? (activeTask.candidate || ('Task ' + (this._longTurnTaskIndex + 1)))
+          : ('Task ' + (this._longTurnTaskIndex + 1));
+        taskSelectorHTML = '<div class="speaking-img-task-selector">' +
+          '<span class="speaking-img-task-tab active" aria-current="true">' +
+            '<i class="fas fa-user" aria-hidden="true"></i> ' + activeLabel +
+          '</span>' +
+        '</div>';
       }
 
       // Build timer
