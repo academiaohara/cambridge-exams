@@ -1332,6 +1332,37 @@
   color: var(--ex-duo-blue-dark, #1899d6);
 }
 
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-extract-header-only {
+  margin-bottom: 12px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-extract-header-only .transcript-extract-header {
+  margin-bottom: 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ex-duo-text, #4b4b4b);
+  line-height: 1.5;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-turn-other {
+  border-left: 4px solid #94a3b8;
+  background: #f8fafc;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-turn-other .transcript-speaker-label {
+  color: #64748b;
+}
+
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .exercise-container {
     border-radius: 18px;
