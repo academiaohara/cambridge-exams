@@ -788,7 +788,7 @@
           html += self.formatB1Reading2NoticeHtml(solRaw, isChecked);
           html += '</div>';
         }
-        if (!(typeof Utils !== 'undefined' && Utils.isC1Reading8())) {
+        if (!(typeof Utils !== 'undefined' && Utils.usesMatchingModalPanel())) {
           html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
         }
         html += '</div>';

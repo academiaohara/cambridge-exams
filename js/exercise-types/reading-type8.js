@@ -13,7 +13,7 @@
 
     _showsAnswerPreview: function() {
       return this._hasDuoMatchingUi() &&
-        !(typeof Utils !== 'undefined' && Utils.isC1Reading8());
+        !(typeof Utils !== 'undefined' && Utils.usesMatchingModalPanel());
     },
 
     _b1PreviewEscape: function(text) {

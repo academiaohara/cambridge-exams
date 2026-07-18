@@ -436,7 +436,7 @@
     _buildPart8: function(question, qNum, isChecked, userAnswer) {
       var texts = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts) || {};
       var keys = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
-      if (typeof Utils !== 'undefined' && Utils.isC1Reading8()) {
+      if (typeof Utils !== 'undefined' && Utils.usesMatchingModalPanel()) {
         return this._buildQnavTextOptionRows(qNum, keys, texts, question, isChecked, userAnswer, 'answerPart8');
       }
 
