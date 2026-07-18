@@ -433,6 +433,7 @@
         sim.innerHTML = this._buildChatView();
       } else if (mode === 'images') {
         sim.innerHTML = this._buildImagesView();
+        this._preloadAdjacentLongTurnImages();
       } else if (mode === 'options') {
         sim.innerHTML = this._buildOptionsView();
       }
@@ -615,7 +616,7 @@
             '<div class="speaking-img-carousel-body">' +
               '<div class="speaking-img-carousel-frame" id="speaking-img-frame">' +
                 '<div class="speaking-img-zoom-layer" id="speaking-img-zoom">' +
-                  '<img src="' + currentImg.url + '" alt="Photo ' + currentImg.label + '" class="speaking-img-main" id="speaking-img-active" loading="lazy" draggable="false">' +
+                  '<img src="' + currentImg.url + '" alt="Photo ' + currentImg.label + '" class="speaking-img-main" id="speaking-img-active" loading="eager" decoding="async" draggable="false">' +
                 '</div>' +
                 '<div class="speaking-img-label">Photo ' + currentImg.label +
                   (hasMultiple ? ' (' + (imageIndex + 1) + '/' + images.length + ')' : '') +
@@ -649,7 +650,7 @@
         this._longTurnTasks.forEach(function(longTurnTask, i) {
           var label = longTurnTask.candidate || ('Task ' + (i + 1));
           var isActive = i === self._longTurnTaskIndex;
-          taskSelectorHTML += '<button type="button" class="speaking-img-task-btn' + (isActive ? ' active' : '') + '" ' +
+          taskSelectorHTML += '<button type="button" class="speaking-img-task-btn' + (isActive ? ' active' : '') + '" data-task-index="' + i + '" ' +
             'onclick="SpeakingType.switchLongTurnTask(' + i + ')">' +
             '<i class="fas fa-images" aria-hidden="true"></i> ' + label +
           '</button>';
@@ -683,7 +684,11 @@
         this._longTurnTaskIndex = taskIndex;
         this._longTurnImageIndex = 0;
         this._imgZoomState = { scale: 1, tx: 0, ty: 0 };
-        this._switchMode('images');
+        if (this._viewMode === 'images' && document.querySelector('.speaking-images-view')) {
+          this._updateImagesViewContent();
+        } else {
+          this._switchMode('images');
+        }
       }
     },
 
@@ -693,7 +698,180 @@
       var len = task.images.length;
       this._longTurnImageIndex = ((this._longTurnImageIndex || 0) + delta + len) % len;
       this._imgZoomState = { scale: 1, tx: 0, ty: 0 };
-      this._switchMode('images');
+      if (this._viewMode === 'images' && document.querySelector('.speaking-images-view')) {
+        this._updateImagesViewContent();
+      } else {
+        this._switchMode('images');
+      }
+    },
+
+    _preloadLongTurnImageUrls: function(urls) {
+      if (!urls || !urls.length) return;
+      urls.forEach(function(url) {
+        if (!url) return;
+        var img = new Image();
+        img.src = url;
+      });
+    },
+
+    _preloadAdjacentLongTurnImages: function() {
+      var task = this._longTurnTasks[this._longTurnTaskIndex];
+      if (!task || !task.images || !task.images.length) return;
+      var images = task.images;
+      var idx = this._longTurnImageIndex || 0;
+      var toPreload = [];
+      if (images.length > 1) {
+        toPreload.push(images[(idx + 1) % images.length].url);
+        toPreload.push(images[(idx - 1 + images.length) % images.length].url);
+      }
+      if (this._longTurnTasks.length > 1) {
+        var otherIdx = this._longTurnTaskIndex === 0 ? 1 : 0;
+        var otherTask = this._longTurnTasks[otherIdx];
+        if (otherTask && otherTask.images && otherTask.images[0]) {
+          toPreload.push(otherTask.images[0].url);
+        }
+      }
+      this._preloadLongTurnImageUrls(toPreload);
+    },
+
+    _swapActiveLongTurnImage: function(imgEl, nextImg) {
+      if (!imgEl || !nextImg) return;
+      var nextUrl = nextImg.url;
+      var nextAlt = 'Photo ' + nextImg.label;
+      if (imgEl.src === nextUrl) {
+        imgEl.alt = nextAlt;
+        imgEl.classList.remove('speaking-img-main--loading');
+        return;
+      }
+      var preloader = new Image();
+      imgEl.classList.add('speaking-img-main--loading');
+      preloader.onload = function() {
+        imgEl.src = nextUrl;
+        imgEl.alt = nextAlt;
+        imgEl.classList.remove('speaking-img-main--loading');
+      };
+      preloader.onerror = function() {
+        imgEl.src = nextUrl;
+        imgEl.alt = nextAlt;
+        imgEl.classList.remove('speaking-img-main--loading');
+      };
+      preloader.src = nextUrl;
+    },
+
+    _updateImagesViewContent: function() {
+      var task = this._longTurnTasks[this._longTurnTaskIndex];
+      var images = (task && task.images) ? task.images : [];
+      var imageIndex = this._longTurnImageIndex || 0;
+      if (imageIndex >= images.length) {
+        imageIndex = 0;
+        this._longTurnImageIndex = 0;
+      }
+      var currentImg = images[imageIndex];
+      var hasMultiple = images.length > 1;
+
+      document.querySelectorAll('.speaking-img-task-btn').forEach(function(btn) {
+        var idx = parseInt(btn.getAttribute('data-task-index'), 10);
+        btn.classList.toggle('active', idx === this._longTurnTaskIndex);
+      }.bind(this));
+
+      var topicEl = document.querySelector('.speaking-img-topic');
+      var instructionsEl = document.querySelector('.speaking-img-instructions p');
+      if (task) {
+        if (topicEl) topicEl.textContent = task.topic || '';
+        if (instructionsEl) instructionsEl.textContent = task.instructions || '';
+      }
+
+      var labelEl = document.querySelector('.speaking-img-label');
+      if (labelEl && currentImg) {
+        labelEl.textContent = 'Photo ' + currentImg.label +
+          (hasMultiple ? ' (' + (imageIndex + 1) + '/' + images.length + ')' : '');
+      }
+
+      var counterEl = document.querySelector('.speaking-img-nav-counter');
+      if (counterEl) {
+        counterEl.textContent = hasMultiple ? ((imageIndex + 1) + ' / ' + images.length) : '';
+      }
+
+      var navRow = document.querySelector('.speaking-img-nav-row');
+      if (navRow) navRow.style.display = hasMultiple ? '' : 'none';
+
+      var imgEl = document.getElementById('speaking-img-active');
+      if (imgEl && currentImg) {
+        this._swapActiveLongTurnImage(imgEl, currentImg);
+      }
+
+      this._resetImageZoom();
+      this._preloadAdjacentLongTurnImages();
+    },
+
+    _refreshImagesView: function() {
+      var sim = document.getElementById('speaking-simulation');
+      if (!sim) return;
+
+      if (!sim.querySelector('.speaking-images-view')) {
+        sim.innerHTML = this._buildImagesView();
+        this._bindSimulationEvents();
+        this._updateView();
+        this._syncTimerDisplay();
+        this._preloadAdjacentLongTurnImages();
+        return;
+      }
+
+      var textInput = document.getElementById('speaking-text-input');
+      var savedText = textInput ? textInput.value : '';
+      var wasFocused = textInput && document.activeElement === textInput;
+
+      var view = sim.querySelector('.speaking-images-view');
+      var topBarHTML = this._buildCallTopBar();
+      var existingTopBar = view.querySelector('.speaking-call-topbar');
+      if (topBarHTML) {
+        if (existingTopBar) {
+          existingTopBar.outerHTML = topBarHTML;
+        } else {
+          view.insertAdjacentHTML('afterbegin', topBarHTML);
+        }
+      } else if (existingTopBar) {
+        existingTopBar.remove();
+      }
+
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded && !this._fullscreenCall) {
+        timerHTML = '<div class="speaking-chat-timer speaking-images-timer" id="speaking-chat-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + this._formatRemainingTime() + '</span>' +
+        '</div>';
+      }
+      var existingTimer = view.querySelector('.speaking-images-timer');
+      if (timerHTML) {
+        if (existingTimer) {
+          existingTimer.outerHTML = timerHTML;
+        } else {
+          var insertAfter = view.querySelector('.speaking-call-topbar') || view.firstChild;
+          if (insertAfter && insertAfter.insertAdjacentHTML) {
+            insertAfter.insertAdjacentHTML('afterend', timerHTML);
+          } else {
+            view.insertAdjacentHTML('afterbegin', timerHTML);
+          }
+        }
+      } else if (existingTimer) {
+        existingTimer.remove();
+      }
+
+      var controls = view.querySelector('.speaking-controls');
+      if (controls) {
+        controls.outerHTML = this._buildControls();
+      }
+
+      this._updateImagesViewContent();
+      this._bindSimulationEvents();
+
+      textInput = document.getElementById('speaking-text-input');
+      if (textInput) {
+        textInput.value = savedText;
+        if (wasFocused) textInput.focus();
+      }
+
+      this._updateView();
+      this._syncTimerDisplay();
     },
 
     _touchDistance: function(t1, t2) {
@@ -2090,7 +2268,8 @@
       if (this._viewMode === 'videocall') {
         sim.innerHTML = this._buildVideoCallView();
       } else if (this._viewMode === 'images') {
-        sim.innerHTML = this._buildImagesView();
+        this._refreshImagesView();
+        return;
       } else if (this._viewMode === 'options') {
         sim.innerHTML = this._buildOptionsView();
       } else {
