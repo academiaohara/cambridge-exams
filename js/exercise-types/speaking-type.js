@@ -261,6 +261,7 @@
     _longTurnMode: false,
     _longTurnTasks: [],
     _longTurnTaskIndex: 0,
+    _longTurnImageIndex: 0,
     _aiCandidateLabel: null,     // 'A' or 'B' — which label the AI candidate has
     _userCandidateLabel: null,   // 'A' or 'B' — which label the human user has
     _isAIGenerating: false,
@@ -321,6 +322,7 @@
       this._longTurnMode = !!(content.tasks && content.tasks.length);
       this._longTurnTasks = content.tasks || [];
       this._longTurnTaskIndex = 0;
+      this._longTurnImageIndex = 0;
       this._isAIGenerating = false;
       if (this._longTurnMode) {
         // Randomly assign AI as Candidate A or B; user is the other
@@ -468,12 +470,11 @@
           '<div class="speaking-vc-indicator"></div>' +
         '</div>';
 
-      // Build thumbnail cards only for participants who are not currently speaking
+      // Thumbnail cards only while someone is actively speaking (never before Start)
       var thumbnailCards = '';
       this._participants.forEach(function(role) {
         if (role === featuredRole) return;
-        // During the conversation, hide cards for people who are not speaking
-        if (self._conversationStarted && role !== self._activeSpeaker) return;
+        if (!self._conversationStarted || role !== self._activeSpeaker) return;
         var cardColor = role === 'candidate' ? 'gold' : (role === 'examiner' ? 'examiner' : 'blue');
         var label = role === 'candidate' ? candidateDisplayName
           : role === 'examiner' ? 'Examiner'
@@ -601,14 +602,28 @@
 
     _buildImagesView: function() {
       var task = this._longTurnTasks[this._longTurnTaskIndex];
+      var images = (task && task.images) ? task.images : [];
+      var imageIndex = this._longTurnImageIndex || 0;
+      if (imageIndex >= images.length) imageIndex = 0;
+      var currentImg = images[imageIndex];
+      var hasMultiple = images.length > 1;
       var imagesHTML = '';
-      if (task && task.images) {
-        imagesHTML = task.images.map(function(img) {
-          return '<div class="speaking-img-card">' +
-            '<img src="' + img.url + '" alt="Photo ' + img.label + '" class="speaking-img-main" loading="lazy">' +
-            '<div class="speaking-img-label">Photo ' + img.label + '</div>' +
+      if (currentImg) {
+        imagesHTML =
+          '<div class="speaking-img-carousel">' +
+            (hasMultiple
+              ? '<button type="button" class="speaking-img-nav speaking-img-nav--prev" id="speaking-img-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>'
+              : '') +
+            '<div class="speaking-img-carousel-frame">' +
+              '<img src="' + currentImg.url + '" alt="Photo ' + currentImg.label + '" class="speaking-img-main" loading="lazy">' +
+              '<div class="speaking-img-label">Photo ' + currentImg.label +
+                (hasMultiple ? ' (' + (imageIndex + 1) + '/' + images.length + ')' : '') +
+              '</div>' +
+            '</div>' +
+            (hasMultiple
+              ? '<button type="button" class="speaking-img-nav speaking-img-nav--next" id="speaking-img-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>'
+              : '') +
           '</div>';
-        }).join('');
       }
       var topicLabel = task ? task.topic : '';
       var instructionsHTML = task
@@ -644,20 +659,12 @@
         '</div>';
       }
 
-      var imageCount = task && task.images ? task.images.length : 0;
-      var gridClass = 'speaking-images-grid';
-      if (imageCount === 1) {
-        gridClass += ' speaking-images-grid--one';
-      } else if (imageCount === 2) {
-        gridClass += ' speaking-images-grid--two';
-      }
-
       return '<div class="speaking-images-view">' +
         this._buildCallTopBar() +
         timerHTML +
         taskSelectorHTML +
         instructionsHTML +
-        '<div class="' + gridClass + '">' + imagesHTML + '</div>' +
+        imagesHTML +
         this._buildControls() +
       '</div>';
     },
@@ -666,8 +673,17 @@
     switchLongTurnTask: function(taskIndex) {
       if (taskIndex >= 0 && taskIndex < this._longTurnTasks.length) {
         this._longTurnTaskIndex = taskIndex;
+        this._longTurnImageIndex = 0;
         this._switchMode('images');
       }
+    },
+
+    navigateLongTurnImage: function(delta) {
+      var task = this._longTurnTasks[this._longTurnTaskIndex];
+      if (!task || !task.images || task.images.length <= 1) return;
+      var len = task.images.length;
+      this._longTurnImageIndex = ((this._longTurnImageIndex || 0) + delta + len) % len;
+      this._switchMode('images');
     },
 
     // ── Options view (collaborative task panels for speaking3) ──
@@ -847,8 +863,8 @@
       var textInput = document.getElementById('speaking-text-input');
       if (textInput) {
         textInput.oninput = function() {
-          // Start the speaking timer when the user begins typing their response
           self._isTyping = textInput.value.trim().length > 0;
+          self._syncTimerDisplay();
         };
         textInput.onkeydown = function(e) {
           if (e.key === 'Enter') { self._sendTextInput(); }
@@ -896,18 +912,14 @@
         };
       }
 
-      sim.querySelectorAll('.speaking-img-card').forEach(function(card) {
-        card.addEventListener('click', function(ev) {
-          ev.stopPropagation();
-          if (typeof window.matchMedia === 'function' && !window.matchMedia('(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches) {
-            return;
-          }
-          card.classList.toggle('speaking-img-card--expanded');
-          sim.querySelectorAll('.speaking-img-card').forEach(function(c) {
-            if (c !== card) c.classList.remove('speaking-img-card--expanded');
-          });
-        });
-      });
+      var imgPrev = document.getElementById('speaking-img-prev');
+      if (imgPrev) {
+        imgPrev.onclick = function() { self.navigateLongTurnImage(-1); };
+      }
+      var imgNext = document.getElementById('speaking-img-next');
+      if (imgNext) {
+        imgNext.onclick = function() { self.navigateLongTurnImage(1); };
+      }
     },
 
     // ── Conversation flow ──
@@ -918,6 +930,40 @@
       }
       var ex = typeof AppState !== 'undefined' ? AppState.currentExercise : null;
       return (ex && ex.time ? ex.time : 10) * 60;
+    },
+
+    _isTimerCounting: function() {
+      if (!this._conversationStarted || this._conversationEnded) return false;
+      var current = this._script[this._scriptIndex];
+      if (!current) return false;
+      var b1LongTurn = this._longTurnMode && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+      if (b1LongTurn) {
+        // B1 Part 2: countdown only during the one-minute photo description (not follow-ups)
+        return !!(current.showImagesOnStart && !current.isFollowUp && (this._isRecording || this._isTyping));
+      }
+      // Other parts: count only while the candidate is actively responding
+      return current.role === 'candidate' && (this._isRecording || this._isTyping);
+    },
+
+    _resetTurnTimer: function() {
+      this._speakingElapsed = 0;
+      this._syncTimerDisplay();
+    },
+
+    _syncTimerDisplay: function() {
+      var display = document.getElementById('speaking-timer-display');
+      if (!display) return;
+      display.textContent = this._formatRemainingTime();
+      var totalSeconds = this._getSpeakingTotalSeconds();
+      var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+      var timerEl = document.getElementById('speaking-stage-timer')
+        || document.getElementById('speaking-chat-timer')
+        || document.getElementById('speaking-call-timer');
+      if (!timerEl) return;
+      timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger', 'speaking-timer-paused');
+      if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
+      else if (remaining <= 60) timerEl.classList.add('speaking-timer-warning');
+      if (!this._isTimerCounting()) timerEl.classList.add('speaking-timer-paused');
     },
 
     _startConversation: function() {
@@ -941,15 +987,12 @@
       this._speakingTimerInterval = setInterval(function() {
         var totalSeconds = self._getSpeakingTotalSeconds();
         var b1LongTurn = self._longTurnMode && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
-        var countTick = b1LongTurn
-          ? self._isRecording
-          : (self._isRecording || self._isTyping);
-        if (countTick) {
+        if (self._isTimerCounting()) {
           self._speakingElapsed++;
         }
         if (b1LongTurn && self._isRecording) {
           var cur = self._script[self._scriptIndex];
-          if (cur && cur.role === 'candidate' && cur.showImagesOnStart && !cur.isFollowUp) {
+          if (cur && cur.showImagesOnStart && !cur.isFollowUp) {
             self._longTurnMainTurnMicSeconds = (self._longTurnMainTurnMicSeconds || 0) + 1;
             var thresholds = [20, 40, 52];
             var played = self._longTurnBackupsPlayed || 0;
@@ -963,20 +1006,7 @@
             }
           }
         }
-        var display = document.getElementById('speaking-timer-display');
-        if (display) {
-          var remaining = Math.max(0, totalSeconds - self._speakingElapsed);
-          var mins = Math.floor(remaining / 60);
-          var secs = remaining % 60;
-          display.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
-          // Color coding for videocall, chat and fullscreen-call timers
-          var timerEl = document.getElementById('speaking-stage-timer') || document.getElementById('speaking-chat-timer') || document.getElementById('speaking-call-timer');
-          if (timerEl) {
-            timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger');
-            if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
-            else if (remaining <= 60) timerEl.classList.add('speaking-timer-warning');
-          }
-        }
+        self._syncTimerDisplay();
         if (self._speakingElapsed >= totalSeconds) {
           self._endConversation();
         }
@@ -1021,6 +1051,7 @@
         if (this._longTurnMode && turn.showImagesOnStart && !turn.isFollowUp) {
           this._longTurnMainTurnMicSeconds = 0;
           this._longTurnBackupsPlayed = 0;
+          this._resetTurnTimer();
         }
         // Auto-switch to images mode for the photo-description main turn
         if (this._longTurnMode && turn.showImagesOnStart) {
@@ -1034,6 +1065,9 @@
       // Long-turn partner (AI) turn: generate response via API
       if (this._longTurnMode && turn.role === 'partner' && !turn.text) {
         this._activeSpeaker = 'partner';
+        if (turn.showImagesOnStart && !turn.isFollowUp) {
+          this._resetTurnTimer();
+        }
         // Auto-switch to images mode if this is a main photo description turn
         if (turn.showImagesOnStart) {
           this._switchMode('images');
@@ -1604,6 +1638,7 @@
       }
       // Keep the tile speaking-indicator in sync with the recording state
       this._updateView();
+      this._syncTimerDisplay();
     },
 
     // ── End conversation and evaluate ──
@@ -1977,6 +2012,7 @@
       }
       this._bindSimulationEvents();
       this._updateView();
+      this._syncTimerDisplay();
     },
 
     _updateView: function() {
