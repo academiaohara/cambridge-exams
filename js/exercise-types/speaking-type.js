@@ -41,12 +41,18 @@
   // Gender map for voice selection: 'f' = female, 'm' = male
   var AVATAR_GENDER = {
     'Aisha.png': 'f', 'Alex.png': 'm', 'Anna.png': 'f', 'Carla.png': 'f',
-    'Carlos.png': 'm', 'Daniel.png': 'm', 'Elena.png': 'f', 'Emma.png': 'f',
-    'Fatima.png': 'f', 'Jack.png': 'm', 'Javier.png': 'm', 'Kenji.png': 'm',
-    'Lucas.png': 'm', 'Lucia.png': 'f', 'Malik.png': 'm', 'Mateo.png': 'm',
-    'Pierre.png': 'm', 'Priya.png': 'f', 'Sofia.png': 'f', 'Sofía.png': 'f',
-    'John.png': 'm', 'Michael.png': 'm', 'Sarah.png': 'f'
+    'Carlos.png': 'm', 'Chen.png': 'm', 'Clara.png': 'f', 'Dan.png': 'm',
+    'Daniel.png': 'm', 'Elena.png': 'f', 'Emma.png': 'f', 'Fatima.png': 'f',
+    'Jack.png': 'm', 'James.png': 'm', 'Javier.png': 'm', 'Kenji.png': 'm',
+    'Lucas.png': 'm', 'Lucia.png': 'f', 'Malik.png': 'm', 'Maria.png': 'f',
+    'Mateo.png': 'm', 'Miguel.png': 'm', 'Oliver.png': 'm', 'Pierre.png': 'm',
+    'Priya.png': 'f', 'Sarah.png': 'f', 'Sofia.png': 'f', 'Sofía.png': 'f',
+    'Sophie.png': 'f',
+    'John.png': 'm', 'Michael.png': 'm'
   };
+
+  // Default TTS gender when avatar filename is unknown (AI speakers only)
+  var ROLE_DEFAULT_GENDER = { examiner: 'f', partner: 'm' };
 
   // Cached voices for TTS — multiple voices per gender to avoid repetition between roles
   var _cachedVoices = { male: [], female: [], loaded: false };
@@ -86,17 +92,40 @@
     _cachedVoices.loaded = true;
   }
 
-  function _getVoiceForRole(role) {
-    _loadVoices();
+  function _isAISpeakerRole(role) {
+    return role === 'examiner' || role === 'partner';
+  }
+
+  function _getAvatarGenderForRole(role) {
+    if (!_isAISpeakerRole(role)) return null;
     var assignment = _getAssignments()[role];
-    if (!assignment) return null;
-    // Extract filename from path
+    if (!assignment || assignment.indexOf('/Assets/') !== 0) {
+      return ROLE_DEFAULT_GENDER[role] || null;
+    }
     var filename = assignment.split('/').pop();
-    var gender = AVATAR_GENDER[filename];
-    // Use role-based index so examiner and partner use different voices even within same gender
+    return AVATAR_GENDER[filename] || ROLE_DEFAULT_GENDER[role] || null;
+  }
+
+  function _getVoiceForRole(role) {
+    if (!_isAISpeakerRole(role)) return null;
+    _loadVoices();
+    var gender = _getAvatarGenderForRole(role);
+    if (!gender) return null;
+    var voiceList = (gender === 'f') ? _cachedVoices.female : _cachedVoices.male;
+    if (!voiceList.length) return null;
+    // Use role-based index so examiner and partner use different voices when possible
     var idx = ROLE_VOICE_INDEX[role] || 0;
-    var voiceList = (gender === 'f') ? _cachedVoices.female : (gender === 'm') ? _cachedVoices.male : [];
-    return (voiceList[idx] !== undefined ? voiceList[idx] : voiceList[0]) || null;
+    var voice = (voiceList[idx] !== undefined ? voiceList[idx] : voiceList[0]) || null;
+    // If both AI speakers share gender, avoid picking the same voice twice
+    var otherRole = role === 'examiner' ? 'partner' : 'examiner';
+    if (voice && _getAvatarGenderForRole(otherRole) === gender && voiceList.length > 1) {
+      var otherIdx = ROLE_VOICE_INDEX[otherRole] || 0;
+      var otherVoice = voiceList[otherIdx];
+      if (otherVoice && otherVoice.name === voice.name) {
+        voice = voiceList[(idx + 1) % voiceList.length] || voice;
+      }
+    }
+    return voice;
   }
 
   // Stable avatar assignments per speaking section (role -> filename)
