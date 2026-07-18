@@ -616,6 +616,11 @@
   background: #f1f5f9;
   user-select: none;
   -webkit-user-drag: none;
+  transition: opacity 0.18s ease;
+}
+
+.speaking-img-carousel .speaking-img-main.speaking-img-main--loading {
+  opacity: 0.55;
 }
 
 .speaking-img-carousel-frame--zoomed .speaking-img-main {
