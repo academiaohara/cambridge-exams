@@ -438,6 +438,10 @@
               typeof ListeningType4 !== 'undefined' && ListeningType4.applyExplanationMode) {
             ListeningType4.applyExplanationMode();
           }
+          if (typeof Utils !== 'undefined' && Utils.isB2ListeningSpeakerMatching() &&
+              typeof ListeningType3 !== 'undefined' && ListeningType3.applyExplanationMode) {
+            ListeningType3.applyExplanationMode();
+          }
           var questions = this._getAllQuestions();
           if (questions.length > 0) {
             AppState.explanationActiveQuestion = questions[0].number;
@@ -528,6 +532,10 @@
           if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
               typeof ListeningType4 !== 'undefined' && ListeningType4.removeExplanationMode) {
             ListeningType4.removeExplanationMode();
+          }
+          if (typeof Utils !== 'undefined' && Utils.isB2ListeningSpeakerMatching() &&
+              typeof ListeningType3 !== 'undefined' && ListeningType3.removeExplanationMode) {
+            ListeningType3.removeExplanationMode();
           }
           ExerciseRenderer.toggleView('questions');
         }
@@ -663,6 +671,10 @@
       if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
           typeof ListeningType4 !== 'undefined' && ListeningType4.syncExplanationActiveQuestion) {
         ListeningType4.syncExplanationActiveQuestion(qNum);
+      }
+      if (typeof Utils !== 'undefined' && Utils.isB2ListeningSpeakerMatching() &&
+          typeof ListeningType3 !== 'undefined' && ListeningType3.syncExplanationActiveQuestion) {
+        ListeningType3.syncExplanationActiveQuestion(qNum);
       }
 
       var questions = this._getAllQuestions();
@@ -942,6 +954,10 @@
         if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
             typeof ListeningType4 !== 'undefined' && ListeningType4.removeExplanationMode) {
           ListeningType4.removeExplanationMode();
+        }
+        if (typeof Utils !== 'undefined' && Utils.isB2ListeningSpeakerMatching() &&
+            typeof ListeningType3 !== 'undefined' && ListeningType3.removeExplanationMode) {
+          ListeningType3.removeExplanationMode();
         }
         ExerciseRenderer.toggleView('questions');
       }

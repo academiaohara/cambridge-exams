@@ -443,6 +443,13 @@
       return !!(pc && pc.type === 'dual-matching');
     },
 
+    isB2ListeningSpeakerMatching: function() {
+      if (!this.isDuoListeningSection() || typeof AppState === 'undefined') return false;
+      if (AppState.currentLevel !== 'B2' || AppState.currentPart !== 3) return false;
+      var pc = CONFIG.getPartConfig('listening', AppState.currentPart);
+      return !!(pc && pc.type === 'speaker-matching');
+    },
+
     getExerciseBadgeLabel: function(section, part, exercise) {
       if (section === 'reading') {
         return 'Reading - Part ' + part;

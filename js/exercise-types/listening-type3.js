@@ -1,5 +1,5 @@
 // js/exercise-types/listening-type3.js
-// B2 Listening Part 3: five speakers + options A–H (layout like C1 Listening Part 4 task panel)
+// B2 Listening Part 3: five speakers + options A–H (single task panel like C1 Listening Part 4)
 
 (function() {
   window.ListeningType3 = {
@@ -17,6 +17,8 @@
       if (!questions.length || !Object.keys(texts).length) return;
 
       var isChecked = AppState.answersChecked;
+      var isDuoListening =
+        typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
       var html = '';
 
       var audioSource = exercise.audio_source || exercise.audioUrl || '';
@@ -41,16 +43,15 @@
         html += '</div>';
       }
 
-      html += '<div class="listening-type3-panel">';
-      html += this._renderOptionsList(texts);
-      html += '<div class="listening-type3-questions-col">';
-      html += this._renderQuestions(questions, texts, isChecked);
+      html += '<div class="listening-type3-wrapper' + (isDuoListening ? ' listening-type3-wrapper--duo' : '') + '">';
+      html += '<div class="listening-type3-tasks">';
+      html += this._renderTask(exercise, texts, questions, isChecked, isDuoListening);
       html += '</div>';
       html += '</div>';
 
       var noteCreator = container.querySelector('#note-creator');
       var wrapper = document.createElement('div');
-      wrapper.className = 'listening-type3-container';
+      wrapper.className = 'listening-type3-container' + (isDuoListening ? ' listening-type3-container--duo' : '');
       wrapper.innerHTML = html;
       if (noteCreator) {
         container.insertBefore(wrapper, noteCreator);
@@ -67,54 +68,90 @@
         .replace(/"/g, '&quot;');
     },
 
-    _renderOptionsList: function(texts) {
-      var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
-      var optionsHTML = letters.map(function(letter) {
-        return '<div class="listening-type3-option"><strong class="listening-type3-option-letter">' + letter + '</strong>' +
-          '<span class="listening-type3-option-text">' + this._escapeHtml(texts[letter]) + '</span></div>';
-      }.bind(this)).join('');
+    _getTaskMeta: function(exercise, questions) {
+      var extract = exercise.content.extracts && exercise.content.extracts[0];
+      var title = 'Task';
+      var instruction = exercise.description || exercise.instructions || '';
 
-      return '<div class="listening-type3-options-col">' +
-        '<div class="listening-type3-options-list">' + optionsHTML + '</div>' +
-        '</div>';
+      if (extract && extract.context) {
+        title = extract.context;
+      }
+
+      if (!instruction && questions.length) {
+        var nums = questions.map(function(q) { return q.number; }).sort(function(a, b) { return a - b; });
+        instruction = 'For questions ' + nums[0] + '–' + nums[nums.length - 1] +
+          ', choose from the list (A–H) the reason each speaker gives.';
+      }
+
+      return { title: title, instruction: instruction };
     },
 
-    _renderQuestions: function(questions, texts, isChecked) {
-      var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
-      var self = this;
+    _renderTask: function(exercise, texts, questions, isChecked, isDuoListening) {
+      var meta = this._getTaskMeta(exercise, questions);
+      var optionEntries = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); })
+        .map(function(letter) { return [letter, texts[letter]]; });
 
-      return questions.map(function(q) {
+      var optionsHTML = optionEntries.map(function(entry) {
+        return '<div class="listening-type3-option"><strong class="listening-type3-option-letter">' + entry[0] +
+          '</strong><span class="listening-type3-option-text">' + this._escapeHtml(entry[1]) + '</span></div>';
+      }.bind(this)).join('');
+
+      var self = this;
+      var questionsHTML = questions.map(function(q) {
         var qNum = q.number;
         var savedAnswer = (AppState.currentExercise.answers && AppState.currentExercise.answers[qNum]) || '';
-        var selectClass = 'listening-type3-select';
+        var selectClass = 'listening-type3-select' + (isDuoListening ? ' listening-type3-select--duo' : '');
+        var isIncorrect = false;
         if (isChecked) {
           if (savedAnswer === q.correct) {
             selectClass += ' correct';
           } else {
             selectClass += ' incorrect';
+            isIncorrect = true;
           }
         }
 
-        var optSelectHTML = letters.map(function(L) {
-          return '<option value="' + L + '"' + (savedAnswer === L ? ' selected' : '') + '>' + L + '</option>';
+        var optSelectHTML = optionEntries.map(function(entry) {
+          return '<option value="' + entry[0] + '"' + (savedAnswer === entry[0] ? ' selected' : '') + '>' + entry[0] + '</option>';
         }).join('');
 
         var selectHTML = '<select class="' + selectClass + '" data-qnum="' + qNum + '"' +
-          (isChecked ? ' disabled' : '') +
-          ' onchange="ListeningType3.handleSelect(' + qNum + ', this.value)">' +
-          '<option value="">Choose option</option>' +
-          optSelectHTML +
+            (isChecked ? ' disabled' : '') +
+            ' onchange="ListeningType3.handleSelect(' + qNum + ', this.value)">' +
+            '<option value="" disabled' + (savedAnswer ? '' : ' selected') + ' hidden></option>' +
+            optSelectHTML +
           '</select>';
 
-        var speakerLabel = q.speaker || ('Speaker ' + qNum);
-        var speakerNum = String(speakerLabel).replace(/^Speaker\s*/i, '').trim();
-
-        return '<div class="listening-type3-question">' +
-          '<span class="listening-type3-speaker-label">Speaker ' + self._escapeHtml(speakerNum) + '</span>' +
-          '<span class="listening-type3-q-number">' + qNum + '</span>' +
+        selectHTML = '<span class="listening-type3-answer-wrapper' + (isIncorrect ? ' listening-type3-answer-wrapper--incorrect' : '') + '">' +
           selectHTML +
-          '</div>';
+          (isIncorrect ? '<span class="listening-type3-correct-tooltip">Correct answer: ' + q.correct + '</span>' : '') +
+        '</span>';
+
+        var numClass = 'listening-type3-q-number';
+        if (isChecked && typeof Utils !== 'undefined') {
+          var stateClass = Utils.getQuestionNumberStateClass({
+            answer: savedAnswer,
+            correct: q.correct,
+            isChecked: isChecked,
+            questionType: 'speaker-matching'
+          });
+          if (stateClass) numClass += ' ' + stateClass;
+        }
+
+        var speakerNum = String(q.speaker || '').replace(/^Speaker\s*/i, '').trim();
+        return '<div class="listening-type3-question' + (isDuoListening ? ' listening-type3-question--duo' : '') + '" data-listening-q="' + String(qNum) + '">' +
+          '<span class="' + numClass + '" data-qnum="' + qNum + '">' + qNum + '</span>' +
+          '<span class="listening-type3-speaker-label">Speaker ' + self._escapeHtml(speakerNum) + '</span>' +
+          selectHTML +
+        '</div>';
       }).join('');
+
+      return '<div class="listening-type3-task' + (isDuoListening ? ' listening-type3-task--duo' : '') + '">' +
+        '<h4 class="listening-type3-task-title">' + self._escapeHtml(meta.title) + '</h4>' +
+        '<p class="listening-type3-instruction">' + self._escapeHtml(meta.instruction) + '</p>' +
+        '<div class="listening-type3-options-list">' + optionsHTML + '</div>' +
+        '<div class="listening-type3-questions">' + questionsHTML + '</div>' +
+      '</div>';
     },
 
     handleSelect: function(qNum, value) {
@@ -139,6 +176,72 @@
       var existing = document.querySelector('.listening-type3-container');
       if (existing) existing.remove();
       this.initListeners();
+    },
+
+    _getCorrectForQNum: function(qNum) {
+      var exercise = AppState.currentExercise;
+      if (!exercise || !exercise.content || !exercise.content.questions) return '';
+      var q = exercise.content.questions.find(function(item) { return item.number === qNum; });
+      return q && q.correct ? q.correct : '';
+    },
+
+    setAnswerMode: function(mode) {
+      document.querySelectorAll('.listening-type3-select[data-qnum]').forEach(function(sel) {
+        var qNum = parseInt(sel.getAttribute('data-qnum'), 10);
+        var correct = ListeningType3._getCorrectForQNum(qNum);
+        var wrapper = sel.closest('.listening-type3-answer-wrapper');
+        var tooltip = wrapper && wrapper.querySelector('.listening-type3-correct-tooltip');
+
+        if (mode === 'correct') {
+          if (sel.dataset.lt3ExplPrev === undefined) {
+            sel.dataset.lt3ExplPrev = sel.value;
+          }
+          if (correct) sel.value = correct;
+          sel.classList.remove('correct', 'incorrect');
+          sel.classList.add('listening-type3-select-expl-show');
+          if (wrapper) wrapper.classList.remove('listening-type3-answer-wrapper--incorrect');
+          if (tooltip) tooltip.style.display = 'none';
+        } else {
+          if (sel.dataset.lt3ExplPrev !== undefined) {
+            sel.value = sel.dataset.lt3ExplPrev;
+            delete sel.dataset.lt3ExplPrev;
+          }
+          sel.classList.remove('listening-type3-select-expl-show');
+          if (tooltip) tooltip.style.display = '';
+          if (AppState.answersChecked) {
+            var isCorrect = sel.value === correct;
+            sel.classList.toggle('correct', isCorrect);
+            sel.classList.toggle('incorrect', !isCorrect);
+            if (wrapper) {
+              wrapper.classList.toggle('listening-type3-answer-wrapper--incorrect', !isCorrect);
+            }
+          }
+        }
+      });
+    },
+
+    syncExplanationActiveQuestion: function(qNum) {
+      document.querySelectorAll('.listening-type3-question').forEach(function(row) {
+        var isActive = String(row.getAttribute('data-listening-q')) === String(qNum);
+        row.classList.toggle('listening-type3-question--expl-active', isActive);
+      });
+    },
+
+    applyExplanationMode: function() {
+      this.setAnswerMode('correct');
+      var container = document.querySelector('.listening-type3-container');
+      if (container) container.classList.add('listening-type3-explanation-mode');
+      var activeQ = typeof AppState !== 'undefined' ? AppState.explanationActiveQuestion : null;
+      if (activeQ != null) this.syncExplanationActiveQuestion(activeQ);
+    },
+
+    removeExplanationMode: function() {
+      this.setAnswerMode('student');
+      var container = document.querySelector('.listening-type3-container');
+      if (container) container.classList.remove('listening-type3-explanation-mode');
+      document.querySelectorAll('.listening-type3-question--expl-active').forEach(function(row) {
+        row.classList.remove('listening-type3-question--expl-active');
+      });
     }
   };
 })();
