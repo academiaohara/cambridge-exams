@@ -654,6 +654,14 @@
   min-width: 0;
 }
 
+.c1-reading3 .reading-type3-wf-pill.reading-type3-gap-pill--example .cu-hint-pill-word.cu-wf-pill-word,
+.c1-reading3 .reading-type3-wf-pill:has(.reading-type3-example-answer) .cu-hint-pill-word.cu-wf-pill-word {
+  background: var(--ex-duo-practice, #58cc02);
+  border-color: var(--ex-duo-practice-dark, #58a700) !important;
+  color: #fff;
+  box-shadow: none !important;
+}
+
 .reading-text-enhanced--b1r-plain.c1-reading3 .toggle-text-section p {
   line-height: 2.75;
 }
