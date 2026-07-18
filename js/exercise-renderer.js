@@ -888,8 +888,9 @@
       var isChecked = AppState.answersChecked;
       var viewAsCorrect = typeof AppState !== 'undefined' && isChecked &&
         AppState.answerViewMode === 'correct';
-      var isC1Gapped = typeof Utils !== 'undefined' && Utils.isC1GappedTextReading();
-      var c1CheckedFeedback = isC1Gapped && isChecked && !viewAsCorrect;
+      var duoGappedCheckedFeedback = typeof Utils !== 'undefined' &&
+        (Utils.isC1GappedTextReading() || Utils.isB1GappedTextReading()) &&
+        isChecked && !viewAsCorrect;
       var effectiveAnswer = function(qNum) {
         if (viewAsCorrect) {
           var fq = questions.find(function(x) { return x.number === qNum; });
@@ -919,13 +920,13 @@
         questions.forEach(function(q) {
           if (effectiveAnswer(q.number) === key) assignedQ = q;
         });
-        var c1Result = c1CheckedFeedback
+        var c1Result = duoGappedCheckedFeedback
           ? ExerciseRenderer._c1Reading7ParagraphResultBadges(key, questions, userAnswer)
           : null;
         if (isChecked) {
           if (viewAsCorrect) {
             if (correctForQ) cardCls += ' reading-type7-toggle-card-show-correct';
-          } else if (c1CheckedFeedback) {
+          } else if (duoGappedCheckedFeedback) {
             if (c1Result.userGap != null) {
               cardCls += c1Result.userGap === c1Result.correctGap
                 ? ' reading-type7-toggle-card-correct'
@@ -959,7 +960,7 @@
         html += '<div class="reading-type7-toggle-card-body">' + bodyHtml + '</div>';
         html += '<div class="reading-type7-toggle-card-actions">';
         html += '<span class="reading-type7-toggle-actions-label">Gap</span>';
-        if (c1CheckedFeedback) {
+        if (duoGappedCheckedFeedback) {
           c1Result.badges.forEach(function(badge) {
             var btnCls = 'reading-type7-toggle-gapbtn checked';
             if (badge.selected) btnCls += ' selected';

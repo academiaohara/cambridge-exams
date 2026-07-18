@@ -974,11 +974,13 @@
   box-shadow: 0 3px 0 #059669;
 }
 
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-correct .reading-type7-toggle-card-head,
 .c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-correct .reading-type7-toggle-card-head {
   background: #ecfdf5;
   border-bottom-color: #6ee7b7;
 }
 
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-correct .reading-type7-toggle-letter,
 .c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-correct .reading-type7-toggle-letter {
   background: #58cc02;
   border-color: #58a700;
@@ -991,17 +993,20 @@
   box-shadow: 0 3px 0 #dc2626;
 }
 
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect .reading-type7-toggle-card-head,
 .c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect .reading-type7-toggle-card-head {
   background: #fef2f2;
   border-bottom-color: #fca5a5;
 }
 
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect .reading-type7-toggle-letter,
 .c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect .reading-type7-toggle-letter {
   background: #ff4b4b;
   border-color: #ea2b2b;
   box-shadow: 0 2px 0 #ea2b2b;
 }
 
+.b1-reading4 .reading-type7-toggle-gapbtn.checked.correct:not(.selected),
 .c1-reading7 .reading-type7-toggle-gapbtn.checked.correct:not(.selected) {
   background: var(--correct, #10b981);
   border-color: #059669;
@@ -1024,11 +1029,13 @@
   background: var(--ex-feedback-bg, #fff);
 }
 
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct .reading-type7-toggle-card-head,
 .c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct .reading-type7-toggle-card-head {
   background: var(--ex-duo-purple-light, #f3e8ff);
   border-bottom-color: var(--ex-duo-purple, #ce82ff);
 }
 
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct .reading-type7-toggle-letter,
 .c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct .reading-type7-toggle-letter {
   background: var(--ex-duo-purple, #ce82ff);
   border-color: var(--ex-duo-purple-dark, #a855f7);
