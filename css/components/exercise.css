@@ -2281,7 +2281,8 @@ body:has(.dashboard-layout--exercise) #main-content {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .dashboard-layout--exercise .exercise-chip {
@@ -2397,10 +2398,11 @@ body:has(.dashboard-layout--exercise) #main-content {
   min-height: 42px;
   display: inline-flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .dashboard-layout--exercise .exercise-chips-row .exercise-toolbar {
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .dashboard-layout--exercise .exercise-header-right {
@@ -2485,8 +2487,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   display: flex !important;
   flex-direction: row !important;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
   flex-wrap: nowrap;
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -2496,6 +2500,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   flex-wrap: nowrap;
   flex-shrink: 0;
   gap: 6px;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row .exercise-chip--duration {
+  margin-left: auto;
 }
 
 .dashboard-layout--exercise .exercise-info--single-row .exercise-chip--duration,
