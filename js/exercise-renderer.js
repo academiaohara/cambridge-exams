@@ -60,6 +60,61 @@
       }
     },
 
+    _syncB1Reading5MobileSpacer: function() {
+      var spacer = document.querySelector('.b1-reading5-mobile-spacer');
+      var stack = document.querySelector('.dashboard-layout--exercise .exercise-bottom-stack');
+      if (!spacer || !stack) return;
+
+      var isMobile = window.matchMedia('(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches;
+      if (!isMobile) {
+        spacer.style.removeProperty('height');
+        return;
+      }
+
+      var stackHeight = Math.ceil(stack.getBoundingClientRect().height);
+      if (stackHeight > 0) {
+        spacer.style.height = stackHeight + 'px';
+      }
+    },
+
+    _bindB1Reading5MobileSpacer: function() {
+      var self = this;
+      var run = function() {
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            self._syncB1Reading5MobileSpacer();
+          });
+        });
+      };
+
+      run();
+
+      if (self._b1Reading5MobileSpacerBound) return;
+      self._b1Reading5MobileSpacerBound = true;
+
+      window.addEventListener('resize', run);
+
+      var stack = document.querySelector('.dashboard-layout--exercise .exercise-bottom-stack');
+      var wrap = document.querySelector('.exercise-tools-sidebar-wrap--mobile');
+      if (stack && typeof ResizeObserver !== 'undefined') {
+        var ro = new ResizeObserver(run);
+        ro.observe(stack);
+        if (wrap) ro.observe(wrap);
+      }
+
+      if (typeof MutationObserver !== 'undefined') {
+        var mo = new MutationObserver(run);
+        mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        if (wrap) {
+          mo.observe(wrap, { attributes: true, attributeFilter: ['class'] });
+        }
+        var footer = document.querySelector('.dashboard-layout--exercise .exercise-footer');
+        if (footer) {
+          mo.observe(footer, { attributes: true, attributeFilter: ['class'] });
+        }
+      }
+    },
+
     _relocateExerciseTools: function(toolsBarHTML) {
       var tools = document.getElementById('tools-sidebar');
       var isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -81,6 +136,7 @@
       if (other) other.innerHTML = '';
 
       this._syncToolsToggleButton();
+      this._syncB1Reading5MobileSpacer();
     },
 
     _bindExerciseToolsRelocation: function(toolsBarHTML) {
@@ -479,10 +535,11 @@
               <div class="reading-text-enhanced${hasDuoMatchingUiShell ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoGappedSentenceStyle ? ' b1-reading4' : ''}${c1Reading7Gapped ? ' c1-reading7' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReading6CrossText ? ' c1-reading6' : ''}${duoReadingMultipleMatching ? ' duo-reading-matching' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
-              ${duoReading5Cloze ? '<div class="b1-reading5-mobile-spacer" aria-hidden="true"></div>' : ''}
             </div>
 
             ${this.renderExplanationsPanel(exercise, partConfig)}
+
+            ${duoReading5Cloze ? '<div class="b1-reading5-mobile-spacer" aria-hidden="true"></div>' : ''}
 
             <div class="exercise-bottom-stack">
               ${showTools ? '<div class="exercise-tools-sidebar-wrap exercise-tools-sidebar-wrap--mobile"></div>' : ''}
@@ -510,6 +567,10 @@
             Tools.switchTool('notes');
           }
         }
+      }
+
+      if (duoReading5Cloze) {
+        this._bindB1Reading5MobileSpacer();
       }
     },
     

@@ -702,24 +702,13 @@
   }
 
   /* Reserve scroll space below the passage so the fixed bottom stack
-     covers this spacer instead of the last lines of reading-text-enhanced. */
+     covers this spacer instead of the last lines of reading-text-enhanced.
+     Height is synced from the real bottom stack in exercise-renderer.js. */
   .dashboard-layout--exercise .b1-reading5-mobile-spacer {
     display: block;
     width: 100%;
     flex-shrink: 0;
-    height: calc(72px + env(safe-area-inset-bottom, 0px));
+    min-height: 88px;
     pointer-events: none;
-  }
-
-  .dashboard-layout--exercise:has(.exercise-tools-sidebar-wrap--mobile.is-open) .b1-reading5-mobile-spacer {
-    height: calc(136px + env(safe-area-inset-bottom, 0px));
-  }
-
-  body.answers-checked-app .dashboard-layout--exercise .b1-reading5-mobile-spacer {
-    height: calc(140px + env(safe-area-inset-bottom, 0px));
-  }
-
-  body.answers-checked-app .dashboard-layout--exercise:has(.exercise-tools-sidebar-wrap--mobile.is-open) .b1-reading5-mobile-spacer {
-    height: calc(204px + env(safe-area-inset-bottom, 0px));
   }
 }
