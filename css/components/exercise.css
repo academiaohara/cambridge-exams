@@ -3212,13 +3212,13 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border-top: none;
     border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.11), 0 -1px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: none;
   }
 
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-footer {
     bottom: var(--ex-mobile-rail-height);
     border-radius: 20px 20px 0 0;
-    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
     padding-bottom: 10px;
   }
 
@@ -3342,7 +3342,8 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   /* Reduce exercise container top padding (no white card frame) */
   .dashboard-layout--exercise .exercise-container {
-    padding: 12px 14px 0;
+    padding-top: 12px;
+    padding-inline: 14px;
   }
 
   /* Compact header on mobile */
