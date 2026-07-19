@@ -3606,7 +3606,8 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
 
 @media (max-width: 360px) {
   .dashboard-layout--exercise .exercise-container {
-    padding: 10px 10px 0;
+    padding-top: 10px;
+    padding-inline: 10px;
   }
 
   .dashboard-layout--exercise .exercise-footer {
