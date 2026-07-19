@@ -34,7 +34,7 @@
   window.Tools = {
     _syncMobileDockState: function() {
       var sidebar = document.getElementById('tools-sidebar');
-      var wrap = document.querySelector('.exercise-tools-sidebar-wrap');
+      var wrap = document.querySelector('.exercise-tools-sidebar-wrap--mobile');
       var toggleBtn = document.querySelector('.btn-tools-toggle');
       var isOpen = !!(sidebar && sidebar.classList.contains('open'));
       if (wrap) wrap.classList.toggle('is-open', isOpen);

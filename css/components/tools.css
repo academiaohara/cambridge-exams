@@ -1488,15 +1488,11 @@
   background: var(--tool-duo-orange);
 }
 
-/* ── Mobile: in-flow dock above exercise footer, opened via footer button ── */
+/* ── Mobile: fixed bottom dock, panel above icons, opens upward ── */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column {
     position: static;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    z-index: auto;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin: 0;
     border-radius: 0;
     background: #fff;
@@ -1511,39 +1507,8 @@
     box-sizing: border-box;
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-rail {
-    flex-direction: row;
-    justify-content: stretch;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 0;
-    padding: 10px 12px;
-    border-top: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-    background: transparent;
-    border-radius: 0;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tools-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: 100%;
-    gap: 8px;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-panel {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-panel {
+    order: 1;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1554,65 +1519,99 @@
     max-width: 100%;
     flex-shrink: 0;
     box-sizing: border-box;
+    border-bottom: 2px solid var(--ex-duo-blue, #1cb0f6);
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column.open:has(.sidebar-tool-btn.active) .sidebar-panel {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column.open:has(.sidebar-tool-btn.active) .sidebar-panel {
     max-height: 50dvh;
     overflow-y: auto;
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-rail {
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0;
+    padding: 10px 16px;
+    border-top: none;
+    border-bottom: none;
+    background: transparent;
+    border-radius: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tools-list {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
+    width: auto;
+    max-width: 100%;
+    gap: 10px;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tool-btn {
     flex: 0 0 44px;
     width: 44px;
     min-width: 44px;
     max-width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    background: #fff;
+    border: 2px solid var(--ex-duo-border, #e5e5e5);
+    box-shadow: 0 2px 0 #e5e5e5;
     color: #94a3b8;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 3px;
-    transition: color 0.15s, background 0.15s;
+    transition: color 0.15s, background 0.15s, border-color 0.15s, box-shadow 0.15s;
     padding: 6px 4px;
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn:hover {
-    background: rgba(255, 150, 0, 0.08);
-    color: var(--brand-orange, #ff9600);
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tool-btn:hover {
+    background: var(--ex-duo-orange-light, #fff0e6);
+    border-color: var(--ex-duo-orange, #f47417);
+    color: var(--ex-duo-orange, #f47417);
     transform: none;
-    box-shadow: none;
+    box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn.active {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tool-btn.active {
     background: var(--tool-duo-orange);
     color: #fff;
     border-color: var(--tool-duo-orange-dark);
     box-shadow: var(--tool-duo-btn-shadow);
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn.active i {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tool-btn.active i {
     color: #fff;
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn.active:hover {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tool-btn.active:hover {
     background: var(--tool-duo-orange-hover);
     color: #fff;
     transform: translateY(-1px);
     box-shadow: var(--tool-duo-btn-shadow);
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn i {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .sidebar-tool-btn i {
     font-size: 1.15rem;
   }
 
-  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .active-tool-content {
+  .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column .active-tool-content {
     max-height: none;
-    padding: 14px 16px 8px;
+    padding: 14px 16px 12px;
     box-sizing: border-box;
   }
 }

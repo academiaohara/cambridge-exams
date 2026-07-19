@@ -323,7 +323,8 @@
     },
 
     _getExerciseToolsSidebarWidth: function() {
-      var wrap = document.querySelector('.exercise-tools-sidebar-wrap');
+      var wrap = document.querySelector('.exercise-tools-sidebar-wrap--mobile.is-open')
+        || document.querySelector('.exercise-tools-sidebar-wrap--desktop');
       if (!wrap) return 0;
       var isMobile = window.matchMedia('(max-width: 768px)').matches;
       if (isMobile && !wrap.classList.contains('is-open')) return 0;

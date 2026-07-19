@@ -3274,7 +3274,7 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  /* Bottom dock: tools panel + footer in document flow (no overlap with content) */
+  /* Fixed bottom stack: tools sheet grows upward + exercise footer (full viewport width) */
   .dashboard-layout--exercise .exercise-footer {
     position: static;
     bottom: auto;
@@ -3291,6 +3291,15 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
     box-shadow: none;
   }
 
+  .dashboard-layout--exercise .exercise-bottom-stack:not(:has(.exercise-tools-sidebar-wrap--mobile.is-open)) .exercise-footer {
+    border-radius: 20px 20px 0 0;
+    border-top: none;
+  }
+
+  .dashboard-layout--exercise .exercise-bottom-stack:has(.exercise-tools-sidebar-wrap--mobile.is-open) .exercise-footer {
+    border-top: none;
+  }
+
   .dashboard-layout--exercise .exercise-footer.exercise-footer--correct,
   .dashboard-layout--exercise .exercise-footer.exercise-footer--partial,
   .dashboard-layout--exercise .exercise-footer.exercise-footer--incorrect {
@@ -3299,7 +3308,11 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   }
 
   .dashboard-layout--exercise .exercise-container {
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  body.answers-checked-app .dashboard-layout--exercise .exercise-container {
+    padding-bottom: calc(140px + env(safe-area-inset-bottom));
   }
 
   .dashboard-layout--exercise .exercise-page-wrapper {
