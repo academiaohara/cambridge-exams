@@ -312,6 +312,7 @@
     _messages: [],           // {role, text}
     _recognition: null,
     _isRecording: false,
+    _recognitionActive: false,
     _isTyping: false,        // user has typed in the text input
     _conversationStarted: false,
     _conversationEnded: false,
@@ -588,6 +589,18 @@
     _isMobileViewport: function() {
       return typeof window.matchMedia === 'function' &&
         window.matchMedia('(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches;
+    },
+
+    _isIOSDevice: function() {
+      if (typeof navigator === 'undefined') return false;
+      var ua = navigator.userAgent || '';
+      return /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    },
+
+    _shouldUseContinuousSpeech: function() {
+      // iOS stops recognition after each utterance and cannot restart without a tap.
+      return !this._isIOSDevice();
     },
 
     _enterCallUI: function() {
@@ -1143,7 +1156,7 @@
             '<button class="speaking-call-round-btn' + (this._kbOpen ? ' speaking-call-round-btn--active' : '') + '" id="speaking-kb-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Type instead' + '">' +
               '<i class="fas fa-keyboard"></i>' +
             '</button>' +
-            '<button class="speaking-call-round-btn speaking-call-mic" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
+            '<button type="button" class="speaking-call-round-btn speaking-call-mic" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
               '<i class="fas fa-microphone"></i>' +
             '</button>' +
             '<button class="speaking-call-round-btn speaking-call-end" id="speaking-end-btn" title="' + 'End conversation' + '">' +
@@ -1161,7 +1174,7 @@
       return '<div class="speaking-controls">' +
         '<div class="speaking-input-row">' +
           '<input type="text" class="speaking-text-input" id="speaking-text-input" placeholder="' + 'Type your response...' + '"' + (isMine ? '' : ' disabled') + '>' +
-          '<button class="speaking-mic-btn" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
+          '<button type="button" class="speaking-mic-btn" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
             '<i class="fas fa-microphone"></i>' +
           '</button>' +
           '<button class="speaking-send-btn" id="speaking-send-btn"' + (isMine ? '' : ' disabled') + '>' +
@@ -1204,7 +1217,7 @@
 
       var micBtn = document.getElementById('speaking-mic-btn');
       if (micBtn) {
-        micBtn.onclick = function() { self._toggleRecording(); };
+        self._bindMicButton(micBtn);
       }
 
       var sendBtn = document.getElementById('speaking-send-btn');
@@ -1898,6 +1911,21 @@
       this._processCurrentTurn();
     },
 
+    _bindMicButton: function(micBtn) {
+      var self = this;
+      micBtn.setAttribute('type', 'button');
+      micBtn.onclick = function(e) {
+        e.preventDefault();
+        if (micBtn.disabled) return;
+        // On iOS the speech engine often dies while the UI still shows "recording".
+        if (self._isRecording && !self._recognitionActive) {
+          self._startRecording();
+          return;
+        }
+        self._toggleRecording();
+      };
+    },
+
     // ── Speech-to-text ──
 
     _toggleRecording: function() {
@@ -1910,6 +1938,9 @@
 
     _startRecording: function() {
       var self = this;
+      var current = this._script[this._scriptIndex];
+      if (!current || current.role !== 'candidate') return;
+
       var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
         var input = document.getElementById('speaking-text-input');
@@ -1926,13 +1957,20 @@
         return;
       }
 
+      if (this._recognition) {
+        try { this._recognition.stop(); } catch(e) {}
+        this._recognition = null;
+      }
+
       this._recognition = new SpeechRecognition();
       this._recognition.lang = 'en-GB';
       this._recognition.interimResults = true;
-      this._recognition.continuous = true;
+      this._recognition.continuous = this._shouldUseContinuousSpeech();
 
-      this._pendingTranscript = '';
-      this._finalTranscript = '';
+      if (!this._isRecording) {
+        this._pendingTranscript = '';
+        this._finalTranscript = '';
+      }
 
       this._recognition.onresult = function(event) {
         var interim = '';
@@ -1948,11 +1986,20 @@
         if (input) input.value = self._pendingTranscript;
       };
 
+      this._recognition.onstart = function() {
+        self._recognitionActive = true;
+      };
+
       this._recognition.onend = function() {
-        // In continuous mode, the recognition may stop unexpectedly;
-        // if we're still supposed to be recording, restart it
+        self._recognitionActive = false;
+        if (self._isRecording && !self._conversationEnded && self._recognition.continuous) {
+          try {
+            self._recognition.start();
+            return;
+          } catch(e) {}
+        }
         if (self._isRecording && !self._conversationEnded) {
-          try { self._recognition.start(); } catch(e) {}
+          self._updateMicButton();
           return;
         }
         self._isRecording = false;
@@ -1960,19 +2007,42 @@
       };
 
       this._recognition.onerror = function(e) {
+        self._recognitionActive = false;
         // 'no-speech' and 'aborted' are non-fatal in continuous mode
-        if (e.error === 'no-speech' || e.error === 'aborted') return;
+        if (e.error === 'no-speech' || e.error === 'aborted') {
+          if (self._isRecording) self._updateMicButton();
+          return;
+        }
+        if (e.error === 'not-allowed') {
+          var deniedInput = document.getElementById('speaking-text-input');
+          if (deniedInput) deniedInput.placeholder = 'Microphone blocked — type instead';
+          if (self._fullscreenCall && !self._kbOpen) {
+            self._kbOpen = true;
+            var callControls = document.querySelector('.speaking-controls--call');
+            if (callControls) callControls.classList.add('speaking-kb-open');
+            var kbBtn = document.getElementById('speaking-kb-btn');
+            if (kbBtn) kbBtn.classList.add('speaking-call-round-btn--active');
+          }
+        }
         self._isRecording = false;
         self._updateMicButton();
       };
 
-      this._recognition.start();
+      try {
+        this._recognition.start();
+      } catch(e) {
+        this._recognitionActive = false;
+        this._isRecording = false;
+        this._updateMicButton();
+        return;
+      }
       this._isRecording = true;
       this._updateMicButton();
     },
 
     _stopRecording: function() {
       this._isRecording = false;
+      this._recognitionActive = false;
       if (this._recognition) {
         try { this._recognition.stop(); } catch(e) {}
       }
@@ -1995,7 +2065,8 @@
         btn.classList.add('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-stop"></i>';
         if (indicator) {
-          indicator.innerHTML = '<span class="speaking-pulse"></span> ' + 'Speaking...';
+          indicator.innerHTML = '<span class="speaking-pulse"></span> ' +
+            (this._recognitionActive ? 'Speaking...' : 'Tap mic again to continue');
         }
       } else {
         btn.classList.remove('speaking-mic-recording');
