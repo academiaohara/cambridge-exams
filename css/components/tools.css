@@ -1301,8 +1301,8 @@
 .tools-sidebar--right-column .sidebar-rail {
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: stretch;
+  gap: 0;
   padding: 12px 8px;
   background: transparent;
   border-top: none;
@@ -1314,9 +1314,9 @@
 .tools-sidebar--right-column .sidebar-tools-list {
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 0;
   width: 100%;
 }
 
@@ -1511,10 +1511,10 @@
     overflow: visible;
   }
 
-  /* Rail: the visible icon bar at the bottom (flat top — exercise footer sits above as a sheet) */
+  /* Rail: same horizontal inset as exercise-footer (10px 16px) */
   .tools-sidebar--right-column .sidebar-rail {
     flex-direction: row;
-    justify-content: center;
+    justify-content: stretch;
     align-items: center;
     width: 100%;
     gap: 0;
@@ -1530,12 +1530,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex: 0 1 auto;
-    width: auto;
+    flex: 1 1 auto;
+    width: 100%;
     max-width: none;
-    gap: 8px;
+    gap: 0;
     padding: 0;
   }
 
@@ -1556,12 +1556,12 @@
     overflow-y: auto;
   }
 
-  /* Tool buttons: centered group in the rail */
+  /* Tool buttons: fixed slots, distributed like exercise-footer actions */
   .tools-sidebar--right-column .sidebar-tool-btn {
-    flex: 0 0 auto;
+    flex: 0 0 44px;
+    width: 44px;
     min-width: 44px;
-    max-width: 64px;
-    width: auto;
+    max-width: 44px;
     height: 44px;
     border-radius: 12px;
     background: transparent;
