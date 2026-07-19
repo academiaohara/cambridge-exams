@@ -519,29 +519,33 @@
         : (loadingExam?.sections[section]?.total || 1);
       const loadingDisplayPart = loadingIsMixed ? AppState.mixedTestCurrentIndex + 1 : part;
       const loadingIsExamMode = AppState.currentMode === 'exam';
-      let loadingFooterHTML = '';
-      if (!loadingIsExamMode) {
-        loadingFooterHTML += `<button class="btn-check" disabled><i class="fas fa-check"></i> <span data-i18n="checkAnswers">Check answers</span></button>`;
-        loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span></button>`;
-      }
+      let loadingFooterLeft = '';
+      let loadingFooterRight = '';
       if ((loadingIsMixed ? loadingMixedIdx > 0 : loadingDisplayPart > 1) && (!loadingIsExamMode || AppState.examFullMode)) {
-        loadingFooterHTML += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
+        loadingFooterLeft += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
+      }
+      if (!loadingIsExamMode) {
+        loadingFooterLeft += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span></button>`;
+        loadingFooterRight += `<button class="btn-check" disabled><i class="fas fa-check"></i> <span data-i18n="checkAnswers">Check answers</span></button>`;
       }
       if (loadingIsMixed) {
         if (!loadingMixedLastInSection) {
-          loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+          loadingFooterRight += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
         } else if (AppState.examFullMode) {
-          loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+          loadingFooterRight += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
         } else if (loadingMixedLastInPlan) {
-          loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
+          loadingFooterRight += `<button class="btn-next btn-finish-section" disabled><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
         } else {
-          loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+          loadingFooterRight += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
         }
       } else if (loadingDisplayPart < loadingTotalParts) {
-        loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+        loadingFooterRight += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
-        loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+        loadingFooterRight += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
       }
+      const loadingFooterHTML = (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.buildExerciseFooterShell)
+        ? ExerciseRenderer.buildExerciseFooterShell(loadingFooterLeft, '', loadingFooterRight)
+        : loadingFooterLeft + loadingFooterRight;
       const safeSection = Utils.getSectionTitle ? Utils.getSectionTitle(section) : section;
       const safePart = parseInt(part, 10);
       const loadingPaws = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.getPawsMarkup)
@@ -656,6 +660,9 @@
         await ExerciseRenderer.render(exercise, examId, section, part);
         
         this.restoreSavedAnswers();
+        if (typeof ExerciseHandlers !== 'undefined' && ExerciseHandlers.syncFooterState) {
+          ExerciseHandlers.syncFooterState();
+        }
         if (AppState.answersChecked) {
           const partConfig = CONFIG.getPartConfig(section, part);
           // Re-run answer checking to restore visual marks

@@ -108,6 +108,76 @@
       const footerExplBtn = document.querySelector('.btn-explanations');
       if (footerExplBtn) footerExplBtn.style.display = '';
       this.syncAnswerToggleButton();
+      this.syncFooterState();
+    },
+
+    /**
+     * Duolingo-style footer sync: feedback banner + result tint after checking,
+     * "Next" → "Continue" relabel, and the ready state of the Check button.
+     * Safe to call at any time; reads everything from AppState.
+     */
+    syncFooterState: function() {
+      const footer = document.querySelector('.dashboard-layout--exercise .exercise-footer');
+      if (!footer || footer.classList.contains('section-report-actions')) return;
+      const feedback = footer.querySelector('.exercise-footer-feedback');
+      const nextLabel = footer.querySelector('.btn-next:not(.btn-finish-section) > span');
+      footer.classList.remove('exercise-footer--correct', 'exercise-footer--partial', 'exercise-footer--incorrect');
+
+      if (!AppState.answersChecked) {
+        if (feedback) { feedback.hidden = true; feedback.innerHTML = ''; }
+        if (nextLabel) nextLabel.textContent = 'Next';
+        this.syncFooterReadyState();
+        return;
+      }
+
+      footer.classList.remove('exercise-footer--ready');
+      if (nextLabel) nextLabel.textContent = 'Continue';
+
+      // Score-based feedback only makes sense for auto-marked sections
+      const section = AppState.currentSection;
+      if (!feedback || !AppState.currentExercise || section === 'writing' || section === 'speaking') return;
+      const partConfig = CONFIG.getPartConfig(section, AppState.currentPart);
+      const questions = (AppState.currentExercise.content && AppState.currentExercise.content.questions) || [];
+      const totalMarks = partConfig ? (partConfig.maxMarks || partConfig.total || questions.length) : questions.length;
+      if (!totalMarks) return;
+
+      const score = AppState.currentPartScore || 0;
+      const ratio = score / totalMarks;
+      let state, icon, title, sub;
+      if (ratio >= 1) {
+        state = 'correct'; icon = 'fa-check'; title = 'Perfect!';
+        sub = 'You got all ' + totalMarks + ' right. Amazing!';
+      } else if (ratio >= 0.6) {
+        state = 'correct'; icon = 'fa-check'; title = 'Nice work!';
+        sub = 'You got ' + score + ' out of ' + totalMarks + '.';
+      } else if (ratio >= 0.3) {
+        state = 'partial'; icon = 'fa-star-half-alt'; title = 'Keep practicing!';
+        sub = 'You got ' + score + ' out of ' + totalMarks + '. Check the explanations to improve.';
+      } else {
+        state = 'incorrect'; icon = 'fa-times'; title = 'Don\u2019t give up!';
+        sub = 'You got ' + score + ' out of ' + totalMarks + '. Review the answers and try again.';
+      }
+      footer.classList.add('exercise-footer--' + state);
+      feedback.innerHTML =
+        '<div class="exercise-footer-feedback-icon"><i class="fas ' + icon + '"></i></div>' +
+        '<div class="exercise-footer-feedback-text">' +
+          '<span class="exercise-footer-feedback-title">' + title + '</span>' +
+          '<span class="exercise-footer-feedback-sub">' + sub + '</span>' +
+        '</div>' +
+        '<div class="exercise-footer-feedback-score">' + score + '/' + totalMarks + '</div>';
+      feedback.hidden = false;
+    },
+
+    /** Lights up the Check button (Duolingo-style) once at least one answer is given. */
+    syncFooterReadyState: function() {
+      const footer = document.querySelector('.dashboard-layout--exercise .exercise-footer');
+      if (!footer || footer.classList.contains('section-report-actions')) return;
+      if (AppState.answersChecked) { footer.classList.remove('exercise-footer--ready'); return; }
+      const answers = (AppState.currentExercise && AppState.currentExercise.answers) || {};
+      const answered = Object.keys(answers).some(function(k) {
+        return k !== '0' && answers[k] !== null && answers[k] !== undefined && String(answers[k]).trim() !== '';
+      });
+      footer.classList.toggle('exercise-footer--ready', answered);
     },
     
     updatePartNavigation: function() {
@@ -1309,4 +1379,39 @@
       }
     }
   };
+
+  // Duolingo-style keyboard flow: Enter checks the answers, and once checked,
+  // Enter again continues to the next part. Practice mode only (exam footers
+  // have no Check button, so nothing fires there before checking).
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' || e.defaultPrevented || e.repeat) return;
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    const footer = document.querySelector('.dashboard-layout--exercise .exercise-footer');
+    if (!footer || footer.classList.contains('section-report-actions')) return;
+    if (!window.AppState || AppState.currentSection === 'writing' || AppState.currentSection === 'speaking') return;
+
+    const t = e.target;
+    if (t && t !== document.body) {
+      const tag = (t.tagName || '').toUpperCase();
+      if (tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || tag === 'A' || t.isContentEditable) return;
+      if (tag === 'INPUT' && !t.closest('.exercise-container')) return;
+      if (t.closest('#exercise-modal-overlay, .dashboard-right-sidebar, .exercise-tools-sidebar-wrap')) return;
+    }
+    const modalOverlay = document.getElementById('exercise-modal-overlay');
+    if (modalOverlay && modalOverlay.style.display === 'flex') return;
+
+    if (!AppState.answersChecked) {
+      const checkBtn = footer.querySelector('.btn-check');
+      if (checkBtn && !checkBtn.disabled && checkBtn.offsetParent !== null) {
+        e.preventDefault();
+        ExerciseHandlers.checkAnswers();
+      }
+    } else {
+      const nextBtn = footer.querySelector('.btn-next');
+      if (nextBtn && !nextBtn.disabled && nextBtn.offsetParent !== null) {
+        e.preventDefault();
+        nextBtn.click();
+      }
+    }
+  });
 })();
