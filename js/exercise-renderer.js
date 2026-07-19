@@ -387,11 +387,11 @@
             
             <div class="exercise-info exercise-info--single-row">
               ${partNavHTML}
-              <span class="exercise-duration"><i class="fas fa-clock"></i> ${
+              <span class="exercise-chip exercise-chip--duration"><i class="fas fa-clock"></i> ${
                 (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
                   ? CONFIG.SECTION_TIMES[section]
                   : (exercise.time || '10')
-              } <span data-i18n="minutes">min</span></span>
+              }'</span>
               <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
                 <i class="fas fa-hourglass-half"></i>
                 <span id="timer-display">${
@@ -402,7 +402,7 @@
                       : Utils.formatTime(AppState.elapsedSeconds)
                 }</span>
               </div>
-              <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
+              <div class="part-score-display exercise-chip exercise-chip--part-score" id="part-score-display">0/${partTotal}</div>
             </div>
             
             <div class="exercise-description" lang="en">
