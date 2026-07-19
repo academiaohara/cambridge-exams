@@ -480,7 +480,7 @@
       const modeChipHTML = this.renderModeChip(isMixed);
       const exerciseInnerHtml = `
         <div class="exercise-page-wrapper">
-          <div class="exercise-container" data-tile-theme="tests">
+          <div class="exercise-container" data-tile-theme="tests" data-section="${section}">
             <div class="exercise-main-layout" lang="en">
             <div class="exercise-header">
               <div class="exercise-chips-row">
