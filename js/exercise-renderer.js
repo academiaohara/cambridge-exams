@@ -16,10 +16,55 @@
       var layoutClass = 'dashboard-layout dashboard-layout--exercise';
       if (!showTools) layoutClass += ' dashboard-layout-right-closed';
 
+      var rightShell = '';
+      if (showTools) {
+        var desktopToolsWrap = '<div class="exercise-tools-sidebar-wrap exercise-tools-sidebar-wrap--desktop"></div>';
+        rightShell = (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell)
+          ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebarTools', desktopToolsWrap)
+          : '<div class="dashboard-right-sidebar dashboard-right-sidebar--tools" id="dashboardRightSidebarTools">' +
+              '<div class="dashboard-sidebar-content">' + desktopToolsWrap + '</div></div>';
+      }
+
       return '<div class="' + layoutClass + '">' +
         leftShell +
         '<div class="dashboard-center dashboard-center--exercise">' + centerHtml + '</div>' +
+        rightShell +
       '</div>';
+    },
+
+    _relocateExerciseTools: function(toolsBarHTML) {
+      var tools = document.getElementById('tools-sidebar');
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var target = document.querySelector(
+        isMobile ? '.exercise-tools-sidebar-wrap--mobile' : '.exercise-tools-sidebar-wrap--desktop'
+      );
+      if (!target) return;
+
+      if (!tools && toolsBarHTML) {
+        target.innerHTML = toolsBarHTML;
+        tools = document.getElementById('tools-sidebar');
+      } else if (tools && !target.contains(tools)) {
+        target.appendChild(tools);
+      }
+
+      var other = document.querySelector(
+        isMobile ? '.exercise-tools-sidebar-wrap--desktop' : '.exercise-tools-sidebar-wrap--mobile'
+      );
+      if (other) other.innerHTML = '';
+
+      if (typeof Tools !== 'undefined') {
+        Tools._syncMobileDockState();
+      }
+    },
+
+    _bindExerciseToolsRelocation: function(toolsBarHTML) {
+      var self = this;
+      if (self._exerciseToolsRelocateBound) return;
+      self._exerciseToolsRelocateBound = true;
+      window.addEventListener('resize', function() {
+        if (!document.querySelector('.dashboard-layout--exercise')) return;
+        self._relocateExerciseTools('');
+      });
     },
 
     _applyExerciseDashboardChrome: function() {
@@ -413,7 +458,7 @@
             ${this.renderExplanationsPanel(exercise, partConfig)}
 
             <div class="exercise-bottom-stack">
-              ${showTools ? '<div class="exercise-tools-sidebar-wrap">' + toolsBarHTML + '</div>' : ''}
+              ${showTools ? '<div class="exercise-tools-sidebar-wrap exercise-tools-sidebar-wrap--mobile"></div>' : ''}
               <div class="exercise-footer">
                 ${this.renderExerciseFooter(displayPart, totalParts, showTools)}
               </div>
@@ -426,14 +471,17 @@
       content.innerHTML = html;
       
       this._applyExerciseDashboardChrome();
-      
+
       // Initialize type-specific listeners (JS already loaded above)
       this.initTypeSpecificListeners(partConfig.type);
 
-      if (showTools && typeof Tools !== 'undefined') {
-        // On mobile the tools bar starts closed; user taps an icon to open it.
-        if (!window.matchMedia('(max-width: 768px)').matches) {
-          Tools.switchTool('notes');
+      if (showTools) {
+        this._relocateExerciseTools(toolsBarHTML);
+        this._bindExerciseToolsRelocation(toolsBarHTML);
+        if (typeof Tools !== 'undefined') {
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            Tools.switchTool('notes');
+          }
         }
       }
     },

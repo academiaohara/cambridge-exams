@@ -3221,6 +3221,10 @@
   box-sizing: border-box;
 }
 
+.exercise-tools-sidebar-wrap--mobile {
+  display: none;
+}
+
 .exercise-bottom-stack {
   display: flex;
   flex-direction: column;
@@ -3228,6 +3232,12 @@
   max-width: 100%;
   min-width: 0;
   margin-top: 28px;
+}
+
+@media (min-width: 769px) {
+  .exercise-tools-sidebar-wrap--mobile {
+    display: none !important;
+  }
 }
 
 @media (min-width: 901px) {
@@ -3247,7 +3257,30 @@
     max-width: none;
   }
 
-  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-tools-sidebar-wrap {
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) > .dashboard-right-sidebar,
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) > .dashboard-right-sidebar.dashboard-sidebar-shell,
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-right-sidebar--tools,
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) #dashboardRightSidebarTools {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: var(--dashboard-exercise-tools-width, 340px);
+    min-width: var(--dashboard-exercise-tools-min-width, 320px);
+    padding-left: 0;
+    padding-right: 0;
+    overflow-y: auto;
+    z-index: 50;
+    background: transparent;
+    padding-top: var(--dashboard-top-spacing, 28px);
+    box-sizing: border-box;
+    align-self: auto;
+    max-height: none;
+    border-left: none;
+    box-shadow: none;
+  }
+
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-tools-sidebar-wrap--desktop {
     position: fixed;
     right: 0;
     top: 0;
@@ -3266,7 +3299,7 @@
     min-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 24px);
   }
 
-  .dashboard-layout--exercise .exercise-tools-sidebar-wrap .tools-sidebar--right-column {
+  .dashboard-layout--exercise .exercise-tools-sidebar-wrap--desktop .tools-sidebar--right-column {
     width: 100%;
     max-width: none;
     margin: 0;
@@ -3277,26 +3310,39 @@
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  .exercise-bottom-stack {
-    margin-top: 20px;
+  .exercise-tools-sidebar-wrap--desktop {
+    display: none !important;
+  }
+
+  .dashboard-layout--exercise .exercise-bottom-stack {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    z-index: 140;
     gap: 0;
   }
 
-  .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
-    display: none;
+  .dashboard-layout--exercise .exercise-tools-sidebar-wrap--mobile {
     width: 100%;
-    max-width: 100%;
+    max-width: none;
     min-width: 0;
     margin: 0;
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
-    border-top: 2px solid var(--ex-duo-border, #e5e5e5);
-    border-radius: 20px 20px 0 0;
     background: #fff;
+    border: 2px solid var(--ex-duo-orange, #f47417);
+    border-top: 4px solid var(--ex-duo-orange, #f47417);
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -3px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 35%, #e5e5e5);
   }
 
-  .dashboard-layout--exercise .exercise-tools-sidebar-wrap.is-open {
+  .dashboard-layout--exercise .exercise-tools-sidebar-wrap--mobile.is-open {
     display: block;
   }
 }
