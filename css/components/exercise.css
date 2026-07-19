@@ -3100,25 +3100,27 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer:not(.secti
   box-shadow: 0 1px 0 #e5e5e5;
 }
 
-/* …and a green Continue after checking (or in exam mode, where there is no Check) */
-body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next,
-.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next {
-  background: var(--ex-duo-practice, #58cc02);
-  color: #fff;
-  border: none;
-  box-shadow: 0 4px 0 var(--ex-duo-practice-dark, #58a700);
+/* …and a neutral Continue after checking (or in exam mode, where there is no Check) */
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:not(.btn-finish-section),
+.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:not(.btn-finish-section) {
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 4px 0 #d1d5db;
 }
 
-body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:hover,
-.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:hover {
-  filter: brightness(1.05);
-  background: var(--ex-duo-practice, #58cc02);
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:not(.btn-finish-section):hover,
+.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:not(.btn-finish-section):hover {
+  color: #333;
+  border-color: #cfcfcf;
+  background: #fafafa;
+  filter: none;
 }
 
-body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:active,
-.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:active {
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:not(.btn-finish-section):active,
+.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:not(.btn-finish-section):active {
   transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--ex-duo-practice-dark, #58a700);
+  box-shadow: 0 1px 0 #d1d5db;
 }
 
 /* Finish Section / Finish Test: orange milestone button (always primary) */
@@ -3194,6 +3196,55 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   align-items: center;
   justify-content: center;
   gap: 12px;
+}
+
+/* Desktop: Duo card-style footer container */
+@media (min-width: 769px) {
+  .dashboard-layout--exercise .exercise-footer:not(.section-report-actions) {
+    margin-inline: clamp(12px, 2vw, 28px);
+    margin-bottom: 16px;
+    padding: 16px clamp(20px, 3vw, 28px) 18px;
+    background: #fff;
+    border: 2px solid var(--ex-duo-border, #e5e5e5);
+    border-radius: 20px;
+    box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+    bottom: 16px;
+  }
+
+  .dashboard-layout--exercise .exercise-footer.exercise-footer--correct {
+    background: var(--ex-duo-practice-light, #d7ffb8);
+    border-color: color-mix(in srgb, var(--ex-duo-practice, #58cc02) 30%, var(--ex-duo-border, #e5e5e5));
+    border-top: 4px solid var(--ex-duo-practice, #58cc02);
+    box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-practice-dark, #58a700) 35%, var(--ex-duo-border, #e5e5e5));
+  }
+
+  .dashboard-layout--exercise .exercise-footer.exercise-footer--partial {
+    background: var(--ex-duo-orange-light, #fff0e6);
+    border-color: color-mix(in srgb, var(--ex-duo-orange, #f47417) 28%, var(--ex-duo-border, #e5e5e5));
+    border-top: 4px solid var(--ex-duo-orange, #f47417);
+    box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 30%, var(--ex-duo-border, #e5e5e5));
+  }
+
+  .dashboard-layout--exercise .exercise-footer.exercise-footer--incorrect {
+    background: #ffdfe0;
+    border-color: color-mix(in srgb, #ea2b2b 22%, var(--ex-duo-border, #e5e5e5));
+    border-top: 4px solid #ea2b2b;
+    box-shadow: 0 4px 0 color-mix(in srgb, #ea2b2b 28%, var(--ex-duo-border, #e5e5e5));
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback {
+    padding: 2px 4px 16px;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback-icon {
+    border: 2px solid color-mix(in srgb, currentColor 18%, #fff);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback-score {
+    border: 2px solid color-mix(in srgb, currentColor 14%, #fff);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.06);
+  }
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
