@@ -2858,23 +2858,158 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 2px 0 var(--ex-duo-orange-dark);
 }
 
-/* Duolingo-style exercise footer (orange primary) */
+/* ── Duolingo-style exercise footer ─────────────────────────────────────
+   Structure: [feedback banner (after checking)] + [3-zone action bar]
+   States (set by ExerciseHandlers.syncFooterState):
+   --ready (≥1 answer given → Check lights up green)
+   --correct / --partial / --incorrect (result tint after checking)        */
 
 .dashboard-layout--exercise .exercise-footer {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
   margin-top: 28px;
-  padding: 20px 0 max(8px, env(safe-area-inset-bottom));
-  border-top: 2px solid color-mix(in srgb, var(--ex-duo-blue, #1cb0f6) 22%, var(--ex-duo-border, #e5e5e5));
+  padding: 14px 0 max(14px, env(safe-area-inset-bottom));
+  border-top: 2px solid var(--ex-duo-border, #e5e5e5);
   position: sticky;
   bottom: 0;
   z-index: 120;
-  background: var(--ex-duo-blue-light, #ddf4ff);
+  background: var(--ex-duo-canvas, #f7f7f7);
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
+.dashboard-layout--exercise .exercise-footer.exercise-footer--correct {
+  background: var(--ex-duo-practice-light, #d7ffb8);
+  border-top-color: color-mix(in srgb, var(--ex-duo-practice, #58cc02) 45%, #fff);
+}
+
+.dashboard-layout--exercise .exercise-footer.exercise-footer--partial {
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border-top-color: color-mix(in srgb, var(--ex-duo-orange, #f47417) 40%, #fff);
+}
+
+.dashboard-layout--exercise .exercise-footer.exercise-footer--incorrect {
+  background: #ffdfe0;
+  border-top-color: #ffb2b2;
+}
+
+/* Action bar: secondary (left) / contextual toggles (mid) / primary (right) */
+.dashboard-layout--exercise .exercise-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+
+.dashboard-layout--exercise .exercise-footer-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+}
+
+.dashboard-layout--exercise .exercise-footer-group:empty {
+  display: none;
+}
+
+.dashboard-layout--exercise .exercise-footer-group--mid {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.dashboard-layout--exercise .exercise-footer-group--right {
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+/* Feedback banner (injected after Check, Duolingo result sheet style) */
+.dashboard-layout--exercise .exercise-footer-feedback {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 4px 14px;
+  animation: exFooterFeedbackIn 0.32s cubic-bezier(0.18, 0.89, 0.32, 1.18);
+}
+
+.dashboard-layout--exercise .exercise-footer-feedback[hidden] {
+  display: none;
+}
+
+@keyframes exFooterFeedbackIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-layout--exercise .exercise-footer-feedback-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-layout--exercise .exercise-footer-feedback-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dashboard-layout--exercise .exercise-footer-feedback-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.dashboard-layout--exercise .exercise-footer-feedback-sub {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.dashboard-layout--exercise .exercise-footer-feedback-score {
+  margin-left: auto;
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-layout--exercise .exercise-footer--correct .exercise-footer-feedback-icon,
+.dashboard-layout--exercise .exercise-footer--correct .exercise-footer-feedback-title,
+.dashboard-layout--exercise .exercise-footer--correct .exercise-footer-feedback-sub,
+.dashboard-layout--exercise .exercise-footer--correct .exercise-footer-feedback-score {
+  color: var(--ex-duo-practice-dark, #58a700);
+}
+
+.dashboard-layout--exercise .exercise-footer--partial .exercise-footer-feedback-icon,
+.dashboard-layout--exercise .exercise-footer--partial .exercise-footer-feedback-title,
+.dashboard-layout--exercise .exercise-footer--partial .exercise-footer-feedback-sub,
+.dashboard-layout--exercise .exercise-footer--partial .exercise-footer-feedback-score {
+  color: var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.dashboard-layout--exercise .exercise-footer--incorrect .exercise-footer-feedback-icon,
+.dashboard-layout--exercise .exercise-footer--incorrect .exercise-footer-feedback-title,
+.dashboard-layout--exercise .exercise-footer--incorrect .exercise-footer-feedback-sub,
+.dashboard-layout--exercise .exercise-footer--incorrect .exercise-footer-feedback-score {
+  color: #ea2b2b;
+}
+
+/* Buttons: chunky 3D Duolingo style */
 .dashboard-layout--exercise .exercise-footer button {
   display: inline-flex;
   align-items: center;
@@ -2889,7 +3024,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   cursor: pointer;
   font-family: inherit;
   transition: background 0.15s, transform 0.1s, box-shadow 0.15s, color 0.15s, border-color 0.15s;
-  min-height: 44px;
+  min-height: 46px;
   min-width: 120px;
 }
 
@@ -2900,39 +3035,38 @@ body:has(.dashboard-layout--exercise) #main-content {
   flex-shrink: 0;
 }
 
+/* Check: idle grey until an answer is given, then Duolingo green */
 .dashboard-layout--exercise .btn-check {
-  background: var(--ex-duo-blue);
-  color: #fff;
+  background: var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text-muted, #afafaf);
   border: none;
-  box-shadow: 0 4px 0 var(--ex-duo-blue-dark);
+  box-shadow: 0 4px 0 #d4d4d4;
+}
+
+.dashboard-layout--exercise .exercise-footer--ready .btn-check:not(:disabled) {
+  background: var(--ex-duo-practice, #58cc02);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--ex-duo-practice-dark, #58a700);
+  animation: exCheckReadyPop 0.25s ease;
+}
+
+@keyframes exCheckReadyPop {
+  0% { transform: scale(0.96); }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); }
 }
 
 .dashboard-layout--exercise .btn-check:hover:not(:disabled) {
-  background: var(--ex-duo-blue-hover);
+  filter: brightness(1.05);
 }
 
 .dashboard-layout--exercise .btn-check:active:not(:disabled) {
   transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--ex-duo-blue-dark);
+  box-shadow: 0 1px 0 #d4d4d4;
 }
 
-.dashboard-layout--exercise .btn-next,
-.dashboard-layout--exercise .btn-finish-section {
-  background: var(--ex-duo-orange);
-  color: #fff;
-  border: none;
-  box-shadow: 0 4px 0 var(--ex-duo-orange-dark);
-}
-
-.dashboard-layout--exercise .btn-next:hover,
-.dashboard-layout--exercise .btn-finish-section:hover {
-  background: var(--ex-duo-orange-hover);
-}
-
-.dashboard-layout--exercise .btn-next:active,
-.dashboard-layout--exercise .btn-finish-section:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--ex-duo-orange-dark);
+.dashboard-layout--exercise .exercise-footer--ready .btn-check:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--ex-duo-practice-dark, #58a700);
 }
 
 .dashboard-layout--exercise .btn-check:disabled {
@@ -2943,13 +3077,88 @@ body:has(.dashboard-layout--exercise) #main-content {
   transform: none;
 }
 
+/* Once answers are checked the Check button gives way to Continue */
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer:not(.section-report-actions) .btn-check {
+  display: none;
+}
+
+/* Next: quiet skip-style before checking… */
+.dashboard-layout--exercise .btn-next {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  color: #777;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-next:hover {
+  color: #555;
+  border-color: #cfcfcf;
+  background: #fafafa;
+}
+
+.dashboard-layout--exercise .btn-next:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #e5e5e5;
+}
+
+/* …and a green Continue after checking (or in exam mode, where there is no Check) */
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next,
+.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next {
+  background: var(--ex-duo-practice, #58cc02);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 0 var(--ex-duo-practice-dark, #58a700);
+}
+
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:hover,
+.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:hover {
+  filter: brightness(1.05);
+  background: var(--ex-duo-practice, #58cc02);
+}
+
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next:active,
+.dashboard-layout--exercise .exercise-footer-bar:not(:has(.btn-check)) .btn-next:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-practice-dark, #58a700);
+}
+
+/* Finish Section / Finish Test: orange milestone button (always primary) */
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.btn-finish-section,
+.dashboard-layout--exercise .exercise-footer .btn-next.btn-finish-section,
+.dashboard-layout--exercise .exercise-footer .btn-finish-section {
+  background: var(--ex-duo-orange, #f47417);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.btn-finish-section:hover,
+.dashboard-layout--exercise .exercise-footer .btn-next.btn-finish-section:hover,
+.dashboard-layout--exercise .exercise-footer .btn-finish-section:hover {
+  background: var(--ex-duo-orange-hover, #f6802a);
+  filter: none;
+}
+
+body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.btn-finish-section:active,
+.dashboard-layout--exercise .exercise-footer .btn-next.btn-finish-section:active,
+.dashboard-layout--exercise .exercise-footer .btn-finish-section:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
 .dashboard-layout--exercise .btn-prev,
-.dashboard-layout--exercise .btn-reset,
-.dashboard-layout--exercise .btn-toggle-answer {
+.dashboard-layout--exercise .btn-reset {
   background: #fff;
   border: 2px solid var(--ex-duo-border);
   color: #777;
   box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-toggle-answer {
+  background: #fff;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .dashboard-layout--exercise .btn-explanations {
@@ -2960,11 +3169,16 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .btn-prev:hover,
-.dashboard-layout--exercise .btn-reset:hover,
-.dashboard-layout--exercise .btn-toggle-answer:hover {
+.dashboard-layout--exercise .btn-reset:hover {
   color: #555;
   border-color: #cfcfcf;
   background: #fafafa;
+}
+
+.dashboard-layout--exercise .btn-toggle-answer:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  color: var(--ex-duo-blue-dark, #1899d6);
 }
 
 .dashboard-layout--exercise .btn-explanations:hover {
@@ -2974,15 +3188,28 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .btn-prev:active,
-.dashboard-layout--exercise .btn-reset:active,
-.dashboard-layout--exercise .btn-toggle-answer:active {
+.dashboard-layout--exercise .btn-reset:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-toggle-answer:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .dashboard-layout--exercise .btn-explanations:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
+/* Section report footers keep a simple centered row (no zones/feedback) */
+.dashboard-layout--exercise .exercise-footer.section-report-actions {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
@@ -2993,16 +3220,12 @@ body:has(.dashboard-layout--exercise) #main-content {
     left: 0;
     right: 0;
     z-index: 140;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 10px;
     margin-top: 0;
     padding: 10px 16px max(10px, env(safe-area-inset-bottom));
-    background: var(--ex-duo-blue-light, #ddf4ff);
-    border-top: 2px solid color-mix(in srgb, var(--ex-duo-blue, #1cb0f6) 22%, var(--ex-duo-border, #e5e5e5));
+    background: #fff;
+    border-top: 2px solid var(--ex-duo-border, #e5e5e5);
     border-radius: 0;
-    box-shadow: 0 -2px 12px rgba(28, 176, 246, 0.12);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
   }
 
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-footer {
@@ -3013,12 +3236,56 @@ body:has(.dashboard-layout--exercise) #main-content {
     padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 
+  /* The result banner makes the fixed footer taller — leave room for it */
+  body.answers-checked-app .dashboard-layout--exercise .exercise-container {
+    padding-bottom: calc(140px + env(safe-area-inset-bottom));
+  }
+
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-container {
     padding-bottom: calc(72px + 54px + max(12px, env(safe-area-inset-bottom)) + env(safe-area-inset-bottom));
   }
 
+  body.answers-checked-app .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-container {
+    padding-bottom: calc(140px + 54px + max(12px, env(safe-area-inset-bottom)) + env(safe-area-inset-bottom));
+  }
+
   .dashboard-layout--exercise .exercise-page-wrapper {
     padding-bottom: 0;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-bar {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-group {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  /* Compact feedback banner */
+  .dashboard-layout--exercise .exercise-footer-feedback {
+    gap: 10px;
+    padding: 0 2px 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback-title {
+    font-size: 1rem;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback-sub {
+    font-size: 0.72rem;
+  }
+
+  .dashboard-layout--exercise .exercise-footer-feedback-score {
+    padding: 6px 12px;
+    font-size: 0.9rem;
   }
 
   /* Icon-only square buttons */

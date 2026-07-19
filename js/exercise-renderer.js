@@ -1909,21 +1909,32 @@
           ? 'Show correct answers'
           : 'Show correct answer');
       var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
-      let footer = '';
+      // Duolingo-style footer: secondary actions on the left, contextual toggles in
+      // the middle, primary action (Check → Continue) on the right, plus a feedback
+      // banner slot that ExerciseHandlers.syncFooterState() fills after checking.
+      let leftGroup = '';
+      let midGroup = '';
+      let rightGroup = '';
 
       if ((isMixed ? mixedIdx > 0 : part > 1) && (!isExamMode || AppState.examFullMode)) {
-        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
+        leftGroup += `<button class="btn-prev" onclick="Exercise.goToPrevPart()" aria-label="Previous part" title="Previous part"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
       
       if (!isExamMode) {
-        footer += `
-          <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
+        leftGroup += `
+          <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()" aria-label="Reset exercise" title="Reset exercise">
+            <i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span>
+          </button>
+        `;
+
+        rightGroup += `
+          <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''} aria-label="Check answers" title="Check answers (Enter)">
             <i class="fas fa-check"></i> <span data-i18n="checkAnswers">Check answers</span>
           </button>
         `;
 
-        footer += `
-          <button class="btn-toggle-answer" onclick="ExerciseHandlers.toggleAnswerView()" ${supportsAnswerToggle && AppState.answersChecked ? '' : 'style="display:none"'}>
+        midGroup += `
+          <button class="btn-toggle-answer" onclick="ExerciseHandlers.toggleAnswerView()" ${supportsAnswerToggle && AppState.answersChecked ? '' : 'style="display:none"'} aria-label="${answerToggleLabel}" title="${answerToggleLabel}">
             <span class="material-symbols-outlined btn-toggle-answer-icon">${answerToggleIcon}</span> <span class="btn-toggle-answer-label">${answerToggleLabel}</span>
           </button>
         `;
@@ -1945,44 +1956,49 @@
             !(AppState.currentLevel === 'B1' && actualPart === 3)) ||
             isDuoOpenClozeFooterExplanations ||
             isDuoInlineMcClozeFooterExplanations) {
-          footer += `
-          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
+          midGroup += `
+          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'} aria-label="Show explanations" title="Show explanations">
             <i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span>
           </button>
           `;
         } else if (!isReading && !isListening) {
-          footer += `
-          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
+          midGroup += `
+          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" aria-label="Show explanations" title="Show explanations">
             <i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span>
           </button>
           `;
         }
-
-        footer += `
-          <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()">
-            <i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span>
-          </button>
-        `;
       }
       
       if (isMixed) {
         if (!mixedLastInSection) {
-          footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+          rightGroup += `<button class="btn-next" onclick="Exercise.goToNextPart()" aria-label="Next part" title="Next part"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
         } else if (AppState.examFullMode) {
-          footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+          rightGroup += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()" aria-label="Finish section" title="Finish section"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
         } else if (mixedLastInPlan) {
-          footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
+          rightGroup += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()" aria-label="Finish test" title="Finish test"><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
         } else {
-          footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+          rightGroup += `<button class="btn-next" onclick="Exercise.goToNextPart()" aria-label="Next part" title="Next part"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
         }
       } else if (part < totalParts) {
-        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+        rightGroup += `<button class="btn-next" onclick="Exercise.goToNextPart()" aria-label="Next part" title="Next part"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
         // Last part of a section in exam full mode: show "Finish Section" button
-        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+        rightGroup += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()" aria-label="Finish section" title="Finish section"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
       }
       
-      return footer;
+      return this.buildExerciseFooterShell(leftGroup, midGroup, rightGroup);
+    },
+
+    /** Shared Duolingo-style footer skeleton: feedback banner slot + 3-zone action bar. */
+    buildExerciseFooterShell: function(leftGroup, midGroup, rightGroup) {
+      return `
+        <div class="exercise-footer-feedback" role="status" aria-live="polite" hidden></div>
+        <div class="exercise-footer-bar">
+          <div class="exercise-footer-group exercise-footer-group--left">${leftGroup || ''}</div>
+          <div class="exercise-footer-group exercise-footer-group--mid">${midGroup || ''}</div>
+          <div class="exercise-footer-group exercise-footer-group--right">${rightGroup || ''}</div>
+        </div>`;
     },
 
     /** Navigation cells for mixed-test mode (same style as normal part-nav-row). */

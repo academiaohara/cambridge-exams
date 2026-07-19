@@ -188,6 +188,11 @@
       // Update question nav row cells if visible (parts 5-8)
       if (typeof QuestionNav !== 'undefined') QuestionNav.updateAllNavCells();
       
+      // Keep the Duolingo-style footer (ready state / feedback banner) in sync
+      if (typeof ExerciseHandlers !== 'undefined' && ExerciseHandlers.syncFooterState) {
+        ExerciseHandlers.syncFooterState();
+      }
+      
       return { correct, total };
     }
   };
