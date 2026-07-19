@@ -176,9 +176,10 @@
 .exercise-description {
   background: linear-gradient(135deg, #f0f4ff, #f8fafc);
   border-left: 4px solid var(--primary);
-  padding: 10px 16px;
+  padding: 6px 12px;
   border-radius: 8px;
-  margin-bottom: 24px;
+  margin-top: 0;
+  margin-bottom: 12px;
   font-size: 1.05rem;
   color: var(--text-medium);
   line-height: 1.5;
@@ -1666,8 +1667,9 @@
   }
 
   .exercise-description {
-    margin-bottom: 12px;
-    padding: 8px 10px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding: 6px 10px;
     font-size: 0.86rem;
     line-height: 1.45;
     overflow: visible;
@@ -2546,6 +2548,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   border-radius: 16px;
   box-shadow: none;
   padding: 8px 12px;
+  margin-bottom: 8px;
 }
 
 .dashboard-layout--exercise .exercise-info--single-row {
@@ -2710,7 +2713,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   border-radius: 14px;
   color: #3c3c3c;
   font-weight: 600;
-  line-height: 1.55;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 6px 12px;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
@@ -3383,7 +3389,7 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   /* Exercise info: two-row layout on mobile (parts / time+score) */
   .dashboard-layout--exercise .exercise-info {
     padding: 6px 10px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     gap: 6px;
   }
 
@@ -3449,9 +3455,10 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
 
   /* Compact exercise description */
   .dashboard-layout--exercise .exercise-description {
-    padding: 8px 11px;
+    padding: 5px 10px;
     font-size: 0.86rem;
-    margin-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 6px;
     border-radius: 12px;
   }
 
