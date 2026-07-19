@@ -386,23 +386,27 @@
             </div>
             
             <div class="exercise-info exercise-info--single-row">
-              ${partNavHTML}
-              <span class="exercise-chip exercise-chip--duration"><i class="fas fa-clock"></i> ${
-                (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
-                  ? CONFIG.SECTION_TIMES[section]
-                  : (exercise.time || '10')
-              }'</span>
-              <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
-                <i class="fas fa-hourglass-half"></i>
-                <span id="timer-display">${
-                  (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
-                    ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
-                    : AppState.currentMode === 'exam'
-                      ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
-                      : Utils.formatTime(AppState.elapsedSeconds)
-                }</span>
+              <div class="exercise-info-left">
+                ${partNavHTML}
               </div>
-              <div class="part-score-display exercise-chip exercise-chip--part-score" id="part-score-display">0/${partTotal}</div>
+              <div class="exercise-info-right">
+                <span class="exercise-chip exercise-chip--duration"><i class="fas fa-clock"></i> ${
+                  (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                    ? CONFIG.SECTION_TIMES[section]
+                    : (exercise.time || '10')
+                }'</span>
+                <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
+                  <i class="fas fa-hourglass-half"></i>
+                  <span id="timer-display">${
+                    (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                      ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
+                      : AppState.currentMode === 'exam'
+                        ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
+                        : Utils.formatTime(AppState.elapsedSeconds)
+                  }</span>
+                </div>
+                <div class="part-score-display exercise-chip exercise-chip--part-score" id="part-score-display">0/${partTotal}</div>
+              </div>
             </div>
             
             <div class="exercise-description" lang="en">

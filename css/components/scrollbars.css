@@ -157,12 +157,14 @@ body:has(.dashboard-layout--exercise) {
 
 /* Exercise info chips: horizontal swipe, no bar */
 @media (max-width: 768px) {
-  .dashboard-layout--exercise .exercise-info {
+  .dashboard-layout--exercise .exercise-info,
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
   }
 
-  .dashboard-layout--exercise .exercise-info::-webkit-scrollbar {
+  .dashboard-layout--exercise .exercise-info::-webkit-scrollbar,
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left::-webkit-scrollbar {
     display: none !important;
   }
 }
