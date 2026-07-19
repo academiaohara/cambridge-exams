@@ -1585,10 +1585,21 @@
   }
 
   .tools-sidebar--right-column .sidebar-tool-btn.active {
-    color: var(--brand-orange, #ff9600);
-    background: rgba(255, 150, 0, 0.1);
-    border-color: transparent;
-    box-shadow: none;
+    background: var(--tool-duo-orange);
+    color: #fff;
+    border-color: var(--tool-duo-orange-dark);
+    box-shadow: var(--tool-duo-btn-shadow);
+  }
+
+  .tools-sidebar--right-column .sidebar-tool-btn.active i {
+    color: #fff;
+  }
+
+  .tools-sidebar--right-column .sidebar-tool-btn.active:hover {
+    background: var(--tool-duo-orange-hover);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: var(--tool-duo-btn-shadow);
   }
 
   .tools-sidebar--right-column .sidebar-tool-btn i {
