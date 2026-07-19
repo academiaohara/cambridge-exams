@@ -1488,76 +1488,80 @@
   background: var(--tool-duo-orange);
 }
 
-/* ── Mobile: fixed bottom app-nav bar, panel slides up ── */
+/* ── Mobile: in-flow dock above exercise footer, opened via footer button ── */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  .tools-sidebar--right-column {
-    /* Fixed to the viewport bottom, full width */
-    position: fixed !important;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 150;
-    /* column-reverse: sidebar-rail is visually at the bottom,
-       sidebar-panel grows upward above it */
-    flex-direction: column-reverse;
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column {
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    z-index: auto;
+    flex-direction: column;
     margin: 0;
     border-radius: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: none;
     min-height: 0;
     height: auto;
-    overflow: visible;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
-  /* Rail: same horizontal inset as exercise-footer (10px 16px) */
-  .tools-sidebar--right-column .sidebar-rail {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-rail {
     flex-direction: row;
     justify-content: stretch;
     align-items: center;
     width: 100%;
+    max-width: 100%;
     gap: 0;
-    padding: 10px 16px max(12px, env(safe-area-inset-bottom));
-    border-top: 1px solid rgba(0, 0, 0, 0.07);
-    border-bottom: none;
+    padding: 10px 12px;
+    border-top: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     background: transparent;
     border-radius: 0;
     flex-shrink: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .tools-sidebar--right-column .sidebar-tools-list {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tools-list {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex: 1 1 auto;
     width: 100%;
-    max-width: none;
-    gap: 0;
+    max-width: 100%;
+    gap: 8px;
     padding: 0;
+    box-sizing: border-box;
   }
 
-  /* Panel: collapses to 0 when closed, expands upward when open */
-  .tools-sidebar--right-column .sidebar-panel {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-panel {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     background: #fff;
     width: 100%;
+    max-width: 100%;
     flex-shrink: 0;
+    box-sizing: border-box;
   }
 
-  .tools-sidebar--right-column.open .sidebar-panel {
-    max-height: 55dvh;
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column.open:has(.sidebar-tool-btn.active) .sidebar-panel {
+    max-height: 50dvh;
     overflow-y: auto;
   }
 
-  /* Tool buttons: fixed slots, distributed like exercise-footer actions */
-  .tools-sidebar--right-column .sidebar-tool-btn {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn {
     flex: 0 0 44px;
     width: 44px;
     min-width: 44px;
@@ -1577,38 +1581,38 @@
     padding: 6px 4px;
   }
 
-  .tools-sidebar--right-column .sidebar-tool-btn:hover {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn:hover {
     background: rgba(255, 150, 0, 0.08);
     color: var(--brand-orange, #ff9600);
     transform: none;
     box-shadow: none;
   }
 
-  .tools-sidebar--right-column .sidebar-tool-btn.active {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn.active {
     background: var(--tool-duo-orange);
     color: #fff;
     border-color: var(--tool-duo-orange-dark);
     box-shadow: var(--tool-duo-btn-shadow);
   }
 
-  .tools-sidebar--right-column .sidebar-tool-btn.active i {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn.active i {
     color: #fff;
   }
 
-  .tools-sidebar--right-column .sidebar-tool-btn.active:hover {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn.active:hover {
     background: var(--tool-duo-orange-hover);
     color: #fff;
     transform: translateY(-1px);
     box-shadow: var(--tool-duo-btn-shadow);
   }
 
-  .tools-sidebar--right-column .sidebar-tool-btn i {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .sidebar-tool-btn i {
     font-size: 1.15rem;
   }
 
-  /* Active-tool content: comfy scrollable area */
-  .tools-sidebar--right-column .active-tool-content {
+  .exercise-tools-sidebar-wrap .tools-sidebar--right-column .active-tool-content {
     max-height: none;
     padding: 14px 16px 8px;
+    box-sizing: border-box;
   }
 }

@@ -3189,6 +3189,32 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   box-shadow: 0 1px 0 #e5e5e5;
 }
 
+.dashboard-layout--exercise .btn-tools-toggle {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  color: var(--tool-duo-orange, #f47417);
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-tools-toggle:hover,
+.dashboard-layout--exercise .btn-tools-toggle.active {
+  color: #fff;
+  background: var(--tool-duo-orange, #f47417);
+  border-color: var(--tool-duo-orange-dark, #d46110);
+  box-shadow: 0 3px 0 var(--tool-duo-orange-dark, #d46110);
+}
+
+.dashboard-layout--exercise .btn-tools-toggle:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--tool-duo-orange-dark, #d46110);
+}
+
+@media (min-width: 769px) {
+  .dashboard-layout--exercise .btn-tools-toggle {
+    display: none;
+  }
+}
+
 /* Section report footers keep a simple centered row (no zones/feedback) */
 .dashboard-layout--exercise .exercise-footer.section-report-actions {
   flex-direction: row;
@@ -3248,36 +3274,23 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  /* Fixed footer stacked above tools rail — sheet-on-sheet like sidebar-rail */
+  /* Bottom dock: tools panel + footer in document flow (no overlap with content) */
   .dashboard-layout--exercise .exercise-footer {
-    --ex-mobile-rail-height: calc(54px + max(12px, env(safe-area-inset-bottom)));
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 140;
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    z-index: 1;
     margin-top: 0;
-    padding: 10px 16px 10px;
+    padding: 10px 16px max(10px, env(safe-area-inset-bottom));
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-top: none;
-    border-radius: 20px 20px 0 0;
+    border-top: 2px solid var(--ex-duo-border, #e5e5e5);
+    border-radius: 0;
     box-shadow: none;
   }
 
-  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-footer {
-    bottom: var(--ex-mobile-rail-height);
-    border-radius: 20px 20px 0 0;
-    box-shadow: none;
-    padding-bottom: 10px;
-  }
-
-  .dashboard-layout--exercise.dashboard-layout-right-closed .exercise-footer {
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
-  }
-
-  /* Keep feedback tint but preserve the sheet shape */
   .dashboard-layout--exercise .exercise-footer.exercise-footer--correct,
   .dashboard-layout--exercise .exercise-footer.exercise-footer--partial,
   .dashboard-layout--exercise .exercise-footer.exercise-footer--incorrect {
@@ -3286,20 +3299,7 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   }
 
   .dashboard-layout--exercise .exercise-container {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
-  }
-
-  /* The result banner makes the fixed footer taller — leave room for it */
-  body.answers-checked-app .dashboard-layout--exercise .exercise-container {
-    padding-bottom: calc(140px + env(safe-area-inset-bottom));
-  }
-
-  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-container {
-    padding-bottom: calc(72px + var(--ex-mobile-rail-height) + env(safe-area-inset-bottom));
-  }
-
-  body.answers-checked-app .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-container {
-    padding-bottom: calc(140px + var(--ex-mobile-rail-height) + env(safe-area-inset-bottom));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
 
   .dashboard-layout--exercise .exercise-page-wrapper {
@@ -3377,7 +3377,8 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   /* Hide all text labels — only icons/symbols remain */
   .dashboard-layout--exercise .exercise-footer button > span:not(.material-symbols-outlined):not(.btn-toggle-answer-icon),
   .dashboard-layout--exercise .exercise-footer button > [data-i18n],
-  .dashboard-layout--exercise .exercise-footer .btn-toggle-answer-label {
+  .dashboard-layout--exercise .exercise-footer .btn-toggle-answer-label,
+  .dashboard-layout--exercise .exercise-footer .btn-tools-toggle-label {
     display: none !important;
   }
 

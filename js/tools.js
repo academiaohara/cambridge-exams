@@ -32,18 +32,35 @@
   }
 
   window.Tools = {
+    _syncMobileDockState: function() {
+      var sidebar = document.getElementById('tools-sidebar');
+      var wrap = document.querySelector('.exercise-tools-sidebar-wrap');
+      var toggleBtn = document.querySelector('.btn-tools-toggle');
+      var isOpen = !!(sidebar && sidebar.classList.contains('open'));
+      if (wrap) wrap.classList.toggle('is-open', isOpen);
+      if (toggleBtn) {
+        toggleBtn.classList.toggle('active', isOpen);
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    },
+
     toggleSidebar: function() {
       var sidebar = document.getElementById('tools-sidebar');
       if (!sidebar) return;
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
       if (sidebar.classList.contains('open')) {
         sidebar.classList.remove('open');
         AppState.activeTool = null;
         document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });
       } else {
         sidebar.classList.add('open');
-        // Close modals when tools open
+        if (isMobile && !AppState.activeTool) {
+          var container = document.getElementById('active-tool-content');
+          if (container) container.innerHTML = '';
+        }
         this._closeModals();
       }
+      this._syncMobileDockState();
     },
 
     closeSidebar: function() {
@@ -52,6 +69,7 @@
       sidebar.classList.remove('open');
       AppState.activeTool = null;
       document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });
+      this._syncMobileDockState();
     },
 
     _closeModals: function() {
@@ -135,6 +153,7 @@
       }
 
       this._renderToolToggle();
+      this._syncMobileDockState();
     },
 
     _isSelectionTool: function(tool) {
