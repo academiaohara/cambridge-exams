@@ -479,6 +479,7 @@
               <div class="reading-text-enhanced${hasDuoMatchingUiShell ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoGappedSentenceStyle ? ' b1-reading4' : ''}${c1Reading7Gapped ? ' c1-reading7' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReading6CrossText ? ' c1-reading6' : ''}${duoReadingMultipleMatching ? ' duo-reading-matching' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
+              ${duoReading5Cloze ? '<div class="b1-reading5-mobile-spacer" aria-hidden="true"></div>' : ''}
             </div>
 
             ${this.renderExplanationsPanel(exercise, partConfig)}
