@@ -2511,6 +2511,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   align-items: center;
   min-width: 0;
   flex: 1 1 auto;
+  padding-bottom: 5px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
