@@ -248,8 +248,6 @@
         `;
       }
       
-      let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
-      
       const sectionTitle = Utils.getSectionTitle(section);
       const levelName = Utils.getLevelName(AppState.currentLevel);
       const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
@@ -413,8 +411,6 @@
             <div class="exercise-description" lang="en">
               <p data-i18n-description="${this.getDescriptionKey(partConfig)}" data-instruction-source="${descriptionSource.replace(/"/g, '&quot;')}">${descriptionText}</p>
             </div>
-            
-            ${exampleHTML}
             
             ${contentHeaderHTML}
             
@@ -1769,82 +1765,8 @@
       `;
     },
     
-    renderExampleBox: function(exampleData, partConfig) {
-      if (!exampleData) return '';
-      
-      if (exampleData.text === "example-test" || exampleData.correct === "test") {
-        return '';
-      }
-      
-      // For transformations (reading4), the example is already rendered inside renderTransformationQuestions
-      if (partConfig.type === 'transformations') {
-        return '';
-      }
-      
-      // For multiple-choice type, show simplified inline example
-      if (partConfig.type === 'multiple-choice' && exampleData.options) {
-        const correctOption = exampleData.options.find(opt => opt.startsWith(exampleData.correct + ')'));
-        const correctText = correctOption ? correctOption.substring(2).trim() : exampleData.correct;
-        
-        let optionsHTML = '';
-        exampleData.options.forEach(opt => {
-          const isCorrect = opt.startsWith(exampleData.correct + ')');
-          optionsHTML += `
-            <span class="example-option-inline ${isCorrect ? 'correct' : ''}">
-              ${opt}
-            </span>
-          `;
-        });
-        
-        return `
-          <div class="example-container simple">
-            <div class="example-title">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
-            </div>
-            <div class="example-options-row">
-              ${optionsHTML}
-            </div>
-          </div>
-        `;
-      }
-      
-      if (partConfig.type === 'open-cloze') {
-        return `
-          <div class="example-container simple">
-            <div class="example-title">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
-            </div>
-            <div class="example-text">
-              <strong>0</strong> <strong>${exampleData.correct || ''}</strong>
-            </div>
-          </div>
-        `;
-      }
-      
-      if (partConfig.type === 'word-formation') {
-        const wordHint = exampleData.word ? ` (${exampleData.word})` : '';
-        return `
-          <div class="example-container simple">
-            <div class="example-title">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
-            </div>
-            <div class="example-text">
-              <strong>(0)</strong> <strong>${exampleData.correct || ''}</strong>${wordHint}
-            </div>
-          </div>
-        `;
-      }
-      
-      return `
-        <div class="example-container simple">
-          <div class="example-title">
-            <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
-          </div>
-          <div class="example-text">
-            ${exampleData.text || ''} <strong>${exampleData.correct || ''}</strong>
-          </div>
-        </div>
-      `;
+    renderExampleBox: function() {
+      return '';
     },
     
     renderExplanationsPanel: function(exercise) {
