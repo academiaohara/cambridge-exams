@@ -1767,6 +1767,91 @@
     border-radius: 6px;
     flex-shrink: 0;
   }
+
+  /* Hide part navigation on mobile — user navigates via exam flow */
+  .speaking-part-nav {
+    display: none;
+  }
+
+  /* Score / evaluation card */
+  .speaking-score-card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .speaking-score-header {
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .speaking-score-header .material-symbols-outlined {
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  /* Ended status bar */
+  .speaking-vc-status {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.78rem;
+    min-height: auto;
+    gap: 0.35rem;
+  }
+
+  .speaking-vc-status--ended > i.fa-check-circle {
+    display: none;
+  }
+
+  /* "The conversation has ended" message */
+  .speaking-ended-msg {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 12px;
+  }
+
+  .speaking-ended-msg-text {
+    line-height: 1.35;
+  }
+
+  .speaking-controls:has(.speaking-ended-msg) {
+    padding: 0.5rem 0.65rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* B1 Duolingo overrides */
+  .speaking-type-wrapper--b1-duo .speaking-score-card {
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+  }
+
+  .speaking-type-wrapper--b1-duo .speaking-score-header {
+    font-size: 0.88rem;
+  }
+
+  .speaking-type-wrapper--b1-duo .speaking-vc-status--ended {
+    padding: 0.38rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .speaking-type-wrapper--b1-duo .speaking-ended-msg {
+    width: 100%;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 0 #46a302;
+  }
 }
 
 /* Very narrow phones: typing field full width, icon row below */
