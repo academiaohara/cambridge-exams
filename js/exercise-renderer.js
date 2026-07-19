@@ -32,6 +32,34 @@
       '</div>';
     },
 
+    _buildToolsToggleButtonHtml: function() {
+      return '<button type="button" class="btn-tools-toggle" onclick="Tools.toggleSidebar()" aria-label="Tools" title="Tools" aria-expanded="false">' +
+        '<i class="fas fa-toolbox"></i> <span class="btn-tools-toggle-label">Tools</span></button>';
+    },
+
+    _syncToolsToggleButton: function() {
+      var layout = document.querySelector('.dashboard-layout--exercise');
+      if (!layout) return;
+      var hasTools = !!document.getElementById('tools-sidebar') ||
+        !!document.querySelector('.exercise-tools-sidebar-wrap--mobile, .exercise-tools-sidebar-wrap--desktop');
+      if (!hasTools) return;
+
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var leftGroup = document.querySelector('.dashboard-layout--exercise .exercise-footer-group--left');
+      if (!leftGroup) return;
+
+      var btn = leftGroup.querySelector('.btn-tools-toggle');
+      if (isMobile && !btn) {
+        leftGroup.insertAdjacentHTML('afterbegin', this._buildToolsToggleButtonHtml());
+      } else if (!isMobile && btn) {
+        btn.remove();
+      }
+
+      if (typeof Tools !== 'undefined') {
+        Tools._syncMobileDockState();
+      }
+    },
+
     _relocateExerciseTools: function(toolsBarHTML) {
       var tools = document.getElementById('tools-sidebar');
       var isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -52,9 +80,7 @@
       );
       if (other) other.innerHTML = '';
 
-      if (typeof Tools !== 'undefined') {
-        Tools._syncMobileDockState();
-      }
+      this._syncToolsToggleButton();
     },
 
     _bindExerciseToolsRelocation: function(toolsBarHTML) {
@@ -1879,12 +1905,8 @@
       let midGroup = '';
       let rightGroup = '';
 
-      if (showTools) {
-        leftGroup += `
-          <button type="button" class="btn-tools-toggle" onclick="Tools.toggleSidebar()" aria-label="Tools" title="Tools" aria-expanded="false">
-            <i class="fas fa-toolbox"></i> <span class="btn-tools-toggle-label">Tools</span>
-          </button>
-        `;
+      if (showTools && window.matchMedia('(max-width: 768px)').matches) {
+        leftGroup += this._buildToolsToggleButtonHtml();
       }
 
       if ((isMixed ? mixedIdx > 0 : part > 1) && (!isExamMode || AppState.examFullMode)) {
