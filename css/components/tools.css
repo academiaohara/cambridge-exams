@@ -1519,7 +1519,7 @@
     max-width: 100%;
     flex-shrink: 0;
     box-sizing: border-box;
-    border-bottom: 2px solid var(--ex-duo-blue, #1cb0f6);
+    border-bottom: none;
   }
 
   .exercise-tools-sidebar-wrap--mobile .tools-sidebar--right-column.open:has(.sidebar-tool-btn.active) .sidebar-panel {
