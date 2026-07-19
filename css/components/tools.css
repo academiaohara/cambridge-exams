@@ -1501,7 +1501,7 @@
        sidebar-panel grows upward above it */
     flex-direction: column-reverse;
     margin: 0;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -1511,7 +1511,7 @@
     overflow: visible;
   }
 
-  /* Rail: the visible icon bar at the bottom */
+  /* Rail: the visible icon bar at the bottom (flat top — exercise footer sits above as a sheet) */
   .tools-sidebar--right-column .sidebar-rail {
     flex-direction: row;
     justify-content: center;
@@ -1522,19 +1522,21 @@
     border-top: 1px solid rgba(0, 0, 0, 0.07);
     border-bottom: none;
     background: transparent;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     flex-shrink: 0;
   }
 
   .tools-sidebar--right-column .sidebar-tools-list {
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex: 1;
     width: 100%;
-    max-width: 340px;
-    gap: 0;
+    max-width: none;
+    gap: 4px;
+    padding: 0;
   }
 
   /* Panel: collapses to 0 when closed, expands upward when open */
@@ -1554,10 +1556,12 @@
     overflow-y: auto;
   }
 
-  /* Tool buttons: larger, pill-shaped, evenly spaced */
+  /* Tool buttons: evenly distributed, no leading gap before the first slot */
   .tools-sidebar--right-column .sidebar-tool-btn {
-    width: 52px;
-    min-width: 52px;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 64px;
+    width: auto;
     height: 44px;
     border-radius: 12px;
     background: transparent;

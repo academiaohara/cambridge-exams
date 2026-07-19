@@ -168,7 +168,7 @@
       feedback.hidden = false;
     },
 
-    /** Lights up the Check button (Duolingo-style) once at least one answer is given. */
+    /** Lights up the Check button once at least one answer is given (animation only; Check is always clickable). */
     syncFooterReadyState: function() {
       const footer = document.querySelector('.dashboard-layout--exercise .exercise-footer');
       if (!footer || footer.classList.contains('section-report-actions')) return;
