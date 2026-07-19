@@ -3200,7 +3200,8 @@
 .dashboard-center--exercise {
   min-width: 0;
   width: 100%;
-  max-width: none;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .dashboard-center--exercise .exercise-page-wrapper {

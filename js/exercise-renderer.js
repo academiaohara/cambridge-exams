@@ -366,6 +366,7 @@
       const exerciseInnerHtml = `
         <div class="exercise-page-wrapper">
           <div class="exercise-container" data-tile-theme="tests">
+            <div class="exercise-main-layout" lang="en">
             <div class="exercise-header">
               <div class="exercise-chips-row">
                 <span class="exercise-chip exercise-chip--level" title="${levelName} - ${isMixed ? 'Random Test' : sectionTitle}">${AppState.currentLevel || 'C1'}</span>
@@ -417,7 +418,6 @@
             
             ${contentHeaderHTML}
             
-            <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
               <div class="reading-text-enhanced${hasDuoMatchingUiShell ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoGappedSentenceStyle ? ' b1-reading4' : ''}${c1Reading7Gapped ? ' c1-reading7' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReading6CrossText ? ' c1-reading6' : ''}${duoReadingMultipleMatching ? ' duo-reading-matching' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
