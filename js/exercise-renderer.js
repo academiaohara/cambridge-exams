@@ -362,55 +362,47 @@
         : (exercise.description || this.getDefaultDescription(partConfig));
       const descriptionSource = exercise.description || this.getDefaultDescription(partConfig);
 
+      const modeChipHTML = this.renderModeChip(isMixed);
       const exerciseInnerHtml = `
         <div class="exercise-page-wrapper">
           <div class="exercise-container" data-tile-theme="tests">
             <div class="exercise-header">
-              <div class="exercise-header-top">
-                <h2 class="exercise-heading">${levelName} - ${isMixed ? 'Random Test' : sectionTitle}</h2>
-                <div class="exercise-header-right">
-                  <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
-                  <div class="exercise-toolbar">
-                    <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="Cambridge Score">
-                      <i class="fas fa-chart-bar"></i>
-                    </button>
-                    <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="Overall Results">
-                      <i class="fas fa-chart-line"></i>
-                    </button>
-                    <button class="btn-exit" onclick="Exercise.closeExercise()">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
+              <div class="exercise-chips-row">
+                <span class="exercise-chip exercise-chip--level" title="${levelName} - ${isMixed ? 'Random Test' : sectionTitle}">${AppState.currentLevel || 'C1'}</span>
+                ${modeChipHTML}
+                <div class="score-display exercise-chip" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
+                <div class="exercise-toolbar">
+                  <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="Cambridge Score">
+                    <i class="fas fa-chart-bar"></i>
+                  </button>
+                  <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="Overall Results">
+                    <i class="fas fa-chart-line"></i>
+                  </button>
+                  <button class="btn-exit" onclick="Exercise.closeExercise()">
+                    <i class="fas fa-times"></i>
+                  </button>
                 </div>
-              </div>
-              <div class="exercise-header-meta">
-                <span class="exercise-badge">${Utils.getExerciseBadgeLabel(section, displayPart, exercise)}</span>
-                ${isMixed ? `<span class="mixed-mode-badge${AppState.currentMode === 'exam' ? ' mixed-mode-badge--simulation' : ''}"><span class="material-symbols-outlined">${AppState.currentMode === 'exam' ? 'timer' : 'shuffle'}</span> ${AppState.currentMode === 'exam' ? 'Simulation' : 'Random Test'}</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">timer</span> Simulation</span>` : `<span class="practice-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">school</span> Practice</span>`)}
               </div>
             </div>
             
-            <div class="exercise-info">
-              <div class="exercise-info-left">
-                ${partNavHTML}
-              </div>
-              <div class="exercise-info-right">
-                <span class="exercise-duration"><i class="fas fa-clock"></i> ${
+            <div class="exercise-info exercise-info--single-row">
+              ${partNavHTML}
+              <span class="exercise-duration"><i class="fas fa-clock"></i> ${
+                (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                  ? CONFIG.SECTION_TIMES[section]
+                  : (exercise.time || '10')
+              } <span data-i18n="minutes">min</span></span>
+              <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
+                <i class="fas fa-hourglass-half"></i>
+                <span id="timer-display">${
                   (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
-                    ? CONFIG.SECTION_TIMES[section]
-                    : (exercise.time || '10')
-                } <span data-i18n="minutes">min</span></span>
-                <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
-                  <i class="fas fa-hourglass-half"></i>
-                  <span id="timer-display">${
-                    (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
-                      ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
-                      : AppState.currentMode === 'exam'
-                        ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
-                        : Utils.formatTime(AppState.elapsedSeconds)
-                  }</span>
-                </div>
-                <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
+                    ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
+                    : AppState.currentMode === 'exam'
+                      ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
+                      : Utils.formatTime(AppState.elapsedSeconds)
+                }</span>
               </div>
+              <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
             
             <div class="exercise-description" lang="en">
@@ -2017,6 +2009,20 @@
       return '<div class="part-nav-row">' + cells + '</div>';
     },
     
+    renderModeChip: function(isMixed) {
+      if (isMixed) {
+        const isExam = AppState.currentMode === 'exam';
+        const label = isExam ? 'Simulation' : 'Random Test';
+        const icon = isExam ? 'timer' : 'shuffle';
+        const modifier = isExam ? 'simulation' : 'random';
+        return `<span class="exercise-chip exercise-chip--mode exercise-chip--${modifier}" title="${label}"><span class="material-symbols-outlined">${icon}</span></span>`;
+      }
+      if (AppState.currentMode === 'exam') {
+        return '<span class="exercise-chip exercise-chip--mode exercise-chip--simulation" title="Simulation"><span class="material-symbols-outlined">timer</span></span>';
+      }
+      return '<span class="exercise-chip exercise-chip--mode exercise-chip--practice" title="Practice"><span class="material-symbols-outlined">school</span></span>';
+    },
+
     renderPartNavigation: function(section, currentPart, totalParts, examId) {
       const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
       if (!exam) return '';

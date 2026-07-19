@@ -2259,10 +2259,65 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 /* Header & meta — Duolingo-inspired */
 .dashboard-layout--exercise .exercise-header {
+  margin-bottom: 12px;
+}
+
+.dashboard-layout--exercise .exercise-chips-row {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dashboard-layout--exercise .exercise-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #fff;
+  color: var(--ex-duo-text);
+  border: 2px solid var(--ex-duo-border);
+  box-shadow: 0 2px 0 #e5e5e5;
+  font-weight: 800;
+  border-radius: 12px;
+  min-height: 42px;
+}
+
+.dashboard-layout--exercise .exercise-chip--level {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  padding: 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.dashboard-layout--exercise .exercise-chip--mode {
+  width: 42px;
+  padding: 0;
+}
+
+.dashboard-layout--exercise .exercise-chip--mode .material-symbols-outlined {
+  font-size: 1.15rem;
+}
+
+.dashboard-layout--exercise .exercise-chip--practice {
+  background: #d7ffb8;
+  color: #166534;
+  border-color: #58cc02;
+  box-shadow: 0 2px 0 #58a700;
+}
+
+.dashboard-layout--exercise .exercise-chip--simulation {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border-color: #ce82ff;
+  box-shadow: 0 2px 0 #a855f7;
+}
+
+.dashboard-layout--exercise .exercise-chip--random {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-color: #60a5fa;
+  box-shadow: 0 2px 0 #3b82f6;
 }
 
 .dashboard-layout--exercise .exercise-header-top {
@@ -2318,9 +2373,19 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 2px 0 #e5e5e5;
   font-weight: 800;
   font-size: 0.82rem;
-  padding: 8px 14px;
+  padding: 0 14px;
   border-radius: 12px;
   min-width: auto;
+}
+
+.dashboard-layout--exercise .exercise-chips-row .score-display {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dashboard-layout--exercise .exercise-chips-row .exercise-toolbar {
+  margin-left: auto;
 }
 
 .dashboard-layout--exercise .exercise-header-right {
@@ -2398,6 +2463,32 @@ body:has(.dashboard-layout--exercise) #main-content {
   border-radius: 16px;
   box-shadow: none;
   padding: 12px 16px;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row .part-nav-row {
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row .exercise-duration,
+.dashboard-layout--exercise .exercise-info--single-row .exercise-timer,
+.dashboard-layout--exercise .exercise-info--single-row .part-score-display {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row .part-score-display {
+  padding: 6px 14px;
+  border-radius: 12px;
 }
 
 .dashboard-layout--exercise .exercise-info-left {
@@ -2829,8 +2920,30 @@ body:has(.dashboard-layout--exercise) #main-content {
 
   /* Compact header on mobile */
   .dashboard-layout--exercise .exercise-header {
-    gap: 7px;
     margin-bottom: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-chips-row {
+    gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-chip,
+  .dashboard-layout--exercise .exercise-chips-row .score-display {
+    min-height: 36px;
+    border-radius: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-chip--level {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-chip--mode {
+    width: 36px;
+  }
+
+  .dashboard-layout--exercise .exercise-chip--mode .material-symbols-outlined {
+    font-size: 1rem;
   }
 
   .dashboard-layout--exercise .exercise-header-top {
@@ -2850,7 +2963,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   /* Score and toolbar buttons tighter */
   .dashboard-layout--exercise .score-display {
     font-size: 0.78rem;
-    padding: 6px 10px;
+    padding: 0 10px;
   }
 
   .dashboard-layout--exercise .btn-exit,
