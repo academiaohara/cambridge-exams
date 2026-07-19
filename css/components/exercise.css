@@ -1396,9 +1396,26 @@
   }
 
   .dashboard-layout--exercise .exercise-info--single-row {
-    flex-direction: row !important;
-    align-items: center !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     flex-wrap: nowrap !important;
+    gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
+    width: 100%;
+    flex: 0 0 auto;
+    padding-bottom: 0;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right .exercise-timer {
+    margin-left: auto;
   }
 
   .exercise-info {
@@ -1554,21 +1571,31 @@
 
   .dashboard-layout--exercise .exercise-info--single-row {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     flex-wrap: nowrap !important;
-    align-items: center !important;
+    align-items: stretch !important;
     overflow: hidden;
+    gap: 6px;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
+    width: 100%;
     min-width: 0;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 0;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
+    width: 100%;
     flex-shrink: 0;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right .exercise-timer {
+    margin-left: auto;
   }
 
   .exercise-info-left,
@@ -2841,7 +2868,11 @@ body:has(.dashboard-layout--exercise) #main-content {
   gap: 12px;
   margin-top: 28px;
   padding: 20px 0 max(8px, env(safe-area-inset-bottom));
-  border-top: 2px solid var(--ex-duo-border);
+  border-top: 2px solid color-mix(in srgb, var(--ex-duo-blue, #1cb0f6) 22%, var(--ex-duo-border, #e5e5e5));
+  position: sticky;
+  bottom: 0;
+  z-index: 120;
+  background: var(--ex-duo-blue-light, #ddf4ff);
 }
 
 .dashboard-layout--exercise .exercise-footer button {
@@ -2955,27 +2986,37 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  /* In-flow footer below the reading text — not fixed, user scrolls to it */
+  /* Fixed footer above the tools rail — always visible like sidebar-rail */
   .dashboard-layout--exercise .exercise-footer {
-    position: static;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    z-index: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 140;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     gap: 10px;
-    margin-top: 16px;
-    /* Pad bottom so last button isn't hidden behind the tools rail */
-    padding: 14px 16px max(80px, calc(72px + env(safe-area-inset-bottom)));
-    background: transparent;
-    border-top: 2px solid var(--ex-duo-border, #e5e5e5);
+    margin-top: 0;
+    padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+    background: var(--ex-duo-blue-light, #ddf4ff);
+    border-top: 2px solid color-mix(in srgb, var(--ex-duo-blue, #1cb0f6) 22%, var(--ex-duo-border, #e5e5e5));
     border-radius: 0;
-    box-shadow: none;
+    box-shadow: 0 -2px 12px rgba(28, 176, 246, 0.12);
   }
 
-  /* Remove the padding-bottom previously added for the fixed footer */
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-footer {
+    bottom: calc(54px + max(12px, env(safe-area-inset-bottom)));
+  }
+
+  .dashboard-layout--exercise .exercise-container {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-container {
+    padding-bottom: calc(72px + 54px + max(12px, env(safe-area-inset-bottom)) + env(safe-area-inset-bottom));
+  }
+
   .dashboard-layout--exercise .exercise-page-wrapper {
     padding-bottom: 0;
   }
@@ -3072,17 +3113,23 @@ body:has(.dashboard-layout--exercise) #main-content {
     border-radius: 10px;
   }
 
-  /* Exercise info: single-row scrollable on mobile */
+  /* Exercise info: two-row layout on mobile (parts / time+score) */
   .dashboard-layout--exercise .exercise-info {
     padding: 6px 10px;
     margin-bottom: 8px;
-    flex-wrap: nowrap !important;
-    flex-direction: row !important;
     gap: 6px;
   }
 
+  .dashboard-layout--exercise .exercise-info:not(.exercise-info--single-row) {
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+  }
+
   .dashboard-layout--exercise .exercise-info--single-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
     overflow: hidden;
+    gap: 6px;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-chip--duration,
@@ -3104,15 +3151,24 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
+    width: 100%;
+    flex: 0 0 auto;
     flex-shrink: 1;
     min-width: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 0;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
+    width: 100%;
     flex-shrink: 0;
+    justify-content: space-between;
     gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right .exercise-timer {
+    margin-left: auto;
   }
 
   /* Part nav cells — slightly smaller but still touch-friendly */
