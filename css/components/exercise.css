@@ -1738,16 +1738,43 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .exercise-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   background: transparent;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
   border: none;
   margin-bottom: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .dashboard-layout--exercise .exercise-page-wrapper {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.dashboard-layout--exercise .exercise-main-layout {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 0;
+}
+
+.dashboard-layout--exercise .exercise-main-layout > .exercise-header,
+.dashboard-layout--exercise .exercise-main-layout > .exercise-info,
+.dashboard-layout--exercise .exercise-main-layout > .exercise-description,
+.dashboard-layout--exercise .exercise-main-layout > .reading-text-enhanced,
+.dashboard-layout--exercise .exercise-main-layout > .content-section-header {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Section report — full-width exam-style summary after completing a section */
@@ -2292,7 +2319,8 @@ body:has(.dashboard-layout--exercise) #main-content {
   align-items: center;
   gap: 8px;
   flex-wrap: nowrap;
-  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .dashboard-layout--exercise .exercise-chip {
@@ -2500,10 +2528,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   justify-content: space-between;
   gap: 8px;
   flex-wrap: nowrap;
-  width: 100%;
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
@@ -2656,6 +2684,9 @@ body:has(.dashboard-layout--exercise) #main-content {
   color: #3c3c3c;
   font-weight: 600;
   line-height: 1.55;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .dashboard-layout--exercise .reading-text-enhanced {
