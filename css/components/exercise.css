@@ -1557,8 +1557,18 @@
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
+    overflow: hidden;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
+    min-width: 0;
+    flex: 1 1 auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
+    flex-shrink: 0;
   }
 
   .exercise-info-left,
@@ -2487,12 +2497,29 @@ body:has(.dashboard-layout--exercise) #main-content {
   display: flex !important;
   flex-direction: row !important;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 8px;
   flex-wrap: nowrap;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .dashboard-layout--exercise .exercise-info--single-row .part-nav-row {
@@ -2500,10 +2527,6 @@ body:has(.dashboard-layout--exercise) #main-content {
   flex-wrap: nowrap;
   flex-shrink: 0;
   gap: 6px;
-}
-
-.dashboard-layout--exercise .exercise-info--single-row .exercise-chip--duration {
-  margin-left: auto;
 }
 
 .dashboard-layout--exercise .exercise-info--single-row .exercise-chip--duration,
@@ -3023,9 +3046,11 @@ body:has(.dashboard-layout--exercise) #main-content {
     margin-bottom: 8px;
     flex-wrap: nowrap !important;
     flex-direction: row !important;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row {
+    overflow: hidden;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-chip--duration,
@@ -3044,6 +3069,18 @@ body:has(.dashboard-layout--exercise) #main-content {
     gap: 8px;
     font-size: 0.82rem;
     white-space: nowrap;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
+    flex-shrink: 1;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
+    flex-shrink: 0;
+    gap: 6px;
   }
 
   /* Part nav cells — slightly smaller but still touch-friendly */
