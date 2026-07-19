@@ -323,13 +323,11 @@
     },
 
     _getExerciseToolsSidebarWidth: function() {
-      var layout = document.querySelector('.dashboard-layout--exercise:not(.dashboard-layout-right-closed)');
-      if (!layout) return 0;
-      var sidebar = layout.querySelector(
-        '.dashboard-right-sidebar--tools, #dashboardRightSidebarTools, .dashboard-right-sidebar'
-      );
-      if (!sidebar) return 0;
-      var rect = sidebar.getBoundingClientRect();
+      var wrap = document.querySelector('.exercise-tools-sidebar-wrap');
+      if (!wrap) return 0;
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile && !wrap.classList.contains('is-open')) return 0;
+      var rect = wrap.getBoundingClientRect();
       if (!rect.width || rect.left >= window.innerWidth) return 0;
       return Math.max(0, window.innerWidth - rect.left);
     },

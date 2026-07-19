@@ -16,19 +16,9 @@
       var layoutClass = 'dashboard-layout dashboard-layout--exercise';
       if (!showTools) layoutClass += ' dashboard-layout-right-closed';
 
-      var rightShell = '';
-      if (showTools) {
-        var toolsWrap = '<div class="exercise-tools-sidebar-wrap">' + toolsBarHTML + '</div>';
-        rightShell = (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell)
-          ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebarTools', toolsWrap)
-          : '<div class="dashboard-right-sidebar dashboard-right-sidebar--tools" id="dashboardRightSidebarTools">' +
-              '<div class="dashboard-sidebar-content">' + toolsWrap + '</div></div>';
-      }
-
       return '<div class="' + layoutClass + '">' +
         leftShell +
         '<div class="dashboard-center dashboard-center--exercise">' + centerHtml + '</div>' +
-        rightShell +
       '</div>';
     },
 
@@ -421,9 +411,12 @@
             </div>
 
             ${this.renderExplanationsPanel(exercise, partConfig)}
-            
-            <div class="exercise-footer">
-              ${this.renderExerciseFooter(displayPart, totalParts)}
+
+            <div class="exercise-bottom-stack">
+              ${showTools ? '<div class="exercise-tools-sidebar-wrap">' + toolsBarHTML + '</div>' : ''}
+              <div class="exercise-footer">
+                ${this.renderExerciseFooter(displayPart, totalParts, showTools)}
+              </div>
             </div>
           </div>
         </div>`;
@@ -1801,7 +1794,7 @@
       return html;
     },
     
-    renderExerciseFooter: function(part, totalParts) {
+    renderExerciseFooter: function(part, totalParts, showTools) {
       var isExamMode = AppState.currentMode === 'exam';
       var isMixed = window.MixedTest && MixedTest.isActive();
       var mixedIdx = isMixed ? AppState.mixedTestCurrentIndex : -1;
@@ -1837,6 +1830,14 @@
       let leftGroup = '';
       let midGroup = '';
       let rightGroup = '';
+
+      if (showTools) {
+        leftGroup += `
+          <button type="button" class="btn-tools-toggle" onclick="Tools.toggleSidebar()" aria-label="Tools" title="Tools" aria-expanded="false">
+            <i class="fas fa-toolbox"></i> <span class="btn-tools-toggle-label">Tools</span>
+          </button>
+        `;
+      }
 
       if ((isMixed ? mixedIdx > 0 : part > 1) && (!isExamMode || AppState.examFullMode)) {
         leftGroup += `<button class="btn-prev" onclick="Exercise.goToPrevPart()" aria-label="Previous part" title="Previous part"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
