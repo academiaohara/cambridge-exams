@@ -3228,22 +3228,31 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   gap: 12px;
 }
 
-/* Desktop: Duo card-style footer container (scrolls with content, not sticky) */
+/* Desktop: Duo card-style footer container (fixed stack keeps it always visible) */
 @media (min-width: 769px) {
-  .dashboard-layout--exercise .exercise-footer {
+  .dashboard-layout--exercise .exercise-bottom-stack .exercise-footer {
     position: static;
     bottom: auto;
+    margin-top: 0;
     z-index: auto;
   }
 
   .dashboard-layout--exercise .exercise-footer:not(.section-report-actions) {
-    margin-inline: clamp(12px, 2vw, 28px);
-    margin-bottom: 16px;
+    margin-inline: 0;
+    margin-bottom: 0;
     padding: 16px clamp(20px, 3vw, 28px) 18px;
     background: #fff;
     border: 2px solid var(--ex-duo-border, #e5e5e5);
     border-radius: 20px;
     box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+  }
+
+  .dashboard-layout--exercise .exercise-container {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+
+  body.answers-checked-app .dashboard-layout--exercise .exercise-container {
+    padding-bottom: calc(168px + env(safe-area-inset-bottom));
   }
 
   .dashboard-layout--exercise .exercise-footer.exercise-footer--correct {
