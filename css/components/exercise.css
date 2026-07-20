@@ -2624,7 +2624,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   color: #777;
 }
 
-.dashboard-layout--exercise .exercise-container[data-section="reading"] .exercise-info--single-row .exercise-info-left {
+.dashboard-layout--exercise .exercise-container[data-section] .exercise-info--single-row .exercise-info-left {
   padding-bottom: 5px;
 }
 
