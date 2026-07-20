@@ -3245,6 +3245,29 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
     border: 2px solid var(--ex-duo-border, #e5e5e5);
     border-radius: 20px;
     box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      border-top-color 0.25s ease;
+  }
+
+  @media (hover: hover) {
+    .dashboard-layout--exercise .exercise-footer:not(.section-report-actions) {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .dashboard-layout--exercise .exercise-footer:not(.section-report-actions):is(
+      :hover,
+      :focus-within,
+      :has(.exercise-footer-feedback:not([hidden]))
+    ) {
+      background: #fff;
+      border-color: var(--ex-duo-border, #e5e5e5);
+      box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+    }
   }
 
   .dashboard-layout--exercise .exercise-container {
@@ -3274,6 +3297,50 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
     border-color: color-mix(in srgb, #ea2b2b 22%, var(--ex-duo-border, #e5e5e5));
     border-top: 4px solid #ea2b2b;
     box-shadow: 0 4px 0 color-mix(in srgb, #ea2b2b 28%, var(--ex-duo-border, #e5e5e5));
+  }
+
+  @media (hover: hover) {
+    .dashboard-layout--exercise .exercise-footer.exercise-footer--correct:not(.section-report-actions),
+    .dashboard-layout--exercise .exercise-footer.exercise-footer--partial:not(.section-report-actions),
+    .dashboard-layout--exercise .exercise-footer.exercise-footer--incorrect:not(.section-report-actions) {
+      background: transparent;
+      border-color: transparent;
+      border-top-color: transparent;
+      box-shadow: none;
+    }
+
+    .dashboard-layout--exercise .exercise-footer.exercise-footer--correct:not(.section-report-actions):is(
+      :hover,
+      :focus-within,
+      :has(.exercise-footer-feedback:not([hidden]))
+    ) {
+      background: var(--ex-duo-practice-light, #d7ffb8);
+      border-color: color-mix(in srgb, var(--ex-duo-practice, #58cc02) 30%, var(--ex-duo-border, #e5e5e5));
+      border-top: 4px solid var(--ex-duo-practice, #58cc02);
+      box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-practice-dark, #58a700) 35%, var(--ex-duo-border, #e5e5e5));
+    }
+
+    .dashboard-layout--exercise .exercise-footer.exercise-footer--partial:not(.section-report-actions):is(
+      :hover,
+      :focus-within,
+      :has(.exercise-footer-feedback:not([hidden]))
+    ) {
+      background: var(--ex-duo-orange-light, #fff0e6);
+      border-color: color-mix(in srgb, var(--ex-duo-orange, #f47417) 28%, var(--ex-duo-border, #e5e5e5));
+      border-top: 4px solid var(--ex-duo-orange, #f47417);
+      box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 30%, var(--ex-duo-border, #e5e5e5));
+    }
+
+    .dashboard-layout--exercise .exercise-footer.exercise-footer--incorrect:not(.section-report-actions):is(
+      :hover,
+      :focus-within,
+      :has(.exercise-footer-feedback:not([hidden]))
+    ) {
+      background: #ffdfe0;
+      border-color: color-mix(in srgb, #ea2b2b 22%, var(--ex-duo-border, #e5e5e5));
+      border-top: 4px solid #ea2b2b;
+      box-shadow: 0 4px 0 color-mix(in srgb, #ea2b2b 28%, var(--ex-duo-border, #e5e5e5));
+    }
   }
 
   .dashboard-layout--exercise .exercise-footer-feedback {
