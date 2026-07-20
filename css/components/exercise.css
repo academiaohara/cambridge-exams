@@ -2625,27 +2625,14 @@ body:has(.dashboard-layout--exercise) #main-content {
   padding-bottom: 5px;
 }
 
-/* Desktop: align header chips, score and toolbar to the far right */
+/* Desktop: push score-display and toolbar to the far right */
 @media (min-width: 769px) {
-  .dashboard-layout--exercise .exercise-header {
-    justify-content: flex-end;
-  }
-
   .dashboard-layout--exercise .exercise-chips-row {
-    justify-content: flex-end;
-    margin-left: auto;
+    width: 100%;
   }
 
   .dashboard-layout--exercise .exercise-chips-row .score-display {
-    margin-left: 0;
-  }
-
-  .dashboard-layout--exercise .exercise-info--single-row {
-    justify-content: flex-end;
-  }
-
-  .dashboard-layout--exercise .exercise-info--single-row .exercise-info-left {
-    flex: 0 0 auto;
+    margin-left: auto;
   }
 }
 
