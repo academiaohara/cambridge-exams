@@ -3239,36 +3239,24 @@
     display: none !important;
   }
 
-  /* Pin footer to viewport bottom so it stays visible while scrolling */
+  /* Pin footer to viewport bottom; horizontal bounds synced to dashboard-center--exercise via JS */
   .dashboard-layout--exercise .exercise-bottom-stack {
     position: fixed;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: auto;
     width: 100%;
     max-width: none;
     margin: 0;
     z-index: 120;
     gap: 0;
-    padding: 0 12px calc(16px + env(safe-area-inset-bottom));
+    padding: 0 0 calc(16px + env(safe-area-inset-bottom));
     box-sizing: border-box;
     pointer-events: none;
   }
 
   .dashboard-layout--exercise .exercise-bottom-stack .exercise-footer {
     pointer-events: auto;
-  }
-
-  body:has(.dashboard-layout--exercise) .app-container .dashboard-layout--exercise .exercise-bottom-stack {
-    left: var(--dashboard-left-sidebar-width, 256px);
-  }
-}
-
-@media (min-width: 769px) and (max-width: 900px) {
-  body:has(.dashboard-layout--exercise) .app-container .dashboard-layout--exercise .exercise-bottom-stack {
-    left: 0;
-    padding-left: 14px;
-    padding-right: 16px;
   }
 }
 
@@ -3338,10 +3326,6 @@
     padding: 0 16px 20px;
     box-sizing: border-box;
     min-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 24px);
-  }
-
-  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .exercise-bottom-stack {
-    right: calc(var(--dashboard-exercise-tools-width, 340px) + var(--dashboard-exercise-tools-gap, 16px));
   }
 }
 

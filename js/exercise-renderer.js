@@ -60,6 +60,63 @@
       }
     },
 
+    _desktopFooterMq: function() {
+      return window.matchMedia('(min-width: 769px)');
+    },
+
+    _syncExerciseFooterDesktopBounds: function() {
+      var stack = document.querySelector('.dashboard-layout--exercise .exercise-bottom-stack');
+      var center = document.querySelector('.dashboard-layout--exercise .dashboard-center--exercise');
+      if (!stack || !center) return;
+
+      if (!this._desktopFooterMq().matches) {
+        stack.style.removeProperty('left');
+        stack.style.removeProperty('width');
+        stack.style.removeProperty('right');
+        return;
+      }
+
+      var rect = center.getBoundingClientRect();
+      stack.style.left = Math.round(rect.left) + 'px';
+      stack.style.width = Math.round(rect.width) + 'px';
+      stack.style.right = 'auto';
+    },
+
+    _bindExerciseFooterDesktopBounds: function() {
+      var self = this;
+      var run = function() {
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            self._syncExerciseFooterDesktopBounds();
+          });
+        });
+      };
+
+      run();
+
+      if (self._exerciseFooterDesktopBoundsBound) return;
+      self._exerciseFooterDesktopBoundsBound = true;
+
+      window.addEventListener('resize', run);
+      window.addEventListener('scroll', run, { passive: true });
+
+      var center = document.querySelector('.dashboard-layout--exercise .dashboard-center--exercise');
+      var stack = document.querySelector('.dashboard-layout--exercise .exercise-bottom-stack');
+      if (center && typeof ResizeObserver !== 'undefined') {
+        var ro = new ResizeObserver(run);
+        ro.observe(center);
+        if (stack) ro.observe(stack);
+      }
+
+      if (typeof MutationObserver !== 'undefined') {
+        var layout = document.querySelector('.dashboard-layout--exercise');
+        if (layout) {
+          var mo = new MutationObserver(run);
+          mo.observe(layout, { attributes: true, attributeFilter: ['class'] });
+        }
+      }
+    },
+
     _syncB1Reading5MobileSpacer: function() {
       var spacer = document.querySelector('.b1-reading5-mobile-spacer');
       var stack = document.querySelector('.dashboard-layout--exercise .exercise-bottom-stack');
@@ -153,6 +210,7 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('tests');
+      this._bindExerciseFooterDesktopBounds();
     },
 
     wrapExerciseCenter: function(innerHtml) {
