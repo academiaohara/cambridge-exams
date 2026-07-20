@@ -3228,8 +3228,14 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
   gap: 12px;
 }
 
-/* Desktop: Duo card-style footer container */
+/* Desktop: Duo card-style footer container (scrolls with content, not sticky) */
 @media (min-width: 769px) {
+  .dashboard-layout--exercise .exercise-footer {
+    position: static;
+    bottom: auto;
+    z-index: auto;
+  }
+
   .dashboard-layout--exercise .exercise-footer:not(.section-report-actions) {
     margin-inline: clamp(12px, 2vw, 28px);
     margin-bottom: 16px;
@@ -3238,7 +3244,6 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
     border: 2px solid var(--ex-duo-border, #e5e5e5);
     border-radius: 20px;
     box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
-    bottom: 16px;
   }
 
   .dashboard-layout--exercise .exercise-footer.exercise-footer--correct {
