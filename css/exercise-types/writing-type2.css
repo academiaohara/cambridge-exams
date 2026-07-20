@@ -527,6 +527,28 @@
   .writing-type2-toolbar .btn-copy-clipboard i {
     font-size: 1rem;
   }
+
+  .writing-type2-writing-section {
+    gap: 1rem;
+  }
+
+  .writing-type2-toolbar {
+    margin-top: 0.85rem;
+  }
+
+  .writing-type2-task-preview,
+  .writing-type2-task-full-prompt {
+    font-size: 0.85rem;
+  }
+
+  .b1-writing .writing-type2-task-preview,
+  .b1-writing .writing-type2-task-full-prompt {
+    font-size: 0.92rem;
+  }
+
+  .writing-type2-range-hint {
+    font-size: 0.8rem;
+  }
 }
 
 /* ── B1 Preliminary Writing Part 2 — Duolingo task cards ─────────────── */

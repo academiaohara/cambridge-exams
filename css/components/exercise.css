@@ -1407,6 +1407,7 @@
     width: 100%;
     flex: 0 0 auto;
     padding-bottom: 0;
+    padding-left: 8px;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
@@ -1586,6 +1587,7 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 0;
+    padding-left: 8px;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
@@ -1612,6 +1614,7 @@
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    padding-left: 8px;
   }
 
   .exercise-info-right {
@@ -3564,6 +3567,7 @@ body.answers-checked-app .dashboard-layout--exercise .exercise-footer .btn-next.
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 0;
+    padding-left: 8px;
   }
 
   .dashboard-layout--exercise .exercise-info--single-row .exercise-info-right {
