@@ -3157,6 +3157,13 @@ button.sp-vocab-word-card:focus-visible {
   box-shadow: 0 3px 0 #2ea872;
 }
 
+.sp-option-btn--correct .sp-option-num,
+.sp-option-btn--selected.sp-option-btn--correct .sp-option-num {
+  border-color: #2ea872;
+  background: var(--sp-correct);
+  color: #fff;
+}
+
 .sp-option-btn--incorrect,
 .sp-option-btn--selected.sp-option-btn--incorrect {
   border-color: var(--sp-incorrect);
