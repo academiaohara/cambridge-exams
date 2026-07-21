@@ -1,36 +1,36 @@
 {
   "type": "email",
   "title": "Email/Letter (C1 Cambridge)",
-  "description": "Evalúa y mejora un Email o Letter asegurando registro adecuado (formal o informal), claridad y buena organización.",
-  "prompt": "Actúa como un editor profesional. Revisa este Email/Letter asegurándote de que el registro sea adecuado (formal o informal según la tarea). Comprueba que responde a todos los puntos, mejora la claridad y corrige saludos y despedidas. Ajusta el tono y vocabulario según el destinatario. Texto: [PEGA TU TEXTO]",
+  "description": "Evaluate and improve an Email or Letter ensuring adequate registration (formal or informal), clarity and good organization.",
+  "prompt": "Act like a professional editor. Review this Email/Letter making sure the registration is appropriate (formal or informal depending on the task). Check that it answers all the points, improves clarity and corrects greetings and farewells. Adjust the tone and vocabulary according to the recipient. Text: [PASTE YOUR TEXT]",
   "criteria": [
     {
       "name": "Content",
-      "description": "El texto responde a todos los puntos de la tarea de forma clara y completa."
+      "description": "The text answers all the points of the task clearly and completely."
     },
     {
       "name": "Communicative Achievement",
-      "description": "El tono es adecuado (formal o informal) según el destinatario y el propósito."
+      "description": "The tone is appropriate (formal or informal) depending on the recipient and the purpose."
     },
     {
       "name": "Organisation",
-      "description": "El texto está bien organizado con párrafos claros, saludo y despedida adecuados."
+      "description": "The text is well organized with clear paragraphs, appropriate greeting and farewell."
     },
     {
       "name": "Language",
-      "description": "Uso adecuado de expresiones formales o informales, con variedad y precisión."
+      "description": "Appropriate use of formal or informal expressions, with variety and precision."
     }
   ],
   "tips": [
     "Formal: usa 'Dear Sir/Madam' y despedidas como 'Yours faithfully'",
     "Informal: usa 'Hi/Hello' y despedidas como 'Best wishes'",
     "Responde a TODOS los puntos del enunciado",
-    "Usa conectores (Firstly, এছ, By the way, Anyway…)",
-    "Mantén coherencia en el registro (no mezclar formal e informal)"
+    "Use connectors (Firstly, এছ, By the way, Anyway…)",
+    "Maintain coherence in the register (do not mix formal and informal)"
   ],
   "wordLimit": "220-260 words",
   "structure": {
-    "opening": "Saludo adecuado según el registro.",
+    "opening": "Appropriate greeting according to the record.",
     "introduction": "Motivo del mensaje.",
     "main_body": "Desarrollo de los puntos requeridos.",
     "closing": "Frase final + despedida adecuada."

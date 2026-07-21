@@ -1,38 +1,38 @@
 {
   "type": "article",
   "title": "Article (C1 Cambridge)",
-  "description": "Evalúa y mejora un Article asegurando estilo atractivo, tono adecuado al lector y buena organización.",
-  "prompt": "Actúa como un editor profesional. Revisa este Article asegurándote de que tenga un título atractivo, un tono adecuado (semi-formal o informal según el contexto) y que enganche al lector. Mejora la introducción para captar atención y revisa que haya variedad de vocabulario y recursos retóricos (preguntas, ejemplos, opiniones). Texto: [PEGA TU TEXTO]",
+  "description": "Evaluate and improve an Article ensuring attractive style, reader-friendly tone, and good organization.",
+  "prompt": "Act like a professional editor. Review this Article making sure it has an attractive title, an appropriate tone (semi-formal or informal depending on the context) and that it engages the reader. Improve the introduction to capture attention and check that there is a variety of vocabulary and rhetorical resources (questions, examples, opinions). Text: [PASTE YOUR TEXT]",
   "criteria": [
     {
       "name": "Content",
-      "description": "El artículo responde completamente a la tarea con ideas relevantes e interesantes."
+      "description": "The article fully answers the task with relevant and interesting ideas."
     },
     {
       "name": "Communicative Achievement",
-      "description": "El tono es adecuado para el público objetivo (revista, blog, etc.) y mantiene al lector interesado."
+      "description": "The tone is appropriate for the target audience (magazine, blog, etc.) and keeps the reader interested."
     },
     {
       "name": "Organisation",
-      "description": "El texto tiene un título atractivo, una introducción clara, párrafos bien estructurados y una conclusión eficaz."
+      "description": "The text has an attractive title, a clear introduction, well-structured paragraphs and an effective conclusion."
     },
     {
       "name": "Language",
-      "description": "Uso de lenguaje variado, expresiones idiomáticas y recursos retóricos para atraer al lector."
+      "description": "Use of varied language, idiomatic expressions and rhetorical devices to attract the reader."
     }
   ],
   "tips": [
-    "Incluye un título llamativo",
-    "Empieza con una pregunta, anécdota o dato sorprendente",
-    "Usa un tono cercano y directo (puedes usar 'you')",
-    "Varía el vocabulario y evita repeticiones",
-    "Termina con una idea final interesante o reflexión"
+    "Includes a catchy title",
+    "Start with a question, anecdote or surprising fact",
+    "Use a close and direct tone (you can use 'you')",
+    "Vary the vocabulary and avoid repetitions",
+    "Use a close and direct tone (you can use 'you')"
   ],
   "wordLimit": "220-260 words",
   "structure": {
-    "title": "Debe ser atractivo y relacionado con el tema.",
+    "title": "It should be attractive and related to the topic.",
     "introduction": "Engancha al lector y presenta el tema.",
-    "main_body": "Desarrolla ideas principales con ejemplos y opiniones.",
-    "conclusion": "Cierra el artículo con una reflexión o pregunta final."
+    "main_body": "Develop main ideas with examples and opinions.",
+    "conclusion": "Close the article with a final reflection or question."
   }
 }

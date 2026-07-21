@@ -1,38 +1,42 @@
 {
   "type": "part1",
   "title": "Part 1 – Interview (C1 Cambridge)",
-  "description": "Evalúa una respuesta a las preguntas personales del examinador en la Parte 1 del Speaking C1 Advanced.",
-  "prompt": "Actúa como un examinador oficial del Cambridge C1 Advanced (CAE). Evalúa mi respuesta a la Parte 1 (Interview) según los criterios oficiales de Cambridge: Grammar and Vocabulary, Discourse Management, Pronunciation e Interactive Communication. Puntúa cada criterio del 1 al 5. Identifica las muletillas que he usado y sugiéreme alternativas C1. Después, dame 5 expresiones de nivel C1 que encajen con lo que he dicho. Aquí está mi respuesta: [PEGA TU TEXTO]",
+  "description": "Evaluate an answer to the examiner's personal questions in Part 1 of Speaking C1 Advanced.",
+  "prompt": "Acts as an official examiner for the Cambridge C1 Advanced (CAE). Evaluate my answer to Part 1 (Interview) according to the official Cambridge criteria: Grammar and Vocabulary, Discourse Management, Pronunciation and Interactive Communication. Rate each criterion from 1 to 5. Identify the fillers I have used and suggest alternatives C1. Next, give me 5 C1 level expressions that fit what I said. Here is my answer: [PASTE YOUR TEXT]",
   "criteria": [
     {
       "name": "Grammar and Vocabulary",
-      "description": "Uso de estructuras gramaticales variadas y precisas, junto con vocabulario sofisticado y apropiado para el nivel C1."
+      "description": "Use of varied and precise grammatical structures, together with sophisticated vocabulary appropriate for the C1 level."
     },
     {
       "name": "Discourse Management",
-      "description": "Capacidad de producir respuestas coherentes, fluidas y bien organizadas, usando conectores y marcadores del discurso apropiados."
+      "description": "Ability to produce coherent, fluid and well-organized responses, using appropriate connectors and discourse markers."
     },
     {
       "name": "Pronunciation",
-      "description": "Claridad, fluidez e inteligibilidad del habla, incluyendo entonación, acento y ritmo adecuados."
+      "description": "Speech clarity, fluency, and intelligibility, including appropriate intonation, accent, and rhythm."
     },
     {
       "name": "Interactive Communication",
-      "description": "Capacidad de iniciar, mantener y desarrollar la interacción respondiendo de forma natural y relevante."
+      "description": "Ability to initiate, maintain and develop interaction by responding in a natural and relevant way."
     }
   ],
   "tips": [
-    "Amplía tus respuestas con ejemplos y justificaciones: 'For instance...', 'This is particularly evident when...'",
-    "Usa estructuras condicionales avanzadas: 'Were I to choose...', 'Had I known...'",
-    "Evita respuestas monosilábicas. Desarrolla siempre tus ideas con at least 4-5 sentences.",
-    "Demuestra rango lexical con sinónimos sofisticados: en lugar de 'important', usa 'paramount', 'pivotal', 'indispensable'.",
-    "Añade matices con adverbios de grado: 'remarkably', 'arguably', 'undeniably', 'to a considerable extent'"
+    "Expand your answers with examples and justifications: 'For instance...', 'This is particularly evident when...'",
+    "Use advanced conditional structures: 'Were I to choose...', 'Had I known...'",
+    "Avoid monosyllabic responses. Always develop your ideas with at least 4-5 sentences.",
+    "Demonstrate lexical range with sophisticated synonyms: instead of 'important', use 'paramount', 'pivotal', 'indispensable'.",
+    "Add nuances with adverbs of degree: 'remarkably', 'arguably', 'undeniably', 'to a considerable extent'"
   ],
   "speakingFeatures": {
     "partNumber": 1,
     "duration": "2 minutes",
     "focus": "Personal information, opinions, and experiences",
     "examinerRole": "Asks questions about the candidate's background, interests, opinions, and future plans",
-    "keyFunctions": ["describing", "expressing opinions", "giving information"]
+    "keyFunctions": [
+      "describing",
+      "expressing opinions",
+      "giving information"
+    ]
   }
 }

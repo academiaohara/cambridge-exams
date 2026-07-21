@@ -1,38 +1,38 @@
 {
   "type": "essay",
   "title": "Essay (C1 Cambridge)",
-  "description": "Evalúa y mejora un Essay al nivel C1 Advanced según los criterios oficiales de Cambridge.",
-  "prompt": "Actúa como un examinador del Cambridge C1 Advanced. Evalúa este Essay según los criterios oficiales (Content, Communicative Achievement, Organisation, Language). Proporciona una nota de 1 a 5 por cada sección. Después, reescribe el texto usando conectores más sofisticados (ej. inversiones, pasivas impersonales) y vocabulario C2 para que suene más académico. Aquí está mi texto: [PEGA TU TEXTO]",
+  "description": "Evaluate and improve an Essay to the C1 Advanced level according to the official Cambridge criteria.",
+  "prompt": "Act as a Cambridge C1 Advanced examiner. Evaluate this Essay according to the official criteria (Content, Communicative Achievement, Organisation, Language). Provide a score from 1 to 5 for each section. Then rewrite the text using more sophisticated connectors (e.g. inversions, impersonal passives) and C2 vocabulary so that it sounds more academic. Here is my text: [PASTE YOUR TEXT]",
   "criteria": [
     {
       "name": "Content",
-      "description": "El texto responde a la tarea y aborda todos los puntos requeridos con ideas relevantes y desarrolladas."
+      "description": "The text responds to the task and addresses all the required points with relevant and developed ideas."
     },
     {
       "name": "Communicative Achievement",
-      "description": "El texto usa el registro formal apropiado y logra el propósito comunicativo de forma convincente."
+      "description": "The text uses the appropriate formal register and achieves the communicative purpose convincingly."
     },
     {
       "name": "Organisation",
-      "description": "El texto está bien estructurado con introducción, desarrollo y conclusión claros, usando conectores cohesivos."
+      "description": "The text is well structured with a clear introduction, development and conclusion, using cohesive connectors."
     },
     {
       "name": "Language",
-      "description": "Uso de vocabulario y estructuras gramaticales variadas y precisas propias del nivel C1/C2."
+      "description": "Use of varied and precise vocabulary and grammatical structures typical of the C1/C2 level."
     }
   ],
   "tips": [
-    "Usa inversiones para añadir énfasis: 'Not only does this affect...', 'Rarely have we seen...'",
-    "Emplea pasivas impersonales para sonar más académico: 'It is widely acknowledged that...', 'It has been argued that...'",
-    "Varía los conectores: 'Furthermore', 'Nevertheless', 'Notwithstanding', 'In spite of this'",
-    "Utiliza nominalizaciones: en lugar de 'people are educated', escribe 'the education of the population'",
-    "Incluye vocabulario sofisticado: 'exacerbate', 'mitigate', 'proliferate', 'alleviate'"
+    "Use inversions to add emphasis: 'Not only does this affect...', 'Rarely have we seen...'",
+    "Use impersonal passives to sound more academic: 'It is widely acknowledged that...', 'It has been argued that...'",
+    "Vary the connectors: 'Furthermore', 'Nevertheless', 'Notwithstanding', 'In spite of this'",
+    "Use nominalizations: instead of 'people are educated', write 'the education of the population'",
+    "Include sophisticated vocabulary: 'exacerbate', 'mitigate', 'proliferate', 'alleviate'"
   ],
   "wordLimit": "220-260 words",
   "structure": {
-    "introduction": "Introduce el tema y presenta los dos puntos que vas a discutir.",
-    "bodyParagraph1": "Desarrolla el primer argumento con ejemplos y análisis.",
-    "bodyParagraph2": "Desarrolla el segundo argumento, considerando puntos de vista opuestos.",
-    "conclusion": "Resume ambos argumentos y expresa tu opinión razonada."
+    "introduction": "Introduce the topic and present the two points you are going to discuss.",
+    "bodyParagraph1": "Develop the first argument with examples and analysis.",
+    "bodyParagraph2": "Develop the second argument, considering opposing points of view.",
+    "conclusion": "Summarize both arguments and express your reasoned opinion."
   }
 }
