@@ -1,38 +1,38 @@
 {
   "type": "report",
   "title": "Report (C1 Cambridge)",
-  "description": "Evalúa y mejora un Report al nivel C1 Advanced asegurando tono objetivo, estructura formal y recomendaciones sólidas.",
-  "prompt": "Actúa como un editor profesional. Revisa este Report asegurándote de que el tono sea totalmente objetivo y formal. Comprueba que los encabezados sean adecuados. Cambia las frases en primera persona ('I think', 'I saw') por estructuras pasivas o nominalizaciones. Propón mejoras para las recomendaciones finales. Texto: [PEGA TU TEXTO]",
+  "description": "Evaluate and improve a Report to the C1 Advanced level ensuring objective tone, formal structure and solid recommendations.",
+  "prompt": "Act like a professional editor. Review this Report making sure that the tone is completely objective and formal. Check that the headers are appropriate. Change first-person phrases ('I think', 'I saw') for passive structures or nominalizations. Suggest improvements for the final recommendations. Text: [PASTE YOUR TEXT]",
   "criteria": [
     {
       "name": "Content",
-      "description": "El informe aborda todos los puntos de la tarea con información relevante y bien seleccionada."
+      "description": "The report addresses all points of the task with relevant and well-selected information."
     },
     {
       "name": "Communicative Achievement",
-      "description": "El tono es formal e impersonal, adecuado para un informe profesional o académico."
+      "description": "The tone is formal and impersonal, suitable for a professional or academic report."
     },
     {
       "name": "Organisation",
-      "description": "El informe usa encabezados claros, párrafos bien diferenciados y una sección de recomendaciones al final."
+      "description": "The report uses clear headings, well-differentiated paragraphs, and a recommendations section at the end."
     },
     {
       "name": "Language",
-      "description": "Uso de lenguaje técnico, nominalizaciones y estructuras pasivas para mantener la objetividad."
+      "description": "Use of technical language, nominalizations and passive structures to maintain objectivity."
     }
   ],
   "tips": [
-    "Usa encabezados claros: 'Introduction', 'Findings', 'Conclusions', 'Recommendations'",
-    "Sustituye frases en primera persona al presentar hallazgos por pasivas: 'I found' → 'It was found that...'; las recomendaciones pueden mantener formas como 'It is recommended that...' o 'Steps should be taken to...'",
-    "Emplea nominalizaciones: 'We recommend' → 'It is recommended that...'",
-    "Incluye datos concretos y evidencia para respaldar tus conclusiones",
-    "Las recomendaciones deben ser específicas y usar estructuras modales: 'It would be advisable to...', 'Steps should be taken to...'"
+    "Use clear headings: 'Introduction', 'Findings', 'Conclusions', 'Recommendations'",
+    "Replace first-person phrases when presenting findings with passive ones: 'I found' → 'It was found that...'; recommendations can maintain forms such as 'It is recommended that...' or 'Steps should be taken to...'",
+    "Use nominalizations: 'We recommend' → 'It is recommended that...'",
+    "Include concrete data and evidence to support your conclusions",
+    "Recommendations should be specific and use modal structures: 'It would be advisable to...', 'Steps should be taken to...'"
   ],
   "wordLimit": "220-260 words",
   "structure": {
-    "introduction": "Indica el propósito del informe y las fuentes de información.",
-    "findings": "Presenta los hallazgos de forma objetiva usando encabezados.",
-    "conclusions": "Resume las implicaciones de los hallazgos.",
+    "introduction": "Indicates the purpose of the report and the sources of information.",
+    "findings": "Present findings objectively using headings.",
+    "conclusions": "Summarize the implications of the findings.",
     "recommendations": "Propone medidas concretas basadas en las conclusiones."
   }
 }
