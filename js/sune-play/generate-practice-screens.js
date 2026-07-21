@@ -138,6 +138,7 @@
     var passageGapRe = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/;
     var firstGapMatch = passageGapRe.exec(passage);
     var startGap = firstGapMatch ? parseInt(firstGapMatch[1], 10) : 1;
+    var gapExplanations = exercise.explanations || exercise.gapExplanations || [];
     var gaps = answers.map(function(ans, idx) {
       var gapNumber = startGap + idx;
       var stemWord = stemWords[gapNumber] || '';
@@ -146,7 +147,8 @@
         gapNumber: gapNumber,
         expectedAnswer: ans,
         baseVerb: explicitGapVerbs[idx] || stemWord || '',
-        stemWord: stemWord
+        stemWord: stemWord,
+        explanation: gapExplanations[idx] || ''
       };
     });
     return {
