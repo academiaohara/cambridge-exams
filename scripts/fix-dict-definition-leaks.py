@@ -99,6 +99,14 @@ def is_broken_definition(text: str) -> bool:
         r"^Able to be\.\s*$",
         r"^Something is\.\s*$",
         r"\ban  effect\b",
+        r"^Person who\.\s*$",
+        r"^Someone who\.\s*$",
+        r"^In an? way\.\s*$",
+        r"^Unable to\.\s*$",
+        r"^Not able to\.\s*$",
+        r"^Ability to quickly\.\s*$",
+        r"^The act of\.\s*$",
+        r"^The process of\.\s*$",
     ]
     return any(re.search(p, text, re.I) for p in broken)
 
@@ -205,31 +213,139 @@ def rewrite_vocab(term: str, definition: str, pattern: str | None) -> str | None
 # ── Word formation rewrites ─────────────────────────────────────────────────
 
 WF_IN_A_WAY = {
+    "abusive": "in a cruel or harmful manner",
     "active": "with energy and involvement",
     "aggressive": "in a forceful or hostile manner",
     "analytical": "using careful logical analysis",
+    "architectural": "in a style relating to building design",
+    "argumentative": "in a disputatious or quarrelsome manner",
+    "artificial": "in a manner that is not natural",
     "assertive": "in a confident and direct manner",
     "attractive": "in a pleasing or appealing manner",
+    "beneficial": "in a helpful or advantageous manner",
+    "brilliant": "in an exceptionally clever or impressive manner",
+    "capable": "in a competent and skilled manner",
+    "classical": "in a traditional or formal style",
+    "competitive": "in a manner aimed at winning",
+    "confusing": "in a way that causes uncertainty",
     "conservative": "in a cautious or traditional manner",
+    "convincing": "in a persuasive and believable manner",
     "creative": "in an imaginative manner",
+    "criminal": "in a manner relating to illegal acts",
     "decisive": "in a firm and determined manner",
+    "deep": "thoroughly or intensely",
+    "definitive": "in a final and authoritative manner",
+    "dense": "in a tightly packed or thick manner",
+    "dependent": "in a manner that relies on something else",
+    "desirable": "in an appealing or attractive manner",
+    "destructive": "in a damaging or harmful manner",
+    "distant": "in a reserved or unfriendly manner",
+    "doubtful": "in a hesitant or sceptical manner",
+    "dutiful": "in a conscientious and obedient manner",
+    "ecological": "in a manner relating to the environment",
+    "editorial": "in the style of a newspaper opinion piece",
     "effective": "in a successful or productive manner",
     "efficient": "in a productive manner without waste",
+    "electrical": "in a manner relating to power and currents",
+    "elusive": "in a difficult-to-catch or define manner",
+    "endless": "without limit or interruption",
     "exclusive": "in a way that excludes others",
     "expensive": "in a costly manner",
     "extensive": "over a wide area or scope",
+    "immoral": "in a manner contrary to ethics",
+    "impatient": "without willingness to wait",
+    "imperfect": "in a flawed or incomplete manner",
+    "impersonal": "without warmth or personal feeling",
+    "indecisive": "in a hesitant manner without firm choices",
+    "ineffective": "without producing the desired result",
+    "insensitive": "without regard for others' feelings",
     "intensive": "in a concentrated or thorough manner",
     "interactive": "through two-way communication",
+    "moral": "in accordance with ethical principles",
+    "mysterious": "in a puzzling or secretive manner",
+    "neglectful": "in a careless or inattentive manner",
+    "negligent": "in a manner showing failure to take care",
+    "new": "in a fresh or recently created manner",
     "objective": "in an impartial and factual manner",
     "obsessive": "in an excessive and preoccupied manner",
     "offensive": "in an attacking or upsetting manner",
+    "official": "in a formal or authorised manner",
+    "outspoken": "in a direct and frank manner",
+    "parental": "in a manner characteristic of a mother or father",
     "passive": "without active response or resistance",
+    "patient": "with calm endurance",
+    "perceptive": "in an observant and insightful manner",
+    "perfect": "without any flaws",
+    "persistent": "with continued determination",
+    "persuasive": "in a convincing and influential manner",
     "playful": "in a light-hearted or fun manner",
+    "powerful": "with great force or strength",
+    "powerless": "without ability to act or influence",
+    "productive": "with effective output or results",
     "progressive": "in a forward-moving or modern manner",
+    "provocative": "in a manner intended to stir a strong reaction",
+    "qualitative": "in terms of characteristics rather than quantity",
+    "racial": "in a manner relating to ethnic or cultural groups",
+    "residential": "in a manner relating to homes or housing",
+    "responsive": "in a quick and attentive manner",
     "restful": "in a calm and relaxing manner",
+    "restless": "without calm or stillness",
+    "rigid": "in a stiff or inflexible manner",
+    "satisfying": "in a fulfilling or pleasing manner",
     "selective": "in a carefully chosen manner",
+    "selfish": "with concern only for oneself",
+    "selfless": "with concern for others before oneself",
+    "sensational": "in a dramatic attention-grabbing manner",
+    "sensual": "in a manner appealing to bodily pleasure",
+    "sensuous": "in a manner rich in sensory experience",
     "sensitive": "in a careful or responsive manner",
+    "soft": "gently or without force",
+    "spacious": "with plenty of room",
+    "steady": "in a constant and even manner",
+    "strong": "with great power or intensity",
+    "structural": "in a manner relating to form or framework",
     "subjective": "based on personal feelings or opinions",
+    "suggestive": "in a manner that hints or implies",
+    "thoughtful": "with careful consideration",
+    "thoughtless": "without consideration for others",
+    "threatening": "in a menacing or intimidating manner",
+    "timeless": "in a manner unaffected by changing fashions",
+    "transitional": "in a manner marking change between stages",
+    "typical": "in a usual or characteristic manner",
+    "unconvincing": "in a manner that fails to persuade",
+    "unofficial": "without formal authorisation",
+    "unwise": "in a manner showing poor judgment",
+    "useful": "in a helpful or practical manner",
+    "useless": "without practical value",
+    "wild": "in an uncontrolled or extreme manner",
+    "wise": "with good judgment and experience",
+    "zealous": "with great enthusiasm or devotion",
+}
+
+WF_PERSON_WHO = {
+    "assesses": "Someone who evaluates or rates things",
+    "believes": "Someone who holds strong convictions",
+    "collects": "Someone who gathers items as a hobby",
+    "competes": "Someone who takes part in contests",
+    "decides": "Someone who makes final choices",
+    "doubts": "Someone who questions or challenges claims",
+    "employs": "Someone who gives jobs to others",
+    "objects": "Someone who raises opposition",
+    "pays": "Someone who settles financial obligations",
+    "plays": "Someone who performs on stage or in sport",
+    "repairs": "Someone who fixes broken things",
+    "talks": "Someone who speaks publicly",
+    "thinks": "Someone who reflects deeply on ideas",
+    "types": "Someone who copies written documents",
+    "works": "Someone who performs manual tasks",
+    "writes": "Someone who produces text for publication",
+}
+
+WF_ACT_OF = {
+    "avoiding": "Deliberately staying away from something",
+    "continuing": "Keeping something going without stopping",
+    "destroying": "Causing something to be completely ruined",
+    "rewording": "Expressing the same idea using different vocabulary",
 }
 
 WF_TEMPLATES: list[tuple[str, str]] = [
@@ -255,12 +371,24 @@ def rewrite_wf(derived: str, base: str, definition: str) -> str | None:
     d = definition.strip().rstrip(".")
     dl = d.lower()
 
-    m = re.match(r"^in an? (\w+) way$", dl)
+    m = re.match(r"^in an? (\w+) (way|manner)$", dl)
     if m:
         adj = m.group(1)
         phrase = WF_IN_A_WAY.get(adj)
         if phrase:
             return ensure_period(capitalize_first(phrase))
+
+    m = re.match(r"^person who (\w+)$", dl)
+    if m:
+        phrase = WF_PERSON_WHO.get(m.group(1))
+        if phrase:
+            return ensure_period(phrase)
+
+    m = re.match(r"^the act of (\w+ing)$", dl)
+    if m:
+        phrase = WF_ACT_OF.get(m.group(1))
+        if phrase:
+            return ensure_period(phrase)
 
     replacements = {
         "person who edits": "Someone who prepares text for publication",
@@ -288,6 +416,9 @@ def rewrite_wf(derived: str, base: str, definition: str) -> str | None:
         "able to be argued": "Open to question or not certain",
         "able to be believed": "Plausible or credible",
         "able to be changed": "Capable of being modified",
+        "not able to change": "Fixed and incapable of being altered",
+        "unable to decide": "Not able to make up one's mind",
+        "ability to decide quickly": "Quality of making firm choices without hesitation",
     }
     if dl in replacements:
         return ensure_period(replacements[dl])
@@ -299,7 +430,7 @@ def rewrite_wf(derived: str, base: str, definition: str) -> str | None:
     if dl.startswith("not ") and base:
         rest = d[4:]
         cleaned = strip_banned_tokens(rest, banned_tokens(derived, base))
-        if cleaned:
+        if cleaned and not is_broken_definition(cleaned):
             return ensure_period("Not " + cleaned[0].lower() + cleaned[1:])
 
     return None
