@@ -9538,25 +9538,33 @@
         var wr2 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + pos;
         var wc2 = activeWord.dir === 'across' ? activeWord.col + pos : activeWord.col;
         var ltKey = wr2 + ',' + wc2;
-        if (!FastExercises._cwIsCellProtected(state, ltKey)) {
-          state.userGrid[ltKey] = e.key.toUpperCase();
-          delete state.checkedCells[ltKey];
-          FastExercises._cwUpdateCell(wr2, wc2);
-          FastExercises._cwUpdateStatus();
-          FastExercises._cwRefreshActiveDef();
+        if (FastExercises._cwIsCellProtected(state, ltKey)) return;
+
+        var typed = e.key.toUpperCase();
+        var expected = activeWord.word[pos];
+        state.userGrid[ltKey] = typed;
+        if (typed === expected) {
+          state.checkedCells[ltKey] = 'correct';
+          FastExercises._cwAwardLetterXp([ltKey]);
+        } else {
+          state.checkedCells[ltKey] = 'incorrect';
         }
-        // Advance to next non-protected position
-        var nextPos = pos + 1;
-        while (nextPos < wordLen) {
-          var nr3 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + nextPos;
-          var nc3 = activeWord.dir === 'across' ? activeWord.col + nextPos : activeWord.col;
-          if (!FastExercises._cwIsCellProtected(state, nr3 + ',' + nc3)) break;
-          nextPos++;
+        FastExercises._cwUpdateCell(wr2, wc2);
+        FastExercises._cwUpdateStatus();
+        FastExercises._cwRefreshActiveDef();
+
+        if (typed === expected) {
+          var nextPos = FastExercises._cwFindNextEditablePos(activeWord, pos);
+          if (nextPos >= 0) {
+            FastExercises._cwSelectStripPos(nextPos);
+          } else {
+            FastExercises._cwTryCompleteWord(activeWord);
+            FastExercises._cwFocusCwInput();
+          }
+        } else {
+          FastExercises._cwSyncActiveCellHighlight();
+          FastExercises._cwFocusCwInput();
         }
-        if (nextPos < wordLen) state.activeStripPos = nextPos;
-        FastExercises._cwSyncActiveCellHighlight();
-        // Auto-check when word is fully filled
-        if (nextPos >= wordLen) FastExercises._cwAutoCheckWord();
         return;
       }
 
@@ -9867,6 +9875,46 @@
       FastExercises._cwSyncMobilePanel();
     },
 
+    _cwFindNextEditablePos: function(word, fromPos) {
+      var state = window._cwState;
+      if (!state || !word) return -1;
+      var wordLen = word.word.length;
+      for (var nextPos = (typeof fromPos === 'number' ? fromPos : -1) + 1; nextPos < wordLen; nextPos++) {
+        var wr = word.dir === 'across' ? word.row : word.row + nextPos;
+        var wc = word.dir === 'across' ? word.col + nextPos : word.col;
+        if (!FastExercises._cwIsCellProtected(state, wr + ',' + wc)) return nextPos;
+      }
+      return -1;
+    },
+
+    _cwTryCompleteWord: function(word) {
+      var state = window._cwState;
+      if (!state || !word) return false;
+      var wordLen = word.word.length;
+      for (var i = 0; i < wordLen; i++) {
+        var wr0 = word.dir === 'across' ? word.row : word.row + i;
+        var wc0 = word.dir === 'across' ? word.col + i : word.col;
+        var k0 = wr0 + ',' + wc0;
+        if (state.lockedCells[k0] || state.revealedCells[k0]) continue;
+        if (state.checkedCells[k0] !== 'correct') return false;
+      }
+      for (var j = 0; j < wordLen; j++) {
+        var wr = word.dir === 'across' ? word.row : word.row + j;
+        var wc = word.dir === 'across' ? word.col + j : word.col;
+        var wkey = wr + ',' + wc;
+        if (!state.lockedCells[wkey]) {
+          state.lockedCells[wkey] = true;
+          delete state.checkedCells[wkey];
+          FastExercises._cwUpdateCell(wr, wc);
+        }
+      }
+      FastExercises._cwUpdateClueText(word);
+      FastExercises._cwSyncActiveCellHighlight();
+      FastExercises._cwUpdateStatus();
+      FastExercises._cwRefreshActiveDef();
+      return true;
+    },
+
     _cwSelectStripPos: function(pos) {
       var state = window._cwState;
       if (!state || !state.activeWord) return;
@@ -9900,15 +9948,9 @@
       }
       if (!changed) return;
       if (state.selectedWordId === wordId) {
-        var cells = FastExercises._cwGetWordCells(word);
-        var nextPos = 0;
-        while (nextPos < cells.length) {
-          var cellKey = cells[nextPos].cellKey;
-          if (!FastExercises._cwIsCellProtected(state, cellKey) && !state.userGrid[cellKey]) break;
-          nextPos++;
-        }
-        if (nextPos < cells.length) {
-          FastExercises._cwSelectStripPos(nextPos);
+        var firstFree = FastExercises._cwFindNextEditablePos(word, -1);
+        if (firstFree >= 0) {
+          FastExercises._cwSelectStripPos(firstFree);
         } else {
           FastExercises._cwSyncActiveCellHighlight();
           FastExercises._cwRefreshActiveDef();
