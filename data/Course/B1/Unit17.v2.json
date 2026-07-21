@@ -405,7 +405,7 @@
             "acceptedAnswers": [
               "who"
             ],
-            "explanation": ""
+            "explanation": "**The man** = person → **who** helped us."
           },
           {
             "id": "b1-u17-exa-2",
@@ -415,7 +415,7 @@
             "acceptedAnswers": [
               "which"
             ],
-            "explanation": ""
+            "explanation": "**The camera** = thing → **which** I used."
           },
           {
             "id": "b1-u17-exa-3",
@@ -425,7 +425,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "**The library** = place → **where** I study."
           },
           {
             "id": "b1-u17-exa-4",
@@ -435,7 +435,7 @@
             "acceptedAnswers": [
               "whose"
             ],
-            "explanation": ""
+            "explanation": "Possession → friend **whose** mother works."
           },
           {
             "id": "b1-u17-exa-5",
@@ -445,7 +445,7 @@
             "acceptedAnswers": [
               "who"
             ],
-            "explanation": ""
+            "explanation": "**The doctor** = person → **who** examined me."
           },
           {
             "id": "b1-u17-exa-6",
@@ -455,7 +455,7 @@
             "acceptedAnswers": [
               "which"
             ],
-            "explanation": ""
+            "explanation": "**The song** = thing → **which** you heard."
           },
           {
             "id": "b1-u17-exa-7",
@@ -465,7 +465,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "**A hotel** = place → **where** the rooms had views."
           },
           {
             "id": "b1-u17-exa-8",
@@ -475,7 +475,7 @@
             "acceptedAnswers": [
               "whose"
             ],
-            "explanation": ""
+            "explanation": "Possession → girl **whose** bag was lost."
           }
         ]
       },
@@ -501,7 +501,8 @@
             "acceptedAnswers": [
               "My brother, who lives in Manchester, is a chef."
             ],
-            "interactionMode": "rewrite_sentence"
+            "interactionMode": "rewrite_sentence",
+            "explanation": "Extra information about **my brother** → non-defining → commas."
           },
           {
             "id": "b1-u17-exb-2",
@@ -511,7 +512,8 @@
             "acceptedAnswers": [
               "No commas"
             ],
-            "interactionMode": "rewrite_sentence"
+            "interactionMode": "rewrite_sentence",
+            "explanation": "Identifies which bike → defining clause → **no commas**."
           },
           {
             "id": "b1-u17-exb-3",
@@ -521,7 +523,8 @@
             "acceptedAnswers": [
               "Mrs Carter, who teaches history, is retiring soon."
             ],
-            "interactionMode": "rewrite_sentence"
+            "interactionMode": "rewrite_sentence",
+            "explanation": "Extra information about **Mrs Carter** → non-defining → commas."
           },
           {
             "id": "b1-u17-exb-4",
@@ -531,7 +534,8 @@
             "acceptedAnswers": [
               "No commas"
             ],
-            "interactionMode": "rewrite_sentence"
+            "interactionMode": "rewrite_sentence",
+            "explanation": "Identifies which people → defining → **no commas**."
           },
           {
             "id": "b1-u17-exb-5",
@@ -541,7 +545,8 @@
             "acceptedAnswers": [
               "This castle, which was built in the 12th century, is open to visitors."
             ],
-            "interactionMode": "rewrite_sentence"
+            "interactionMode": "rewrite_sentence",
+            "explanation": "Extra information about the castle → non-defining → commas."
           },
           {
             "id": "b1-u17-exb-6",
@@ -551,7 +556,8 @@
             "acceptedAnswers": [
               "No commas"
             ],
-            "interactionMode": "rewrite_sentence"
+            "interactionMode": "rewrite_sentence",
+            "explanation": "Identifies which students → defining → **no commas**."
           }
         ]
       },
@@ -581,7 +587,8 @@
             ],
             "answer": "who",
             "originalSentence": "He's the neighbour **who / which / where** looks after our dog.",
-            "completedSentence": "He's the neighbour who looks after our dog."
+            "completedSentence": "He's the neighbour who looks after our dog.",
+            "explanation": "**The neighbour** = person → **who** looks after our dog."
           },
           {
             "id": "b1-u17-exc-2",
@@ -595,7 +602,8 @@
             ],
             "answer": "that",
             "originalSentence": "This is the programme **who / that / where** everyone watched last night.",
-            "completedSentence": "This is the programme that everyone watched last night."
+            "completedSentence": "This is the programme that everyone watched last night.",
+            "explanation": "**The programme** = thing → **that** everyone watched."
           },
           {
             "id": "b1-u17-exc-3",
@@ -609,7 +617,8 @@
             ],
             "answer": "that",
             "originalSentence": "Do you know a restaurant **that / who / whose** serves vegetarian food?",
-            "completedSentence": "Do you know a restaurant that serves vegetarian food?"
+            "completedSentence": "Do you know a restaurant that serves vegetarian food?",
+            "explanation": "**A restaurant** = thing → **that** serves food."
           },
           {
             "id": "b1-u17-exc-4",
@@ -623,7 +632,8 @@
             ],
             "answer": "whose",
             "originalSentence": "The man **which / whose / where** wallet was stolen called the police.",
-            "completedSentence": "The man whose wallet was stolen called the police."
+            "completedSentence": "The man whose wallet was stolen called the police.",
+            "explanation": "Possession → man **whose** wallet was stolen."
           },
           {
             "id": "b1-u17-exc-5",
@@ -637,7 +647,8 @@
             ],
             "answer": "where",
             "originalSentence": "That's the village **who / where / whose** my dad grew up.",
-            "completedSentence": "That's the village where my dad grew up."
+            "completedSentence": "That's the village where my dad grew up.",
+            "explanation": "**The village** = place → **where** my dad grew up."
           },
           {
             "id": "b1-u17-exc-6",
@@ -651,7 +662,8 @@
             ],
             "answer": "which",
             "originalSentence": "The tablet **who / which / whose** I ordered arrived yesterday.",
-            "completedSentence": "The tablet which I ordered arrived yesterday."
+            "completedSentence": "The tablet which I ordered arrived yesterday.",
+            "explanation": "**The tablet** = thing → **which** I ordered."
           },
           {
             "id": "b1-u17-exc-7",
@@ -665,7 +677,8 @@
             ],
             "answer": "that",
             "originalSentence": "She's the singer **which / that / where** won the competition.",
-            "completedSentence": "She's the singer that won the competition."
+            "completedSentence": "She's the singer that won the competition.",
+            "explanation": "**The singer** = person → **that** won."
           },
           {
             "id": "b1-u17-exc-8",
@@ -679,7 +692,8 @@
             ],
             "answer": "which",
             "originalSentence": "We visited the gallery **where / whose / which** has modern paintings.",
-            "completedSentence": "We visited the gallery which has modern paintings."
+            "completedSentence": "We visited the gallery which has modern paintings.",
+            "explanation": "**The gallery** = thing → **which** has paintings."
           }
         ]
       },
@@ -709,7 +723,8 @@
             "answer": "I know a boy who can solve a Rubik's cube very quickly.",
             "acceptedAnswers": [
               "I know a boy who can solve a Rubik's cube very quickly."
-            ]
+            ],
+            "explanation": "Join with **who** for a person → **who can solve**."
           },
           {
             "id": "b1-u17-exd-2",
@@ -723,7 +738,8 @@
             "answer": "We rented a flat which was close to the station.",
             "acceptedAnswers": [
               "We rented a flat which was close to the station."
-            ]
+            ],
+            "explanation": "Join with **which** for a thing → **which was close**."
           },
           {
             "id": "b1-u17-exd-3",
@@ -737,7 +753,8 @@
             "answer": "That's the girl whose sister won the prize.",
             "acceptedAnswers": [
               "That's the girl whose sister won the prize."
-            ]
+            ],
+            "explanation": "Possession → **whose sister won**."
           },
           {
             "id": "b1-u17-exd-4",
@@ -751,7 +768,8 @@
             "answer": "This is the school where my mother studied.",
             "acceptedAnswers": [
               "This is the school where my mother studied."
-            ]
+            ],
+            "explanation": "Place → **where my mother studied**."
           },
           {
             "id": "b1-u17-exd-5",
@@ -765,7 +783,8 @@
             "answer": "I found a wallet which was under the table.",
             "acceptedAnswers": [
               "I found a wallet which was under the table."
-            ]
+            ],
+            "explanation": "Thing → **which was under the table**."
           },
           {
             "id": "b1-u17-exd-6",
@@ -779,7 +798,8 @@
             "answer": "The café where we met on Saturday is very popular.",
             "acceptedAnswers": [
               "The café where we met on Saturday is very popular."
-            ]
+            ],
+            "explanation": "Place → **where we met on Saturday**."
           }
         ]
       },
@@ -809,7 +829,8 @@
             "answer": "That's the girl who won the art prize.",
             "acceptedAnswers": [
               "That's the girl who won the art prize."
-            ]
+            ],
+            "explanation": "Remove extra **she** after **who** → **who won**."
           },
           {
             "id": "b1-u17-exe-2",
@@ -823,7 +844,8 @@
             "answer": "This is the bag which I bought yesterday.",
             "acceptedAnswers": [
               "This is the bag which I bought yesterday."
-            ]
+            ],
+            "explanation": "Remove extra **it** after **which** → **which I bought**."
           },
           {
             "id": "b1-u17-exe-3",
@@ -837,7 +859,8 @@
             "answer": "My cousin, who works in Berlin, is coming home.",
             "acceptedAnswers": [
               "My cousin, who works in Berlin, is coming home."
-            ]
+            ],
+            "explanation": "Remove extra **he** in non-defining clause → **who works**."
           },
           {
             "id": "b1-u17-exe-4",
@@ -851,7 +874,8 @@
             "answer": "The film which we watched was really funny.",
             "acceptedAnswers": [
               "The film which we watched was really funny."
-            ]
+            ],
+            "explanation": "**Film** = thing → **which** (not **who**)."
           },
           {
             "id": "b1-u17-exe-5",
@@ -865,7 +889,8 @@
             "answer": "The house where I lived is near the river.",
             "acceptedAnswers": [
               "The house where I lived is near the river."
-            ]
+            ],
+            "explanation": "Remove extra **there** after **where**."
           },
           {
             "id": "b1-u17-exe-6",
@@ -879,7 +904,8 @@
             "answer": "My neighbour who plays the drums is very noisy.",
             "acceptedAnswers": [
               "My neighbour who plays the drums is very noisy."
-            ]
+            ],
+            "explanation": "**Neighbour** = person → **who plays** (not **that he**)."
           }
         ]
       },
@@ -905,7 +931,7 @@
             "acceptedAnswers": [
               "whose"
             ],
-            "explanation": ""
+            "explanation": "Possession → woman **whose** daughter is in my class."
           },
           {
             "id": "b1-u17-exf-2",
@@ -915,7 +941,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "Place → shop **where** I bought my jacket."
           },
           {
             "id": "b1-u17-exf-3",
@@ -925,7 +951,7 @@
             "acceptedAnswers": [
               "which"
             ],
-            "explanation": ""
+            "explanation": "Thing → phone **which** belongs to Sam."
           },
           {
             "id": "b1-u17-exf-4",
@@ -935,7 +961,7 @@
             "acceptedAnswers": [
               "who"
             ],
-            "explanation": ""
+            "explanation": "Person → man **who** I spoke to."
           },
           {
             "id": "b1-u17-exf-5",
@@ -945,7 +971,7 @@
             "acceptedAnswers": [
               "why"
             ],
-            "explanation": ""
+            "explanation": "Reason → reason **why** they cancelled."
           },
           {
             "id": "b1-u17-exf-6",
@@ -955,7 +981,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "Place → beach **where** we learned to surf."
           }
         ]
       },
@@ -997,7 +1023,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**The woman** = person who acted → **who**."
           },
           {
             "id": "b1-u17-exg-2",
@@ -1023,7 +1049,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Possession → dog **whose** owner lives next door."
           },
           {
             "id": "b1-u17-exg-3",
@@ -1049,7 +1075,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "**The café** = place → **where** we met."
           },
           {
             "id": "b1-u17-exg-4",
@@ -1075,7 +1101,7 @@
               }
             ],
             "answer": "D",
-            "explanation": ""
+            "explanation": "**The jacket** = thing → **which** I bought."
           },
           {
             "id": "b1-u17-exg-5",
@@ -1101,7 +1127,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Possession → boy **whose** father is a firefighter."
           },
           {
             "id": "b1-u17-exg-6",
@@ -1127,7 +1153,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "**The town** = place → **where** we stayed."
           },
           {
             "id": "b1-u17-exg-7",
@@ -1153,7 +1179,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**The player** = person → **who** scored."
           },
           {
             "id": "b1-u17-exg-8",
@@ -1179,7 +1205,7 @@
               }
             ],
             "answer": "D",
-            "explanation": ""
+            "explanation": "**The headphones** = things → **which** I want."
           }
         ]
       },
@@ -1205,7 +1231,7 @@
             "acceptedAnswers": [
               "who"
             ],
-            "explanation": ""
+            "explanation": "**A teacher** = person → **who** works."
           },
           {
             "id": "b1-u17-exh-2",
@@ -1215,7 +1241,7 @@
             "acceptedAnswers": [
               "which"
             ],
-            "explanation": ""
+            "explanation": "**A school** = thing → **which** has students."
           },
           {
             "id": "b1-u17-exh-3",
@@ -1225,7 +1251,7 @@
             "acceptedAnswers": [
               "which"
             ],
-            "explanation": ""
+            "explanation": "Non-defining clause about the school → **which**."
           },
           {
             "id": "b1-u17-exh-4",
@@ -1235,7 +1261,7 @@
             "acceptedAnswers": [
               "whose"
             ],
-            "explanation": ""
+            "explanation": "Possession → man **whose** lessons are exciting."
           },
           {
             "id": "b1-u17-exh-5",
@@ -1245,7 +1271,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "**The classroom** = place → **where** they study."
           },
           {
             "id": "b1-u17-exh-6",
@@ -1255,7 +1281,7 @@
             "acceptedAnswers": [
               "why"
             ],
-            "explanation": ""
+            "explanation": "Reason → reason **why** she became a teacher."
           },
           {
             "id": "b1-u17-exh-7",
@@ -1265,7 +1291,7 @@
             "acceptedAnswers": [
               "who"
             ],
-            "explanation": ""
+            "explanation": "**Students** = people → **who** speak languages."
           },
           {
             "id": "b1-u17-exh-8",
@@ -1275,7 +1301,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "**A school** = place → **where** I would love to visit."
           }
         ]
       },
@@ -1301,7 +1327,7 @@
             "acceptedAnswers": [
               "who plays"
             ],
-            "explanation": ""
+            "explanation": "Combine: musician **who plays** in an orchestra."
           },
           {
             "id": "b1-u17-exi-2",
@@ -1311,7 +1337,7 @@
             "acceptedAnswers": [
               "I bought"
             ],
-            "explanation": ""
+            "explanation": "Omit the object: scarf **I bought** at the market."
           },
           {
             "id": "b1-u17-exi-3",
@@ -1321,7 +1347,7 @@
             "acceptedAnswers": [
               "that sells"
             ],
-            "explanation": ""
+            "explanation": "Combine: shop **that sells** handmade gifts."
           },
           {
             "id": "b1-u17-exi-4",
@@ -1331,7 +1357,7 @@
             "acceptedAnswers": [
               "whose picture won"
             ],
-            "explanation": ""
+            "explanation": "Possession → painter **whose picture won** a prize."
           },
           {
             "id": "b1-u17-exi-5",
@@ -1341,7 +1367,7 @@
             "acceptedAnswers": [
               "we visited"
             ],
-            "explanation": ""
+            "explanation": "Omit the object: village **we visited** in June."
           },
           {
             "id": "b1-u17-exi-6",
@@ -1351,7 +1377,7 @@
             "acceptedAnswers": [
               "who studies"
             ],
-            "explanation": ""
+            "explanation": "Combine: doctor **who studies** tropical diseases."
           }
         ]
       }
