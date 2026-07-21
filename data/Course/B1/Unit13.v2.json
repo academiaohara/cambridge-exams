@@ -450,7 +450,8 @@
                 "verb": "woman",
                 "groupId": "countable"
               }
-            ]
+            ],
+            "explanation": "**Countable**: banana, person, box, woman (can be plural). **Uncountable**: furniture, money, news, bread (no plural form)."
           }
         ]
       },
@@ -476,7 +477,7 @@
             "acceptedAnswers": [
               "much"
             ],
-            "explanation": ""
+            "explanation": "**Information** is uncountable → **much** information."
           },
           {
             "id": "b1-u13-exb-2",
@@ -486,7 +487,7 @@
             "acceptedAnswers": [
               "a few"
             ],
-            "explanation": ""
+            "explanation": "**Chairs** are countable → **a few** chairs."
           },
           {
             "id": "b1-u13-exb-3",
@@ -496,7 +497,7 @@
             "acceptedAnswers": [
               "a little"
             ],
-            "explanation": ""
+            "explanation": "**Money** is uncountable → **a little** money."
           },
           {
             "id": "b1-u13-exb-4",
@@ -506,7 +507,7 @@
             "acceptedAnswers": [
               "many"
             ],
-            "explanation": ""
+            "explanation": "**Photos** are countable → **many** photos."
           },
           {
             "id": "b1-u13-exb-5",
@@ -516,7 +517,7 @@
             "acceptedAnswers": [
               "a little"
             ],
-            "explanation": ""
+            "explanation": "**Rice** is uncountable → **a little** rice."
           },
           {
             "id": "b1-u13-exb-6",
@@ -526,7 +527,7 @@
             "acceptedAnswers": [
               "many"
             ],
-            "explanation": ""
+            "explanation": "**People** are countable → **many** people (not much)."
           },
           {
             "id": "b1-u13-exb-7",
@@ -536,7 +537,7 @@
             "acceptedAnswers": [
               "a few"
             ],
-            "explanation": ""
+            "explanation": "**Museums** are countable → **a few** museums."
           },
           {
             "id": "b1-u13-exb-8",
@@ -546,7 +547,7 @@
             "acceptedAnswers": [
               "much"
             ],
-            "explanation": ""
+            "explanation": "**Furniture** is uncountable → **much** furniture."
           }
         ]
       },
@@ -572,7 +573,7 @@
             "acceptedAnswers": [
               "some"
             ],
-            "explanation": ""
+            "explanation": "Offer/request → **some** advice."
           },
           {
             "id": "b1-u13-exc-2",
@@ -582,7 +583,7 @@
             "acceptedAnswers": [
               "any"
             ],
-            "explanation": ""
+            "explanation": "Negative + uncountable → **any** rice."
           },
           {
             "id": "b1-u13-exc-3",
@@ -592,7 +593,7 @@
             "acceptedAnswers": [
               "a, a"
             ],
-            "explanation": ""
+            "explanation": "Singular countable → **a** banana and **a** sandwich."
           },
           {
             "id": "b1-u13-exc-4",
@@ -602,7 +603,7 @@
             "acceptedAnswers": [
               "any"
             ],
-            "explanation": ""
+            "explanation": "Question → **any** information."
           },
           {
             "id": "b1-u13-exc-5",
@@ -612,7 +613,7 @@
             "acceptedAnswers": [
               "some"
             ],
-            "explanation": ""
+            "explanation": "Plural countable → **some** new desks."
           },
           {
             "id": "b1-u13-exc-6",
@@ -622,7 +623,7 @@
             "acceptedAnswers": [
               "an"
             ],
-            "explanation": ""
+            "explanation": "Before vowel sound → **an** intelligent student."
           }
         ]
       },
@@ -651,7 +652,8 @@
             ],
             "answer": "much",
             "originalSentence": "There isn't **much / many** furniture in this room.",
-            "completedSentence": "There isn't much furniture in this room."
+            "completedSentence": "There isn't much furniture in this room.",
+            "explanation": "**Furniture** is uncountable → **much**."
           },
           {
             "id": "b1-u13-exd-2",
@@ -664,7 +666,8 @@
             ],
             "answer": "a few",
             "originalSentence": "I've got **a few / a little** ideas for the project.",
-            "completedSentence": "I've got a few ideas for the project."
+            "completedSentence": "I've got a few ideas for the project.",
+            "explanation": "**Ideas** are countable → **a few** ideas."
           },
           {
             "id": "b1-u13-exd-3",
@@ -677,7 +680,8 @@
             ],
             "answer": "much",
             "originalSentence": "How **much / many** money do you need?",
-            "completedSentence": "How much money do you need?"
+            "completedSentence": "How much money do you need?",
+            "explanation": "**Money** is uncountable → **much** money."
           },
           {
             "id": "b1-u13-exd-4",
@@ -690,7 +694,8 @@
             ],
             "answer": "a little",
             "originalSentence": "We need **a few / a little** bread for breakfast.",
-            "completedSentence": "We need a little bread for breakfast."
+            "completedSentence": "We need a little bread for breakfast.",
+            "explanation": "**Bread** is uncountable → **a little** bread."
           },
           {
             "id": "b1-u13-exd-5",
@@ -703,7 +708,8 @@
             ],
             "answer": "many",
             "originalSentence": "They didn't send **much / many** postcards.",
-            "completedSentence": "They didn't send many postcards."
+            "completedSentence": "They didn't send many postcards.",
+            "explanation": "**Postcards** are countable → **many** postcards."
           },
           {
             "id": "b1-u13-exd-6",
@@ -716,7 +722,8 @@
             ],
             "answer": "a few",
             "originalSentence": "There are **a little / a few** children in the garden.",
-            "completedSentence": "There are a few children in the garden."
+            "completedSentence": "There are a few children in the garden.",
+            "explanation": "**Children** are countable → **a few** children."
           }
         ]
       },
@@ -746,7 +753,8 @@
             "answer": "Can you give me some information about the course?",
             "acceptedAnswers": [
               "Can you give me some information about the course?"
-            ]
+            ],
+            "explanation": "**Information** is uncountable — no **an**."
           },
           {
             "id": "b1-u13-exe-2",
@@ -760,7 +768,8 @@
             "answer": "There isn't much bread on the table.",
             "acceptedAnswers": [
               "There isn't much bread on the table."
-            ]
+            ],
+            "explanation": "**Bread** is uncountable → **much** bread (not many)."
           },
           {
             "id": "b1-u13-exe-3",
@@ -774,7 +783,8 @@
             "answer": "She bought two pieces of furniture for her bedroom.",
             "acceptedAnswers": [
               "She bought two pieces of furniture for her bedroom."
-            ]
+            ],
+            "explanation": "**Furniture** is uncountable → **two pieces of furniture**."
           },
           {
             "id": "b1-u13-exe-4",
@@ -788,7 +798,8 @@
             "answer": "How much money have you saved?",
             "acceptedAnswers": [
               "How much money have you saved?"
-            ]
+            ],
+            "explanation": "**Money** is uncountable → **How much** money."
           },
           {
             "id": "b1-u13-exe-5",
@@ -802,7 +813,8 @@
             "answer": "Your jeans are on the chair.",
             "acceptedAnswers": [
               "Your jeans are on the chair."
-            ]
+            ],
+            "explanation": "**Jeans** are always plural → **are** on the chair."
           },
           {
             "id": "b1-u13-exe-6",
@@ -816,7 +828,8 @@
             "answer": "I need a little advice before I decide.",
             "acceptedAnswers": [
               "I need a little advice before I decide."
-            ]
+            ],
+            "explanation": "**Advice** is uncountable → **a little** advice (not a few)."
           }
         ]
       },
@@ -858,7 +871,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Offer in a request → **some** bread."
           },
           {
             "id": "b1-u13-exf-2",
@@ -884,7 +897,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "**Students** are countable → **many** students."
           },
           {
             "id": "b1-u13-exf-3",
@@ -910,7 +923,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**Information** is uncountable → **much** information."
           },
           {
             "id": "b1-u13-exf-4",
@@ -936,7 +949,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**Apples** are countable → **a few** apples."
           },
           {
             "id": "b1-u13-exf-5",
@@ -962,7 +975,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "**Clothes** are plural → **are** clean."
           },
           {
             "id": "b1-u13-exf-6",
@@ -988,7 +1001,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "**Advice** is countable with **a piece of** → **a** piece of advice."
           }
         ]
       },
@@ -1014,7 +1027,7 @@
             "acceptedAnswers": [
               "a few"
             ],
-            "explanation": ""
+            "explanation": "Not many → only **a few** chairs."
           },
           {
             "id": "b1-u13-exg-2",
@@ -1024,7 +1037,7 @@
             "acceptedAnswers": [
               "a little"
             ],
-            "explanation": ""
+            "explanation": "Not much → only **a little** rice."
           },
           {
             "id": "b1-u13-exg-3",
@@ -1034,7 +1047,7 @@
             "acceptedAnswers": [
               "some information"
             ],
-            "explanation": ""
+            "explanation": "Offer → give me **some information**."
           },
           {
             "id": "b1-u13-exg-4",
@@ -1044,7 +1057,7 @@
             "acceptedAnswers": [
               "pair of jeans"
             ],
-            "explanation": ""
+            "explanation": "Countable item → **pair of jeans** is expensive."
           }
         ]
       },
@@ -1070,7 +1083,7 @@
             "acceptedAnswers": [
               "much"
             ],
-            "explanation": ""
+            "explanation": "**Money** uncountable → not **much** money."
           },
           {
             "id": "b1-u13-exh-2",
@@ -1080,7 +1093,7 @@
             "acceptedAnswers": [
               "some, some"
             ],
-            "explanation": ""
+            "explanation": "Both uncountable → **some** rice and **some** vegetables."
           },
           {
             "id": "b1-u13-exh-3",
@@ -1090,7 +1103,7 @@
             "acceptedAnswers": [
               "any"
             ],
-            "explanation": ""
+            "explanation": "Negative → **any** fruit."
           },
           {
             "id": "b1-u13-exh-4",
@@ -1100,7 +1113,7 @@
             "acceptedAnswers": [
               "a"
             ],
-            "explanation": ""
+            "explanation": "Singular countable → **a** shopping bag."
           },
           {
             "id": "b1-u13-exh-5",
@@ -1110,7 +1123,7 @@
             "acceptedAnswers": [
               "many"
             ],
-            "explanation": ""
+            "explanation": "**People** countable → **many** people."
           },
           {
             "id": "b1-u13-exh-6",
@@ -1120,7 +1133,7 @@
             "acceptedAnswers": [
               "a"
             ],
-            "explanation": ""
+            "explanation": "Singular countable → **a** bottle of juice."
           },
           {
             "id": "b1-u13-exh-7",
@@ -1130,7 +1143,7 @@
             "acceptedAnswers": [
               "some"
             ],
-            "explanation": ""
+            "explanation": "**Food** uncountable → **some** food."
           }
         ]
       }
