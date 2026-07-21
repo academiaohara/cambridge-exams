@@ -6171,17 +6171,13 @@
         bodyId: 'wf-dict-results',
         searchRowClass: 'wf-dict-search-row',
         countId: 'wf-dict-count',
+        practiceMode: 'recall',
         termField: 'derived',
-        answerField: 'definition',
+        answerField: 'derived',
         levelField: 'level',
         posField: 'wordType',
-        speakField: 'derived',
-        promptVerb: 'What is the meaning of',
-        termSubtitle: function(entry) {
-          var base = entry.base || '';
-          var type = entry.type || entry.wordType || '';
-          return base ? ('from <em>' + base + '</em>' + (type ? ' · ' + type : '')) : '';
-        },
+        promptVerb: 'Form the correct word',
+        setupDesc: 'Type the derived word from the particle and definition.',
         getEntries: function(self) { return self._wfDictEntries || []; },
         refreshBrowse: function(self) {
           var q = (document.getElementById('wf-dict-search') || {}).value || '';
@@ -6274,6 +6270,31 @@
       return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
     },
 
+    _dictEntryValidForPractice: function(entry, config) {
+      if (!entry || !config) return false;
+      if (config.practiceMode === 'recall') {
+        return (entry.derived || '').trim().length > 0 &&
+               (entry.definition || '').trim().length > 0 &&
+               ((entry.base || '').trim().length > 0 || (entry.type || '').trim().length > 0);
+      }
+      return (entry[config.answerField] || '').trim().length > 0 &&
+             (entry[config.termField] || '').trim().length > 0;
+    },
+
+    _normalizeDictRecallAnswer: function(value) {
+      return (value || '').toLowerCase().replace(/\s+/g, ' ').trim();
+    },
+
+    _matchesDictRecallAnswer: function(typed, expected) {
+      var normalizedTyped = this._normalizeDictRecallAnswer(typed);
+      if (!normalizedTyped) return false;
+      var options = (expected || '')
+        .split(/\/|,|\bor\b/gi)
+        .map(this._normalizeDictRecallAnswer.bind(this))
+        .filter(Boolean);
+      return options.indexOf(normalizedTyped) !== -1;
+    },
+
     _closeDictMcqModal: function(dictId) {
       var modalIds = {
         vocab: 'vocab-dict-modal',
@@ -6344,11 +6365,11 @@
       if (!bodyEl) return;
 
       var entries = config.getEntries(this).filter(function(e) {
-        return (e[config.answerField] || '').trim().length > 0 &&
-               (e[config.termField] || '').trim().length > 0;
+        return self._dictEntryValidForPractice(e, config);
       });
 
-      if (entries.length < 3) {
+      var minEntries = config.practiceMode === 'recall' ? 1 : 3;
+      if (entries.length < minEntries) {
         bodyEl.innerHTML =
           '<div class="dict-mcq-empty">' +
             '<span class="material-symbols-outlined">info</span>' +
@@ -6373,11 +6394,12 @@
           '</button>';
       });
 
+      var setupDesc = config.setupDesc || 'Pick the correct definition for each term. Earn XP and keep your streak alive!';
       bodyEl.innerHTML =
         '<div class="dict-mcq-session dict-mcq-session--duo dict-mcq-session--setup">' +
           '<div class="dict-mcq-setup dict-mcq-setup--duo">' +
             '<h3 class="dict-mcq-setup-title">Choose difficulty</h3>' +
-            '<p class="dict-mcq-setup-desc">Pick the correct definition for each term. Earn XP and keep your streak alive!</p>' +
+            '<p class="dict-mcq-setup-desc">' + self._escapeHTML(setupDesc) + '</p>' +
             '<div class="dict-mcq-diff-grid" role="radiogroup" aria-label="Difficulty level">' + diffHtml + '</div>' +
           '</div>' +
           '<footer class="dict-mcq-duo-footer dict-mcq-setup-footer">' +
@@ -6433,20 +6455,21 @@
     },
 
     _selectDictMcqDifficulty: function(dictId, difficulty) {
+      var self = this;
       var config = this._getDictMcqConfig(dictId);
       var settings = this._dictMcqDifficultySettings[difficulty];
       if (!config || !settings) return;
 
       var entries = config.getEntries(this).filter(function(e) {
-        return (e[config.answerField] || '').trim().length > 0 &&
-               (e[config.termField] || '').trim().length > 0;
+        return self._dictEntryValidForPractice(e, config);
       });
 
       var pool = this._filterDictMcqPool(entries, settings, config);
-      if (pool.length < settings.optionCount) {
+      var minPool = config.practiceMode === 'recall' ? 1 : settings.optionCount;
+      if (pool.length < minPool) {
         pool = entries.slice();
       }
-      if (pool.length < settings.optionCount) {
+      if (pool.length < minPool) {
         var bodyEl = document.getElementById(config.bodyId);
         if (bodyEl) {
           bodyEl.innerHTML =
@@ -6462,7 +6485,11 @@
       var selected = this._dictMcqShuffle(pool).slice(0, sessionSize);
       var questions = [];
       for (var i = 0; i < selected.length; i++) {
-        questions.push(this._buildDictMcqQuestion(selected[i], pool, settings, config));
+        if (config.practiceMode === 'recall') {
+          questions.push(this._buildDictRecallQuestion(selected[i], config));
+        } else {
+          questions.push(this._buildDictMcqQuestion(selected[i], pool, settings, config));
+        }
       }
 
       this._dictMcqPractice = {
@@ -6573,6 +6600,18 @@
       };
     },
 
+    _buildDictRecallQuestion: function(entry, config) {
+      return {
+        entry: entry,
+        base: (entry.base || '').trim(),
+        morph: (entry.type || '').trim(),
+        definition: (entry.definition || '').trim(),
+        wordType: (entry.wordType || '').trim(),
+        level: config.levelField ? (entry[config.levelField] || '') : '',
+        correctAnswer: (entry.derived || '').trim()
+      };
+    },
+
     _renderDictMcqQuestion: function() {
       var state = this._dictMcqPractice;
       if (!state || state.phase !== 'playing') return;
@@ -6583,6 +6622,11 @@
 
       if (state.questionIndex >= state.questions.length) {
         this._renderDictMcqComplete();
+        return;
+      }
+
+      if (config.practiceMode === 'recall') {
+        this._renderDictRecallQuestion();
         return;
       }
 
@@ -6632,6 +6676,81 @@
       state.selectedIndex = -1;
     },
 
+    _renderDictRecallQuestion: function() {
+      var state = this._dictMcqPractice;
+      if (!state || state.phase !== 'playing') return;
+
+      var config = this._getDictMcqConfig(state.dictId);
+      var bodyEl = document.getElementById(config.bodyId);
+      if (!bodyEl) return;
+
+      var q = state.questions[state.questionIndex];
+      var self = this;
+
+      var levelBadge = q.level
+        ? '<span class="dict-mcq-level-badge vocab-level-' + q.level.toLowerCase() + '">' + this._escapeHTML(q.level) + '</span>'
+        : '';
+      var wordTypeBadge = q.wordType
+        ? '<span class="wf-dict-type wf-type-' + this._escapeHTML(q.wordType) + '">' + this._escapeHTML(q.wordType) + '</span>'
+        : '';
+      var baseHtml = q.base
+        ? this._dictDuoTtsWord(q.base, 'dict-mcq-wf-base')
+        : '';
+      var morphHtml = q.morph
+        ? '<span class="wf-dict-morph dict-mcq-wf-morph">' + this._escapeHTML(q.morph) + '</span>'
+        : '';
+      var definitionHtml = q.definition
+        ? this._dictDuoTtsSpan(this._dictFormatDefinition(q.definition), 'dict-mcq-wf-definition', 'Listen to definition')
+        : '';
+
+      bodyEl.innerHTML =
+        '<div class="dict-mcq-session dict-mcq-session--duo dict-mcq-session--playing dict-mcq-session--recall">' +
+          this._dictDuoRenderHeader(state) +
+          '<div class="dict-mcq-duo-body" id="dict-mcq-duo-body">' +
+            '<div class="dict-mcq-question-card dict-mcq-question-card--recall">' +
+              '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
+              '<div class="dict-mcq-wf-particle-row">' +
+                baseHtml +
+                morphHtml +
+                wordTypeBadge +
+                levelBadge +
+              '</div>' +
+              '<div class="dict-mcq-wf-definition">' + definitionHtml + '</div>' +
+            '</div>' +
+            '<div class="dict-mcq-recall-input-wrap">' +
+              '<input type="text" class="dict-mcq-recall-input pv-write-input" id="dict-mcq-recall-input" ' +
+                'placeholder="Type the word…" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
+                'oninput="FastExercises._onDictRecallInput()" ' +
+                'onkeydown="if(event.key===\'Enter\'){event.preventDefault();FastExercises._nextDictMcqQuestion();}" />' +
+            '</div>' +
+            '<div class="dict-mcq-feedback dict-mcq-feedback--duo" id="dict-mcq-feedback" aria-live="polite"></div>' +
+          '</div>' +
+          '<footer class="dict-mcq-duo-footer dict-mcq-play-footer">' +
+            '<button type="button" class="dict-mcq-btn dict-mcq-btn-primary dict-mcq-continue-btn" id="dict-mcq-next" ' +
+              'onclick="FastExercises._nextDictMcqQuestion()" disabled>Check</button>' +
+            '<button type="button" class="dict-mcq-btn dict-mcq-btn-ghost" onclick="FastExercises._restartDictMcqPractice()">Restart</button>' +
+          '</footer>' +
+        '</div>';
+
+      state.answered = false;
+      state.selectedIndex = -1;
+
+      setTimeout(function() {
+        var input = document.getElementById('dict-mcq-recall-input');
+        if (input) input.focus();
+      }, 50);
+    },
+
+    _onDictRecallInput: function() {
+      var state = this._dictMcqPractice;
+      if (!state || state.phase !== 'playing' || state.answered) return;
+
+      var input = document.getElementById('dict-mcq-recall-input');
+      var nextBtn = document.getElementById('dict-mcq-next');
+      if (!nextBtn) return;
+      nextBtn.disabled = !(input && input.value.trim());
+    },
+
     _selectDictMcqOption: function(optionIndex) {
       var state = this._dictMcqPractice;
       if (!state || state.phase !== 'playing' || state.answered) return;
@@ -6655,14 +6774,30 @@
 
     _confirmDictMcqAnswer: function() {
       var state = this._dictMcqPractice;
-      if (!state || state.phase !== 'playing' || state.answered || state.selectedIndex < 0) return;
+      if (!state || state.phase !== 'playing' || state.answered) return;
 
+      var config = this._getDictMcqConfig(state.dictId);
       var q = state.questions[state.questionIndex];
       if (!q) return;
 
-      var optionIndex = state.selectedIndex;
-      state.answered = true;
-      var isCorrect = optionIndex === q.correctIndex;
+      var isRecall = config && config.practiceMode === 'recall';
+      var isCorrect;
+
+      if (isRecall) {
+        var input = document.getElementById('dict-mcq-recall-input');
+        if (!input || !input.value.trim()) return;
+        isCorrect = this._matchesDictRecallAnswer(input.value, q.correctAnswer);
+        state.answered = true;
+
+        input.disabled = true;
+        input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
+        if (!isCorrect) input.setAttribute('data-correct-answer', q.correctAnswer);
+      } else {
+        if (state.selectedIndex < 0) return;
+        var optionIndex = state.selectedIndex;
+        state.answered = true;
+        isCorrect = optionIndex === q.correctIndex;
+      }
 
       if (isCorrect) {
         state.correctCount++;
@@ -6683,17 +6818,20 @@
         bodyFlash.classList.add(isCorrect ? 'dict-mcq-duo-body--correct' : 'dict-mcq-duo-body--wrong');
       }
 
-      for (var i = 0; i < q.options.length; i++) {
-        var btn = document.getElementById('dict-mcq-opt-' + i);
-        if (!btn) continue;
-        btn.disabled = true;
-        btn.classList.remove('dict-mcq-option--selected');
-        if (i === q.correctIndex) {
-          btn.classList.add('dict-mcq-option--correct');
-        } else if (i === optionIndex && !isCorrect) {
-          btn.classList.add('dict-mcq-option--wrong');
-        } else {
-          btn.classList.add('dict-mcq-option--dimmed');
+      if (!isRecall) {
+        var optionIndex = state.selectedIndex;
+        for (var i = 0; i < q.options.length; i++) {
+          var btn = document.getElementById('dict-mcq-opt-' + i);
+          if (!btn) continue;
+          btn.disabled = true;
+          btn.classList.remove('dict-mcq-option--selected');
+          if (i === q.correctIndex) {
+            btn.classList.add('dict-mcq-option--correct');
+          } else if (i === optionIndex && !isCorrect) {
+            btn.classList.add('dict-mcq-option--wrong');
+          } else {
+            btn.classList.add('dict-mcq-option--dimmed');
+          }
         }
       }
 
@@ -6701,9 +6839,13 @@
       if (feedbackEl) {
         feedbackEl.className = 'dict-mcq-feedback dict-mcq-feedback--duo ' +
           (isCorrect ? 'dict-mcq-feedback--correct' : 'dict-mcq-feedback--wrong');
-        feedbackEl.innerHTML = isCorrect
-          ? '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Correct! +' + this._dictDuoXpPerCorrect + ' XP'
-          : '<span class="material-symbols-outlined" aria-hidden="true">cancel</span> Incorrect — the correct answer is highlighted in green';
+        if (isCorrect) {
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Correct! +' + this._dictDuoXpPerCorrect + ' XP';
+        } else if (isRecall) {
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">cancel</span> Incorrect — the correct answer is <strong>' + this._escapeHTML(q.correctAnswer) + '</strong>';
+        } else {
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">cancel</span> Incorrect — the correct answer is highlighted in green';
+        }
       }
 
       this._dictDuoUpdateHeader(state);
@@ -6724,7 +6866,13 @@
       var state = this._dictMcqPractice;
       if (!state) return;
       if (!state.answered) {
-        if (state.selectedIndex < 0) return;
+        var config = this._getDictMcqConfig(state.dictId);
+        if (config && config.practiceMode === 'recall') {
+          var input = document.getElementById('dict-mcq-recall-input');
+          if (!input || !input.value.trim()) return;
+        } else if (state.selectedIndex < 0) {
+          return;
+        }
         this._confirmDictMcqAnswer();
         return;
       }
