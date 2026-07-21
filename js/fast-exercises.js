@@ -9902,10 +9902,18 @@
       if (state.selectedWordId === wordId) {
         var cells = FastExercises._cwGetWordCells(word);
         var nextPos = 0;
-        while (nextPos < cells.length && FastExercises._cwIsCellProtected(state, cells[nextPos].cellKey)) nextPos++;
-        if (nextPos < cells.length) state.activeStripPos = nextPos;
-        FastExercises._cwSyncActiveCellHighlight();
-        FastExercises._cwRefreshActiveDef();
+        while (nextPos < cells.length) {
+          var cellKey = cells[nextPos].cellKey;
+          if (!FastExercises._cwIsCellProtected(state, cellKey) && !state.userGrid[cellKey]) break;
+          nextPos++;
+        }
+        if (nextPos < cells.length) {
+          FastExercises._cwSelectStripPos(nextPos);
+        } else {
+          FastExercises._cwSyncActiveCellHighlight();
+          FastExercises._cwRefreshActiveDef();
+          FastExercises._cwFocusCwInput();
+        }
       }
       FastExercises._cwUpdateStatus();
     },
