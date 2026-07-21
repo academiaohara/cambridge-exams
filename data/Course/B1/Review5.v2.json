@@ -256,6 +256,18 @@
           "little",
           "in",
           "lot"
+        ],
+        "explanations": [
+          "Superlative → **the** most popular websites.",
+          "Belong **to** different sellers.",
+          "Vowel sound → **an** amazing variety.",
+          "Specific website already mentioned → **the** website.",
+          "Pay **for** your order.",
+          "Pay **by** credit card.",
+          "General description → **a** very convenient way.",
+          "Uncountable time → **a little** time.",
+          "Condition → arrive **in** excellent condition.",
+          "Fixed phrase → **a lot** of special offers."
         ]
       },
       {
@@ -280,7 +292,7 @@
             "acceptedAnswers": [
               "decision"
             ],
-            "explanation": "",
+            "explanation": "Noun from **DECIDE** → made her **decision**.",
             "verbPrompt": "DECIDE"
           },
           {
@@ -291,7 +303,7 @@
             "acceptedAnswers": [
               "expensive"
             ],
-            "explanation": "",
+            "explanation": "Adjective from **EXPENSE** → too **expensive**.",
             "verbPrompt": "EXPENSE"
           },
           {
@@ -302,7 +314,7 @@
             "acceptedAnswers": [
               "useless"
             ],
-            "explanation": "",
+            "explanation": "Negative from **USE** → completely **useless**.",
             "verbPrompt": "USE"
           },
           {
@@ -313,7 +325,7 @@
             "acceptedAnswers": [
               "servants"
             ],
-            "explanation": "",
+            "explanation": "People who serve → **servants**.",
             "verbPrompt": "SERVE"
           },
           {
@@ -324,7 +336,7 @@
             "acceptedAnswers": [
               "affordable"
             ],
-            "explanation": "",
+            "explanation": "Adjective from **AFFORD** → **affordable** clothes.",
             "verbPrompt": "AFFORD"
           },
           {
@@ -335,7 +347,7 @@
             "acceptedAnswers": [
               "untrue"
             ],
-            "explanation": "",
+            "explanation": "Negative from **TRUE** → completely **untrue**.",
             "verbPrompt": "TRUE"
           },
           {
@@ -346,7 +358,7 @@
             "acceptedAnswers": [
               "valuable"
             ],
-            "explanation": "",
+            "explanation": "Adjective from **VALUE** → very **valuable**.",
             "verbPrompt": "VALUE"
           },
           {
@@ -357,7 +369,7 @@
             "acceptedAnswers": [
               "compare"
             ],
-            "explanation": "",
+            "explanation": "Verb from **COMPARE** → **compare** prices.",
             "verbPrompt": "COMPARE"
           }
         ]
@@ -384,7 +396,7 @@
             "acceptedAnswers": [
               "borrow €20 from"
             ],
-            "explanation": ""
+            "explanation": "Lend → **borrow €20 from** you."
           },
           {
             "id": "b1-u5-exc-2",
@@ -394,7 +406,7 @@
             "acceptedAnswers": [
               "choose between"
             ],
-            "explanation": ""
+            "explanation": "Decide between two → **choose between**."
           },
           {
             "id": "b1-u5-exc-3",
@@ -404,7 +416,7 @@
             "acceptedAnswers": [
               "take them back"
             ],
-            "explanation": ""
+            "explanation": "Return trainers → **take them back**."
           },
           {
             "id": "b1-u5-exc-4",
@@ -414,7 +426,7 @@
             "acceptedAnswers": [
               "are in debt"
             ],
-            "explanation": ""
+            "explanation": "Owing money → **are in debt**."
           },
           {
             "id": "b1-u5-exc-5",
@@ -424,7 +436,7 @@
             "acceptedAnswers": [
               "hurry up"
             ],
-            "explanation": ""
+            "explanation": "Go faster → **hurry up**."
           },
           {
             "id": "b1-u5-exc-6",
@@ -434,7 +446,7 @@
             "acceptedAnswers": [
               "in cash"
             ],
-            "explanation": ""
+            "explanation": "Using notes and coins → paid **in cash**."
           }
         ]
       },
@@ -476,7 +488,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Singular countable → **a** sandwich."
           },
           {
             "id": "b1-u5-exd-2",
@@ -502,7 +514,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Vowel sound → **an** intelligent student."
           },
           {
             "id": "b1-u5-exd-3",
@@ -528,7 +540,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**Juice** uncountable → **much** juice left."
           },
           {
             "id": "b1-u5-exd-4",
@@ -554,7 +566,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Some (not many) → **a few** people came."
           },
           {
             "id": "b1-u5-exd-5",
@@ -580,7 +592,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "**Information** uncountable → **some** information."
           },
           {
             "id": "b1-u5-exd-6",
@@ -606,7 +618,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Superlative → **the** most expensive phone."
           },
           {
             "id": "b1-u5-exd-7",
@@ -632,7 +644,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**Flour** uncountable → need **some** flour."
           },
           {
             "id": "b1-u5-exd-8",
@@ -658,7 +670,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "**Advice** uncountable → **a lot of** useful advice."
           },
           {
             "id": "b1-u5-exd-9",
@@ -684,7 +696,7 @@
               }
             ],
             "answer": "D",
-            "explanation": ""
+            "explanation": "Countable friends → **a few** close friends."
           },
           {
             "id": "b1-u5-exd-10",
@@ -710,7 +722,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Offer → **some** bread with soup."
           },
           {
             "id": "b1-u5-exd-11",
@@ -736,7 +748,7 @@
               }
             ],
             "answer": "THE",
-            "explanation": ""
+            "explanation": "Specific place → goes to **the** gym."
           },
           {
             "id": "b1-u5-exd-12",
@@ -762,7 +774,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "**Coffee** uncountable → **much** coffee left."
           }
         ]
       },
@@ -788,7 +800,7 @@
             "acceptedAnswers": [
               "have"
             ],
-            "explanation": ""
+            "explanation": "Fixed phrase → **have** a look at prices."
           },
           {
             "id": "b1-u5-exe-2",
@@ -798,7 +810,7 @@
             "acceptedAnswers": [
               "on"
             ],
-            "explanation": ""
+            "explanation": "Try shoes **on** before buying."
           },
           {
             "id": "b1-u5-exe-3",
@@ -808,7 +820,7 @@
             "acceptedAnswers": [
               "on"
             ],
-            "explanation": ""
+            "explanation": "**On sale** = at a reduced price."
           },
           {
             "id": "b1-u5-exe-4",
@@ -818,7 +830,7 @@
             "acceptedAnswers": [
               "make"
             ],
-            "explanation": ""
+            "explanation": "**Make up** my mind = decide."
           },
           {
             "id": "b1-u5-exe-5",
@@ -828,7 +840,7 @@
             "acceptedAnswers": [
               "small"
             ],
-            "explanation": ""
+            "explanation": "Too **small** — need a larger size."
           },
           {
             "id": "b1-u5-exe-6",
@@ -838,7 +850,7 @@
             "acceptedAnswers": [
               "bargain"
             ],
-            "explanation": ""
+            "explanation": "A great **bargain** = cheap price."
           },
           {
             "id": "b1-u5-exe-7",
@@ -848,7 +860,7 @@
             "acceptedAnswers": [
               "in"
             ],
-            "explanation": ""
+            "explanation": "Pay **in** cash."
           },
           {
             "id": "b1-u5-exe-8",
@@ -858,7 +870,7 @@
             "acceptedAnswers": [
               "make"
             ],
-            "explanation": ""
+            "explanation": "**Make** a complaint."
           },
           {
             "id": "b1-u5-exe-9",
@@ -868,7 +880,7 @@
             "acceptedAnswers": [
               "refund"
             ],
-            "explanation": ""
+            "explanation": "Full **refund** after returning the phone."
           },
           {
             "id": "b1-u5-exe-10",
@@ -878,7 +890,7 @@
             "acceptedAnswers": [
               "out"
             ],
-            "explanation": ""
+            "explanation": "**Out of** stock = none left in the shop."
           },
           {
             "id": "b1-u5-exe-11",
@@ -888,7 +900,7 @@
             "acceptedAnswers": [
               "up"
             ],
-            "explanation": ""
+            "explanation": "Saving **up** for something."
           },
           {
             "id": "b1-u5-exe-12",
@@ -898,7 +910,7 @@
             "acceptedAnswers": [
               "lot"
             ],
-            "explanation": ""
+            "explanation": "A **lot** of money = a large amount."
           },
           {
             "id": "b1-u5-exe-13",
@@ -908,7 +920,7 @@
             "acceptedAnswers": [
               "bargain"
             ],
-            "explanation": ""
+            "explanation": "At a real **bargain** = very cheap."
           },
           {
             "id": "b1-u5-exe-14",
@@ -918,7 +930,7 @@
             "acceptedAnswers": [
               "compare"
             ],
-            "explanation": ""
+            "explanation": "Always **compare** prices before buying."
           }
         ]
       }
