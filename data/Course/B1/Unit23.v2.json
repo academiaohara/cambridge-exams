@@ -547,7 +547,7 @@
             "acceptedAnswers": [
               "Are you"
             ],
-            "explanation": ""
+            "explanation": "**You are** → **Are you** ready?"
           },
           {
             "id": "b1-u23-exa-2",
@@ -557,7 +557,7 @@
             "acceptedAnswers": [
               "Has she"
             ],
-            "explanation": ""
+            "explanation": "Present perfect → **Has she** received?"
           },
           {
             "id": "b1-u23-exa-3",
@@ -567,7 +567,7 @@
             "acceptedAnswers": [
               "Did they go"
             ],
-            "explanation": ""
+            "explanation": "Past simple → **Did they go** to the concert?"
           },
           {
             "id": "b1-u23-exa-4",
@@ -577,7 +577,7 @@
             "acceptedAnswers": [
               "Could he"
             ],
-            "explanation": ""
+            "explanation": "Modal → **Could he** lend you?"
           },
           {
             "id": "b1-u23-exa-5",
@@ -587,7 +587,7 @@
             "acceptedAnswers": [
               "Who called"
             ],
-            "explanation": ""
+            "explanation": "Subject question → **Who called** you?"
           },
           {
             "id": "b1-u23-exa-6",
@@ -597,7 +597,7 @@
             "acceptedAnswers": [
               "did you call"
             ],
-            "explanation": ""
+            "explanation": "Object question → Who **did you call**?"
           },
           {
             "id": "b1-u23-exa-7",
@@ -607,7 +607,7 @@
             "acceptedAnswers": [
               "When is Clara"
             ],
-            "explanation": ""
+            "explanation": "When question → **When is Clara** starting?"
           },
           {
             "id": "b1-u23-exa-8",
@@ -617,7 +617,7 @@
             "acceptedAnswers": [
               "Why did"
             ],
-            "explanation": ""
+            "explanation": "Why question → **Why did** they cancel?"
           }
         ]
       },
@@ -643,7 +643,7 @@
             "acceptedAnswers": [
               "aren't you"
             ],
-            "explanation": ""
+            "explanation": "Positive statement → negative tag **aren't you**."
           },
           {
             "id": "b1-u23-exb-2",
@@ -653,7 +653,7 @@
             "acceptedAnswers": [
               "isn't she"
             ],
-            "explanation": ""
+            "explanation": "**She is** → **isn't she**?"
           },
           {
             "id": "b1-u23-exb-3",
@@ -663,7 +663,7 @@
             "acceptedAnswers": [
               "have you"
             ],
-            "explanation": ""
+            "explanation": "Negative → positive tag **have you**."
           },
           {
             "id": "b1-u23-exb-4",
@@ -673,7 +673,7 @@
             "acceptedAnswers": [
               "doesn't he"
             ],
-            "explanation": ""
+            "explanation": "**Tom has** → **doesn't he**?"
           },
           {
             "id": "b1-u23-exb-5",
@@ -683,7 +683,7 @@
             "acceptedAnswers": [
               "shall we"
             ],
-            "explanation": ""
+            "explanation": "**Let's** → **shall we**?"
           },
           {
             "id": "b1-u23-exb-6",
@@ -693,7 +693,7 @@
             "acceptedAnswers": [
               "will"
             ],
-            "explanation": ""
+            "explanation": "Imperative → **will** you?"
           },
           {
             "id": "b1-u23-exb-7",
@@ -703,7 +703,7 @@
             "acceptedAnswers": [
               "aren't I"
             ],
-            "explanation": ""
+            "explanation": "**I'm** → **aren't I**?"
           },
           {
             "id": "b1-u23-exb-8",
@@ -713,7 +713,7 @@
             "acceptedAnswers": [
               "didn't they"
             ],
-            "explanation": ""
+            "explanation": "**Everyone enjoyed** → **didn't they**?"
           }
         ]
       },
@@ -742,7 +742,8 @@
             ],
             "answer": "don't you",
             "originalSentence": "You like jazz, **don't you / aren't you**?",
-            "completedSentence": "You like jazz, don't you ?"
+            "completedSentence": "You like jazz, don't you ?",
+            "explanation": "**You like** → **don't you**?"
           },
           {
             "id": "b1-u23-exc-2",
@@ -755,7 +756,8 @@
             ],
             "answer": "does she",
             "originalSentence": "She never replies to messages, **does she / doesn't she**?",
-            "completedSentence": "She never replies to messages, does she ?"
+            "completedSentence": "She never replies to messages, does she ?",
+            "explanation": "**Never** (negative) → positive tag **does she**?"
           },
           {
             "id": "b1-u23-exc-3",
@@ -768,7 +770,8 @@
             ],
             "answer": "is there",
             "originalSentence": "There's no milk left, **is there / isn't there**?",
-            "completedSentence": "There's no milk left, is there ?"
+            "completedSentence": "There's no milk left, is there ?",
+            "explanation": "**No milk** → positive tag **is there**?"
           },
           {
             "id": "b1-u23-exc-4",
@@ -781,7 +784,8 @@
             ],
             "answer": "aren't we",
             "originalSentence": "We are meeting tomorrow morning, **aren't we / don't we**?",
-            "completedSentence": "We are meeting tomorrow morning, aren't we ?"
+            "completedSentence": "We are meeting tomorrow morning, aren't we ?",
+            "explanation": "**We are meeting** → **aren't we**?"
           },
           {
             "id": "b1-u23-exc-5",
@@ -794,7 +798,8 @@
             ],
             "answer": "did they",
             "originalSentence": "No one told you, **did they / didn't they**?",
-            "completedSentence": "No one told you, did they ?"
+            "completedSentence": "No one told you, did they ?",
+            "explanation": "**No one** → positive tag **did they**?"
           },
           {
             "id": "b1-u23-exc-6",
@@ -807,7 +812,8 @@
             ],
             "answer": "shouldn't they",
             "originalSentence": "People should recycle more, **shouldn't they / don't they**?",
-            "completedSentence": "People should recycle more, shouldn't they ?"
+            "completedSentence": "People should recycle more, shouldn't they ?",
+            "explanation": "**Should recycle** → **shouldn't they**?"
           },
           {
             "id": "b1-u23-exc-7",
@@ -820,7 +826,8 @@
             ],
             "answer": "will you",
             "originalSentence": "Don't forget to lock up, **will you / do you**?",
-            "completedSentence": "Don't forget to lock up, will you ?"
+            "completedSentence": "Don't forget to lock up, will you ?",
+            "explanation": "Negative imperative → **will you**?"
           },
           {
             "id": "b1-u23-exc-8",
@@ -833,7 +840,8 @@
             ],
             "answer": "won't there",
             "originalSentence": "There will be enough seats, **won't there / will there**?",
-            "completedSentence": "There will be enough seats, won't there ?"
+            "completedSentence": "There will be enough seats, won't there ?",
+            "explanation": "**There will be** → **won't there**?"
           }
         ]
       },
@@ -859,7 +867,7 @@
             "acceptedAnswers": [
               "the nearest pharmacy is"
             ],
-            "explanation": ""
+            "explanation": "Indirect question → statement order: **the nearest pharmacy is**."
           },
           {
             "id": "b1-u23-exd-2",
@@ -869,7 +877,7 @@
             "acceptedAnswers": [
               "the museum opens"
             ],
-            "explanation": ""
+            "explanation": "No inversion → **the museum opens**."
           },
           {
             "id": "b1-u23-exd-3",
@@ -879,7 +887,7 @@
             "acceptedAnswers": [
               "this costs"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **this costs**."
           },
           {
             "id": "b1-u23-exd-4",
@@ -889,7 +897,7 @@
             "acceptedAnswers": [
               "the next flight departs"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **the next flight departs**."
           },
           {
             "id": "b1-u23-exd-5",
@@ -899,7 +907,7 @@
             "acceptedAnswers": [
               "the next steps are"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **the next steps are**."
           },
           {
             "id": "b1-u23-exd-6",
@@ -909,7 +917,7 @@
             "acceptedAnswers": [
               "whether"
             ],
-            "explanation": ""
+            "explanation": "**I wonder if** → **whether** the shop is open."
           },
           {
             "id": "b1-u23-exd-7",
@@ -919,7 +927,7 @@
             "acceptedAnswers": [
               "the post office is"
             ],
-            "explanation": ""
+            "explanation": "Statement order → **the post office is**."
           },
           {
             "id": "b1-u23-exd-8",
@@ -929,7 +937,7 @@
             "acceptedAnswers": [
               "where"
             ],
-            "explanation": ""
+            "explanation": "Indirect wh- → **where** he lives."
           }
         ]
       },
@@ -955,7 +963,8 @@
             "answer": "go",
             "acceptedAnswers": [
               "go"
-            ]
+            ],
+            "explanation": "After **did** → base verb **go**."
           },
           {
             "id": "b1-u23-exe-2",
@@ -965,7 +974,8 @@
             "answer": "want",
             "acceptedAnswers": [
               "want"
-            ]
+            ],
+            "explanation": "After **does** → base verb **want**."
           },
           {
             "id": "b1-u23-exe-3",
@@ -975,7 +985,8 @@
             "answer": "does 'procrastinate' mean",
             "acceptedAnswers": [
               "does 'procrastinate' mean"
-            ]
+            ],
+            "explanation": "Question word order → **does 'procrastinate' mean**."
           },
           {
             "id": "b1-u23-exe-4",
@@ -985,7 +996,8 @@
             "answer": "the post office is",
             "acceptedAnswers": [
               "the post office is"
-            ]
+            ],
+            "explanation": "Indirect → **the post office is** (not **is the**)."
           },
           {
             "id": "b1-u23-exe-5",
@@ -995,7 +1007,8 @@
             "answer": "isn't she",
             "acceptedAnswers": [
               "isn't she"
-            ]
+            ],
+            "explanation": "**She** → **isn't she** (not **isn't it**)."
           },
           {
             "id": "b1-u23-exe-6",
@@ -1005,7 +1018,8 @@
             "answer": "haven't you",
             "acceptedAnswers": [
               "haven't you"
-            ]
+            ],
+            "explanation": "**You have** → **haven't you**."
           },
           {
             "id": "b1-u23-exe-7",
@@ -1015,7 +1029,8 @@
             "answer": "the exit is",
             "acceptedAnswers": [
               "the exit is"
-            ]
+            ],
+            "explanation": "Indirect → **the exit is**."
           },
           {
             "id": "b1-u23-exe-8",
@@ -1025,7 +1040,8 @@
             "answer": "doesn't he",
             "acceptedAnswers": [
               "doesn't he"
-            ]
+            ],
+            "explanation": "**He** → **doesn't he** (not **doesn't it**)."
           }
         ]
       },
@@ -1067,7 +1083,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Polite request → **Could** you tell me?"
           },
           {
             "id": "b1-u23-exf-2",
@@ -1093,7 +1109,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "**She's punctual** → **isn't she**?"
           },
           {
             "id": "b1-u23-exf-3",
@@ -1119,7 +1135,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Indirect → **when** the meeting starts."
           },
           {
             "id": "b1-u23-exf-4",
@@ -1145,7 +1161,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Subject question → **Who** called?"
           },
           {
             "id": "b1-u23-exf-5",
@@ -1171,7 +1187,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "**Nothing** → positive tag **is there**?"
           },
           {
             "id": "b1-u23-exf-6",
@@ -1197,7 +1213,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Indirect question needs statement order + full stop → **what time the lesson is.**"
           },
           {
             "id": "b1-u23-exf-7",
@@ -1223,7 +1239,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Negative statement → positive tag **am I**?"
           },
           {
             "id": "b1-u23-exf-8",
@@ -1249,7 +1265,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "**Someone** → **didn't they**?"
           }
         ]
       },
@@ -1275,7 +1291,7 @@
             "acceptedAnswers": [
               "Have"
             ],
-            "explanation": ""
+            "explanation": "Present perfect question → **Have** you ever been?"
           },
           {
             "id": "b1-u23-exg-2",
@@ -1285,7 +1301,7 @@
             "acceptedAnswers": [
               "doesn't she"
             ],
-            "explanation": ""
+            "explanation": "**Emma works** → **doesn't she**?"
           },
           {
             "id": "b1-u23-exg-3",
@@ -1295,7 +1311,7 @@
             "acceptedAnswers": [
               "the library is"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **the library is**."
           },
           {
             "id": "b1-u23-exg-4",
@@ -1305,7 +1321,7 @@
             "acceptedAnswers": [
               "Will"
             ],
-            "explanation": ""
+            "explanation": "Future question → **Will** she be there?"
           },
           {
             "id": "b1-u23-exg-5",
@@ -1315,7 +1331,7 @@
             "acceptedAnswers": [
               "didn't they"
             ],
-            "explanation": ""
+            "explanation": "**Enjoyed** → **didn't they**?"
           },
           {
             "id": "b1-u23-exg-6",
@@ -1325,7 +1341,7 @@
             "acceptedAnswers": [
               "how much"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **how much** the tickets cost."
           },
           {
             "id": "b1-u23-exg-7",
@@ -1335,7 +1351,7 @@
             "acceptedAnswers": [
               "Might"
             ],
-            "explanation": ""
+            "explanation": "Possibility → **Might** they be lost?"
           },
           {
             "id": "b1-u23-exg-8",
@@ -1345,7 +1361,7 @@
             "acceptedAnswers": [
               "do"
             ],
-            "explanation": ""
+            "explanation": "How + auxiliary → **do** you say?"
           }
         ]
       },
@@ -1371,7 +1387,7 @@
             "acceptedAnswers": [
               "where the post office is"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **where the post office is**."
           },
           {
             "id": "b1-u23-exh-2",
@@ -1381,7 +1397,7 @@
             "acceptedAnswers": [
               "do you"
             ],
-            "explanation": ""
+            "explanation": "**You don't live** → **do you**?"
           },
           {
             "id": "b1-u23-exh-3",
@@ -1391,7 +1407,7 @@
             "acceptedAnswers": [
               "what time the lesson starts"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **what time the lesson starts**."
           },
           {
             "id": "b1-u23-exh-4",
@@ -1401,7 +1417,7 @@
             "acceptedAnswers": [
               "shall we"
             ],
-            "explanation": ""
+            "explanation": "**Let's** → **shall we**?"
           },
           {
             "id": "b1-u23-exh-5",
@@ -1411,7 +1427,7 @@
             "acceptedAnswers": [
               "if"
             ],
-            "explanation": ""
+            "explanation": "**I wonder** → **if** the shop is open."
           },
           {
             "id": "b1-u23-exh-6",
@@ -1421,7 +1437,7 @@
             "acceptedAnswers": [
               "Who"
             ],
-            "explanation": ""
+            "explanation": "Subject question → **Who** made that noise?"
           },
           {
             "id": "b1-u23-exh-7",
@@ -1431,7 +1447,7 @@
             "acceptedAnswers": [
               "doesn't she"
             ],
-            "explanation": ""
+            "explanation": "**She sings** → **doesn't she**?"
           },
           {
             "id": "b1-u23-exh-8",
@@ -1441,7 +1457,7 @@
             "acceptedAnswers": [
               "when the next flight departs"
             ],
-            "explanation": ""
+            "explanation": "Indirect → **when the next flight departs**."
           }
         ]
       }
