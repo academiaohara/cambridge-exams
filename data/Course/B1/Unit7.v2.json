@@ -444,7 +444,7 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": ""
+            "explanation": "A fixed arrangement → present continuous **are meeting** (not **will meet**)."
           },
           {
             "id": "b1-u7-exa-2",
@@ -460,7 +460,7 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": ""
+            "explanation": "Evidence-based prediction → **is going to rain** with keyword **GOING**."
           },
           {
             "id": "b1-u7-exa-3",
@@ -476,7 +476,7 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": ""
+            "explanation": "A promise → **will help** with keyword **WILL**."
           },
           {
             "id": "b1-u7-exa-4",
@@ -492,7 +492,7 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": ""
+            "explanation": "A decision already made → **are moving** with keyword **MOVING**."
           },
           {
             "id": "b1-u7-exa-5",
@@ -508,7 +508,7 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": ""
+            "explanation": "An intention → **is going to learn** with keyword **GOING**."
           },
           {
             "id": "b1-u7-exa-6",
@@ -523,7 +523,7 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": ""
+            "explanation": "Offering help → **Shall I** carry your bags?"
           }
         ]
       },
@@ -569,7 +569,7 @@
             "acceptedAnswers": [
               "rain"
             ],
-            "explanation": ""
+            "explanation": "A prediction about the weather → **will rain**."
           },
           {
             "id": "b1-u7-exb-2",
@@ -579,7 +579,7 @@
             "acceptedAnswers": [
               "help"
             ],
-            "explanation": ""
+            "explanation": "A promise to help → **will help**."
           },
           {
             "id": "b1-u7-exb-3",
@@ -589,7 +589,7 @@
             "acceptedAnswers": [
               "call"
             ],
-            "explanation": ""
+            "explanation": "A future request → **Will you call** me?"
           },
           {
             "id": "b1-u7-exb-4",
@@ -599,7 +599,7 @@
             "acceptedAnswers": [
               "move"
             ],
-            "explanation": ""
+            "explanation": "A decision about next year → **will move**."
           },
           {
             "id": "b1-u7-exb-5",
@@ -609,7 +609,7 @@
             "acceptedAnswers": [
               "wait"
             ],
-            "explanation": ""
+            "explanation": "A suggestion → **Shall we wait** outside?"
           },
           {
             "id": "b1-u7-exb-6",
@@ -619,7 +619,7 @@
             "acceptedAnswers": [
               "show"
             ],
-            "explanation": ""
+            "explanation": "A prediction about tomorrow → **will show**."
           },
           {
             "id": "b1-u7-exb-7",
@@ -629,7 +629,7 @@
             "acceptedAnswers": [
               "buy"
             ],
-            "explanation": ""
+            "explanation": "Ordering food politely → **will buy** a sandwich."
           },
           {
             "id": "b1-u7-exb-8",
@@ -639,7 +639,7 @@
             "acceptedAnswers": [
               "meet"
             ],
-            "explanation": ""
+            "explanation": "A promise they will be there → **will meet** us."
           }
         ]
       },
@@ -665,7 +665,7 @@
             "acceptedAnswers": [
               "'m going to study"
             ],
-            "explanation": ""
+            "explanation": "A plan for university → **'m going to study**."
           },
           {
             "id": "b1-u7-exc-2",
@@ -675,7 +675,7 @@
             "acceptedAnswers": [
               "are going to paint"
             ],
-            "explanation": ""
+            "explanation": "A plan for this weekend → **are going to paint**."
           },
           {
             "id": "b1-u7-exc-3",
@@ -685,7 +685,7 @@
             "acceptedAnswers": [
               "Is, going to apply"
             ],
-            "explanation": ""
+            "explanation": "Question about a plan → **Is Ben going to apply**?"
           },
           {
             "id": "b1-u7-exc-4",
@@ -695,7 +695,7 @@
             "acceptedAnswers": [
               "aren't going to stay"
             ],
-            "explanation": ""
+            "explanation": "Negative plan → **aren't going to stay** at home."
           },
           {
             "id": "b1-u7-exc-5",
@@ -705,7 +705,7 @@
             "acceptedAnswers": [
               "'re going to drop"
             ],
-            "explanation": ""
+            "explanation": "You can see the books falling → **'re going to drop**."
           },
           {
             "id": "b1-u7-exc-6",
@@ -715,7 +715,7 @@
             "acceptedAnswers": [
               "'m going to start"
             ],
-            "explanation": ""
+            "explanation": "A decision about next month → **'m going to start**."
           },
           {
             "id": "b1-u7-exc-7",
@@ -725,7 +725,7 @@
             "acceptedAnswers": [
               "Are, going to visit"
             ],
-            "explanation": ""
+            "explanation": "Question about July plans → **Are they going to visit**?"
           },
           {
             "id": "b1-u7-exc-8",
@@ -735,7 +735,7 @@
             "acceptedAnswers": [
               "isn't going to drive"
             ],
-            "explanation": ""
+            "explanation": "Dad's plan not to drive → **isn't going to drive**."
           }
         ]
       },
@@ -764,7 +764,8 @@
             ],
             "answer": "will become",
             "originalSentence": "I think Ella **will become / is becoming** a great doctor one day.",
-            "completedSentence": "I think Ella will become a great doctor one day."
+            "completedSentence": "I think Ella will become a great doctor one day.",
+            "explanation": "A general prediction → **will become** (not a fixed arrangement)."
           },
           {
             "id": "b1-u7-exe-2",
@@ -777,7 +778,8 @@
             ],
             "answer": "are meeting",
             "originalSentence": "We **are meeting / will meet** our teacher after class today.",
-            "completedSentence": "We are meeting our teacher after class today."
+            "completedSentence": "We are meeting our teacher after class today.",
+            "explanation": "A fixed arrangement today → **are meeting** our teacher."
           },
           {
             "id": "b1-u7-exe-3",
@@ -790,7 +792,8 @@
             ],
             "answer": "are you going to wear",
             "originalSentence": "What **are you going to wear / do you wear** to the party tonight?",
-            "completedSentence": "What are you going to wear to the party tonight?"
+            "completedSentence": "What are you going to wear to the party tonight?",
+            "explanation": "A decision about tonight's clothes → **are you going to wear**?"
           },
           {
             "id": "b1-u7-exe-4",
@@ -803,7 +806,8 @@
             ],
             "answer": "Will you help",
             "originalSentence": "**Will you help / Shall you help** me carry these bags?",
-            "completedSentence": "Will you help me carry these bags?"
+            "completedSentence": "Will you help me carry these bags?",
+            "explanation": "A polite offer of help → **Will you help** (not **Shall you**)."
           },
           {
             "id": "b1-u7-exe-5",
@@ -816,7 +820,8 @@
             ],
             "answer": "is going to study",
             "originalSentence": "My brother **is going to study / will study** medicine at university.",
-            "completedSentence": "My brother is going to study medicine at university."
+            "completedSentence": "My brother is going to study medicine at university.",
+            "explanation": "A plan to study medicine → **is going to study**."
           },
           {
             "id": "b1-u7-exe-6",
@@ -829,7 +834,8 @@
             ],
             "answer": "are having",
             "originalSentence": "We **are having / will have** a science test tomorrow morning.",
-            "completedSentence": "We are having a science test tomorrow morning."
+            "completedSentence": "We are having a science test tomorrow morning.",
+            "explanation": "A scheduled test → **are having** a science test tomorrow."
           },
           {
             "id": "b1-u7-exe-7",
@@ -842,7 +848,8 @@
             ],
             "answer": "will enjoy",
             "originalSentence": "I'm sure you **will enjoy / are enjoying** the concert.",
-            "completedSentence": "I'm sure you will enjoy the concert."
+            "completedSentence": "I'm sure you will enjoy the concert.",
+            "explanation": "A confident prediction → **will enjoy** the concert."
           },
           {
             "id": "b1-u7-exe-8",
@@ -855,7 +862,8 @@
             ],
             "answer": "Are they travelling",
             "originalSentence": "**Are they travelling / Do they travel** to Italy next month?",
-            "completedSentence": "Are they travelling to Italy next month?"
+            "completedSentence": "Are they travelling to Italy next month?",
+            "explanation": "A travel arrangement → **Are they travelling** to Italy?"
           },
           {
             "id": "b1-u7-exe-9",
@@ -868,7 +876,8 @@
             ],
             "answer": "will win",
             "originalSentence": "I think our team **will win / is winning** the competition.",
-            "completedSentence": "I think our team will win the competition."
+            "completedSentence": "I think our team will win the competition.",
+            "explanation": "An opinion about the result → **will win**."
           },
           {
             "id": "b1-u7-exe-10",
@@ -881,7 +890,8 @@
             ],
             "answer": "will speak",
             "originalSentence": "If you like, I **will speak / am speaking** to the teacher for you.",
-            "completedSentence": "If you like, I will speak to the teacher for you."
+            "completedSentence": "If you like, I will speak to the teacher for you.",
+            "explanation": "A spontaneous offer → **will speak** to the teacher."
           }
         ]
       },
@@ -919,7 +929,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "A holiday already arranged → **We're going** to Greece."
           },
           {
             "id": "b1-u7-exf-2",
@@ -941,7 +951,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "A spontaneous decision to help → **I'll help** you."
           },
           {
             "id": "b1-u7-exf-3",
@@ -963,7 +973,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "An instant decision → **I'll give** it to you."
           },
           {
             "id": "b1-u7-exf-4",
@@ -985,7 +995,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "A plan for next year → **I'm going to take** a course."
           },
           {
             "id": "b1-u7-exf-5",
@@ -1007,7 +1017,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "A prediction about Mia → **she'll win** the race."
           },
           {
             "id": "b1-u7-exf-6",
@@ -1029,7 +1039,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Dark clouds = evidence → **it's going to snow**."
           }
         ]
       }
