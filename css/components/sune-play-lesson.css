@@ -1488,6 +1488,45 @@ button.sp-vocab-word-card:focus-visible {
   color: var(--sp-duo-blue-dark);
 }
 
+/* When explanation is open, swap green/red feedback chrome for Duo blue */
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-main--correct,
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-main--incorrect {
+  border-color: var(--sp-duo-blue);
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
+}
+
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-footer--feedback.sp-practice-footer--correct,
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-footer--feedback.sp-practice-footer--incorrect {
+  background: var(--sp-duo-blue-light);
+  border-color: var(--sp-duo-blue-border);
+}
+
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-footer--feedback.sp-practice-footer--incorrect .sp-practice-footer-inner {
+  background: transparent;
+}
+
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-btn--continue-mode.sp-btn--correct,
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-btn--continue-mode.sp-btn--incorrect {
+  background: var(--sp-duo-blue);
+  border-color: var(--sp-duo-blue);
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
+}
+
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-btn--continue-mode.sp-btn--correct:active:not(:disabled),
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-btn--continue-mode.sp-btn--incorrect:active:not(:disabled) {
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 2px 0 var(--sp-duo-blue-dark);
+}
+
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-feedback--correct .sp-feedback-icon,
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-feedback--incorrect .sp-feedback-icon,
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-feedback--correct .sp-feedback-title,
+.sp-practice-session:has(.sp-exercise-card--explanation) .sp-feedback--incorrect .sp-feedback-title {
+  color: var(--sp-duo-blue);
+}
+
 .sp-practice-footer .sp-btn--action {
   width: auto;
   min-width: clamp(80px, 22vw, 140px);
