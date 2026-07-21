@@ -1554,12 +1554,6 @@
   margin: 8px 0 12px;
 }
 
-.dict-mcq-wf-particle-row .dict-mcq-wf-morph {
-  font-size: 0.78rem;
-  max-width: none;
-  white-space: normal;
-}
-
 .dict-mcq-wf-definition {
   font-size: 1rem;
   line-height: 1.5;
@@ -1916,6 +1910,15 @@
   .dict-mcq-question-card .dict-mcq-term,
   .dict-mcq-question-card .dict-tts-word.dict-mcq-term {
     font-size: clamp(1.35rem, 5vw, 1.65rem);
+  }
+
+  .dict-mcq-recall-stage {
+    gap: 14px;
+  }
+
+  .dict-mcq-recall-input {
+    min-height: 52px;
+    padding: 12px 16px;
   }
 
   .dict-mcq-options--duo {

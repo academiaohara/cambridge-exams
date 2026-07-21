@@ -6696,9 +6696,6 @@
       var baseHtml = q.base
         ? this._dictDuoTtsWord(q.base, 'dict-mcq-term')
         : '';
-      var morphHtml = q.morph
-        ? '<span class="wf-dict-morph dict-mcq-wf-morph">' + this._escapeHTML(q.morph) + '</span>'
-        : '';
       var definitionHtml = q.definition
         ? this._dictDuoTtsSpan(this._dictFormatDefinition(q.definition), 'dict-mcq-wf-definition', 'Listen to definition')
         : '';
@@ -6712,7 +6709,6 @@
                 '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
                 '<div class="dict-mcq-wf-particle-row">' +
                   baseHtml +
-                  morphHtml +
                   wordTypeBadge +
                   levelBadge +
                 '</div>' +
