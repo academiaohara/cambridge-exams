@@ -8839,49 +8839,6 @@
   flex-wrap: wrap;
 }
 
-/* WF dictionary recall practice (particle + definition → typed answer) */
-.dict-mcq-session--recall .dict-mcq-question-card--recall {
-  text-align: center;
-}
-.dict-mcq-wf-particle-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0 14px;
-}
-.dict-mcq-wf-particle-row .dict-mcq-wf-base,
-.dict-mcq-wf-particle-row .dict-mcq-term {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-dark, #0f172a);
-}
-.dict-mcq-wf-particle-row .dict-mcq-wf-morph {
-  font-size: 0.78rem;
-  max-width: none;
-  white-space: normal;
-}
-.dict-mcq-wf-definition {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text-dark, #334155);
-  max-width: 520px;
-  margin: 0 auto;
-}
-.dict-mcq-recall-input-wrap {
-  max-width: 420px;
-  margin: 20px auto 0;
-  width: 100%;
-}
-.dict-mcq-recall-input {
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
 @media (max-width: 600px) {
   .dict-mcq-diff-grid {
     grid-template-columns: 1fr;
