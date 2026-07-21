@@ -1133,7 +1133,7 @@
       lifeLoss: ok ? 0 : (chargeLife ? 1 : 0),
       userAnswer: given,
       correctAnswer: gap.expectedAnswer,
-      explanation: p.explanation || '',
+      explanation: (gap && gap.explanation) || p.explanation || '',
       _passageGapResult: true
     };
   }
