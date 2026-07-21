@@ -249,6 +249,18 @@
           "prescription",
           "allergic",
           "recovery"
+        ],
+        "explanations": [
+          "Did not know → completely **unaware** that the berries were dangerous.",
+          "Stress importance → cannot **emphasise** enough how important…",
+          "Medical noun → urgently needed an **injection** of antidote.",
+          "Harmful → highly **poisonous** substance.",
+          "Feeling unwell → felt incredibly **uncomfortable**.",
+          "Medical professional → A **surgeon** at the hospital confirmed…",
+          "Care received → The **treatment** involved close monitoring.",
+          "Doctor's note for medicine → gave him a **prescription**.",
+          "Bad reaction → **allergic** to one of the tablets.",
+          "Return to health → made a full **recovery**."
         ]
       },
       {
@@ -273,7 +285,7 @@
             "acceptedAnswers": [
               "is no need for Adrian"
             ],
-            "explanation": ""
+            "explanation": "No necessity → there **is no need for Adrian** to take medication."
           },
           {
             "id": "b2-u7-exb-2",
@@ -283,7 +295,7 @@
             "acceptedAnswers": [
               "led to the minister's"
             ],
-            "explanation": ""
+            "explanation": "Cause and result → a serious illness **led to the minister's** resignation."
           },
           {
             "id": "b2-u7-exb-3",
@@ -293,7 +305,7 @@
             "acceptedAnswers": [
               "is not worth seeing"
             ],
-            "explanation": ""
+            "explanation": "Not worth it → it **is not worth seeing** the doctor."
           },
           {
             "id": "b2-u7-exb-4",
@@ -303,7 +315,7 @@
             "acceptedAnswers": [
               "made an appointment with"
             ],
-            "explanation": ""
+            "explanation": "Arrange a visit → **made an appointment with** the physiotherapist."
           },
           {
             "id": "b2-u7-exb-5",
@@ -313,7 +325,7 @@
             "acceptedAnswers": [
               "am tired of being"
             ],
-            "explanation": ""
+            "explanation": "Fed up with → I **am tired of being** on a strict diet."
           },
           {
             "id": "b2-u7-exb-6",
@@ -323,7 +335,7 @@
             "acceptedAnswers": [
               "is unlikely to"
             ],
-            "explanation": ""
+            "explanation": "Unlikely future → your knee **is unlikely to** recover in time."
           },
           {
             "id": "b2-u7-exb-7",
@@ -333,7 +345,7 @@
             "acceptedAnswers": [
               "to be able to do"
             ],
-            "explanation": ""
+            "explanation": "Wish about ability → I'd love **to be able to do** a triathlon."
           },
           {
             "id": "b2-u7-exb-8",
@@ -343,7 +355,7 @@
             "acceptedAnswers": [
               "cut down on"
             ],
-            "explanation": ""
+            "explanation": "Reduce consumption → **cut down on** salt."
           }
         ]
       },
@@ -369,7 +381,8 @@
             "answer": "come down with",
             "acceptedAnswers": [
               "come down with"
-            ]
+            ],
+            "explanation": "Become ill → **come down with** a bad cold."
           },
           {
             "id": "b2-u7-exc-2",
@@ -379,7 +392,8 @@
             "answer": "get over",
             "acceptedAnswers": [
               "get over"
-            ]
+            ],
+            "explanation": "Recover from illness → **get over** his knee operation."
           },
           {
             "id": "b2-u7-exc-3",
@@ -389,7 +403,8 @@
             "answer": "come round",
             "acceptedAnswers": [
               "come round"
-            ]
+            ],
+            "explanation": "Regain consciousness → patients **come round** after surgery."
           },
           {
             "id": "b2-u7-exc-4",
@@ -399,7 +414,8 @@
             "answer": "passed out",
             "acceptedAnswers": [
               "passed out"
-            ]
+            ],
+            "explanation": "Lose consciousness suddenly → she nearly **passed out**."
           },
           {
             "id": "b2-u7-exc-5",
@@ -409,7 +425,8 @@
             "answer": "put on",
             "acceptedAnswers": [
               "put on"
-            ]
+            ],
+            "explanation": "Gain weight → has **put on** quite a lot of weight."
           },
           {
             "id": "b2-u7-exc-6",
@@ -419,7 +436,8 @@
             "answer": "break out",
             "acceptedAnswers": [
               "break out"
-            ]
+            ],
+            "explanation": "Start suddenly (infections) → infections **break out** in crowded spaces."
           },
           {
             "id": "b2-u7-exc-7",
@@ -429,7 +447,8 @@
             "answer": "bringing on",
             "acceptedAnswers": [
               "bringing on"
-            ]
+            ],
+            "explanation": "Cause symptoms → what's been **bringing on** my back pain."
           },
           {
             "id": "b2-u7-exc-8",
@@ -439,7 +458,8 @@
             "answer": "give up",
             "acceptedAnswers": [
               "give up"
-            ]
+            ],
+            "explanation": "Stop a habit → decided to **give up** processed foods."
           }
         ]
       },
@@ -481,7 +501,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Past possibility not taken → I **could** have signed up, but I went jogging instead."
           },
           {
             "id": "b2-u7-exd-2",
@@ -507,7 +527,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Advice about now → You **should get** more sleep."
           },
           {
             "id": "b2-u7-exd-3",
@@ -533,7 +553,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Past regret/advice → You should **have called** me."
           },
           {
             "id": "b2-u7-exd-4",
@@ -559,7 +579,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Past obligation question → **Did you have to** wear a bandage?"
           },
           {
             "id": "b2-u7-exd-5",
@@ -585,7 +605,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "No obligation → You **don't have to** follow a strict diet."
           },
           {
             "id": "b2-u7-exd-6",
@@ -611,7 +631,7 @@
               }
             ],
             "answer": "D",
-            "explanation": ""
+            "explanation": "Impossible deduction → That **can't** be Lucy — she's in surgery."
           },
           {
             "id": "b2-u7-exd-7",
@@ -637,7 +657,7 @@
               }
             ],
             "answer": "B",
-            "explanation": ""
+            "explanation": "Past deduction → You must **have been** relieved."
           },
           {
             "id": "b2-u7-exd-8",
@@ -663,7 +683,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Obligation in a hypothetical → I'd hate to **have to** do that."
           }
         ]
       },
@@ -705,7 +725,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Medical check → the nurse **examined** the bruise."
           },
           {
             "id": "b2-u7-exe-2",
@@ -731,7 +751,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Cooking instructions → a healthy **recipe** for soup."
           },
           {
             "id": "b2-u7-exe-3",
@@ -757,7 +777,7 @@
               }
             ],
             "answer": "D",
-            "explanation": ""
+            "explanation": "Muscles after exercise → shoulders are **sore**."
           },
           {
             "id": "b2-u7-exe-4",
@@ -783,7 +803,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Hurt in an accident → luckily wasn't **injured** at all."
           },
           {
             "id": "b2-u7-exe-5",
@@ -809,7 +829,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Unhealthily thin → looks terribly **thin**."
           },
           {
             "id": "b2-u7-exe-6",
@@ -835,7 +855,7 @@
               }
             ],
             "answer": "D",
-            "explanation": ""
+            "explanation": "Medicine collocation → unpleasant side **effects**."
           },
           {
             "id": "b2-u7-exe-7",
@@ -861,7 +881,7 @@
               }
             ],
             "answer": "A",
-            "explanation": ""
+            "explanation": "Euthanise an animal → would have to **put down** Bonnie."
           },
           {
             "id": "b2-u7-exe-8",
@@ -887,7 +907,7 @@
               }
             ],
             "answer": "C",
-            "explanation": ""
+            "explanation": "Fixed phrase → has really **done** me good."
           }
         ]
       }
