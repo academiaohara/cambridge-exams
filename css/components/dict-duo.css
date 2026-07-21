@@ -1522,6 +1522,128 @@
   filter: brightness(1.06);
 }
 
+/* ── WF dictionary recall (typed answer) ── */
+.dict-mcq-session--recall .dict-mcq-duo-body {
+  align-items: center;
+  justify-content: center;
+}
+
+.dict-mcq-recall-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+.dict-mcq-question-card--recall {
+  margin-bottom: 0;
+}
+
+.dict-mcq-wf-particle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.dict-mcq-wf-particle-row .dict-mcq-wf-morph {
+  font-size: 0.78rem;
+  max-width: none;
+  white-space: normal;
+}
+
+.dict-mcq-wf-definition {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--duo-text);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.dict-mcq-recall-input-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.dict-mcq-recall-label {
+  display: block;
+  width: 100%;
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--duo-text-muted);
+  text-align: center;
+}
+
+.dict-mcq-recall-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 56px;
+  padding: 14px 20px;
+  border: 2px solid #d5dae6;
+  border-bottom-width: 4px;
+  border-radius: var(--duo-radius-sm);
+  background: var(--duo-surface);
+  font-family: var(--duo-font-display);
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
+  font-weight: 700;
+  color: var(--duo-text);
+  text-align: center;
+  outline: none;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dict-mcq-recall-input::placeholder {
+  color: #a8b4cc;
+  font-weight: 600;
+}
+
+.dict-mcq-recall-input:focus {
+  border-color: var(--duo-secondary);
+  background: #f8f9fc;
+  box-shadow: 0 0 0 3px var(--duo-secondary-tint);
+}
+
+.dict-mcq-recall-input:disabled {
+  cursor: default;
+}
+
+.dict-mcq-recall-input--correct {
+  border-color: var(--duo-correct) !important;
+  border-bottom-color: var(--duo-correct-dark) !important;
+  background: var(--duo-correct-tint) !important;
+  color: var(--duo-correct-dark);
+  box-shadow: none;
+}
+
+.dict-mcq-recall-input--wrong {
+  border-color: var(--duo-error) !important;
+  border-bottom-color: var(--duo-error-dark) !important;
+  background: var(--duo-error-tint) !important;
+  color: var(--duo-error-dark);
+  box-shadow: none;
+}
+
+.dict-mcq-session--recall .dict-mcq-feedback--duo {
+  margin-top: 0;
+}
+
 /* ── Mobile launcher & popover (Sune brand) ── */
 .dict-home-box--duo {
   background: var(--duo-bg);

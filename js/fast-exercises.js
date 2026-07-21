@@ -6694,7 +6694,7 @@
         ? '<span class="wf-dict-type wf-type-' + this._escapeHTML(q.wordType) + '">' + this._escapeHTML(q.wordType) + '</span>'
         : '';
       var baseHtml = q.base
-        ? this._dictDuoTtsWord(q.base, 'dict-mcq-wf-base')
+        ? this._dictDuoTtsWord(q.base, 'dict-mcq-term')
         : '';
       var morphHtml = q.morph
         ? '<span class="wf-dict-morph dict-mcq-wf-morph">' + this._escapeHTML(q.morph) + '</span>'
@@ -6707,23 +6707,26 @@
         '<div class="dict-mcq-session dict-mcq-session--duo dict-mcq-session--playing dict-mcq-session--recall">' +
           this._dictDuoRenderHeader(state) +
           '<div class="dict-mcq-duo-body" id="dict-mcq-duo-body">' +
-            '<div class="dict-mcq-question-card dict-mcq-question-card--recall">' +
-              '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
-              '<div class="dict-mcq-wf-particle-row">' +
-                baseHtml +
-                morphHtml +
-                wordTypeBadge +
-                levelBadge +
+            '<div class="dict-mcq-recall-stage">' +
+              '<div class="dict-mcq-question-card dict-mcq-question-card--recall">' +
+                '<span class="dict-mcq-prompt-label">' + config.promptVerb + '</span>' +
+                '<div class="dict-mcq-wf-particle-row">' +
+                  baseHtml +
+                  morphHtml +
+                  wordTypeBadge +
+                  levelBadge +
+                '</div>' +
+                '<div class="dict-mcq-wf-definition">' + definitionHtml + '</div>' +
               '</div>' +
-              '<div class="dict-mcq-wf-definition">' + definitionHtml + '</div>' +
+              '<div class="dict-mcq-recall-input-wrap">' +
+                '<label class="dict-mcq-recall-label" for="dict-mcq-recall-input">Your answer</label>' +
+                '<input type="text" class="dict-mcq-recall-input" id="dict-mcq-recall-input" ' +
+                  'placeholder="Type the word…" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
+                  'oninput="FastExercises._onDictRecallInput()" ' +
+                  'onkeydown="if(event.key===\'Enter\'){event.preventDefault();FastExercises._nextDictMcqQuestion();}" />' +
+              '</div>' +
+              '<div class="dict-mcq-feedback dict-mcq-feedback--duo" id="dict-mcq-feedback" aria-live="polite"></div>' +
             '</div>' +
-            '<div class="dict-mcq-recall-input-wrap">' +
-              '<input type="text" class="dict-mcq-recall-input pv-write-input" id="dict-mcq-recall-input" ' +
-                'placeholder="Type the word…" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
-                'oninput="FastExercises._onDictRecallInput()" ' +
-                'onkeydown="if(event.key===\'Enter\'){event.preventDefault();FastExercises._nextDictMcqQuestion();}" />' +
-            '</div>' +
-            '<div class="dict-mcq-feedback dict-mcq-feedback--duo" id="dict-mcq-feedback" aria-live="polite"></div>' +
           '</div>' +
           '<footer class="dict-mcq-duo-footer dict-mcq-play-footer">' +
             '<button type="button" class="dict-mcq-btn dict-mcq-btn-primary dict-mcq-continue-btn" id="dict-mcq-next" ' +
@@ -6790,7 +6793,7 @@
         state.answered = true;
 
         input.disabled = true;
-        input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
+        input.classList.add(isCorrect ? 'dict-mcq-recall-input--correct' : 'dict-mcq-recall-input--wrong');
         if (!isCorrect) input.setAttribute('data-correct-answer', q.correctAnswer);
       } else {
         if (state.selectedIndex < 0) return;
