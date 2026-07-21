@@ -1306,11 +1306,11 @@ button.sp-vocab-word-card:focus-visible {
 }
 
 .sp-btn--explain-icon.sp-btn--explain-active {
-  background: #e8f4ff;
+  background: var(--sp-duo-blue-light);
   color: var(--sp-duo-blue);
   border-color: var(--sp-duo-blue);
-  border-bottom-color: #1a7fd4;
-  box-shadow: 0 3px 0 #1a7fd4;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
 }
 
 .sp-btn--explain-icon.sp-btn--explain-active .material-symbols-outlined {
@@ -1319,10 +1319,10 @@ button.sp-vocab-word-card:focus-visible {
 
 .sp-btn--explain-icon.sp-btn--explain-active:active {
   transform: translateY(2px);
-  box-shadow: 0 1px 0 #1a7fd4;
+  box-shadow: 0 1px 0 var(--sp-duo-blue-dark);
 }
 
-/* ── In-card explanation view ───────────────────────────────────────────── */
+/* ── In-card explanation view (Duo style) ─────────────────────────────────── */
 
 .sp-practice-main .sp-exercise-card--explanation {
   align-items: stretch;
@@ -1335,6 +1335,7 @@ button.sp-vocab-word-card:focus-visible {
   justify-content: flex-start;
   align-items: stretch;
   overflow-y: auto;
+  background: var(--white);
 }
 
 .sp-exercise-card--explanation > .sp-screen[hidden] {
@@ -1370,9 +1371,9 @@ button.sp-vocab-word-card:focus-visible {
 .sp-explanation-card-why {
   width: 100%;
   box-sizing: border-box;
-  padding: clamp(14px, 3vw, 20px) clamp(16px, 4vw, 24px);
+  padding: clamp(16px, 3.5vw, 22px) clamp(18px, 4vw, 26px);
   border: none;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 2px solid var(--sp-duo-blue-border);
   border-radius: 0;
   background: var(--white);
 }
@@ -1382,37 +1383,45 @@ button.sp-vocab-word-card:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 999px;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--sp-duo-blue-dark);
+  background: var(--sp-duo-blue-light);
+  border: 2px solid var(--sp-duo-blue-border);
 }
 
 .sp-explanation-card-context-label .material-symbols-outlined,
 .sp-explanation-card-answer-label .material-symbols-outlined {
   font-size: 0.95rem;
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 20;
-  color: var(--text-light);
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+  color: var(--sp-duo-blue);
 }
 
 .sp-explanation-card-context-text,
 .sp-explanation-card-answer-text {
   margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.02rem;
+  padding: 12px 14px;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  border-radius: 14px;
+  background: var(--white);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: clamp(1rem, 0.5rem + 2vw, 1.12rem);
   font-weight: 700;
-  line-height: 1.5;
-  color: var(--text-dark, #2d2d2d);
+  line-height: 1.45;
+  color: #3c3c3c;
+  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
 }
 
 .sp-explanation-card-answer-text {
+  color: var(--sp-duo-blue-dark);
   font-weight: 800;
 }
 
@@ -1421,58 +1430,62 @@ button.sp-vocab-word-card:focus-visible {
   display: flex;
   flex-direction: column;
   border-bottom: none;
-  background: var(--bg-light, #f7f8fa);
+  background: var(--sp-duo-blue-light);
 }
 
 .sp-explanation-card-why-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .sp-explanation-card-why-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: var(--white);
-  color: var(--text-medium);
-  border: 1px solid var(--border-light);
+  background: var(--sp-duo-blue);
+  color: var(--white);
+  border: 2px solid var(--sp-duo-blue);
+  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
   flex-shrink: 0;
 }
 
 .sp-explanation-card-why-icon .material-symbols-outlined {
-  font-size: 1rem;
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  font-size: 1.05rem;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
 }
 
 .sp-explanation-card-why-title {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--sp-duo-blue-dark);
 }
 
 .sp-explanation-card-why-body {
   flex: 1;
-  padding: 0;
-  border: none;
-  border-radius: 0;
+  padding: 14px 16px;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  border-radius: 16px;
   font-family: 'Nunito', sans-serif;
   font-size: 1.02rem;
-  line-height: 1.6;
-  color: var(--text-medium);
-  background: transparent;
+  line-height: 1.62;
+  color: #3c3c3c;
+  background: var(--white);
+  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
 }
 
 .sp-explanation-card-why-body strong {
   font-weight: 800;
-  color: var(--text-dark, #2d2d2d);
+  color: var(--sp-duo-blue-dark);
 }
 
 .sp-practice-footer .sp-btn--action {
