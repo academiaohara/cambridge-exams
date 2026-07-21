@@ -5,6 +5,7 @@
 var LessonExplanation = (function() {
   var SHEET_ID = 'lesson-explanation-sheet';
   var INLINE_OVERLAY_ID = 'lesson-explanation-inline';
+  var CARD_VIEW_ID = 'sp-explanation-card-view';
 
   function isMobile() {
     return !!(window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
@@ -201,9 +202,92 @@ var LessonExplanation = (function() {
     });
   }
 
+  function cardContextHtml(text) {
+    if (!text) return '';
+    return '<div class="sp-explanation-card-context">' +
+        '<span class="sp-explanation-card-context-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">quiz</span>' +
+          'Question' +
+        '</span>' +
+        '<p class="sp-explanation-card-context-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
+  function cardAnswerHtml(text) {
+    if (!text) return '';
+    return '<div class="sp-explanation-card-answer">' +
+        '<span class="sp-explanation-card-answer-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span>' +
+          'Correct answer' +
+        '</span>' +
+        '<p class="sp-explanation-card-answer-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
+  function cardWhyHtml(text) {
+    return '<div class="sp-explanation-card-why">' +
+        '<div class="sp-explanation-card-why-header">' +
+          '<span class="sp-explanation-card-why-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">lightbulb</span>' +
+          '</span>' +
+          '<span class="sp-explanation-card-why-title">Why</span>' +
+        '</div>' +
+        '<div class="sp-explanation-card-why-body">' + formatBody(text) + '</div>' +
+      '</div>';
+  }
+
+  function isOpenInCard(cardEl) {
+    return !!(cardEl && cardEl.classList.contains('sp-exercise-card--explanation'));
+  }
+
+  function closeInCard(cardEl) {
+    if (!cardEl) return;
+    var view = cardEl.querySelector('#' + CARD_VIEW_ID);
+    if (view) view.remove();
+    cardEl.classList.remove('sp-exercise-card--explanation');
+    var screen = cardEl.querySelector('.sp-screen');
+    if (screen) screen.hidden = false;
+  }
+
+  function openInCard(cardEl, opts) {
+    if (!cardEl || !opts || !opts.explanation) return;
+    closeInCard(cardEl);
+
+    var screen = cardEl.querySelector('.sp-screen');
+    if (screen) screen.hidden = true;
+
+    var view = document.createElement('div');
+    view.className = 'sp-explanation-card-view';
+    view.id = CARD_VIEW_ID;
+    view.setAttribute('role', 'region');
+    view.setAttribute('aria-label', opts.title || 'Explanation');
+    view.innerHTML =
+        '<div class="sp-explanation-card-view-inner">' +
+          cardContextHtml(opts.context) +
+          cardAnswerHtml(opts.correctAnswer) +
+          cardWhyHtml(opts.explanation) +
+        '</div>';
+
+    cardEl.appendChild(view);
+    cardEl.classList.add('sp-exercise-card--explanation');
+  }
+
+  function toggleInCard(cardEl, opts) {
+    if (isOpenInCard(cardEl)) {
+      closeInCard(cardEl);
+      return false;
+    }
+    openInCard(cardEl, opts);
+    return true;
+  }
+
   return {
     isMobile: isMobile,
     open: open,
-    close: close
+    close: close,
+    isOpenInCard: isOpenInCard,
+    openInCard: openInCard,
+    closeInCard: closeInCard,
+    toggleInCard: toggleInCard
   };
 })();

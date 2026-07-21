@@ -384,6 +384,41 @@
     return buildLessonShellHtml('<div class="sp-result-screen sp-result-screen--failed"><h2 class="sp-result-title">Out of lives</h2></div>', opts.categoryId);
   }
 
+  function setExplainBtnActive(active) {
+    var root = getMount();
+    var explainBtn = root && root.querySelector('#sp-explain-btn');
+    if (!explainBtn) return;
+    explainBtn.classList.toggle('sp-btn--explain-active', !!active);
+    explainBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    explainBtn.setAttribute('aria-label', active ? 'Close explanation' : 'View explanation');
+  }
+
+  function closeExerciseCardExplanation() {
+    if (typeof LessonExplanation === 'undefined') return;
+    var root = getMount();
+    var cardEl = root && root.querySelector('.sp-exercise-card');
+    if (cardEl) LessonExplanation.closeInCard(cardEl);
+    setExplainBtnActive(false);
+  }
+
+  function getExerciseCardEl() {
+    var root = getMount();
+    return root && root.querySelector('.sp-exercise-card');
+  }
+
+  function buildExplainOpts() {
+    var s = getSession();
+    var result = s && s._lastFeedbackResult;
+    var screen = s && s.currentScreen;
+    if (!result || !result.explanation) return null;
+    return {
+      title: 'Explanation',
+      context: getExplainContext(screen),
+      explanation: result.explanation,
+      correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen)
+    };
+  }
+
   function setActionBtn(mode, enabled) {
     var root = getMount();
     if (!root) return;
@@ -414,6 +449,12 @@
     if (explainBtn) {
       var hasExplanation = s && s._lastFeedbackResult && s._lastFeedbackResult.explanation;
       explainBtn.hidden = mode !== 'continue' || !hasExplanation;
+      if (explainBtn.hidden) {
+        setExplainBtnActive(false);
+      } else if (typeof LessonExplanation !== 'undefined') {
+        var cardEl = getExerciseCardEl();
+        setExplainBtnActive(cardEl && LessonExplanation.isOpenInCard(cardEl));
+      }
     }
 
     var isFeedback = mode === 'continue';
@@ -601,6 +642,7 @@
     s.awaitingContinue = false;
     s._lastFeedbackResult = null;
     s._lastResultCorrect = null;
+    closeExerciseCardExplanation();
     clearResultStyles();
 
     screenMount.innerHTML = renderer.PracticeScreenRenderer(screen);
@@ -654,6 +696,7 @@
 
   function handleContinue() {
     var s = getSession();
+    closeExerciseCardExplanation();
     if (!s || !s.awaitingContinue) {
       if (s && s.passive && s.onContinueToNext) {
         s.onContinueToNext();
@@ -728,24 +771,15 @@
   }
 
   function handleExplainClick() {
-    var s = getSession();
-    var result = s && s._lastFeedbackResult;
-    var screen = s && s.currentScreen;
-    if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
+    if (typeof LessonExplanation === 'undefined') return;
+    var cardEl = getExerciseCardEl();
+    if (!cardEl) return;
 
-    var explainOpts = {
-      title: 'Explanation',
-      context: getExplainContext(screen),
-      explanation: result.explanation,
-      correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
-      continueLabel: 'Continue'
-    };
-    var sessionEl = getMount() && getMount().querySelector('.sp-practice-session');
-    if (sessionEl) {
-      LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
-      return;
-    }
-    LessonExplanation.open(explainOpts);
+    var explainOpts = buildExplainOpts();
+    if (!explainOpts || !explainOpts.explanation) return;
+
+    var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
+    setExplainBtnActive(isOpen);
   }
 
   function bindSessionEvents(fe) {

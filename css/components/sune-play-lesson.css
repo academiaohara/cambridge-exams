@@ -1305,6 +1305,193 @@ button.sp-vocab-word-card:focus-visible {
   border-color: var(--text-light);
 }
 
+.sp-btn--explain-icon.sp-btn--explain-active {
+  background: #e8f4ff;
+  color: var(--sp-duo-blue);
+  border-color: var(--sp-duo-blue);
+  border-bottom-color: #1a7fd4;
+  box-shadow: 0 3px 0 #1a7fd4;
+}
+
+.sp-btn--explain-icon.sp-btn--explain-active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+.sp-btn--explain-icon.sp-btn--explain-active:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #1a7fd4;
+}
+
+/* ── In-card explanation view ───────────────────────────────────────────── */
+
+.sp-exercise-card--explanation {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-y: auto;
+}
+
+.sp-exercise-card--explanation > .sp-screen[hidden] {
+  display: none !important;
+}
+
+.sp-explanation-card-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--sp-content-max);
+  margin-inline: auto;
+  animation: spExplanationCardIn 0.28s cubic-bezier(0.34, 1.1, 0.64, 1) both;
+}
+
+@keyframes spExplanationCardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sp-explanation-card-view-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 4px 0 12px;
+}
+
+.sp-explanation-card-context,
+.sp-explanation-card-answer {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 2px solid var(--border-light);
+  border-bottom-width: 3px;
+  background: var(--white);
+}
+
+.sp-explanation-card-context {
+  border-color: #ffc266;
+  border-bottom-color: #e68600;
+  background: #fff8ee;
+}
+
+.sp-explanation-card-answer {
+  border-color: #a8e06c;
+  border-bottom-color: #46a302;
+  background: #f4ffe8;
+}
+
+.sp-explanation-card-context-label,
+.sp-explanation-card-answer-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sp-explanation-card-context-label {
+  color: #c45c00;
+}
+
+.sp-explanation-card-answer-label {
+  color: #368201;
+}
+
+.sp-explanation-card-context-label .material-symbols-outlined,
+.sp-explanation-card-answer-label .material-symbols-outlined {
+  font-size: 1rem;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+}
+
+.sp-explanation-card-context-text,
+.sp-explanation-card-answer-text {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.45;
+  background: var(--white);
+  border: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.sp-explanation-card-context-text {
+  color: #1f2937;
+}
+
+.sp-explanation-card-answer-text {
+  color: #46a302;
+  font-weight: 800;
+}
+
+.sp-explanation-card-why {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 18px;
+  background: #fffbe6;
+  border: 2.5px solid #ffc800;
+  border-bottom-width: 4px;
+  border-bottom-color: #e5b400;
+  box-shadow: 0 4px 0 #e5b400;
+}
+
+.sp-explanation-card-why-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.sp-explanation-card-why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffc800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sp-explanation-card-why-icon .material-symbols-outlined {
+  font-size: 1.15rem;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+.sp-explanation-card-why-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8c6800;
+}
+
+.sp-explanation-card-why-body {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.62;
+  color: #3a2900;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(255, 200, 0, 0.25);
+}
+
+.sp-explanation-card-why-body strong {
+  font-weight: 800;
+  color: #8c6800;
+}
+
 .sp-practice-footer .sp-btn--action {
   width: auto;
   min-width: clamp(80px, 22vw, 140px);
