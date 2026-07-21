@@ -559,6 +559,41 @@
     syncLessonUrl(true);
   }
 
+  function setExplainBtnActive(active) {
+    var explainBtn = lessonState.mount && lessonState.mount.querySelector('#sp-explain-btn');
+    if (!explainBtn) return;
+    explainBtn.classList.toggle('sp-btn--explain-active', !!active);
+    explainBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    explainBtn.setAttribute('aria-label', active ? 'Close explanation' : 'View explanation');
+  }
+
+  function closeExerciseCardExplanation() {
+    if (typeof LessonExplanation === 'undefined' || !lessonState.mount) return;
+    var cardEl = lessonState.mount.querySelector('.sp-exercise-card');
+    if (cardEl) LessonExplanation.closeInCard(cardEl);
+    setExplainBtnActive(false);
+  }
+
+  function getExerciseCardEl() {
+    return lessonState.mount && lessonState.mount.querySelector('.sp-exercise-card');
+  }
+
+  function buildExplainOpts() {
+    var cmContext = lessonState._cmExplainContext;
+    if (cmContext) {
+      return Object.assign({ title: 'Explanation' }, cmContext);
+    }
+    var result = lessonState._lastFeedbackResult;
+    var screen = lessonState.currentScreen;
+    if (!result || !result.explanation) return null;
+    return {
+      title: 'Explanation',
+      context: getScreenContext(screen),
+      explanation: result.explanation,
+      correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen)
+    };
+  }
+
   function setActionBtn(mode, enabled) {
     var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
     var skipBtn = lessonState.mount.querySelector('#sp-skip-btn');
@@ -588,6 +623,12 @@
       var hasColumnMatchExplanation = !!lessonState._cmExplainContext;
       explainBtn.hidden = (mode === 'check' && !hasColumnMatchExplanation) ||
         (mode === 'continue' && !hasFeedbackExplanation);
+      if (explainBtn.hidden) {
+        setExplainBtnActive(false);
+      } else if (typeof LessonExplanation !== 'undefined') {
+        var cardEl = getExerciseCardEl();
+        setExplainBtnActive(cardEl && LessonExplanation.isOpenInCard(cardEl));
+      }
     }
     if (footer) {
       footer.classList.toggle(
@@ -665,6 +706,7 @@
     lessonState._lastFeedbackResult = null;
     lessonState._lastResultCorrect = null;
     lessonState._cmExplainContext = null;
+    closeExerciseCardExplanation();
     clearResultStyles();
 
     var footer = mount.querySelector('#sp-practice-footer');
@@ -1010,42 +1052,15 @@
   }
 
   function handleExplainClick() {
-    var cmContext = lessonState._cmExplainContext;
-    if (cmContext && typeof LessonExplanation !== 'undefined') {
-      var sessionEl = lessonState.mount && lessonState.mount.querySelector('.sp-practice-session');
-      var explainOpts = Object.assign({ title: 'Explanation', continueLabel: 'Close' }, cmContext);
-      if (sessionEl) {
-        LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
-        return;
-      }
-      if (lessonState.mount) {
-        LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
-        return;
-      }
-      LessonExplanation.open(explainOpts);
-      return;
-    }
+    if (typeof LessonExplanation === 'undefined') return;
+    var cardEl = getExerciseCardEl();
+    if (!cardEl) return;
 
-    var result = lessonState._lastFeedbackResult;
-    var screen = lessonState.currentScreen;
-    if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
-    var explainOpts = {
-      title: 'Explanation',
-      context: getScreenContext(screen),
-      explanation: result.explanation,
-      correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
-      continueLabel: 'Continue'
-    };
-    var sessionEl = lessonState.mount && lessonState.mount.querySelector('.sp-practice-session');
-    if (sessionEl) {
-      LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
-      return;
-    }
-    if (lessonState.mount) {
-      LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
-      return;
-    }
-    LessonExplanation.open(explainOpts);
+    var explainOpts = buildExplainOpts();
+    if (!explainOpts || !explainOpts.explanation) return;
+
+    var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
+    setExplainBtnActive(isOpen);
   }
 
   function handleActionClick() {
@@ -1268,6 +1283,8 @@
   function handleContinue() {
     var mount = lessonState.mount;
     if (lessonState.hearts.isGameOver) return;
+
+    closeExerciseCardExplanation();
 
     var screen = lessonState.currentScreen;
     var screenRoot = mount.querySelector('.sp-screen');
