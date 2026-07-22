@@ -572,6 +572,10 @@
     var cardEl = lessonState.mount.querySelector('.sp-exercise-card');
     if (cardEl) LessonExplanation.closeInCard(cardEl);
     setExplainBtnActive(false);
+    updateExerciseTip(
+      lessonState.currentScreen,
+      lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
+    );
   }
 
   function getExerciseCardEl() {
@@ -789,11 +793,17 @@
     var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
     if (!tipMount) return;
 
+    var cardEl = getExerciseCardEl();
+    if (cardEl && cardEl.classList.contains('sp-exercise-card--explanation')) {
+      tipMount.hidden = true;
+      return;
+    }
+
     var tip = '';
     if (screen && screen.formatType === 'word_order_tiles' && screen.payload) {
       var content = screen.payload.explanationContent;
       tip = (content && content.usefulTip) || '';
-    } else if (screen && result &&
+    } else if (screen &&
         (screen.formatType === 'passage_error_hunt_counter' ||
          screen.formatType === 'passage_error_hunt_single') &&
         typeof SunePlayExplanation !== 'undefined') {
@@ -1119,6 +1129,15 @@
 
     var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
     setExplainBtnActive(isOpen);
+    if (isOpen) {
+      var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
+      if (tipMount) tipMount.hidden = true;
+    } else {
+      updateExerciseTip(
+        lessonState.currentScreen,
+        lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
+      );
+    }
   }
 
   function handleActionClick() {
@@ -1425,6 +1444,7 @@
       screenRoot.classList.remove('sp-screen--locked');
       setScreenInputsLocked(false);
       setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      updateExerciseTip(screen, null);
       updateSessionHeader();
       return;
     }
