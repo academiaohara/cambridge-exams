@@ -9,7 +9,10 @@ var SunePlayExplanation = (function() {
     correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
     yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
     optionContrast: { label: 'The fix', icon: 'compare_arrows', variant: 'mistake-note' },
+    question: { label: 'Question', icon: 'quiz', variant: 'neutral' },
+    fix: { label: 'The fix', icon: 'build', variant: 'teach' },
     whyCorrect: { label: "Why it's correct", wrongLabel: 'Why', icon: 'lightbulb', variant: 'teach' },
+    correctedSentence: { label: 'Corrected sentence', icon: 'format_quote', variant: 'answer' },
     vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
     grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
@@ -263,8 +266,24 @@ var SunePlayExplanation = (function() {
     }
   }
 
+  function usesMistakeExplanationFormat(content) {
+    return !!(content && content.fix && content.question && content.correctedSentence);
+  }
+
+  function appendMistakeExplanationSections(sections, content, isWrong) {
+    if (!usesMistakeExplanationFormat(content)) return false;
+
+    sections.push({ key: 'question', text: String(content.question) });
+    sections.push({ key: 'fix', text: String(content.fix) });
+    sections.push(whyCorrectSection(content.whyCorrect, isWrong, { label: 'Why' }));
+    sections.push({ key: 'correctedSentence', text: String(content.correctedSentence) });
+    return true;
+  }
+
   function appendTeachingSections(sections, content, isWrong, userAnswer, options) {
     if (!content) return;
+
+    if (appendMistakeExplanationSections(sections, content, isWrong)) return;
 
     if (content.whyCorrect) {
       sections.push(whyCorrectSection(content.whyCorrect, isWrong));
@@ -953,8 +972,11 @@ var SunePlayExplanation = (function() {
     var userAnswer = result && result.userAnswer;
     var highlighted = String(p.highlightedText || '').trim();
     var isWrong = result && result.correct === false && userAnswer;
+    var standardized = usesMistakeExplanationFormat(content);
 
-    sections.push({ key: 'correct', text: String(correctAnswer) });
+    if (!standardized) {
+      sections.push({ key: 'correct', text: String(correctAnswer) });
+    }
 
     if (isWrong) {
       sections.push({ key: 'yourAnswer', text: String(userAnswer) });
@@ -966,15 +988,17 @@ var SunePlayExplanation = (function() {
       sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
-    var corrected = buildErrorCorrectedSentence(p.sentence, highlighted, correctAnswer);
-    if (corrected) {
-      sections.push({ key: 'sentenceBreakdown', text: corrected });
+    if (!standardized) {
+      var corrected = buildErrorCorrectedSentence(p.sentence, highlighted, correctAnswer);
+      if (corrected) {
+        sections.push({ key: 'sentenceBreakdown', text: corrected });
+      }
     }
 
     return {
       title: 'Explanation',
       formatType: 'error_correction',
-      context: buildContext(screen),
+      context: standardized ? '' : buildContext(screen),
       sections: sections
     };
   }
@@ -1829,8 +1853,11 @@ var SunePlayExplanation = (function() {
     var correctAnswer = (result && result.correctAnswer) || p.answer || '';
     var userAnswer = result && result.userAnswer;
     var isWrong = result && result.correct === false && userAnswer;
+    var standardized = usesMistakeExplanationFormat(content);
 
-    sections.push({ key: 'correct', text: String(correctAnswer) });
+    if (!standardized) {
+      sections.push({ key: 'correct', text: String(correctAnswer) });
+    }
 
     if (isWrong) {
       sections.push({ key: 'yourAnswer', text: String(userAnswer) });
@@ -1842,15 +1869,17 @@ var SunePlayExplanation = (function() {
       sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
-    var breakdown = buildFullSentenceBreakdown(p, content);
-    if (breakdown) {
-      sections.push({ key: 'sentenceBreakdown', text: breakdown });
+    if (!standardized) {
+      var breakdown = buildFullSentenceBreakdown(p, content);
+      if (breakdown) {
+        sections.push({ key: 'sentenceBreakdown', text: breakdown });
+      }
     }
 
     return {
       title: 'Explanation',
       formatType: 'full_sentence_write',
-      context: buildContext(screen),
+      context: standardized ? '' : buildContext(screen),
       sections: sections
     };
   }

@@ -9,6 +9,10 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  buildFullSentenceMistakeExplanationContent,
+  isMistakeCorrectionFullSentence
+} from './lib/mistake-explanation-content.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -280,20 +284,22 @@ function buildWordCorrectionWhy(item) {
   return ensurePeriod(`The word "${wrong}" is incorrect in this context — use "${answer}" to complete: ${prompt}`);
 }
 
-function buildExplanationContent(item) {
+function buildExplanationContent(item, exercise) {
   const legacy = item.explanation || '';
-  const whyCorrect = legacy
-    ? expandLegacyWhy(item, legacy)
-    : buildWordCorrectionWhy(item);
-
-  return {
-    whyCorrect,
+  const base = {
+    whyCorrect: legacy ? expandLegacyWhy(item, legacy) : buildWordCorrectionWhy(item),
     sentenceBreakdown: buildSentenceBreakdown(item),
     grammarFocus: ensurePeriod(detectGrammarFocus(item, legacy)),
     wrongOptions: buildWrongOptions(item, legacy),
     commonMistake: ensurePeriod(buildCommonMistake(item, legacy)),
     usefulTip: ensurePeriod(buildUsefulTip(item))
   };
+
+  if (isMistakeCorrectionFullSentence(item, exercise)) {
+    return buildFullSentenceMistakeExplanationContent(item, exercise, base);
+  }
+
+  return base;
 }
 
 function migrateItem(item, exercise) {
@@ -301,7 +307,9 @@ function migrateItem(item, exercise) {
   if (ft !== 'full_sentence_write' && item.formatType !== 'full_sentence_write') return false;
 
   if (!item.explanationContent) {
-    item.explanationContent = buildExplanationContent(item);
+    item.explanationContent = buildExplanationContent(item, exercise);
+  } else if (isMistakeCorrectionFullSentence(item, exercise)) {
+    item.explanationContent = buildFullSentenceMistakeExplanationContent(item, exercise, item.explanationContent);
   }
   delete item.explanation;
   return true;

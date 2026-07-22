@@ -11,7 +11,10 @@ var LessonExplanation = (function() {
     correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
     yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
     optionContrast: { label: 'The fix', icon: 'compare_arrows', variant: 'mistake-note' },
+    question: { label: 'Question', icon: 'quiz', variant: 'neutral' },
+    fix: { label: 'The fix', icon: 'build', variant: 'teach' },
     whyCorrect: { label: "Why it's correct", wrongLabel: 'Why', icon: 'lightbulb', variant: 'teach' },
+    correctedSentence: { label: 'Corrected sentence', icon: 'format_quote', variant: 'answer' },
     vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
     grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
@@ -35,6 +38,8 @@ var LessonExplanation = (function() {
   function formatBody(text) {
     if (!text) return '';
     return esc(text)
+      .replace(/&lt;mistake&gt;([\s\S]*?)&lt;\/mistake&gt;/g,
+        '<mark class="sp-error-mark"><strong>$1</strong></mark>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br>');
   }

@@ -1401,15 +1401,18 @@
               "He can ride a horse."
             ],
             "explanationContent": {
-              "whyCorrect": "Can has no -s, so the sentence is \"He can ride a horse.\".",
-              "sentenceBreakdown": "Prompt: He cans ride a horse. → He can ride a horse.",
+              "whyCorrect": "Can has no -s.",
+              "sentenceBreakdown": "He can ride a horse.",
               "grammarFocus": "Negative sentences need the correct auxiliary + not (hasn't, hadn't, don't) before the main verb.",
               "wrongOptions": {
                 "Can": "Check how \"Can\" changes in the target sentence — tense or word form may shift.",
                 "has": "Check how \"has\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "He <mistake>cans</mistake> ride a horse.",
+              "fix": "\"cans\" → \"can\" (remove \"s\")",
+              "correctedSentence": "He can ride a horse."
             }
           },
           {
@@ -1426,14 +1429,17 @@
               "You should call your grandmother."
             ],
             "explanationContent": {
-              "whyCorrect": "Should + base verb, so the sentence is \"You should call your grandmother.\".",
-              "sentenceBreakdown": "Prompt: You should to call your grandmother. → You should call your grandmother.",
+              "whyCorrect": "Should + base verb.",
+              "sentenceBreakdown": "You should call your grandmother.",
               "grammarFocus": "Build a grammatically complete sentence that matches the prompt: You should call your grandmother.",
               "wrongOptions": {
                 "Should": "Check how \"Should\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "You should <mistake>to</mistake> call your grandmother.",
+              "fix": "\"to\" → \"You should call your grandmother.\" (use the correct preposition)",
+              "correctedSentence": "You should call your grandmother."
             }
           },
           {
@@ -1450,14 +1456,17 @@
               "May I ask a question?"
             ],
             "explanationContent": {
-              "whyCorrect": "May + base verb, so the sentence is \"May I ask a question?\".",
-              "sentenceBreakdown": "Prompt: May I to ask a question? → May I ask a question?",
+              "whyCorrect": "May + base verb.",
+              "sentenceBreakdown": "May I ask a question?",
               "grammarFocus": "Build a grammatically complete sentence that matches the prompt: May I ask a question?",
               "wrongOptions": {
                 "May": "Check how \"May\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "May I <mistake>to</mistake> ask a question?",
+              "fix": "\"to\" → \"May I ask a question?\" (use the correct quantifier or article)",
+              "correctedSentence": "May I ask a question?"
             }
           },
           {
@@ -1474,15 +1483,18 @@
               "We couldn't find the address."
             ],
             "explanationContent": {
-              "whyCorrect": "Past negative, so the sentence is \"We couldn't find the address.\".",
-              "sentenceBreakdown": "Prompt: We didn't could find the address. → We couldn't find the address.",
+              "whyCorrect": "Past negative.",
+              "sentenceBreakdown": "We couldn't find the address.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Past": "Check how \"Past\" changes in the target sentence — tense or word form may shift.",
                 "negative": "Check how \"negative\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "We <mistake>didn't could</mistake> find the address.",
+              "fix": "\"didn't could\" → \"couldn't\" (apply the correction shown)",
+              "correctedSentence": "We couldn't find the address."
             }
           },
           {
@@ -1499,15 +1511,18 @@
               "She will be able to join us next week."
             ],
             "explanationContent": {
-              "whyCorrect": "Future ability, so the sentence is \"She will be able to join us next week.\".",
-              "sentenceBreakdown": "Prompt: She will can join us next week. → She will be able to join us next week.",
+              "whyCorrect": "Future ability.",
+              "sentenceBreakdown": "She will be able to join us next week.",
               "grammarFocus": "Negative sentences need the correct auxiliary + not (hasn't, hadn't, don't) before the main verb.",
               "wrongOptions": {
                 "Future": "Check how \"Future\" changes in the target sentence — tense or word form may shift.",
                 "ability": "Check how \"ability\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "She will <mistake>can</mistake> join us next week.",
+              "fix": "\"can\" → \"be able to\" (apply the correction shown)",
+              "correctedSentence": "She will be able to join us next week."
             }
           },
           {
@@ -1524,15 +1539,18 @@
               "They ought not to arrive so late."
             ],
             "explanationContent": {
-              "whyCorrect": "Negative advice, so the sentence is \"They ought not to arrive so late.\".",
-              "sentenceBreakdown": "Prompt: They ought not arrive so late. → They ought not to arrive so late.",
+              "whyCorrect": "Negative advice.",
+              "sentenceBreakdown": "They ought not to arrive so late.",
               "grammarFocus": "Negative sentences need the correct auxiliary + not (hasn't, hadn't, don't) before the main verb.",
               "wrongOptions": {
                 "Negative": "Check how \"Negative\" changes in the target sentence — tense or word form may shift.",
                 "advice": "Check how \"advice\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "They ought not arrive so late.",
+              "fix": "\"to\" (add \"to\")",
+              "correctedSentence": "They ought not to arrive so late."
             }
           }
         ]
