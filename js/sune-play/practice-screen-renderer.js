@@ -4696,6 +4696,9 @@
 
         result.correct = fewCorrect;
         result.lifeLoss = fewCorrect ? 0 : 1;
+        if (fewPayload.explanationContent) {
+          result.explanation = '__structured__';
+        }
         markFewResults(root, fewPayload, fewSelection);
         break;
       }

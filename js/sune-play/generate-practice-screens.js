@@ -543,6 +543,7 @@
         isCorrectSentence: item.isCorrectSentence != null ? item.isCorrectSentence : isOkItem,
         answerMode: item.answerMode || 'tap_extra_word_or_ok',
         instruction: exercise.studentInstruction || exercise.instructions || '',
+        explanationContent: item.explanationContent || null,
         explanation: item.explanation || '',
         onlyMarkedWordClickable: onlyMarkedWordClickable
       };
@@ -589,6 +590,7 @@
       isCorrectSentence: isOkItem,
       answerMode: 'tap_extra_word_or_ok',
       instruction: exercise.studentInstruction || exercise.instructions || '',
+      explanationContent: item.explanationContent || null,
       explanation: item.explanation || '',
       onlyMarkedWordClickable: onlyMarkedWordClickable
     };

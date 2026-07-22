@@ -144,25 +144,101 @@
             "id": "b1-u5-test-few-1",
             "sentence": "Yesterday our team finally [had] won the school basketball final.",
             "answer": "had",
-            "formatType": "find_extra_word"
+            "formatType": "find_extra_word",
+            "explanationContent": {
+              "whyCorrect": "\"had\" is the extra word that should be removed from this sentence.",
+              "grammarFocus": "Read the sentence aloud without the tapped word — if it sounds natural, that word is the extra one.",
+              "wrongOptions": {
+                "Yesterday": "\"Yesterday\" is necessary here — the extra word is \"had\".",
+                "our": "\"our\" is necessary here — the extra word is \"had\".",
+                "team": "\"team\" is necessary here — the extra word is \"had\".",
+                "finally": "\"finally\" is necessary here — the extra word is \"had\".",
+                "had": "\"had\" is the redundant word — tap it (do not tap OK).",
+                "won": "\"won\" is necessary here — the extra word is \"had\".",
+                "the": "\"the\" is necessary here — the extra word is \"had\".",
+                "school": "\"school\" is necessary here — the extra word is \"had\".",
+                "basketball": "\"basketball\" is necessary here — the extra word is \"had\".",
+                "final": "\"final\" is necessary here — the extra word is \"had\".",
+                "OK": "There is an extra word (\"had\") — do not tap OK."
+              },
+              "commonMistake": "Look for a repeated or unnecessary small word — \"had\" is the one to tap, not a content word the sentence needs.",
+              "usefulTip": "Try reading the sentence without each word in your head — the extra word is the one that can be dropped with no loss of meaning."
+            }
           },
           {
             "id": "b1-u5-test-few-2",
             "sentence": "We had [been] trained hard for weeks, so everyone was excited.",
             "answer": "been",
-            "formatType": "find_extra_word"
+            "formatType": "find_extra_word",
+            "explanationContent": {
+              "whyCorrect": "\"been\" is the extra word that should be removed from this sentence.",
+              "grammarFocus": "Present simple passive uses is/are + past participle — been is not needed after is in this pattern.",
+              "wrongOptions": {
+                "We": "\"We\" is necessary here — the extra word is \"been\".",
+                "had": "\"had\" is necessary here — the extra word is \"been\".",
+                "been": "\"been\" is the redundant word — tap it (do not tap OK).",
+                "trained": "\"trained\" is necessary here — the extra word is \"been\".",
+                "hard": "\"hard\" is necessary here — the extra word is \"been\".",
+                "for": "\"for\" is necessary here — the extra word is \"been\".",
+                "weeks": "\"weeks\" is necessary here — the extra word is \"been\".",
+                "so": "\"so\" is necessary here — the extra word is \"been\".",
+                "everyone": "\"everyone\" is necessary here — the extra word is \"been\".",
+                "was": "\"was\" is necessary here — the extra word is \"been\".",
+                "excited": "\"excited\" is necessary here — the extra word is \"been\".",
+                "OK": "There is an extra word (\"been\") — do not tap OK."
+              },
+              "commonMistake": "Look for a repeated or unnecessary small word — \"been\" is the one to tap, not a content word the sentence needs.",
+              "usefulTip": "Try reading the sentence without each word in your head — the extra word is the one that can be dropped with no loss of meaning."
+            }
           },
           {
             "id": "b1-u5-test-few-3",
             "sentence": "The other team scored first, but we didn't give up.",
             "answer": "OK",
-            "formatType": "find_extra_word"
+            "formatType": "find_extra_word",
+            "explanationContent": {
+              "whyCorrect": "This sentence has no extra word — tap OK.",
+              "grammarFocus": "If every word is necessary and the grammar is correct, tap OK — do not remove a word just to change the sentence.",
+              "wrongOptions": {
+                "The": "\"The\" is needed in this sentence — tap OK because there is no extra word.",
+                "other": "\"other\" is needed in this sentence — tap OK because there is no extra word.",
+                "team": "\"team\" is needed in this sentence — tap OK because there is no extra word.",
+                "scored": "\"scored\" is needed in this sentence — tap OK because there is no extra word.",
+                "first": "\"first\" is needed in this sentence — tap OK because there is no extra word.",
+                "but": "\"but\" is needed in this sentence — tap OK because there is no extra word.",
+                "we": "\"we\" is needed in this sentence — tap OK because there is no extra word.",
+                "didn't": "\"didn't\" is needed in this sentence — tap OK because there is no extra word.",
+                "give": "\"give\" is needed in this sentence — tap OK because there is no extra word.",
+                "up": "\"up\" is needed in this sentence — tap OK because there is no extra word.",
+                "OK": "There is no extra word to remove — the sentence is already correct."
+              },
+              "commonMistake": "If the sentence is already correct, tap OK — removing a necessary word would make it wrong.",
+              "usefulTip": "Read the whole line first — if grammar and meaning are fine, tap OK without selecting any word."
+            }
           },
           {
             "id": "b1-u5-test-few-4",
             "sentence": "By half-time, we had [been] scored three points.",
             "answer": "been",
-            "formatType": "find_extra_word"
+            "formatType": "find_extra_word",
+            "explanationContent": {
+              "whyCorrect": "\"been\" is the extra word that should be removed from this sentence.",
+              "grammarFocus": "Present simple passive uses is/are + past participle — been is not needed after is in this pattern.",
+              "wrongOptions": {
+                "By": "\"By\" is necessary here — the extra word is \"been\".",
+                "half": "\"half\" is necessary here — the extra word is \"been\".",
+                "time": "\"time\" is necessary here — the extra word is \"been\".",
+                "we": "\"we\" is necessary here — the extra word is \"been\".",
+                "had": "\"had\" is necessary here — the extra word is \"been\".",
+                "been": "\"been\" is the redundant word — tap it (do not tap OK).",
+                "scored": "\"scored\" is necessary here — the extra word is \"been\".",
+                "three": "\"three\" is necessary here — the extra word is \"been\".",
+                "points": "\"points\" is necessary here — the extra word is \"been\".",
+                "OK": "There is an extra word (\"been\") — do not tap OK."
+              },
+              "commonMistake": "Look for a repeated or unnecessary small word — \"been\" is the one to tap, not a content word the sentence needs.",
+              "usefulTip": "Try reading the sentence without each word in your head — the extra word is the one that can be dropped with no loss of meaning."
+            }
           }
         ],
         "interaction": {

@@ -835,6 +835,75 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function fewTokenCore(token) {
+    return String(token || '').replace(/^[^\w\u2019']+|[^\w\u2019']+$/g, '').toLowerCase();
+  }
+
+  function buildFewCorrectedSentence(sentence, answer, isCorrectSentence) {
+    var text = gapSentenceDisplay(sentence || '');
+    if (isCorrectSentence || String(answer || '').trim().toUpperCase() === 'OK') {
+      return text;
+    }
+    var extra = String(answer || '').trim();
+    if (!extra) return text;
+    var parts = String(sentence || '').replace(/\[[^\]]+\]/g, function(m) {
+      return m.slice(1, -1);
+    }).split(/\s+/).filter(Boolean);
+    var removed = false;
+    var filtered = parts.filter(function(token) {
+      var core = fewTokenCore(token);
+      if (!removed && core === extra.toLowerCase()) {
+        removed = true;
+        return false;
+      }
+      return true;
+    });
+    if (removed) return gapSentenceDisplay(filtered.join(' '));
+    var escaped = extra.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return gapSentenceDisplay(text.replace(new RegExp('\\b' + escaped + '\\b', 'i'), '').replace(/\s+/g, ' ').trim());
+  }
+
+  function formatFewCorrectAnswer(payload) {
+    if (payload.isCorrectSentence || String(payload.answer || '').trim().toUpperCase() === 'OK') {
+      return 'OK — sentence is correct';
+    }
+    var answer = String(payload.answer || '').trim();
+    return answer ? answer + ' (extra word)' : 'OK';
+  }
+
+  function buildFindExtraWord(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || formatFewCorrectAnswer(p);
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, null);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var corrected = buildFewCorrectedSentence(p.sentence, p.answer, p.isCorrectSentence);
+    if (corrected) {
+      sections.push({ key: 'sentenceBreakdown', text: corrected });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'find_extra_word',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildLegacy(screen, result) {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
@@ -915,6 +984,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'error_correction') {
       return gapSentenceDisplay(p.sentence || '');
     }
+    if (screen.formatType === 'find_extra_word') {
+      return gapSentenceDisplay(p.sentence || '');
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -946,6 +1018,8 @@ var SunePlayExplanation = (function() {
         return buildKeywordTransformation(screen, result);
       case 'error_correction':
         return buildErrorCorrection(screen, result);
+      case 'find_extra_word':
+        return buildFindExtraWord(screen, result);
       default:
         return buildLegacy(screen, result);
     }
