@@ -1810,7 +1810,6 @@
               "stay"
             ],
             "completedSentence": "Tourists usually stay in this hotel during the summer.",
-            "explanation": "Usually describes a general habit. Tourists is plural, so use stay.",
             "template": "Tourists usually {gap1} in this hotel during the summer.",
             "gapCount": 1,
             "gaps": [
@@ -1821,7 +1820,16 @@
             ],
             "selectedTileAnswer": "stay",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "Tourists usually ____ in this hotel during the summer."
+            "blankSentence": "Tourists usually ____ in this hotel during the summer.",
+            "explanationContent": {
+              "whyCorrect": "Usually describes a general habit. Tourists is plural, so use stay.",
+              "grammarFocus": "Present simple describes habits, facts, and routines — remember third person singular -s where needed.",
+              "wrongOptions": {
+                "stay": "The base verb \"stay\" is not conjugated — add the correct tense ending or auxiliary."
+              },
+              "commonMistake": "Present continuous is for actions in progress — this sentence describes a habit, fact, or routine.",
+              "usefulTip": "Frequency words like usually and always are strong signals for present simple."
+            }
           },
           {
             "id": "b1-u1-ex5-2",
@@ -1842,7 +1850,6 @@
               ]
             ],
             "completedSentence": "Are you listening to the radio, or can I switch it off?",
-            "explanation": "The speaker is asking about an action happening now, so use the present continuous question form.",
             "template": "{gap1} you {gap2} to the radio, or can I switch it off?",
             "gapCount": 2,
             "gaps": [
@@ -1857,7 +1864,18 @@
             ],
             "selectedTileAnswer": "listen",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "____ you ____ to the radio, or can I switch it off?"
+            "blankSentence": "____ you ____ to the radio, or can I switch it off?",
+            "explanationContent": {
+              "whyCorrect": "The speaker is asking about an action happening now, so use the present continuous question form.",
+              "grammarFocus": "Present continuous (am/is/are + -ing) describes actions happening around now or temporary situations.",
+              "wrongOptions": {
+                "listen": "The base verb \"listen\" is not conjugated — add the correct tense ending or auxiliary.",
+                "are": "This part of the answer does not match the required tense or auxiliary for the gap.",
+                "listening": "This part of the answer does not match the required tense or auxiliary for the gap."
+              },
+              "commonMistake": "With \"listen\", use am/is/are + -ing for an action in progress — simple present sounds like a general habit here.",
+              "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
+            }
           },
           {
             "id": "b1-u1-ex5-3",
@@ -1867,7 +1885,6 @@
               "helps"
             ],
             "completedSentence": "Regular exercise helps you feel healthier.",
-            "explanation": "This is a general fact. Regular exercise is singular, so help becomes helps.",
             "template": "Regular exercise {gap1} you feel healthier.",
             "gapCount": 1,
             "gaps": [
@@ -1878,7 +1895,16 @@
             ],
             "selectedTileAnswer": "help",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "Regular exercise ____ you feel healthier."
+            "blankSentence": "Regular exercise ____ you feel healthier.",
+            "explanationContent": {
+              "whyCorrect": "This is a general fact. Regular exercise is singular, so help becomes helps.",
+              "grammarFocus": "Present simple describes habits, facts, and routines — remember third person singular -s where needed.",
+              "wrongOptions": {
+                "help": "The base verb \"help\" is not conjugated — add the correct tense ending or auxiliary."
+              },
+              "commonMistake": "Present continuous is for actions in progress — this sentence describes a habit, fact, or routine.",
+              "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
+            }
           },
           {
             "id": "b1-u1-ex5-4",
@@ -1888,7 +1914,6 @@
               "am wearing"
             ],
             "completedSentence": "I am wearing my sister's coat today because mine is dirty.",
-            "explanation": "Today describes a temporary situation, so use the present continuous.",
             "template": "I {gap1} my sister's coat today because mine is dirty.",
             "gapCount": 1,
             "gaps": [
@@ -1899,7 +1924,17 @@
             ],
             "selectedTileAnswer": "wear",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "I ____ my sister's coat today because mine is dirty."
+            "blankSentence": "I ____ my sister's coat today because mine is dirty.",
+            "explanationContent": {
+              "whyCorrect": "Today describes a temporary situation, so use the present continuous.",
+              "grammarFocus": "Present continuous (am/is/are + -ing) describes actions happening around now or temporary situations.",
+              "wrongOptions": {
+                "wear": "The base verb \"wear\" is not conjugated — add the correct tense ending or auxiliary.",
+                "am wearing": "This part of the answer does not match the required tense or auxiliary for the gap."
+              },
+              "commonMistake": "With \"wear\", use am/is/are + -ing for an action in progress — simple present sounds like a general habit here.",
+              "usefulTip": "Words that point to right now favour present continuous."
+            }
           },
           {
             "id": "b1-u1-ex5-5",
@@ -1920,7 +1955,6 @@
               ]
             ],
             "completedSentence": "Does Emma always do the shopping on Fridays?",
-            "explanation": "Always and on Fridays describe a routine. In present simple questions with a singular subject, use Does + base verb.",
             "template": "{gap1} Emma always {gap2} the shopping on Fridays?",
             "gapCount": 2,
             "gaps": [
@@ -1935,7 +1969,17 @@
             ],
             "selectedTileAnswer": "do",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "____ Emma always ____ the shopping on Fridays?"
+            "blankSentence": "____ Emma always ____ the shopping on Fridays?",
+            "explanationContent": {
+              "whyCorrect": "Always and on Fridays describe a routine. In present simple questions with a singular subject, use Does + base verb.",
+              "grammarFocus": "Present simple describes habits, facts, and routines — remember third person singular -s where needed.",
+              "wrongOptions": {
+                "do": "The base verb \"do\" is not conjugated — add the correct tense ending or auxiliary.",
+                "does": "This part of the answer does not match the required tense or auxiliary for the gap."
+              },
+              "commonMistake": "Present continuous is for actions in progress — this sentence describes a habit, fact, or routine.",
+              "usefulTip": "Frequency words like usually and always are strong signals for present simple."
+            }
           },
           {
             "id": "b1-u1-ex5-6",
@@ -1956,7 +2000,6 @@
               ]
             ],
             "completedSentence": "Are you looking for your keys? They're on the table.",
-            "explanation": "The speaker is asking about an action happening now, so use Are you looking...?",
             "template": "{gap1} you {gap2} for your keys? They're on the table.",
             "gapCount": 2,
             "gaps": [
@@ -1971,7 +2014,18 @@
             ],
             "selectedTileAnswer": "look",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "____ you ____ for your keys? They're on the table."
+            "blankSentence": "____ you ____ for your keys? They're on the table.",
+            "explanationContent": {
+              "whyCorrect": "The speaker is asking about an action happening now, so use Are you looking...?",
+              "grammarFocus": "Present continuous (am/is/are + -ing) describes actions happening around now or temporary situations.",
+              "wrongOptions": {
+                "look": "The base verb \"look\" is not conjugated — add the correct tense ending or auxiliary.",
+                "are": "This part of the answer does not match the required tense or auxiliary for the gap.",
+                "looking": "This part of the answer does not match the required tense or auxiliary for the gap."
+              },
+              "commonMistake": "With \"look\", use am/is/are + -ing for an action in progress — simple present sounds like a general habit here.",
+              "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
+            }
           },
           {
             "id": "b1-u1-ex5-7",
@@ -1989,7 +2043,6 @@
               ]
             ],
             "completedSentence": "You aren't carrying that box correctly. It's going to fall.",
-            "explanation": "The action is happening now, and the sentence is negative, so use aren't carrying.",
             "template": "You {gap1} that box correctly. It's going to fall.",
             "gapCount": 1,
             "gaps": [
@@ -2000,7 +2053,17 @@
             ],
             "selectedTileAnswer": "carry",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "You ____ that box correctly. It's going to fall."
+            "blankSentence": "You ____ that box correctly. It's going to fall.",
+            "explanationContent": {
+              "whyCorrect": "The action is happening now, and the sentence is negative, so use aren't carrying.",
+              "grammarFocus": "Present continuous (am/is/are + -ing) describes actions happening around now or temporary situations.",
+              "wrongOptions": {
+                "carry": "The base verb \"carry\" is not conjugated — add the correct tense ending or auxiliary.",
+                "aren't carrying": "This part of the answer does not match the required tense or auxiliary for the gap."
+              },
+              "commonMistake": "With \"carry\", use am/is/are + -ing for an action in progress — simple present sounds like a general habit here.",
+              "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
+            }
           },
           {
             "id": "b1-u1-ex5-8",
@@ -2010,7 +2073,6 @@
               "belongs"
             ],
             "completedSentence": "This backpack belongs to my brother.",
-            "explanation": "Belong is normally stative, so use the present simple. Backpack is singular, so belong becomes belongs.",
             "template": "This backpack {gap1} to my brother.",
             "gapCount": 1,
             "gaps": [
@@ -2021,7 +2083,16 @@
             ],
             "selectedTileAnswer": "belong",
             "answerMode": "choose_tile_then_type_conjugation",
-            "blankSentence": "This backpack ____ to my brother."
+            "blankSentence": "This backpack ____ to my brother.",
+            "explanationContent": {
+              "whyCorrect": "Belong is normally stative, so use the present simple. Backpack is singular, so belong becomes belongs.",
+              "grammarFocus": "Stative verbs describe states, not actions — they usually stay in the simple form, not continuous.",
+              "wrongOptions": {
+                "belong": "The base verb \"belong\" is not conjugated — add the correct tense ending or auxiliary."
+              },
+              "commonMistake": "Verbs like \"belong\" describe a state — avoid continuous forms unless the verb is deliberately used as an action.",
+              "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
+            }
           }
         ],
         "interaction": {

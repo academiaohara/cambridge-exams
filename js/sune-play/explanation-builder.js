@@ -298,6 +298,48 @@ var SunePlayExplanation = (function() {
       .trim();
   }
 
+  function buildPreselectedVerbGapFill(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    if (Array.isArray(correctAnswer)) correctAnswer = correctAnswer.join(' / ');
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (content) {
+      var focus = pickFocusSection(content);
+      if (focus) {
+        sections.push(focus);
+      } else if (content.whyCorrect) {
+        sections.push({ key: 'grammarFocus', text: content.whyCorrect });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'grammarFocus', text: p.explanation });
+    }
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      var wrongNote = lookupWrongOptionNote(content, userAnswer, null);
+      if (!wrongNote && content && content.commonMistake) wrongNote = content.commonMistake;
+      if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+    }
+
+    var completed = p.completedSentence || '';
+    if (completed) {
+      sections.push({ key: 'sentenceBreakdown', text: stripGapMarkers(completed) });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'preselected_verb_gap_fill',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildConjugationGapFill(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -454,6 +496,12 @@ var SunePlayExplanation = (function() {
     if (screen.sourceFormatType === 'conjugation_gap_fill' || screen.formatType === 'conjugation_gap_fill') {
       return gapSentenceDisplay(p.sentence || p.sourceSentence);
     }
+    if (screen.formatType === 'preselected_verb_gap_fill') {
+      var verb = String(p.preselectedVerb || '').trim();
+      var preSent = gapSentenceDisplay(p.sentence);
+      if (verb) return 'Verb: ' + verb + '\n' + preSent;
+      return preSent;
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -473,6 +521,8 @@ var SunePlayExplanation = (function() {
         return buildFreeTextGapFill(screen, result);
       case 'conjugation_gap_fill':
         return buildConjugationGapFill(screen, result);
+      case 'preselected_verb_gap_fill':
+        return buildPreselectedVerbGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }
