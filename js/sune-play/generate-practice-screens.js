@@ -58,6 +58,7 @@
           wrong: it.targetPhrase || it.wrong || '',
           answer: it.answer,
           acceptedAnswers: it.acceptedAnswers || (it.answer ? [it.answer] : []),
+          explanationContent: it.explanationContent || null,
           explanation: it.explanation || ''
         };
       }),

@@ -907,3 +907,71 @@ console.log('Sections:', pehFixKeys.join(' → '));
 console.log('PASS passage_error_hunt_single explanation builder (wrong_tap)');
 console.log('Sections:', pehTapKeys.join(' → '));
 
+// passage_error_hunt_counter — wrong fix with progress tip
+const pehCounterScreen = {
+  formatType: 'passage_error_hunt_counter',
+  payload: {
+    passage: pehExercise.passage,
+    items: pehExercise.items.map((it) => ({
+      wrong: it.targetPhrase || it.wrong,
+      answer: it.answer,
+      explanationContent: it.explanationContent
+    })),
+    errorCount: pehExercise.items.length,
+    counter: { target: pehExercise.items.length }
+  }
+};
+
+const pehCounterWrongFix = {
+  correct: false,
+  huntPhase: 'wrong_fix',
+  activeItem: pehItem,
+  huntItemIdx: 0,
+  userAnswer: 'enjoying',
+  correctAnswer: pehItem.answer,
+  errorsRemaining: 9,
+  errorsTotal: 10
+};
+
+const pehCounterFixOpts = SunePlayExplanation.buildExplainOpts(pehCounterScreen, pehCounterWrongFix);
+const pehCounterFixKeys = pehCounterFixOpts.sections.map((s) => s.key);
+const pehCounterFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const pehCounterFixMissing = pehCounterFixExpected.filter((k) => !pehCounterFixKeys.includes(k));
+
+if (pehCounterFixMissing.length) {
+  console.error('FAIL passage_error_hunt_counter wrong_fix missing sections:', pehCounterFixMissing.join(', '));
+  process.exit(1);
+}
+
+const pehCounterTip = pehCounterFixOpts.sections.find((s) => s.key === 'usefulTip');
+if (!pehCounterTip || !String(pehCounterTip.text).includes('9 errors left')) {
+  console.error('FAIL passage_error_hunt_counter should include progress tip');
+  process.exit(1);
+}
+
+// passage_error_hunt_counter — mark success
+const pehCounterMark = {
+  correct: true,
+  huntPhase: 'mark_success',
+  _huntMarkResult: true,
+  activeItem: pehItem,
+  huntItemIdx: 0,
+  errorsRemaining: 9,
+  errorsTotal: 10
+};
+
+const pehCounterMarkOpts = SunePlayExplanation.buildExplainOpts(pehCounterScreen, pehCounterMark);
+const pehCounterMarkKeys = pehCounterMarkOpts.sections.map((s) => s.key);
+const pehCounterMarkExpected = ['whyCorrect', 'grammarFocus', 'usefulTip'];
+const pehCounterMarkMissing = pehCounterMarkExpected.filter((k) => !pehCounterMarkKeys.includes(k));
+
+if (pehCounterMarkMissing.length) {
+  console.error('FAIL passage_error_hunt_counter mark_success missing sections:', pehCounterMarkMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS passage_error_hunt_counter explanation builder (wrong_fix)');
+console.log('Sections:', pehCounterFixKeys.join(' → '));
+console.log('PASS passage_error_hunt_counter explanation builder (mark_success)');
+console.log('Sections:', pehCounterMarkKeys.join(' → '));
+
