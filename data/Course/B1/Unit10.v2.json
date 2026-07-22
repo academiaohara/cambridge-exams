@@ -697,7 +697,11 @@
               "wrongOptions": {
                 "visited": "\"visited\" does not match the clue in the rest of the sentence (\"by thousands of tourists each year.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "visited": "\"visited\" doesn't fit here → \"is visited\" does, because it does not match the clue in the rest of the sentence (\"by thousands of tourists each year.\").",
+                "was visiting": "\"was visiting\" doesn't fit here → \"is visited\" does, because Only \"is visited\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -719,7 +723,11 @@
               "wrongOptions": {
                 "completed": "\"completed\" does not match the clue in the rest of the sentence (\"yesterday afternoon.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "completed": "\"completed\" doesn't fit here → \"was completed\" does, because it does not match the clue in the rest of the sentence (\"yesterday afternoon.\").",
+                "is completing": "\"is completing\" doesn't fit here → \"was completed\" does, because Only \"was completed\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -741,7 +749,11 @@
               "wrongOptions": {
                 "will open": "\"will open\" does not match the clue in the rest of the sentence (\"next month.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "will open": "\"will open\" doesn't fit here → \"will be opened\" does, because it does not match the clue in the rest of the sentence (\"next month.\").",
+                "is opened": "\"is opened\" doesn't fit here → \"will be opened\" does, because Only \"will be opened\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -763,7 +775,11 @@
               "wrongOptions": {
                 "clean": "\"clean\" does not match the clue in the rest of the sentence (\"every night.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "clean": "\"clean\" doesn't fit here → \"are cleaned\" does, because it does not match the clue in the rest of the sentence (\"every night.\").",
+                "were cleaning": "\"were cleaning\" doesn't fit here → \"are cleaned\" does, because Only \"are cleaned\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -785,7 +801,11 @@
               "wrongOptions": {
                 "wasn't open": "\"wasn't open\" does not match the clue in the rest of the sentence (\"during the storm.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "wasn't open": "\"wasn't open\" doesn't fit here → \"wasn't opened\" does, because \"wasn't open\" does not match the clue in the rest of the sentence (\"during the storm.\").",
+                "didn't opened": "\"didn't opened\" doesn't fit here → \"wasn't opened\" does, because Only \"wasn't opened\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -807,7 +827,11 @@
               "wrongOptions": {
                 "Is the parcel delivery": "\"Is the parcel delivery\" does not match the clue in the rest of the sentence (\"every morning?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "Is the parcel delivery": "\"Is the parcel delivery\" doesn't fit here → \"Is the parcel delivered\" does, because it does not match the clue in the rest of the sentence (\"every morning?\").",
+                "Does the parcel delivered": "\"Does the parcel delivered\" doesn't fit here → \"Is the parcel delivered\" does, because Only \"Is the parcel delivered\" fits the meaning created by the words before and after the gap."
+              }
             }
           }
         ]
@@ -1251,7 +1275,16 @@
                 "will serve": "\"will serve\" does not match the grammar or meaning clue in this sentence — \"is served\" is correct."
               },
               "usefulTip": "Time expressions like for, since, already, and yet are strong present-perfect signals.",
-              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever."
+              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever.",
+              "optionContrast": {
+                "A": "\"serves\" doesn't fit here → \"is served\" does, because it does not match the grammar or meaning clue in this sentence — \"is served\" is correct.",
+                "serves": "\"serves\" doesn't fit here → \"is served\" does, because it does not match the grammar or meaning clue in this sentence — \"is served\" is correct.",
+                "is served": "\"is served\" doesn't fit here → \"is served\" does, because The context points to \"is served\" — breakfast is served to guests.",
+                "C": "\"was serving\" doesn't fit here → \"is served\" does, because it does not match the grammar or meaning clue in this sentence — \"is served\" is correct.",
+                "was serving": "\"was serving\" doesn't fit here → \"is served\" does, because it does not match the grammar or meaning clue in this sentence — \"is served\" is correct.",
+                "D": "\"will serve\" doesn't fit here → \"is served\" does, because it does not match the grammar or meaning clue in this sentence — \"is served\" is correct.",
+                "will serve": "\"will serve\" doesn't fit here → \"is served\" does, because it does not match the grammar or meaning clue in this sentence — \"is served\" is correct."
+              }
             }
           },
           {
@@ -1289,7 +1322,16 @@
                 "will be built": "\"will be built\" does not match the grammar or meaning clue in this sentence — \"was built\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "A finished past time marker (yesterday, last week, ago) requires the past simple, not a perfect tense."
+              "grammarFocus": "A finished past time marker (yesterday, last week, ago) requires the past simple, not a perfect tense.",
+              "optionContrast": {
+                "was built": "\"was built\" doesn't fit here → \"was built\" does, because The context points to \"was built\" — in 1965.",
+                "B": "\"is built\" doesn't fit here → \"was built\" does, because it does not match the grammar or meaning clue in this sentence — \"was built\" is correct.",
+                "is built": "\"is built\" doesn't fit here → \"was built\" does, because it does not match the grammar or meaning clue in this sentence — \"was built\" is correct.",
+                "C": "\"builds\" doesn't fit here → \"was built\" does, because it does not match the grammar or meaning clue in this sentence — \"was built\" is correct.",
+                "builds": "\"builds\" doesn't fit here → \"was built\" does, because it does not match the grammar or meaning clue in this sentence — \"was built\" is correct.",
+                "D": "\"will be built\" doesn't fit here → \"was built\" does, because it does not match the grammar or meaning clue in this sentence — \"was built\" is correct.",
+                "will be built": "\"will be built\" doesn't fit here → \"was built\" does, because it does not match the grammar or meaning clue in this sentence — \"was built\" is correct."
+              }
             }
           },
           {
@@ -1327,7 +1369,16 @@
                 "will hold": "\"will hold\" does not match the grammar or meaning clue in this sentence — \"will be held\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Future forms (will, going to, present continuous) depend on whether the sentence predicts, plans, or arranges."
+              "grammarFocus": "Future forms (will, going to, present continuous) depend on whether the sentence predicts, plans, or arranges.",
+              "optionContrast": {
+                "A": "\"is hold\" doesn't fit here → \"will be held\" does, because it does not match the grammar or meaning clue in this sentence — \"will be held\" is correct.",
+                "is hold": "\"is hold\" doesn't fit here → \"will be held\" does, because it does not match the grammar or meaning clue in this sentence — \"will be held\" is correct.",
+                "B": "\"held\" doesn't fit here → \"will be held\" does, because it does not match the grammar or meaning clue in this sentence — \"will be held\" is correct.",
+                "held": "\"held\" doesn't fit here → \"will be held\" does, because it does not match the grammar or meaning clue in this sentence — \"will be held\" is correct.",
+                "will be held": "\"will be held\" doesn't fit here → \"will be held\" does, because The context points to \"will be held\" — next Friday.",
+                "D": "\"will hold\" doesn't fit here → \"will be held\" does, because it does not match the grammar or meaning clue in this sentence — \"will be held\" is correct.",
+                "will hold": "\"will hold\" doesn't fit here → \"will be held\" does, because it does not match the grammar or meaning clue in this sentence — \"will be held\" is correct."
+              }
             }
           },
           {
@@ -1365,7 +1416,16 @@
                 "won't be sent": "\"won't be sent\" is the wrong tense for a finished past time in this sentence."
               },
               "usefulTip": "When you see a finished past-time expression, reach for the past simple first.",
-              "grammarFocus": "A finished past time marker (yesterday, last week, ago) requires the past simple, not a perfect tense."
+              "grammarFocus": "A finished past time marker (yesterday, last week, ago) requires the past simple, not a perfect tense.",
+              "optionContrast": {
+                "A": "\"didn't send\" doesn't fit here → \"weren't sent\" does, because \"didn't send\" is the wrong tense for a finished past time in this sentence.",
+                "didn't send": "\"didn't send\" doesn't fit here → \"weren't sent\" does, because \"didn't send\" is the wrong tense for a finished past time in this sentence.",
+                "weren't sent": "\"weren't sent\" doesn't fit here → \"weren't sent\" does, because The context points to \"weren't sent\" — yesterday + server crashed.",
+                "C": "\"aren't sent\" doesn't fit here → \"weren't sent\" does, because \"aren't sent\" is the wrong tense for a finished past time in this sentence.",
+                "aren't sent": "\"aren't sent\" doesn't fit here → \"weren't sent\" does, because \"aren't sent\" is the wrong tense for a finished past time in this sentence.",
+                "D": "\"won't be sent\" doesn't fit here → \"weren't sent\" does, because \"won't be sent\" is the wrong tense for a finished past time in this sentence.",
+                "won't be sent": "\"won't be sent\" doesn't fit here → \"weren't sent\" does, because \"won't be sent\" is the wrong tense for a finished past time in this sentence."
+              }
             }
           },
           {
@@ -1403,7 +1463,16 @@
                 "was": "\"was\" does not match the grammar or meaning clue in this sentence — \"are\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"are\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"are\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "are": "\"are\" doesn't fit here → \"are\" does, because The context points to \"are\" — passive question about origin.",
+                "B": "\"did\" doesn't fit here → \"are\" does, because it does not match the grammar or meaning clue in this sentence — \"are\" is correct.",
+                "did": "\"did\" doesn't fit here → \"are\" does, because it does not match the grammar or meaning clue in this sentence — \"are\" is correct.",
+                "C": "\"will\" doesn't fit here → \"are\" does, because it does not match the grammar or meaning clue in this sentence — \"are\" is correct.",
+                "will": "\"will\" doesn't fit here → \"are\" does, because it does not match the grammar or meaning clue in this sentence — \"are\" is correct.",
+                "D": "\"was\" doesn't fit here → \"are\" does, because it does not match the grammar or meaning clue in this sentence — \"are\" is correct.",
+                "was": "\"was\" doesn't fit here → \"are\" does, because it does not match the grammar or meaning clue in this sentence — \"are\" is correct."
+              }
             }
           },
           {
@@ -1441,7 +1510,16 @@
                 "is clean": "\"is clean\" does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"was cleaned\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"was cleaned\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"clean\" doesn't fit here → \"was cleaned\" does, because it does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct.",
+                "clean": "\"clean\" doesn't fit here → \"was cleaned\" does, because it does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct.",
+                "B": "\"was clean\" doesn't fit here → \"was cleaned\" does, because it does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct.",
+                "was clean": "\"was clean\" doesn't fit here → \"was cleaned\" does, because it does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct.",
+                "was cleaned": "\"was cleaned\" doesn't fit here → \"was cleaned\" does, because The context points to \"was cleaned\" — after the competition.",
+                "D": "\"is clean\" doesn't fit here → \"was cleaned\" does, because it does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct.",
+                "is clean": "\"is clean\" doesn't fit here → \"was cleaned\" does, because it does not match the grammar or meaning clue in this sentence — \"was cleaned\" is correct."
+              }
             }
           }
         ]

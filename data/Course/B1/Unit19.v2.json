@@ -517,6 +517,9 @@
                 "can": "Can can sound informal where a rule or polite permission is needed.",
                 "may": "May is formal — it may not fit informal ability sentences.",
                 "Can": "\"Can\" breaks the grammar pattern described above."
+              },
+              "optionContrast": {
+                "Can": "\"Can\" doesn't fit here → \"May\" does, because it breaks the grammar pattern needed here."
               }
             }
           },
@@ -538,6 +541,9 @@
               "wrongOptions": {
                 "can": "Can may be too direct or present-tense for this context.",
                 "could": "Could may be too tentative when clear present permission is meant."
+              },
+              "optionContrast": {
+                "could": "\"could\" doesn't fit here → \"can\" does, because Could may be too tentative when clear present permission is meant."
               }
             }
           },
@@ -560,6 +566,9 @@
                 "can": "Can may be too direct or present-tense for this context.",
                 "could": "Could may be too tentative when clear present permission is meant.",
                 "Can": "\"Can\" breaks the grammar pattern described above."
+              },
+              "optionContrast": {
+                "Can": "\"Can\" doesn't fit here → \"Could\" does, because it breaks the grammar pattern needed here."
               }
             }
           },
@@ -581,6 +590,9 @@
               "wrongOptions": {
                 "could": "Could does not express the same type of permission or rule here.",
                 "may": "May does not match the intended meaning or register here."
+              },
+              "optionContrast": {
+                "could": "\"could\" doesn't fit here → \"may\" does, because Could does not express the same type of permission or rule here."
               }
             }
           },
@@ -603,6 +615,9 @@
                 "can": "Can can sound informal where a rule or polite permission is needed.",
                 "may": "May is formal — it may not fit informal ability sentences.",
                 "Can": "\"Can\" breaks the grammar pattern described above."
+              },
+              "optionContrast": {
+                "Can": "\"Can\" doesn't fit here → \"May\" does, because it breaks the grammar pattern needed here."
               }
             }
           },
@@ -624,7 +639,10 @@
               "wrongOptions": {
                 "couldn't": "\"couldn't\" does not match the clue in the rest of the sentence (\"swim here. It's dangerous.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "couldn't": "\"couldn't\" doesn't fit here → \"can't\" does, because \"couldn't\" does not match the clue in the rest of the sentence (\"swim here. It's dangerous.\")."
+              }
             }
           },
           {
@@ -645,6 +663,9 @@
               "wrongOptions": {
                 "could": "Could does not express the same type of permission or rule here.",
                 "may": "May does not match the intended meaning or register here."
+              },
+              "optionContrast": {
+                "may": "\"may\" doesn't fit here → \"could\" does, because May does not match the intended meaning or register here."
               }
             }
           },
@@ -666,7 +687,10 @@
               "wrongOptions": {
                 "could not": "\"could not\" does not match the clue in the rest of the sentence (\"take photographs inside the gallery.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "could not": "\"could not\" doesn't fit here → \"may not\" does, because it does not match the clue in the rest of the sentence (\"take photographs inside the gallery.\")."
+              }
             }
           }
         ]
@@ -1100,7 +1124,16 @@
                 "can't worry": "\"can't worry\" does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever."
+              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever.",
+              "optionContrast": {
+                "A": "\"should worry\" doesn't fit here → \"shouldn't worry\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct.",
+                "should worry": "\"should worry\" doesn't fit here → \"shouldn't worry\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct.",
+                "shouldn't worry": "\"shouldn't worry\" doesn't fit here → \"shouldn't worry\" does, because The context points to \"shouldn't worry\" — reassurance.",
+                "C": "\"may worry\" doesn't fit here → \"shouldn't worry\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct.",
+                "may worry": "\"may worry\" doesn't fit here → \"shouldn't worry\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct.",
+                "D": "\"can't worry\" doesn't fit here → \"shouldn't worry\" does, because \"can't worry\" does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct.",
+                "can't worry": "\"can't worry\" doesn't fit here → \"shouldn't worry\" does, because \"can't worry\" does not match the grammar or meaning clue in this sentence — \"shouldn't worry\" is correct."
+              }
             }
           },
           {
@@ -1138,7 +1171,16 @@
                 "should": "\"should\" does not match the grammar or meaning clue in this sentence — \"could\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"could\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"could\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"can\" doesn't fit here → \"could\" does, because it does not match the grammar or meaning clue in this sentence — \"could\" is correct.",
+                "can": "\"can\" doesn't fit here → \"could\" does, because it does not match the grammar or meaning clue in this sentence — \"could\" is correct.",
+                "B": "\"am able to\" doesn't fit here → \"could\" does, because it does not match the grammar or meaning clue in this sentence — \"could\" is correct.",
+                "am able to": "\"am able to\" doesn't fit here → \"could\" does, because it does not match the grammar or meaning clue in this sentence — \"could\" is correct.",
+                "could": "\"could\" doesn't fit here → \"could\" does, because The context points to \"could\" — past ability.",
+                "D": "\"should\" doesn't fit here → \"could\" does, because it does not match the grammar or meaning clue in this sentence — \"could\" is correct.",
+                "should": "\"should\" doesn't fit here → \"could\" does, because it does not match the grammar or meaning clue in this sentence — \"could\" is correct."
+              }
             }
           },
           {
@@ -1176,7 +1218,16 @@
                 "Must": "\"Must\" does not match the grammar or meaning clue in this sentence — \"May\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"May\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"May\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "May": "\"May\" doesn't fit here → \"May\" does, because The context points to \"May\" — permission request.",
+                "B": "\"Should\" doesn't fit here → \"May\" does, because it does not match the grammar or meaning clue in this sentence — \"May\" is correct.",
+                "Should": "\"Should\" doesn't fit here → \"May\" does, because it does not match the grammar or meaning clue in this sentence — \"May\" is correct.",
+                "C": "\"Ought\" doesn't fit here → \"May\" does, because it does not match the grammar or meaning clue in this sentence — \"May\" is correct.",
+                "Ought": "\"Ought\" doesn't fit here → \"May\" does, because it does not match the grammar or meaning clue in this sentence — \"May\" is correct.",
+                "D": "\"Must\" doesn't fit here → \"May\" does, because it does not match the grammar or meaning clue in this sentence — \"May\" is correct.",
+                "Must": "\"Must\" doesn't fit here → \"May\" does, because it does not match the grammar or meaning clue in this sentence — \"May\" is correct."
+              }
             }
           },
           {
@@ -1214,7 +1265,16 @@
                 "may not": "\"may not\" does not match the grammar or meaning clue in this sentence — \"should\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "should": "\"should\" doesn't fit here → \"should\" does, because The context points to \"should\" — advice because it's cold.",
+                "B": "\"can\" doesn't fit here → \"should\" does, because it does not match the grammar or meaning clue in this sentence — \"should\" is correct.",
+                "can": "\"can\" doesn't fit here → \"should\" does, because it does not match the grammar or meaning clue in this sentence — \"should\" is correct.",
+                "C": "\"could\" doesn't fit here → \"should\" does, because it does not match the grammar or meaning clue in this sentence — \"should\" is correct.",
+                "could": "\"could\" doesn't fit here → \"should\" does, because it does not match the grammar or meaning clue in this sentence — \"should\" is correct.",
+                "D": "\"may not\" doesn't fit here → \"should\" does, because it does not match the grammar or meaning clue in this sentence — \"should\" is correct.",
+                "may not": "\"may not\" doesn't fit here → \"should\" does, because it does not match the grammar or meaning clue in this sentence — \"should\" is correct."
+              }
             }
           },
           {
@@ -1252,7 +1312,16 @@
                 "should": "\"should\" does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Future forms (will, going to, present continuous) depend on whether the sentence predicts, plans, or arranges."
+              "grammarFocus": "Future forms (will, going to, present continuous) depend on whether the sentence predicts, plans, or arranges.",
+              "optionContrast": {
+                "A": "\"could\" doesn't fit here → \"will be able to\" does, because it does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct.",
+                "could": "\"could\" doesn't fit here → \"will be able to\" does, because it does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct.",
+                "will be able to": "\"will be able to\" doesn't fit here → \"will be able to\" does, because The context points to \"will be able to\" — future ability.",
+                "C": "\"may\" doesn't fit here → \"will be able to\" does, because it does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct.",
+                "may": "\"may\" doesn't fit here → \"will be able to\" does, because it does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct.",
+                "D": "\"should\" doesn't fit here → \"will be able to\" does, because it does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct.",
+                "should": "\"should\" doesn't fit here → \"will be able to\" does, because it does not match the grammar or meaning clue in this sentence — \"will be able to\" is correct."
+              }
             }
           },
           {
@@ -1290,7 +1359,16 @@
                 "may": "\"may\" does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"shouldn't\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"shouldn't\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"should\" doesn't fit here → \"shouldn't\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct.",
+                "should": "\"should\" doesn't fit here → \"shouldn't\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct.",
+                "B": "\"can\" doesn't fit here → \"shouldn't\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct.",
+                "can": "\"can\" doesn't fit here → \"shouldn't\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct.",
+                "shouldn't": "\"shouldn't\" doesn't fit here → \"shouldn't\" does, because The context points to \"shouldn't\" — rule in a library.",
+                "D": "\"may\" doesn't fit here → \"shouldn't\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct.",
+                "may": "\"may\" doesn't fit here → \"shouldn't\" does, because it does not match the grammar or meaning clue in this sentence — \"shouldn't\" is correct."
+              }
             }
           }
         ]

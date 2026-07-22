@@ -658,7 +658,10 @@
               "wrongOptions": {
                 "mine": "\"mine\" does not match the clue in the rest of the sentence (\"coat?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "mine": "\"mine\" doesn't fit here → \"my\" does, because it does not match the clue in the rest of the sentence (\"coat?\")."
+              }
             }
           },
           {
@@ -679,7 +682,10 @@
               "wrongOptions": {
                 "hers": "\"hers\" does not match the clue in the rest of the sentence (\"phone.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "hers": "\"hers\" doesn't fit here → \"her\" does, because it does not match the clue in the rest of the sentence (\"phone.\")."
+              }
             }
           },
           {
@@ -700,7 +706,10 @@
               "wrongOptions": {
                 "it's": "\"it's\" does not match the clue in the rest of the sentence (\"wings.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "it's": "\"it's\" doesn't fit here → \"its\" does, because \"it's\" does not match the clue in the rest of the sentence (\"wings.\")."
+              }
             }
           },
           {
@@ -721,7 +730,10 @@
               "wrongOptions": {
                 "ours": "\"ours\" does not match the clue in the rest of the sentence (\"grandparents tomorrow.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "ours": "\"ours\" doesn't fit here → \"our\" does, because it does not match the clue in the rest of the sentence (\"grandparents tomorrow.\")."
+              }
             }
           },
           {
@@ -742,7 +754,10 @@
               "wrongOptions": {
                 "theirs": "\"theirs\" does not match the clue in the rest of the sentence (\"bags.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "theirs": "\"theirs\" doesn't fit here → \"their\" does, because it does not match the clue in the rest of the sentence (\"bags.\")."
+              }
             }
           },
           {
@@ -763,7 +778,10 @@
               "wrongOptions": {
                 "yours": "\"yours\" does not match the clue in the rest of the sentence (\"idea.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "yours": "\"yours\" doesn't fit here → \"your\" does, because it does not match the clue in the rest of the sentence (\"idea.\")."
+              }
             }
           }
         ]
@@ -1041,7 +1059,16 @@
                 "Us": "\"Us\" does not match the grammar or meaning clue in this sentence — \"We\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"We\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"We\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"She\" doesn't fit here → \"We\" does, because it does not match the grammar or meaning clue in this sentence — \"We\" is correct.",
+                "She": "\"She\" doesn't fit here → \"We\" does, because it does not match the grammar or meaning clue in this sentence — \"We\" is correct.",
+                "We": "\"We\" doesn't fit here → \"We\" does, because The context points to \"We\" — laura and I = subject.",
+                "C": "\"They\" doesn't fit here → \"We\" does, because it does not match the grammar or meaning clue in this sentence — \"We\" is correct.",
+                "They": "\"They\" doesn't fit here → \"We\" does, because it does not match the grammar or meaning clue in this sentence — \"We\" is correct.",
+                "D": "\"Us\" doesn't fit here → \"We\" does, because it does not match the grammar or meaning clue in this sentence — \"We\" is correct.",
+                "Us": "\"Us\" doesn't fit here → \"We\" does, because it does not match the grammar or meaning clue in this sentence — \"We\" is correct."
+              }
             }
           },
           {
@@ -1079,7 +1106,16 @@
                 "theirs": "\"theirs\" does not match the grammar or meaning clue in this sentence — \"them\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"them\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"them\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "them": "\"them\" doesn't fit here → \"them\" does, because The context points to \"them\" — object of seen.",
+                "B": "\"they\" doesn't fit here → \"them\" does, because it does not match the grammar or meaning clue in this sentence — \"them\" is correct.",
+                "they": "\"they\" doesn't fit here → \"them\" does, because it does not match the grammar or meaning clue in this sentence — \"them\" is correct.",
+                "C": "\"their\" doesn't fit here → \"them\" does, because it does not match the grammar or meaning clue in this sentence — \"them\" is correct.",
+                "their": "\"their\" doesn't fit here → \"them\" does, because it does not match the grammar or meaning clue in this sentence — \"them\" is correct.",
+                "D": "\"theirs\" doesn't fit here → \"them\" does, because it does not match the grammar or meaning clue in this sentence — \"them\" is correct.",
+                "theirs": "\"theirs\" doesn't fit here → \"them\" does, because it does not match the grammar or meaning clue in this sentence — \"them\" is correct."
+              }
             }
           },
           {
@@ -1117,7 +1153,16 @@
                 "they": "\"they\" does not match the grammar or meaning clue in this sentence — \"theirs\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "A": "\"their\" doesn't fit here → \"theirs\" does, because it does not match the grammar or meaning clue in this sentence — \"theirs\" is correct.",
+                "their": "\"their\" doesn't fit here → \"theirs\" does, because it does not match the grammar or meaning clue in this sentence — \"theirs\" is correct.",
+                "theirs": "\"theirs\" doesn't fit here → \"theirs\" does, because The context points to \"theirs\" — no noun after.",
+                "C": "\"them\" doesn't fit here → \"theirs\" does, because it does not match the grammar or meaning clue in this sentence — \"theirs\" is correct.",
+                "them": "\"them\" doesn't fit here → \"theirs\" does, because it does not match the grammar or meaning clue in this sentence — \"theirs\" is correct.",
+                "D": "\"they\" doesn't fit here → \"theirs\" does, because it does not match the grammar or meaning clue in this sentence — \"theirs\" is correct.",
+                "they": "\"they\" doesn't fit here → \"theirs\" does, because it does not match the grammar or meaning clue in this sentence — \"theirs\" is correct."
+              }
             }
           },
           {
@@ -1155,7 +1200,16 @@
                 "his": "\"his\" does not match the grammar or meaning clue in this sentence — \"himself\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"himself\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"himself\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"he\" doesn't fit here → \"himself\" does, because it does not match the grammar or meaning clue in this sentence — \"himself\" is correct.",
+                "he": "\"he\" doesn't fit here → \"himself\" does, because it does not match the grammar or meaning clue in this sentence — \"himself\" is correct.",
+                "B": "\"him\" doesn't fit here → \"himself\" does, because it does not match the grammar or meaning clue in this sentence — \"himself\" is correct.",
+                "him": "\"him\" doesn't fit here → \"himself\" does, because it does not match the grammar or meaning clue in this sentence — \"himself\" is correct.",
+                "himself": "\"himself\" doesn't fit here → \"himself\" does, because The context points to \"himself\" — by + reflexive.",
+                "D": "\"his\" doesn't fit here → \"himself\" does, because it does not match the grammar or meaning clue in this sentence — \"himself\" is correct.",
+                "his": "\"his\" doesn't fit here → \"himself\" does, because it does not match the grammar or meaning clue in this sentence — \"himself\" is correct."
+              }
             }
           },
           {
@@ -1193,7 +1247,16 @@
                 "we": "\"we\" does not match the grammar or meaning clue in this sentence — \"our\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"our\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"our\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "our": "\"our\" doesn't fit here → \"our\" does, because The context points to \"our\" — before bedroom.",
+                "B": "\"ours\" doesn't fit here → \"our\" does, because it does not match the grammar or meaning clue in this sentence — \"our\" is correct.",
+                "ours": "\"ours\" doesn't fit here → \"our\" does, because it does not match the grammar or meaning clue in this sentence — \"our\" is correct.",
+                "C": "\"us\" doesn't fit here → \"our\" does, because it does not match the grammar or meaning clue in this sentence — \"our\" is correct.",
+                "us": "\"us\" doesn't fit here → \"our\" does, because it does not match the grammar or meaning clue in this sentence — \"our\" is correct.",
+                "D": "\"we\" doesn't fit here → \"our\" does, because it does not match the grammar or meaning clue in this sentence — \"our\" is correct.",
+                "we": "\"we\" doesn't fit here → \"our\" does, because it does not match the grammar or meaning clue in this sentence — \"our\" is correct."
+              }
             }
           },
           {
@@ -1231,7 +1294,16 @@
                 "herself": "\"herself\" does not match the grammar or meaning clue in this sentence — \"her\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"her\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"her\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"she\" doesn't fit here → \"her\" does, because it does not match the grammar or meaning clue in this sentence — \"her\" is correct.",
+                "she": "\"she\" doesn't fit here → \"her\" does, because it does not match the grammar or meaning clue in this sentence — \"her\" is correct.",
+                "B": "\"hers\" doesn't fit here → \"her\" does, because it does not match the grammar or meaning clue in this sentence — \"her\" is correct.",
+                "hers": "\"hers\" doesn't fit here → \"her\" does, because it does not match the grammar or meaning clue in this sentence — \"her\" is correct.",
+                "her": "\"her\" doesn't fit here → \"her\" does, because The context points to \"her\" — object of speak to.",
+                "D": "\"herself\" doesn't fit here → \"her\" does, because it does not match the grammar or meaning clue in this sentence — \"her\" is correct.",
+                "herself": "\"herself\" doesn't fit here → \"her\" does, because it does not match the grammar or meaning clue in this sentence — \"her\" is correct."
+              }
             }
           }
         ]

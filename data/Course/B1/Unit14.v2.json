@@ -743,7 +743,10 @@
                 "a": "A is used before consonant sounds, not before a vowel sound here.",
                 "an": "An is only used before vowel sounds."
               },
-              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an.",
+              "optionContrast": {
+                "a": "\"a\" doesn't fit here → \"an\" does, because A is used before consonant sounds, not before a vowel sound here."
+              }
             }
           },
           {
@@ -765,7 +768,10 @@
                 "a": "A is used before consonant sounds, not before a vowel sound here.",
                 "an": "An is only used before vowel sounds."
               },
-              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an.",
+              "optionContrast": {
+                "a": "\"a\" doesn't fit here → \"an\" does, because A is used before consonant sounds, not before a vowel sound here."
+              }
             }
           },
           {
@@ -787,7 +793,10 @@
                 "a": "A is used before consonant sounds, not before a vowel sound here.",
                 "an": "An is only used before vowel sounds."
               },
-              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an.",
+              "optionContrast": {
+                "an": "\"an\" doesn't fit here → \"a\" does, because An is only used before vowel sounds."
+              }
             }
           },
           {
@@ -809,7 +818,10 @@
                 "a": "A is used before consonant sounds, not before a vowel sound here.",
                 "an": "An is only used before vowel sounds."
               },
-              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an.",
+              "optionContrast": {
+                "an": "\"an\" doesn't fit here → \"a\" does, because An is only used before vowel sounds."
+              }
             }
           },
           {
@@ -830,6 +842,9 @@
               "wrongOptions": {
                 "-": "No article is wrong here — English needs the before a specific known thing.",
                 "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              },
+              "optionContrast": {
+                "-": "\"-\" doesn't fit here → \"the\" does, because No article is wrong here — English needs the before a specific known thing."
               }
             }
           },
@@ -851,6 +866,9 @@
               "wrongOptions": {
                 "-": "No article is wrong here — English needs the before a specific known thing.",
                 "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              },
+              "optionContrast": {
+                "the": "\"the\" doesn't fit here → \"-\" does, because The is wrong only when no specific thing is meant — that is not the case here."
               }
             }
           },
@@ -872,6 +890,9 @@
               "wrongOptions": {
                 "-": "No article is wrong here — English needs the before a specific known thing.",
                 "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              },
+              "optionContrast": {
+                "the": "\"the\" doesn't fit here → \"-\" does, because The is wrong only when no specific thing is meant — that is not the case here."
               }
             }
           },
@@ -893,6 +914,9 @@
               "wrongOptions": {
                 "-": "No article is wrong here — English needs the before a specific known thing.",
                 "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              },
+              "optionContrast": {
+                "-": "\"-\" doesn't fit here → \"the\" does, because No article is wrong here — English needs the before a specific known thing."
               }
             }
           }

@@ -10,9 +10,10 @@ var LessonExplanation = (function() {
   var DEFAULT_SECTION_DEFS = {
     correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
     yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
+    optionContrast: { label: 'The fix', icon: 'compare_arrows', variant: 'mistake-note' },
     question: { label: 'Question', icon: 'quiz', variant: 'neutral' },
     fix: { label: 'The fix', icon: 'build', variant: 'teach' },
-    whyCorrect: { label: "Why it's correct", wrongLabel: 'Explanation', icon: 'lightbulb', variant: 'teach' },
+    whyCorrect: { label: "Why it's correct", wrongLabel: 'Why', icon: 'lightbulb', variant: 'teach' },
     correctedSentence: { label: 'Corrected sentence', icon: 'format_quote', variant: 'answer' },
     vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
     grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },

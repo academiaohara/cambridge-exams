@@ -146,6 +146,8 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' missing explanationContent'));
       } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
         issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      } else if (item.explanationContent && !item.explanationContent.optionContrast) {
+        issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' explanationContent missing optionContrast'));
       }
       if (item.explanation) {
         issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' still uses legacy explanation string'));
@@ -172,6 +174,8 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' missing explanationContent'));
       } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
         issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      } else if (item.explanationContent && !item.explanationContent.optionContrast) {
+        issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' explanationContent missing optionContrast'));
       }
       if (item.explanation) {
         issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' still uses legacy explanation string'));

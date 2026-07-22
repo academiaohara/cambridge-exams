@@ -696,7 +696,11 @@
               "wrongOptions": {
                 "which": "\"which\" does not match the clue in the rest of the sentence (\"looks after our dog.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "which": "\"which\" doesn't fit here → \"who\" does, because it does not match the clue in the rest of the sentence (\"looks after our dog.\").",
+                "where": "\"where\" doesn't fit here → \"who\" does, because Only \"who\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -718,7 +722,11 @@
               "wrongOptions": {
                 "who": "\"who\" does not match the clue in the rest of the sentence (\"everyone watched last night.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "who": "\"who\" doesn't fit here → \"that\" does, because it does not match the clue in the rest of the sentence (\"everyone watched last night.\").",
+                "where": "\"where\" doesn't fit here → \"that\" does, because Only \"that\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -740,7 +748,11 @@
               "wrongOptions": {
                 "who": "\"who\" does not match the clue in the rest of the sentence (\"serves vegetarian food?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "who": "\"who\" doesn't fit here → \"that\" does, because it does not match the clue in the rest of the sentence (\"serves vegetarian food?\").",
+                "whose": "\"whose\" doesn't fit here → \"that\" does, because Only \"that\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -762,7 +774,11 @@
               "wrongOptions": {
                 "which": "\"which\" does not match the clue in the rest of the sentence (\"wallet was stolen called the police.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "which": "\"which\" doesn't fit here → \"whose\" does, because it does not match the clue in the rest of the sentence (\"wallet was stolen called the police.\").",
+                "where": "\"where\" doesn't fit here → \"whose\" does, because Only \"whose\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -784,7 +800,11 @@
               "wrongOptions": {
                 "who": "\"who\" does not match the clue in the rest of the sentence (\"my dad grew up.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "who": "\"who\" doesn't fit here → \"where\" does, because it does not match the clue in the rest of the sentence (\"my dad grew up.\").",
+                "whose": "\"whose\" doesn't fit here → \"where\" does, because Only \"where\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -806,7 +826,11 @@
               "wrongOptions": {
                 "who": "\"who\" does not match the clue in the rest of the sentence (\"I ordered arrived yesterday.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "who": "\"who\" doesn't fit here → \"which\" does, because it does not match the clue in the rest of the sentence (\"I ordered arrived yesterday.\").",
+                "whose": "\"whose\" doesn't fit here → \"which\" does, because Only \"which\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -828,7 +852,11 @@
               "wrongOptions": {
                 "which": "\"which\" does not match the clue in the rest of the sentence (\"won the competition.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "which": "\"which\" doesn't fit here → \"that\" does, because it does not match the clue in the rest of the sentence (\"won the competition.\").",
+                "where": "\"where\" doesn't fit here → \"that\" does, because Only \"that\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -850,7 +878,11 @@
               "wrongOptions": {
                 "where": "\"where\" does not match the clue in the rest of the sentence (\"has modern paintings.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "where": "\"where\" doesn't fit here → \"which\" does, because it does not match the clue in the rest of the sentence (\"has modern paintings.\").",
+                "whose": "\"whose\" doesn't fit here → \"which\" does, because Only \"which\" fits the meaning created by the words before and after the gap."
+              }
             }
           }
         ]
@@ -1357,7 +1389,16 @@
                 "whose": "\"whose\" does not match the grammar or meaning clue in this sentence — \"who\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"who\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"who\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"which\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "which": "\"which\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "B": "\"where\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "where": "\"where\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "who": "\"who\" doesn't fit here → \"who\" does, because The context points to \"who\" — the woman = person who acted.",
+                "D": "\"whose\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "whose": "\"whose\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct."
+              }
             }
           },
           {
@@ -1395,7 +1436,16 @@
                 "which": "\"which\" does not match the grammar or meaning clue in this sentence — \"whose\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "whose": "\"whose\" doesn't fit here → \"whose\" does, because The clue is possession, so the correct answer is \"whose\".",
+                "B": "\"who\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "who": "\"who\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "C": "\"where\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "where": "\"where\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "D": "\"which\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "which": "\"which\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct."
+              }
             }
           },
           {
@@ -1433,7 +1483,16 @@
                 "which": "\"which\" does not match the grammar or meaning clue in this sentence — \"where\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"where\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"where\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"who\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "who": "\"who\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "where": "\"where\" doesn't fit here → \"where\" does, because The context points to \"where\" — the café = place.",
+                "C": "\"whose\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "whose": "\"whose\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "D": "\"which\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "which": "\"which\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct."
+              }
             }
           },
           {
@@ -1471,7 +1530,16 @@
                 "who": "\"who\" is the wrong tense for a finished past time in this sentence."
               },
               "usefulTip": "When you see a finished past-time expression, reach for the past simple first.",
-              "grammarFocus": "A finished past time marker (yesterday, last week, ago) requires the past simple, not a perfect tense."
+              "grammarFocus": "A finished past time marker (yesterday, last week, ago) requires the past simple, not a perfect tense.",
+              "optionContrast": {
+                "A": "\"where\" doesn't fit here → \"which\" does, because it is the wrong tense for a finished past time in this sentence.",
+                "where": "\"where\" doesn't fit here → \"which\" does, because it is the wrong tense for a finished past time in this sentence.",
+                "B": "\"whose\" doesn't fit here → \"which\" does, because it is the wrong tense for a finished past time in this sentence.",
+                "whose": "\"whose\" doesn't fit here → \"which\" does, because it is the wrong tense for a finished past time in this sentence.",
+                "C": "\"who\" doesn't fit here → \"which\" does, because it is the wrong tense for a finished past time in this sentence.",
+                "who": "\"who\" doesn't fit here → \"which\" does, because it is the wrong tense for a finished past time in this sentence.",
+                "which": "\"which\" doesn't fit here → \"which\" does, because The context points to \"which\" — the jacket = thing."
+              }
             }
           },
           {
@@ -1509,7 +1577,16 @@
                 "which": "\"which\" does not match the grammar or meaning clue in this sentence — \"whose\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "A": "\"who\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "who": "\"who\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "whose": "\"whose\" doesn't fit here → \"whose\" does, because The clue is possession, so the correct answer is \"whose\".",
+                "C": "\"where\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "where": "\"where\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "D": "\"which\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct.",
+                "which": "\"which\" doesn't fit here → \"whose\" does, because it does not match the grammar or meaning clue in this sentence — \"whose\" is correct."
+              }
             }
           },
           {
@@ -1547,7 +1624,16 @@
                 "which": "\"which\" does not match the grammar or meaning clue in this sentence — \"where\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"where\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"where\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "where": "\"where\" doesn't fit here → \"where\" does, because The context points to \"where\" — the town = place.",
+                "B": "\"whose\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "whose": "\"whose\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "C": "\"who\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "who": "\"who\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "D": "\"which\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct.",
+                "which": "\"which\" doesn't fit here → \"where\" does, because it does not match the grammar or meaning clue in this sentence — \"where\" is correct."
+              }
             }
           },
           {
@@ -1585,7 +1671,16 @@
                 "whose": "\"whose\" does not match the grammar or meaning clue in this sentence — \"who\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "A": "\"where\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "where": "\"where\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "B": "\"which\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "which": "\"which\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "who": "\"who\" doesn't fit here → \"who\" does, because The context points to \"who\" — the player = person.",
+                "D": "\"whose\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct.",
+                "whose": "\"whose\" doesn't fit here → \"who\" does, because it does not match the grammar or meaning clue in this sentence — \"who\" is correct."
+              }
             }
           },
           {
@@ -1623,7 +1718,16 @@
                 "whose": "\"whose\" does not match the grammar or meaning clue in this sentence — \"which\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"which\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"which\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"who\" doesn't fit here → \"which\" does, because it does not match the grammar or meaning clue in this sentence — \"which\" is correct.",
+                "who": "\"who\" doesn't fit here → \"which\" does, because it does not match the grammar or meaning clue in this sentence — \"which\" is correct.",
+                "B": "\"where\" doesn't fit here → \"which\" does, because it does not match the grammar or meaning clue in this sentence — \"which\" is correct.",
+                "where": "\"where\" doesn't fit here → \"which\" does, because it does not match the grammar or meaning clue in this sentence — \"which\" is correct.",
+                "C": "\"whose\" doesn't fit here → \"which\" does, because it does not match the grammar or meaning clue in this sentence — \"which\" is correct.",
+                "whose": "\"whose\" doesn't fit here → \"which\" does, because it does not match the grammar or meaning clue in this sentence — \"which\" is correct.",
+                "which": "\"which\" doesn't fit here → \"which\" does, because The context points to \"which\" — the headphones = things."
+              }
             }
           }
         ]

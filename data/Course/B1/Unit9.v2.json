@@ -787,7 +787,10 @@
               "wrongOptions": {
                 "luggage": "\"luggage\" does not match the clue in the rest of the sentence (\"near the harbour.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "luggage": "\"luggage\" doesn't fit here → \"accommodation\" does, because it does not match the clue in the rest of the sentence (\"near the harbour.\")."
+              }
             }
           },
           {
@@ -808,7 +811,10 @@
               "wrongOptions": {
                 "passport": "\"passport\" does not match the clue in the rest of the sentence (\"from Madrid to Lisbon took six hours.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "passport": "\"passport\" doesn't fit here → \"journey\" does, because it does not match the clue in the rest of the sentence (\"from Madrid to Lisbon took six hours.\")."
+              }
             }
           },
           {
@@ -829,7 +835,10 @@
               "wrongOptions": {
                 "catch": "\"catch\" does not match the clue in the rest of the sentence (\"several flights because of the storm.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "catch": "\"catch\" doesn't fit here → \"cancel\" does, because it does not match the clue in the rest of the sentence (\"several flights because of the storm.\")."
+              }
             }
           },
           {
@@ -850,7 +859,10 @@
               "wrongOptions": {
                 "crash": "\"crash\" does not match the clue in the rest of the sentence (\"the coach if we hurry.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "crash": "\"crash\" doesn't fit here → \"catch\" does, because it does not match the clue in the rest of the sentence (\"the coach if we hurry.\")."
+              }
             }
           },
           {
@@ -871,7 +883,10 @@
               "wrongOptions": {
                 "resort": "\"resort\" does not match the clue in the rest of the sentence (\"for short journeys.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "resort": "\"resort\" doesn't fit here → \"vehicle\" does, because it does not match the clue in the rest of the sentence (\"for short journeys.\")."
+              }
             }
           },
           {
@@ -892,7 +907,10 @@
               "wrongOptions": {
                 "foreign": "\"foreign\" does not match the clue in the rest of the sentence (\"because it's next to the station.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "foreign": "\"foreign\" doesn't fit here → \"convenient\" does, because it does not match the clue in the rest of the sentence (\"because it's next to the station.\")."
+              }
             }
           }
         ]
@@ -1458,7 +1476,16 @@
                 "packed": "\"packed\" does not match the grammar or meaning clue in this sentence — \"reached\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever."
+              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever.",
+              "optionContrast": {
+                "reached": "\"reached\" doesn't fit here → \"reached\" does, because We reached the resort = arrived at.",
+                "B": "\"caught\" doesn't fit here → \"reached\" does, because it does not match the grammar or meaning clue in this sentence — \"reached\" is correct.",
+                "caught": "\"caught\" doesn't fit here → \"reached\" does, because it does not match the grammar or meaning clue in this sentence — \"reached\" is correct.",
+                "C": "\"booked\" doesn't fit here → \"reached\" does, because it does not match the grammar or meaning clue in this sentence — \"reached\" is correct.",
+                "booked": "\"booked\" doesn't fit here → \"reached\" does, because it does not match the grammar or meaning clue in this sentence — \"reached\" is correct.",
+                "D": "\"packed\" doesn't fit here → \"reached\" does, because it does not match the grammar or meaning clue in this sentence — \"reached\" is correct.",
+                "packed": "\"packed\" doesn't fit here → \"reached\" does, because it does not match the grammar or meaning clue in this sentence — \"reached\" is correct."
+              }
             }
           },
           {
@@ -1496,7 +1523,16 @@
                 "arrive": "\"arrive\" does not match the grammar or meaning clue in this sentence — \"provide\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Future forms (will, going to, present continuous) depend on whether the sentence predicts, plans, or arranges."
+              "grammarFocus": "Future forms (will, going to, present continuous) depend on whether the sentence predicts, plans, or arranges.",
+              "optionContrast": {
+                "A": "\"ask\" doesn't fit here → \"provide\" does, because it does not match the grammar or meaning clue in this sentence — \"provide\" is correct.",
+                "ask": "\"ask\" doesn't fit here → \"provide\" does, because it does not match the grammar or meaning clue in this sentence — \"provide\" is correct.",
+                "provide": "\"provide\" doesn't fit here → \"provide\" does, because The receptionist will provide you with information.",
+                "C": "\"wait\" doesn't fit here → \"provide\" does, because it does not match the grammar or meaning clue in this sentence — \"provide\" is correct.",
+                "wait": "\"wait\" doesn't fit here → \"provide\" does, because it does not match the grammar or meaning clue in this sentence — \"provide\" is correct.",
+                "D": "\"arrive\" doesn't fit here → \"provide\" does, because it does not match the grammar or meaning clue in this sentence — \"provide\" is correct.",
+                "arrive": "\"arrive\" doesn't fit here → \"provide\" does, because it does not match the grammar or meaning clue in this sentence — \"provide\" is correct."
+              }
             }
           },
           {
@@ -1534,7 +1570,16 @@
                 "about": "\"about\" does not match the grammar or meaning clue in this sentence — \"for\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"for\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"for\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"to\" doesn't fit here → \"for\" does, because it does not match the grammar or meaning clue in this sentence — \"for\" is correct.",
+                "to": "\"to\" doesn't fit here → \"for\" does, because it does not match the grammar or meaning clue in this sentence — \"for\" is correct.",
+                "B": "\"with\" doesn't fit here → \"for\" does, because it does not match the grammar or meaning clue in this sentence — \"for\" is correct.",
+                "with": "\"with\" doesn't fit here → \"for\" does, because it does not match the grammar or meaning clue in this sentence — \"for\" is correct.",
+                "for": "\"for\" doesn't fit here → \"for\" does, because Suitable for families (fixed pattern).",
+                "D": "\"about\" doesn't fit here → \"for\" does, because it does not match the grammar or meaning clue in this sentence — \"for\" is correct.",
+                "about": "\"about\" doesn't fit here → \"for\" does, because it does not match the grammar or meaning clue in this sentence — \"for\" is correct."
+              }
             }
           },
           {
@@ -1572,7 +1617,16 @@
                 "on holiday": "\"on holiday\" does not match the grammar or meaning clue in this sentence — \"by road\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"by road\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"by road\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"on board\" doesn't fit here → \"by road\" does, because it does not match the grammar or meaning clue in this sentence — \"by road\" is correct.",
+                "on board": "\"on board\" doesn't fit here → \"by road\" does, because it does not match the grammar or meaning clue in this sentence — \"by road\" is correct.",
+                "by road": "\"by road\" doesn't fit here → \"by road\" does, because The context points to \"by road\" — airport closed.",
+                "C": "\"on schedule\" doesn't fit here → \"by road\" does, because it does not match the grammar or meaning clue in this sentence — \"by road\" is correct.",
+                "on schedule": "\"on schedule\" doesn't fit here → \"by road\" does, because it does not match the grammar or meaning clue in this sentence — \"by road\" is correct.",
+                "D": "\"on holiday\" doesn't fit here → \"by road\" does, because it does not match the grammar or meaning clue in this sentence — \"by road\" is correct.",
+                "on holiday": "\"on holiday\" doesn't fit here → \"by road\" does, because it does not match the grammar or meaning clue in this sentence — \"by road\" is correct."
+              }
             }
           },
           {
@@ -1610,7 +1664,16 @@
                 "wait for": "\"wait for\" does not match the grammar or meaning clue in this sentence — \"ask for\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"ask for\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"ask for\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"ask\" doesn't fit here → \"ask for\" does, because it does not match the grammar or meaning clue in this sentence — \"ask for\" is correct.",
+                "ask": "\"ask\" doesn't fit here → \"ask for\" does, because it does not match the grammar or meaning clue in this sentence — \"ask for\" is correct.",
+                "ask for": "\"ask for\" doesn't fit here → \"ask for\" does, because Ask for a window seat when checking in.",
+                "C": "\"ask about\" doesn't fit here → \"ask for\" does, because it does not match the grammar or meaning clue in this sentence — \"ask for\" is correct.",
+                "ask about": "\"ask about\" doesn't fit here → \"ask for\" does, because it does not match the grammar or meaning clue in this sentence — \"ask for\" is correct.",
+                "D": "\"wait for\" doesn't fit here → \"ask for\" does, because it does not match the grammar or meaning clue in this sentence — \"ask for\" is correct.",
+                "wait for": "\"wait for\" doesn't fit here → \"ask for\" does, because it does not match the grammar or meaning clue in this sentence — \"ask for\" is correct."
+              }
             }
           },
           {
@@ -1648,7 +1711,16 @@
                 "luggage": "\"luggage\" does not match the grammar or meaning clue in this sentence — \"harbour\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"harbour\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"harbour\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "harbour": "\"harbour\" doesn't fit here → \"harbour\" does, because A ferry leaves from a harbour.",
+                "B": "\"passport\" doesn't fit here → \"harbour\" does, because it does not match the grammar or meaning clue in this sentence — \"harbour\" is correct.",
+                "passport": "\"passport\" doesn't fit here → \"harbour\" does, because it does not match the grammar or meaning clue in this sentence — \"harbour\" is correct.",
+                "C": "\"resort\" doesn't fit here → \"harbour\" does, because it does not match the grammar or meaning clue in this sentence — \"harbour\" is correct.",
+                "resort": "\"resort\" doesn't fit here → \"harbour\" does, because it does not match the grammar or meaning clue in this sentence — \"harbour\" is correct.",
+                "D": "\"luggage\" doesn't fit here → \"harbour\" does, because it does not match the grammar or meaning clue in this sentence — \"harbour\" is correct.",
+                "luggage": "\"luggage\" doesn't fit here → \"harbour\" does, because it does not match the grammar or meaning clue in this sentence — \"harbour\" is correct."
+              }
             }
           }
         ]

@@ -458,7 +458,10 @@
               "wrongOptions": {
                 "haven't": "\"haven't\" does not match the clue in the rest of the sentence (\"taken so long to get ready.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "haven't": "\"haven't\" doesn't fit here → \"hadn't\" does, because \"haven't\" does not match the clue in the rest of the sentence (\"taken so long to get ready.\")."
+              }
             }
           },
           {
@@ -479,7 +482,10 @@
               "wrongOptions": {
                 "would": "\"would\" does not match the clue in the rest of the sentence (\"happen to see Clara at the conference, could you give h…\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "would": "\"would\" doesn't fit here → \"should\" does, because it does not match the clue in the rest of the sentence (\"happen to see Clara at the conference, could you give h…\")."
+              }
             }
           },
           {
@@ -500,7 +506,10 @@
               "wrongOptions": {
                 "unless": "\"unless\" does not match the clue in the rest of the sentence (\"we lose our internet connection.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "unless": "\"unless\" doesn't fit here → \"in case\" does, because it does not match the clue in the rest of the sentence (\"we lose our internet connection.\")."
+              }
             }
           },
           {
@@ -521,7 +530,10 @@
               "wrongOptions": {
                 "have": "\"have\" does not match the clue in the rest of the sentence (\"to redo the entire report.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "have": "\"have\" doesn't fit here → \"have had\" does, because it does not match the clue in the rest of the sentence (\"to redo the entire report.\")."
+              }
             }
           },
           {
@@ -542,7 +554,10 @@
               "wrongOptions": {
                 "was": "\"was\" does not match the clue in the rest of the sentence (\"born a century earlier, would Marie Curie have made the…\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "was": "\"was\" doesn't fit here → \"had been\" does, because it does not match the clue in the rest of the sentence (\"born a century earlier, would Marie Curie have made the…\")."
+              }
             }
           },
           {
@@ -563,7 +578,10 @@
               "wrongOptions": {
                 "Otherwise": "\"Otherwise\" does not match the clue in the rest of the sentence (\"we leave by seven, we're going to hit the morning rush …\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "Otherwise": "\"Otherwise\" doesn't fit here → \"Unless\" does, because it does not match the clue in the rest of the sentence (\"we leave by seven, we're going to hit the morning rush …\")."
+              }
             }
           },
           {
@@ -584,7 +602,10 @@
               "wrongOptions": {
                 "if not": "\"if not\" does not match the clue in the rest of the sentence (\"the lead actor's remarkable improvisation.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "if not": "\"if not\" doesn't fit here → \"but for\" does, because it does not match the clue in the rest of the sentence (\"the lead actor's remarkable improvisation.\")."
+              }
             }
           },
           {
@@ -605,7 +626,10 @@
               "wrongOptions": {
                 "supposing": "\"supposing\" does not match the clue in the rest of the sentence (\"everyone is available that day.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "supposing": "\"supposing\" doesn't fit here → \"providing\" does, because it does not match the clue in the rest of the sentence (\"everyone is available that day.\")."
+              }
             }
           }
         ]
@@ -947,7 +971,16 @@
                 "moved": "\"moved\" does not match the grammar or meaning clue in this sentence — \"thrown\" is correct."
               },
               "usefulTip": "Time expressions like for, since, already, and yet are strong present-perfect signals.",
-              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever."
+              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever.",
+              "optionContrast": {
+                "A": "\"come\" doesn't fit here → \"thrown\" does, because it does not match the grammar or meaning clue in this sentence — \"thrown\" is correct.",
+                "come": "\"come\" doesn't fit here → \"thrown\" does, because it does not match the grammar or meaning clue in this sentence — \"thrown\" is correct.",
+                "thrown": "\"thrown\" doesn't fit here → \"thrown\" does, because The context points to \"thrown\" — cause complications.",
+                "C": "\"got\" doesn't fit here → \"thrown\" does, because it does not match the grammar or meaning clue in this sentence — \"thrown\" is correct.",
+                "got": "\"got\" doesn't fit here → \"thrown\" does, because it does not match the grammar or meaning clue in this sentence — \"thrown\" is correct.",
+                "D": "\"moved\" doesn't fit here → \"thrown\" does, because it does not match the grammar or meaning clue in this sentence — \"thrown\" is correct.",
+                "moved": "\"moved\" doesn't fit here → \"thrown\" does, because it does not match the grammar or meaning clue in this sentence — \"thrown\" is correct."
+              }
             }
           },
           {
@@ -985,7 +1018,16 @@
                 "would have lain": "\"would have lain\" is the wrong tense for a finished past time in this sentence."
               },
               "usefulTip": "When you see a finished past-time expression, reach for the past simple first.",
-              "vocabularyFocus": "\"could be lying\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"could be lying\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"might have lain\" doesn't fit here → \"could be lying\" does, because the time clue signals the present continuous.",
+                "might have lain": "\"might have lain\" doesn't fit here → \"could be lying\" does, because the time clue signals the present continuous.",
+                "B": "\"would lie\" doesn't fit here → \"could be lying\" does, because the time clue signals the present continuous.",
+                "would lie": "\"would lie\" doesn't fit here → \"could be lying\" does, because the time clue signals the present continuous.",
+                "could be lying": "\"could be lying\" doesn't fit here → \"could be lying\" does, because The context points to \"could be lying\" — hypothetical present.",
+                "D": "\"would have lain\" doesn't fit here → \"could be lying\" does, because the time clue signals the present continuous.",
+                "would have lain": "\"would have lain\" doesn't fit here → \"could be lying\" does, because the time clue signals the present continuous."
+              }
             }
           },
           {
@@ -1023,7 +1065,16 @@
                 "desirable": "\"desirable\" does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct."
               },
               "usefulTip": "Time expressions like for, since, already, and yet are strong present-perfect signals.",
-              "vocabularyFocus": "\"deliberate\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"deliberate\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"instrumental\" doesn't fit here → \"deliberate\" does, because it does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct.",
+                "instrumental": "\"instrumental\" doesn't fit here → \"deliberate\" does, because it does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct.",
+                "B": "\"purposeful\" doesn't fit here → \"deliberate\" does, because it does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct.",
+                "purposeful": "\"purposeful\" doesn't fit here → \"deliberate\" does, because it does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct.",
+                "deliberate": "\"deliberate\" doesn't fit here → \"deliberate\" does, because The context points to \"deliberate\" — not intentional.",
+                "D": "\"desirable\" doesn't fit here → \"deliberate\" does, because it does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct.",
+                "desirable": "\"desirable\" doesn't fit here → \"deliberate\" does, because it does not match the grammar or meaning clue in this sentence — \"deliberate\" is correct."
+              }
             }
           },
           {
@@ -1061,7 +1112,16 @@
                 "below": "\"below\" does not match the grammar or meaning clue in this sentence — \"against\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"against\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"against\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"despite\" doesn't fit here → \"against\" does, because it does not match the grammar or meaning clue in this sentence — \"against\" is correct.",
+                "despite": "\"despite\" doesn't fit here → \"against\" does, because it does not match the grammar or meaning clue in this sentence — \"against\" is correct.",
+                "B": "\"without\" doesn't fit here → \"against\" does, because it does not match the grammar or meaning clue in this sentence — \"against\" is correct.",
+                "without": "\"without\" doesn't fit here → \"against\" does, because it does not match the grammar or meaning clue in this sentence — \"against\" is correct.",
+                "against": "\"against\" doesn't fit here → \"against\" does, because The context points to \"against\" — against expectations.",
+                "D": "\"below\" doesn't fit here → \"against\" does, because it does not match the grammar or meaning clue in this sentence — \"against\" is correct.",
+                "below": "\"below\" doesn't fit here → \"against\" does, because it does not match the grammar or meaning clue in this sentence — \"against\" is correct."
+              }
             }
           },
           {
@@ -1099,7 +1159,16 @@
                 "giving": "\"giving\" does not express the present-perfect link to now that the sentence requires."
               },
               "usefulTip": "Time expressions like for, since, already, and yet are strong present-perfect signals.",
-              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever."
+              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever.",
+              "optionContrast": {
+                "A": "\"dropping\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now.",
+                "dropping": "\"dropping\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now.",
+                "B": "\"moving\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now.",
+                "moving": "\"moving\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now.",
+                "C": "\"giving\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now.",
+                "giving": "\"giving\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now.",
+                "cutting": "\"cutting\" doesn't fit here → \"cutting\" does, because this month describes a temporary situation around now."
+              }
             }
           },
           {
@@ -1137,7 +1206,16 @@
                 "might": "\"might\" does not fit the third conditional pattern (if + past perfect, would have + past participle)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result."
+              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result.",
+              "optionContrast": {
+                "had": "\"had\" doesn't fit here → \"had\" does, because The clue is inverted third conditional, so the correct answer is \"had\".",
+                "B": "\"would\" doesn't fit here → \"had\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "would": "\"would\" doesn't fit here → \"had\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "C": "\"should\" doesn't fit here → \"had\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "should": "\"should\" doesn't fit here → \"had\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "D": "\"might\" doesn't fit here → \"had\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "might": "\"might\" doesn't fit here → \"had\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle)."
+              }
             }
           },
           {
@@ -1175,7 +1253,16 @@
                 "rod": "\"rod\" does not match the grammar or meaning clue in this sentence — \"straw\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"straw\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"straw\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "straw": "\"straw\" doesn't fit here → \"straw\" does, because The context points to \"straw\" — unlucky person chosen.",
+                "B": "\"stick\" doesn't fit here → \"straw\" does, because it does not match the grammar or meaning clue in this sentence — \"straw\" is correct.",
+                "stick": "\"stick\" doesn't fit here → \"straw\" does, because it does not match the grammar or meaning clue in this sentence — \"straw\" is correct.",
+                "C": "\"pole\" doesn't fit here → \"straw\" does, because it does not match the grammar or meaning clue in this sentence — \"straw\" is correct.",
+                "pole": "\"pole\" doesn't fit here → \"straw\" does, because it does not match the grammar or meaning clue in this sentence — \"straw\" is correct.",
+                "D": "\"rod\" doesn't fit here → \"straw\" does, because it does not match the grammar or meaning clue in this sentence — \"straw\" is correct.",
+                "rod": "\"rod\" doesn't fit here → \"straw\" does, because it does not match the grammar or meaning clue in this sentence — \"straw\" is correct."
+              }
             }
           },
           {
@@ -1213,7 +1300,16 @@
                 "exported": "\"exported\" does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"evacuated\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"evacuated\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"escaped\" doesn't fit here → \"evacuated\" does, because it does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct.",
+                "escaped": "\"escaped\" doesn't fit here → \"evacuated\" does, because it does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct.",
+                "B": "\"emigrated\" doesn't fit here → \"evacuated\" does, because it does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct.",
+                "emigrated": "\"emigrated\" doesn't fit here → \"evacuated\" does, because it does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct.",
+                "C": "\"exported\" doesn't fit here → \"evacuated\" does, because it does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct.",
+                "exported": "\"exported\" doesn't fit here → \"evacuated\" does, because it does not match the grammar or meaning clue in this sentence — \"evacuated\" is correct.",
+                "evacuated": "\"evacuated\" doesn't fit here → \"evacuated\" does, because The context points to \"evacuated\" — removed from danger."
+              }
             }
           }
         ]
