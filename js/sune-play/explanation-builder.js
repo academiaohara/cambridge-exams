@@ -559,11 +559,15 @@ var SunePlayExplanation = (function() {
     sections.push({ key: 'correct', text: String(correctAnswer) });
 
     if (content) {
-      var focus = pickFocusSection(content);
-      if (focus) {
-        sections.push(focus);
-      } else if (content.whyCorrect) {
-        sections.push({ key: 'grammarFocus', text: content.whyCorrect });
+      if (content.grammarFocus) {
+        sections.push({ key: 'grammarFocus', text: content.grammarFocus });
+      } else {
+        var focus = pickFocusSection(content);
+        if (focus) {
+          sections.push(focus);
+        } else if (content.whyCorrect) {
+          sections.push({ key: 'grammarFocus', text: content.whyCorrect });
+        }
       }
     } else if (p.explanation) {
       sections.push({ key: 'grammarFocus', text: p.explanation });
@@ -905,6 +909,103 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function formatVerbBankAnswer(payload) {
+    var ans = payload && payload.answer;
+    if (Array.isArray(ans)) return ans.join(' / ');
+    return String(ans || '').trim();
+  }
+
+  function isVerbBankStep1(screen, result) {
+    var p = (screen && screen.payload) || {};
+    var step = p.step || 'choose_verb';
+    return step === 'choose_verb' && result && result.correct === false && result.partial && !result._advanceStep;
+  }
+
+  function lookupWrongVerbNote(content, userAnswer, wordBank) {
+    if (!content || !userAnswer) return '';
+    if (content.wrongVerbs) {
+      var fromVerbs = lookupWrongOptionNote({ wrongOptions: content.wrongVerbs }, userAnswer, wordBank);
+      if (fromVerbs) return fromVerbs;
+    }
+    return lookupWrongOptionNote(content, userAnswer, wordBank);
+  }
+
+  function buildVerbBankTwoStep(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var step1 = isVerbBankStep1(screen, result);
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    if (step1) {
+      if (isWrong) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+      if (content) {
+        var verbWhy = content.whyVerbFits || content.vocabularyWhy;
+        if (verbWhy) {
+          sections.push({ key: 'whyCorrect', text: verbWhy });
+        }
+        if (content.vocabularyFocus) {
+          sections.push({ key: 'vocabularyFocus', text: content.vocabularyFocus });
+        }
+        if (isWrong) {
+          var verbWrong = lookupWrongVerbNote(content, userAnswer, p.wordBank);
+          if (!verbWrong && content.commonMistakeStep1) verbWrong = content.commonMistakeStep1;
+          if (!verbWrong && content.commonMistake) verbWrong = content.commonMistake;
+          if (verbWrong) sections.push({ key: 'commonMistake', text: verbWrong });
+        }
+      } else if (isWrong) {
+        sections.push({
+          key: 'commonMistake',
+          text: (result && result.explanation) || 'That verb does not fit this sentence.'
+        });
+      }
+    } else {
+      var correctAnswer = (result && result.correctAnswer) || formatVerbBankAnswer(p);
+      sections.push({ key: 'correct', text: String(correctAnswer) });
+
+      if (isWrong) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+
+      if (content) {
+        if (content.grammarFocus) {
+          sections.push({ key: 'grammarFocus', text: content.grammarFocus });
+        } else if (content.whyCorrect) {
+          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        }
+        if (isWrong) {
+          var formWrong = lookupWrongOptionNote(content, userAnswer, null);
+          if (!formWrong && content.commonMistakeStep2) formWrong = content.commonMistakeStep2;
+          if (!formWrong && content.commonMistake) formWrong = content.commonMistake;
+          if (formWrong) sections.push({ key: 'commonMistake', text: formWrong });
+        }
+        if (content.sentenceBreakdown) {
+          sections.push({ key: 'sentenceBreakdown', text: content.sentenceBreakdown });
+        } else if (p.completedSentence) {
+          sections.push({ key: 'sentenceBreakdown', text: p.completedSentence });
+        }
+        if (content.usefulTip) {
+          sections.push({ key: 'usefulTip', text: content.usefulTip });
+        }
+      } else if (p.explanation) {
+        sections.push({ key: 'grammarFocus', text: p.explanation });
+        if (p.completedSentence) {
+          sections.push({ key: 'sentenceBreakdown', text: p.completedSentence });
+        }
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'verb_bank_two_step',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function getFullSentenceCues(payload) {
     var cues = (payload.prompt && payload.prompt.cues) || [];
     if ((!cues.length || cues.length <= 1) && payload.displayPrompt && /\s\/\s/.test(payload.displayPrompt)) {
@@ -1107,6 +1208,9 @@ var SunePlayExplanation = (function() {
       if (fswCues.length) return fswCues.join(' / ');
       return '';
     }
+    if (screen.formatType === 'verb_bank_two_step') {
+      return gapSentenceDisplay(p.sentence || p.blankSentence || '');
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1144,6 +1248,8 @@ var SunePlayExplanation = (function() {
         return buildWordOrderTiles(screen, result);
       case 'full_sentence_write':
         return buildFullSentenceWrite(screen, result);
+      case 'verb_bank_two_step':
+        return buildVerbBankTwoStep(screen, result);
       default:
         return buildLegacy(screen, result);
     }

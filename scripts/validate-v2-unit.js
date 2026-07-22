@@ -241,6 +241,17 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'verb_bank_two_step' || ft === 'verb_bank_two_step' ||
+        item.formatType === 'verb_tile_conjugation_gap' || ft === 'verb_tile_conjugation_gap') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'verb_bank_two_step item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect && !item.explanationContent.whyVerbFits) {
+        issues.push(warn(file, 'verb_bank_two_step item ' + (item.id || idx) + ' explanationContent missing teaching fields'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'verb_bank_two_step item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (item.acceptedAnswers && item.acceptedAnswers.some(function(a) { return typeof a !== 'string'; })) {
       issues.push(error(file, 'Item ' + (item.id || idx) + ' acceptedAnswers must be strings'));
     }

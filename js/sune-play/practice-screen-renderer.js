@@ -4949,7 +4949,11 @@
             result.lifeLoss = 1;
             result.shouldRequeue = true;
             result.partial = true;
-            result.explanation = 'That verb does not fit this sentence.';
+            if (p.explanationContent) {
+              result.explanation = '__structured__';
+            } else {
+              result.explanation = 'That verb does not fit this sentence.';
+            }
           } else {
             result.correct = false;
             result.partial = true;
@@ -4972,6 +4976,9 @@
           }
           result.lifeLoss = result.correct ? 0 : 1;
           result.shouldRequeue = !result.correct;
+          if (p.explanationContent) {
+            result.explanation = '__structured__';
+          }
         }
         break;
       }
