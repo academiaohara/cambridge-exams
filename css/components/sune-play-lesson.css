@@ -3552,6 +3552,13 @@ button.sp-vocab-word-card:focus-visible {
   box-shadow: 0 3px 0 #c0392b;
 }
 
+.sp-option-btn--incorrect .sp-option-num,
+.sp-option-btn--selected.sp-option-btn--incorrect .sp-option-num {
+  border-color: #fff;
+  background: var(--sp-incorrect);
+  color: #fff;
+}
+
 .sp-explanation-inline-mount {
   position: relative;
   min-height: 280px;
