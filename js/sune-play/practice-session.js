@@ -114,7 +114,7 @@
                 '<button type="button" class="sp-btn sp-btn--explain-icon" id="sp-explain-btn" hidden aria-label="View explanation">' +
                   '<span class="material-symbols-outlined">help</span>' +
                 '</button>' +
-                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Check">' +
+                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" aria-label="Check">' +
                   '<span class="material-symbols-outlined">check</span>' +
                 '</button>' +
               '</div>' +

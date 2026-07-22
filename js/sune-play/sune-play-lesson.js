@@ -622,7 +622,7 @@
     var footer = lessonState.mount.querySelector('#sp-practice-footer');
     if (!actionBtn) return;
     actionBtn.dataset.mode = mode;
-    actionBtn.disabled = !enabled;
+    actionBtn.disabled = mode === 'check' ? false : !enabled;
     actionBtn.hidden = false;
     var icon = actionBtn.querySelector('.material-symbols-outlined');
     var labels = { check: 'Check', continue: 'Continue' };
