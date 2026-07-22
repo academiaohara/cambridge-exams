@@ -94,6 +94,19 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'meaning_contrast' || ft === 'meaning_contrast') {
+      if (!(item.options && item.options.length >= 2) && ft === 'meaning_contrast') {
+        issues.push(error(file, 'meaning_contrast item ' + (item.id || idx) + ' needs options[]'));
+      }
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'meaning_contrast item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'meaning_contrast item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'meaning_contrast item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (ft === 'synced_gap_fill') {
       if (!(item.sentences && item.sentences.length >= 2)) {
         issues.push(error(file, 'synced_gap_fill item ' + (item.id || idx) + ' needs sentences[]'));

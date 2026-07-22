@@ -607,7 +607,15 @@
             "considering"
           ],
           "answer": "considering",
-          "explanation": "Here, think describes a mental action, so the continuous form is possible."
+          "explanationContent": {
+            "whyCorrect": "The continuous form I'm thinking describes an action in progress — the speaker is weighing whether to change schools, not stating a fixed view.",
+            "grammarFocus": "Think can be stative (I think it's good = giving an opinion) or dynamic (I'm thinking about… = considering). The -ing form signals the action meaning.",
+            "wrongOptions": {
+              "opinion": "Opinion is a state, not an action. This sentence describes an ongoing mental process — deciding — not a finished point of view."
+            },
+            "similarExample": "What do you think of this song? = opinion · I'm thinking about buying it = considering",
+            "usefulTip": "If think describes something happening in your mind right now, it usually means considering — not stating an opinion."
+          }
         }
       ],
       "screenGeneration": [
@@ -802,475 +810,475 @@
       "b1-u1-ex-6"
     ],
     "exercises": [
-{
-  "id": "b1-u1-ex-1",
-  "type": "exercise",
-  "exerciseType": "word_order_tiles",
-  "exerciseTypeName": "Build the Sentence",
-  "title": "A: Build the routine",
-  "instructions": "Look at the picture and answer the question by building the sentence. Some words are extra.",
-  "studentInstruction": "Tap words to add them to the end, or drag them to place them anywhere.",
-  "grammarFocus": "present simple for routines",
-  "items": [
-    {
-      "id": "b1-u1-ex1-1",
-      "prompt": {
-        "subject": "Jake",
-        "timeExpression": "every morning",
-        "verbPhrase": "walk to school"
-      },
-      "answer": "Every morning, Jake walks to school.",
-      "acceptedAnswers": [
-        "Every morning, Jake walks to school.",
-        "Jake walks to school every morning."
-      ],
-      "explanation": "Use the present simple for routines. Jake is a singular subject, so walk becomes walks.",
-      "formatType": "word_order_tiles",
-      "answerTiles": [
-        "Every",
-        "morning,",
-        "Jake",
-        "walks",
-        "to",
-        "school."
-      ],
-      "tiles": [
-        "Every",
-        "morning,",
-        "Jake",
-        "walks",
-        "to",
-        "school.",
-        "walk"
-      ],
-      "distractorTiles": [
-        "walk"
-      ],
-      "tileValidation": {
-        "type": "exact_order",
-        "target": "answerTiles",
-        "ignoreCapitalization": false,
-        "ignoreMissingFinalPeriod": false
-      },
-      "legacyDisplayPrompt": "Jake / every morning / walk to school",
-      "promptMode": "visual_plus_context_question",
-      "topPrompt": {
-        "type": "visual_plus_context_question",
-        "renderLegacyTextPrompt": false,
-        "visualAssetKey": "b1-u1-ex1-1-jake-walks-to-school-morning",
-        "visualAssetUrl": "https://Learning-sue.b-cdn.net/2JakeWalksToSchool.png",
-        "contextQuestion": "What does Jake do every morning?"
-      },
-      "contextQuestion": "What does Jake do every morning?",
-      "visualPrompt": {
-        "assetKey": "b1-u1-ex1-1-jake-walks-to-school-morning",
-        "assetUrl": "https://Learning-sue.b-cdn.net/2JakeWalksToSchool.png",
-        "mediaType": "illustration",
-        "status": "ready",
-        "altText": "Jake walks to school in the morning.",
-        "imageGenerationPrompt": "Jake walking to school in the morning, with a warm sunrise and a school building in the background. Style: bright flat vector illustration for a language-learning app. Lighting: soft morning light. Composition: medium-wide shot, clear action, no visible text.",
-        "styleGuide": {
-          "brand": "Sune English",
-          "visualSystem": "bright flat vector language-learning illustration",
-          "background": "light non-white background",
-          "avoidVisibleText": true,
-          "avoidTranslationClues": true,
-          "size": {
-            "widthCm": 19.1,
-            "heightCm": 12.97
+      {
+        "id": "b1-u1-ex-1",
+        "type": "exercise",
+        "exerciseType": "word_order_tiles",
+        "exerciseTypeName": "Build the Sentence",
+        "title": "A: Build the routine",
+        "instructions": "Look at the picture and answer the question by building the sentence. Some words are extra.",
+        "studentInstruction": "Tap words to add them to the end, or drag them to place them anywhere.",
+        "grammarFocus": "present simple for routines",
+        "items": [
+          {
+            "id": "b1-u1-ex1-1",
+            "prompt": {
+              "subject": "Jake",
+              "timeExpression": "every morning",
+              "verbPhrase": "walk to school"
+            },
+            "answer": "Every morning, Jake walks to school.",
+            "acceptedAnswers": [
+              "Every morning, Jake walks to school.",
+              "Jake walks to school every morning."
+            ],
+            "explanation": "Use the present simple for routines. Jake is a singular subject, so walk becomes walks.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Every",
+              "morning,",
+              "Jake",
+              "walks",
+              "to",
+              "school."
+            ],
+            "tiles": [
+              "Every",
+              "morning,",
+              "Jake",
+              "walks",
+              "to",
+              "school.",
+              "walk"
+            ],
+            "distractorTiles": [
+              "walk"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Jake / every morning / walk to school",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-1-jake-walks-to-school-morning",
+              "visualAssetUrl": "https://Learning-sue.b-cdn.net/2JakeWalksToSchool.png",
+              "contextQuestion": "What does Jake do every morning?"
+            },
+            "contextQuestion": "What does Jake do every morning?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-1-jake-walks-to-school-morning",
+              "assetUrl": "https://Learning-sue.b-cdn.net/2JakeWalksToSchool.png",
+              "mediaType": "illustration",
+              "status": "ready",
+              "altText": "Jake walks to school in the morning.",
+              "imageGenerationPrompt": "Jake walking to school in the morning, with a warm sunrise and a school building in the background. Style: bright flat vector illustration for a language-learning app. Lighting: soft morning light. Composition: medium-wide shot, clear action, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
+            }
+          },
+          {
+            "id": "b1-u1-ex1-2",
+            "prompt": {
+              "subject": "Mia",
+              "timeExpression": "usually",
+              "verbPhrase": "drink tea for breakfast"
+            },
+            "answer": "Mia usually drinks tea for breakfast.",
+            "acceptedAnswers": [
+              "Mia usually drinks tea for breakfast."
+            ],
+            "explanation": "Usually goes before the main verb. Mia is singular, so drink becomes drinks.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Mia",
+              "usually",
+              "drinks",
+              "tea",
+              "for",
+              "breakfast."
+            ],
+            "tiles": [
+              "Mia",
+              "usually",
+              "drinks",
+              "tea",
+              "for",
+              "breakfast.",
+              "drink"
+            ],
+            "distractorTiles": [
+              "drink"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Mia / usually / drink tea for breakfast",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-2-mia-drinks-tea-breakfast",
+              "visualAssetUrl": "https://Learning-sue.b-cdn.net/2MiaDrinksTeaForBreakfast.png",
+              "contextQuestion": "What does Mia usually drink for breakfast?"
+            },
+            "contextQuestion": "What does Mia usually drink for breakfast?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-2-mia-drinks-tea-breakfast",
+              "assetUrl": "https://Learning-sue.b-cdn.net/2MiaDrinksTeaForBreakfast.png",
+              "mediaType": "illustration",
+              "status": "ready",
+              "altText": "Mia drinks tea at breakfast.",
+              "imageGenerationPrompt": "Mia sitting at a breakfast table and drinking tea, with toast and a simple kitchen background. Style: bright flat vector illustration for a language-learning app. Lighting: natural morning light. Composition: medium shot, clear action, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
+            }
+          },
+          {
+            "id": "b1-u1-ex1-3",
+            "prompt": {
+              "subject": "Sara",
+              "timeExpression": "after school / often",
+              "verbPhrase": "do her homework in the library"
+            },
+            "answer": "After school, Sara often does her homework in the library.",
+            "acceptedAnswers": [
+              "After school, Sara often does her homework in the library.",
+              "Sara often does her homework in the library after school."
+            ],
+            "explanation": "Often normally goes before the main verb. With Sara, use does, not do.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "After",
+              "school,",
+              "Sara",
+              "often",
+              "does",
+              "her",
+              "homework",
+              "in",
+              "the",
+              "library."
+            ],
+            "tiles": [
+              "After",
+              "school,",
+              "Sara",
+              "often",
+              "does",
+              "her",
+              "homework",
+              "in",
+              "the",
+              "library.",
+              "do"
+            ],
+            "distractorTiles": [
+              "do"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Sara / after school / often / do her homework in the library",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-3-sara-homework-library-after-school",
+              "visualAssetUrl": "https://Learning-sue.b-cdn.net/2SaraDoesHomeworkInLibrary.png",
+              "contextQuestion": "What does Sara often do after school?"
+            },
+            "contextQuestion": "What does Sara often do after school?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-3-sara-homework-library-after-school",
+              "assetUrl": "https://Learning-sue.b-cdn.net/2SaraDoesHomeworkInLibrary.png",
+              "mediaType": "illustration",
+              "status": "ready",
+              "altText": "Sara does her homework in the library after school.",
+              "imageGenerationPrompt": "Sara doing homework at a library table after school, with bookshelves and a backpack nearby. Style: bright flat vector illustration for a language-learning app. Lighting: calm indoor afternoon light. Composition: medium shot, clear action, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
+            }
+          },
+          {
+            "id": "b1-u1-ex1-4",
+            "prompt": {
+              "subject": "Lena",
+              "timeExpression": "twice a month",
+              "verbPhrase": "visit her grandparents"
+            },
+            "answer": "Lena visits her grandparents twice a month.",
+            "acceptedAnswers": [
+              "Lena visits her grandparents twice a month.",
+              "Twice a month, Lena visits her grandparents."
+            ],
+            "explanation": "Twice a month shows a repeated habit. Lena is singular, so visit becomes visits.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Lena",
+              "visits",
+              "her",
+              "grandparents",
+              "twice",
+              "a",
+              "month."
+            ],
+            "tiles": [
+              "Lena",
+              "visits",
+              "her",
+              "grandparents",
+              "twice",
+              "a",
+              "month.",
+              "visit"
+            ],
+            "distractorTiles": [
+              "visit"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Lena / visit her grandparents / twice a month",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-4-lena-visits-grandparents",
+              "visualAssetUrl": "https://Learning-sue.b-cdn.net/2LenaVisitsGrandparents.png",
+              "contextQuestion": "Who does Lena visit twice a month?"
+            },
+            "contextQuestion": "Who does Lena visit twice a month?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-4-lena-visits-grandparents",
+              "assetUrl": "https://Learning-sue.b-cdn.net/2LenaVisitsGrandparents.png",
+              "mediaType": "illustration",
+              "status": "ready",
+              "altText": "Lena visits her grandparents.",
+              "imageGenerationPrompt": "Lena visiting her grandparents at their home, smiling together near the front door. Style: bright flat vector illustration for a language-learning app. Lighting: warm natural light. Composition: medium shot, clear relationship, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
+            }
+          },
+          {
+            "id": "b1-u1-ex1-5",
+            "prompt": {
+              "subject": "Emma",
+              "timeExpression": "never / on weekdays",
+              "verbPhrase": "stay up late"
+            },
+            "answer": "Emma never stays up late on weekdays.",
+            "acceptedAnswers": [
+              "Emma never stays up late on weekdays."
+            ],
+            "explanation": "Never goes before the main verb. Emma is singular, so stay becomes stays.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Emma",
+              "never",
+              "stays",
+              "up",
+              "late",
+              "on",
+              "weekdays."
+            ],
+            "tiles": [
+              "Emma",
+              "never",
+              "stays",
+              "up",
+              "late",
+              "on",
+              "weekdays.",
+              "stay"
+            ],
+            "distractorTiles": [
+              "stay"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Emma / never / stay up late / on weekdays",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-5-emma-does-not-stay-up-late",
+              "visualAssetUrl": "https://Learning-sue.b-cdn.net/2EmmaGoesToBedEarly.png",
+              "contextQuestion": "What does Emma never do on weekdays?"
+            },
+            "contextQuestion": "What does Emma never do on weekdays?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-5-emma-does-not-stay-up-late",
+              "assetUrl": "https://Learning-sue.b-cdn.net/2EmmaGoesToBedEarly.png",
+              "mediaType": "illustration",
+              "status": "ready",
+              "altText": "Emma goes to bed on time on a weekday night.",
+              "imageGenerationPrompt": "Emma in her bedroom on a weekday night, looking sleepy and getting ready for bed early, with a small bedside lamp and school bag nearby. Style: bright flat vector illustration for a language-learning app. Lighting: soft evening light. Composition: medium shot, clear routine, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
+            }
+          },
+          {
+            "id": "b1-u1-ex1-6",
+            "prompt": {
+              "subject": "Nora",
+              "timeExpression": "every Saturday",
+              "verbPhrase": "play basketball"
+            },
+            "answer": "Nora plays basketball every Saturday.",
+            "acceptedAnswers": [
+              "Nora plays basketball every Saturday.",
+              "Every Saturday, Nora plays basketball."
+            ],
+            "explanation": "Every Saturday describes a routine. Nora is singular, so play becomes plays.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Nora",
+              "plays",
+              "basketball",
+              "every",
+              "Saturday."
+            ],
+            "tiles": [
+              "Nora",
+              "plays",
+              "basketball",
+              "every",
+              "Saturday.",
+              "play"
+            ],
+            "distractorTiles": [
+              "play"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Nora / play basketball / every Saturday",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-6-nora-plays-basketball-saturday",
+              "visualAssetUrl": "https://Learning-sue.b-cdn.net/2NoraPlaysBasketball.png",
+              "contextQuestion": "What does Nora do every Saturday?"
+            },
+            "contextQuestion": "What does Nora do every Saturday?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-6-nora-plays-basketball-saturday",
+              "assetUrl": "https://Learning-sue.b-cdn.net/2NoraPlaysBasketball.png",
+              "mediaType": "illustration",
+              "status": "ready",
+              "altText": "Nora plays basketball on Saturday.",
+              "imageGenerationPrompt": "Nora playing basketball on an outdoor court on a sunny Saturday, dribbling the ball with a hoop in the background. Style: bright flat vector illustration for a language-learning app. Lighting: natural daylight. Composition: medium action shot, sharp focus, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
+            }
+          }
+        ],
+        "tileInteraction": {
+          "tapAction": "append_to_answer_end",
+          "dragAction": "insert_anywhere",
+          "canReorderAnswerTiles": true,
+          "canRemovePlacedTiles": true,
+          "shuffleTiles": true,
+          "usesDistractorTiles": true
+        },
+        "promptDesign": {
+          "topPromptType": "visual_plus_context_question",
+          "renderTextClue": false,
+          "renderLegacyDisplayPrompt": false,
+          "visualSupport": {
+            "enabled": true,
+            "allowedMediaTypes": [
+              "illustration",
+              "short_comic",
+              "gif"
+            ],
+            "preferredMediaType": "illustration",
+            "avoidVisibleTextInImage": true,
+            "purpose": "associate meaning with image and sentence, not translation"
+          },
+          "contextQuestion": {
+            "enabled": true,
+            "purpose": "make the learner answer a real context question with tiles",
+            "useWhenFromReadingOrAudio": true
           }
         }
-      }
-    },
-    {
-      "id": "b1-u1-ex1-2",
-      "prompt": {
-        "subject": "Mia",
-        "timeExpression": "usually",
-        "verbPhrase": "drink tea for breakfast"
       },
-      "answer": "Mia usually drinks tea for breakfast.",
-      "acceptedAnswers": [
-        "Mia usually drinks tea for breakfast."
-      ],
-      "explanation": "Usually goes before the main verb. Mia is singular, so drink becomes drinks.",
-      "formatType": "word_order_tiles",
-      "answerTiles": [
-        "Mia",
-        "usually",
-        "drinks",
-        "tea",
-        "for",
-        "breakfast."
-      ],
-      "tiles": [
-        "Mia",
-        "usually",
-        "drinks",
-        "tea",
-        "for",
-        "breakfast.",
-        "drink"
-      ],
-      "distractorTiles": [
-        "drink"
-      ],
-      "tileValidation": {
-        "type": "exact_order",
-        "target": "answerTiles",
-        "ignoreCapitalization": false,
-        "ignoreMissingFinalPeriod": false
-      },
-      "legacyDisplayPrompt": "Mia / usually / drink tea for breakfast",
-      "promptMode": "visual_plus_context_question",
-      "topPrompt": {
-        "type": "visual_plus_context_question",
-        "renderLegacyTextPrompt": false,
-        "visualAssetKey": "b1-u1-ex1-2-mia-drinks-tea-breakfast",
-        "visualAssetUrl": "https://Learning-sue.b-cdn.net/2MiaDrinksTeaForBreakfast.png",
-        "contextQuestion": "What does Mia usually drink for breakfast?"
-      },
-      "contextQuestion": "What does Mia usually drink for breakfast?",
-      "visualPrompt": {
-        "assetKey": "b1-u1-ex1-2-mia-drinks-tea-breakfast",
-        "assetUrl": "https://Learning-sue.b-cdn.net/2MiaDrinksTeaForBreakfast.png",
-        "mediaType": "illustration",
-        "status": "ready",
-        "altText": "Mia drinks tea at breakfast.",
-        "imageGenerationPrompt": "Mia sitting at a breakfast table and drinking tea, with toast and a simple kitchen background. Style: bright flat vector illustration for a language-learning app. Lighting: natural morning light. Composition: medium shot, clear action, no visible text.",
-        "styleGuide": {
-          "brand": "Sune English",
-          "visualSystem": "bright flat vector language-learning illustration",
-          "background": "light non-white background",
-          "avoidVisibleText": true,
-          "avoidTranslationClues": true,
-          "size": {
-            "widthCm": 19.1,
-            "heightCm": 12.97
-          }
-        }
-      }
-    },
-    {
-      "id": "b1-u1-ex1-3",
-      "prompt": {
-        "subject": "Sara",
-        "timeExpression": "after school / often",
-        "verbPhrase": "do her homework in the library"
-      },
-      "answer": "After school, Sara often does her homework in the library.",
-      "acceptedAnswers": [
-        "After school, Sara often does her homework in the library.",
-        "Sara often does her homework in the library after school."
-      ],
-      "explanation": "Often normally goes before the main verb. With Sara, use does, not do.",
-      "formatType": "word_order_tiles",
-      "answerTiles": [
-        "After",
-        "school,",
-        "Sara",
-        "often",
-        "does",
-        "her",
-        "homework",
-        "in",
-        "the",
-        "library."
-      ],
-      "tiles": [
-        "After",
-        "school,",
-        "Sara",
-        "often",
-        "does",
-        "her",
-        "homework",
-        "in",
-        "the",
-        "library.",
-        "do"
-      ],
-      "distractorTiles": [
-        "do"
-      ],
-      "tileValidation": {
-        "type": "exact_order",
-        "target": "answerTiles",
-        "ignoreCapitalization": false,
-        "ignoreMissingFinalPeriod": false
-      },
-      "legacyDisplayPrompt": "Sara / after school / often / do her homework in the library",
-      "promptMode": "visual_plus_context_question",
-      "topPrompt": {
-        "type": "visual_plus_context_question",
-        "renderLegacyTextPrompt": false,
-        "visualAssetKey": "b1-u1-ex1-3-sara-homework-library-after-school",
-        "visualAssetUrl": "https://Learning-sue.b-cdn.net/2SaraDoesHomeworkInLibrary.png",
-        "contextQuestion": "What does Sara often do after school?"
-      },
-      "contextQuestion": "What does Sara often do after school?",
-      "visualPrompt": {
-        "assetKey": "b1-u1-ex1-3-sara-homework-library-after-school",
-        "assetUrl": "https://Learning-sue.b-cdn.net/2SaraDoesHomeworkInLibrary.png",
-        "mediaType": "illustration",
-        "status": "ready",
-        "altText": "Sara does her homework in the library after school.",
-        "imageGenerationPrompt": "Sara doing homework at a library table after school, with bookshelves and a backpack nearby. Style: bright flat vector illustration for a language-learning app. Lighting: calm indoor afternoon light. Composition: medium shot, clear action, no visible text.",
-        "styleGuide": {
-          "brand": "Sune English",
-          "visualSystem": "bright flat vector language-learning illustration",
-          "background": "light non-white background",
-          "avoidVisibleText": true,
-          "avoidTranslationClues": true,
-          "size": {
-            "widthCm": 19.1,
-            "heightCm": 12.97
-          }
-        }
-      }
-    },
-    {
-      "id": "b1-u1-ex1-4",
-      "prompt": {
-        "subject": "Lena",
-        "timeExpression": "twice a month",
-        "verbPhrase": "visit her grandparents"
-      },
-      "answer": "Lena visits her grandparents twice a month.",
-      "acceptedAnswers": [
-        "Lena visits her grandparents twice a month.",
-        "Twice a month, Lena visits her grandparents."
-      ],
-      "explanation": "Twice a month shows a repeated habit. Lena is singular, so visit becomes visits.",
-      "formatType": "word_order_tiles",
-      "answerTiles": [
-        "Lena",
-        "visits",
-        "her",
-        "grandparents",
-        "twice",
-        "a",
-        "month."
-      ],
-      "tiles": [
-        "Lena",
-        "visits",
-        "her",
-        "grandparents",
-        "twice",
-        "a",
-        "month.",
-        "visit"
-      ],
-      "distractorTiles": [
-        "visit"
-      ],
-      "tileValidation": {
-        "type": "exact_order",
-        "target": "answerTiles",
-        "ignoreCapitalization": false,
-        "ignoreMissingFinalPeriod": false
-      },
-      "legacyDisplayPrompt": "Lena / visit her grandparents / twice a month",
-      "promptMode": "visual_plus_context_question",
-      "topPrompt": {
-        "type": "visual_plus_context_question",
-        "renderLegacyTextPrompt": false,
-        "visualAssetKey": "b1-u1-ex1-4-lena-visits-grandparents",
-        "visualAssetUrl": "https://Learning-sue.b-cdn.net/2LenaVisitsGrandparents.png",
-        "contextQuestion": "Who does Lena visit twice a month?"
-      },
-      "contextQuestion": "Who does Lena visit twice a month?",
-      "visualPrompt": {
-        "assetKey": "b1-u1-ex1-4-lena-visits-grandparents",
-        "assetUrl": "https://Learning-sue.b-cdn.net/2LenaVisitsGrandparents.png",
-        "mediaType": "illustration",
-        "status": "ready",
-        "altText": "Lena visits her grandparents.",
-        "imageGenerationPrompt": "Lena visiting her grandparents at their home, smiling together near the front door. Style: bright flat vector illustration for a language-learning app. Lighting: warm natural light. Composition: medium shot, clear relationship, no visible text.",
-        "styleGuide": {
-          "brand": "Sune English",
-          "visualSystem": "bright flat vector language-learning illustration",
-          "background": "light non-white background",
-          "avoidVisibleText": true,
-          "avoidTranslationClues": true,
-          "size": {
-            "widthCm": 19.1,
-            "heightCm": 12.97
-          }
-        }
-      }
-    },
-    {
-      "id": "b1-u1-ex1-5",
-      "prompt": {
-        "subject": "Emma",
-        "timeExpression": "never / on weekdays",
-        "verbPhrase": "stay up late"
-      },
-      "answer": "Emma never stays up late on weekdays.",
-      "acceptedAnswers": [
-        "Emma never stays up late on weekdays."
-      ],
-      "explanation": "Never goes before the main verb. Emma is singular, so stay becomes stays.",
-      "formatType": "word_order_tiles",
-      "answerTiles": [
-        "Emma",
-        "never",
-        "stays",
-        "up",
-        "late",
-        "on",
-        "weekdays."
-      ],
-      "tiles": [
-        "Emma",
-        "never",
-        "stays",
-        "up",
-        "late",
-        "on",
-        "weekdays.",
-        "stay"
-      ],
-      "distractorTiles": [
-        "stay"
-      ],
-      "tileValidation": {
-        "type": "exact_order",
-        "target": "answerTiles",
-        "ignoreCapitalization": false,
-        "ignoreMissingFinalPeriod": false
-      },
-      "legacyDisplayPrompt": "Emma / never / stay up late / on weekdays",
-      "promptMode": "visual_plus_context_question",
-      "topPrompt": {
-        "type": "visual_plus_context_question",
-        "renderLegacyTextPrompt": false,
-        "visualAssetKey": "b1-u1-ex1-5-emma-does-not-stay-up-late",
-        "visualAssetUrl": "https://Learning-sue.b-cdn.net/2EmmaGoesToBedEarly.png",
-        "contextQuestion": "What does Emma never do on weekdays?"
-      },
-      "contextQuestion": "What does Emma never do on weekdays?",
-      "visualPrompt": {
-        "assetKey": "b1-u1-ex1-5-emma-does-not-stay-up-late",
-        "assetUrl": "https://Learning-sue.b-cdn.net/2EmmaGoesToBedEarly.png",
-        "mediaType": "illustration",
-        "status": "ready",
-        "altText": "Emma goes to bed on time on a weekday night.",
-        "imageGenerationPrompt": "Emma in her bedroom on a weekday night, looking sleepy and getting ready for bed early, with a small bedside lamp and school bag nearby. Style: bright flat vector illustration for a language-learning app. Lighting: soft evening light. Composition: medium shot, clear routine, no visible text.",
-        "styleGuide": {
-          "brand": "Sune English",
-          "visualSystem": "bright flat vector language-learning illustration",
-          "background": "light non-white background",
-          "avoidVisibleText": true,
-          "avoidTranslationClues": true,
-          "size": {
-            "widthCm": 19.1,
-            "heightCm": 12.97
-          }
-        }
-      }
-    },
-    {
-      "id": "b1-u1-ex1-6",
-      "prompt": {
-        "subject": "Nora",
-        "timeExpression": "every Saturday",
-        "verbPhrase": "play basketball"
-      },
-      "answer": "Nora plays basketball every Saturday.",
-      "acceptedAnswers": [
-        "Nora plays basketball every Saturday.",
-        "Every Saturday, Nora plays basketball."
-      ],
-      "explanation": "Every Saturday describes a routine. Nora is singular, so play becomes plays.",
-      "formatType": "word_order_tiles",
-      "answerTiles": [
-        "Nora",
-        "plays",
-        "basketball",
-        "every",
-        "Saturday."
-      ],
-      "tiles": [
-        "Nora",
-        "plays",
-        "basketball",
-        "every",
-        "Saturday.",
-        "play"
-      ],
-      "distractorTiles": [
-        "play"
-      ],
-      "tileValidation": {
-        "type": "exact_order",
-        "target": "answerTiles",
-        "ignoreCapitalization": false,
-        "ignoreMissingFinalPeriod": false
-      },
-      "legacyDisplayPrompt": "Nora / play basketball / every Saturday",
-      "promptMode": "visual_plus_context_question",
-      "topPrompt": {
-        "type": "visual_plus_context_question",
-        "renderLegacyTextPrompt": false,
-        "visualAssetKey": "b1-u1-ex1-6-nora-plays-basketball-saturday",
-        "visualAssetUrl": "https://Learning-sue.b-cdn.net/2NoraPlaysBasketball.png",
-        "contextQuestion": "What does Nora do every Saturday?"
-      },
-      "contextQuestion": "What does Nora do every Saturday?",
-      "visualPrompt": {
-        "assetKey": "b1-u1-ex1-6-nora-plays-basketball-saturday",
-        "assetUrl": "https://Learning-sue.b-cdn.net/2NoraPlaysBasketball.png",
-        "mediaType": "illustration",
-        "status": "ready",
-        "altText": "Nora plays basketball on Saturday.",
-        "imageGenerationPrompt": "Nora playing basketball on an outdoor court on a sunny Saturday, dribbling the ball with a hoop in the background. Style: bright flat vector illustration for a language-learning app. Lighting: natural daylight. Composition: medium action shot, sharp focus, no visible text.",
-        "styleGuide": {
-          "brand": "Sune English",
-          "visualSystem": "bright flat vector language-learning illustration",
-          "background": "light non-white background",
-          "avoidVisibleText": true,
-          "avoidTranslationClues": true,
-          "size": {
-            "widthCm": 19.1,
-            "heightCm": 12.97
-          }
-        }
-      }
-    }
-  ],
-  "tileInteraction": {
-    "tapAction": "append_to_answer_end",
-    "dragAction": "insert_anywhere",
-    "canReorderAnswerTiles": true,
-    "canRemovePlacedTiles": true,
-    "shuffleTiles": true,
-    "usesDistractorTiles": true
-  },
-  "promptDesign": {
-    "topPromptType": "visual_plus_context_question",
-    "renderTextClue": false,
-    "renderLegacyDisplayPrompt": false,
-    "visualSupport": {
-      "enabled": true,
-      "allowedMediaTypes": [
-        "illustration",
-        "short_comic",
-        "gif"
-      ],
-      "preferredMediaType": "illustration",
-      "avoidVisibleTextInImage": true,
-      "purpose": "associate meaning with image and sentence, not translation"
-    },
-    "contextQuestion": {
-      "enabled": true,
-      "purpose": "make the learner answer a real context question with tiles",
-      "useWhenFromReadingOrAudio": true
-    }
-  }
-},
       {
         "id": "b1-u1-ex-2",
         "type": "exercise",

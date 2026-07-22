@@ -59,3 +59,41 @@ if (!SunePlayExplanation.hasExplanation(screen, wrongResult)) {
 
 console.log('PASS two_option_choice explanation builder');
 console.log('Sections:', keys.join(' → '));
+
+// meaning_contrast
+const meaningScreen = {
+  formatType: 'meaning_contrast',
+  payload: {
+    prompt: 'What does this sentence mean?',
+    sentence: "I'm thinking about changing schools.",
+    options: ['opinion', 'considering'],
+    answer: 'considering',
+    explanationContent: {
+      whyCorrect: "The continuous form I'm thinking describes an action in progress.",
+      grammarFocus: 'Think can be stative (opinion) or dynamic (considering).',
+      wrongOptions: {
+        opinion: 'Opinion is a state, not an action.'
+      },
+      usefulTip: 'If think describes a process happening now, it means considering.'
+    }
+  }
+};
+
+const meaningWrong = {
+  correct: false,
+  correctAnswer: 'considering',
+  userAnswer: 'opinion'
+};
+
+const meaningOpts = SunePlayExplanation.buildExplainOpts(meaningScreen, meaningWrong);
+const meaningKeys = meaningOpts.sections.map((s) => s.key);
+const meaningExpected = ['correct', 'yourAnswer', 'sentenceBreakdown', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const meaningMissing = meaningExpected.filter((k) => !meaningKeys.includes(k));
+
+if (meaningMissing.length) {
+  console.error('FAIL meaning_contrast missing sections:', meaningMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS meaning_contrast explanation builder');
+console.log('Sections:', meaningKeys.join(' → '));
