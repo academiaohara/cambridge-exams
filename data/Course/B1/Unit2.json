@@ -1795,7 +1795,23 @@
         "grammarFocus": "past simple, past continuous and used to in context",
         "hideCorrectInline": true,
         "passage": "When I was a child, I use to spend every Saturday at my grandparents' house. While grandma was cooked lunch, grandpa usually was worked in the garden. One afternoon, I was deciding to explore the attic. I was climbing the wooden stairs when I was hearing a strange sound above me. Suddenly, a box was falling from a shelf and papers was scattering everywhere. Grandpa was running upstairs because he was thought something was wrong. Later, grandma was smiled and was gave me a slice of cake.",
-        "items": [
+        "errorCount": 10,
+        "counter": {
+          "target": 10,
+          "initialValue": 0,
+          "labelTemplate": "{found}/10 errors found",
+          "showProgressBar": true,
+          "showRemainingCount": true
+        },
+        "interaction": {
+          "formatType": "passage_error_hunt_counter",
+          "tapAction": "mark_or_unmark_wrong_conjugation",
+          "correctTap": "increment_counter_after_continue",
+          "wrongTap": "lose_life",
+          "correctionFlow": "mark_then_correct_each_error_in_turn",
+          "hideCorrectAnswersUntilAllErrorsFound": true
+        },
+        "errors": [
           {
             "id": "b1-u2-ex7-1",
             "wrong": "use to",
@@ -2026,23 +2042,7 @@
               "sentenceBreakdown": "When I was a child, I use to spend every Saturday at my grandparents' house. While grandma was cooked lunch, grandpa usually was worked in the garden. One afternoon, I was deciding to explore the attic. I was climbing the wooden stairs when I was hearing a strange sound above me. Suddenly, a box was falling from a shelf and papers was scattering everywhere. Grandpa was running upstairs because he was thought something was wrong. Later, grandma was smiled and gave me a slice of cake."
             }
           }
-        ],
-        "errorCount": 10,
-        "counter": {
-          "target": 10,
-          "initialValue": 0,
-          "labelTemplate": "{found}/10 errors found",
-          "showProgressBar": true,
-          "showRemainingCount": true
-        },
-        "interaction": {
-          "formatType": "passage_error_hunt_counter",
-          "tapAction": "mark_or_unmark_wrong_conjugation",
-          "correctTap": "increment_counter_after_continue",
-          "wrongTap": "lose_life",
-          "correctionFlow": "mark_then_correct_each_error_in_turn",
-          "hideCorrectAnswersUntilAllErrorsFound": true
-        }
+        ]
       }
     ]
   },

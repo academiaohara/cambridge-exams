@@ -148,7 +148,7 @@ function migrateFile(filePath) {
 
   for (const exercise of data.contentBanks?.exercises || []) {
     if (!isHuntExercise(exercise)) continue;
-    for (const item of exercise.items || []) {
+    for (const item of exercise.errors || exercise.items || []) {
       if (migrateItem(item, exercise)) changed++;
     }
   }
