@@ -3200,12 +3200,49 @@
     return renderFullSentenceRewrite(screen);
   }
 
+  function getWordOrderSeedWord(payload) {
+    var p = payload || {};
+    if (p.answerTiles && p.answerTiles.length) return p.answerTiles[0];
+    var ans = p.answer || (p.acceptedAnswers && p.acceptedAnswers[0]) || '';
+    return String(ans).replace(/\s*\.\s*$/, '').split(/\s+/).filter(Boolean)[0] || '';
+  }
+
+  function getWordOrderExpectedCount(payload) {
+    var p = payload || {};
+    if (p.answerTiles && p.answerTiles.length) return p.answerTiles.length;
+    var ans = p.answer || (p.acceptedAnswers && p.acceptedAnswers[0]) || '';
+    return String(ans).replace(/\s*\.\s*$/, '').split(/\s+/).filter(Boolean).length;
+  }
+
   function renderWordOrder(screen) {
     var p = screen.payload || {};
+    var seedWord = getWordOrderSeedWord(p);
+    var seedPlaced = false;
+    var answerTiles = [];
+    var bankTiles = [];
+
+    (p.tiles || []).forEach(function(word) {
+      if (!seedPlaced && seedWord && word === seedWord) {
+        answerTiles.push(word);
+        seedPlaced = true;
+      } else {
+        bankTiles.push(word);
+      }
+    });
+
+    if (!seedPlaced) {
+      bankTiles = (p.tiles || []).slice();
+      answerTiles = [];
+    }
+
     var html = '<div class="sp-screen sp-screen--tiles" data-format="word_order_tiles">';
-    html += '<div class="sp-tile-answer" id="sp-tile-answer"></div>';
+    html += '<div class="sp-tile-answer" id="sp-tile-answer">';
+    answerTiles.forEach(function(word, i) {
+      html += '<button type="button" class="sp-tile sp-tile--seed" data-word="' + esc(word) + '" data-idx="' + i + '" aria-disabled="true" tabindex="-1">' + esc(word) + '</button>';
+    });
+    html += '</div>';
     html += '<div class="sp-tile-bank" id="sp-tile-bank">';
-    (p.tiles || []).forEach(function(word, i) {
+    bankTiles.forEach(function(word, i) {
       html += '<button type="button" class="sp-tile" data-word="' + esc(word) + '" data-idx="' + i + '">' + esc(word) + '</button>';
     });
     html += '</div></div>';
@@ -3904,7 +3941,7 @@
       onChange();
     }
 
-    root.querySelectorAll('.sp-tile').forEach(function(btn) {
+    root.querySelectorAll('.sp-tile:not(.sp-tile--seed)').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (root.classList.contains('sp-screen--locked')) return;
         var inAnswer = btn.parentElement === answerEl;
@@ -4653,7 +4690,10 @@
       return err && !!err.value.trim();
     }
     if (f === 'word_order_tiles') {
-      return root.querySelectorAll('#sp-tile-answer .sp-tile').length > 0;
+      var tilePayload = screen.payload || {};
+      var expectedTiles = getWordOrderExpectedCount(tilePayload);
+      var placedTiles = root.querySelectorAll('#sp-tile-answer .sp-tile').length;
+      return expectedTiles > 0 && placedTiles >= expectedTiles;
     }
     if (f === 'verb_bank_two_step') {
       var step = (screen.payload && screen.payload.step) || 'choose_verb';

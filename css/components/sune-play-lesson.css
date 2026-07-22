@@ -3982,7 +3982,7 @@ button.sp-vocab-word-card:focus-visible {
   width: 100%;
   max-width: 32rem;
   min-height: 52px;
-  border: 2px dashed var(--border-light);
+  border: 2.5px dashed var(--sp-duo-blue-border);
   border-radius: 14px;
   padding: 10px;
   display: flex;
@@ -3993,6 +3993,8 @@ button.sp-vocab-word-card:focus-visible {
   margin-bottom: 20px;
   box-sizing: border-box;
   overflow: visible;
+  background: rgba(221, 244, 255, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(28, 176, 246, 0.08);
 }
 
 .sp-tile-bank {
@@ -4030,6 +4032,19 @@ button.sp-vocab-word-card:focus-visible {
 
 .sp-tile:hover {
   border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue-light);
+}
+
+.sp-tile--seed {
+  cursor: default;
+  background: var(--sp-duo-blue-light);
+  border-color: var(--sp-duo-blue-border);
+  box-shadow: 0 2px 0 #b8e8fc;
+  pointer-events: none;
+}
+
+.sp-tile--seed:hover {
+  border-color: var(--sp-duo-blue-border);
   background: var(--sp-duo-blue-light);
 }
 
