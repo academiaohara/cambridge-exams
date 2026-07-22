@@ -57,6 +57,15 @@ var SunePlayExplanation = (function() {
     });
   }
 
+  function hasColumnMatchingExplanation(payload) {
+    if (!payload) return false;
+    if (getContent(payload)) return true;
+    if (payload.explanation) return true;
+    return (payload.pairs || []).some(function(pair) {
+      return pair.explanationContent || pair.explanation;
+    });
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option') {
@@ -65,6 +74,8 @@ var SunePlayExplanation = (function() {
       if (hasWordBankExplanation(p)) return true;
     } else if (screen && screen.formatType === 'passage_gap_fill') {
       if (hasPassageGapExplanation(p)) return true;
+    } else if (screen && screen.formatType === 'column_matching') {
+      if (hasColumnMatchingExplanation(p)) return true;
     } else {
       if (getContent(p)) return true;
       if (p.explanation) return true;
@@ -1006,6 +1017,119 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function getPairContent(pair) {
+    if (!pair) return null;
+    return pair.explanationContent || null;
+  }
+
+  function findColumnMatchPair(pairs, pairId) {
+    var id = String(pairId);
+    for (var i = 0; i < (pairs || []).length; i++) {
+      if (String(pairs[i].pairId) === id) return pairs[i];
+    }
+    return null;
+  }
+
+  function parseColumnMatchSelections(result) {
+    var map = {};
+    var raw = String((result && result.userAnswer) || '');
+    raw.split(/\s*\/\s*/).forEach(function(part) {
+      var match = part.match(/^(\d+)\s*→\s*(.+)$/);
+      if (match) map[match[1]] = match[2].trim();
+    });
+    return map;
+  }
+
+  function resolveColumnMatchFocusPair(payload, result) {
+    var pairs = payload.pairs || [];
+    if (!pairs.length) return { pair: null, userLetter: '' };
+
+    if (result && result.activePairId != null) {
+      var active = findColumnMatchPair(pairs, result.activePairId);
+      if (active) {
+        return { pair: active, userLetter: String(result.userAnswer || '').trim() };
+      }
+    }
+
+    if (result && result.pairResults && result.pairResults.length) {
+      for (var i = 0; i < result.pairResults.length; i++) {
+        var row = result.pairResults[i];
+        if (!row.correct) {
+          return {
+            pair: findColumnMatchPair(pairs, row.pairId),
+            userLetter: String(row.userLetter || '').trim()
+          };
+        }
+      }
+    }
+
+    var selections = parseColumnMatchSelections(result);
+    for (var j = 0; j < pairs.length; j++) {
+      var selected = selections[String(pairs[j].pairId)];
+      if (selected && selected !== pairs[j].correctLetter) {
+        return { pair: pairs[j], userLetter: selected };
+      }
+    }
+
+    return { pair: pairs[0], userLetter: '' };
+  }
+
+  function buildColumnMatchingPairSections(pair, userLetter, rightOptions) {
+    var content = getPairContent(pair);
+    var sections = [];
+    var correctDisplay = pair.pairId + ' → ' + pair.correctLetter;
+    var isWrong = !!userLetter && userLetter !== pair.correctLetter;
+
+    sections.push({ key: 'correct', text: correctDisplay });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: pair.pairId + ' → ' + userLetter });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var letters = (rightOptions || []).map(function(opt) { return opt.letter; });
+        var wrongNote = lookupWrongOptionNote(content, userLetter, letters);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.sentenceBreakdown) {
+        sections.push({ key: 'sentenceBreakdown', text: content.sentenceBreakdown });
+      } else if (pair.leftText && pair.endingText) {
+        sections.push({ key: 'sentenceBreakdown', text: pair.leftText + ' ' + pair.endingText });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (pair.explanation) {
+      sections.push({ key: 'whyCorrect', text: pair.explanation });
+      if (pair.leftText && pair.endingText) {
+        sections.push({ key: 'sentenceBreakdown', text: pair.leftText + ' ' + pair.endingText });
+      }
+    }
+
+    return sections;
+  }
+
+  function buildColumnMatching(screen, result) {
+    var p = screen.payload || {};
+    var focus = resolveColumnMatchFocusPair(p, result);
+    var pair = focus.pair;
+    if (!pair) return null;
+
+    return {
+      title: 'Explanation',
+      formatType: 'column_matching',
+      context: String(pair.leftText || '').trim(),
+      sections: buildColumnMatchingPairSections(pair, focus.userLetter, p.rightOptions)
+    };
+  }
+
   function getFullSentenceCues(payload) {
     var cues = (payload.prompt && payload.prompt.cues) || [];
     if ((!cues.length || cues.length <= 1) && payload.displayPrompt && /\s\/\s/.test(payload.displayPrompt)) {
@@ -1211,6 +1335,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'verb_bank_two_step') {
       return gapSentenceDisplay(p.sentence || p.blankSentence || '');
     }
+    if (screen.formatType === 'column_matching') {
+      return String(p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1250,6 +1377,8 @@ var SunePlayExplanation = (function() {
         return buildFullSentenceWrite(screen, result);
       case 'verb_bank_two_step':
         return buildVerbBankTwoStep(screen, result);
+      case 'column_matching':
+        return buildColumnMatching(screen, result);
       default:
         return buildLegacy(screen, result);
     }

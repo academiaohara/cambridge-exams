@@ -2338,11 +2338,22 @@
 
     var activePairId = getCmActivePairId(root, screen);
     var pair = getCmPairPayload(screen, activePairId);
-    if (!pair || !pair.explanation) return null;
+    if (!pair || (!pair.explanation && !pair.explanationContent)) return null;
 
     var pendingLetter = getCmPendingLetter(root);
     var postWrong = root._cmShowExplainAfterWrong;
     if (!pendingLetter && !postWrong) return null;
+
+    if (typeof SunePlayExplanation !== 'undefined') {
+      var structured = SunePlayExplanation.buildExplainOpts(screen, {
+        correct: pendingLetter === pair.correctLetter,
+        activePairId: activePairId,
+        userAnswer: pendingLetter,
+        correctAnswer: pair.correctLetter,
+        partial: true
+      });
+      if (structured) return structured;
+    }
 
     return {
       title: 'Explanation',
@@ -4735,16 +4746,30 @@
         var cmWrong = 0;
         var userParts = [];
         var correctParts = [];
+        var cmPairResults = [];
         (cmPayload.pairs || []).forEach(function(pair) {
           var selected = cmPairs[String(pair.pairId)] || '';
           userParts.push(pair.pairId + '→' + (selected || '–'));
           correctParts.push(pair.pairId + '→' + pair.correctLetter);
-          if (selected !== pair.correctLetter) cmWrong++;
+          var pairCorrect = selected === pair.correctLetter;
+          if (!pairCorrect) cmWrong++;
+          cmPairResults.push({
+            pairId: pair.pairId,
+            userLetter: selected,
+            correctLetter: pair.correctLetter,
+            correct: pairCorrect
+          });
         });
         result.userAnswer = userParts.join(' / ');
         result.correctAnswer = correctParts.join(' / ');
         result.correct = cmWrong === 0;
         result.lifeLoss = cmWrong;
+        result.pairResults = cmPairResults;
+        if ((cmPayload.pairs || []).some(function(pair) {
+          return pair.explanationContent || pair.explanation;
+        })) {
+          result.explanation = '__structured__';
+        }
         markColumnMatchResults(root, cmPairs, cmPayload.pairs);
         break;
       }
