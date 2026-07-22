@@ -143,28 +143,68 @@
             "sentence": "The documentary which was produced by Channel 4 won three international awards.",
             "answer": "The documentary, which was produced by Channel 4, won three international awards.",
             "interactionMode": "tap_comma_slots",
-            "formatType": "comma_placement"
+            "formatType": "comma_placement",
+            "explanationContent": {
+              "whyCorrect": "Add commas around the non-defining relative clause that gives extra information.",
+              "grammarFocus": "Check if the relative clause is defining (essential) or non-defining (extra detail) — only non-defining clauses take commas.",
+              "sentenceBreakdown": "The documentary, which was produced by Channel 4, won three international awards.",
+              "wrongOptions": {
+                "(no comma)": "Missing commas around a non-defining clause makes the sentence harder to read and grammatically incorrect."
+              },
+              "commonMistake": "Non-defining clauses need commas on both sides — missing either comma makes the sentence incorrect.",
+              "usefulTip": "Tap only where a comma belongs — non-defining clauses need a comma before and after the extra information."
+            }
           },
           {
             "id": "c1-u17-test-comma-slot-2",
             "sentence": "We visited the museum that you had recommended so highly.",
             "answer": "No commas needed (defining clause)",
             "interactionMode": "tap_comma_slots",
-            "formatType": "comma_placement"
+            "formatType": "comma_placement",
+            "explanationContent": {
+              "whyCorrect": "No commas are needed — the relative clause defines which noun is meant.",
+              "grammarFocus": "Defining relative clauses identify which person or thing — they are essential and are not separated by commas.",
+              "sentenceBreakdown": "We visited the museum that you had recommended so highly.",
+              "wrongOptions": {
+                "(comma added)": "A comma here would wrongly treat the clause as extra information."
+              },
+              "commonMistake": "Do not add commas around a defining who/which/that clause — it is essential to the meaning.",
+              "usefulTip": "Tap only where a comma belongs — non-defining clauses need a comma before and after the extra information."
+            }
           },
           {
             "id": "c1-u17-test-comma-rewrite-1",
             "sentence": "My brother who lives in Manchester is a chef.",
             "answer": "My brother, who lives in Manchester, is a chef.",
             "interactionMode": "rewrite_sentence",
-            "formatType": "comma_placement"
+            "formatType": "comma_placement",
+            "explanationContent": {
+              "whyCorrect": "Add commas around the non-defining relative clause that gives extra information.",
+              "grammarFocus": "Check if the relative clause is defining (essential) or non-defining (extra detail) — only non-defining clauses take commas.",
+              "sentenceBreakdown": "My brother, who lives in Manchester, is a chef.",
+              "wrongOptions": {
+                "(no comma)": "Missing commas around a non-defining clause makes the sentence harder to read and grammatically incorrect."
+              },
+              "commonMistake": "Non-defining clauses need commas on both sides — missing either comma makes the sentence incorrect.",
+              "usefulTip": "If the clause only adds extra detail you could remove, write commas around it; if it identifies which one, write \"No commas\"."
+            }
           },
           {
             "id": "c1-u17-test-comma-rewrite-2",
             "sentence": "The bike which is outside the shop is mine.",
             "answer": "No commas",
             "interactionMode": "rewrite_sentence",
-            "formatType": "comma_placement"
+            "formatType": "comma_placement",
+            "explanationContent": {
+              "whyCorrect": "No commas are needed — the relative clause defines which noun is meant.",
+              "grammarFocus": "Defining relative clauses identify which person or thing — they are essential and are not separated by commas.",
+              "sentenceBreakdown": "The bike which is outside the shop is mine.",
+              "wrongOptions": {
+                "(comma added)": "A comma here would wrongly treat the clause as extra information."
+              },
+              "commonMistake": "Do not add commas around a defining who/which/that clause — it is essential to the meaning.",
+              "usefulTip": "If the clause only adds extra detail you could remove, write commas around it; if it identifies which one, write \"No commas\"."
+            }
           }
         ],
         "interaction": {
