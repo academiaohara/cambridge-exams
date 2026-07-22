@@ -8,7 +8,8 @@ var SunePlayExplanation = (function() {
   var SECTION_DEFS = {
     correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
     yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
-    whyCorrect: { label: "Why it's correct", wrongLabel: 'Explanation', icon: 'lightbulb', variant: 'teach' },
+    optionContrast: { label: 'The fix', icon: 'compare_arrows', variant: 'mistake-note' },
+    whyCorrect: { label: "Why it's correct", wrongLabel: 'Why', icon: 'lightbulb', variant: 'teach' },
     vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
     grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
@@ -138,24 +139,128 @@ var SunePlayExplanation = (function() {
     return null;
   }
 
-  function lookupWrongOptionNote(content, userAnswer, options) {
-    if (!content || !userAnswer) return '';
+  function lookupMapNote(map, userAnswer, options) {
+    if (!map || !userAnswer) return '';
     var wrongKey = String(userAnswer).trim();
-    if (content.wrongOptions) {
-      var wrongNote = content.wrongOptions[wrongKey];
-      if (wrongNote) return wrongNote;
-      var lower = wrongKey.toLowerCase();
-      var keys = Object.keys(content.wrongOptions);
-      for (var k = 0; k < keys.length; k++) {
-        if (String(keys[k]).trim().toLowerCase() === lower) return content.wrongOptions[keys[k]];
-      }
+    var wrongNote = map[wrongKey];
+    if (wrongNote) return wrongNote;
+    var lower = wrongKey.toLowerCase();
+    var keys = Object.keys(map);
+    for (var k = 0; k < keys.length; k++) {
+      if (String(keys[k]).trim().toLowerCase() === lower) return map[keys[k]];
     }
     for (var i = 0; i < (options || []).length; i++) {
-      if (String(options[i]).trim().toLowerCase() === wrongKey.toLowerCase()) {
-        return (content.wrongOptions && content.wrongOptions[options[i]]) || '';
+      var opt = options[i];
+      var optText = typeof opt === 'object' && opt != null
+        ? String(opt.text || opt.letter || '').trim()
+        : String(opt).trim();
+      var optLetter = typeof opt === 'object' && opt != null
+        ? String(opt.letter || '').trim()
+        : '';
+      if (optText && optText.toLowerCase() === lower) {
+        if (map[optText]) return map[optText];
+        if (optLetter && map[optLetter]) return map[optLetter];
+      }
+      if (optLetter && optLetter.toLowerCase() === lower) {
+        if (map[optLetter]) return map[optLetter];
+        if (optText && map[optText]) return map[optText];
       }
     }
     return '';
+  }
+
+  function lookupWrongOptionNote(content, userAnswer, options) {
+    if (!content || !userAnswer) return '';
+    return lookupMapNote(content.wrongOptions, userAnswer, options);
+  }
+
+  function stripContrastQuotes(text) {
+    return String(text || '').replace(/^["']|["']$/g, '').trim();
+  }
+
+  function formatOptionContrastLine(wrongText, correctText, becauseClause) {
+    var wrong = stripContrastQuotes(wrongText);
+    var correct = stripContrastQuotes(correctText);
+    var because = String(becauseClause || '').trim().replace(/[.!?]$/, '');
+    if (!because) return '';
+    if (/^because\b/i.test(because)) because = because.replace(/^because\s+/i, '');
+    return '"' + wrong + '" doesn\'t fit here → "' + correct + '" does, because ' + because + '.';
+  }
+
+  function inferBecauseFromWrongNote(wrongNote, whyCorrect) {
+    var note = String(wrongNote || '').trim();
+    if (!note) {
+      return String(whyCorrect || '').trim().replace(/[.!?]$/, '');
+    }
+    var quoted = note.match(/^["']([^"']+)["']\s+(.+)$/);
+    if (quoted) {
+      var rest = quoted[2].trim().replace(/[.!?]$/, '');
+      rest = rest
+        .replace(/^points the wrong way\s*[—-]\s*/i, '')
+        .replace(/^does not match the clue in the rest of the sentence/i, 'it does not match the clue in the rest of the sentence')
+        .replace(/^does not describe\b/i, 'it does not describe')
+        .replace(/^does not form\b/i, 'it does not form')
+        .replace(/^belongs to\b/i, 'it belongs to')
+        .replace(/^is the wrong\b/i, 'it is the wrong')
+        .replace(/^is only for\b/i, 'it is only for')
+        .replace(/^is not used\b/i, 'it is not used')
+        .replace(/^may be\b/i, 'it may be')
+        .replace(/^can sound\b/i, 'it can sound')
+        .replace(/^does not express\b/i, 'it does not express')
+        .replace(/^does not fit\b/i, 'it does not fit')
+        .replace(/^does not combine\b/i, 'it does not combine')
+        .replace(/^breaks the grammar pattern described above/i, 'it breaks the grammar pattern needed here')
+        .replace(/^does not match the grammar or meaning clue in this sentence/i, 'it does not match the grammar or meaning clue in this sentence');
+      if (!/^(it|the|this|that|they|we|you|he|she)\b/i.test(rest)) {
+        rest = rest.charAt(0).toLowerCase() + rest.slice(1);
+      }
+      return rest;
+    }
+    return note.replace(/[.!?]$/, '');
+  }
+
+  function lookupOptionContrast(content, userAnswer, options, correctAnswer) {
+    if (!content || !userAnswer) return '';
+    var contrast = lookupMapNote(content.optionContrast, userAnswer, options);
+    if (contrast) return contrast;
+
+    var wrongNote = lookupWrongOptionNote(content, userAnswer, options);
+    if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+    if (!wrongNote || !correctAnswer) return '';
+
+    if (/doesn't fit here\s*→/.test(wrongNote)) return wrongNote;
+    return formatOptionContrastLine(
+      userAnswer,
+      correctAnswer,
+      inferBecauseFromWrongNote(wrongNote, content.whyCorrect)
+    );
+  }
+
+  function appendChoiceTeachingSections(sections, content, isWrong, userAnswer, options, correctAnswer) {
+    if (!content) return;
+
+    if (isWrong) {
+      var contrast = lookupOptionContrast(content, userAnswer, options, correctAnswer);
+      if (contrast) {
+        sections.push({ key: 'optionContrast', text: contrast });
+      }
+    }
+
+    if (content.whyCorrect) {
+      sections.push(whyCorrectSection(content.whyCorrect, isWrong));
+    }
+    if (content.wordFormation) {
+      sections.push({ key: 'wordFormation', text: content.wordFormation });
+    }
+    var focus = pickFocusSection(content);
+    if (focus) sections.push(focus);
+
+    if (content.usefulTip) {
+      sections.push({ key: 'usefulTip', text: content.usefulTip });
+    }
+    if (content.similarExample) {
+      sections.push({ key: 'similarExample', text: content.similarExample });
+    }
   }
 
   function appendTeachingSections(sections, content, isWrong, userAnswer, options) {
@@ -201,7 +306,7 @@ var SunePlayExplanation = (function() {
     }
 
     if (content) {
-      appendTeachingSections(sections, content, isWrong, userAnswer, p.options);
+      appendChoiceTeachingSections(sections, content, isWrong, userAnswer, p.options, correctAnswer);
     } else if (p.explanation) {
       sections.push(whyCorrectSection(p.explanation, isWrong));
     }
@@ -249,7 +354,14 @@ var SunePlayExplanation = (function() {
       if (content.wordFormation) {
         sections.push({ key: 'wordFormation', text: content.wordFormation });
       }
-      appendTeachingSections(sections, content, isWrong, userLetter || userText, p.options);
+      appendChoiceTeachingSections(
+        sections,
+        content,
+        isWrong,
+        userLetter || userText,
+        p.options,
+        correctText
+      );
     } else if (p.explanation) {
       sections.push(whyCorrectSection(p.explanation, isWrong));
     }
@@ -705,14 +817,14 @@ var SunePlayExplanation = (function() {
       sections.push({ key: 'yourAnswer', text: String(userAnswer) });
     }
 
-    if (sentence) {
-      sections.push({ key: 'sentenceBreakdown', text: sentence });
-    }
-
     if (content) {
-      appendTeachingSections(sections, content, isWrong, userAnswer, p.options);
+      appendChoiceTeachingSections(sections, content, isWrong, userAnswer, p.options, correctAnswer);
     } else if (p.explanation) {
       sections.push(whyCorrectSection(p.explanation, isWrong));
+    }
+
+    if (sentence) {
+      sections.push({ key: 'sentenceBreakdown', text: sentence });
     }
 
     return {
@@ -1407,21 +1519,16 @@ var SunePlayExplanation = (function() {
     }
 
     if (content) {
-      if (content.whyCorrect) {
-        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
-      }
-      var focus = pickFocusSection(content);
-      if (focus) sections.push(focus);
-      if (isWrong) {
-        var wrongNote = lookupWrongOptionNote(content, userAnswer, options);
-        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
-        if (!wrongNote && wrongForm) {
-          wrongNote = '*' + userAnswer + '* is not correct here — replace *' + wrongForm + '*.';
-        }
-        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
-      }
-      if (content.usefulTip) {
-        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      appendChoiceTeachingSections(sections, content, isWrong, userAnswer, options, correctAnswer);
+      if (isWrong && wrongForm && !sections.some(function(s) { return s.key === 'optionContrast'; })) {
+        sections.splice(2, 0, {
+          key: 'optionContrast',
+          text: formatOptionContrastLine(
+            userAnswer,
+            correctAnswer,
+            'it does not replace the highlighted error *' + wrongForm + '*'
+          )
+        });
       }
     } else if (item.explanation) {
       sections.push(whyCorrectSection(item.explanation, isWrong));

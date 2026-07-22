@@ -858,7 +858,11 @@
               "wrongOptions": {
                 "for rent": "\"for rent\" does not match the clue in the rest of the sentence (\"or by card?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "for rent": "\"for rent\" doesn't fit here → \"in cash\" does, because it does not match the clue in the rest of the sentence (\"or by card?\").",
+                "in debt": "\"in debt\" doesn't fit here → \"in cash\" does, because Only \"in cash\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -880,7 +884,11 @@
               "wrongOptions": {
                 "in cash": "\"in cash\" does not match the clue in the rest of the sentence (\".\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "in cash": "\"in cash\" doesn't fit here → \"for sale\" does, because it does not match the clue in the rest of the sentence (\".\").",
+                "by credit card": "\"by credit card\" doesn't fit here → \"for sale\" does, because Only \"for sale\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -902,7 +910,11 @@
               "wrongOptions": {
                 "in debt": "\"in debt\" does not match the clue in the rest of the sentence (\".\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "in debt": "\"in debt\" doesn't fit here → \"for rent\" does, because it does not match the clue in the rest of the sentence (\".\").",
+                "in cash": "\"in cash\" doesn't fit here → \"for rent\" does, because Only \"for rent\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -924,7 +936,11 @@
               "wrongOptions": {
                 "for sale": "\"for sale\" does not match the clue in the rest of the sentence (\".\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "for sale": "\"for sale\" doesn't fit here → \"by credit card\" does, because it does not match the clue in the rest of the sentence (\".\").",
+                "in debt": "\"in debt\" doesn't fit here → \"by credit card\" does, because Only \"by credit card\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -946,7 +962,11 @@
               "wrongOptions": {
                 "for rent": "\"for rent\" does not match the clue in the rest of the sentence (\"after borrowing too much money.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "for rent": "\"for rent\" doesn't fit here → \"in debt\" does, because it does not match the clue in the rest of the sentence (\"after borrowing too much money.\").",
+                "in good condition": "\"in good condition\" doesn't fit here → \"in debt\" does, because Only \"in debt\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -968,7 +988,11 @@
               "wrongOptions": {
                 "for sale": "\"for sale\" does not match the clue in the rest of the sentence (\".\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "for sale": "\"for sale\" doesn't fit here → \"in good condition\" does, because it does not match the clue in the rest of the sentence (\".\").",
+                "in cash": "\"in cash\" doesn't fit here → \"in good condition\" does, because Only \"in good condition\" fits the meaning created by the words before and after the gap."
+              }
             }
           }
         ]

@@ -270,7 +270,10 @@
               "wrongOptions": {
                 "cure": "\"cure\" does not match the clue in the rest of the sentence (\".\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "cure": "\"cure\" doesn't fit here → \"diet\" does, because it does not match the clue in the rest of the sentence (\".\")."
+              }
             }
           },
           {
@@ -291,7 +294,11 @@
               "wrongOptions": {
                 "Chew": "\"Chew\" does not match the clue in the rest of the sentence (\"the onions carefully before cooking them.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "Chew": "\"Chew\" doesn't fit here → \"chop\" does, because it does not match the clue in the rest of the sentence (\"the onions carefully before cooking them.\").",
+                "Chop": "\"Chop\" doesn't fit here → \"chop\" does, because Only \"chop\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -312,7 +319,10 @@
               "wrongOptions": {
                 "infections": "\"infections\" does not match the clue in the rest of the sentence (\"do we need for the soup?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "infections": "\"infections\" doesn't fit here → \"ingredients\" does, because it does not match the clue in the rest of the sentence (\"do we need for the soup?\")."
+              }
             }
           },
           {
@@ -333,7 +343,11 @@
               "wrongOptions": {
                 "Stir": "\"Stir\" does not match the clue in the rest of the sentence (\"the pasta sauce while it cooks.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "Stir": "\"Stir\" doesn't fit here → \"stir\" does, because it does not match the clue in the rest of the sentence (\"the pasta sauce while it cooks.\").",
+                "Slice": "\"Slice\" doesn't fit here → \"stir\" does, because Only \"stir\" fits the meaning created by the words before and after the gap."
+              }
             }
           },
           {
@@ -354,7 +368,10 @@
               "wrongOptions": {
                 "spicy": "\"spicy\" does not match the clue in the rest of the sentence (\"to eat.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "spicy": "\"spicy\" doesn't fit here → \"sour\" does, because it does not match the clue in the rest of the sentence (\"to eat.\")."
+              }
             }
           },
           {
@@ -375,7 +392,10 @@
               "wrongOptions": {
                 "benefit": "\"benefit\" does not match the clue in the rest of the sentence (\"with last year, I'm much healthier now.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "benefit": "\"benefit\" doesn't fit here → \"comparison\" does, because it does not match the clue in the rest of the sentence (\"with last year, I'm much healthier now.\")."
+              }
             }
           },
           {
@@ -396,7 +416,10 @@
               "wrongOptions": {
                 "limit": "\"limit\" does not match the clue in the rest of the sentence (\"much sugar.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "limit": "\"limit\" doesn't fit here → \"contain\" does, because it does not match the clue in the rest of the sentence (\"much sugar.\")."
+              }
             }
           },
           {
@@ -417,7 +440,10 @@
               "wrongOptions": {
                 "cough": "\"cough\" does not match the clue in the rest of the sentence (\"today.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "cough": "\"cough\" doesn't fit here → \"flu\" does, because it does not match the clue in the rest of the sentence (\"today.\")."
+              }
             }
           },
           {
@@ -438,7 +464,10 @@
               "wrongOptions": {
                 "recovered": "\"recovered\" does not match the clue in the rest of the sentence (\"from back pain?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "recovered": "\"recovered\" doesn't fit here → \"suffered\" does, because it does not match the clue in the rest of the sentence (\"from back pain?\")."
+              }
             }
           },
           {
@@ -459,7 +488,10 @@
               "wrongOptions": {
                 "affect": "\"affect\" does not match the clue in the rest of the sentence (\"the warning signs of illness.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "affect": "\"affect\" doesn't fit here → \"ignore\" does, because it does not match the clue in the rest of the sentence (\"the warning signs of illness.\")."
+              }
             }
           }
         ]
@@ -779,7 +811,16 @@
                 "had got": "\"had got\" belongs to a different conditional pattern — zero conditional needs present forms."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Zero conditional: if + present simple, present simple — both clauses describe general truths or habits."
+              "grammarFocus": "Zero conditional: if + present simple, present simple — both clauses describe general truths or habits.",
+              "optionContrast": {
+                "get": "\"get\" doesn't fit here → \"get\" does, because The clue is zero conditional, so the correct answer is \"get\".",
+                "B": "\"would get\" doesn't fit here → \"get\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "would get": "\"would get\" doesn't fit here → \"get\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "C": "\"got\" doesn't fit here → \"get\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "got": "\"got\" doesn't fit here → \"get\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "D": "\"had got\" doesn't fit here → \"get\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "had got": "\"had got\" doesn't fit here → \"get\" does, because it belongs to a different conditional pattern — zero conditional needs present forms."
+              }
             }
           },
           {
@@ -817,7 +858,16 @@
                 "had had": "\"had had\" does not fit the second conditional pattern (if + past, would + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation."
+              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation.",
+              "optionContrast": {
+                "A": "\"have\" doesn't fit here → \"had\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "have": "\"have\" doesn't fit here → \"had\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had": "\"had\" doesn't fit here → \"had\" does, because The clue is second conditional, so the correct answer is \"had\".",
+                "C": "\"will have\" doesn't fit here → \"had\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "will have": "\"will have\" doesn't fit here → \"had\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "D": "\"had had\" doesn't fit here → \"had\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had had": "\"had had\" doesn't fit here → \"had\" does, because it does not fit the second conditional pattern (if + past, would + infinitive)."
+              }
             }
           },
           {
@@ -855,7 +905,16 @@
                 "had become": "\"had become\" does not fit the second conditional pattern (if + past, would + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation."
+              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation.",
+              "optionContrast": {
+                "A": "\"becomes\" doesn't fit here → \"would become\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "becomes": "\"becomes\" doesn't fit here → \"would become\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "B": "\"became\" doesn't fit here → \"would become\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "became": "\"became\" doesn't fit here → \"would become\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "would become": "\"would become\" doesn't fit here → \"would become\" does, because The clue is second conditional, so the correct answer is \"would become\".",
+                "D": "\"had become\" doesn't fit here → \"would become\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had become": "\"had become\" doesn't fit here → \"would become\" does, because it does not fit the second conditional pattern (if + past, would + infinitive)."
+              }
             }
           },
           {
@@ -893,7 +952,16 @@
                 "will reach": "\"will reach\" does not fit the third conditional pattern (if + past perfect, would have + past participle)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result."
+              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result.",
+              "optionContrast": {
+                "A": "\"would reach\" doesn't fit here → \"would have reached\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "would reach": "\"would reach\" doesn't fit here → \"would have reached\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "would have reached": "\"would have reached\" doesn't fit here → \"would have reached\" does, because The clue is third conditional, so the correct answer is \"would have reached\".",
+                "C": "\"reached\" doesn't fit here → \"would have reached\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "reached": "\"reached\" doesn't fit here → \"would have reached\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "D": "\"will reach\" doesn't fit here → \"would have reached\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "will reach": "\"will reach\" doesn't fit here → \"would have reached\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle)."
+              }
             }
           },
           {
@@ -931,7 +999,16 @@
                 "had gained": "\"had gained\" belongs to a different conditional pattern — zero conditional needs present forms."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Zero conditional: if + present simple, present simple — both clauses describe general truths or habits."
+              "grammarFocus": "Zero conditional: if + present simple, present simple — both clauses describe general truths or habits.",
+              "optionContrast": {
+                "A": "\"gained\" doesn't fit here → \"gain\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "gained": "\"gained\" doesn't fit here → \"gain\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "gain": "\"gain\" doesn't fit here → \"gain\" does, because The clue is zero conditional, so the correct answer is \"gain\".",
+                "C": "\"would gain\" doesn't fit here → \"gain\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "would gain": "\"would gain\" doesn't fit here → \"gain\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "D": "\"had gained\" doesn't fit here → \"gain\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "had gained": "\"had gained\" doesn't fit here → \"gain\" does, because it belongs to a different conditional pattern — zero conditional needs present forms."
+              }
             }
           },
           {
@@ -969,7 +1046,16 @@
                 "had you done": "\"had you done\" does not fit the second conditional pattern (if + past, would + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation."
+              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation.",
+              "optionContrast": {
+                "A": "\"will you do\" doesn't fit here → \"would you do\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "will you do": "\"will you do\" doesn't fit here → \"would you do\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "B": "\"did you do\" doesn't fit here → \"would you do\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "did you do": "\"did you do\" doesn't fit here → \"would you do\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "would you do": "\"would you do\" doesn't fit here → \"would you do\" does, because The clue is second conditional question, so the correct answer is \"would you do\".",
+                "D": "\"had you done\" doesn't fit here → \"would you do\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had you done": "\"had you done\" doesn't fit here → \"would you do\" does, because it does not fit the second conditional pattern (if + past, would + infinitive)."
+              }
             }
           },
           {
@@ -1007,7 +1093,16 @@
                 "would train": "\"would train\" does not fit the third conditional pattern (if + past perfect, would have + past participle)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result."
+              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result.",
+              "optionContrast": {
+                "A": "\"trained\" doesn't fit here → \"had trained\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "trained": "\"trained\" doesn't fit here → \"had trained\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "B": "\"trains\" doesn't fit here → \"had trained\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "trains": "\"trains\" doesn't fit here → \"had trained\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "had trained": "\"had trained\" doesn't fit here → \"had trained\" does, because The clue is third conditional, so the correct answer is \"had trained\".",
+                "D": "\"would train\" doesn't fit here → \"had trained\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "would train": "\"would train\" doesn't fit here → \"had trained\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle)."
+              }
             }
           },
           {
@@ -1045,7 +1140,16 @@
                 "became": "\"became\" does not fit the first conditional pattern (if + present, will + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "First conditional: if + present simple, will + infinitive — a real possibility in the future."
+              "grammarFocus": "First conditional: if + present simple, will + infinitive — a real possibility in the future.",
+              "optionContrast": {
+                "A": "\"become\" doesn't fit here → \"will become\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "become": "\"become\" doesn't fit here → \"will become\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "B": "\"would become\" doesn't fit here → \"will become\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "would become": "\"would become\" doesn't fit here → \"will become\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "will become": "\"will become\" doesn't fit here → \"will become\" does, because The clue is first conditional, so the correct answer is \"will become\".",
+                "D": "\"became\" doesn't fit here → \"will become\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "became": "\"became\" doesn't fit here → \"will become\" does, because it does not fit the first conditional pattern (if + present, will + infinitive)."
+              }
             }
           },
           {
@@ -1083,7 +1187,16 @@
                 "would see": "\"would see\" does not fit the first conditional pattern (if + present, will + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "First conditional: if + present simple, will + infinitive — a real possibility in the future."
+              "grammarFocus": "First conditional: if + present simple, will + infinitive — a real possibility in the future.",
+              "optionContrast": {
+                "A": "\"sees\" doesn't fit here → \"will see\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "sees": "\"sees\" doesn't fit here → \"will see\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "B": "\"saw\" doesn't fit here → \"will see\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "saw": "\"saw\" doesn't fit here → \"will see\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "C": "\"would see\" doesn't fit here → \"will see\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "would see": "\"would see\" doesn't fit here → \"will see\" does, because it does not fit the first conditional pattern (if + present, will + infinitive).",
+                "will see": "\"will see\" doesn't fit here → \"will see\" does, because The clue is first conditional, so the correct answer is \"will see\"."
+              }
             }
           },
           {
@@ -1121,7 +1234,16 @@
                 "would do": "\"would do\" does not fit the second conditional pattern (if + past, would + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation."
+              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation.",
+              "optionContrast": {
+                "A": "\"does\" doesn't fit here → \"did\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "does": "\"does\" doesn't fit here → \"did\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "did": "\"did\" doesn't fit here → \"did\" does, because The clue is second conditional, so the correct answer is \"did\".",
+                "C": "\"had done\" doesn't fit here → \"did\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had done": "\"had done\" doesn't fit here → \"did\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "D": "\"would do\" doesn't fit here → \"did\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "would do": "\"would do\" doesn't fit here → \"did\" does, because it does not fit the second conditional pattern (if + past, would + infinitive)."
+              }
             }
           },
           {
@@ -1159,7 +1281,16 @@
                 "had felt": "\"had felt\" belongs to a different conditional pattern — zero conditional needs present forms."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Zero conditional: if + present simple, present simple — both clauses describe general truths or habits."
+              "grammarFocus": "Zero conditional: if + present simple, present simple — both clauses describe general truths or habits.",
+              "optionContrast": {
+                "feel": "\"feel\" doesn't fit here → \"feel\" does, because The clue is zero conditional, so the correct answer is \"feel\".",
+                "B": "\"would feel\" doesn't fit here → \"feel\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "would feel": "\"would feel\" doesn't fit here → \"feel\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "C": "\"felt\" doesn't fit here → \"feel\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "felt": "\"felt\" doesn't fit here → \"feel\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "D": "\"had felt\" doesn't fit here → \"feel\" does, because it belongs to a different conditional pattern — zero conditional needs present forms.",
+                "had felt": "\"had felt\" doesn't fit here → \"feel\" does, because it belongs to a different conditional pattern — zero conditional needs present forms."
+              }
             }
           },
           {
@@ -1197,7 +1328,16 @@
                 "would feel": "\"would feel\" does not fit the third conditional pattern (if + past perfect, would have + past participle)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result."
+              "grammarFocus": "Third conditional: if + past perfect, would have + past participle — an unreal past situation and its past result.",
+              "optionContrast": {
+                "A": "\"felt\" doesn't fit here → \"had felt\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "felt": "\"felt\" doesn't fit here → \"had felt\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "had felt": "\"had felt\" doesn't fit here → \"had felt\" does, because The clue is third conditional, so the correct answer is \"had felt\".",
+                "C": "\"feels\" doesn't fit here → \"had felt\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "feels": "\"feels\" doesn't fit here → \"had felt\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "D": "\"would feel\" doesn't fit here → \"had felt\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle).",
+                "would feel": "\"would feel\" doesn't fit here → \"had felt\" does, because it does not fit the third conditional pattern (if + past perfect, would have + past participle)."
+              }
             }
           },
           {
@@ -1235,7 +1375,16 @@
                 "had been": "\"had been\" does not fit the second conditional pattern (if + past, would + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation."
+              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation.",
+              "optionContrast": {
+                "A": "\"am\" doesn't fit here → \"were\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "am": "\"am\" doesn't fit here → \"were\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "B": "\"was\" doesn't fit here → \"were\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "was": "\"was\" doesn't fit here → \"were\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "were": "\"were\" doesn't fit here → \"were\" does, because The clue is second conditional, so the correct answer is \"were\".",
+                "D": "\"had been\" doesn't fit here → \"were\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had been": "\"had been\" doesn't fit here → \"were\" does, because it does not fit the second conditional pattern (if + past, would + infinitive)."
+              }
             }
           },
           {
@@ -1273,7 +1422,16 @@
                 "would eat": "\"would eat\" does not fit the second conditional pattern (if + past, would + infinitive)."
               },
               "usefulTip": "Name the conditional type first — that tells you which verb forms belong in each clause.",
-              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation."
+              "grammarFocus": "Second conditional: if + past simple, would + infinitive — an unreal or unlikely present/future situation.",
+              "optionContrast": {
+                "A": "\"eats\" doesn't fit here → \"ate\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "eats": "\"eats\" doesn't fit here → \"ate\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "ate": "\"ate\" doesn't fit here → \"ate\" does, because The clue is second conditional, so the correct answer is \"ate\".",
+                "C": "\"had eaten\" doesn't fit here → \"ate\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "had eaten": "\"had eaten\" doesn't fit here → \"ate\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "D": "\"would eat\" doesn't fit here → \"ate\" does, because it does not fit the second conditional pattern (if + past, would + infinitive).",
+                "would eat": "\"would eat\" doesn't fit here → \"ate\" does, because it does not fit the second conditional pattern (if + past, would + infinitive)."
+              }
             }
           }
         ]

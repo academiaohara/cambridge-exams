@@ -9,6 +9,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildOptionContrastMap, ensureExplanationOptionContrast, ensurePeriod } from './lib/option-contrast.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -27,10 +28,9 @@ function stripMd(text) {
   return String(text || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
 }
 
-function ensurePeriod(s) {
-  const t = String(s || '').trim();
-  if (!t) return t;
-  return /[.!?]$/.test(t) ? t : t + '.';
+function attachOptionContrast(item, content) {
+  content.optionContrast = buildOptionContrastMap(item, content);
+  return content;
 }
 
 function capitalize(s) {
@@ -247,7 +247,7 @@ function buildExplanationContent(item) {
   if (grammarFocus) content.grammarFocus = ensurePeriod(grammarFocus);
   if (vocabularyFocus) content.vocabularyFocus = ensurePeriod(vocabularyFocus);
 
-  return content;
+  return attachOptionContrast(item, content);
 }
 
 function isMc4Item(item, exerciseType) {
@@ -257,6 +257,8 @@ function isMc4Item(item, exerciseType) {
 function migrateMc4Item(item) {
   if (!item.explanationContent) {
     item.explanationContent = buildExplanationContent(item);
+  } else {
+    ensureExplanationOptionContrast(item);
   }
   delete item.explanation;
   return true;

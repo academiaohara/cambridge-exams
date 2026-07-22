@@ -44,7 +44,7 @@ const wrongResult = {
 const opts = SunePlayExplanation.buildExplainOpts(screen, wrongResult);
 const keys = opts.sections.map((s) => s.key);
 
-const expected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const expected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'vocabularyFocus', 'usefulTip', 'sentenceBreakdown'];
 const missing = expected.filter((k) => !keys.includes(k));
 
 if (missing.length) {
@@ -61,8 +61,8 @@ console.log('PASS two_option_choice explanation builder');
 console.log('Sections:', keys.join(' → '));
 
 const whySection = opts.sections.find((s) => s.key === 'whyCorrect');
-if (!whySection || whySection.label !== 'Explanation') {
-  console.error('FAIL wrong-answer whyCorrect label should be "Explanation", got:', whySection && whySection.label);
+if (!whySection || whySection.label !== 'Why') {
+  console.error('FAIL wrong-answer whyCorrect label should be "Why", got:', whySection && whySection.label);
   process.exit(1);
 }
 
@@ -106,7 +106,7 @@ const meaningWrong = {
 
 const meaningOpts = SunePlayExplanation.buildExplainOpts(meaningScreen, meaningWrong);
 const meaningKeys = meaningOpts.sections.map((s) => s.key);
-const meaningExpected = ['correct', 'yourAnswer', 'sentenceBreakdown', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const meaningExpected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'grammarFocus', 'usefulTip', 'sentenceBreakdown'];
 const meaningMissing = meaningExpected.filter((k) => !meaningKeys.includes(k));
 
 if (meaningMissing.length) {
@@ -142,7 +142,7 @@ const mcWrong = {
 
 const mcOpts = SunePlayExplanation.buildExplainOpts(mcScreen, mcWrong);
 const mcKeys = mcOpts.sections.map((s) => s.key);
-const mcExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const mcExpected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'grammarFocus', 'usefulTip'];
 const mcMissing = mcExpected.filter((k) => !mcKeys.includes(k));
 
 if (mcMissing.length) {
@@ -1029,7 +1029,7 @@ const gecWrong = {
 
 const gecOpts = SunePlayExplanation.buildExplainOpts(gecScreen, gecWrong);
 const gecKeys = gecOpts.sections.map((s) => s.key);
-const gecExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const gecExpected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'grammarFocus', 'usefulTip'];
 const gecMissing = gecExpected.filter((k) => !gecKeys.includes(k));
 
 if (gecMissing.length) {
@@ -1037,9 +1037,9 @@ if (gecMissing.length) {
   process.exit(1);
 }
 
-const gecMistake = gecOpts.sections.find((s) => s.key === 'commonMistake');
-if (!gecMistake || !String(gecMistake.text).includes('was')) {
-  console.error('FAIL guided_error_choice should personalize wrong option');
+const gecContrast = gecOpts.sections.find((s) => s.key === 'optionContrast');
+if (!gecContrast || !String(gecContrast.text).includes('was')) {
+  console.error('FAIL guided_error_choice should personalize wrong option contrast');
   process.exit(1);
 }
 

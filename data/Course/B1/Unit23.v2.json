@@ -849,7 +849,10 @@
               "wrongOptions": {
                 "aren't you": "\"aren't you\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "aren't you": "\"aren't you\" doesn't fit here → \"don't you\" does, because \"aren't you\" does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -870,7 +873,10 @@
               "wrongOptions": {
                 "doesn't she": "\"doesn't she\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "doesn't she": "\"doesn't she\" doesn't fit here → \"does she\" does, because \"doesn't she\" does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -891,7 +897,10 @@
               "wrongOptions": {
                 "isn't there": "\"isn't there\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "isn't there": "\"isn't there\" doesn't fit here → \"is there\" does, because \"isn't there\" does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -912,7 +921,10 @@
               "wrongOptions": {
                 "don't we": "\"don't we\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "don't we": "\"don't we\" doesn't fit here → \"aren't we\" does, because \"don't we\" does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -933,7 +945,10 @@
               "wrongOptions": {
                 "didn't they": "\"didn't they\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "didn't they": "\"didn't they\" doesn't fit here → \"did they\" does, because \"didn't they\" does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -954,7 +969,10 @@
               "wrongOptions": {
                 "don't they": "\"don't they\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "don't they": "\"don't they\" doesn't fit here → \"shouldn't they\" does, because \"don't they\" does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -975,7 +993,10 @@
               "wrongOptions": {
                 "do you": "\"do you\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "do you": "\"do you\" doesn't fit here → \"will you\" does, because it does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           },
           {
@@ -996,7 +1017,10 @@
               "wrongOptions": {
                 "will there": "\"will there\" does not match the clue in the rest of the sentence (\"?\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "will there": "\"will there\" doesn't fit here → \"won't there\" does, because it does not match the clue in the rest of the sentence (\"?\")."
+              }
             }
           }
         ]
@@ -1365,7 +1389,16 @@
                 "Could for": "\"Could for\" does not match the grammar or meaning clue in this sentence — \"Could\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"Could\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"Could\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "Could": "\"Could\" doesn't fit here → \"Could\" does, because The context points to \"Could\" — polite request.",
+                "B": "\"Could to\" doesn't fit here → \"Could\" does, because it does not match the grammar or meaning clue in this sentence — \"Could\" is correct.",
+                "Could to": "\"Could to\" doesn't fit here → \"Could\" does, because it does not match the grammar or meaning clue in this sentence — \"Could\" is correct.",
+                "C": "\"Could you to\" doesn't fit here → \"Could\" does, because it does not match the grammar or meaning clue in this sentence — \"Could\" is correct.",
+                "Could you to": "\"Could you to\" doesn't fit here → \"Could\" does, because it does not match the grammar or meaning clue in this sentence — \"Could\" is correct.",
+                "D": "\"Could for\" doesn't fit here → \"Could\" does, because it does not match the grammar or meaning clue in this sentence — \"Could\" is correct.",
+                "Could for": "\"Could for\" doesn't fit here → \"Could\" does, because it does not match the grammar or meaning clue in this sentence — \"Could\" is correct."
+              }
             }
           },
           {
@@ -1403,7 +1436,16 @@
                 "isn't it": "\"isn't it\" does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "isn't she": "\"isn't she\" doesn't fit here → \"isn't she\" does, because The context points to \"isn't she\" — she's punctual.",
+                "B": "\"doesn't she\" doesn't fit here → \"isn't she\" does, because \"doesn't she\" does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct.",
+                "doesn't she": "\"doesn't she\" doesn't fit here → \"isn't she\" does, because \"doesn't she\" does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct.",
+                "C": "\"is she\" doesn't fit here → \"isn't she\" does, because it does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct.",
+                "is she": "\"is she\" doesn't fit here → \"isn't she\" does, because it does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct.",
+                "D": "\"isn't it\" doesn't fit here → \"isn't she\" does, because \"isn't it\" does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct.",
+                "isn't it": "\"isn't it\" doesn't fit here → \"isn't she\" does, because \"isn't it\" does not match the grammar or meaning clue in this sentence — \"isn't she\" is correct."
+              }
             }
           },
           {
@@ -1441,7 +1483,16 @@
                 "does when": "\"does when\" does not match the grammar or meaning clue in this sentence — \"when\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"when\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"when\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"when does\" doesn't fit here → \"when\" does, because it does not match the grammar or meaning clue in this sentence — \"when\" is correct.",
+                "when does": "\"when does\" doesn't fit here → \"when\" does, because it does not match the grammar or meaning clue in this sentence — \"when\" is correct.",
+                "when": "\"when\" doesn't fit here → \"when\" does, because The clue is indirect, so the correct answer is \"when\".",
+                "C": "\"when is\" doesn't fit here → \"when\" does, because it does not match the grammar or meaning clue in this sentence — \"when\" is correct.",
+                "when is": "\"when is\" doesn't fit here → \"when\" does, because it does not match the grammar or meaning clue in this sentence — \"when\" is correct.",
+                "D": "\"does when\" doesn't fit here → \"when\" does, because it does not match the grammar or meaning clue in this sentence — \"when\" is correct.",
+                "does when": "\"does when\" doesn't fit here → \"when\" does, because it does not match the grammar or meaning clue in this sentence — \"when\" is correct."
+              }
             }
           },
           {
@@ -1479,7 +1530,16 @@
                 "Who did call": "\"Who did call\" does not match the grammar or meaning clue in this sentence — \"Who\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"Who\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"Who\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"Who did\" doesn't fit here → \"Who\" does, because it does not match the grammar or meaning clue in this sentence — \"Who\" is correct.",
+                "Who did": "\"Who did\" doesn't fit here → \"Who\" does, because it does not match the grammar or meaning clue in this sentence — \"Who\" is correct.",
+                "Who": "\"Who\" doesn't fit here → \"Who\" does, because The context points to \"Who\" — subject question.",
+                "C": "\"Did who\" doesn't fit here → \"Who\" does, because it does not match the grammar or meaning clue in this sentence — \"Who\" is correct.",
+                "Did who": "\"Did who\" doesn't fit here → \"Who\" does, because it does not match the grammar or meaning clue in this sentence — \"Who\" is correct.",
+                "D": "\"Who did call\" doesn't fit here → \"Who\" does, because it does not match the grammar or meaning clue in this sentence — \"Who\" is correct.",
+                "Who did call": "\"Who did call\" doesn't fit here → \"Who\" does, because it does not match the grammar or meaning clue in this sentence — \"Who\" is correct."
+              }
             }
           },
           {
@@ -1517,7 +1577,16 @@
                 "isn't it": "\"isn't it\" does not match the grammar or meaning clue in this sentence — \"is there\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to."
+              "grammarFocus": "Possessive forms and possessive determiners show who something belongs to.",
+              "optionContrast": {
+                "is there": "\"is there\" doesn't fit here → \"is there\" does, because The context points to \"is there\" — nothing.",
+                "B": "\"isn't there\" doesn't fit here → \"is there\" does, because \"isn't there\" does not match the grammar or meaning clue in this sentence — \"is there\" is correct.",
+                "isn't there": "\"isn't there\" doesn't fit here → \"is there\" does, because \"isn't there\" does not match the grammar or meaning clue in this sentence — \"is there\" is correct.",
+                "C": "\"is it\" doesn't fit here → \"is there\" does, because it does not match the grammar or meaning clue in this sentence — \"is there\" is correct.",
+                "is it": "\"is it\" doesn't fit here → \"is there\" does, because it does not match the grammar or meaning clue in this sentence — \"is there\" is correct.",
+                "D": "\"isn't it\" doesn't fit here → \"is there\" does, because \"isn't it\" does not match the grammar or meaning clue in this sentence — \"is there\" is correct.",
+                "isn't it": "\"isn't it\" doesn't fit here → \"is there\" does, because \"isn't it\" does not match the grammar or meaning clue in this sentence — \"is there\" is correct."
+              }
             }
           },
           {
@@ -1555,7 +1624,16 @@
                 "what time is the lesson.": "\"what time is the lesson.\" does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "grammarFocus": "Indirect questions keep statement word order — no inversion after the question phrase."
+              "grammarFocus": "Indirect questions keep statement word order — no inversion after the question phrase.",
+              "optionContrast": {
+                "A": "\"what time is the lesson?\" doesn't fit here → \"what time the lesson is.\" does, because it does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct.",
+                "what time is the lesson?": "\"what time is the lesson?\" doesn't fit here → \"what time the lesson is.\" does, because it does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct.",
+                "B": "\"what time the lesson is?\" doesn't fit here → \"what time the lesson is.\" does, because it does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct.",
+                "what time the lesson is?": "\"what time the lesson is?\" doesn't fit here → \"what time the lesson is.\" does, because it does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct.",
+                "what time the lesson is.": "\"what time the lesson is.\" doesn't fit here → \"what time the lesson is.\" does, because The clue is indirect question needs statement order + full stop, so the correct answer is \"what time the lesson is.\".",
+                "D": "\"what time is the lesson.\" doesn't fit here → \"what time the lesson is.\" does, because it does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct.",
+                "what time is the lesson.": "\"what time is the lesson.\" doesn't fit here → \"what time the lesson is.\" does, because it does not match the grammar or meaning clue in this sentence — \"what time the lesson is.\" is correct."
+              }
             }
           },
           {
@@ -1593,7 +1671,16 @@
                 "isn't I": "\"isn't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"am I\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"am I\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"aren't I\" doesn't fit here → \"am I\" does, because \"aren't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct.",
+                "aren't I": "\"aren't I\" doesn't fit here → \"am I\" does, because \"aren't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct.",
+                "am I": "\"am I\" doesn't fit here → \"am I\" does, because The context points to \"am I\" — negative statement.",
+                "C": "\"don't I\" doesn't fit here → \"am I\" does, because \"don't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct.",
+                "don't I": "\"don't I\" doesn't fit here → \"am I\" does, because \"don't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct.",
+                "D": "\"isn't I\" doesn't fit here → \"am I\" does, because \"isn't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct.",
+                "isn't I": "\"isn't I\" doesn't fit here → \"am I\" does, because \"isn't I\" does not match the grammar or meaning clue in this sentence — \"am I\" is correct."
+              }
             }
           },
           {
@@ -1631,7 +1718,16 @@
                 "did they": "\"did they\" does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"didn't they\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"didn't they\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "didn't they": "\"didn't they\" doesn't fit here → \"didn't they\" does, because The context points to \"didn't they\" — someone.",
+                "B": "\"didn't he\" doesn't fit here → \"didn't they\" does, because \"didn't he\" does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct.",
+                "didn't he": "\"didn't he\" doesn't fit here → \"didn't they\" does, because \"didn't he\" does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct.",
+                "C": "\"didn't someone\" doesn't fit here → \"didn't they\" does, because \"didn't someone\" does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct.",
+                "didn't someone": "\"didn't someone\" doesn't fit here → \"didn't they\" does, because \"didn't someone\" does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct.",
+                "D": "\"did they\" doesn't fit here → \"didn't they\" does, because it does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct.",
+                "did they": "\"did they\" doesn't fit here → \"didn't they\" does, because it does not match the grammar or meaning clue in this sentence — \"didn't they\" is correct."
+              }
             }
           }
         ]

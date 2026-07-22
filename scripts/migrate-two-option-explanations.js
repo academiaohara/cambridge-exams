@@ -9,6 +9,10 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  buildOptionContrastMap,
+  ensurePeriod
+} from './lib/option-contrast.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -294,12 +298,12 @@ function buildVocabularyContent(item, legacy) {
     wrongOptions[wrongStr] = buildWrongOptionNote(item, answer, wrongStr, after);
   }
 
-  return {
+  return attachOptionContrast(item, {
     whyCorrect: ensurePeriod(whyCorrect),
     vocabularyFocus: ensurePeriod(vocabularyFocus),
     wrongOptions,
     usefulTip: 'When two words look similar, read the whole sentence — the clue is usually before or after the gap.'
-  };
+  });
 }
 
 function buildWrongOptionNote(item, answer, wrongStr, after) {
@@ -313,6 +317,11 @@ function buildWrongOptionNote(item, answer, wrongStr, after) {
   return `"${wrongStr}" does not match the clue in the rest of the sentence${
     after ? ` ("${after.slice(0, 55)}${after.length > 55 ? '…' : ''}")` : ''
   }.`;
+}
+
+function attachOptionContrast(item, content) {
+  content.optionContrast = buildOptionContrastMap(item, content);
+  return content;
 }
 
 function buildExplanationContent(item) {
@@ -337,10 +346,10 @@ function buildExplanationContent(item) {
       }
     }
 
-    return built;
+    return attachOptionContrast(item, built);
   }
 
-  return buildVocabularyContent(item, legacy);
+  return attachOptionContrast(item, buildVocabularyContent(item, legacy));
 }
 
 function migrateFile(filePath) {

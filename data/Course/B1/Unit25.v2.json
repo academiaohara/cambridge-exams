@@ -703,7 +703,10 @@
                 "so": "So cannot be followed by a noun phrase in this pattern.",
                 "such": "Such is not used directly before a lone adjective."
               },
-              "usefulTip": "If a noun comes right after the gap, you usually need such."
+              "usefulTip": "If a noun comes right after the gap, you usually need such.",
+              "optionContrast": {
+                "such": "\"such\" doesn't fit here → \"so\" does, because Such is not used directly before a lone adjective."
+              }
             }
           },
           {
@@ -724,6 +727,9 @@
               "wrongOptions": {
                 "too": "Too suggests a problem caused by excess; that may not match the sentence.",
                 "enough": "Enough means sufficient — it does not express excess."
+              },
+              "optionContrast": {
+                "enough": "\"enough\" doesn't fit here → \"too\" does, because Enough means sufficient — it does not express excess."
               }
             }
           },
@@ -746,7 +752,10 @@
                 "so": "So cannot be followed by a noun phrase in this pattern.",
                 "such": "Such is not used directly before a lone adjective."
               },
-              "usefulTip": "If a noun comes right after the gap, you usually need such."
+              "usefulTip": "If a noun comes right after the gap, you usually need such.",
+              "optionContrast": {
+                "so": "\"so\" doesn't fit here → \"such\" does, because So cannot be followed by a noun phrase in this pattern."
+              }
             }
           },
           {
@@ -767,6 +776,9 @@
               "wrongOptions": {
                 "too": "Too suggests a problem caused by excess; that may not match the sentence.",
                 "enough": "Enough means sufficient — it does not express excess."
+              },
+              "optionContrast": {
+                "too": "\"too\" doesn't fit here → \"enough\" does, because Too suggests a problem caused by excess; that may not match the sentence."
               }
             }
           },
@@ -788,7 +800,10 @@
               "wrongOptions": {
                 "such many": "\"such many\" does not match the clue in the rest of the sentence (\"people at the station.\")."
               },
-              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "such many": "\"such many\" doesn't fit here → \"so many\" does, because it does not match the clue in the rest of the sentence (\"people at the station.\")."
+              }
             }
           },
           {
@@ -810,7 +825,10 @@
                 "so": "So cannot be followed by a noun phrase in this pattern.",
                 "such": "Such is not used directly before a lone adjective."
               },
-              "usefulTip": "If a noun comes right after the gap, you usually need such."
+              "usefulTip": "If a noun comes right after the gap, you usually need such.",
+              "optionContrast": {
+                "so": "\"so\" doesn't fit here → \"such\" does, because So cannot be followed by a noun phrase in this pattern."
+              }
             }
           },
           {
@@ -831,6 +849,9 @@
               "wrongOptions": {
                 "too": "Too suggests a problem caused by excess; that may not match the sentence.",
                 "enough": "Enough means sufficient — it does not express excess."
+              },
+              "optionContrast": {
+                "enough": "\"enough\" doesn't fit here → \"too\" does, because Enough means sufficient — it does not express excess."
               }
             }
           },
@@ -852,6 +873,9 @@
               "wrongOptions": {
                 "too": "Too suggests a problem caused by excess; that may not match the sentence.",
                 "enough": "Enough means sufficient — it does not express excess."
+              },
+              "optionContrast": {
+                "too": "\"too\" doesn't fit here → \"enough\" does, because Too suggests a problem caused by excess; that may not match the sentence."
               }
             }
           }
@@ -1184,7 +1208,16 @@
                 "such": "\"such\" does not match the grammar or meaning clue in this sentence — \"too\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"too\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"too\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"enough\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "enough": "\"enough\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "too": "\"too\" doesn't fit here → \"too\" does, because The context points to \"too\" — can't fit.",
+                "C": "\"so\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "so": "\"so\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "D": "\"such\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "such": "\"such\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct."
+              }
             }
           },
           {
@@ -1222,7 +1255,16 @@
                 "too": "\"too\" does not match the grammar or meaning clue in this sentence — \"such\" is correct."
               },
               "usefulTip": "Time expressions like for, since, already, and yet are strong present-perfect signals.",
-              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever."
+              "grammarFocus": "Present perfect links past actions to now — look for markers like for, since, already, yet, or ever.",
+              "optionContrast": {
+                "A": "\"so\" doesn't fit here → \"such\" does, because it does not match the grammar or meaning clue in this sentence — \"such\" is correct.",
+                "so": "\"so\" doesn't fit here → \"such\" does, because it does not match the grammar or meaning clue in this sentence — \"such\" is correct.",
+                "B": "\"enough\" doesn't fit here → \"such\" does, because it does not match the grammar or meaning clue in this sentence — \"such\" is correct.",
+                "enough": "\"enough\" doesn't fit here → \"such\" does, because it does not match the grammar or meaning clue in this sentence — \"such\" is correct.",
+                "such": "\"such\" doesn't fit here → \"such\" does, because The context points to \"such\" — such + noun.",
+                "D": "\"too\" doesn't fit here → \"such\" does, because it does not match the grammar or meaning clue in this sentence — \"such\" is correct.",
+                "too": "\"too\" doesn't fit here → \"such\" does, because it does not match the grammar or meaning clue in this sentence — \"such\" is correct."
+              }
             }
           },
           {
@@ -1260,7 +1302,16 @@
                 "so": "\"so\" does not match the grammar or meaning clue in this sentence — \"enough\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"enough\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"enough\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "enough": "\"enough\" doesn't fit here → \"enough\" does, because The context points to \"enough\" — insufficient practice.",
+                "B": "\"too\" doesn't fit here → \"enough\" does, because it does not match the grammar or meaning clue in this sentence — \"enough\" is correct.",
+                "too": "\"too\" doesn't fit here → \"enough\" does, because it does not match the grammar or meaning clue in this sentence — \"enough\" is correct.",
+                "C": "\"such\" doesn't fit here → \"enough\" does, because it does not match the grammar or meaning clue in this sentence — \"enough\" is correct.",
+                "such": "\"such\" doesn't fit here → \"enough\" does, because it does not match the grammar or meaning clue in this sentence — \"enough\" is correct.",
+                "D": "\"so\" doesn't fit here → \"enough\" does, because it does not match the grammar or meaning clue in this sentence — \"enough\" is correct.",
+                "so": "\"so\" doesn't fit here → \"enough\" does, because it does not match the grammar or meaning clue in this sentence — \"enough\" is correct."
+              }
             }
           },
           {
@@ -1298,7 +1349,16 @@
                 "enough": "\"enough\" does not match the grammar or meaning clue in this sentence — \"so\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"so\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"so\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"such\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "such": "\"such\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "B": "\"too\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "too": "\"too\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "C": "\"enough\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "enough": "\"enough\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "so": "\"so\" doesn't fit here → \"so\" does, because The context points to \"so\" — so + adjective."
+              }
             }
           },
           {
@@ -1336,7 +1396,16 @@
                 "such": "\"such\" does not match the grammar or meaning clue in this sentence — \"too\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"too\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"too\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "A": "\"enough\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "enough": "\"enough\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "too": "\"too\" doesn't fit here → \"too\" does, because The context points to \"too\" — too quiet to hear.",
+                "C": "\"so\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "so": "\"so\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "D": "\"such\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct.",
+                "such": "\"such\" doesn't fit here → \"too\" does, because it does not match the grammar or meaning clue in this sentence — \"too\" is correct."
+              }
             }
           },
           {
@@ -1374,7 +1443,16 @@
                 "enough": "\"enough\" does not match the grammar or meaning clue in this sentence — \"so\" is correct."
               },
               "usefulTip": "Eliminate options that break grammar first, then check which remaining word fits the meaning.",
-              "vocabularyFocus": "\"so\" is the only option that matches both meaning and register in this sentence."
+              "vocabularyFocus": "\"so\" is the only option that matches both meaning and register in this sentence.",
+              "optionContrast": {
+                "so": "\"so\" doesn't fit here → \"so\" does, because The context points to \"so\" — so much fog.",
+                "B": "\"such\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "such": "\"such\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "C": "\"too\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "too": "\"too\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "D": "\"enough\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct.",
+                "enough": "\"enough\" doesn't fit here → \"so\" does, because it does not match the grammar or meaning clue in this sentence — \"so\" is correct."
+              }
             }
           }
         ]
