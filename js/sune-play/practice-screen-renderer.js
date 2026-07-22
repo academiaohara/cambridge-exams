@@ -4921,6 +4921,10 @@
         result.correctAnswer = p.answer;
         result.correct = norm.matchesAnyAccepted(corrected, p);
         result.lifeLoss = result.correct ? 0 : 1;
+        if (p.explanationContent) {
+          result.explanationContent = p.explanationContent;
+          result.explanation = '__structured__';
+        }
         break;
       }
       case 'verb_bank_two_step': {

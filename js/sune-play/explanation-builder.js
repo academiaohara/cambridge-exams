@@ -792,6 +792,49 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildErrorCorrectedSentence(sentence, highlightedText, answer) {
+    var text = String(sentence || '');
+    var wrong = String(highlightedText || '').trim();
+    var fix = String(answer || '').trim();
+    if (!wrong || !fix) return gapSentenceDisplay(text);
+    var escaped = wrong.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return gapSentenceDisplay(text.replace(new RegExp(escaped, 'i'), fix));
+  }
+
+  function buildErrorCorrection(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var highlighted = String(p.highlightedText || '').trim();
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, null);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var corrected = buildErrorCorrectedSentence(p.sentence, highlighted, correctAnswer);
+    if (corrected) {
+      sections.push({ key: 'sentenceBreakdown', text: corrected });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'error_correction',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildLegacy(screen, result) {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
@@ -869,6 +912,9 @@ var SunePlayExplanation = (function() {
       if (kwtTarget) kwtLines.push(kwtTarget);
       return kwtLines.join('\n');
     }
+    if (screen.formatType === 'error_correction') {
+      return gapSentenceDisplay(p.sentence || '');
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -898,6 +944,8 @@ var SunePlayExplanation = (function() {
         return buildSyncedGapFill(screen, result);
       case 'keyword_transformation':
         return buildKeywordTransformation(screen, result);
+      case 'error_correction':
+        return buildErrorCorrection(screen, result);
       default:
         return buildLegacy(screen, result);
     }

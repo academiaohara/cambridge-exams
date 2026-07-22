@@ -201,6 +201,16 @@ function validateExercise(file, exercise) {
     if (ft === 'error_correction' && !item.highlightedText) {
       issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' missing highlightedText'));
     }
+    if (item.formatType === 'error_correction' || ft === 'error_correction') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (item.acceptedAnswers && item.acceptedAnswers.some(function(a) { return typeof a !== 'string'; })) {
       issues.push(error(file, 'Item ' + (item.id || idx) + ' acceptedAnswers must be strings'));
     }
