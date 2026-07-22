@@ -480,3 +480,53 @@ if (errMissing.length) {
 console.log('PASS error_correction explanation builder');
 console.log('Sections:', errKeys.join(' → '));
 
+// find_extra_word
+const fewItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B2/ProgressTest2.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b2-u2-ex-g').items[0];
+
+const fewScreen = {
+  formatType: 'find_extra_word',
+  payload: {
+    sentence: fewItem.sentence,
+    answer: fewItem.answer,
+    isCorrectSentence: false,
+    explanationContent: fewItem.explanationContent
+  }
+};
+
+const fewWrong = {
+  correct: false,
+  correctAnswer: 'been',
+  userAnswer: 'often'
+};
+
+const fewOpts = SunePlayExplanation.buildExplainOpts(fewScreen, fewWrong);
+const fewKeys = fewOpts.sections.map((s) => s.key);
+const fewExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const fewMissing = fewExpected.filter((k) => !fewKeys.includes(k));
+
+if (fewMissing.length) {
+  console.error('FAIL find_extra_word missing sections:', fewMissing.join(', '));
+  process.exit(1);
+}
+
+const fewOkItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B2/ProgressTest2.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b2-u2-ex-g').items[1];
+const fewOkScreen = {
+  formatType: 'find_extra_word',
+  payload: {
+    sentence: fewOkItem.sentence,
+    answer: 'OK',
+    isCorrectSentence: true,
+    explanationContent: fewOkItem.explanationContent
+  }
+};
+const fewOkOpts = SunePlayExplanation.buildExplainOpts(fewOkScreen, { correct: true, correctAnswer: 'OK' });
+if (!String(fewOkOpts.sections[0].text).includes('OK')) {
+  console.error('FAIL find_extra_word OK item correct label');
+  process.exit(1);
+}
+
+console.log('PASS find_extra_word explanation builder');
+console.log('Sections:', fewKeys.join(' → '));
+
