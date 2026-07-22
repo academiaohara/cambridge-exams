@@ -743,6 +743,7 @@
       var correctLetter = normalized.correctLetter || pair.markerLetter;
       var endingText = pair.endingText || (rightByLetter[correctLetter] || '');
       var itemExplanation = (sourceItemsByIdx[idx] && sourceItemsByIdx[idx].explanation) || '';
+      var itemExplanationContent = sourceItemsByIdx[idx] && sourceItemsByIdx[idx].explanationContent;
       var pairExplanation = itemExplanation;
       if (!pairExplanation && pair.leftText && endingText) {
         pairExplanation = 'Together they form a complete sentence: "' +
@@ -753,7 +754,8 @@
         leftText: pair.leftText,
         correctLetter: correctLetter,
         endingText: endingText,
-        explanation: pairExplanation
+        explanation: pairExplanation,
+        explanationContent: itemExplanationContent || null
       };
     });
 

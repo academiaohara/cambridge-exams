@@ -671,3 +671,55 @@ console.log('Sections:', vbStep1Keys.join(' → '));
 console.log('PASS verb_bank_two_step explanation builder (step 2)');
 console.log('Sections:', vbStep2Keys.join(' → '));
 
+// column_matching (single pair — sequential wrong ending)
+const cmEx = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit9.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u9-ex-d');
+const cmItem = cmEx.items[0];
+
+const cmScreen = {
+  formatType: 'column_matching',
+  payload: {
+    instruction: cmEx.studentInstruction,
+    pairs: [{
+      pairId: 1,
+      leftText: 'They travelled across Europe',
+      correctLetter: 'D',
+      endingText: 'by train.',
+      explanationContent: cmItem.explanationContent
+    }],
+    rightOptions: [
+      { letter: 'A', endingText: 'on schedule.' },
+      { letter: 'B', endingText: 'on foot.' },
+      { letter: 'C', endingText: 'on the coast.' },
+      { letter: 'D', endingText: 'by train.' },
+      { letter: 'E', endingText: 'on holiday.' },
+      { letter: 'F', endingText: 'on board.' }
+    ]
+  }
+};
+
+const cmWrong = {
+  correct: false,
+  activePairId: 1,
+  userAnswer: 'F',
+  correctAnswer: 'D'
+};
+
+const cmOpts = SunePlayExplanation.buildExplainOpts(cmScreen, cmWrong);
+const cmKeys = cmOpts.sections.map((s) => s.key);
+const cmExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const cmMissing = cmExpected.filter((k) => !cmKeys.includes(k));
+
+if (cmMissing.length) {
+  console.error('FAIL column_matching missing sections:', cmMissing.join(', '));
+  process.exit(1);
+}
+
+if (!SunePlayExplanation.hasExplanation(cmScreen, cmWrong)) {
+  console.error('FAIL column_matching hasExplanation should be true');
+  process.exit(1);
+}
+
+console.log('PASS column_matching explanation builder');
+console.log('Sections:', cmKeys.join(' → '));
+
