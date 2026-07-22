@@ -640,7 +640,15 @@
             "answer": "an",
             "originalSentence": "She's **a / an** excellent student.",
             "completedSentence": "She's an excellent student.",
-            "explanation": "Vowel sound → **an** excellent student."
+            "explanationContent": {
+              "whyCorrect": "The next word begins with a vowel sound, so we need the indefinite article an.",
+              "grammarFocus": "Use a before consonant sounds and an before vowel sounds — listen to the sound, not just the letter.",
+              "wrongOptions": {
+                "a": "A is used before consonant sounds, not before a vowel sound here.",
+                "an": "An is only used before vowel sounds."
+              },
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+            }
           },
           {
             "id": "b1-u14-exc-2",
@@ -654,7 +662,15 @@
             "answer": "an",
             "originalSentence": "We waited for **a / an** hour in the rain.",
             "completedSentence": "We waited for an hour in the rain.",
-            "explanation": "**An** hour (silent h)."
+            "explanationContent": {
+              "whyCorrect": "The next word begins with a vowel sound, so we need the indefinite article an.",
+              "grammarFocus": "Use a before consonant sounds and an before vowel sounds — listen to the sound, not just the letter.",
+              "wrongOptions": {
+                "a": "A is used before consonant sounds, not before a vowel sound here.",
+                "an": "An is only used before vowel sounds."
+              },
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+            }
           },
           {
             "id": "b1-u14-exc-3",
@@ -668,7 +684,15 @@
             "answer": "a",
             "originalSentence": "He needs **a / an** uniform for his new job.",
             "completedSentence": "He needs a uniform for his new job.",
-            "explanation": "Consonant sound → **a** uniform."
+            "explanationContent": {
+              "whyCorrect": "The next word begins with a vowel sound, so we need the indefinite article an.",
+              "grammarFocus": "Use a before consonant sounds and an before vowel sounds — listen to the sound, not just the letter.",
+              "wrongOptions": {
+                "a": "A is used before consonant sounds, not before a vowel sound here.",
+                "an": "An is only used before vowel sounds."
+              },
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+            }
           },
           {
             "id": "b1-u14-exc-4",
@@ -682,7 +706,15 @@
             "answer": "a",
             "originalSentence": "She paid with **a / an** euro note.",
             "completedSentence": "She paid with a euro note.",
-            "explanation": "Consonant sound → **a** euro note."
+            "explanationContent": {
+              "whyCorrect": "The next word begins with a vowel sound, so we need the indefinite article an.",
+              "grammarFocus": "Use a before consonant sounds and an before vowel sounds — listen to the sound, not just the letter.",
+              "wrongOptions": {
+                "a": "A is used before consonant sounds, not before a vowel sound here.",
+                "an": "An is only used before vowel sounds."
+              },
+              "usefulTip": "Say the next word aloud — if it starts with a vowel sound, choose an."
+            }
           },
           {
             "id": "b1-u14-exc-5",
@@ -696,7 +728,14 @@
             "answer": "the",
             "originalSentence": "Let's go to **the / -** theatre tonight.",
             "completedSentence": "Let's go to the theatre tonight.",
-            "explanation": "Specific building → go to **the** theatre."
+            "explanationContent": {
+              "whyCorrect": "We are talking about one specific thing both speakers know about, so the definite article is required.",
+              "grammarFocus": "Use the when the listener knows which person, place, or thing you mean.",
+              "wrongOptions": {
+                "-": "No article is wrong here — English needs the before a specific known thing.",
+                "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              }
+            }
           },
           {
             "id": "b1-u14-exc-6",
@@ -710,7 +749,14 @@
             "answer": "-",
             "originalSentence": "I saw the interview on **the / -** TV.",
             "completedSentence": "I saw the interview on - TV.",
-            "explanation": "Media → on **TV** (no article)."
+            "explanationContent": {
+              "whyCorrect": "We are talking about one specific thing both speakers know about, so the definite article is required.",
+              "grammarFocus": "Use the when the listener knows which person, place, or thing you mean.",
+              "wrongOptions": {
+                "-": "No article is wrong here — English needs the before a specific known thing.",
+                "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              }
+            }
           },
           {
             "id": "b1-u14-exc-7",
@@ -724,7 +770,14 @@
             "answer": "-",
             "originalSentence": "My dad is at **the / -** work right now.",
             "completedSentence": "My dad is at - work right now.",
-            "explanation": "At work (activity) → at **work** (no article)."
+            "explanationContent": {
+              "whyCorrect": "We are talking about one specific thing both speakers know about, so the definite article is required.",
+              "grammarFocus": "Use the when the listener knows which person, place, or thing you mean.",
+              "wrongOptions": {
+                "-": "No article is wrong here — English needs the before a specific known thing.",
+                "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              }
+            }
           },
           {
             "id": "b1-u14-exc-8",
@@ -738,7 +791,14 @@
             "answer": "the",
             "originalSentence": "We heard the news on **the / -** radio.",
             "completedSentence": "We heard the news on the radio.",
-            "explanation": "Media → on **the** radio."
+            "explanationContent": {
+              "whyCorrect": "We are talking about one specific thing both speakers know about, so the definite article is required.",
+              "grammarFocus": "Use the when the listener knows which person, place, or thing you mean.",
+              "wrongOptions": {
+                "-": "No article is wrong here — English needs the before a specific known thing.",
+                "the": "The is wrong only when no specific thing is meant — that is not the case here."
+              }
+            }
           }
         ]
       },

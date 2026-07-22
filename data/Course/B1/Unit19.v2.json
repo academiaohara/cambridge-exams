@@ -462,7 +462,15 @@
             "answer": "May",
             "originalSentence": "**Can / May** I speak to the manager, please?",
             "completedSentence": "May I speak to the manager, please?",
-            "explanation": "Formal permission request → **May** I speak to the manager?"
+            "explanationContent": {
+              "whyCorrect": "Ability or informal permission fits better.",
+              "grammarFocus": "May is formal permission. Can is everyday permission or ability.",
+              "wrongOptions": {
+                "can": "Can can sound informal where a rule or polite permission is needed.",
+                "may": "May is formal — it may not fit informal ability sentences.",
+                "Can": "\"Can\" breaks the grammar pattern described above."
+              }
+            }
           },
           {
             "id": "b1-u19-exb-2",
@@ -476,7 +484,14 @@
             "answer": "can",
             "originalSentence": "You **can / could** use my charger if your phone battery is low.",
             "completedSentence": "You can use my charger if your phone battery is low.",
-            "explanation": "Giving permission → you **can** use my charger."
+            "explanationContent": {
+              "whyCorrect": "The speaker is giving permission now.",
+              "grammarFocus": "Can often gives permission or states ability. Could is more polite or past.",
+              "wrongOptions": {
+                "can": "Can may be too direct or present-tense for this context.",
+                "could": "Could may be too tentative when clear present permission is meant."
+              }
+            }
           },
           {
             "id": "b1-u19-exb-3",
@@ -490,7 +505,15 @@
             "answer": "Could",
             "originalSentence": "**Could / Can** you help me carry this box, please?",
             "completedSentence": "Could you help me carry this box, please?",
-            "explanation": "Polite request → **Could** you help me?"
+            "explanationContent": {
+              "whyCorrect": "Could softens the request or refers to past ability.",
+              "grammarFocus": "Can often gives permission or states ability. Could is more polite or past.",
+              "wrongOptions": {
+                "can": "Can may be too direct or present-tense for this context.",
+                "could": "Could may be too tentative when clear present permission is meant.",
+                "Can": "\"Can\" breaks the grammar pattern described above."
+              }
+            }
           },
           {
             "id": "b1-u19-exb-4",
@@ -504,7 +527,14 @@
             "answer": "may",
             "originalSentence": "Visitors **may / could** enter the museum after 10 a.m.",
             "completedSentence": "Visitors may enter the museum after 10 a.m.",
-            "explanation": "Rule/permission → visitors **may** enter after 10."
+            "explanationContent": {
+              "whyCorrect": "The level of formality and meaning in the sentence matches one modal, not the other.",
+              "grammarFocus": "May states permission or possibility in formal English. Could is a polite request or past ability.",
+              "wrongOptions": {
+                "could": "Could does not express the same type of permission or rule here.",
+                "may": "May does not match the intended meaning or register here."
+              }
+            }
           },
           {
             "id": "b1-u19-exb-5",
@@ -518,7 +548,15 @@
             "answer": "May",
             "originalSentence": "**May / Can** I have another copy of the form?",
             "completedSentence": "May I have another copy of the form?",
-            "explanation": "Polite request → **May** I have another copy?"
+            "explanationContent": {
+              "whyCorrect": "Ability or informal permission fits better.",
+              "grammarFocus": "May is formal permission. Can is everyday permission or ability.",
+              "wrongOptions": {
+                "can": "Can can sound informal where a rule or polite permission is needed.",
+                "may": "May is formal — it may not fit informal ability sentences.",
+                "Can": "\"Can\" breaks the grammar pattern described above."
+              }
+            }
           },
           {
             "id": "b1-u19-exb-6",
@@ -532,7 +570,14 @@
             "answer": "can't",
             "originalSentence": "You **couldn't / can't** swim here. It's dangerous.",
             "completedSentence": "You can't swim here. It's dangerous.",
-            "explanation": "Prohibition → you **can't** swim here."
+            "explanationContent": {
+              "whyCorrect": "Only \"can't\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"can't\" collocates with the rest of the sentence. \"couldn't\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "couldn't": "\"couldn't\" does not match the clue in the rest of the sentence (\"swim here. It's dangerous.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u19-exb-7",
@@ -546,7 +591,14 @@
             "answer": "could",
             "originalSentence": "Excuse me, **could / may** you show me the way to the library?",
             "completedSentence": "Excuse me, could you show me the way to the library?",
-            "explanation": "Polite request → **could** you show me the way?"
+            "explanationContent": {
+              "whyCorrect": "The level of formality and meaning in the sentence matches one modal, not the other.",
+              "grammarFocus": "May states permission or possibility in formal English. Could is a polite request or past ability.",
+              "wrongOptions": {
+                "could": "Could does not express the same type of permission or rule here.",
+                "may": "May does not match the intended meaning or register here."
+              }
+            }
           },
           {
             "id": "b1-u19-exb-8",
@@ -560,7 +612,14 @@
             "answer": "may not",
             "originalSentence": "No, you **may not / could not** take photographs inside the gallery.",
             "completedSentence": "No, you may not take photographs inside the gallery.",
-            "explanation": "Prohibition → **may not** take photographs."
+            "explanationContent": {
+              "whyCorrect": "Only \"may not\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"may not\" collocates with the rest of the sentence. \"could not\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "could not": "\"could not\" does not match the clue in the rest of the sentence (\"take photographs inside the gallery.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },

@@ -653,7 +653,15 @@
             "answer": "much",
             "originalSentence": "There isn't **much / many** furniture in this room.",
             "completedSentence": "There isn't much furniture in this room.",
-            "explanation": "**Furniture** is uncountable → **much**."
+            "explanationContent": {
+              "whyCorrect": "\"Furniture\" is uncountable, so we use much.",
+              "grammarFocus": "Much goes with uncountable nouns; many goes with countable plural nouns.",
+              "wrongOptions": {
+                "much": "Much does not combine with countable plural nouns.",
+                "many": "Many does not combine with uncountable nouns."
+              },
+              "usefulTip": "Ask yourself: can you say \"two Xs\"? If not, the noun is probably uncountable."
+            }
           },
           {
             "id": "b1-u13-exd-2",
@@ -667,7 +675,15 @@
             "answer": "a few",
             "originalSentence": "I've got **a few / a little** ideas for the project.",
             "completedSentence": "I've got a few ideas for the project.",
-            "explanation": "**Ideas** are countable → **a few** ideas."
+            "explanationContent": {
+              "whyCorrect": "\"Ideas\" is countable here, so we need a quantifier for countable nouns.",
+              "grammarFocus": "Use a few with countable plural nouns (a few ideas, a few children).",
+              "wrongOptions": {
+                "a few": "A few is only for countable nouns you can pluralise.",
+                "a little": "A little is only for uncountable nouns."
+              },
+              "usefulTip": "Look at the noun after the gap — if it has a plural form, it is usually countable."
+            }
           },
           {
             "id": "b1-u13-exd-3",
@@ -681,7 +697,15 @@
             "answer": "much",
             "originalSentence": "How **much / many** money do you need?",
             "completedSentence": "How much money do you need?",
-            "explanation": "**Money** is uncountable → **much** money."
+            "explanationContent": {
+              "whyCorrect": "\"Money\" is uncountable, so we use much.",
+              "grammarFocus": "Much goes with uncountable nouns; many goes with countable plural nouns.",
+              "wrongOptions": {
+                "much": "Much does not combine with countable plural nouns.",
+                "many": "Many does not combine with uncountable nouns."
+              },
+              "usefulTip": "Ask yourself: can you say \"two Xs\"? If not, the noun is probably uncountable."
+            }
           },
           {
             "id": "b1-u13-exd-4",
@@ -695,7 +719,15 @@
             "answer": "a little",
             "originalSentence": "We need **a few / a little** bread for breakfast.",
             "completedSentence": "We need a little bread for breakfast.",
-            "explanation": "**Bread** is uncountable → **a little** bread."
+            "explanationContent": {
+              "whyCorrect": "\"Bread\" is uncountable here, so we need a quantifier for uncountable nouns.",
+              "grammarFocus": "Use a little with uncountable nouns (a little bread, a little time).",
+              "wrongOptions": {
+                "a few": "A few is only for countable nouns you can pluralise.",
+                "a little": "A little is only for uncountable nouns."
+              },
+              "usefulTip": "Look at the noun after the gap — if it has a plural form, it is usually countable."
+            }
           },
           {
             "id": "b1-u13-exd-5",
@@ -709,7 +741,15 @@
             "answer": "many",
             "originalSentence": "They didn't send **much / many** postcards.",
             "completedSentence": "They didn't send many postcards.",
-            "explanation": "**Postcards** are countable → **many** postcards."
+            "explanationContent": {
+              "whyCorrect": "\"Postcards.\" is countable, so we use many.",
+              "grammarFocus": "Much goes with uncountable nouns; many goes with countable plural nouns.",
+              "wrongOptions": {
+                "much": "Much does not combine with countable plural nouns.",
+                "many": "Many does not combine with uncountable nouns."
+              },
+              "usefulTip": "Ask yourself: can you say \"two Xs\"? If not, the noun is probably uncountable."
+            }
           },
           {
             "id": "b1-u13-exd-6",
@@ -723,7 +763,15 @@
             "answer": "a few",
             "originalSentence": "There are **a little / a few** children in the garden.",
             "completedSentence": "There are a few children in the garden.",
-            "explanation": "**Children** are countable → **a few** children."
+            "explanationContent": {
+              "whyCorrect": "\"Children\" is countable here, so we need a quantifier for countable nouns.",
+              "grammarFocus": "Use a few with countable plural nouns (a few ideas, a few children).",
+              "wrongOptions": {
+                "a few": "A few is only for countable nouns you can pluralise.",
+                "a little": "A little is only for uncountable nouns."
+              },
+              "usefulTip": "Look at the noun after the gap — if it has a plural form, it is usually countable."
+            }
           }
         ]
       },

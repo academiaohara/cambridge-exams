@@ -580,7 +580,14 @@
             "answer": "my",
             "originalSentence": "Is this **mine / my** coat?",
             "completedSentence": "Is this my coat?",
-            "explanation": "Before a noun → possessive determiner **my** (not **mine**)."
+            "explanationContent": {
+              "whyCorrect": "Only \"my\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"my\" collocates with the rest of the sentence. \"mine\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "mine": "\"mine\" does not match the clue in the rest of the sentence (\"coat?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u16-exc-2",
@@ -594,7 +601,14 @@
             "answer": "her",
             "originalSentence": "Laura can't find **her / hers** phone.",
             "completedSentence": "Laura can't find her phone.",
-            "explanation": "Before **phone** → **her** (not **hers**)."
+            "explanationContent": {
+              "whyCorrect": "Only \"her\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"her\" collocates with the rest of the sentence. \"hers\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "hers": "\"hers\" does not match the clue in the rest of the sentence (\"phone.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u16-exc-3",
@@ -608,7 +622,14 @@
             "answer": "its",
             "originalSentence": "The bird is cleaning **it's / its** wings.",
             "completedSentence": "The bird is cleaning its wings.",
-            "explanation": "Possession, not **it is** → **its** wings."
+            "explanationContent": {
+              "whyCorrect": "Only \"its\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"its\" collocates with the rest of the sentence. \"it's\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "it's": "\"it's\" does not match the clue in the rest of the sentence (\"wings.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u16-exc-4",
@@ -622,7 +643,14 @@
             "answer": "our",
             "originalSentence": "We are visiting **ours / our** grandparents tomorrow.",
             "completedSentence": "We are visiting our grandparents tomorrow.",
-            "explanation": "Before **grandparents** → **our**."
+            "explanationContent": {
+              "whyCorrect": "Only \"our\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"our\" collocates with the rest of the sentence. \"ours\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "ours": "\"ours\" does not match the clue in the rest of the sentence (\"grandparents tomorrow.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u16-exc-5",
@@ -636,7 +664,14 @@
             "answer": "their",
             "originalSentence": "The children forgot **their / theirs** bags.",
             "completedSentence": "The children forgot their bags.",
-            "explanation": "Before **bags** → **their** (not **theirs**)."
+            "explanationContent": {
+              "whyCorrect": "Only \"their\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"their\" collocates with the rest of the sentence. \"theirs\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "theirs": "\"theirs\" does not match the clue in the rest of the sentence (\"bags.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u16-exc-6",
@@ -650,7 +685,14 @@
             "answer": "your",
             "originalSentence": "I really like **yours / your** idea.",
             "completedSentence": "I really like your idea.",
-            "explanation": "Before **idea** → **your** (not **yours**)."
+            "explanationContent": {
+              "whyCorrect": "Only \"your\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"your\" collocates with the rest of the sentence. \"yours\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "yours": "\"yours\" does not match the clue in the rest of the sentence (\"idea.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },

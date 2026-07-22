@@ -600,7 +600,15 @@
             "answer": "so",
             "originalSentence": "The music was **so / such** loud that we left.",
             "completedSentence": "The music was so loud that we left.",
-            "explanation": "**So** + adjective → **so** loud that."
+            "explanationContent": {
+              "whyCorrect": "So is followed directly by an adjective (so + adjective).",
+              "grammarFocus": "So + adjective. Such + (a) + adjective + noun.",
+              "wrongOptions": {
+                "so": "So cannot be followed by a noun phrase in this pattern.",
+                "such": "Such is not used directly before a lone adjective."
+              },
+              "usefulTip": "If a noun comes right after the gap, you usually need such."
+            }
           },
           {
             "id": "b1-u25-exc-2",
@@ -614,7 +622,14 @@
             "answer": "too",
             "originalSentence": "This phone is **too / enough** expensive for me.",
             "completedSentence": "This phone is too expensive for me.",
-            "explanation": "Excessive price → **too** expensive."
+            "explanationContent": {
+              "whyCorrect": "The sentence shows a negative result — the degree is excessive.",
+              "grammarFocus": "Too + adjective = more than is good. Enough = sufficient amount.",
+              "wrongOptions": {
+                "too": "Too suggests a problem caused by excess; that may not match the sentence.",
+                "enough": "Enough means sufficient — it does not express excess."
+              }
+            }
           },
           {
             "id": "b1-u25-exc-3",
@@ -628,7 +643,15 @@
             "answer": "such",
             "originalSentence": "It was **so / such** a strange dream.",
             "completedSentence": "It was such a strange dream.",
-            "explanation": "**Such** + noun → **such** a strange dream."
+            "explanationContent": {
+              "whyCorrect": "Such is followed by a noun phrase (such + a + adjective + noun).",
+              "grammarFocus": "So + adjective. Such + (a) + adjective + noun.",
+              "wrongOptions": {
+                "so": "So cannot be followed by a noun phrase in this pattern.",
+                "such": "Such is not used directly before a lone adjective."
+              },
+              "usefulTip": "If a noun comes right after the gap, you usually need such."
+            }
           },
           {
             "id": "b1-u25-exc-4",
@@ -642,7 +665,14 @@
             "answer": "enough",
             "originalSentence": "The room was warm **enough / too** to sleep in.",
             "completedSentence": "The room was warm enough to sleep in.",
-            "explanation": "Sufficient warmth → warm **enough**."
+            "explanationContent": {
+              "whyCorrect": "The amount satisfies what is needed — it is sufficient.",
+              "grammarFocus": "Too + adjective = more than is good. Enough = sufficient amount.",
+              "wrongOptions": {
+                "too": "Too suggests a problem caused by excess; that may not match the sentence.",
+                "enough": "Enough means sufficient — it does not express excess."
+              }
+            }
           },
           {
             "id": "b1-u25-exc-5",
@@ -656,7 +686,14 @@
             "answer": "so many",
             "originalSentence": "There were **so many / such many** people at the station.",
             "completedSentence": "There were so many people at the station.",
-            "explanation": "Countable → **so many** people."
+            "explanationContent": {
+              "whyCorrect": "Only \"so many\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"so many\" collocates with the rest of the sentence. \"such many\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "such many": "\"such many\" does not match the clue in the rest of the sentence (\"people at the station.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u25-exc-6",
@@ -670,7 +707,15 @@
             "answer": "such",
             "originalSentence": "It was **such / so** a busy day that I forgot lunch.",
             "completedSentence": "It was such a busy day that I forgot lunch.",
-            "explanation": "**Such** + noun → **such** a busy day."
+            "explanationContent": {
+              "whyCorrect": "Such is followed by a noun phrase (such + a + adjective + noun).",
+              "grammarFocus": "So + adjective. Such + (a) + adjective + noun.",
+              "wrongOptions": {
+                "so": "So cannot be followed by a noun phrase in this pattern.",
+                "such": "Such is not used directly before a lone adjective."
+              },
+              "usefulTip": "If a noun comes right after the gap, you usually need such."
+            }
           },
           {
             "id": "b1-u25-exc-7",
@@ -684,7 +729,14 @@
             "answer": "too",
             "originalSentence": "You are speaking **too / enough** fast for me.",
             "completedSentence": "You are speaking too fast for me.",
-            "explanation": "Excessive speed → **too** fast."
+            "explanationContent": {
+              "whyCorrect": "The sentence shows a negative result — the degree is excessive.",
+              "grammarFocus": "Too + adjective = more than is good. Enough = sufficient amount.",
+              "wrongOptions": {
+                "too": "Too suggests a problem caused by excess; that may not match the sentence.",
+                "enough": "Enough means sufficient — it does not express excess."
+              }
+            }
           },
           {
             "id": "b1-u25-exc-8",
@@ -698,7 +750,14 @@
             "answer": "enough",
             "originalSentence": "He worked hard **too / enough** to pass the exam.",
             "completedSentence": "He worked hard enough to pass the exam.",
-            "explanation": "Sufficient effort → hard **enough**."
+            "explanationContent": {
+              "whyCorrect": "The amount satisfies what is needed — it is sufficient.",
+              "grammarFocus": "Too + adjective = more than is good. Enough = sufficient amount.",
+              "wrongOptions": {
+                "too": "Too suggests a problem caused by excess; that may not match the sentence.",
+                "enough": "Enough means sufficient — it does not express excess."
+              }
+            }
           }
         ]
       },

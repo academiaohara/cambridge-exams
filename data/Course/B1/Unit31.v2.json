@@ -649,7 +649,14 @@
             "answer": "was",
             "originalSentence": "Lucy said she **was / is** hungry.",
             "completedSentence": "Lucy said she was hungry.",
-            "explanation": "Backshift → **was** hungry."
+            "explanationContent": {
+              "whyCorrect": "Only \"was\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"was\" collocates with the rest of the sentence. \"is\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "is": "\"is\" does not match the clue in the rest of the sentence (\"hungry.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u31-exd-2",
@@ -663,7 +670,14 @@
             "answer": "could",
             "originalSentence": "They said they **can / could** join us later.",
             "completedSentence": "They said they could join us later.",
-            "explanation": "**Can** → **could** join us."
+            "explanationContent": {
+              "whyCorrect": "Could softens the request or refers to past ability.",
+              "grammarFocus": "Can often gives permission or states ability. Could is more polite or past.",
+              "wrongOptions": {
+                "can": "Can may be too direct or present-tense for this context.",
+                "could": "Could may be too tentative when clear present permission is meant."
+              }
+            }
           },
           {
             "id": "b1-u31-exd-3",
@@ -677,7 +691,14 @@
             "answer": "would",
             "originalSentence": "He said he **would / will** phone me that evening.",
             "completedSentence": "He said he would phone me that evening.",
-            "explanation": "**Will** → **would** phone me."
+            "explanationContent": {
+              "whyCorrect": "Only \"would\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"would\" collocates with the rest of the sentence. \"will\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "will": "\"will\" does not match the clue in the rest of the sentence (\"phone me that evening.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u31-exd-4",
@@ -691,7 +712,14 @@
             "answer": "had to",
             "originalSentence": "Dad said we **have to / had to** leave early.",
             "completedSentence": "Dad said we had to leave early.",
-            "explanation": "**Have to** → **had to** leave."
+            "explanationContent": {
+              "whyCorrect": "Only \"had to\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"had to\" collocates with the rest of the sentence. \"have to\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "have to": "\"have to\" does not match the clue in the rest of the sentence (\"leave early.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u31-exd-5",
@@ -705,7 +733,14 @@
             "answer": "the day before",
             "originalSentence": "Emma said she had seen him **yesterday / the day before**.",
             "completedSentence": "Emma said she had seen him the day before .",
-            "explanation": "**Yesterday** → **the day before**."
+            "explanationContent": {
+              "whyCorrect": "Only \"the day before\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"the day before\" collocates with the rest of the sentence. \"yesterday\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "yesterday": "\"yesterday\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u31-exd-6",
@@ -719,7 +754,14 @@
             "answer": "the following month",
             "originalSentence": "Tom said he might visit us **next month / the following month**.",
             "completedSentence": "Tom said he might visit us the following month .",
-            "explanation": "**Next month** → **the following month**."
+            "explanationContent": {
+              "whyCorrect": "Only \"the following month\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"the following month\" collocates with the rest of the sentence. \"next month\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "next month": "\"next month\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },

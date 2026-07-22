@@ -768,7 +768,14 @@
             "answer": "in cash",
             "originalSentence": "Do you want to pay **in cash / for rent / in debt** or by card?",
             "completedSentence": "Do you want to pay in cash or by card?",
-            "explanation": "Pay **in cash** = with notes and coins."
+            "explanationContent": {
+              "whyCorrect": "Only \"in cash\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"in cash\" collocates with the rest of the sentence. \"for rent\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "for rent": "\"for rent\" does not match the clue in the rest of the sentence (\"or by card?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u15-exc-2",
@@ -783,7 +790,14 @@
             "answer": "for sale",
             "originalSentence": "Their old car is **for sale / in cash / by credit card**.",
             "completedSentence": "Their old car is for sale .",
-            "explanation": "**For sale** = available to buy."
+            "explanationContent": {
+              "whyCorrect": "Only \"for sale\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"for sale\" collocates with the rest of the sentence. \"in cash\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "in cash": "\"in cash\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u15-exc-3",
@@ -798,7 +812,14 @@
             "answer": "for rent",
             "originalSentence": "That small office is **for rent / in debt / in cash**.",
             "completedSentence": "That small office is for rent .",
-            "explanation": "**For rent** = available to hire."
+            "explanationContent": {
+              "whyCorrect": "Only \"for rent\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"for rent\" collocates with the rest of the sentence. \"in debt\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "in debt": "\"in debt\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u15-exc-4",
@@ -813,7 +834,14 @@
             "answer": "by credit card",
             "originalSentence": "She paid for the hotel **by credit card / for sale / in debt**.",
             "completedSentence": "She paid for the hotel by credit card .",
-            "explanation": "Pay **by credit card**."
+            "explanationContent": {
+              "whyCorrect": "Only \"by credit card\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"by credit card\" collocates with the rest of the sentence. \"for sale\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "for sale": "\"for sale\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u15-exc-5",
@@ -828,7 +856,14 @@
             "answer": "in debt",
             "originalSentence": "He was **in debt / for rent / in good condition** after borrowing too much money.",
             "completedSentence": "He was in debt after borrowing too much money.",
-            "explanation": "**In debt** = owing money."
+            "explanationContent": {
+              "whyCorrect": "Only \"in debt\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"in debt\" collocates with the rest of the sentence. \"for rent\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "for rent": "\"for rent\" does not match the clue in the rest of the sentence (\"after borrowing too much money.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u15-exc-6",
@@ -843,7 +878,14 @@
             "answer": "in good condition",
             "originalSentence": "The phone is second-hand but **in good condition / for sale / in cash**.",
             "completedSentence": "The phone is second-hand but in good condition .",
-            "explanation": "**In good condition** = not damaged."
+            "explanationContent": {
+              "whyCorrect": "Only \"in good condition\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"in good condition\" collocates with the rest of the sentence. \"for sale\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "for sale": "\"for sale\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },
