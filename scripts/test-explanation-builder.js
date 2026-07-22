@@ -554,11 +554,22 @@ const tileWrong = {
 
 const tileOpts = SunePlayExplanation.buildExplainOpts(tileScreen, tileWrong);
 const tileKeys = tileOpts.sections.map((s) => s.key);
-const tileExpected = ['correct', 'wordOrder', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const tileExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake'];
 const tileMissing = tileExpected.filter((k) => !tileKeys.includes(k));
 
 if (tileMissing.length) {
   console.error('FAIL word_order_tiles missing sections:', tileMissing.join(', '));
+  process.exit(1);
+}
+
+const tileRedundant = ['wordOrder', 'sentenceBreakdown', 'usefulTip'].filter((k) => tileKeys.includes(k));
+if (tileRedundant.length) {
+  console.error('FAIL word_order_tiles should not include redundant sections:', tileRedundant.join(', '));
+  process.exit(1);
+}
+
+if (!tileItem.explanationContent || !tileItem.explanationContent.usefulTip) {
+  console.error('FAIL word_order_tiles lesson data should still provide usefulTip for exercise footer');
   process.exit(1);
 }
 

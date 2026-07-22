@@ -1749,12 +1749,6 @@ var SunePlayExplanation = (function() {
 
     sections.push({ key: 'correct', text: String(correctAnswer) });
 
-    if (content && content.wordOrder) {
-      sections.push({ key: 'wordOrder', text: content.wordOrder });
-    } else if (p.answerTiles && p.answerTiles.length) {
-      sections.push({ key: 'wordOrder', text: p.answerTiles.join(' ') });
-    }
-
     if (isWrong) {
       sections.push({ key: 'yourAnswer', text: String(userAnswer) });
     }
@@ -1770,15 +1764,8 @@ var SunePlayExplanation = (function() {
         if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
         if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
       }
-      if (content.usefulTip) {
-        sections.push({ key: 'usefulTip', text: content.usefulTip });
-      }
     } else if (p.explanation) {
       sections.push({ key: 'whyCorrect', text: p.explanation });
-    }
-
-    if (correctAnswer) {
-      sections.push({ key: 'sentenceBreakdown', text: String(correctAnswer) });
     }
 
     return {

@@ -1212,6 +1212,38 @@ button.sp-vocab-word-card:focus-visible {
   flex-direction: column;
 }
 
+.sp-exercise-tip-mount {
+  padding: 0 clamp(10px, 3vw, 20px);
+}
+
+.sp-exercise-tip-mount:not([hidden]) {
+  padding-top: clamp(8px, 2vw, 12px);
+}
+
+.sp-exercise-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 2px dashed #facc15;
+  border-radius: 14px;
+  background: #fefce8;
+  color: #713f12;
+}
+
+.sp-exercise-tip__icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: #ca8a04;
+  margin-top: 1px;
+}
+
+.sp-exercise-tip__text {
+  margin: 0;
+  font-size: clamp(0.82rem, 0.5rem + 0.9vw, 0.95rem);
+  line-height: 1.45;
+}
+
 .sp-practice-footer-actions {
   display: flex;
   align-items: stretch;
