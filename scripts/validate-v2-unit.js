@@ -217,8 +217,19 @@ function validateExercise(file, exercise) {
     if (item.formatType === 'error_correction' || ft === 'error_correction') {
       if (!item.explanationContent && !item.explanation) {
         issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' missing explanationContent'));
-      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
-        issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      } else if (item.explanationContent) {
+        if (!item.explanationContent.whyCorrect) {
+          issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+        }
+        if (!item.explanationContent.fix) {
+          issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' explanationContent missing fix'));
+        }
+        if (!item.explanationContent.question) {
+          issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' explanationContent missing question'));
+        }
+        if (!item.explanationContent.correctedSentence) {
+          issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' explanationContent missing correctedSentence'));
+        }
       }
       if (item.explanation) {
         issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' still uses legacy explanation string'));
@@ -247,8 +258,24 @@ function validateExercise(file, exercise) {
     if (item.formatType === 'full_sentence_write' || ft === 'full_sentence_write') {
       if (!item.explanationContent && !item.explanation) {
         issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' missing explanationContent'));
-      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
-        issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      } else if (item.explanationContent) {
+        if (!item.explanationContent.whyCorrect) {
+          issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+        }
+        var fswInst = (exercise.instructions || '') + (exercise.studentInstruction || '') + (exercise.exerciseTypeName || '');
+        var isMistakeFsw = /correct the mistake|find and correct|each sentence has one mistake|rewrite the sentence|write the correct|error correction|correct the errors/i.test(fswInst) ||
+          (!/\s\/\s/.test(String(item.displayPrompt || '')) && !/<s>/.test(String(item.displayPrompt || '')) && item.displayPrompt);
+        if (isMistakeFsw) {
+          if (!item.explanationContent.fix) {
+            issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' explanationContent missing fix'));
+          }
+          if (!item.explanationContent.question) {
+            issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' explanationContent missing question'));
+          }
+          if (!item.explanationContent.correctedSentence) {
+            issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' explanationContent missing correctedSentence'));
+          }
+        }
       }
       if (item.explanation) {
         issues.push(warn(file, 'full_sentence_write item ' + (item.id || idx) + ' still uses legacy explanation string'));

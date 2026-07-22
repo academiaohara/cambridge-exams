@@ -731,15 +731,18 @@
               "I wish I knew the answer."
             ],
             "explanationContent": {
-              "whyCorrect": "After wish, so the sentence is \"I wish I knew the answer.\".",
-              "sentenceBreakdown": "Prompt: I wish I would know the answer. → I wish I knew the answer.",
+              "whyCorrect": "After wish.",
+              "sentenceBreakdown": "I wish I knew the answer.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "After": "Check how \"After\" changes in the target sentence — tense or word form may shift.",
                 "wish": "Check how \"wish\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "I wish I <mistake>would know</mistake> the answer.",
+              "fix": "\"would know\" → \"knew\" (apply the correction shown)",
+              "correctedSentence": "I wish I knew the answer."
             }
           },
           {
@@ -756,15 +759,18 @@
               "He wishes he was stronger./He wishes he were stronger."
             ],
             "explanationContent": {
-              "whyCorrect": "Present state, so the sentence is \"He wishes he was stronger./He wishes he were stronger.\".",
-              "sentenceBreakdown": "Prompt: He wishes he would be stronger. → He wishes he was stronger./He wishes he were stronger.",
+              "whyCorrect": "Present state.",
+              "sentenceBreakdown": "He wishes he was stronger./He wishes he were stronger.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Present": "Check how \"Present\" changes in the target sentence — tense or word form may shift.",
                 "state": "Check how \"state\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "He wishes he <mistake>would be</mistake> stronger.",
+              "fix": "\"would be\" → \"was stronger./He wishes he were\" (change the verb form)",
+              "correctedSentence": "He wishes he was stronger./He wishes he were stronger."
             }
           },
           {
@@ -781,15 +787,18 @@
               "I wish you would be quieter."
             ],
             "explanationContent": {
-              "whyCorrect": "Annoying habit, so the sentence is \"I wish you would be quieter.\".",
-              "sentenceBreakdown": "Prompt: I wish you will be quieter. → I wish you would be quieter.",
+              "whyCorrect": "Annoying habit.",
+              "sentenceBreakdown": "I wish you would be quieter.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Annoying": "Check how \"Annoying\" changes in the target sentence — tense or word form may shift.",
                 "habit": "Check how \"habit\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "I wish you <mistake>will</mistake> be quieter.",
+              "fix": "\"will\" → \"would\" (swap the incorrect word)",
+              "correctedSentence": "I wish you would be quieter."
             }
           },
           {
@@ -806,14 +815,17 @@
               "She wishes she had gone to bed earlier last night."
             ],
             "explanationContent": {
-              "whyCorrect": "Past, so the sentence is \"She wishes she had gone to bed earlier last night.\".",
-              "sentenceBreakdown": "Prompt: She wishes she went to bed earlier last night. → She wishes she had gone to bed earlier last night.",
+              "whyCorrect": "Past.",
+              "sentenceBreakdown": "She wishes she had gone to bed earlier last night.",
               "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
               "wrongOptions": {
                 "Past": "Check how \"Past\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "She wishes she <mistake>went</mistake> to bed earlier last night.",
+              "fix": "\"went\" → \"had gone\" (apply the correction shown)",
+              "correctedSentence": "She wishes she had gone to bed earlier last night."
             }
           },
           {
@@ -830,15 +842,18 @@
               "I wish I had won the competition."
             ],
             "explanationContent": {
-              "whyCorrect": "Past result, so the sentence is \"I wish I had won the competition.\".",
-              "sentenceBreakdown": "Prompt: I wish I could won the competition. → I wish I had won the competition.",
+              "whyCorrect": "Past result.",
+              "sentenceBreakdown": "I wish I had won the competition.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Past": "Check how \"Past\" changes in the target sentence — tense or word form may shift.",
                 "result": "Check how \"result\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "I wish I <mistake>could</mistake> won the competition.",
+              "fix": "\"could\" → \"had\" (swap the incorrect word)",
+              "correctedSentence": "I wish I had won the competition."
             }
           },
           {
@@ -855,15 +870,18 @@
               "I hope the test is easy tomorrow."
             ],
             "explanationContent": {
-              "whyCorrect": "Possible future, so the sentence is \"I hope the test is easy tomorrow.\".",
-              "sentenceBreakdown": "Prompt: I wish the test is easy tomorrow. → I hope the test is easy tomorrow.",
+              "whyCorrect": "Possible future.",
+              "sentenceBreakdown": "I hope the test is easy tomorrow.",
               "grammarFocus": "Build a grammatically complete sentence that matches the prompt: I hope the test is easy tomorrow.",
               "wrongOptions": {
                 "Possible": "Check how \"Possible\" changes in the target sentence — tense or word form may shift.",
                 "future": "Check how \"future\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "I <mistake>wish</mistake> the test is easy tomorrow.",
+              "fix": "\"wish\" → \"hope\" (swap the incorrect word)",
+              "correctedSentence": "I hope the test is easy tomorrow."
             }
           }
         ]

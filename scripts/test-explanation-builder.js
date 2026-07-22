@@ -488,11 +488,22 @@ const errWrong = {
 
 const errOpts = SunePlayExplanation.buildExplainOpts(errScreen, errWrong);
 const errKeys = errOpts.sections.map((s) => s.key);
-const errExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const errExpected = ['yourAnswer', 'question', 'fix', 'whyCorrect', 'correctedSentence'];
 const errMissing = errExpected.filter((k) => !errKeys.includes(k));
 
 if (errMissing.length) {
   console.error('FAIL error_correction missing sections:', errMissing.join(', '));
+  process.exit(1);
+}
+
+if (errOpts.context) {
+  console.error('FAIL error_correction standardized format should not duplicate context');
+  process.exit(1);
+}
+
+const errWhy = errOpts.sections.find((s) => s.key === 'whyCorrect');
+if (!errWhy || errWhy.label !== 'Why') {
+  console.error('FAIL error_correction whyCorrect label should be "Why", got:', errWhy && errWhy.label);
   process.exit(1);
 }
 
@@ -618,7 +629,13 @@ const fswWrong = {
 
 const fswOpts = SunePlayExplanation.buildExplainOpts(fswScreen, fswWrong);
 const fswKeys = fswOpts.sections.map((s) => s.key);
-const fswExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const fswUsesStandard = fswItem.explanationContent &&
+  fswItem.explanationContent.fix &&
+  fswItem.explanationContent.question &&
+  fswItem.explanationContent.correctedSentence;
+const fswExpected = fswUsesStandard
+  ? ['yourAnswer', 'question', 'fix', 'whyCorrect', 'correctedSentence']
+  : ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
 const fswMissing = fswExpected.filter((k) => !fswKeys.includes(k));
 
 if (fswMissing.length) {
@@ -626,7 +643,12 @@ if (fswMissing.length) {
   process.exit(1);
 }
 
-if (!String(fswOpts.context).includes('they / already')) {
+if (fswUsesStandard) {
+  if (fswOpts.context) {
+    console.error('FAIL full_sentence_write standardized format should not duplicate context');
+    process.exit(1);
+  }
+} else if (!String(fswOpts.context).includes('they / already')) {
   console.error('FAIL full_sentence_write context should show displayPrompt cues');
   process.exit(1);
 }
