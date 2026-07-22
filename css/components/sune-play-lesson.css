@@ -1213,11 +1213,18 @@ button.sp-vocab-word-card:focus-visible {
 }
 
 .sp-exercise-tip-mount {
+  flex-shrink: 0;
+  margin-top: auto;
   padding: 0 clamp(10px, 3vw, 20px);
 }
 
 .sp-exercise-tip-mount:not([hidden]) {
   padding-top: clamp(8px, 2vw, 12px);
+  padding-bottom: clamp(8px, 2vw, 12px);
+}
+
+.sp-practice-main:has(.sp-exercise-tip-mount:not([hidden])) .sp-practice-footer {
+  border-top: none;
 }
 
 .sp-exercise-tip {
