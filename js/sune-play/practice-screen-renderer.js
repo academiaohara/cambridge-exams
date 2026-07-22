@@ -4709,10 +4709,16 @@
           result.correct = false;
           result.lifeLoss = 0;
           result.wordCountInvalid = true;
+          if (p.explanationContent) {
+            result.explanation = '__structured__';
+          }
           break;
         }
         result.correct = norm.matchesAnyAccepted(kwtText, p);
         result.lifeLoss = result.correct ? 0 : 1;
+        if (p.explanationContent) {
+          result.explanation = '__structured__';
+        }
         if (kwtInp) {
           kwtInp.classList.toggle('sp-kwt-gap-input--correct', result.correct);
           kwtInp.classList.toggle('sp-kwt-gap-input--incorrect', !result.correct);

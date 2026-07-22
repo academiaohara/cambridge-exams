@@ -444,7 +444,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "A fixed arrangement → present continuous **are meeting** (not **will meet**)."
+            "explanationContent": {
+              "whyCorrect": "The clue is a fixed arrangement, so the correct transformation is \"are meeting\".",
+              "grammarFocus": "Present continuous expresses a fixed arrangement or plan — not will for a diary appointment.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"MEETING\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "meeting": "Do not leave out or alter the keyword \"MEETING\" — it must appear in your answer."
+              },
+              "commonMistake": "Will + infinitive is for predictions or promises — a fixed arrangement needs present continuous.",
+              "similarExample": "Similar: We're meeting the coach at five.",
+              "usefulTip": "Count your words (2–5) before you check — include \"MEETING\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u7-exa-2",
@@ -460,7 +470,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "Evidence-based prediction → **is going to rain** with keyword **GOING**."
+            "explanationContent": {
+              "whyCorrect": "The clue is evidence-based prediction, so the correct transformation is \"is going to rain\".",
+              "grammarFocus": "Going to shows a prediction based on present evidence or a prior decision.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"GOING\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "going": "Do not leave out or alter the keyword \"GOING\" — it must appear in your answer."
+              },
+              "commonMistake": "The keyword \"GOING\" must appear exactly — do not change its form unless the task allows it.",
+              "similarExample": "Similar: Look at those clouds — it's going to rain.",
+              "usefulTip": "Count your words (2–5) before you check — include \"GOING\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u7-exa-3",
@@ -476,7 +496,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "A promise → **will help** with keyword **WILL**."
+            "explanationContent": {
+              "whyCorrect": "The clue is a promise, so the correct transformation is \"will help\".",
+              "grammarFocus": "Will + infinitive expresses a promise, offer, or instant decision.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"WILL\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "will": "Do not leave out or alter the keyword \"WILL\" — it must appear in your answer."
+              },
+              "commonMistake": "The keyword \"WILL\" must appear exactly — do not change its form unless the task allows it.",
+              "similarExample": "Similar: I'll call you when I arrive.",
+              "usefulTip": "Count your words (2–5) before you check — include \"WILL\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u7-exa-4",
@@ -492,7 +522,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "A decision already made → **are moving** with keyword **MOVING**."
+            "explanationContent": {
+              "whyCorrect": "The clue is a decision already made, so the correct transformation is \"are moving\".",
+              "grammarFocus": "Use \"MOVING\" exactly as given and change the grammar around it to preserve the meaning of the first sentence.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"MOVING\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "moving": "Do not leave out or alter the keyword \"MOVING\" — it must appear in your answer."
+              },
+              "commonMistake": "The keyword \"MOVING\" must appear exactly — do not change its form unless the task allows it.",
+              "similarExample": "Similar pattern: keep \"MOVING\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"MOVING\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u7-exa-5",
@@ -508,7 +548,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "An intention → **is going to learn** with keyword **GOING**."
+            "explanationContent": {
+              "whyCorrect": "The clue is an intention, so the correct transformation is \"is going to learn\".",
+              "grammarFocus": "Going to shows a prediction based on present evidence or a prior decision.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"GOING\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "going": "Do not leave out or alter the keyword \"GOING\" — it must appear in your answer."
+              },
+              "commonMistake": "The keyword \"GOING\" must appear exactly — do not change its form unless the task allows it.",
+              "similarExample": "Similar: Look at those clouds — it's going to rain.",
+              "usefulTip": "Count your words (2–5) before you check — include \"GOING\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u7-exa-6",
@@ -523,7 +573,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "Offering help → **Shall I** carry your bags?"
+            "explanationContent": {
+              "whyCorrect": "The clue is offering help, so the correct transformation is \"Shall I\".",
+              "grammarFocus": "Use \"SHALL\" exactly as given and change the grammar around it to preserve the meaning of the first sentence.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"SHALL\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "shall": "Do not leave out or alter the keyword \"SHALL\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"SHALL\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"SHALL\" unchanged and read the completed second sentence aloud."
+            }
           }
         ]
       },

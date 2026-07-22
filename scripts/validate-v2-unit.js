@@ -188,6 +188,16 @@ function validateExercise(file, exercise) {
     if (ft === 'keyword_transformation' && !item.promptSentence) {
       issues.push(warn(file, 'keyword_transformation item ' + (item.id || idx) + ' missing promptSentence'));
     }
+    if (item.formatType === 'keyword_transformation' || ft === 'keyword_transformation') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'keyword_transformation item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'keyword_transformation item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'keyword_transformation item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (ft === 'error_correction' && !item.highlightedText) {
       issues.push(warn(file, 'error_correction item ' + (item.id || idx) + ' missing highlightedText'));
     }

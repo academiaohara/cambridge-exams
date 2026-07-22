@@ -399,3 +399,51 @@ if (!SunePlayExplanation.hasExplanation(syncScreen, syncWrong)) {
 console.log('PASS synced_gap_fill explanation builder');
 console.log('Sections:', syncKeys.join(' → '));
 
+// keyword_transformation
+const kwtItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit2.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'c1-u2-ex-k').items[0];
+
+const kwtScreen = {
+  formatType: 'keyword_transformation',
+  payload: {
+    promptSentence: kwtItem.promptSentence,
+    keyword: kwtItem.keyword,
+    targetSentence: kwtItem.targetSentence,
+    answer: kwtItem.answer,
+    minWords: kwtItem.minWords,
+    maxWords: kwtItem.maxWords,
+    explanationContent: kwtItem.explanationContent
+  }
+};
+
+const kwtWrong = {
+  correct: false,
+  correctAnswer: 'never occurred to',
+  userAnswer: 'never crossed to'
+};
+
+const kwtOpts = SunePlayExplanation.buildExplainOpts(kwtScreen, kwtWrong);
+const kwtKeys = kwtOpts.sections.map((s) => s.key);
+const kwtExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'similarExample', 'usefulTip', 'sentenceBreakdown'];
+const kwtMissing = kwtExpected.filter((k) => !kwtKeys.includes(k));
+
+if (kwtMissing.length) {
+  console.error('FAIL keyword_transformation missing sections:', kwtMissing.join(', '));
+  process.exit(1);
+}
+
+const kwtWordCount = SunePlayExplanation.buildExplainOpts(kwtScreen, {
+  correct: false,
+  wordCountInvalid: true,
+  userAnswer: 'it never occurred to her mind',
+  correctAnswer: 'never occurred to'
+});
+const kwtWcKeys = kwtWordCount.sections.map((s) => s.key);
+if (!kwtWcKeys.includes('commonMistake') || !kwtWcKeys.includes('grammarFocus')) {
+  console.error('FAIL keyword_transformation wordCountInvalid missing sections:', kwtWcKeys.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS keyword_transformation explanation builder');
+console.log('Sections:', kwtKeys.join(' → '));
+
