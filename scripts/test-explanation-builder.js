@@ -447,3 +447,36 @@ if (!kwtWcKeys.includes('commonMistake') || !kwtWcKeys.includes('grammarFocus'))
 console.log('PASS keyword_transformation explanation builder');
 console.log('Sections:', kwtKeys.join(' → '));
 
+// error_correction
+const errItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit8.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u8-ex-a').items[0];
+
+const errScreen = {
+  formatType: 'error_correction',
+  payload: {
+    sentence: errItem.sentence,
+    highlightedText: errItem.highlightedText,
+    answer: errItem.answer,
+    explanationContent: errItem.explanationContent
+  }
+};
+
+const errWrong = {
+  correct: false,
+  correctAnswer: 'in',
+  userAnswer: 'at'
+};
+
+const errOpts = SunePlayExplanation.buildExplainOpts(errScreen, errWrong);
+const errKeys = errOpts.sections.map((s) => s.key);
+const errExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const errMissing = errExpected.filter((k) => !errKeys.includes(k));
+
+if (errMissing.length) {
+  console.error('FAIL error_correction missing sections:', errMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS error_correction explanation builder');
+console.log('Sections:', errKeys.join(' → '));
+
