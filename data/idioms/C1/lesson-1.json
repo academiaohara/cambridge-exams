@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "Let me ___ – I'm interested in the position, but the salary offer is too low.",
-      "options": ["lay my cards on the table", "cut to the chase", "hit the nail on the head", "get to the bottom of it"],
+      "options": [
+        "lay my cards on the table",
+        "cut to the chase",
+        "hit the nail on the head",
+        "get to the bottom of it"
+      ],
       "correct": "lay my cards on the table",
       "explanation": "'Lay your cards on the table' means to be fully open and transparent about your situation."
     },
     {
       "type": "multiple-choice",
       "sentence": "Enough background. Let's ___ and discuss the core issue.",
-      "options": ["cut to the chase", "speak volumes", "see the wood for the trees", "get to the bottom of it"],
+      "options": [
+        "cut to the chase",
+        "speak volumes",
+        "see the wood for the trees",
+        "get to the bottom of it"
+      ],
       "correct": "cut to the chase",
       "explanation": "'Cut to the chase' means to skip unnecessary preamble and get to the important point directly."
     },
     {
       "type": "multiple-choice",
       "sentence": "We need to ___ and understand exactly why the merger failed.",
-      "options": ["get to the bottom of it", "hit the nail on the head", "lay our cards on the table", "cut to the chase"],
+      "options": [
+        "get to the bottom of it",
+        "hit the nail on the head",
+        "lay our cards on the table",
+        "cut to the chase"
+      ],
       "correct": "get to the bottom of it",
       "explanation": "'Get to the bottom of something' means to find the real cause through investigation."
     },
     {
       "type": "multiple-choice",
       "sentence": "I think you've ___. That's exactly the problem with the system.",
-      "options": ["hit the nail on the head", "cut to the chase", "laid your cards on the table", "spoken volumes"],
+      "options": [
+        "hit the nail on the head",
+        "cut to the chase",
+        "laid your cards on the table",
+        "spoken volumes"
+      ],
       "correct": "hit the nail on the head",
       "explanation": "'Hit the nail on the head' means to identify or describe something exactly right."
     },
     {
       "type": "multiple-choice",
       "sentence": "The way he reacted to the news ___ – he was clearly deeply affected.",
-      "options": ["spoke volumes", "got to the bottom of it", "cut to the chase", "hit the nail on the head"],
+      "options": [
+        "spoke volumes",
+        "got to the bottom of it",
+        "cut to the chase",
+        "hit the nail on the head"
+      ],
       "correct": "spoke volumes",
       "explanation": "'Speak volumes' means to convey a great deal of meaning without using words directly."
     },
     {
       "type": "multiple-choice",
       "sentence": "She's so focused on individual data points that she's starting to ___.",
-      "options": ["not see the wood for the trees", "cut to the chase", "lay her cards on the table", "get to the bottom of it"],
+      "options": [
+        "not see the wood for the trees",
+        "cut to the chase",
+        "lay her cards on the table",
+        "get to the bottom of it"
+      ],
       "correct": "not see the wood for the trees",
       "explanation": "'Not see the wood for the trees' means to lose sight of the bigger picture by focusing too much on details."
     }
@@ -115,31 +145,129 @@
       "lines": [
         {
           "speaker": "Director",
-          "text": "We've been discussing this for an hour. Let's [cut to the chase|cut to the chase] – is the project viable or not?"
+          "text": "We've been discussing this for an hour. Let's [cut to the chase|cut to the chase] – is the project viable or not?",
+          "explanationContent": {
+            "whyCorrect": "'Cut to the chase' means to skip unnecessary preamble and get to the important point directly.",
+            "vocabularyFocus": "*cut to the chase* — To get directly to the important point without wasting time on unnecessary details.",
+            "sentenceBreakdown": "We've been discussing this for an hour. Let's cut to the chase – is the project viable or not?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *cut to the chase* (*cut to the chase*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used in business or negotiations. Implies impatience with unnecessary preamble. Comes from film editing – cutting to the exciting chase scene."
+          }
         },
         {
           "speaker": "Analyst",
-          "text": "I'll [lay my cards on the table|lay your cards on the table]. Based on the numbers, the ROI won't meet expectations."
+          "text": "I'll [lay my cards on the table|lay your cards on the table]. Based on the numbers, the ROI won't meet expectations.",
+          "explanationContent": {
+            "whyCorrect": "'Lay your cards on the table' means to be fully open and transparent about your situation.",
+            "vocabularyFocus": "*lay your cards on the table* — To be completely honest and open about your intentions, thoughts, or plans.",
+            "sentenceBreakdown": "I'll lay my cards on the table. Based on the numbers, the ROI won't meet expectations.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *lay your cards on the table* (*lay your cards on the table*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Comes from card games where showing your cards means you have nothing to hide. Used when full transparency is needed."
+          }
         },
         {
           "speaker": "Director",
-          "text": "You've [hit the nail on the head|hit the nail on the head]. That's the concern I've had for weeks."
+          "text": "You've [hit the nail on the head|hit the nail on the head]. That's the concern I've had for weeks.",
+          "explanationContent": {
+            "whyCorrect": "'Hit the nail on the head' means to identify or describe something exactly right.",
+            "vocabularyFocus": "*hit the nail on the head* — To describe or identify something exactly correctly; to say precisely what is true or right.",
+            "sentenceBreakdown": "You've hit the nail on the head. That's the concern I've had for weeks.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *hit the nail on the head* (*hit the nail on the head*).",
+            "wrongOptions": {
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to praise someone for identifying or expressing something precisely. Can be used in formal and informal contexts."
+          }
         },
         {
           "speaker": "Analyst",
-          "text": "I've been trying to [get to the bottom of|get to the bottom of something] why the original forecast was so optimistic."
+          "text": "I've been trying to [get to the bottom of|get to the bottom of something] why the original forecast was so optimistic.",
+          "explanationContent": {
+            "whyCorrect": "*get to the bottom of something* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*get to the bottom of something* — To find the true cause or full explanation of something; to investigate until you discover the real reason.",
+            "sentenceBreakdown": "I've been trying to get to the bottom of why the original forecast was so optimistic.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *get to the bottom of something* (*get to the bottom of something*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Suggests a thorough investigation. Often used in problem-solving, business, or detective contexts."
+          }
         },
         {
           "speaker": "Director",
-          "text": "The team was [not seeing the wood for the trees|not see the wood for the trees]. They were focused on the tech and missed the commercial reality."
+          "text": "The team was [not seeing the wood for the trees|not see the wood for the trees]. They were focused on the tech and missed the commercial reality.",
+          "explanationContent": {
+            "whyCorrect": "'Not see the wood for the trees' means to lose sight of the bigger picture by focusing too much on details.",
+            "vocabularyFocus": "*not see the wood for the trees* — To be so focused on the details that you fail to understand the overall situation or the bigger picture.",
+            "sentenceBreakdown": "The team was not seeing the wood for the trees. They were focused on the tech and missed the commercial reality.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *not see the wood for the trees* (*not see the wood for the trees*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "American English uses 'forest' instead of 'wood': 'can't see the forest for the trees'. Both mean the same thing."
+          }
         },
         {
           "speaker": "Analyst",
-          "text": "Exactly. And the stakeholders' reaction last week [spoke volumes|speak volumes]. They're losing confidence."
+          "text": "Exactly. And the stakeholders' reaction last week [spoke volumes|speak volumes]. They're losing confidence.",
+          "explanationContent": {
+            "whyCorrect": "'Speak volumes' means to convey a great deal of meaning without using words directly.",
+            "vocabularyFocus": "*speak volumes* — To communicate a great deal of information without words; to be very expressive or meaningful.",
+            "sentenceBreakdown": "Exactly. And the stakeholders' reaction last week spoke volumes. They're losing confidence.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *speak volumes* (*speak volumes*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used to describe non-verbal communication: a look, a silence, or a reaction. Very expressive idiom useful in formal writing."
+          }
         },
         {
           "speaker": "Director",
-          "text": "We need to be upfront with them. I'll call a meeting and [lay our cards on the table|lay your cards on the table]."
+          "text": "We need to be upfront with them. I'll call a meeting and [lay our cards on the table|lay your cards on the table].",
+          "explanationContent": {
+            "whyCorrect": "*lay your cards on the table* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*lay your cards on the table* — To be completely honest and open about your intentions, thoughts, or plans.",
+            "sentenceBreakdown": "We need to be upfront with them. I'll call a meeting and lay our cards on the table.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *lay your cards on the table* (*lay your cards on the table*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Comes from card games where showing your cards means you have nothing to hide. Used when full transparency is needed."
+          }
         },
         {
           "speaker": "Analyst",
@@ -152,15 +280,57 @@
       "lines": [
         {
           "speaker": "Professor",
-          "text": "Your essay is detailed, but you're [not seeing the wood for the trees|not see the wood for the trees]. What's your central argument?"
+          "text": "Your essay is detailed, but you're [not seeing the wood for the trees|not see the wood for the trees]. What's your central argument?",
+          "explanationContent": {
+            "whyCorrect": "'Not see the wood for the trees' means to lose sight of the bigger picture by focusing too much on details.",
+            "vocabularyFocus": "*not see the wood for the trees* — To be so focused on the details that you fail to understand the overall situation or the bigger picture.",
+            "sentenceBreakdown": "Your essay is detailed, but you're not seeing the wood for the trees. What's your central argument?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *not see the wood for the trees* (*not see the wood for the trees*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "American English uses 'forest' instead of 'wood': 'can't see the forest for the trees'. Both mean the same thing."
+          }
         },
         {
           "speaker": "Student",
-          "text": "I suppose I'm trying to say that economic inequality [speaks volumes|speak volumes] about policy failure."
+          "text": "I suppose I'm trying to say that economic inequality [speaks volumes|speak volumes] about policy failure.",
+          "explanationContent": {
+            "whyCorrect": "*speak volumes* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*speak volumes* — To communicate a great deal of information without words; to be very expressive or meaningful.",
+            "sentenceBreakdown": "I suppose I'm trying to say that economic inequality speaks volumes about policy failure.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *speak volumes* (*speak volumes*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used to describe non-verbal communication: a look, a silence, or a reaction. Very expressive idiom useful in formal writing."
+          }
         },
         {
           "speaker": "Professor",
-          "text": "That's a good start. [Cut to the chase|cut to the chase] in your introduction – don't bury your thesis in the third paragraph."
+          "text": "That's a good start. [Cut to the chase|cut to the chase] in your introduction – don't bury your thesis in the third paragraph.",
+          "explanationContent": {
+            "whyCorrect": "'Cut to the chase' means to skip unnecessary preamble and get to the important point directly.",
+            "vocabularyFocus": "*cut to the chase* — To get directly to the important point without wasting time on unnecessary details.",
+            "sentenceBreakdown": "That's a good start. Cut to the chase in your introduction – don't bury your thesis in the third paragraph.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *cut to the chase* (*cut to the chase*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used in business or negotiations. Implies impatience with unnecessary preamble. Comes from film editing – cutting to the exciting chase scene."
+          }
         },
         {
           "speaker": "Student",
@@ -168,15 +338,57 @@
         },
         {
           "speaker": "Professor",
-          "text": "Context is important, but your reader needs to know where you're going. Let me [get to the bottom of|get to the bottom of something] your methodology first."
+          "text": "Context is important, but your reader needs to know where you're going. Let me [get to the bottom of|get to the bottom of something] your methodology first.",
+          "explanationContent": {
+            "whyCorrect": "*get to the bottom of something* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*get to the bottom of something* — To find the true cause or full explanation of something; to investigate until you discover the real reason.",
+            "sentenceBreakdown": "Context is important, but your reader needs to know where you're going. Let me get to the bottom of your methodology first.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *get to the bottom of something* (*get to the bottom of something*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Suggests a thorough investigation. Often used in problem-solving, business, or detective contexts."
+          }
         },
         {
           "speaker": "Student",
-          "text": "Of course. I'll [lay my cards on the table|lay your cards on the table] – my sample size was smaller than ideal due to time constraints."
+          "text": "Of course. I'll [lay my cards on the table|lay your cards on the table] – my sample size was smaller than ideal due to time constraints.",
+          "explanationContent": {
+            "whyCorrect": "'Lay your cards on the table' means to be fully open and transparent about your situation.",
+            "vocabularyFocus": "*lay your cards on the table* — To be completely honest and open about your intentions, thoughts, or plans.",
+            "sentenceBreakdown": "Of course. I'll lay my cards on the table – my sample size was smaller than ideal due to time constraints.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *lay your cards on the table* (*lay your cards on the table*).",
+            "wrongOptions": {
+              "hit the nail on the head": "*hit the nail on the head* (To describe or identify something exactly correctly) does not match the meaning needed in this line.",
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Comes from card games where showing your cards means you have nothing to hide. Used when full transparency is needed."
+          }
         },
         {
           "speaker": "Professor",
-          "text": "I appreciate the honesty. You've [hit the nail on the head|hit the nail on the head] there – that's a limitation you need to acknowledge in the paper."
+          "text": "I appreciate the honesty. You've [hit the nail on the head|hit the nail on the head] there – that's a limitation you need to acknowledge in the paper.",
+          "explanationContent": {
+            "whyCorrect": "'Hit the nail on the head' means to identify or describe something exactly right.",
+            "vocabularyFocus": "*hit the nail on the head* — To describe or identify something exactly correctly; to say precisely what is true or right.",
+            "sentenceBreakdown": "I appreciate the honesty. You've hit the nail on the head there – that's a limitation you need to acknowledge in the paper.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *hit the nail on the head* (*hit the nail on the head*).",
+            "wrongOptions": {
+              "cut to the chase": "*cut to the chase* (To get directly to the important point without wasting time on unnecessary details) does not match the meaning needed in this line.",
+              "get to the bottom of something": "*get to the bottom of something* (To find the true cause or full explanation of something) does not match the meaning needed in this line.",
+              "not see the wood for the trees": "*not see the wood for the trees* (To be so focused on the details that you fail to understand the overall situation or the bigger picture) does not match the meaning needed in this line.",
+              "speak volumes": "*speak volumes* (To communicate a great deal of information without words) does not match the meaning needed in this line.",
+              "lay your cards on the table": "*lay your cards on the table* (To be completely honest and open about your intentions, thoughts, or plans) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to praise someone for identifying or expressing something precisely. Can be used in formal and informal contexts."
+          }
         }
       ]
     }
@@ -186,25 +398,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "hit the nail on the head", "meaning": "identify or express something exactly right"},
-        {"idiom": "cut to the chase", "meaning": "get directly to the important point"},
-        {"idiom": "get to the bottom of something", "meaning": "find the true cause through investigation"},
-        {"idiom": "not see the wood for the trees", "meaning": "miss the bigger picture due to focus on details"},
-        {"idiom": "speak volumes", "meaning": "convey a great deal without many words"},
-        {"idiom": "lay your cards on the table", "meaning": "be completely open and transparent"}
+        {
+          "idiom": "hit the nail on the head",
+          "meaning": "identify or express something exactly right"
+        },
+        {
+          "idiom": "cut to the chase",
+          "meaning": "get directly to the important point"
+        },
+        {
+          "idiom": "get to the bottom of something",
+          "meaning": "find the true cause through investigation"
+        },
+        {
+          "idiom": "not see the wood for the trees",
+          "meaning": "miss the bigger picture due to focus on details"
+        },
+        {
+          "idiom": "speak volumes",
+          "meaning": "convey a great deal without many words"
+        },
+        {
+          "idiom": "lay your cards on the table",
+          "meaning": "be completely open and transparent"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "Her expression when she heard the news ___ – she was clearly devastated.",
-      "options": ["spoke volumes", "hit the nail on the head", "cut to the chase", "laid her cards on the table"],
+      "options": [
+        "spoke volumes",
+        "hit the nail on the head",
+        "cut to the chase",
+        "laid her cards on the table"
+      ],
       "correct": "spoke volumes",
       "explanation": "'Speak volumes' means to convey a great deal of meaning without words."
     },
     {
       "type": "complete-sentence",
       "sentence": "The auditors spent three weeks trying to ___ why the accounts didn't balance.",
-      "options": ["get to the bottom of", "cut to the chase", "speak volumes", "hit the nail on the head"],
+      "options": [
+        "get to the bottom of",
+        "cut to the chase",
+        "speak volumes",
+        "hit the nail on the head"
+      ],
       "correct": "get to the bottom of",
       "explanation": "'Get to the bottom of' means to discover the true cause of something through thorough investigation."
     },

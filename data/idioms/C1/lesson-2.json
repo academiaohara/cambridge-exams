@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "He agreed to manage all five departments, but I think he's ___.",
-      "options": ["bitten off more than he can chew", "between a rock and a hard place", "muddied the waters", "opened a can of worms"],
+      "options": [
+        "bitten off more than he can chew",
+        "between a rock and a hard place",
+        "muddied the waters",
+        "opened a can of worms"
+      ],
       "correct": "bitten off more than he can chew",
       "explanation": "'Bite off more than you can chew' means to take on more than you can realistically manage."
     },
     {
       "type": "multiple-choice",
       "sentence": "Raising the topic of historical grievances at the summit really ___.",
-      "options": ["opened a can of worms", "muddied the waters", "bit off more than they could chew", "grinned and bore it"],
+      "options": [
+        "opened a can of worms",
+        "muddied the waters",
+        "bit off more than they could chew",
+        "grinned and bore it"
+      ],
       "correct": "opened a can of worms",
       "explanation": "'Open a can of worms' means to introduce an issue that creates unexpectedly many complications."
     },
     {
       "type": "multiple-choice",
       "sentence": "The two contradictory reports only served to ___ even further.",
-      "options": ["muddy the waters", "grin and bear it", "have our wits about us", "open a can of worms"],
+      "options": [
+        "muddy the waters",
+        "grin and bear it",
+        "have our wits about us",
+        "open a can of worms"
+      ],
       "correct": "muddy the waters",
       "explanation": "'Muddy the waters' means to make a situation more confusing or complicated."
     },
     {
       "type": "multiple-choice",
       "sentence": "She was ___ – she had to either miss her best friend's wedding or lose the contract.",
-      "options": ["between a rock and a hard place", "biting off more than she could chew", "opening a can of worms", "muddying the waters"],
+      "options": [
+        "between a rock and a hard place",
+        "biting off more than she could chew",
+        "opening a can of worms",
+        "muddying the waters"
+      ],
       "correct": "between a rock and a hard place",
       "explanation": "'Between a rock and a hard place' describes a dilemma with two equally bad options."
     },
     {
       "type": "multiple-choice",
       "sentence": "The noise from the neighbours was unbearable, but we just had to ___ until we could move.",
-      "options": ["grin and bear it", "muddy the waters", "bite off more than we could chew", "have our wits about us"],
+      "options": [
+        "grin and bear it",
+        "muddy the waters",
+        "bite off more than we could chew",
+        "have our wits about us"
+      ],
       "correct": "grin and bear it",
       "explanation": "'Grin and bear it' means to tolerate something unpleasant without complaining."
     },
     {
       "type": "multiple-choice",
       "sentence": "When dealing with difficult clients, you need to ___ and stay calm.",
-      "options": ["have your wits about you", "grin and bear it", "muddy the waters", "open a can of worms"],
+      "options": [
+        "have your wits about you",
+        "grin and bear it",
+        "muddy the waters",
+        "open a can of worms"
+      ],
       "correct": "have your wits about you",
       "explanation": "'Have your wits about you' means to stay mentally alert and focused, ready for challenges."
     }
@@ -115,7 +145,21 @@
       "lines": [
         {
           "speaker": "Elena",
-          "text": "I think I've [bitten off more than I can chew|bite off more than you can chew]. I promised to deliver three proposals this week."
+          "text": "I think I've [bitten off more than I can chew|bite off more than you can chew]. I promised to deliver three proposals this week.",
+          "explanationContent": {
+            "whyCorrect": "*bite off more than you can chew* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*bite off more than you can chew* — To take on more responsibility or work than you are able to manage.",
+            "sentenceBreakdown": "I think I've bitten off more than I can chew. I promised to deliver three proposals this week.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *bite off more than you can chew* (*bite off more than you can chew*).",
+            "wrongOptions": {
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used as a warning or in hindsight. The metaphor comes from eating – taking a bite too large to chew comfortably."
+          }
         },
         {
           "speaker": "James",
@@ -123,11 +167,39 @@
         },
         {
           "speaker": "Elena",
-          "text": "Barely. And I'm [between a rock and a hard place|between a rock and a hard place] – if I ask for an extension, the client will be annoyed, but if I rush, the quality will suffer."
+          "text": "Barely. And I'm [between a rock and a hard place|between a rock and a hard place] – if I ask for an extension, the client will be annoyed, but if I rush, the quality will suffer.",
+          "explanationContent": {
+            "whyCorrect": "'Between a rock and a hard place' describes a dilemma with two equally bad options.",
+            "vocabularyFocus": "*between a rock and a hard place* — In a situation where you must choose between two equally unpleasant or difficult options.",
+            "sentenceBreakdown": "Barely. And I'm between a rock and a hard place – if I ask for an extension, the client will be annoyed, but if I rush, the quality will suffer.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *between a rock and a hard place* (*between a rock and a hard place*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to describe genuine dilemmas with no easy solution. More dramatic and vivid than simply saying 'in a difficult position'."
+          }
         },
         {
           "speaker": "James",
-          "text": "Don't [muddy the waters|muddy the waters] by trying to renegotiate too many things at once."
+          "text": "Don't [muddy the waters|muddy the waters] by trying to renegotiate too many things at once.",
+          "explanationContent": {
+            "whyCorrect": "'Muddy the waters' means to make a situation more confusing or complicated.",
+            "vocabularyFocus": "*muddy the waters* — To make a situation more confusing or complicated than it needs to be.",
+            "sentenceBreakdown": "Don't muddy the waters by trying to renegotiate too many things at once.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *muddy the waters* (*muddy the waters*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Clear water = clarity. Muddy water = confusion. Use when additional information or actions make a situation harder to understand."
+          }
         },
         {
           "speaker": "Elena",
@@ -135,15 +207,57 @@
         },
         {
           "speaker": "James",
-          "text": "And [have your wits about you|have your wits about you] during the client call – they tend to ask very detailed questions."
+          "text": "And [have your wits about you|have your wits about you] during the client call – they tend to ask very detailed questions.",
+          "explanationContent": {
+            "whyCorrect": "'Have your wits about you' means to stay mentally alert and focused, ready for challenges.",
+            "vocabularyFocus": "*have your wits about you* — To be mentally alert, focused, and ready to deal with whatever might happen.",
+            "sentenceBreakdown": "And have your wits about you during the client call – they tend to ask very detailed questions.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *have your wits about you* (*have your wits about you*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used as advice before a challenging situation. 'Keep your wits about you' is also common."
+          }
         },
         {
           "speaker": "Elena",
-          "text": "I will. I just hope I don't [open a can of worms|open a can of worms] by admitting how stretched I am."
+          "text": "I will. I just hope I don't [open a can of worms|open a can of worms] by admitting how stretched I am.",
+          "explanationContent": {
+            "whyCorrect": "*open a can of worms* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*open a can of worms* — To introduce a complicated, sensitive, or difficult situation that creates more problems than expected.",
+            "sentenceBreakdown": "I will. I just hope I don't open a can of worms by admitting how stretched I am.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *open a can of worms* (*open a can of worms*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Implies that raising an issue will lead to a cascade of complications. Often used as a warning not to bring something up."
+          }
         },
         {
           "speaker": "James",
-          "text": "Be strategic. And for the parts you can't change – you might just have to [grin and bear it|grin and bear it]."
+          "text": "Be strategic. And for the parts you can't change – you might just have to [grin and bear it|grin and bear it].",
+          "explanationContent": {
+            "whyCorrect": "'Grin and bear it' means to tolerate something unpleasant without complaining.",
+            "vocabularyFocus": "*grin and bear it* — To endure a difficult or unpleasant situation without complaining, even if you dislike it.",
+            "sentenceBreakdown": "Be strategic. And for the parts you can't change – you might just have to grin and bear it.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *grin and bear it* (*grin and bear it*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Similar to 'bite the bullet', but 'grin and bear it' often involves tolerating something ongoing, while 'bite the bullet' is more about one decisive moment."
+          }
         }
       ]
     },
@@ -156,23 +270,93 @@
         },
         {
           "speaker": "PR Manager",
-          "text": "We're [between a rock and a hard place|between a rock and a hard place]. Saying too little looks like we're hiding something, but saying too much could [open a can of worms|open a can of worms]."
+          "text": "We're [between a rock and a hard place|between a rock and a hard place]. Saying too little looks like we're hiding something, but saying too much could [open a can of worms|open a can of worms].",
+          "explanationContent": {
+            "whyCorrect": "'Between a rock and a hard place' describes a dilemma with two equally bad options.",
+            "vocabularyFocus": "*between a rock and a hard place* — In a situation where you must choose between two equally unpleasant or difficult options.",
+            "sentenceBreakdown": "We're between a rock and a hard place. Saying too little looks like we're hiding something, but saying too much could [open a can of worms|open a can of worms].",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *between a rock and a hard place* (*between a rock and a hard place*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to describe genuine dilemmas with no easy solution. More dramatic and vivid than simply saying 'in a difficult position'."
+          }
         },
         {
           "speaker": "CEO",
-          "text": "And the legal team's statement yesterday just [muddied the waters|muddy the waters] further."
+          "text": "And the legal team's statement yesterday just [muddied the waters|muddy the waters] further.",
+          "explanationContent": {
+            "whyCorrect": "'Muddy the waters' means to make a situation more confusing or complicated.",
+            "vocabularyFocus": "*muddy the waters* — To make a situation more confusing or complicated than it needs to be.",
+            "sentenceBreakdown": "And the legal team's statement yesterday just muddied the waters further.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *muddy the waters* (*muddy the waters*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Clear water = clarity. Muddy water = confusion. Use when additional information or actions make a situation harder to understand."
+          }
         },
         {
           "speaker": "PR Manager",
-          "text": "Exactly. Everyone needs to [have their wits about them|have your wits about you] today."
+          "text": "Exactly. Everyone needs to [have their wits about them|have your wits about you] today.",
+          "explanationContent": {
+            "whyCorrect": "'Have your wits about you' means to stay mentally alert and focused, ready for challenges.",
+            "vocabularyFocus": "*have your wits about you* — To be mentally alert, focused, and ready to deal with whatever might happen.",
+            "sentenceBreakdown": "Exactly. Everyone needs to have their wits about them today.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *have your wits about you* (*have your wits about you*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used as advice before a challenging situation. 'Keep your wits about you' is also common."
+          }
         },
         {
           "speaker": "CEO",
-          "text": "We should have anticipated this. I think we [bit off more than we could chew|bite off more than you can chew] with the rapid expansion."
+          "text": "We should have anticipated this. I think we [bit off more than we could chew|bite off more than you can chew] with the rapid expansion.",
+          "explanationContent": {
+            "whyCorrect": "*bite off more than you can chew* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*bite off more than you can chew* — To take on more responsibility or work than you are able to manage.",
+            "sentenceBreakdown": "We should have anticipated this. I think we bit off more than we could chew with the rapid expansion.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *bite off more than you can chew* (*bite off more than you can chew*).",
+            "wrongOptions": {
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "grin and bear it": "*grin and bear it* (To endure a difficult or unpleasant situation without complaining, even if you dislike it) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used as a warning or in hindsight. The metaphor comes from eating – taking a bite too large to chew comfortably."
+          }
         },
         {
           "speaker": "PR Manager",
-          "text": "Perhaps. But we just have to [grin and bear it|grin and bear it] for now and manage the fallout professionally."
+          "text": "Perhaps. But we just have to [grin and bear it|grin and bear it] for now and manage the fallout professionally.",
+          "explanationContent": {
+            "whyCorrect": "'Grin and bear it' means to tolerate something unpleasant without complaining.",
+            "vocabularyFocus": "*grin and bear it* — To endure a difficult or unpleasant situation without complaining, even if you dislike it.",
+            "sentenceBreakdown": "Perhaps. But we just have to grin and bear it for now and manage the fallout professionally.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *grin and bear it* (*grin and bear it*).",
+            "wrongOptions": {
+              "bite off more than you can chew": "*bite off more than you can chew* (To take on more responsibility or work than you are able to manage) does not match the meaning needed in this line.",
+              "between a rock and a hard place": "*between a rock and a hard place* (In a situation where you must choose between two equally unpleasant or difficult options) does not match the meaning needed in this line.",
+              "open a can of worms": "*open a can of worms* (To introduce a complicated, sensitive, or difficult situation that creates more problems than expected) does not match the meaning needed in this line.",
+              "muddy the waters": "*muddy the waters* (To make a situation more confusing or complicated than it needs to be) does not match the meaning needed in this line.",
+              "have your wits about you": "*have your wits about you* (To be mentally alert, focused, and ready to deal with whatever might happen) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Similar to 'bite the bullet', but 'grin and bear it' often involves tolerating something ongoing, while 'bite the bullet' is more about one decisive moment."
+          }
         }
       ]
     }
@@ -182,25 +366,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "bite off more than you can chew", "meaning": "take on more than you can handle"},
-        {"idiom": "between a rock and a hard place", "meaning": "faced with two equally difficult options"},
-        {"idiom": "open a can of worms", "meaning": "introduce an issue causing many complications"},
-        {"idiom": "muddy the waters", "meaning": "make a situation more confusing"},
-        {"idiom": "grin and bear it", "meaning": "tolerate something unpleasant without complaining"},
-        {"idiom": "have your wits about you", "meaning": "stay mentally alert and ready"}
+        {
+          "idiom": "bite off more than you can chew",
+          "meaning": "take on more than you can handle"
+        },
+        {
+          "idiom": "between a rock and a hard place",
+          "meaning": "faced with two equally difficult options"
+        },
+        {
+          "idiom": "open a can of worms",
+          "meaning": "introduce an issue causing many complications"
+        },
+        {
+          "idiom": "muddy the waters",
+          "meaning": "make a situation more confusing"
+        },
+        {
+          "idiom": "grin and bear it",
+          "meaning": "tolerate something unpleasant without complaining"
+        },
+        {
+          "idiom": "have your wits about you",
+          "meaning": "stay mentally alert and ready"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "The contradictory witness statements ___ even more than the initial confusion.",
-      "options": ["muddied the waters", "opened a can of worms", "had their wits about them", "grinned and bore it"],
+      "options": [
+        "muddied the waters",
+        "opened a can of worms",
+        "had their wits about them",
+        "grinned and bore it"
+      ],
       "correct": "muddied the waters",
       "explanation": "'Muddy the waters' means to make things more complicated or confusing."
     },
     {
       "type": "complete-sentence",
       "sentence": "In an unfamiliar negotiation environment, you need to ___.",
-      "options": ["have your wits about you", "grin and bear it", "open a can of worms", "muddy the waters"],
+      "options": [
+        "have your wits about you",
+        "grin and bear it",
+        "open a can of worms",
+        "muddy the waters"
+      ],
       "correct": "have your wits about you",
       "explanation": "'Have your wits about you' means to stay focused and mentally sharp, ready for anything."
     },

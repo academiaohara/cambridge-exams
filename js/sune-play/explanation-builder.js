@@ -1426,6 +1426,65 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildConvGapLineBreakdown(lines, activeLineIndex, answer) {
+    var line = (lines || [])[activeLineIndex];
+    if (!line) return '';
+    if (line.mode === 'gap') {
+      return ((line.before || '') + (answer || '') + ' ' + (line.after || ''))
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+    return String(line.text || '').trim();
+  }
+
+  function buildConversationGapFill(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+    var sections = [];
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, null);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (!wrongNote) {
+          wrongNote = '*' + userAnswer + '* does not fit this line — try *' + correctAnswer + '*.';
+        }
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      var breakdown = content.sentenceBreakdown ||
+        buildConvGapLineBreakdown(p.lines, p.activeLineIndex, correctAnswer);
+      if (breakdown) sections.push({ key: 'sentenceBreakdown', text: breakdown });
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+      var legacyBreakdown = buildConvGapLineBreakdown(p.lines, p.activeLineIndex, correctAnswer);
+      if (legacyBreakdown) sections.push({ key: 'sentenceBreakdown', text: legacyBreakdown });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'conversation_gap_fill',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildCommaPlacement(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1852,6 +1911,25 @@ var SunePlayExplanation = (function() {
       if (wrongForm) return 'Wrong form: ~~' + wrongForm + '~~';
       return String(p.instruction || '').trim();
     }
+    if (screen.formatType === 'conversation_gap_fill') {
+      var title = String(p.conversationTitle || '').trim();
+      var activeLine = null;
+      var lines = p.lines || [];
+      var activeIdx = p.activeLineIndex != null ? p.activeLineIndex : -1;
+      for (var li = 0; li < lines.length; li++) {
+        if (lines[li].isActive || li === activeIdx) {
+          activeLine = lines[li];
+          break;
+        }
+      }
+      if (activeLine && activeLine.mode === 'gap') {
+        var gapLine = ((activeLine.before || '') + ' ___ ' + (activeLine.after || ''))
+          .replace(/\s+/g, ' ')
+          .trim();
+        return title ? (title + '\n' + gapLine) : gapLine;
+      }
+      return title || String(p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1905,6 +1983,8 @@ var SunePlayExplanation = (function() {
         return buildPassageErrorHuntCounter(screen, result);
       case 'guided_error_choice':
         return buildGuidedErrorChoice(screen, result);
+      case 'conversation_gap_fill':
+        return buildConversationGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }

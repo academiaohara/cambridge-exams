@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "If you ___ of his statement, it's clear he's preparing to step down.",
-      "options": ["read between the lines", "take it with a pinch of salt", "pull strings", "ring a bell"],
+      "options": [
+        "read between the lines",
+        "take it with a pinch of salt",
+        "pull strings",
+        "ring a bell"
+      ],
       "correct": "read between the lines",
       "explanation": "'Read between the lines' means to understand what is implied rather than explicitly stated."
     },
     {
       "type": "multiple-choice",
       "sentence": "I'd ___ when he says everything will be ready on time – he's been wrong before.",
-      "options": ["take it with a pinch of salt", "read between the lines", "ring a bell", "pull strings"],
+      "options": [
+        "take it with a pinch of salt",
+        "read between the lines",
+        "ring a bell",
+        "pull strings"
+      ],
       "correct": "take it with a pinch of salt",
       "explanation": "'Take with a pinch of salt' means to be sceptical about a claim or promise."
     },
     {
       "type": "multiple-choice",
       "sentence": "The name 'Pemberton & Associates' doesn't ___ – are they a new firm?",
-      "options": ["ring a bell", "pull strings", "read between the lines", "be born with a silver spoon"],
+      "options": [
+        "ring a bell",
+        "pull strings",
+        "read between the lines",
+        "be born with a silver spoon"
+      ],
       "correct": "ring a bell",
       "explanation": "'Ring a bell' means to sound familiar, as though you have encountered it before."
     },
     {
       "type": "multiple-choice",
       "sentence": "Everyone knows he got that contract by ___. He has friends on the committee.",
-      "options": ["pulling strings", "reading between the lines", "ringing bells", "taking it with a pinch of salt"],
+      "options": [
+        "pulling strings",
+        "reading between the lines",
+        "ringing bells",
+        "taking it with a pinch of salt"
+      ],
       "correct": "pulling strings",
       "explanation": "'Pull strings' means to use personal influence or connections to achieve something."
     },
     {
       "type": "multiple-choice",
       "sentence": "The platform's ___ is its slow performance under heavy traffic.",
-      "options": ["Achilles' heel", "silver spoon", "pinch of salt", "ringing bell"],
+      "options": [
+        "Achilles' heel",
+        "silver spoon",
+        "pinch of salt",
+        "ringing bell"
+      ],
       "correct": "Achilles' heel",
       "explanation": "'Achilles' heel' refers to a single significant weakness in an otherwise strong person or system."
     },
     {
       "type": "multiple-choice",
       "sentence": "He ___ – his family owns half the city – so he doesn't understand what financial hardship means.",
-      "options": ["was born with a silver spoon in his mouth", "pulled strings his whole life", "has an Achilles' heel", "reads between the lines"],
+      "options": [
+        "was born with a silver spoon in his mouth",
+        "pulled strings his whole life",
+        "has an Achilles' heel",
+        "reads between the lines"
+      ],
       "correct": "was born with a silver spoon in his mouth",
       "explanation": "'Born with a silver spoon in your mouth' means to have been born into wealth and privilege."
     }
@@ -119,27 +149,111 @@
         },
         {
           "speaker": "Matt",
-          "text": "I did. If you [read between the lines|read between the lines], I think they're signalling major restructuring ahead."
+          "text": "I did. If you [read between the lines|read between the lines], I think they're signalling major restructuring ahead.",
+          "explanationContent": {
+            "whyCorrect": "'Read between the lines' means to understand what is implied rather than explicitly stated.",
+            "vocabularyFocus": "*read between the lines* — To find the hidden or implied meaning in something said or written; to understand what is not explicitly stated.",
+            "sentenceBreakdown": "I did. If you read between the lines, I think they're signalling major restructuring ahead.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *read between the lines* (*read between the lines*).",
+            "wrongOptions": {
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used when the true meaning must be inferred rather than stated outright. Common in political, literary, and interpersonal contexts."
+          }
         },
         {
           "speaker": "Clara",
-          "text": "I thought so too. But I'd [take it with a pinch of salt|take with a pinch of salt] for now. They've made similar hints before without following through."
+          "text": "I thought so too. But I'd [take it with a pinch of salt|take with a pinch of salt] for now. They've made similar hints before without following through.",
+          "explanationContent": {
+            "whyCorrect": "'Take with a pinch of salt' means to be sceptical about a claim or promise.",
+            "vocabularyFocus": "*take with a pinch of salt* — To be sceptical about something; to not completely believe what someone says or a piece of information.",
+            "sentenceBreakdown": "I thought so too. But I'd take it with a pinch of salt for now. They've made similar hints before without following through.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *take with a pinch of salt* (*take with a pinch of salt*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Implies healthy scepticism rather than complete disbelief. American English uses 'grain of salt'. Both expressions are widely understood."
+          }
         },
         {
           "speaker": "Matt",
-          "text": "True. The phrase 'streamlining operations' [rings a bell|ring a bell] from the last report, doesn't it?"
+          "text": "True. The phrase 'streamlining operations' [rings a bell|ring a bell] from the last report, doesn't it?",
+          "explanationContent": {
+            "whyCorrect": "'Ring a bell' means to sound familiar, as though you have encountered it before.",
+            "vocabularyFocus": "*ring a bell* — To sound familiar; to make you feel you have heard or seen something before, though you may not remember exactly where.",
+            "sentenceBreakdown": "True. The phrase 'streamlining operations' rings a bell from the last report, doesn't it?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *ring a bell* (*ring a bell*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used as a question: 'Does that ring a bell?' Suggests partial, uncertain recognition rather than full recall."
+          }
         },
         {
           "speaker": "Clara",
-          "text": "Exactly. And their over-reliance on the Asian market is clearly their [Achilles' heel|Achilles' heel] right now."
+          "text": "Exactly. And their over-reliance on the Asian market is clearly their [Achilles' heel|Achilles' heel] right now.",
+          "explanationContent": {
+            "whyCorrect": "'Achilles' heel' refers to a single significant weakness in an otherwise strong person or system.",
+            "vocabularyFocus": "*Achilles' heel* — A person's single weakness or vulnerability, despite being strong in all other respects.",
+            "sentenceBreakdown": "Exactly. And their over-reliance on the Asian market is clearly their Achilles' heel right now.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *Achilles' heel* (*Achilles' heel*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Named after the Greek hero Achilles, who was invulnerable except for his heel. Useful in formal writing to describe a single fatal flaw."
+          }
         },
         {
           "speaker": "Matt",
-          "text": "I wonder if the new board members are there on merit or because someone [pulled strings|pull strings]."
+          "text": "I wonder if the new board members are there on merit or because someone [pulled strings|pull strings].",
+          "explanationContent": {
+            "whyCorrect": "*pull strings* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*pull strings* — To use your influence or personal connections to get something done, especially in an unofficial or secret way.",
+            "sentenceBreakdown": "I wonder if the new board members are there on merit or because someone pulled strings.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *pull strings* (*pull strings*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often implies that the process is unfair or based on connections rather than merit. The image is of a puppet master pulling strings."
+          }
         },
         {
           "speaker": "Clara",
-          "text": "Half of them [were born with a silver spoon in their mouths|be born with a silver spoon in your mouth]. They've never worked in a competitive environment."
+          "text": "Half of them [were born with a silver spoon in their mouths|be born with a silver spoon in your mouth]. They've never worked in a competitive environment.",
+          "explanationContent": {
+            "whyCorrect": "*be born with a silver spoon in your mouth* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*be born with a silver spoon in your mouth* — To be born into a wealthy and privileged family; to have had all the advantages of wealth from birth.",
+            "sentenceBreakdown": "Half of them were born with a silver spoon in their mouths. They've never worked in a competitive environment.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *be born with a silver spoon in your mouth* (*be born with a silver spoon in your mouth*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used critically or contrastively, implying that wealth has not been earned. Can also be used neutrally to describe someone's privileged background."
+          }
         },
         {
           "speaker": "Matt",
@@ -152,27 +266,111 @@
       "lines": [
         {
           "speaker": "Journalist",
-          "text": "The minister says the economy is 'showing resilience'. What do you [read between the lines|read between the lines]?"
+          "text": "The minister says the economy is 'showing resilience'. What do you [read between the lines|read between the lines]?",
+          "explanationContent": {
+            "whyCorrect": "'Read between the lines' means to understand what is implied rather than explicitly stated.",
+            "vocabularyFocus": "*read between the lines* — To find the hidden or implied meaning in something said or written; to understand what is not explicitly stated.",
+            "sentenceBreakdown": "The minister says the economy is 'showing resilience'. What do you read between the lines?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *read between the lines* (*read between the lines*).",
+            "wrongOptions": {
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used when the true meaning must be inferred rather than stated outright. Common in political, literary, and interpersonal contexts."
+          }
         },
         {
           "speaker": "Economist",
-          "text": "It's a very carefully worded statement. I'd [take it with a pinch of salt|take with a pinch of salt] – growth figures are still very weak."
+          "text": "It's a very carefully worded statement. I'd [take it with a pinch of salt|take with a pinch of salt] – growth figures are still very weak.",
+          "explanationContent": {
+            "whyCorrect": "'Take with a pinch of salt' means to be sceptical about a claim or promise.",
+            "vocabularyFocus": "*take with a pinch of salt* — To be sceptical about something; to not completely believe what someone says or a piece of information.",
+            "sentenceBreakdown": "It's a very carefully worded statement. I'd take it with a pinch of salt – growth figures are still very weak.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *take with a pinch of salt* (*take with a pinch of salt*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Implies healthy scepticism rather than complete disbelief. American English uses 'grain of salt'. Both expressions are widely understood."
+          }
         },
         {
           "speaker": "Journalist",
-          "text": "The phrase 'cautious optimism' [rings a bell|ring a bell]. I think they used it before a difficult budget last year."
+          "text": "The phrase 'cautious optimism' [rings a bell|ring a bell]. I think they used it before a difficult budget last year.",
+          "explanationContent": {
+            "whyCorrect": "'Ring a bell' means to sound familiar, as though you have encountered it before.",
+            "vocabularyFocus": "*ring a bell* — To sound familiar; to make you feel you have heard or seen something before, though you may not remember exactly where.",
+            "sentenceBreakdown": "The phrase 'cautious optimism' rings a bell. I think they used it before a difficult budget last year.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *ring a bell* (*ring a bell*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used as a question: 'Does that ring a bell?' Suggests partial, uncertain recognition rather than full recall."
+          }
         },
         {
           "speaker": "Economist",
-          "text": "Probably. This government [pulls strings|pull strings] with language very skilfully. Words are chosen for effect, not clarity."
+          "text": "Probably. This government [pulls strings|pull strings] with language very skilfully. Words are chosen for effect, not clarity.",
+          "explanationContent": {
+            "whyCorrect": "*pull strings* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*pull strings* — To use your influence or personal connections to get something done, especially in an unofficial or secret way.",
+            "sentenceBreakdown": "Probably. This government pulls strings with language very skilfully. Words are chosen for effect, not clarity.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *pull strings* (*pull strings*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often implies that the process is unfair or based on connections rather than merit. The image is of a puppet master pulling strings."
+          }
         },
         {
           "speaker": "Journalist",
-          "text": "And the chancellor's [Achilles' heel|Achilles' heel] has always been public communication. She loses credibility under direct questioning."
+          "text": "And the chancellor's [Achilles' heel|Achilles' heel] has always been public communication. She loses credibility under direct questioning.",
+          "explanationContent": {
+            "whyCorrect": "'Achilles' heel' refers to a single significant weakness in an otherwise strong person or system.",
+            "vocabularyFocus": "*Achilles' heel* — A person's single weakness or vulnerability, despite being strong in all other respects.",
+            "sentenceBreakdown": "And the chancellor's Achilles' heel has always been public communication. She loses credibility under direct questioning.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *Achilles' heel* (*Achilles' heel*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "be born with a silver spoon in your mouth": "*be born with a silver spoon in your mouth* (To be born into a wealthy and privileged family) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Named after the Greek hero Achilles, who was invulnerable except for his heel. Useful in formal writing to describe a single fatal flaw."
+          }
         },
         {
           "speaker": "Economist",
-          "text": "Somewhat. But she [was born with a silver spoon in her mouth|be born with a silver spoon in your mouth] and has never needed to build public trust from scratch – that's her blind spot."
+          "text": "Somewhat. But she [was born with a silver spoon in her mouth|be born with a silver spoon in your mouth] and has never needed to build public trust from scratch – that's her blind spot.",
+          "explanationContent": {
+            "whyCorrect": "*be born with a silver spoon in your mouth* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*be born with a silver spoon in your mouth* — To be born into a wealthy and privileged family; to have had all the advantages of wealth from birth.",
+            "sentenceBreakdown": "Somewhat. But she was born with a silver spoon in her mouth and has never needed to build public trust from scratch – that's her blind spot.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *be born with a silver spoon in your mouth* (*be born with a silver spoon in your mouth*).",
+            "wrongOptions": {
+              "read between the lines": "*read between the lines* (To find the hidden or implied meaning in something said or written) does not match the meaning needed in this line.",
+              "take with a pinch of salt": "*take with a pinch of salt* (To be sceptical about something) does not match the meaning needed in this line.",
+              "ring a bell": "*ring a bell* (To sound familiar) does not match the meaning needed in this line.",
+              "pull strings": "*pull strings* (To use your influence or personal connections to get something done, especially in an unofficial or secret way) does not match the meaning needed in this line.",
+              "Achilles' heel": "*Achilles' heel* (A person's single weakness or vulnerability, despite being strong in all other respects) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used critically or contrastively, implying that wealth has not been earned. Can also be used neutrally to describe someone's privileged background."
+          }
         }
       ]
     }
@@ -182,25 +380,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "read between the lines", "meaning": "understand the implied, unstated meaning"},
-        {"idiom": "take with a pinch of salt", "meaning": "be sceptical about a claim"},
-        {"idiom": "ring a bell", "meaning": "sound familiar from before"},
-        {"idiom": "pull strings", "meaning": "use personal influence to gain advantage"},
-        {"idiom": "Achilles' heel", "meaning": "a single fatal weakness"},
-        {"idiom": "be born with a silver spoon in your mouth", "meaning": "be born into wealth and privilege"}
+        {
+          "idiom": "read between the lines",
+          "meaning": "understand the implied, unstated meaning"
+        },
+        {
+          "idiom": "take with a pinch of salt",
+          "meaning": "be sceptical about a claim"
+        },
+        {
+          "idiom": "ring a bell",
+          "meaning": "sound familiar from before"
+        },
+        {
+          "idiom": "pull strings",
+          "meaning": "use personal influence to gain advantage"
+        },
+        {
+          "idiom": "Achilles' heel",
+          "meaning": "a single fatal weakness"
+        },
+        {
+          "idiom": "be born with a silver spoon in your mouth",
+          "meaning": "be born into wealth and privilege"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "The company's ___ is its dependence on a single technology partner – any disruption would be catastrophic.",
-      "options": ["Achilles' heel", "silver spoon", "pinch of salt", "bell-ringer"],
+      "options": [
+        "Achilles' heel",
+        "silver spoon",
+        "pinch of salt",
+        "bell-ringer"
+      ],
       "correct": "Achilles' heel",
       "explanation": "'Achilles' heel' describes a single crucial vulnerability despite overall strength."
     },
     {
       "type": "complete-sentence",
       "sentence": "That address doesn't ___ – are you sure you have the right contact details?",
-      "options": ["ring a bell", "pull strings", "read between the lines", "take with a pinch of salt"],
+      "options": [
+        "ring a bell",
+        "pull strings",
+        "read between the lines",
+        "take with a pinch of salt"
+      ],
       "correct": "ring a bell",
       "explanation": "'Ring a bell' means to sound familiar or recognisable from a previous encounter."
     },

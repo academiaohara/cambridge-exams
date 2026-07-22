@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "You'd better book your tickets now or you'll ___. The event always sells out.",
-      "options": ["miss the boat", "draw the line", "fall short", "have a change of heart"],
+      "options": [
+        "miss the boat",
+        "draw the line",
+        "fall short",
+        "have a change of heart"
+      ],
       "correct": "miss the boat",
       "explanation": "'Miss the boat' means to lose an opportunity because you were too slow to act."
     },
     {
       "type": "multiple-choice",
       "sentence": "He'd quit his job and move to another country ___.",
-      "options": ["at the drop of a hat", "in the nick of time", "fall short", "draw the line"],
+      "options": [
+        "at the drop of a hat",
+        "in the nick of time",
+        "fall short",
+        "draw the line"
+      ],
       "correct": "at the drop of a hat",
       "explanation": "'At the drop of a hat' means immediately or without hesitation."
     },
     {
       "type": "multiple-choice",
       "sentence": "The fundraising campaign ___ – they raised £40,000 but needed £50,000.",
-      "options": ["fell short", "missed the boat", "drew the line", "had a change of heart"],
+      "options": [
+        "fell short",
+        "missed the boat",
+        "drew the line",
+        "had a change of heart"
+      ],
       "correct": "fell short",
       "explanation": "'Fall short' means to not quite reach the required or expected level."
     },
     {
       "type": "multiple-choice",
       "sentence": "The fire brigade arrived ___ and saved most of the building.",
-      "options": ["in the nick of time", "at the drop of a hat", "draw the line", "miss the boat"],
+      "options": [
+        "in the nick of time",
+        "at the drop of a hat",
+        "draw the line",
+        "miss the boat"
+      ],
       "correct": "in the nick of time",
       "explanation": "'In the nick of time' means just in time, at the last possible moment."
     },
     {
       "type": "multiple-choice",
       "sentence": "She was going to resign, but ___ and decided to try a different department first.",
-      "options": ["had a change of heart", "fell short", "drew the line", "missed the boat"],
+      "options": [
+        "had a change of heart",
+        "fell short",
+        "drew the line",
+        "missed the boat"
+      ],
       "correct": "had a change of heart",
       "explanation": "'Have a change of heart' means to reverse a decision or change your feelings about something."
     },
     {
       "type": "multiple-choice",
       "sentence": "I'll work overtime when needed, but I ___ at being asked to skip my holiday.",
-      "options": ["draw the line", "miss the boat", "fall short", "have a change of heart"],
+      "options": [
+        "draw the line",
+        "miss the boat",
+        "fall short",
+        "have a change of heart"
+      ],
       "correct": "draw the line",
       "explanation": "'Draw the line' means to set a personal limit on what you will accept or tolerate."
     }
@@ -119,15 +149,57 @@
         },
         {
           "speaker": "Priya",
-          "text": "Really? She [had a change of heart|have a change of heart]? She seemed so excited about it."
+          "text": "Really? She [had a change of heart|have a change of heart]? She seemed so excited about it.",
+          "explanationContent": {
+            "whyCorrect": "'Have a change of heart' means to reverse a decision or change your feelings about something.",
+            "vocabularyFocus": "*have a change of heart* — To change your opinion, decision, or feelings about something.",
+            "sentenceBreakdown": "Really? She had a change of heart? She seemed so excited about it.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *have a change of heart* (*have a change of heart*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Suggests an emotional or personal shift in attitude. Often used when someone unexpectedly reverses a decision."
+          }
         },
         {
           "speaker": "Mark",
-          "text": "I know. Apparently she [drew the line|draw the line] at the amount of travel involved."
+          "text": "I know. Apparently she [drew the line|draw the line] at the amount of travel involved.",
+          "explanationContent": {
+            "whyCorrect": "'Draw the line' means to set a personal limit on what you will accept or tolerate.",
+            "vocabularyFocus": "*draw the line* — To set a limit on what you will accept or allow; to decide that something is unacceptable.",
+            "sentenceBreakdown": "I know. Apparently she drew the line at the amount of travel involved.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *draw the line* (*draw the line*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often followed by 'at': 'draw the line at something'. Used to define a personal or moral boundary."
+          }
         },
         {
           "speaker": "Priya",
-          "text": "That's understandable. But won't she [miss the boat|miss the boat]? Opportunities like that don't come often."
+          "text": "That's understandable. But won't she [miss the boat|miss the boat]? Opportunities like that don't come often.",
+          "explanationContent": {
+            "whyCorrect": "'Miss the boat' means to lose an opportunity because you were too slow to act.",
+            "vocabularyFocus": "*miss the boat* — To lose an opportunity by being too slow or late to act.",
+            "sentenceBreakdown": "That's understandable. But won't she miss the boat? Opportunities like that don't come often.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *miss the boat* (*miss the boat*).",
+            "wrongOptions": {
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used to express regret about a lost opportunity or to warn someone to act quickly. The opportunity is gone or nearly gone."
+          }
         },
         {
           "speaker": "Mark",
@@ -135,11 +207,40 @@
         },
         {
           "speaker": "Priya",
-          "text": "True. I just hope she doesn't regret it. She's someone who would [go the extra mile|go the extra mile] [at the drop of a hat|at the drop of a hat]."
+          "text": "True. I just hope she doesn't regret it. She's someone who would [go the extra mile|go the extra mile] [at the drop of a hat|at the drop of a hat].",
+          "explanationContent": {
+            "whyCorrect": "*go the extra mile* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "True. I just hope she doesn't regret it. She's someone who would go the extra mile [at the drop of a hat|at the drop of a hat].",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *go the extra mile* (*go the extra mile*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Mark",
-          "text": "Exactly. But if the next opportunity came along [in the nick of time|in the nick of time], I think she'd take it."
+          "text": "Exactly. But if the next opportunity came along [in the nick of time|in the nick of time], I think she'd take it.",
+          "explanationContent": {
+            "whyCorrect": "'In the nick of time' means just in time, at the last possible moment.",
+            "vocabularyFocus": "*in the nick of time* — Just in time; at the last possible moment before it is too late.",
+            "sentenceBreakdown": "Exactly. But if the next opportunity came along in the nick of time, I think she'd take it.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in the nick of time* (*in the nick of time*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Has a dramatic or exciting quality – often used in stories or to emphasise how close a situation came to going wrong."
+          }
         },
         {
           "speaker": "Priya",
@@ -152,23 +253,94 @@
       "lines": [
         {
           "speaker": "Director",
-          "text": "Overall, the quarter [fell short|fall short] of what we projected."
+          "text": "Overall, the quarter [fell short|fall short] of what we projected.",
+          "explanationContent": {
+            "whyCorrect": "'Fall short' means to not quite reach the required or expected level.",
+            "vocabularyFocus": "*fall short* — To fail to reach a required or expected standard or level.",
+            "sentenceBreakdown": "Overall, the quarter fell short of what we projected.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *fall short* (*fall short*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often followed by 'of': 'fall short of something'. Used in business, sports, and everyday contexts to describe underperformance."
+          }
         },
         {
           "speaker": "Sales Lead",
-          "text": "The team worked incredibly hard. We nearly hit the target [in the nick of time|in the nick of time], but the supply issues held us back."
+          "text": "The team worked incredibly hard. We nearly hit the target [in the nick of time|in the nick of time], but the supply issues held us back.",
+          "explanationContent": {
+            "whyCorrect": "'In the nick of time' means just in time, at the last possible moment.",
+            "vocabularyFocus": "*in the nick of time* — Just in time; at the last possible moment before it is too late.",
+            "sentenceBreakdown": "The team worked incredibly hard. We nearly hit the target in the nick of time, but the supply issues held us back.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in the nick of time* (*in the nick of time*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Has a dramatic or exciting quality – often used in stories or to emphasise how close a situation came to going wrong."
+          }
         },
         {
           "speaker": "Director",
-          "text": "I understand. We need to make sure we don't [miss the boat|miss the boat] with the new market entry."
+          "text": "I understand. We need to make sure we don't [miss the boat|miss the boat] with the new market entry.",
+          "explanationContent": {
+            "whyCorrect": "'Miss the boat' means to lose an opportunity because you were too slow to act.",
+            "vocabularyFocus": "*miss the boat* — To lose an opportunity by being too slow or late to act.",
+            "sentenceBreakdown": "I understand. We need to make sure we don't miss the boat with the new market entry.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *miss the boat* (*miss the boat*).",
+            "wrongOptions": {
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used to express regret about a lost opportunity or to warn someone to act quickly. The opportunity is gone or nearly gone."
+          }
         },
         {
           "speaker": "Sales Lead",
-          "text": "Agreed. I [give you my word|give you my word] we'll be ready to move [at the drop of a hat|at the drop of a hat] when the time is right."
+          "text": "Agreed. I [give you my word|give you my word] we'll be ready to move [at the drop of a hat|at the drop of a hat] when the time is right.",
+          "explanationContent": {
+            "whyCorrect": "*give you my word* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "Agreed. I give you my word we'll be ready to move [at the drop of a hat|at the drop of a hat] when the time is right.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *give you my word* (*give you my word*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line.",
+              "draw the line": "*draw the line* (To set a limit on what you will accept or allow) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Director",
-          "text": "Good. But I [draw the line|draw the line] at rushing a poorly researched launch. Quality comes first."
+          "text": "Good. But I [draw the line|draw the line] at rushing a poorly researched launch. Quality comes first.",
+          "explanationContent": {
+            "whyCorrect": "'Draw the line' means to set a personal limit on what you will accept or tolerate.",
+            "vocabularyFocus": "*draw the line* — To set a limit on what you will accept or allow; to decide that something is unacceptable.",
+            "sentenceBreakdown": "Good. But I draw the line at rushing a poorly researched launch. Quality comes first.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *draw the line* (*draw the line*).",
+            "wrongOptions": {
+              "miss the boat": "*miss the boat* (To lose an opportunity by being too slow or late to act) does not match the meaning needed in this line.",
+              "at the drop of a hat": "*at the drop of a hat* (Immediately) does not match the meaning needed in this line.",
+              "fall short": "*fall short* (To fail to reach a required or expected standard or level) does not match the meaning needed in this line.",
+              "in the nick of time": "*in the nick of time* (Just in time) does not match the meaning needed in this line.",
+              "have a change of heart": "*have a change of heart* (To change your opinion, decision, or feelings about something) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often followed by 'at': 'draw the line at something'. Used to define a personal or moral boundary."
+          }
         },
         {
           "speaker": "Sales Lead",
@@ -182,25 +354,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "miss the boat", "meaning": "lose an opportunity by acting too late"},
-        {"idiom": "at the drop of a hat", "meaning": "immediately, without hesitation"},
-        {"idiom": "fall short", "meaning": "fail to reach the required level or standard"},
-        {"idiom": "in the nick of time", "meaning": "at the last possible moment"},
-        {"idiom": "have a change of heart", "meaning": "change your opinion or decision"},
-        {"idiom": "draw the line", "meaning": "set a personal limit on what you accept"}
+        {
+          "idiom": "miss the boat",
+          "meaning": "lose an opportunity by acting too late"
+        },
+        {
+          "idiom": "at the drop of a hat",
+          "meaning": "immediately, without hesitation"
+        },
+        {
+          "idiom": "fall short",
+          "meaning": "fail to reach the required level or standard"
+        },
+        {
+          "idiom": "in the nick of time",
+          "meaning": "at the last possible moment"
+        },
+        {
+          "idiom": "have a change of heart",
+          "meaning": "change your opinion or decision"
+        },
+        {
+          "idiom": "draw the line",
+          "meaning": "set a personal limit on what you accept"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "The results ___ of what the investors were expecting, which caused some concern.",
-      "options": ["fell short", "missed the boat", "drew the line", "had a change of heart"],
+      "options": [
+        "fell short",
+        "missed the boat",
+        "drew the line",
+        "had a change of heart"
+      ],
       "correct": "fell short",
       "explanation": "'Fall short' means to fail to meet the expected standard or target."
     },
     {
       "type": "complete-sentence",
       "sentence": "She rescued the documents ___ – just minutes before the system crashed.",
-      "options": ["in the nick of time", "at the drop of a hat", "miss the boat", "draw the line"],
+      "options": [
+        "in the nick of time",
+        "at the drop of a hat",
+        "miss the boat",
+        "draw the line"
+      ],
       "correct": "in the nick of time",
       "explanation": "'In the nick of time' means at the very last moment before disaster or too late."
     },

@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "You should fix that leak under the sink now. ___ – it'll only get worse if you ignore it.",
-      "options": ["A stitch in time saves nine", "All in good time", "Once in a blue moon", "Out of the blue"],
+      "options": [
+        "A stitch in time saves nine",
+        "All in good time",
+        "Once in a blue moon",
+        "Out of the blue"
+      ],
       "correct": "A stitch in time saves nine",
       "explanation": "'A stitch in time saves nine' means acting promptly prevents a small problem from becoming a bigger one."
     },
     {
       "type": "multiple-choice",
       "sentence": "'Are you going to tell me what the surprise is?' 'Don't worry, ___!'",
-      "options": ["all in good time", "out of the blue", "before your time", "for donkey's years"],
+      "options": [
+        "all in good time",
+        "out of the blue",
+        "before your time",
+        "for donkey's years"
+      ],
       "correct": "all in good time",
       "explanation": "'All in good time' is used to tell someone to be patient and that something will happen when the moment is right."
     },
     {
       "type": "multiple-choice",
       "sentence": "That song was ___ – it came out twenty years before you were born.",
-      "options": ["before your time", "out of the blue", "once in a blue moon", "in donkey's years"],
+      "options": [
+        "before your time",
+        "out of the blue",
+        "once in a blue moon",
+        "in donkey's years"
+      ],
       "correct": "before your time",
       "explanation": "'Before your time' means something happened or existed before the period when someone was old enough to know about it."
     },
     {
       "type": "multiple-choice",
       "sentence": "I haven't eaten at this restaurant ___ – not since we celebrated your graduation.",
-      "options": ["for donkey's years", "out of the blue", "before my time", "all in good time"],
+      "options": [
+        "for donkey's years",
+        "out of the blue",
+        "before my time",
+        "all in good time"
+      ],
       "correct": "for donkey's years",
       "explanation": "'For donkey's years' means for a very long time, used informally to emphasise how long it has been."
     },
     {
       "type": "multiple-choice",
       "sentence": "We treat ourselves to a weekend away ___ – maybe once or twice a year at most.",
-      "options": ["once in a blue moon", "for donkey's years", "out of the blue", "all in good time"],
+      "options": [
+        "once in a blue moon",
+        "for donkey's years",
+        "out of the blue",
+        "all in good time"
+      ],
       "correct": "once in a blue moon",
       "explanation": "'Once in a blue moon' describes something that happens very rarely."
     },
     {
       "type": "multiple-choice",
       "sentence": "The phone call came completely ___ – she hadn't heard from him in years.",
-      "options": ["out of the blue", "all in good time", "before her time", "once in a blue moon"],
+      "options": [
+        "out of the blue",
+        "all in good time",
+        "before her time",
+        "once in a blue moon"
+      ],
       "correct": "out of the blue",
       "explanation": "'Out of the blue' means suddenly and unexpectedly, with no prior warning."
     }
@@ -115,23 +145,94 @@
       "lines": [
         {
           "speaker": "Marcus",
-          "text": "You'll never guess who called me [out of the blue|out of the blue] this morning – Danny Clarke from secondary school!"
+          "text": "You'll never guess who called me [out of the blue|out of the blue] this morning – Danny Clarke from secondary school!",
+          "explanationContent": {
+            "whyCorrect": "'Out of the blue' means suddenly and unexpectedly, with no prior warning.",
+            "vocabularyFocus": "*out of the blue* — Suddenly and unexpectedly; without any warning or prior indication.",
+            "sentenceBreakdown": "You'll never guess who called me out of the blue this morning – Danny Clarke from secondary school!",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *out of the blue* (*out of the blue*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Describes something that happens without any warning. Often used with verbs like 'arrive', 'appear', 'happen', 'come'. Similar to 'out of nowhere'."
+          }
         },
         {
           "speaker": "Ella",
-          "text": "No way! I haven't heard that name [for donkey's years|for donkey's years]. How is he?"
+          "text": "No way! I haven't heard that name [for donkey's years|for donkey's years]. How is he?",
+          "explanationContent": {
+            "whyCorrect": "'For donkey's years' means for a very long time, used informally to emphasise how long it has been.",
+            "vocabularyFocus": "*in/for donkey's years* — For a very long time; used to emphasise how long something has lasted or how long it has been since something happened.",
+            "sentenceBreakdown": "No way! I haven't heard that name for donkey's years. How is he?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *for donkey's years* (*in/for donkey's years*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Informal and slightly humorous. 'In donkey's years' and 'for donkey's years' are both used. Implies an exaggeratedly long time."
+          }
         },
         {
           "speaker": "Marcus",
-          "text": "Really well, apparently. He's organising a reunion. We only get together [once in a blue moon|once in a blue moon], so it'll be great."
+          "text": "Really well, apparently. He's organising a reunion. We only get together [once in a blue moon|once in a blue moon], so it'll be great.",
+          "explanationContent": {
+            "whyCorrect": "'Once in a blue moon' describes something that happens very rarely.",
+            "vocabularyFocus": "*once in a blue moon* — Very rarely; almost never; used to describe something that happens very infrequently.",
+            "sentenceBreakdown": "Really well, apparently. He's organising a reunion. We only get together once in a blue moon, so it'll be great.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *once in a blue moon* (*once in a blue moon*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "A blue moon is a rare astronomical event. The idiom exaggerates rarity for effect. Often used to contrast something unusual with what is expected."
+          }
         },
         {
           "speaker": "Ella",
-          "text": "Definitely go. These chances don't come around often. Did he mention Sarah? She was class captain – probably [before your time|before your time] since you joined in Year 10."
+          "text": "Definitely go. These chances don't come around often. Did he mention Sarah? She was class captain – probably [before your time|before your time] since you joined in Year 10.",
+          "explanationContent": {
+            "whyCorrect": "'Before your time' means something happened or existed before the period when someone was old enough to know about it.",
+            "vocabularyFocus": "*before your time* — Happening or existing before the period when someone was born or old enough to experience or remember something.",
+            "sentenceBreakdown": "Definitely go. These chances don't come around often. Did he mention Sarah? She was class captain – probably before your time since you joined in Year 10.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *before your time* (*before your time*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used when introducing someone to something from the past that they wouldn't know about. Can also mean something happened too early in someone's career or life."
+          }
         },
         {
           "speaker": "Marcus",
-          "text": "He did, actually. She's coming. Danny also said he's been meaning to organise this for years – classic case of procrastinating when [a stitch in time saves nine|a stitch in time saves nine] would have done the trick."
+          "text": "He did, actually. She's coming. Danny also said he's been meaning to organise this for years – classic case of procrastinating when [a stitch in time saves nine|a stitch in time saves nine] would have done the trick.",
+          "explanationContent": {
+            "whyCorrect": "'A stitch in time saves nine' means acting promptly prevents a small problem from becoming a bigger one.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "He did, actually. She's coming. Danny also said he's been meaning to organise this for years – classic case of procrastinating when a stitch in time saves nine would have done the trick.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a stitch in time saves nine* (*a stitch in time saves nine*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Ella",
@@ -139,7 +240,21 @@
         },
         {
           "speaker": "Marcus",
-          "text": "He hasn't confirmed yet. Said the venue booking is in progress – [all in good time|all in good time], apparently."
+          "text": "He hasn't confirmed yet. Said the venue booking is in progress – [all in good time|all in good time], apparently.",
+          "explanationContent": {
+            "whyCorrect": "'All in good time' is used to tell someone to be patient and that something will happen when the moment is right.",
+            "vocabularyFocus": "*all in good time* — Used to say that something will happen at the appropriate moment; there is no need to rush.",
+            "sentenceBreakdown": "He hasn't confirmed yet. Said the venue booking is in progress – all in good time, apparently.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *all in good time* (*all in good time*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used as a reassuring phrase when someone is being impatient. Can sound slightly dismissive if said in the wrong tone."
+          }
         },
         {
           "speaker": "Ella",
@@ -152,23 +267,95 @@
       "lines": [
         {
           "speaker": "Nadia",
-          "text": "I got an email [out of the blue|out of the blue] from a client we haven't worked with in ages."
+          "text": "I got an email [out of the blue|out of the blue] from a client we haven't worked with in ages.",
+          "explanationContent": {
+            "whyCorrect": "'Out of the blue' means suddenly and unexpectedly, with no prior warning.",
+            "vocabularyFocus": "*out of the blue* — Suddenly and unexpectedly; without any warning or prior indication.",
+            "sentenceBreakdown": "I got an email out of the blue from a client we haven't worked with in ages.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *out of the blue* (*out of the blue*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Describes something that happens without any warning. Often used with verbs like 'arrive', 'appear', 'happen', 'come'. Similar to 'out of nowhere'."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "Really? We haven't heard from them [in donkey's years|in donkey's years]. What do they want?"
+          "text": "Really? We haven't heard from them [in donkey's years|in donkey's years]. What do they want?",
+          "explanationContent": {
+            "whyCorrect": "*in donkey's years* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "Really? We haven't heard from them in donkey's years. What do they want?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in donkey's years* (*in donkey's years*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Nadia",
-          "text": "A full website redesign. It's the kind of project that comes along [once in a blue moon|once in a blue moon], so I want to jump at it."
+          "text": "A full website redesign. It's the kind of project that comes along [once in a blue moon|once in a blue moon], so I want to jump at it.",
+          "explanationContent": {
+            "whyCorrect": "'Once in a blue moon' describes something that happens very rarely.",
+            "vocabularyFocus": "*once in a blue moon* — Very rarely; almost never; used to describe something that happens very infrequently.",
+            "sentenceBreakdown": "A full website redesign. It's the kind of project that comes along once in a blue moon, so I want to jump at it.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *once in a blue moon* (*once in a blue moon*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "A blue moon is a rare astronomical event. The idiom exaggerates rarity for effect. Often used to contrast something unusual with what is expected."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "Agreed. Their old site has needed an update for years – [a stitch in time saves nine|a stitch in time saves nine], but they left it far too long."
+          "text": "Agreed. Their old site has needed an update for years – [a stitch in time saves nine|a stitch in time saves nine], but they left it far too long.",
+          "explanationContent": {
+            "whyCorrect": "'A stitch in time saves nine' means acting promptly prevents a small problem from becoming a bigger one.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "Agreed. Their old site has needed an update for years – a stitch in time saves nine, but they left it far too long.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a stitch in time saves nine* (*a stitch in time saves nine*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Nadia",
-          "text": "Their current developer is someone [before my time|before your time] here – apparently he set everything up about fifteen years ago."
+          "text": "Their current developer is someone [before my time|before your time] here – apparently he set everything up about fifteen years ago.",
+          "explanationContent": {
+            "whyCorrect": "'Before your time' means something happened or existed before the period when someone was old enough to know about it.",
+            "vocabularyFocus": "*before your time* — Happening or existing before the period when someone was born or old enough to experience or remember something.",
+            "sentenceBreakdown": "Their current developer is someone before my time here – apparently he set everything up about fifteen years ago.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *before your time* (*before your time*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "all in good time": "*all in good time* (Used to say that something will happen at the appropriate moment) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used when introducing someone to something from the past that they wouldn't know about. Can also mean something happened too early in someone's career or life."
+          }
         },
         {
           "speaker": "Tom",
@@ -176,7 +363,21 @@
         },
         {
           "speaker": "Nadia",
-          "text": "[All in good time|All in good time] – I only got the email an hour ago. Give me until tomorrow morning."
+          "text": "[All in good time|All in good time] – I only got the email an hour ago. Give me until tomorrow morning.",
+          "explanationContent": {
+            "whyCorrect": "'All in good time' is used to tell someone to be patient and that something will happen when the moment is right.",
+            "vocabularyFocus": "*all in good time* — Used to say that something will happen at the appropriate moment; there is no need to rush.",
+            "sentenceBreakdown": "All in good time – I only got the email an hour ago. Give me until tomorrow morning.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *All in good time* (*all in good time*).",
+            "wrongOptions": {
+              "a stitch in time (saves nine)": "*a stitch in time (saves nine)* (Dealing with a problem early prevents it from becoming much worse later) does not match the meaning needed in this line.",
+              "before your time": "*before your time* (Happening or existing before the period when someone was born or old enough to experience or remember something) does not match the meaning needed in this line.",
+              "in/for donkey's years": "*in/for donkey's years* (For a very long time) does not match the meaning needed in this line.",
+              "once in a blue moon": "*once in a blue moon* (Very rarely) does not match the meaning needed in this line.",
+              "out of the blue": "*out of the blue* (Suddenly and unexpectedly) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used as a reassuring phrase when someone is being impatient. Can sound slightly dismissive if said in the wrong tone."
+          }
         }
       ]
     }
@@ -186,25 +387,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "a stitch in time (saves nine)", "meaning": "dealing with a problem early prevents it becoming worse"},
-        {"idiom": "all in good time", "meaning": "something will happen eventually; no need to rush"},
-        {"idiom": "before your time", "meaning": "existing or happening before you were born or old enough to remember"},
-        {"idiom": "in/for donkey's years", "meaning": "for a very long time"},
-        {"idiom": "once in a blue moon", "meaning": "very rarely; almost never"},
-        {"idiom": "out of the blue", "meaning": "suddenly and unexpectedly; without warning"}
+        {
+          "idiom": "a stitch in time (saves nine)",
+          "meaning": "dealing with a problem early prevents it becoming worse"
+        },
+        {
+          "idiom": "all in good time",
+          "meaning": "something will happen eventually; no need to rush"
+        },
+        {
+          "idiom": "before your time",
+          "meaning": "existing or happening before you were born or old enough to remember"
+        },
+        {
+          "idiom": "in/for donkey's years",
+          "meaning": "for a very long time"
+        },
+        {
+          "idiom": "once in a blue moon",
+          "meaning": "very rarely; almost never"
+        },
+        {
+          "idiom": "out of the blue",
+          "meaning": "suddenly and unexpectedly; without warning"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "That band was ___ – they broke up a decade before you started school.",
-      "options": ["before your time", "out of the blue", "all in good time", "once in a blue moon"],
+      "options": [
+        "before your time",
+        "out of the blue",
+        "all in good time",
+        "once in a blue moon"
+      ],
       "correct": "before your time",
       "explanation": "'Before your time' means something existed or happened before you were old enough to know about it."
     },
     {
       "type": "complete-sentence",
       "sentence": "I know you're eager for an answer, but these decisions can't be rushed – ___.",
-      "options": ["all in good time", "out of the blue", "for donkey's years", "once in a blue moon"],
+      "options": [
+        "all in good time",
+        "out of the blue",
+        "for donkey's years",
+        "once in a blue moon"
+      ],
       "correct": "all in good time",
       "explanation": "'All in good time' is used to reassure someone that the right moment will come – there is no need to hurry."
     },

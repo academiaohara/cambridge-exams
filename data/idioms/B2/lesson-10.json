@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "His sarcastic comment in the meeting just ___ – the client was already upset.",
-      "options": ["added fuel to the fire", "broke even", "cut through the red tape", "named a tidy sum"],
+      "options": [
+        "added fuel to the fire",
+        "broke even",
+        "cut through the red tape",
+        "named a tidy sum"
+      ],
       "correct": "added fuel to the fire",
       "explanation": "'Add fuel to the fire' means to make an already bad situation significantly worse."
     },
     {
       "type": "multiple-choice",
       "sentence": "The café didn't make a profit in its first quarter, but at least it managed to ___.",
-      "options": ["break even", "add fuel to the fire", "name the tools of the trade", "cut the red tape"],
+      "options": [
+        "break even",
+        "add fuel to the fire",
+        "name the tools of the trade",
+        "cut the red tape"
+      ],
       "correct": "break even",
       "explanation": "'Break even' means to reach a point where income equals costs, resulting in neither a profit nor a loss."
     },
     {
       "type": "multiple-choice",
       "sentence": "Setting up the import business was a nightmare because of all the ___ involved.",
-      "options": ["red tape", "tidy sum", "tools of the trade", "powers that be"],
+      "options": [
+        "red tape",
+        "tidy sum",
+        "tools of the trade",
+        "powers that be"
+      ],
       "correct": "red tape",
       "explanation": "'Red tape' refers to excessive bureaucratic rules and procedures that cause delays."
     },
     {
       "type": "multiple-choice",
       "sentence": "The painting sold at auction for ___ – far more than the owner had expected.",
-      "options": ["a tidy sum", "a red tape", "the powers that be", "the tools of the trade"],
+      "options": [
+        "a tidy sum",
+        "a red tape",
+        "the powers that be",
+        "the tools of the trade"
+      ],
       "correct": "a tidy sum",
       "explanation": "'A tidy sum' describes a fairly large or impressive amount of money."
     },
     {
       "type": "multiple-choice",
       "sentence": "Knowing how to read a balance sheet is one of the essential ___ for any finance professional.",
-      "options": ["tools of the trade", "red tape", "tidy sums", "powers that be"],
+      "options": [
+        "tools of the trade",
+        "red tape",
+        "tidy sums",
+        "powers that be"
+      ],
       "correct": "tools of the trade",
       "explanation": "'The tools of the trade' are the skills, knowledge, or equipment needed to perform a job well."
     },
     {
       "type": "multiple-choice",
       "sentence": "We want to update the policy, but ___ have blocked every proposal so far.",
-      "options": ["the powers that be", "the tools of the trade", "the red tape", "the tidy sum"],
+      "options": [
+        "the powers that be",
+        "the tools of the trade",
+        "the red tape",
+        "the tidy sum"
+      ],
       "correct": "the powers that be",
       "explanation": "'The powers that be' refers to the people in authority who make decisions, often used when those decisions are frustrating or hard to challenge."
     }
@@ -115,11 +145,39 @@
       "lines": [
         {
           "speaker": "Yasmin",
-          "text": "How did the launch event go? Did you at least manage to [break even|break even]?"
+          "text": "How did the launch event go? Did you at least manage to [break even|break even]?",
+          "explanationContent": {
+            "whyCorrect": "'Break even' means to reach a point where income equals costs, resulting in neither a profit nor a loss.",
+            "vocabularyFocus": "*break even* — To make neither a profit nor a loss; to reach a point where income equals expenditure.",
+            "sentenceBreakdown": "How did the launch event go? Did you at least manage to break even?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *break even* (*break even*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Common in business and finance contexts. 'Break-even point' is the noun form. Implies that no money is made, but none is lost either – a neutral financial outcome."
+          }
         },
         {
           "speaker": "Finn",
-          "text": "Just about. Ticket sales covered the costs. But the build-up was exhausting – so much [red tape|red tape] to get the venue licence approved in time."
+          "text": "Just about. Ticket sales covered the costs. But the build-up was exhausting – so much [red tape|red tape] to get the venue licence approved in time.",
+          "explanationContent": {
+            "whyCorrect": "'Red tape' refers to excessive bureaucratic rules and procedures that cause delays.",
+            "vocabularyFocus": "*red tape* — Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays.",
+            "sentenceBreakdown": "Just about. Ticket sales covered the costs. But the build-up was exhausting – so much red tape to get the venue licence approved in time.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *red tape* (*red tape*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used critically to describe frustrating bureaucracy. It's an uncountable noun: 'so much red tape', not 'a red tape'. The term comes from the practice of tying official documents with red ribbon."
+          }
         },
         {
           "speaker": "Yasmin",
@@ -127,7 +185,21 @@
         },
         {
           "speaker": "Finn",
-          "text": "Yes. My business partner criticised them publicly, which just [added fuel to the fire|add fuel to the fire]. They almost pulled out entirely."
+          "text": "Yes. My business partner criticised them publicly, which just [added fuel to the fire|add fuel to the fire]. They almost pulled out entirely.",
+          "explanationContent": {
+            "whyCorrect": "'Add fuel to the fire' means to make an already bad situation significantly worse.",
+            "vocabularyFocus": "*add fuel to the fire* — To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict.",
+            "sentenceBreakdown": "Yes. My business partner criticised them publicly, which just added fuel to the fire. They almost pulled out entirely.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *add fuel to the fire* (*add fuel to the fire*).",
+            "wrongOptions": {
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Also found as 'add fuel to the flames'. Used when someone's action or words make a conflict worse rather than helping to resolve it. Often a warning or criticism."
+          }
         },
         {
           "speaker": "Yasmin",
@@ -135,15 +207,57 @@
         },
         {
           "speaker": "Finn",
-          "text": "Yes – one investor mentioned [a tidy sum|a tidy sum] she'd be willing to put in if we hit our targets next quarter."
+          "text": "Yes – one investor mentioned [a tidy sum|a tidy sum] she'd be willing to put in if we hit our targets next quarter.",
+          "explanationContent": {
+            "whyCorrect": "'A tidy sum' describes a fairly large or impressive amount of money.",
+            "vocabularyFocus": "*a tidy sum* — A fairly large or impressive amount of money.",
+            "sentenceBreakdown": "Yes – one investor mentioned a tidy sum she'd be willing to put in if we hit our targets next quarter.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a tidy sum* (*a tidy sum*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used with 'a' or 'quite a'. The word 'tidy' here means 'considerable' rather than 'neat'. Implies that the amount is impressive without being extravagant."
+          }
         },
         {
           "speaker": "Yasmin",
-          "text": "That's fantastic news. And [the powers that be|the powers that be] at the funding body – are they on board?"
+          "text": "That's fantastic news. And [the powers that be|the powers that be] at the funding body – are they on board?",
+          "explanationContent": {
+            "whyCorrect": "'The powers that be' refers to the people in authority who make decisions, often used when those decisions are frustrating or hard to challenge.",
+            "vocabularyFocus": "*the powers that be* — The people who are in authority or in charge of an organisation, system, or country.",
+            "sentenceBreakdown": "That's fantastic news. And the powers that be at the funding body – are they on board?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *the powers that be* (*the powers that be*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Slightly formal or ironic in tone. Implies that the decision-makers are distant or that their authority is unquestioned. Can be used with mild frustration or deference."
+          }
         },
         {
           "speaker": "Finn",
-          "text": "Getting there. Knowing [the tools of the trade|the tools of the trade] when it comes to grant applications has really helped us navigate their requirements."
+          "text": "Getting there. Knowing [the tools of the trade|the tools of the trade] when it comes to grant applications has really helped us navigate their requirements.",
+          "explanationContent": {
+            "whyCorrect": "'The tools of the trade' are the skills, knowledge, or equipment needed to perform a job well.",
+            "vocabularyFocus": "*the tools of the trade* — The skills, knowledge, equipment, or techniques needed to do a particular job effectively.",
+            "sentenceBreakdown": "Getting there. Knowing the tools of the trade when it comes to grant applications has really helped us navigate their requirements.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *the tools of the trade* (*the tools of the trade*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can refer to both physical tools and non-physical skills or knowledge. Often used to emphasise that expertise in a profession requires specific, learned capabilities."
+          }
         }
       ]
     },
@@ -152,27 +266,111 @@
       "lines": [
         {
           "speaker": "Rosa",
-          "text": "Thanks for agreeing to meet. I'm struggling to get my consultancy off the ground. There's so much [red tape|red tape] just to register properly."
+          "text": "Thanks for agreeing to meet. I'm struggling to get my consultancy off the ground. There's so much [red tape|red tape] just to register properly.",
+          "explanationContent": {
+            "whyCorrect": "'Red tape' refers to excessive bureaucratic rules and procedures that cause delays.",
+            "vocabularyFocus": "*red tape* — Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays.",
+            "sentenceBreakdown": "Thanks for agreeing to meet. I'm struggling to get my consultancy off the ground. There's so much red tape just to register properly.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *red tape* (*red tape*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used critically to describe frustrating bureaucracy. It's an uncountable noun: 'so much red tape', not 'a red tape'. The term comes from the practice of tying official documents with red ribbon."
+          }
         },
         {
           "speaker": "Neil",
-          "text": "That's normal at the start. Be patient – it gets easier once you know your way around the system. That knowledge is one of [the tools of the trade|the tools of the trade]."
+          "text": "That's normal at the start. Be patient – it gets easier once you know your way around the system. That knowledge is one of [the tools of the trade|the tools of the trade].",
+          "explanationContent": {
+            "whyCorrect": "'The tools of the trade' are the skills, knowledge, or equipment needed to perform a job well.",
+            "vocabularyFocus": "*the tools of the trade* — The skills, knowledge, equipment, or techniques needed to do a particular job effectively.",
+            "sentenceBreakdown": "That's normal at the start. Be patient – it gets easier once you know your way around the system. That knowledge is one of the tools of the trade.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *the tools of the trade* (*the tools of the trade*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can refer to both physical tools and non-physical skills or knowledge. Often used to emphasise that expertise in a profession requires specific, learned capabilities."
+          }
         },
         {
           "speaker": "Rosa",
-          "text": "I know. I also had a falling-out with a potential partner last week, and I'm worried I [added fuel to the fire|add fuel to the fire] by sending an angry email."
+          "text": "I know. I also had a falling-out with a potential partner last week, and I'm worried I [added fuel to the fire|add fuel to the fire] by sending an angry email.",
+          "explanationContent": {
+            "whyCorrect": "'Add fuel to the fire' means to make an already bad situation significantly worse.",
+            "vocabularyFocus": "*add fuel to the fire* — To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict.",
+            "sentenceBreakdown": "I know. I also had a falling-out with a potential partner last week, and I'm worried I added fuel to the fire by sending an angry email.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *add fuel to the fire* (*add fuel to the fire*).",
+            "wrongOptions": {
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Also found as 'add fuel to the flames'. Used when someone's action or words make a conflict worse rather than helping to resolve it. Often a warning or criticism."
+          }
         },
         {
           "speaker": "Neil",
-          "text": "Try to resolve it calmly. Burning bridges is never worth it. Financially, are you managing to [break even|break even]?"
+          "text": "Try to resolve it calmly. Burning bridges is never worth it. Financially, are you managing to [break even|break even]?",
+          "explanationContent": {
+            "whyCorrect": "'Break even' means to reach a point where income equals costs, resulting in neither a profit nor a loss.",
+            "vocabularyFocus": "*break even* — To make neither a profit nor a loss; to reach a point where income equals expenditure.",
+            "sentenceBreakdown": "Try to resolve it calmly. Burning bridges is never worth it. Financially, are you managing to break even?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *break even* (*break even*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Common in business and finance contexts. 'Break-even point' is the noun form. Implies that no money is made, but none is lost either – a neutral financial outcome."
+          }
         },
         {
           "speaker": "Rosa",
-          "text": "Yes, just. I landed a contract last month worth [a tidy sum|a tidy sum], which helped a lot."
+          "text": "Yes, just. I landed a contract last month worth [a tidy sum|a tidy sum], which helped a lot.",
+          "explanationContent": {
+            "whyCorrect": "'A tidy sum' describes a fairly large or impressive amount of money.",
+            "vocabularyFocus": "*a tidy sum* — A fairly large or impressive amount of money.",
+            "sentenceBreakdown": "Yes, just. I landed a contract last month worth a tidy sum, which helped a lot.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a tidy sum* (*a tidy sum*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line.",
+              "the powers that be": "*the powers that be* (The people who are in authority or in charge of an organisation, system, or country) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used with 'a' or 'quite a'. The word 'tidy' here means 'considerable' rather than 'neat'. Implies that the amount is impressive without being extravagant."
+          }
         },
         {
           "speaker": "Neil",
-          "text": "Good. Have you considered applying for the enterprise grant? [The powers that be|The powers that be] at the regional office are quite supportive of new consultancies."
+          "text": "Good. Have you considered applying for the enterprise grant? [The powers that be|The powers that be] at the regional office are quite supportive of new consultancies.",
+          "explanationContent": {
+            "whyCorrect": "'The powers that be' refers to the people in authority who make decisions, often used when those decisions are frustrating or hard to challenge.",
+            "vocabularyFocus": "*the powers that be* — The people who are in authority or in charge of an organisation, system, or country.",
+            "sentenceBreakdown": "Good. Have you considered applying for the enterprise grant? The powers that be at the regional office are quite supportive of new consultancies.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *The powers that be* (*the powers that be*).",
+            "wrongOptions": {
+              "add fuel to the fire": "*add fuel to the fire* (To make a bad situation worse, especially by doing or saying something that intensifies an argument or conflict) does not match the meaning needed in this line.",
+              "break even": "*break even* (To make neither a profit nor a loss) does not match the meaning needed in this line.",
+              "red tape": "*red tape* (Excessive official rules, regulations, and bureaucratic procedures that cause unnecessary delays) does not match the meaning needed in this line.",
+              "a tidy sum": "*a tidy sum* (A fairly large or impressive amount of money) does not match the meaning needed in this line.",
+              "the tools of the trade": "*the tools of the trade* (The skills, knowledge, equipment, or techniques needed to do a particular job effectively) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Slightly formal or ironic in tone. Implies that the decision-makers are distant or that their authority is unquestioned. Can be used with mild frustration or deference."
+          }
         },
         {
           "speaker": "Rosa",
@@ -186,25 +384,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "add fuel to the fire", "meaning": "to make a bad situation worse"},
-        {"idiom": "break even", "meaning": "to make neither a profit nor a loss"},
-        {"idiom": "red tape", "meaning": "excessive official rules and procedures that cause delay"},
-        {"idiom": "a tidy sum", "meaning": "a fairly large amount of money"},
-        {"idiom": "the tools of the trade", "meaning": "the skills or equipment needed to do a job"},
-        {"idiom": "the powers that be", "meaning": "the people in authority who make decisions"}
+        {
+          "idiom": "add fuel to the fire",
+          "meaning": "to make a bad situation worse"
+        },
+        {
+          "idiom": "break even",
+          "meaning": "to make neither a profit nor a loss"
+        },
+        {
+          "idiom": "red tape",
+          "meaning": "excessive official rules and procedures that cause delay"
+        },
+        {
+          "idiom": "a tidy sum",
+          "meaning": "a fairly large amount of money"
+        },
+        {
+          "idiom": "the tools of the trade",
+          "meaning": "the skills or equipment needed to do a job"
+        },
+        {
+          "idiom": "the powers that be",
+          "meaning": "the people in authority who make decisions"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "The project is still in the early stages, but we hope to at least ___ by the end of the financial year.",
-      "options": ["break even", "add fuel to the fire", "cut through red tape", "name a tidy sum"],
+      "options": [
+        "break even",
+        "add fuel to the fire",
+        "cut through red tape",
+        "name a tidy sum"
+      ],
       "correct": "break even",
       "explanation": "'Break even' means to reach a point where revenue exactly covers costs, resulting in no profit or loss."
     },
     {
       "type": "complete-sentence",
       "sentence": "Bringing up salary differences in the middle of a team argument really ___.",
-      "options": ["added fuel to the fire", "broke even", "cut through red tape", "showed the tools of the trade"],
+      "options": [
+        "added fuel to the fire",
+        "broke even",
+        "cut through red tape",
+        "showed the tools of the trade"
+      ],
       "correct": "added fuel to the fire",
       "explanation": "'Add fuel to the fire' means doing something that makes an existing conflict or bad situation significantly worse."
     },

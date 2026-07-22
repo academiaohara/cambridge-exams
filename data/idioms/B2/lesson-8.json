@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "After six months working abroad, seeing my old friends again was ___.",
-      "options": ["a sight for sore eyes", "letting off steam", "kicking myself", "down on my luck"],
+      "options": [
+        "a sight for sore eyes",
+        "letting off steam",
+        "kicking myself",
+        "down on my luck"
+      ],
       "correct": "a sight for sore eyes",
       "explanation": "'A sight for sore eyes' describes how pleasant or welcome it is to see someone or something after a long time."
     },
     {
       "type": "multiple-choice",
       "sentence": "He completely ___ when he realised his presentation slides had been deleted.",
-      "options": ["flew off the handle", "let off steam", "kicked himself", "cried over spilt milk"],
+      "options": [
+        "flew off the handle",
+        "let off steam",
+        "kicked himself",
+        "cried over spilt milk"
+      ],
       "correct": "flew off the handle",
       "explanation": "'Fly off the handle' means to suddenly and uncontrollably lose your temper."
     },
     {
       "type": "multiple-choice",
       "sentence": "The project failed, but there's no point ___. We need to learn and move on.",
-      "options": ["crying over spilt milk", "letting off steam", "flying off the handle", "kicking ourselves"],
+      "options": [
+        "crying over spilt milk",
+        "letting off steam",
+        "flying off the handle",
+        "kicking ourselves"
+      ],
       "correct": "crying over spilt milk",
       "explanation": "'Cry over spilt milk' means to waste energy being upset about something that has already happened and cannot be undone."
     },
     {
       "type": "multiple-choice",
       "sentence": "He'd been ___ since the business closed, struggling to make ends meet.",
-      "options": ["down on his luck", "flying off the handle", "a sight for sore eyes", "letting off steam"],
+      "options": [
+        "down on his luck",
+        "flying off the handle",
+        "a sight for sore eyes",
+        "letting off steam"
+      ],
       "correct": "down on his luck",
       "explanation": "'Down on your luck' describes a period of bad luck or hardship."
     },
     {
       "type": "multiple-choice",
       "sentence": "I could really ___ for turning down that job offer – it was such a great opportunity.",
-      "options": ["kick myself", "fly off the handle", "let off steam", "cry over spilt milk"],
+      "options": [
+        "kick myself",
+        "fly off the handle",
+        "let off steam",
+        "cry over spilt milk"
+      ],
       "correct": "kick myself",
       "explanation": "'Kick yourself' means to feel very frustrated with yourself for making a mistake or missing an opportunity."
     },
     {
       "type": "multiple-choice",
       "sentence": "He goes to the gym after difficult meetings to ___ and clear his head.",
-      "options": ["let off steam", "kick himself", "fly off the handle", "cry over spilt milk"],
+      "options": [
+        "let off steam",
+        "kick himself",
+        "fly off the handle",
+        "cry over spilt milk"
+      ],
       "correct": "let off steam",
       "explanation": "'Let off steam' means to release stress or strong emotions, often through physical activity or by talking."
     }
@@ -115,11 +145,39 @@
       "lines": [
         {
           "speaker": "Jamie",
-          "text": "You're [a sight for sore eyes|a sight for sore eyes]! I've had the worst week imaginable."
+          "text": "You're [a sight for sore eyes|a sight for sore eyes]! I've had the worst week imaginable.",
+          "explanationContent": {
+            "whyCorrect": "'A sight for sore eyes' describes how pleasant or welcome it is to see someone or something after a long time.",
+            "vocabularyFocus": "*a sight for sore eyes* — Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty.",
+            "sentenceBreakdown": "You're a sight for sore eyes! I've had the worst week imaginable.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a sight for sore eyes* (*a sight for sore eyes*).",
+            "wrongOptions": {
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Always a compliment. Used to express that seeing someone or something brings genuine relief or pleasure. Common when greeting someone after a long absence."
+          }
         },
         {
           "speaker": "Rosa",
-          "text": "Me too. I nearly [flew off the handle|fly off the handle] in a meeting yesterday when my manager blamed me for someone else's mistake."
+          "text": "Me too. I nearly [flew off the handle|fly off the handle] in a meeting yesterday when my manager blamed me for someone else's mistake.",
+          "explanationContent": {
+            "whyCorrect": "'Fly off the handle' means to suddenly and uncontrollably lose your temper.",
+            "vocabularyFocus": "*fly off the handle* — To suddenly become very angry and lose control of your temper.",
+            "sentenceBreakdown": "Me too. I nearly flew off the handle in a meeting yesterday when my manager blamed me for someone else's mistake.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *fly off the handle* (*fly off the handle*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Describes a sudden, uncontrolled burst of anger. Often used as a warning or criticism. The image is of a loose axe head flying off its handle unpredictably."
+          }
         },
         {
           "speaker": "Jamie",
@@ -127,19 +185,75 @@
         },
         {
           "speaker": "Rosa",
-          "text": "I held it together. I went straight to the gym afterwards to [let off steam|let off steam]. Helped a bit."
+          "text": "I held it together. I went straight to the gym afterwards to [let off steam|let off steam]. Helped a bit.",
+          "explanationContent": {
+            "whyCorrect": "'Let off steam' means to release stress or strong emotions, often through physical activity or by talking.",
+            "vocabularyFocus": "*let off steam* — To release pent-up stress, energy, or strong emotions through activity, exercise, or talking.",
+            "sentenceBreakdown": "I held it together. I went straight to the gym afterwards to let off steam. Helped a bit.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *let off steam* (*let off steam*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can refer to physical activity (exercise) or verbal expression (venting to someone). Implies a healthy or necessary release of tension. Similar to 'vent'."
+          }
         },
         {
           "speaker": "Jamie",
-          "text": "Good call. I keep [kicking myself|kick yourself] over a report I filed with the wrong figures. My manager noticed straightaway."
+          "text": "Good call. I keep [kicking myself|kick yourself] over a report I filed with the wrong figures. My manager noticed straightaway.",
+          "explanationContent": {
+            "whyCorrect": "*kick yourself* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*kick yourself* — To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity.",
+            "sentenceBreakdown": "Good call. I keep kicking myself over a report I filed with the wrong figures. My manager noticed straightaway.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *kick yourself* (*kick yourself*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to describe self-directed frustration. Common with 'could' and 'will'. Often said as a reassurance: 'Don't kick yourself.'."
+          }
         },
         {
           "speaker": "Rosa",
-          "text": "Don't [kick yourself|kick yourself] too hard – everyone makes errors under pressure. No point [crying over spilt milk|crying over spilt milk] now."
+          "text": "Don't [kick yourself|kick yourself] too hard – everyone makes errors under pressure. No point [crying over spilt milk|crying over spilt milk] now.",
+          "explanationContent": {
+            "whyCorrect": "*kick yourself* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*kick yourself* — To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity.",
+            "sentenceBreakdown": "Don't kick yourself too hard – everyone makes errors under pressure. No point [crying over spilt milk|crying over spilt milk] now.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *kick yourself* (*kick yourself*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to describe self-directed frustration. Common with 'could' and 'will'. Often said as a reassurance: 'Don't kick yourself.'."
+          }
         },
         {
           "speaker": "Jamie",
-          "text": "I know. It's just been one thing after another. I've been feeling a bit [down on my luck|down on your luck] lately."
+          "text": "I know. It's just been one thing after another. I've been feeling a bit [down on my luck|down on your luck] lately.",
+          "explanationContent": {
+            "whyCorrect": "*down on your luck* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*down on your luck* — Experiencing a period of bad luck or misfortune; going through a difficult time.",
+            "sentenceBreakdown": "I know. It's just been one thing after another. I've been feeling a bit down on my luck lately.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *down on your luck* (*down on your luck*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Suggests a temporary period of misfortune rather than permanent failure. Often used with empathy. Not to be confused with being permanently unsuccessful."
+          }
         },
         {
           "speaker": "Rosa",
@@ -156,15 +270,57 @@
         },
         {
           "speaker": "Mia",
-          "text": "Honestly? Hard. I've been [down on my luck|down on your luck] since I started – nothing seems to go right."
+          "text": "Honestly? Hard. I've been [down on my luck|down on your luck] since I started – nothing seems to go right.",
+          "explanationContent": {
+            "whyCorrect": "*down on your luck* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*down on your luck* — Experiencing a period of bad luck or misfortune; going through a difficult time.",
+            "sentenceBreakdown": "Honestly? Hard. I've been down on my luck since I started – nothing seems to go right.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *down on your luck* (*down on your luck*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Suggests a temporary period of misfortune rather than permanent failure. Often used with empathy. Not to be confused with being permanently unsuccessful."
+          }
         },
         {
           "speaker": "Leon",
-          "text": "I'm sorry to hear that. Do you want to [let off steam|let off steam]? I'm happy to listen."
+          "text": "I'm sorry to hear that. Do you want to [let off steam|let off steam]? I'm happy to listen.",
+          "explanationContent": {
+            "whyCorrect": "'Let off steam' means to release stress or strong emotions, often through physical activity or by talking.",
+            "vocabularyFocus": "*let off steam* — To release pent-up stress, energy, or strong emotions through activity, exercise, or talking.",
+            "sentenceBreakdown": "I'm sorry to hear that. Do you want to let off steam? I'm happy to listen.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *let off steam* (*let off steam*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can refer to physical activity (exercise) or verbal expression (venting to someone). Implies a healthy or necessary release of tension. Similar to 'vent'."
+          }
         },
         {
           "speaker": "Mia",
-          "text": "Yes, please. My supervisor [flew off the handle|fly off the handle] at me in front of the whole team last week. It was humiliating."
+          "text": "Yes, please. My supervisor [flew off the handle|fly off the handle] at me in front of the whole team last week. It was humiliating.",
+          "explanationContent": {
+            "whyCorrect": "'Fly off the handle' means to suddenly and uncontrollably lose your temper.",
+            "vocabularyFocus": "*fly off the handle* — To suddenly become very angry and lose control of your temper.",
+            "sentenceBreakdown": "Yes, please. My supervisor flew off the handle at me in front of the whole team last week. It was humiliating.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *fly off the handle* (*fly off the handle*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Describes a sudden, uncontrolled burst of anger. Often used as a warning or criticism. The image is of a loose axe head flying off its handle unpredictably."
+          }
         },
         {
           "speaker": "Leon",
@@ -172,15 +328,57 @@
         },
         {
           "speaker": "Mia",
-          "text": "I know. I could [kick myself|kick yourself] for not responding more calmly – I just froze."
+          "text": "I know. I could [kick myself|kick yourself] for not responding more calmly – I just froze.",
+          "explanationContent": {
+            "whyCorrect": "'Kick yourself' means to feel very frustrated with yourself for making a mistake or missing an opportunity.",
+            "vocabularyFocus": "*kick yourself* — To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity.",
+            "sentenceBreakdown": "I know. I could kick myself for not responding more calmly – I just froze.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *kick yourself* (*kick yourself*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to describe self-directed frustration. Common with 'could' and 'will'. Often said as a reassurance: 'Don't kick yourself.'."
+          }
         },
         {
           "speaker": "Leon",
-          "text": "Don't [cry over spilt milk|cry over spilt milk]. Focus on what you can do differently next time."
+          "text": "Don't [cry over spilt milk|cry over spilt milk]. Focus on what you can do differently next time.",
+          "explanationContent": {
+            "whyCorrect": "*cry over spilt milk* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*cry over spilt milk* — To waste time feeling upset or complaining about something that has already happened and cannot be changed.",
+            "sentenceBreakdown": "Don't cry over spilt milk. Focus on what you can do differently next time.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *cry over spilt milk* (*cry over spilt milk*).",
+            "wrongOptions": {
+              "a sight for sore eyes": "*a sight for sore eyes* (Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty) does not match the meaning needed in this line.",
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used as advice to stop worrying about the past. Often introduced with 'no point' or 'there's no use'. Implies resilience and moving forward."
+          }
         },
         {
           "speaker": "Mia",
-          "text": "You're right. And honestly, just seeing you today – you were [a sight for sore eyes|a sight for sore eyes]. I really needed a friend."
+          "text": "You're right. And honestly, just seeing you today – you were [a sight for sore eyes|a sight for sore eyes]. I really needed a friend.",
+          "explanationContent": {
+            "whyCorrect": "'A sight for sore eyes' describes how pleasant or welcome it is to see someone or something after a long time.",
+            "vocabularyFocus": "*a sight for sore eyes* — Someone or something that is very pleasant or welcome to see, especially after a period of absence or difficulty.",
+            "sentenceBreakdown": "You're right. And honestly, just seeing you today – you were a sight for sore eyes. I really needed a friend.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a sight for sore eyes* (*a sight for sore eyes*).",
+            "wrongOptions": {
+              "fly off the handle": "*fly off the handle* (To suddenly become very angry and lose control of your temper) does not match the meaning needed in this line.",
+              "cry over spilt milk": "*cry over spilt milk* (To waste time feeling upset or complaining about something that has already happened and cannot be changed) does not match the meaning needed in this line.",
+              "down on your luck": "*down on your luck* (Experiencing a period of bad luck or misfortune) does not match the meaning needed in this line.",
+              "kick yourself": "*kick yourself* (To feel very annoyed or frustrated with yourself because you made a mistake or missed an opportunity) does not match the meaning needed in this line.",
+              "let off steam": "*let off steam* (To release pent-up stress, energy, or strong emotions through activity, exercise, or talking) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Always a compliment. Used to express that seeing someone or something brings genuine relief or pleasure. Common when greeting someone after a long absence."
+          }
         }
       ]
     }
@@ -190,25 +388,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "a sight for sore eyes", "meaning": "someone or something very pleasant or welcome to see"},
-        {"idiom": "fly off the handle", "meaning": "to suddenly become very angry"},
-        {"idiom": "cry over spilt milk", "meaning": "to waste time worrying about past mistakes that cannot be changed"},
-        {"idiom": "down on your luck", "meaning": "experiencing a period of bad luck or difficulty"},
-        {"idiom": "kick yourself", "meaning": "to feel very annoyed with yourself for a mistake or missed opportunity"},
-        {"idiom": "let off steam", "meaning": "to release stress or strong emotions through activity or talking"}
+        {
+          "idiom": "a sight for sore eyes",
+          "meaning": "someone or something very pleasant or welcome to see"
+        },
+        {
+          "idiom": "fly off the handle",
+          "meaning": "to suddenly become very angry"
+        },
+        {
+          "idiom": "cry over spilt milk",
+          "meaning": "to waste time worrying about past mistakes that cannot be changed"
+        },
+        {
+          "idiom": "down on your luck",
+          "meaning": "experiencing a period of bad luck or difficulty"
+        },
+        {
+          "idiom": "kick yourself",
+          "meaning": "to feel very annoyed with yourself for a mistake or missed opportunity"
+        },
+        {
+          "idiom": "let off steam",
+          "meaning": "to release stress or strong emotions through activity or talking"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "Try not to ___ about the missed flight – focus on booking the next one.",
-      "options": ["cry over spilt milk", "fly off the handle", "let off steam", "kick yourself"],
+      "options": [
+        "cry over spilt milk",
+        "fly off the handle",
+        "let off steam",
+        "kick yourself"
+      ],
       "correct": "cry over spilt milk",
       "explanation": "'Cry over spilt milk' means to waste energy being upset about something that has already happened and can't be changed."
     },
     {
       "type": "complete-sentence",
       "sentence": "She tends to ___ when things go wrong, so I try to stay calm around her.",
-      "options": ["fly off the handle", "let off steam", "kick herself", "cry over spilt milk"],
+      "options": [
+        "fly off the handle",
+        "let off steam",
+        "kick herself",
+        "cry over spilt milk"
+      ],
       "correct": "fly off the handle",
       "explanation": "'Fly off the handle' describes a person who quickly and uncontrollably loses their temper."
     },

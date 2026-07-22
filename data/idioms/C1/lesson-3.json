@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "He's been rude to the team for years, and now the new system limits his authority. Some say he's finally getting ___.",
-      "options": ["a taste of his own medicine", "to go to his head", "to break the mould", "under someone's thumb"],
+      "options": [
+        "a taste of his own medicine",
+        "to go to his head",
+        "to break the mould",
+        "under someone's thumb"
+      ],
       "correct": "a taste of his own medicine",
       "explanation": "'Give sb a taste of their own medicine' means to treat someone the same way they have been treating others."
     },
     {
       "type": "multiple-choice",
       "sentence": "Despite considerable pressure to revise her findings, the scientist ___.",
-      "options": ["stuck to her guns", "broke the mould", "went to her head", "gave them a taste of their own medicine"],
+      "options": [
+        "stuck to her guns",
+        "broke the mould",
+        "went to her head",
+        "gave them a taste of their own medicine"
+      ],
       "correct": "stuck to her guns",
       "explanation": "'Stick to your guns' means to maintain your position despite criticism or opposition."
     },
     {
       "type": "multiple-choice",
       "sentence": "His first novel was a bestseller, and unfortunately the success seemed to ___.",
-      "options": ["go to his head", "stick to his guns", "break the mould", "give him a taste of his own medicine"],
+      "options": [
+        "go to his head",
+        "stick to his guns",
+        "break the mould",
+        "give him a taste of his own medicine"
+      ],
       "correct": "go to his head",
       "explanation": "'Go to your head' means that success makes someone arrogant or overly proud."
     },
     {
       "type": "multiple-choice",
       "sentence": "He'll never stop gambling – ___. He's been doing it his whole life.",
-      "options": ["a leopard can't change its spots", "he's under someone's thumb", "he'll break the mould", "success went to his head"],
+      "options": [
+        "a leopard can't change its spots",
+        "he's under someone's thumb",
+        "he'll break the mould",
+        "success went to his head"
+      ],
       "correct": "a leopard can't change its spots",
       "explanation": "'A leopard can't change its spots' means a person cannot fundamentally change their nature."
     },
     {
       "type": "multiple-choice",
       "sentence": "Her design approach ___ in the architecture world, challenging every conventional principle.",
-      "options": ["broke the mould", "went to her head", "gave her a taste of her own medicine", "stuck to her guns"],
+      "options": [
+        "broke the mould",
+        "went to her head",
+        "gave her a taste of her own medicine",
+        "stuck to her guns"
+      ],
       "correct": "broke the mould",
       "explanation": "'Break the mould' means to do something in a completely original or unprecedented way."
     },
     {
       "type": "multiple-choice",
       "sentence": "Everyone in the department knows he's completely ___ – he won't make a single decision without her approval.",
-      "options": ["under her thumb", "breaking the mould", "sticking to his guns", "giving her a taste of her own medicine"],
+      "options": [
+        "under her thumb",
+        "breaking the mould",
+        "sticking to his guns",
+        "giving her a taste of her own medicine"
+      ],
       "correct": "under her thumb",
       "explanation": "'Under sb's thumb' means completely controlled or dominated by someone else."
     }
@@ -119,7 +149,21 @@
         },
         {
           "speaker": "Leon",
-          "text": "Hmm. I'm not sure I believe it. You know what they say – [a leopard can't change its spots|a leopard can't change its spots]."
+          "text": "Hmm. I'm not sure I believe it. You know what they say – [a leopard can't change its spots|a leopard can't change its spots].",
+          "explanationContent": {
+            "whyCorrect": "'A leopard can't change its spots' means a person cannot fundamentally change their nature.",
+            "vocabularyFocus": "*a leopard can't change its spots* — A person cannot change their fundamental character, nature, or habits, no matter how hard they try.",
+            "sentenceBreakdown": "Hmm. I'm not sure I believe it. You know what they say – a leopard can't change its spots.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a leopard can't change its spots* (*a leopard can't change its spots*).",
+            "wrongOptions": {
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used sceptically or pessimistically about someone who has repeatedly failed to change. It implies the person's behaviour is deeply ingrained."
+          }
         },
         {
           "speaker": "Nadia",
@@ -127,19 +171,75 @@
         },
         {
           "speaker": "Leon",
-          "text": "True. And to be fair, he really [broke the mould|break the mould] when he left the corporate world. Nobody expected that."
+          "text": "True. And to be fair, he really [broke the mould|break the mould] when he left the corporate world. Nobody expected that.",
+          "explanationContent": {
+            "whyCorrect": "'Break the mould' means to do something in a completely original or unprecedented way.",
+            "vocabularyFocus": "*break the mould* — To do something in a completely new and different way; to be original or different from what is usual or expected.",
+            "sentenceBreakdown": "True. And to be fair, he really broke the mould when he left the corporate world. Nobody expected that.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *break the mould* (*break the mould*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to praise originality or innovation. Suggests that the previous 'mould' (template) no longer applies. American spelling: 'break the mold'."
+          }
         },
         {
           "speaker": "Nadia",
-          "text": "Exactly. He used to be [under the company's thumb|under sb's thumb] completely – never challenged anything."
+          "text": "Exactly. He used to be [under the company's thumb|under sb's thumb] completely – never challenged anything.",
+          "explanationContent": {
+            "whyCorrect": "*under sb's thumb* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*under sb's thumb* — Completely controlled or dominated by someone else; having no independence of action or thought.",
+            "sentenceBreakdown": "Exactly. He used to be under the company's thumb completely – never challenged anything.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *under sb's thumb* (*under sb's thumb*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually has a negative connotation – the person under the thumb lacks autonomy. Often used in relationship or workplace contexts."
+          }
         },
         {
           "speaker": "Leon",
-          "text": "And now he's writing articles criticising the industry and really [sticking to his guns|stick to your guns] despite the backlash."
+          "text": "And now he's writing articles criticising the industry and really [sticking to his guns|stick to your guns] despite the backlash.",
+          "explanationContent": {
+            "whyCorrect": "*stick to your guns* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*stick to your guns* — To maintain your opinion or position despite pressure or opposition; to refuse to give in.",
+            "sentenceBreakdown": "And now he's writing articles criticising the industry and really sticking to his guns despite the backlash.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *stick to your guns* (*stick to your guns*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can be admirable (showing conviction) or stubborn (refusing to listen), depending on context. Pay attention to tone."
+          }
         },
         {
           "speaker": "Nadia",
-          "text": "Let's hope the attention doesn't [go to his head|go to your head]. That was always his weakness before."
+          "text": "Let's hope the attention doesn't [go to his head|go to your head]. That was always his weakness before.",
+          "explanationContent": {
+            "whyCorrect": "'Go to your head' means that success makes someone arrogant or overly proud.",
+            "vocabularyFocus": "*go to your head* — To make someone feel too proud or arrogant as a result of success or praise; to lose humility.",
+            "sentenceBreakdown": "Let's hope the attention doesn't go to his head. That was always his weakness before.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *go to your head* (*go to your head*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Also used for alcohol: 'That wine is going to my head'. In the context of success or praise, it always implies the person has become arrogant or overly confident."
+          }
         },
         {
           "speaker": "Leon",
@@ -156,7 +256,21 @@
         },
         {
           "speaker": "Finn",
-          "text": "It's infuriating. But I intend to [stick to my guns|stick to your guns] and present it again next quarter."
+          "text": "It's infuriating. But I intend to [stick to my guns|stick to your guns] and present it again next quarter.",
+          "explanationContent": {
+            "whyCorrect": "*stick to your guns* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*stick to your guns* — To maintain your opinion or position despite pressure or opposition; to refuse to give in.",
+            "sentenceBreakdown": "It's infuriating. But I intend to stick to my guns and present it again next quarter.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *stick to your guns* (*stick to your guns*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can be admirable (showing conviction) or stubborn (refusing to listen), depending on context. Pay attention to tone."
+          }
         },
         {
           "speaker": "Yuki",
@@ -164,19 +278,75 @@
         },
         {
           "speaker": "Finn",
-          "text": "Sometimes I think they need [a taste of their own medicine|give sb a taste of their own medicine]. Maybe then they'd understand the impact."
+          "text": "Sometimes I think they need [a taste of their own medicine|give sb a taste of their own medicine]. Maybe then they'd understand the impact.",
+          "explanationContent": {
+            "whyCorrect": "*give sb a taste of their own medicine* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*give sb a taste of their own medicine* — To treat someone in the same unpleasant way that they have been treating others.",
+            "sentenceBreakdown": "Sometimes I think they need a taste of their own medicine. Maybe then they'd understand the impact.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *give sb a taste of their own medicine* (*give sb a taste of their own medicine*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Implies a sense of justice or revenge. The 'medicine' is unpleasant – it's the same bad treatment being returned."
+          }
         },
         {
           "speaker": "Yuki",
-          "text": "Half the team is completely [under his thumb|under sb's thumb]. It's not a healthy dynamic."
+          "text": "Half the team is completely [under his thumb|under sb's thumb]. It's not a healthy dynamic.",
+          "explanationContent": {
+            "whyCorrect": "*under sb's thumb* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*under sb's thumb* — Completely controlled or dominated by someone else; having no independence of action or thought.",
+            "sentenceBreakdown": "Half the team is completely under his thumb. It's not a healthy dynamic.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *under sb's thumb* (*under sb's thumb*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually has a negative connotation – the person under the thumb lacks autonomy. Often used in relationship or workplace contexts."
+          }
         },
         {
           "speaker": "Finn",
-          "text": "I know. But I won't be. The promotion last year seems to have [gone to his head|go to your head]."
+          "text": "I know. But I won't be. The promotion last year seems to have [gone to his head|go to your head].",
+          "explanationContent": {
+            "whyCorrect": "*go to your head* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*go to your head* — To make someone feel too proud or arrogant as a result of success or praise; to lose humility.",
+            "sentenceBreakdown": "I know. But I won't be. The promotion last year seems to have gone to his head.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *go to your head* (*go to your head*).",
+            "wrongOptions": {
+              "a leopard can't change its spots": "*a leopard can't change its spots* (A person cannot change their fundamental character, nature, or habits, no matter how hard they try) does not match the meaning needed in this line.",
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Also used for alcohol: 'That wine is going to my head'. In the context of success or praise, it always implies the person has become arrogant or overly confident."
+          }
         },
         {
           "speaker": "Yuki",
-          "text": "He used to be great – but [a leopard can't change its spots|a leopard can't change its spots], I suppose, once power is involved."
+          "text": "He used to be great – but [a leopard can't change its spots|a leopard can't change its spots], I suppose, once power is involved.",
+          "explanationContent": {
+            "whyCorrect": "'A leopard can't change its spots' means a person cannot fundamentally change their nature.",
+            "vocabularyFocus": "*a leopard can't change its spots* — A person cannot change their fundamental character, nature, or habits, no matter how hard they try.",
+            "sentenceBreakdown": "He used to be great – but a leopard can't change its spots, I suppose, once power is involved.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *a leopard can't change its spots* (*a leopard can't change its spots*).",
+            "wrongOptions": {
+              "stick to your guns": "*stick to your guns* (To maintain your opinion or position despite pressure or opposition) does not match the meaning needed in this line.",
+              "under sb's thumb": "*under sb's thumb* (Completely controlled or dominated by someone else) does not match the meaning needed in this line.",
+              "break the mould": "*break the mould* (To do something in a completely new and different way) does not match the meaning needed in this line.",
+              "give sb a taste of their own medicine": "*give sb a taste of their own medicine* (To treat someone in the same unpleasant way that they have been treating others) does not match the meaning needed in this line.",
+              "go to your head": "*go to your head* (To make someone feel too proud or arrogant as a result of success or praise) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used sceptically or pessimistically about someone who has repeatedly failed to change. It implies the person's behaviour is deeply ingrained."
+          }
         }
       ]
     }
@@ -186,25 +356,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "a leopard can't change its spots", "meaning": "people cannot change their fundamental character"},
-        {"idiom": "stick to your guns", "meaning": "maintain your position despite opposition"},
-        {"idiom": "under sb's thumb", "meaning": "completely controlled by another person"},
-        {"idiom": "break the mould", "meaning": "do something original, departing from convention"},
-        {"idiom": "give sb a taste of their own medicine", "meaning": "treat someone the same unpleasant way they treat others"},
-        {"idiom": "go to your head", "meaning": "make someone arrogant as a result of success"}
+        {
+          "idiom": "a leopard can't change its spots",
+          "meaning": "people cannot change their fundamental character"
+        },
+        {
+          "idiom": "stick to your guns",
+          "meaning": "maintain your position despite opposition"
+        },
+        {
+          "idiom": "under sb's thumb",
+          "meaning": "completely controlled by another person"
+        },
+        {
+          "idiom": "break the mould",
+          "meaning": "do something original, departing from convention"
+        },
+        {
+          "idiom": "give sb a taste of their own medicine",
+          "meaning": "treat someone the same unpleasant way they treat others"
+        },
+        {
+          "idiom": "go to your head",
+          "meaning": "make someone arrogant as a result of success"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "The young architect's work completely ___ – nothing like it had been seen before.",
-      "options": ["broke the mould", "stuck to her guns", "went to her head", "gave them a taste of their own medicine"],
+      "options": [
+        "broke the mould",
+        "stuck to her guns",
+        "went to her head",
+        "gave them a taste of their own medicine"
+      ],
       "correct": "broke the mould",
       "explanation": "'Break the mould' means to be truly original and depart completely from convention."
     },
     {
       "type": "complete-sentence",
       "sentence": "I warned him that the sudden celebrity would ___, and sure enough, he became insufferable.",
-      "options": ["go to his head", "give him a taste of his own medicine", "break the mould", "stick to his guns"],
+      "options": [
+        "go to his head",
+        "give him a taste of his own medicine",
+        "break the mould",
+        "stick to his guns"
+      ],
       "correct": "go to his head",
       "explanation": "'Go to your head' means to become arrogant or overly proud because of success or praise."
     },

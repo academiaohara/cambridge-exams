@@ -4925,7 +4925,9 @@
           result.correct = norm.matchesAnyAccepted(given, p);
         }
         result.lifeLoss = result.correct ? 0 : 1;
-        if ((screen.formatType === 'free_text_gap_fill' ||
+        if (screen.formatType === 'conversation_gap_fill' && p.explanationContent) {
+          result.explanation = '__structured__';
+        } else if ((screen.formatType === 'free_text_gap_fill' ||
              screen.sourceFormatType === 'conjugation_gap_fill' ||
              screen.formatType === 'preselected_verb_gap_fill' ||
              screen.formatType === 'word_bank_gap_fill') &&

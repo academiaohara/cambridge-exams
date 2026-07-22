@@ -1021,3 +1021,76 @@ if (!String(gecOpts.context).includes('~~was~~')) {
 console.log('PASS guided_error_choice explanation builder');
 console.log('Sections:', gecKeys.join(' → '));
 
+// conversation_gap_fill (phrasal-verbs lesson data — renderer-only format)
+const pvLesson = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/phrasal-verbs/B2/lesson-1.json'), 'utf8'));
+const pvConv = pvLesson.conversations[0];
+const pvGapLine = pvConv.lines[0];
+const pvBracket = (pvGapLine.text.match(/\[([^\]]+)\]/) || [])[1];
+const pvSep = pvBracket.indexOf('|');
+const pvAnswer = pvBracket.slice(pvSep + 1).trim();
+const pvDisplay = pvBracket.slice(0, pvSep).trim();
+
+const convGapScreen = {
+  formatType: 'conversation_gap_fill',
+  payload: {
+    conversationTitle: pvConv.title,
+    lines: [
+      {
+        mode: 'gap',
+        before: "I can't believe I ",
+        after: ' the news about the promotion!',
+        isActive: true
+      },
+      {
+        mode: 'plain',
+        text: 'What happened? How did it come out?',
+        isActive: false
+      }
+    ],
+    activeLineIndex: 0,
+    answer: pvAnswer,
+    explanationContent: pvGapLine.explanationContent
+  }
+};
+
+const convGapWrong = {
+  correct: false,
+  userAnswer: 'come out',
+  correctAnswer: pvAnswer
+};
+
+if (!pvGapLine.explanationContent) {
+  console.error('FAIL conversation_gap_fill lesson data missing explanationContent — run migrate script');
+  process.exit(1);
+}
+
+const convGapOpts = SunePlayExplanation.buildExplainOpts(convGapScreen, convGapWrong);
+const convGapKeys = convGapOpts.sections.map((s) => s.key);
+const convGapExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const convGapMissing = convGapExpected.filter((k) => !convGapKeys.includes(k));
+
+if (convGapMissing.length) {
+  console.error('FAIL conversation_gap_fill missing sections:', convGapMissing.join(', '));
+  process.exit(1);
+}
+
+const convGapMistake = convGapOpts.sections.find((s) => s.key === 'commonMistake');
+if (!convGapMistake || !String(convGapMistake.text).includes('come out')) {
+  console.error('FAIL conversation_gap_fill should personalize wrong answer');
+  process.exit(1);
+}
+
+if (!String(convGapOpts.context).includes(pvConv.title)) {
+  console.error('FAIL conversation_gap_fill context should include conversation title');
+  process.exit(1);
+}
+
+const convGapBreakdown = convGapOpts.sections.find((s) => s.key === 'sentenceBreakdown');
+if (!convGapBreakdown || !String(convGapBreakdown.text).includes(pvDisplay)) {
+  console.error('FAIL conversation_gap_fill sentence breakdown should use filled line');
+  process.exit(1);
+}
+
+console.log('PASS conversation_gap_fill explanation builder');
+console.log('Sections:', convGapKeys.join(' → '));
+
