@@ -1675,13 +1675,9 @@ button.sp-vocab-word-card:focus-visible {
   border-radius: 14px;
 }
 
-/* Keep exercise tip visible at the card bottom while explanation is open */
-.sp-practice-main:has(.sp-exercise-card--explanation) .sp-exercise-tip-mount:not([hidden]) {
-  display: block;
-}
-
-.sp-practice-main:has(.sp-exercise-card--explanation):has(.sp-exercise-tip-mount:not([hidden])) .sp-practice-footer {
-  border-top: 1px solid var(--border-light);
+/* Hide exercise tip while in-card explanation is open */
+.sp-practice-main:has(.sp-exercise-card--explanation) .sp-exercise-tip-mount {
+  display: none;
 }
 
 /* When explanation is open, swap green/red feedback chrome for Duo blue */
@@ -4680,10 +4676,10 @@ button.sp-vocab-word-card:focus-visible {
 
 .sp-practice-main .sp-screen .sp-hunt-correction .sp-hunt-correction-row .sp-text-input,
 .sp-hunt-correction .sp-hunt-correction-row .sp-text-input {
-  flex: 1 1 0;
-  min-width: 0;
-  width: auto;
-  max-width: none;
+  flex: 0 1 14rem;
+  min-width: 8rem;
+  width: 14rem;
+  max-width: min(14rem, 100%);
   margin: 0;
 }
 

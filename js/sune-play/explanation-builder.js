@@ -1479,15 +1479,33 @@ var SunePlayExplanation = (function() {
     return remaining + ' errors left — keep hunting for unnatural verb forms.';
   }
 
+  function getHuntBaseTip(screen) {
+    var p = (screen && screen.payload) || {};
+    var items = p.items || [];
+    var firstContent = items[0] && items[0].explanationContent;
+    if (firstContent && firstContent.usefulTip) return firstContent.usefulTip;
+    var content = getContent(p);
+    return (content && content.usefulTip) || '';
+  }
+
+  function getHuntRemainingCount(screen) {
+    var p = (screen && screen.payload) || {};
+    var total = (p.counter && p.counter.target) || p.errorCount || (p.items && p.items.length) || 0;
+    if (!total) return null;
+    var fixed = 0;
+    if (screen._huntState && screen._huntState.fixed) {
+      fixed = Object.keys(screen._huntState.fixed).length;
+    }
+    return Math.max(0, total - fixed);
+  }
+
   function getHuntExerciseTip(screen, result) {
-    if (!screen || !result) return '';
+    if (!screen) return '';
     var p = screen.payload || {};
     var activeItem = null;
     var content = null;
     var wrongPhrase = '';
-    var remaining = result.errorsRemaining;
-    var total = result.errorsTotal ||
-      (p.counter && p.counter.target) || p.errorCount || (p.items && p.items.length) || 0;
+    var total = (p.counter && p.counter.target) || p.errorCount || (p.items && p.items.length) || 0;
 
     if (screen.formatType === 'passage_error_hunt_counter') {
       activeItem = getHuntActiveItem(p, result) || {};
@@ -1499,6 +1517,30 @@ var SunePlayExplanation = (function() {
     } else {
       return '';
     }
+
+    if (!result) {
+      var baseTip = getHuntBaseTip(screen);
+      var initialRemaining = getHuntRemainingCount(screen);
+      if (initialRemaining == null) initialRemaining = total;
+      var initialProgress = huntCounterProgressTip(initialRemaining, total);
+      if (screen.formatType === 'passage_error_hunt_counter') {
+        if (baseTip && initialProgress) return (baseTip + ' ' + initialProgress).trim();
+        return baseTip || initialProgress || 'Mark one wrong phrase at a time, then write its correction.';
+      }
+      return baseTip || 'Tap the wrong verb phrase, then write the correction.';
+    }
+
+    var remaining = result.errorsRemaining;
+    if (screen.formatType === 'passage_error_hunt_counter') {
+      activeItem = getHuntActiveItem(p, result) || {};
+      content = activeItem.explanationContent || null;
+      wrongPhrase = activeItem.wrong || '';
+    } else if (screen.formatType === 'passage_error_hunt_single') {
+      content = getContent(p);
+      wrongPhrase = p.wrong || '';
+    }
+
+    total = result.errorsTotal || total;
 
     var huntPhase = result.huntPhase;
     if (!huntPhase) {
