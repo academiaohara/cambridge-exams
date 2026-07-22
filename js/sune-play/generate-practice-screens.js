@@ -48,6 +48,25 @@
     }
   }
 
+  function buildGuidedErrorChoicePayload(exercise) {
+    var items = exercise.items || [];
+    return {
+      items: items.map(function(it) {
+        return {
+          id: it.id,
+          wrong: it.wrong || it.targetPhrase || '',
+          options: it.options || [],
+          answer: it.answer,
+          acceptedAnswers: it.acceptedAnswers || (it.answer ? [it.answer] : []),
+          sentence: it.sentence || '',
+          explanationContent: it.explanationContent || null,
+          explanation: it.explanation || ''
+        };
+      }),
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    };
+  }
+
   function buildCounterHuntPayload(exercise) {
     var items = exercise.items || [];
     return {
@@ -1299,6 +1318,24 @@
         return;
       }
 
+      if (rule.screenMode === 'all_guided_items_single_screen') {
+        var gecFormat = rule.formatType || 'guided_error_choice';
+        var gecPayload = buildGuidedErrorChoicePayload(exercise);
+        var gecItemCount = (gecPayload.items || []).length || 1;
+        var gecScreenId = buildScreenId(nodeId, exerciseId, null, gecFormat);
+        screens.push(buildScreen(unit, node, gecFormat, gecPayload, {
+          screenId: gecScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: gecFormat,
+          maxLifeLossPerScreen: rule.maxLifeLossPerScreen != null
+            ? rule.maxLifeLossPerScreen
+            : gecItemCount
+        }));
+        return;
+      }
+
       var sourceItemIds = rule.sourceItemIds || [];
       if (shouldCombineWordBankItems(exercise, sourceItemIds, rule.formatType)) {
         var seqPayload = buildWordBankSequentialPayload(exercise, sourceItemIds);
@@ -1400,6 +1437,7 @@
     buildSyncedGapFillPayload: buildSyncedGapFillPayload,
     buildCommaPlacementPayload: buildCommaPlacementPayload,
     parseCommaAfterTokenIndexes: parseCommaAfterTokenIndexes,
-    buildWordBankTickPayload: buildWordBankTickPayload
+    buildWordBankTickPayload: buildWordBankTickPayload,
+    buildGuidedErrorChoicePayload: buildGuidedErrorChoicePayload
   };
 })();

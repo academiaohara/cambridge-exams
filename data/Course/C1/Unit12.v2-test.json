@@ -63,6 +63,19 @@
           "studentAction": "multi_select_toggle",
           "evaluationTrigger": "check_button"
         }
+      },
+      {
+        "formatType": "guided_error_choice",
+        "displayName": "Choose the correct form",
+        "defaultLives": 3,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "guided_error_options",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
       }
     ],
     "globalRules": {
@@ -88,6 +101,26 @@
           "sourceExerciseId": "c1-u12-test-ex-wbt",
           "formatType": "word_bank_tick",
           "screenMode": "all_words_single_screen"
+        }
+      ]
+    },
+    {
+      "nodeId": "c1-u12-test-node-2",
+      "title": "Guided error choice test",
+      "shortTitle": "GEC test",
+      "focus": [
+        "guided_error_choice"
+      ],
+      "lives": 3,
+      "passCondition": {
+        "minimumCorrectScreens": 1,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u12-test-ex-gec",
+          "formatType": "guided_error_choice",
+          "screenMode": "all_guided_items_single_screen"
         }
       ]
     }
@@ -120,7 +153,8 @@
   "contentBanks": {
     "source": "embedded_exercises",
     "requiredExerciseIds": [
-      "c1-u12-test-ex-wbt"
+      "c1-u12-test-ex-wbt",
+      "c1-u12-test-ex-gec"
     ],
     "exercises": [
       {
@@ -195,6 +229,65 @@
           },
           "commonMistake": "Do not select words that already form adjectives with -al/-ic/-ful instead of -y, or that have no standard -y adjective.",
           "usefulTip": "Try saying the -y adjective aloud — if it sounds natural (juicy, spotty), the base word belongs."
+        }
+      },
+      {
+        "id": "c1-u12-test-ex-gec",
+        "type": "exercise",
+        "exerciseType": "guided_error_choice",
+        "exerciseTypeName": "Choose the correct form",
+        "title": "Guided error correction",
+        "instructions": "Each line shows a wrong form. Choose the correct replacement.",
+        "studentInstruction": "Choose the correct form for each error.",
+        "items": [
+          {
+            "id": "c1-u12-gec-1",
+            "formatType": "guided_error_choice",
+            "wrong": "was",
+            "sentence": "If I were you, I would accept the offer.",
+            "options": [
+              "was",
+              "were",
+              "is"
+            ],
+            "answer": "were",
+            "explanationContent": {
+              "whyCorrect": "Replace *was* with *were* — Use were after if in formal English — If I were you.",
+              "grammarFocus": "After *if* in formal English, use *were* for the subjunctive — *If I were you*.",
+              "wrongOptions": {
+                "was": "*was* is not the correct replacement for *was*.",
+                "is": "*is* is not the correct replacement for *was*."
+              },
+              "commonMistake": "Do not keep *was* — the correct form here is *were*.",
+              "usefulTip": "Read the full sentence in your head with each option before you tap Check."
+            }
+          },
+          {
+            "id": "c1-u12-gec-2",
+            "formatType": "guided_error_choice",
+            "wrong": "a",
+            "sentence": "It was an unexpected result.",
+            "options": [
+              "a",
+              "an",
+              "the"
+            ],
+            "answer": "an",
+            "explanationContent": {
+              "whyCorrect": "Replace *a* with *an* — Use an before a vowel sound — an unexpected.",
+              "grammarFocus": "Use *an* before vowel sounds and *a* before consonant sounds.",
+              "wrongOptions": {
+                "a": "*a* is not the correct replacement for *a*.",
+                "the": "*the* is not the correct replacement for *a*."
+              },
+              "commonMistake": "Do not keep *a* — the correct form here is *an*.",
+              "usefulTip": "Read the full sentence in your head with each option before you tap Check."
+            }
+          }
+        ],
+        "interaction": {
+          "formatType": "guided_error_choice",
+          "screenMode": "all_guided_items_single_screen"
         }
       }
     ]

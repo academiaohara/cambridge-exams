@@ -5120,11 +5120,17 @@
         result.userAnswer = guidedVal;
         result.correctAnswer = gItem ? getItemCorrection(gItem) : '';
         result.correct = gItem ? norm.answersMatch(guidedVal, gItem.answer) : false;
-        result.explanation = (gItem && gItem.explanation) || '';
+        result.guidedItemIdx = gIdx;
+        result.activeItem = gItem || null;
         result.lifeLoss = result.correct ? 0 : 1;
         result.partial = result.correct && (gIdx + 1 < gItems.length);
         result.allDone = result.correct && (gIdx + 1 >= gItems.length);
         result._guidedProgress = result.correct;
+        if (gItem && gItem.explanationContent) {
+          result.explanation = '__structured__';
+        } else {
+          result.explanation = (gItem && gItem.explanation) || '';
+        }
         break;
       }
       case 'stative_sorting': {
