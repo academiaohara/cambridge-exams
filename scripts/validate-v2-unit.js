@@ -43,6 +43,18 @@ function warn(file, msg) {
   return { file: file, level: 'warn', message: msg };
 }
 
+function isPassageHuntExercise(exercise) {
+  var ft = exercise.exerciseType || exercise.interaction?.formatType;
+  return ft === 'passage_error_hunt_single' || ft === 'passage_error_hunt_counter';
+}
+
+function getExerciseItemSlots(exercise) {
+  if (isPassageHuntExercise(exercise)) {
+    return exercise.errors || exercise.items || [];
+  }
+  return exercise.items || [];
+}
+
 function validateExercise(file, exercise) {
   var issues = [];
   if (!exercise.id) issues.push(error(file, 'Exercise missing id'));
@@ -88,7 +100,28 @@ function validateExercise(file, exercise) {
     }
   }
 
-  if (ft === 'column_matching' && !(exercise.items || []).length) {
+  if (ft === 'passage_error_hunt_counter' || ft === 'passage_error_hunt_single') {
+    if (!exercise.passage) {
+      issues.push(error(file, ft + ' ' + exercise.id + ' missing passage'));
+    }
+    var huntErrors = getExerciseItemSlots(exercise);
+    if (!huntErrors.length) {
+      issues.push(error(file, ft + ' ' + exercise.id + ' missing errors[]'));
+    }
+    if (exercise.items && exercise.items.length && exercise.errors && exercise.errors.length) {
+      issues.push(warn(file, ft + ' ' + exercise.id + ' has both errors[] and items[] — prefer errors[] only'));
+    }
+    huntErrors.forEach(function(item, idx) {
+      if (item.errorIndex == null) {
+        issues.push(warn(file, ft + ' error ' + (item.id || idx) + ' missing errorIndex'));
+      }
+      if (!(item.wrong || item.targetPhrase)) {
+        issues.push(error(file, ft + ' error ' + (item.id || idx) + ' missing wrong/targetPhrase'));
+      }
+    });
+  }
+
+  if (ft === 'column_matching' && !getExerciseItemSlots(exercise).length) {
     issues.push(error(file, 'column_matching ' + exercise.id + ' missing items'));
   }
 
@@ -100,7 +133,7 @@ function validateExercise(file, exercise) {
     issues.push(error(file, 'crossword_clues ' + exercise.id + ' missing items'));
   }
 
-  (exercise.items || []).forEach(function(item, idx) {
+  getExerciseItemSlots(exercise).forEach(function(item, idx) {
     if (!item.id) issues.push(error(file, 'Item ' + idx + ' in ' + exercise.id + ' missing id'));
     if (item.answer == null && !(item.acceptedAnswers && item.acceptedAnswers.length)) {
       issues.push(warn(file, 'Item ' + (item.id || idx) + ' has no answer/acceptedAnswers'));
@@ -379,8 +412,11 @@ function validateUnitFile(filePath) {
       if (rule.sourceItemIds) {
         var ex = exerciseById[rule.sourceExerciseId];
         rule.sourceItemIds.forEach(function(itemId) {
-          if (ex && ex.items && !ex.items.find(function(it) { return it.id === itemId; })) {
-            issues.push(error(rel, 'Unknown itemId ' + itemId + ' in exercise ' + rule.sourceExerciseId));
+          if (ex) {
+            var slots = getExerciseItemSlots(ex);
+            if (slots.length && !slots.find(function(it) { return it.id === itemId; })) {
+              issues.push(error(rel, 'Unknown itemId ' + itemId + ' in exercise ' + rule.sourceExerciseId));
+            }
           }
         });
       }

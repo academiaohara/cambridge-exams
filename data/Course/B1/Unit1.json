@@ -2339,7 +2339,23 @@
         "grammarFocus": "present simple, present continuous and stative verbs in context",
         "hideCorrectInline": true,
         "passage": "One hobby I am enjoying a lot is painting. First, you are choosing the colours you want to use. It is looking easy at first, but good painting takes practice. You are needing patience and creativity. When people make mistakes, they sometimes are throwing their work away and starting again. You are improving by practising regularly. Some people are preferring photography, but I am not believing it's more interesting than painting. Right now, I paint a picture for my bedroom. My sister practises the guitar in the next room, so it's quite noisy!",
-        "items": [
+        "errorCount": 10,
+        "counter": {
+          "target": 10,
+          "initialValue": 0,
+          "labelTemplate": "{found}/10 errors found",
+          "showProgressBar": true,
+          "showRemainingCount": true
+        },
+        "interaction": {
+          "formatType": "passage_error_hunt_counter",
+          "tapAction": "mark_or_unmark_wrong_conjugation",
+          "correctTap": "increment_counter_after_continue",
+          "wrongTap": "lose_life",
+          "correctionFlow": "mark_then_correct_each_error_in_turn",
+          "hideCorrectAnswersUntilAllErrorsFound": true
+        },
+        "errors": [
           {
             "id": "b1-u1-ex6-1",
             "wrong": "am enjoying",
@@ -2353,7 +2369,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *am enjoying* — Enjoy describes a general feeling here, so the present simple is better.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "Stative verbs like *enjoy* take the present simple — use *enjoy*, not *am enjoying*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *am enjoying*.",
                 "enjoy": "Check the corrected form — the answer is *enjoy*."
@@ -2376,7 +2392,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *are choosing* — This sentence gives a general instruction, not an action happening now.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "General instructions use the present simple — *choose*, not *are choosing*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *are choosing*.",
                 "choose": "Check the corrected form — the answer is *choose*."
@@ -2399,7 +2415,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *is looking* — Look means seem here, so it is stative. Use the present simple.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "When *look* means *seem*, it is stative — use *looks*, not *is looking*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *is looking*.",
                 "looks": "Check the corrected form — the answer is *looks*."
@@ -2422,7 +2438,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *are needing* — Need is normally stative, so use the present simple.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "*Need* is normally stative — use *need*, not *are needing*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *are needing*.",
                 "need": "Check the corrected form — the answer is *need*."
@@ -2445,7 +2461,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *are throwing* — Sometimes describes a general habit, so use the present simple.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "*Sometimes* describes a general habit — use the present simple *throw*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *are throwing*.",
                 "throw": "Check the corrected form — the answer is *throw*."
@@ -2468,7 +2484,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *are improving* — This is a general statement about how people get better, so use the present simple.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "This is a general statement about progress — use *improve*, not *are improving*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *are improving*.",
                 "improve": "Check the corrected form — the answer is *improve*."
@@ -2491,7 +2507,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *are preferring* — Prefer is normally stative, so use the present simple.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "*Prefer* is stative — use *prefer*, not *are preferring*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *are preferring*.",
                 "prefer": "Check the corrected form — the answer is *prefer*."
@@ -2515,7 +2531,7 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *am not believing* — Believe is normally stative, so use the present simple negative.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "*Believe* is stative — use *don't believe*, not *am not believing*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *am not believing*.",
                 "don't believe": "Check the corrected form — the answer is *don't believe*."
@@ -2539,14 +2555,14 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *paint* — Right now signals an action happening at this moment, so use the present continuous.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "*Right now* signals an action in progress — use *am painting*, not *paint*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *paint*.",
                 "am painting": "Check the corrected form — the answer is *am painting*."
               },
               "commonMistake": "After you mark *paint*, write *am painting* — check tense and whether the verb is stative or active.",
-              "usefulTip": "Read each verb phrase aloud — if it describes a state or feeling, it is probably not continuous.",
-              "sentenceBreakdown": "One hobby I am enjoying a lot is am paintinging. First, you are choosing the colours you want to use. It is looking easy at first, but good painting takes practice. You are needing patience and creativity. When people make mistakes, they sometimes are throwing their work away and starting again. You are improving by practising regularly. Some people are preferring photography, but I am not believing it's more interesting than painting. Right now, I paint a picture for my bedroom. My sister practises the guitar in the next room, so it's quite noisy!"
+              "usefulTip": "Time markers like *right now* often need the present continuous.",
+              "sentenceBreakdown": "One hobby I am enjoying a lot is painting. First, you are choosing the colours you want to use. It is looking easy at first, but good painting takes practice. You are needing patience and creativity. When people make mistakes, they sometimes are throwing their work away and starting again. You are improving by practising regularly. Some people are preferring photography, but I am not believing it's more interesting than painting. Right now, I am painting a picture for my bedroom. My sister practises the guitar in the next room, so it's quite noisy!"
             }
           },
           {
@@ -2563,33 +2579,17 @@
             "answerMode": "mark_phrase_then_correct",
             "explanationContent": {
               "whyCorrect": "The error is *practises* — The sister is playing in the next room now, so the present continuous is the natural form.",
-              "grammarFocus": "Stative verbs usually take the present simple, not the continuous — e.g. I enjoy, not I am enjoying.",
+              "grammarFocus": "The sister is playing now — use *is practising*, not *practises*.",
               "wrongOptions": {
                 "wrong_tap": "That phrase is fine — look for an unnatural verb form like *practises*.",
                 "is practising": "Check the corrected form — the answer is *is practising*."
               },
               "commonMistake": "After you mark *practises*, write *is practising* — check tense and whether the verb is stative or active.",
-              "usefulTip": "Read each verb phrase aloud — if it describes a state or feeling, it is probably not continuous.",
+              "usefulTip": "If someone is doing something at this moment, use the present continuous.",
               "sentenceBreakdown": "One hobby I am enjoying a lot is painting. First, you are choosing the colours you want to use. It is looking easy at first, but good painting takes practice. You are needing patience and creativity. When people make mistakes, they sometimes are throwing their work away and starting again. You are improving by practising regularly. Some people are preferring photography, but I am not believing it's more interesting than painting. Right now, I paint a picture for my bedroom. My sister is practising the guitar in the next room, so it's quite noisy!"
             }
           }
-        ],
-        "errorCount": 10,
-        "counter": {
-          "target": 10,
-          "initialValue": 0,
-          "labelTemplate": "{found}/10 errors found",
-          "showProgressBar": true,
-          "showRemainingCount": true
-        },
-        "interaction": {
-          "formatType": "passage_error_hunt_counter",
-          "tapAction": "mark_or_unmark_wrong_conjugation",
-          "correctTap": "increment_counter_after_continue",
-          "wrongTap": "lose_life",
-          "correctionFlow": "mark_then_correct_each_error_in_turn",
-          "hideCorrectAnswersUntilAllErrorsFound": true
-        }
+        ]
       }
     ],
     "implementationNote": "Original exercise items used as content bank for practice screen generation."

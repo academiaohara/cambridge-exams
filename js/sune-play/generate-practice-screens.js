@@ -26,8 +26,24 @@
     });
   }
 
+  function isPassageHuntExercise(exercise) {
+    var ft = exercise.exerciseType || (exercise.interaction && exercise.interaction.formatType);
+    return ft === 'passage_error_hunt_single' || ft === 'passage_error_hunt_counter';
+  }
+
+  function getHuntErrors(exercise) {
+    if (!exercise) return [];
+    if (isPassageHuntExercise(exercise)) {
+      return exercise.errors || exercise.items || [];
+    }
+    return exercise.items || [];
+  }
+
   function findItem(exercise, itemId) {
-    return (exercise.items || []).find(function(it) {
+    var slots = isPassageHuntExercise(exercise)
+      ? (exercise.errors || exercise.items || [])
+      : (exercise.items || []);
+    return slots.find(function(it) {
       return it.id === itemId;
     });
   }
@@ -68,7 +84,7 @@
   }
 
   function buildCounterHuntPayload(exercise) {
-    var items = exercise.items || [];
+    var items = getHuntErrors(exercise);
     return {
       passage: exercise.passage || '',
       items: items.map(function(it) {
@@ -1110,7 +1126,7 @@
           explanation: item.explanation || '',
           instruction: exercise.studentInstruction || exercise.instructions || '',
           itemId: item.id,
-          allErrors: (exercise.items || []).map(function(it) {
+          allErrors: getHuntErrors(exercise).map(function(it) {
             return { id: it.id, wrong: it.targetPhrase || it.wrong, fixed: false };
           }),
           hideCorrectInline: exercise.hideCorrectInline !== false
