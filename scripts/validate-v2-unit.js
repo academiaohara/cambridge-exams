@@ -107,6 +107,19 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'meaning_contrast item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'mc_4_option' || ft === 'mc_4_option') {
+      if (!(item.options && item.options.length >= 2)) {
+        issues.push(error(file, 'mc_4_option item ' + (item.id || idx) + ' needs options[]'));
+      }
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'mc_4_option item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (ft === 'synced_gap_fill') {
       if (!(item.sentences && item.sentences.length >= 2)) {
         issues.push(error(file, 'synced_gap_fill item ' + (item.id || idx) + ' needs sentences[]'));

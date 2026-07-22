@@ -4623,26 +4623,45 @@
           var wrongCount = 0;
           var userParts = [];
           var correctParts = [];
+          var mcGapResults = [];
           gaps.forEach(function(gap) {
             var selected = selections[gap.gapNumber] || '';
+            var gapCorrect = selected.toUpperCase() === String(gap.answer || '').toUpperCase();
             userParts.push(getMcOptionText(gap.options, selected));
             correctParts.push(getMcOptionText(gap.options, gap.answer));
-            if (selected.toUpperCase() !== String(gap.answer || '').toUpperCase()) wrongCount++;
+            if (!gapCorrect) wrongCount++;
+            mcGapResults.push({
+              gapNumber: gap.gapNumber,
+              userLetter: selected,
+              userText: getMcOptionText(gap.options, selected),
+              correctLetter: gap.answer,
+              correctText: getMcOptionText(gap.options, gap.answer),
+              correct: gapCorrect
+            });
           });
           result.userAnswer = userParts.join(' / ');
           result.correctAnswer = correctParts.join(' / ');
           result.correct = wrongCount === 0;
           result.lifeLoss = wrongCount;
+          result.mcGapResults = mcGapResults;
+          if (gaps.some(function(gap) { return gap.explanationContent; })) {
+            result.explanation = '__structured__';
+          }
           markMcGapResults(root, gaps, selections);
         } else {
           var mcSel = root.querySelector('.sp-option-btn--selected');
           var letter = mcSel ? (mcSel.getAttribute('data-letter') || mcSel.getAttribute('data-value') || '') : '';
+          result.userLetter = letter;
           result.userAnswer = getMcOptionText(p.options, letter);
           result.correctAnswer = norm.getMcCorrectAnswerDisplay
             ? norm.getMcCorrectAnswerDisplay(p)
             : (p.answerText || getMcOptionText(p.options, p.answer));
           result.correct = letter.toUpperCase() === String(p.answer || '').toUpperCase();
           result.lifeLoss = result.correct ? 0 : 1;
+          if (p.explanationContent) {
+            result.explanationContent = p.explanationContent;
+            result.explanation = '__structured__';
+          }
         }
         break;
       }
