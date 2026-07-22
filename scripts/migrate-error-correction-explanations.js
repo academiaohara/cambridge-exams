@@ -9,6 +9,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildErrorCorrectionExplanationContent } from './lib/mistake-explanation-content.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -187,19 +188,21 @@ function inferWhyWithoutLegacy(item) {
 
 function buildExplanationContent(item) {
   const legacy = item.explanation || '';
-  const whyCorrect = legacy ? expandLegacyWhy(item, legacy) : inferWhyWithoutLegacy(item);
-  const grammarFocus = ensurePeriod(detectGrammarFocus(item, legacy));
-  const wrongOptions = buildWrongOptions(item, legacy);
-  const commonMistake = ensurePeriod(buildCommonMistake(item, legacy));
-  const usefulTip = ensurePeriod(buildUsefulTip(item));
-
-  return {
-    whyCorrect,
-    grammarFocus,
-    wrongOptions,
-    commonMistake,
-    usefulTip
+  const base = legacy ? {
+    whyCorrect: expandLegacyWhy(item, legacy),
+    grammarFocus: ensurePeriod(detectGrammarFocus(item, legacy)),
+    wrongOptions: buildWrongOptions(item, legacy),
+    commonMistake: ensurePeriod(buildCommonMistake(item, legacy)),
+    usefulTip: ensurePeriod(buildUsefulTip(item))
+  } : {
+    whyCorrect: inferWhyWithoutLegacy(item),
+    grammarFocus: ensurePeriod(detectGrammarFocus(item, '')),
+    wrongOptions: buildWrongOptions(item, ''),
+    commonMistake: ensurePeriod(buildCommonMistake(item, '')),
+    usefulTip: ensurePeriod(buildUsefulTip(item))
   };
+
+  return buildErrorCorrectionExplanationContent(item, base);
 }
 
 function migrateItem(item, exercise) {
@@ -208,6 +211,8 @@ function migrateItem(item, exercise) {
 
   if (!item.explanationContent) {
     item.explanationContent = buildExplanationContent(item);
+  } else {
+    item.explanationContent = buildErrorCorrectionExplanationContent(item, item.explanationContent);
   }
   delete item.explanation;
   return true;

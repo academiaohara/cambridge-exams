@@ -958,14 +958,17 @@
               "My uncle said he would buy a new car."
             ],
             "explanationContent": {
-              "whyCorrect": "Will, so the sentence is \"My uncle said he would buy a new car.\".",
-              "sentenceBreakdown": "Prompt: My uncle said he will buy a new car. → My uncle said he would buy a new car.",
+              "whyCorrect": "Will.",
+              "sentenceBreakdown": "My uncle said he would buy a new car.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Will": "Check how \"Will\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "My uncle said he <mistake>will</mistake> buy a new car.",
+              "fix": "\"will\" → \"would\" (swap the incorrect word)",
+              "correctedSentence": "My uncle said he would buy a new car."
             }
           },
           {
@@ -982,15 +985,18 @@
               "She said they had to study for the test."
             ],
             "explanationContent": {
-              "whyCorrect": "Have to, so the sentence is \"She said they had to study for the test.\".",
-              "sentenceBreakdown": "Prompt: She said they have to study for the test. → She said they had to study for the test.",
+              "whyCorrect": "Have to.",
+              "sentenceBreakdown": "She said they had to study for the test.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Have": "Check how \"Have\" changes in the target sentence — tense or word form may shift.",
                 "to": "Check how \"to\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "She said they <mistake>have</mistake> to study for the test.",
+              "fix": "\"have\" → \"had\" (swap the incorrect word)",
+              "correctedSentence": "She said they had to study for the test."
             }
           },
           {
@@ -1007,14 +1013,17 @@
               "Chris said he could play the piano."
             ],
             "explanationContent": {
-              "whyCorrect": "Can, so the sentence is \"Chris said he could play the piano.\".",
-              "sentenceBreakdown": "Prompt: Chris said he can play the piano. → Chris said he could play the piano.",
+              "whyCorrect": "Can.",
+              "sentenceBreakdown": "Chris said he could play the piano.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Can": "Check how \"Can\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "Chris said he <mistake>can</mistake> play the piano.",
+              "fix": "\"can\" → \"could\" (swap the incorrect word)",
+              "correctedSentence": "Chris said he could play the piano."
             }
           },
           {
@@ -1031,15 +1040,18 @@
               "Laura said she had been working all afternoon."
             ],
             "explanationContent": {
-              "whyCorrect": "Ongoing past, so the sentence is \"Laura said she had been working all afternoon.\".",
-              "sentenceBreakdown": "Prompt: Laura said she is working all afternoon. → Laura said she had been working all afternoon.",
+              "whyCorrect": "Ongoing past.",
+              "sentenceBreakdown": "Laura said she had been working all afternoon.",
               "grammarFocus": "Past perfect shows the earlier of two past actions — use had + past participle before the later past event.",
               "wrongOptions": {
                 "Ongoing": "Check how \"Ongoing\" changes in the target sentence — tense or word form may shift.",
                 "past": "Check how \"past\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "Laura said she <mistake>is</mistake> working all afternoon.",
+              "fix": "\"is\" → \"had been\" (change the verb form)",
+              "correctedSentence": "Laura said she had been working all afternoon."
             }
           },
           {
@@ -1056,15 +1068,18 @@
               "They said they were going to move house."
             ],
             "explanationContent": {
-              "whyCorrect": "Are going to, so the sentence is \"They said they were going to move house.\".",
-              "sentenceBreakdown": "Prompt: They said they are going to move house. → They said they were going to move house.",
+              "whyCorrect": "Are going to.",
+              "sentenceBreakdown": "They said they were going to move house.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Are": "Check how \"Are\" changes in the target sentence — tense or word form may shift.",
                 "going": "Check how \"going\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "They said they <mistake>are</mistake> going to move house.",
+              "fix": "\"are\" → \"were\" (change the verb form)",
+              "correctedSentence": "They said they were going to move house."
             }
           },
           {
@@ -1081,14 +1096,17 @@
               "Sophie said she might call me the next day."
             ],
             "explanationContent": {
-              "whyCorrect": "May, so the sentence is \"Sophie said she might call me the next day.\".",
-              "sentenceBreakdown": "Prompt: Sophie said she may call me tomorrow. → Sophie said she might call me the next day.",
+              "whyCorrect": "May.",
+              "sentenceBreakdown": "Sophie said she might call me the next day.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "May": "Check how \"May\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "Sophie said she <mistake>may call me tomorrow.</mistake>",
+              "fix": "\"may call me tomorrow.\" → \"might call me the next day.\" (use the correct quantifier or article)",
+              "correctedSentence": "Sophie said she might call me the next day."
             }
           }
         ]
@@ -1121,14 +1139,17 @@
               "He said he was hungry."
             ],
             "explanationContent": {
-              "whyCorrect": "Present, so the sentence is \"He said he was hungry.\".",
-              "sentenceBreakdown": "Prompt: He said he is hungry. → He said he was hungry.",
+              "whyCorrect": "Present.",
+              "sentenceBreakdown": "He said he was hungry.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Present": "Check how \"Present\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "He said he <mistake>is</mistake> hungry.",
+              "fix": "\"is\" → \"was\" (change the verb form)",
+              "correctedSentence": "He said he was hungry."
             }
           },
           {
@@ -1145,14 +1166,17 @@
               "They said they would come later."
             ],
             "explanationContent": {
-              "whyCorrect": "Will, so the sentence is \"They said they would come later.\".",
-              "sentenceBreakdown": "Prompt: They said they will come later. → They said they would come later.",
+              "whyCorrect": "Will.",
+              "sentenceBreakdown": "They said they would come later.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Will": "Check how \"Will\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "They said they <mistake>will</mistake> come later.",
+              "fix": "\"will\" → \"would\" (swap the incorrect word)",
+              "correctedSentence": "They said they would come later."
             }
           },
           {
@@ -1169,14 +1193,17 @@
               "Anna said she could speak Italian."
             ],
             "explanationContent": {
-              "whyCorrect": "Can, so the sentence is \"Anna said she could speak Italian.\".",
-              "sentenceBreakdown": "Prompt: Anna said she can speak Italian. → Anna said she could speak Italian.",
+              "whyCorrect": "Can.",
+              "sentenceBreakdown": "Anna said she could speak Italian.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Can": "Check how \"Can\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "Anna said she <mistake>can</mistake> speak Italian.",
+              "fix": "\"can\" → \"could\" (swap the incorrect word)",
+              "correctedSentence": "Anna said she could speak Italian."
             }
           },
           {
@@ -1193,15 +1220,18 @@
               "My teacher said we had to finish the exercise."
             ],
             "explanationContent": {
-              "whyCorrect": "Have to, so the sentence is \"My teacher said we had to finish the exercise.\".",
-              "sentenceBreakdown": "Prompt: My teacher said we have to finish the exercise. → My teacher said we had to finish the exercise.",
+              "whyCorrect": "Have to.",
+              "sentenceBreakdown": "My teacher said we had to finish the exercise.",
               "grammarFocus": "Build a grammatically complete sentence that matches the prompt: My teacher said we had to finish the exercise.",
               "wrongOptions": {
                 "Have": "Check how \"Have\" changes in the target sentence — tense or word form may shift.",
                 "to": "Check how \"to\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "My teacher said we <mistake>have</mistake> to finish the exercise.",
+              "fix": "\"have\" → \"had\" (swap the incorrect word)",
+              "correctedSentence": "My teacher said we had to finish the exercise."
             }
           },
           {
@@ -1218,14 +1248,17 @@
               "She said she would arrive the next day."
             ],
             "explanationContent": {
-              "whyCorrect": "Tomorrow, so the sentence is \"She said she would arrive the next day.\".",
-              "sentenceBreakdown": "Prompt: She said she would arrive tomorrow. → She said she would arrive the next day.",
+              "whyCorrect": "Tomorrow.",
+              "sentenceBreakdown": "She said she would arrive the next day.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {
                 "Tomorrow": "Check how \"Tomorrow\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "She said she would arrive <mistake>tomorrow.</mistake>",
+              "fix": "\"tomorrow.\" → \"the next day.\" (use the correct quantifier or article)",
+              "correctedSentence": "She said she would arrive the next day."
             }
           },
           {
@@ -1242,15 +1275,18 @@
               "Ben said he had done his homework already."
             ],
             "explanationContent": {
-              "whyCorrect": "Present perfect, so the sentence is \"Ben said he had done his homework already.\".",
-              "sentenceBreakdown": "Prompt: Ben said he has done his homework already. → Ben said he had done his homework already.",
+              "whyCorrect": "Present perfect.",
+              "sentenceBreakdown": "Ben said he had done his homework already.",
               "grammarFocus": "Present perfect links past actions to now — has/have + past participle; yet goes at the end of negatives.",
               "wrongOptions": {
                 "Present": "Check how \"Present\" changes in the target sentence — tense or word form may shift.",
                 "perfect": "Check how \"perfect\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "Ben said he <mistake>has</mistake> done his homework already.",
+              "fix": "\"has\" → \"had\" (swap the incorrect word)",
+              "correctedSentence": "Ben said he had done his homework already."
             }
           }
         ]
@@ -1279,13 +1315,17 @@
               "was"
             ],
             "explanationContent": {
-              "whyCorrect": "The error is in \"is\" — backshift, so the correction is \"was\".",
+              "whyCorrect": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "grammarFocus": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "wrongOptions": {
                 "is": "\"is\" is the highlighted error — use \"was\" here instead."
               },
               "commonMistake": "The error is in \"is\", not elsewhere — replace it with \"was\" and read the full sentence to check it sounds natural.",
-              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word."
+              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word.",
+              "question": "Maria said she <mistake>is</mistake> tired after school.",
+              "fix": "\"is\" → \"was\" (change the verb form)",
+              "correctedSentence": "Maria said she was tired after school.",
+              "sentenceBreakdown": "Maria said she was tired after school."
             }
           },
           {
@@ -1298,13 +1338,17 @@
               "would"
             ],
             "explanationContent": {
-              "whyCorrect": "The error is in \"will\" — will, so the correction is \"would\".",
+              "whyCorrect": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "grammarFocus": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "wrongOptions": {
                 "will": "\"will\" is the highlighted error — use \"would\" here instead."
               },
               "commonMistake": "The error is in \"will\", not elsewhere — replace it with \"would\" and read the full sentence to check it sounds natural.",
-              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word."
+              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word.",
+              "question": "They said they <mistake>will</mistake> help us.",
+              "fix": "\"will\" → \"would\" (swap the incorrect word)",
+              "correctedSentence": "They said they would help us.",
+              "sentenceBreakdown": "They said they would help us."
             }
           },
           {
@@ -1317,13 +1361,17 @@
               "could"
             ],
             "explanationContent": {
-              "whyCorrect": "The error is in \"can\" — can, so the correction is \"could\".",
+              "whyCorrect": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "grammarFocus": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "wrongOptions": {
                 "can": "\"can\" is the highlighted error — use \"could\" here instead."
               },
               "commonMistake": "The error is in \"can\", not elsewhere — replace it with \"could\" and read the full sentence to check it sounds natural.",
-              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word."
+              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word.",
+              "question": "He said he <mistake>can</mistake> drive very well.",
+              "fix": "\"can\" → \"could\" (swap the incorrect word)",
+              "correctedSentence": "He said he could drive very well.",
+              "sentenceBreakdown": "He said he could drive very well."
             }
           },
           {
@@ -1336,13 +1384,17 @@
               "had to"
             ],
             "explanationContent": {
-              "whyCorrect": "The error is in \"have to\" — have to, so the correction is \"had to\".",
+              "whyCorrect": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "grammarFocus": "The highlighted word breaks the collocation or meaning — choose the word that fits naturally in this context.",
               "wrongOptions": {
                 "have to": "\"have to\" is the highlighted error — use \"had to\" here instead."
               },
               "commonMistake": "The error is in \"have to\", not elsewhere — replace it with \"had to\" and read the full sentence to check it sounds natural.",
-              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word."
+              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word.",
+              "question": "Dad said we <mistake>have to</mistake> be quiet.",
+              "fix": "\"have to\" → \"had to\" (apply the correction shown)",
+              "correctedSentence": "Dad said we had to be quiet.",
+              "sentenceBreakdown": "Dad said we had to be quiet."
             }
           },
           {
@@ -1355,13 +1407,17 @@
               "the day before"
             ],
             "explanationContent": {
-              "whyCorrect": "The error is in \"yesterday\" — yesterday, so the correction is \"the day before\".",
+              "whyCorrect": "Articles show whether a noun is specific (the), new and countable (a/an), or general.",
               "grammarFocus": "Articles show whether a noun is specific (the), new and countable (a/an), or general.",
               "wrongOptions": {
                 "yesterday": "\"yesterday\" is the highlighted error — use \"the day before\" here instead."
               },
               "commonMistake": "The error is in \"yesterday\", not elsewhere — replace it with \"the day before\" and read the full sentence to check it sounds natural.",
-              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word."
+              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word.",
+              "question": "She said she saw him <mistake>yesterday</mistake>.",
+              "fix": "\"yesterday\" → \"the day before\" (use the correct quantifier or article)",
+              "correctedSentence": "She said she saw him the day before.",
+              "sentenceBreakdown": "She said she saw him the day before."
             }
           },
           {
@@ -1374,13 +1430,17 @@
               "had"
             ],
             "explanationContent": {
-              "whyCorrect": "The error is in \"has\" — present perfect, so the correction is \"had\".",
+              "whyCorrect": "Check tense and subject–verb agreement — the highlighted form must match the time clues in the sentence.",
               "grammarFocus": "Check tense and subject–verb agreement — the highlighted form must match the time clues in the sentence.",
               "wrongOptions": {
                 "has": "\"has\" is the highlighted error — use \"had\" here instead."
               },
               "commonMistake": "The error is in \"has\", not elsewhere — replace it with \"had\" and read the full sentence to check it sounds natural.",
-              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word."
+              "usefulTip": "Read the sentence with your correction inserted — if it still sounds wrong, you may have changed the wrong word.",
+              "question": "Tom said he <mistake>has</mistake> finished dinner.",
+              "fix": "\"has\" → \"had\" (swap the incorrect word)",
+              "correctedSentence": "Tom said he had finished dinner.",
+              "sentenceBreakdown": "Tom said he had finished dinner."
             }
           }
         ]

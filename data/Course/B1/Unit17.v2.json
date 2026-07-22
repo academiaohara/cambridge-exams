@@ -1045,15 +1045,18 @@
               "That's the girl who won the art prize."
             ],
             "explanationContent": {
-              "whyCorrect": "Remove extra she after who, so the sentence is \"That's the girl who won the art prize.\".",
-              "sentenceBreakdown": "Prompt: That's the girl who she won the art prize. → That's the girl who won the art prize.",
+              "whyCorrect": "Remove extra she after who.",
+              "sentenceBreakdown": "That's the girl who won the art prize.",
               "grammarFocus": "Relative clauses add detail — choose who/which/that/whose to match the noun they describe.",
               "wrongOptions": {
                 "Remove": "Check how \"Remove\" changes in the target sentence — tense or word form may shift.",
                 "extra": "Check how \"extra\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "That's the girl who <mistake>she</mistake> won the art prize.",
+              "fix": "\"she\" → \"That's the girl who won the art prize.\" (use the correct quantifier or article)",
+              "correctedSentence": "That's the girl who won the art prize."
             }
           },
           {
@@ -1070,15 +1073,18 @@
               "This is the bag which I bought yesterday."
             ],
             "explanationContent": {
-              "whyCorrect": "Remove extra it after which, so the sentence is \"This is the bag which I bought yesterday.\".",
-              "sentenceBreakdown": "Prompt: This is the bag which I bought it yesterday. → This is the bag which I bought yesterday.",
+              "whyCorrect": "Remove extra it after which.",
+              "sentenceBreakdown": "This is the bag which I bought yesterday.",
               "grammarFocus": "Relative clauses add detail — choose who/which/that/whose to match the noun they describe.",
               "wrongOptions": {
                 "Remove": "Check how \"Remove\" changes in the target sentence — tense or word form may shift.",
                 "extra": "Check how \"extra\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "This is the bag which I bought <mistake>it</mistake> yesterday.",
+              "fix": "\"it\" → \"This is the bag which I bought yesterday.\" (use the correct quantifier or article)",
+              "correctedSentence": "This is the bag which I bought yesterday."
             }
           },
           {
@@ -1095,15 +1101,18 @@
               "My cousin, who works in Berlin, is coming home."
             ],
             "explanationContent": {
-              "whyCorrect": "Remove extra he in non-defining clause, so the sentence is \"My cousin, who works in Berlin, is coming home.\".",
-              "sentenceBreakdown": "Prompt: My cousin, who he works in Berlin, is coming home. → My cousin, who works in Berlin, is coming home.",
+              "whyCorrect": "Remove extra he in non-defining clause.",
+              "sentenceBreakdown": "My cousin, who works in Berlin, is coming home.",
               "grammarFocus": "Relative clauses add detail — choose who/which/that/whose to match the noun they describe.",
               "wrongOptions": {
                 "Remove": "Check how \"Remove\" changes in the target sentence — tense or word form may shift.",
                 "extra": "Check how \"extra\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "My cousin, who <mistake>he</mistake> works in Berlin, is coming home.",
+              "fix": "\"he\" → \"My cousin, who works in Berlin, is coming home.\" (apply the correction shown)",
+              "correctedSentence": "My cousin, who works in Berlin, is coming home."
             }
           },
           {
@@ -1120,14 +1129,17 @@
               "The film which we watched was really funny."
             ],
             "explanationContent": {
-              "whyCorrect": "Film = thing, so the sentence is \"The film which we watched was really funny.\".",
-              "sentenceBreakdown": "Prompt: The film who we watched was really funny. → The film which we watched was really funny.",
+              "whyCorrect": "Film = thing.",
+              "sentenceBreakdown": "The film which we watched was really funny.",
               "grammarFocus": "Relative clauses add detail — choose who/which/that/whose to match the noun they describe.",
               "wrongOptions": {
                 "Film": "Check how \"Film\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "The film <mistake>who</mistake> we watched was really funny.",
+              "fix": "\"who\" → \"which\" (swap the incorrect word)",
+              "correctedSentence": "The film which we watched was really funny."
             }
           },
           {
@@ -1145,11 +1157,14 @@
             ],
             "explanationContent": {
               "whyCorrect": "Remove extra there after where.",
-              "sentenceBreakdown": "Prompt: The house where I lived there is near the river. → The house where I lived is near the river.",
+              "sentenceBreakdown": "The house where I lived is near the river.",
               "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
               "wrongOptions": {},
               "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "The house where I lived <mistake>there</mistake> is near the river.",
+              "fix": "\"there\" → \"The house where I lived is near the river.\" (use the correct quantifier or article)",
+              "correctedSentence": "The house where I lived is near the river."
             }
           },
           {
@@ -1166,14 +1181,17 @@
               "My neighbour who plays the drums is very noisy."
             ],
             "explanationContent": {
-              "whyCorrect": "Neighbour = person, so the sentence is \"My neighbour who plays the drums is very noisy.\".",
-              "sentenceBreakdown": "Prompt: My neighbour that he plays the drums is very noisy. → My neighbour who plays the drums is very noisy.",
+              "whyCorrect": "Neighbour = person.",
+              "sentenceBreakdown": "My neighbour who plays the drums is very noisy.",
               "grammarFocus": "Relative clauses add detail — choose who/which/that/whose to match the noun they describe.",
               "wrongOptions": {
                 "Neighbour": "Check how \"Neighbour\" changes in the target sentence — tense or word form may shift."
               },
               "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
-              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end.",
+              "question": "My neighbour <mistake>that he</mistake> plays the drums is very noisy.",
+              "fix": "\"that he\" → \"who\" (apply the correction shown)",
+              "correctedSentence": "My neighbour who plays the drums is very noisy."
             }
           }
         ]
