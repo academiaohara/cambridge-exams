@@ -930,6 +930,76 @@ var SunePlayExplanation = (function() {
     return lookupWrongOptionNote(content, userAnswer, wordBank);
   }
 
+  function cleanCrosswordClue(clue) {
+    return String(clue || '')
+      .replace(/\.{3,}|…{2,}|_{3,}/g, '___')
+      .replace(/\s*\(\d+\)\s*$/, '')
+      .trim();
+  }
+
+  function crosswordSpellingNote(userAnswer, correctAnswer, letterCount) {
+    var user = String(userAnswer || '').trim();
+    var correct = String(correctAnswer || '').trim();
+    if (!user) return '';
+    var expectedLen = letterCount != null
+      ? letterCount
+      : correct.replace(/\s+/g, '').length;
+    if (expectedLen && user.replace(/\s+/g, '').length !== expectedLen) {
+      return 'Check the letter count — the answer has ' + expectedLen + ' letters.';
+    }
+    if (user.toLowerCase() === correct.toLowerCase() && user !== correct) {
+      return 'The letters are right but check capitalization or spelling of the full word.';
+    }
+    if (Math.abs(user.length - correct.length) === 1) {
+      return 'One letter too many or too few — use the letter count in the clue.';
+    }
+    return 'Compare your spelling with the definition — one letter may be wrong.';
+  }
+
+  function buildCrosswordClues(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, null);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (!wrongNote) wrongNote = crosswordSpellingNote(userAnswer, correctAnswer, p.letterCount);
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+      if (isWrong) {
+        sections.push({ key: 'commonMistake', text: crosswordSpellingNote(userAnswer, correctAnswer, p.letterCount) });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'crossword_clues',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildVerbBankTwoStep(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1211,6 +1281,11 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'verb_bank_two_step') {
       return gapSentenceDisplay(p.sentence || p.blankSentence || '');
     }
+    if (screen.formatType === 'crossword_clues') {
+      var cwClue = cleanCrosswordClue(p.clue || '');
+      if (p.clueNumber != null && cwClue) return String(p.clueNumber) + '. ' + cwClue;
+      return cwClue;
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1250,6 +1325,8 @@ var SunePlayExplanation = (function() {
         return buildFullSentenceWrite(screen, result);
       case 'verb_bank_two_step':
         return buildVerbBankTwoStep(screen, result);
+      case 'crossword_clues':
+        return buildCrosswordClues(screen, result);
       default:
         return buildLegacy(screen, result);
     }
