@@ -1645,6 +1645,15 @@ button.sp-vocab-word-card:focus-visible {
   border-radius: 14px;
 }
 
+/* Hide exercise tip while in-card explanation is open (tip is shown inside explanation) */
+.sp-practice-main:has(.sp-exercise-card--explanation) .sp-exercise-tip-mount {
+  display: none;
+}
+
+.sp-practice-main:has(.sp-exercise-card--explanation):has(.sp-exercise-tip-mount:not([hidden])) .sp-practice-footer {
+  border-top: 1px solid var(--border-light);
+}
+
 /* When explanation is open, swap green/red feedback chrome for Duo blue */
 .sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-main--correct,
 .sp-practice-session:has(.sp-exercise-card--explanation) .sp-practice-main--incorrect {
