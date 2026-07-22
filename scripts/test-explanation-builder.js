@@ -211,3 +211,42 @@ if (gapMissing.length) {
 
 console.log('PASS free_text_gap_fill explanation builder');
 console.log('Sections:', gapKeys.join(' → '));
+
+// conjugation_gap_fill (rendered as free_text_gap_fill with sourceFormatType)
+const conjItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit4.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u4-ex-a').items[0];
+
+const conjScreen = {
+  formatType: 'free_text_gap_fill',
+  sourceFormatType: 'conjugation_gap_fill',
+  payload: {
+    sentence: conjItem.sentence,
+    answer: conjItem.answer,
+    completedSentence: conjItem.sentence.replace(/\.{3,}|…{2,}|_{3,}/, conjItem.answer),
+    explanationContent: conjItem.explanationContent
+  }
+};
+
+const conjWrong = {
+  correct: false,
+  correctAnswer: 'have finished',
+  userAnswer: 'finished'
+};
+
+const conjOpts = SunePlayExplanation.buildExplainOpts(conjScreen, conjWrong);
+const conjKeys = conjOpts.sections.map((s) => s.key);
+const conjExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const conjMissing = conjExpected.filter((k) => !conjKeys.includes(k));
+
+if (conjMissing.length) {
+  console.error('FAIL conjugation_gap_fill missing sections:', conjMissing.join(', '));
+  process.exit(1);
+}
+
+if (conjOpts.formatType !== 'conjugation_gap_fill') {
+  console.error('FAIL conjugation_gap_fill formatType should be conjugation_gap_fill');
+  process.exit(1);
+}
+
+console.log('PASS conjugation_gap_fill explanation builder');
+console.log('Sections:', conjKeys.join(' → '));
