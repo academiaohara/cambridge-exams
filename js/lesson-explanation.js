@@ -35,12 +35,33 @@ var LessonExplanation = (function() {
     return d.innerHTML;
   }
 
+  function formatBracketMarkers(text) {
+    var raw = String(text || '');
+    if (!/\[start\d+\]/.test(raw)) return esc(raw);
+
+    var result = '';
+    var re = /\[start(\d+)\]([\s\S]*?)\[end\1\]/g;
+    var lastIdx = 0;
+    var match;
+    while ((match = re.exec(raw)) !== null) {
+      result += esc(raw.slice(lastIdx, match.index));
+      result += '<mark class="sp-snippet-highlight">' + esc(match[2]) + '</mark>';
+      lastIdx = match.index + match[0].length;
+    }
+    result += esc(raw.slice(lastIdx));
+    return result.replace(/\[start\d+\]|\[end\d+\]/g, '');
+  }
+
   function formatBody(text) {
     if (!text) return '';
+    var withMarkers = formatBracketMarkers(text);
+    if (withMarkers !== esc(text)) return withMarkers.replace(/\n/g, '<br>');
+
     return esc(text)
       .replace(/&lt;mistake&gt;([\s\S]*?)&lt;\/mistake&gt;/g,
         '<mark class="sp-error-mark"><strong>$1</strong></mark>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>')
       .replace(/\n/g, '<br>');
   }
 

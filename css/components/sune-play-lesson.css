@@ -1077,6 +1077,20 @@ button.sp-vocab-word-card:focus-visible {
   justify-content: flex-start;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--hunt) {
+  align-items: stretch;
+  max-width: min(100%, 52rem);
+}
+
+.sp-practice-main .sp-exercise-card:has(.sp-screen--hunt) .sp-screen--hunt {
+  flex: 1;
+  min-height: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+  align-self: stretch;
+  margin-inline: 0;
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--conversation-gap) {
   overflow: hidden;
   align-items: stretch;
@@ -1249,6 +1263,22 @@ button.sp-vocab-word-card:focus-visible {
   margin: 0;
   font-size: clamp(0.82rem, 0.5rem + 0.9vw, 0.95rem);
   line-height: 1.45;
+}
+
+.sp-explanation-emphasis {
+  font-weight: 700;
+  color: var(--sp-duo-blue-dark, #1e40af);
+  background: var(--sp-duo-blue-light, #eff6ff);
+  padding: 0 0.2em;
+  border-radius: 4px;
+}
+
+.sp-snippet-highlight {
+  font-weight: 700;
+  color: var(--sp-duo-blue-dark, #1e40af);
+  background: var(--sp-duo-blue-light, #eff6ff);
+  padding: 0 0.15em;
+  border-radius: 4px;
 }
 
 .sp-practice-footer-actions {
@@ -1645,9 +1675,9 @@ button.sp-vocab-word-card:focus-visible {
   border-radius: 14px;
 }
 
-/* Hide exercise tip while in-card explanation is open (tip is shown inside explanation) */
-.sp-practice-main:has(.sp-exercise-card--explanation) .sp-exercise-tip-mount {
-  display: none;
+/* Keep exercise tip visible at the card bottom while explanation is open */
+.sp-practice-main:has(.sp-exercise-card--explanation) .sp-exercise-tip-mount:not([hidden]) {
+  display: block;
 }
 
 .sp-practice-main:has(.sp-exercise-card--explanation):has(.sp-exercise-tip-mount:not([hidden])) .sp-practice-footer {
@@ -4295,11 +4325,15 @@ button.sp-vocab-word-card:focus-visible {
   color: var(--sp-primary, var(--primary));
   margin-bottom: 12px;
   text-align: left;
+  width: 100%;
+  align-self: stretch;
 }
 
 .sp-screen--hunt .sp-passage-card {
   width: 100%;
   box-sizing: border-box;
+  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.2rem);
+  line-height: 1.7;
 }
 
 .sp-passage-card {

@@ -1327,13 +1327,56 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function findPhraseIndex(text, phrase) {
+    var haystack = String(text || '');
+    var needle = String(phrase || '').trim();
+    if (!haystack || !needle) return -1;
+    return haystack.toLowerCase().indexOf(needle.toLowerCase());
+  }
+
+  function extractSentenceContaining(text, phrase) {
+    var passage = String(text || '').trim();
+    var target = String(phrase || '').trim();
+    if (!passage) return '';
+    var idx = findPhraseIndex(passage, target);
+    if (idx === -1) return passage;
+
+    var start = passage.lastIndexOf('.', idx);
+    start = start === -1 ? 0 : start + 1;
+    while (start < passage.length && /\s/.test(passage.charAt(start))) start++;
+
+    var end = passage.indexOf('.', idx + target.length);
+    if (end === -1) end = passage.length;
+    else end += 1;
+
+    return passage.slice(start, end).trim();
+  }
+
+  function wrapMarkedSnippet(sentence, phrase, markerNum) {
+    var num = markerNum || 1;
+    var target = String(phrase || '').trim();
+    if (!sentence || !target) return String(sentence || '').trim();
+    var escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var replaced = false;
+    var marked = String(sentence).replace(new RegExp(escaped, 'i'), function(match) {
+      replaced = true;
+      return '[start' + num + ']' + match + '[end' + num + ']';
+    });
+    return replaced ? marked : String(sentence).trim();
+  }
+
+  function buildHuntMarkedSnippet(passage, phrase, markerNum) {
+    return wrapMarkedSnippet(extractSentenceContaining(passage, phrase), phrase, markerNum);
+  }
+
   function buildHuntSentenceBreakdown(passage, wrong, answer) {
-    var text = String(passage || '').trim();
+    var sentence = extractSentenceContaining(passage, wrong);
     var wrongPhrase = String(wrong || '').trim();
     var fix = String(answer || '').trim();
-    if (!text || !wrongPhrase || !fix) return '';
+    if (!sentence || !wrongPhrase || !fix) return '';
     var escaped = wrongPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    return text.replace(new RegExp(escaped, 'i'), fix);
+    var corrected = sentence.replace(new RegExp(escaped, 'i'), fix);
+    return wrapMarkedSnippet(corrected, fix, 1);
   }
 
   function huntWrongTapNote(content, tappedPhrase, wrongPhrase) {
@@ -1392,9 +1435,6 @@ var SunePlayExplanation = (function() {
         var breakdown = content.sentenceBreakdown ||
           buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
         if (breakdown) sections.push({ key: 'sentenceBreakdown', text: breakdown });
-        if (content.usefulTip) {
-          sections.push({ key: 'usefulTip', text: content.usefulTip });
-        }
       } else if (p.explanation) {
         sections.push(whyCorrectSection(p.explanation, isWrong));
         var legacyBreakdown = buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
@@ -1405,7 +1445,7 @@ var SunePlayExplanation = (function() {
     return {
       title: 'Explanation',
       formatType: 'passage_error_hunt_single',
-      context: buildContext(screen),
+      context: buildHuntMarkedSnippet(p.passage, wrongPhrase) || buildContext(screen),
       sections: sections
     };
   }
@@ -1419,6 +1459,54 @@ var SunePlayExplanation = (function() {
       return '1 error left — check another verb tense in the passage.';
     }
     return remaining + ' errors left — keep hunting for unnatural verb forms.';
+  }
+
+  function getHuntExerciseTip(screen, result) {
+    if (!screen || !result) return '';
+    var p = screen.payload || {};
+    var activeItem = null;
+    var content = null;
+    var wrongPhrase = '';
+    var remaining = result.errorsRemaining;
+    var total = result.errorsTotal ||
+      (p.counter && p.counter.target) || p.errorCount || (p.items && p.items.length) || 0;
+
+    if (screen.formatType === 'passage_error_hunt_counter') {
+      activeItem = getHuntActiveItem(p, result) || {};
+      content = activeItem.explanationContent || null;
+      wrongPhrase = activeItem.wrong || '';
+    } else if (screen.formatType === 'passage_error_hunt_single') {
+      content = getContent(p);
+      wrongPhrase = p.wrong || '';
+    } else {
+      return '';
+    }
+
+    var huntPhase = result.huntPhase;
+    if (!huntPhase) {
+      if (result._huntMarkResult) huntPhase = 'mark_success';
+      else if (result._huntFixResult && result.correct) huntPhase = 'correct_fix';
+      else if (result.correct === false) huntPhase = 'wrong_fix';
+      else if (result.correct) huntPhase = 'correct_fix';
+      else huntPhase = 'wrong_tap';
+    }
+
+    if (huntPhase === 'wrong_tap') {
+      return huntCounterProgressTip(remaining, total);
+    }
+    if (huntPhase === 'mark_success') {
+      var markTip = wrongPhrase
+        ? 'Now write the correction for *' + wrongPhrase + '*.'
+        : 'Now write the correction for this error.';
+      var markProgress = huntCounterProgressTip(remaining, total);
+      if (markProgress) markTip += ' ' + markProgress;
+      return markTip.trim();
+    }
+
+    var progressTip = huntCounterProgressTip(result.allDone ? 0 : remaining, total);
+    var baseTip = content && content.usefulTip ? content.usefulTip + ' ' : '';
+    if (progressTip) return (baseTip + progressTip).trim();
+    return (content && content.usefulTip) || '';
   }
 
   function getHuntActiveItem(payload, result) {
@@ -1462,20 +1550,12 @@ var SunePlayExplanation = (function() {
         var tapFocus = pickFocusSection(content);
         if (tapFocus) sections.push(tapFocus);
       }
-      var tapProgress = huntCounterProgressTip(remaining, total);
-      if (tapProgress) sections.push({ key: 'usefulTip', text: tapProgress });
     } else if (huntPhase === 'mark_success') {
       if (content && content.whyCorrect) {
         sections.push(whyCorrectSection(content.whyCorrect, false));
       }
       var markFocus = pickFocusSection(content);
       if (markFocus) sections.push(markFocus);
-      var markTip = wrongPhrase
-        ? 'Now write the correction for *' + wrongPhrase + '*.'
-        : 'Now write the correction for this error.';
-      var markProgress = huntCounterProgressTip(remaining, total);
-      if (markProgress) markTip += ' ' + markProgress;
-      sections.push({ key: 'usefulTip', text: markTip });
     } else {
       var isWrong = result && result.correct === false;
       sections.push({ key: 'correct', text: String(correctAnswer) });
@@ -1497,22 +1577,12 @@ var SunePlayExplanation = (function() {
           buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
         if (breakdown) sections.push({ key: 'sentenceBreakdown', text: breakdown });
       }
-      var progressTip = huntCounterProgressTip(
-        result && result.allDone ? 0 : remaining,
-        total
-      );
-      var baseTip = content && content.usefulTip ? content.usefulTip + ' ' : '';
-      if (progressTip) {
-        sections.push({ key: 'usefulTip', text: (baseTip + progressTip).trim() });
-      } else if (content && content.usefulTip) {
-        sections.push({ key: 'usefulTip', text: content.usefulTip });
-      }
     }
 
     return {
       title: 'Explanation',
       formatType: 'passage_error_hunt_counter',
-      context: buildContext(screen),
+      context: buildHuntMarkedSnippet(p.passage, wrongPhrase) || buildContext(screen),
       sections: sections
     };
   }
@@ -2127,6 +2197,9 @@ var SunePlayExplanation = (function() {
     SECTION_DEFS: SECTION_DEFS,
     hasExplanation: hasExplanation,
     buildExplainOpts: buildExplainOpts,
-    buildContext: buildContext
+    buildContext: buildContext,
+    getHuntExerciseTip: getHuntExerciseTip,
+    buildHuntSentenceBreakdown: buildHuntSentenceBreakdown,
+    buildHuntMarkedSnippet: buildHuntMarkedSnippet
   };
 })();

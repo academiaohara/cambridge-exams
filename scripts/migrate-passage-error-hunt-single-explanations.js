@@ -96,13 +96,44 @@ function buildUsefulTip(exercise) {
   return 'Mark one wrong phrase at a time, then fix it before hunting the next error.';
 }
 
+function extractSentenceContaining(text, phrase) {
+  const passage = String(text || '').trim();
+  const target = String(phrase || '').trim();
+  if (!passage) return '';
+  const idx = passage.toLowerCase().indexOf(target.toLowerCase());
+  if (idx === -1) return passage;
+
+  let start = passage.lastIndexOf('.', idx);
+  start = start === -1 ? 0 : start + 1;
+  while (start < passage.length && /\s/.test(passage.charAt(start))) start++;
+
+  let end = passage.indexOf('.', idx + target.length);
+  if (end === -1) end = passage.length;
+  else end += 1;
+
+  return passage.slice(start, end).trim();
+}
+
+function wrapMarkedSnippet(sentence, phrase, markerNum = 1) {
+  const target = String(phrase || '').trim();
+  if (!sentence || !target) return String(sentence || '').trim();
+  const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let replaced = false;
+  const marked = String(sentence).replace(new RegExp(escaped, 'i'), (match) => {
+    replaced = true;
+    return `[start${markerNum}]${match}[end${markerNum}]`;
+  });
+  return replaced ? marked : String(sentence).trim();
+}
+
 function buildSentenceBreakdown(passage, wrong, answer) {
-  const text = String(passage || '').trim();
+  const sentence = extractSentenceContaining(passage, wrong);
   const wrongPhrase = String(wrong || '').trim();
   const fix = String(answer || '').trim();
-  if (!text || !wrongPhrase || !fix) return '';
+  if (!sentence || !wrongPhrase || !fix) return '';
   const escaped = wrongPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return ensurePeriod(text.replace(new RegExp(escaped, 'i'), fix));
+  const corrected = sentence.replace(new RegExp(escaped, 'i'), fix);
+  return ensurePeriod(wrapMarkedSnippet(corrected, fix, 1));
 }
 
 function buildWrongOptions(item, exercise) {
@@ -134,11 +165,24 @@ function buildExplanationContent(item, exercise) {
 
 function migrateItem(item, exercise) {
   if (!isHuntItem(item)) return false;
-  if (item.explanationContent) return false;
+  const wrong = item.targetPhrase || item.wrong || '';
+  const answer = String(item.answer || '').trim();
+  const passage = exercise.passage || '';
+  let changed = false;
 
-  item.explanationContent = buildExplanationContent(item, exercise);
-  delete item.explanation;
-  return true;
+  if (!item.explanationContent) {
+    item.explanationContent = buildExplanationContent(item, exercise);
+    delete item.explanation;
+    changed = true;
+  } else {
+    const breakdown = buildSentenceBreakdown(passage, wrong, answer);
+    if (breakdown && item.explanationContent.sentenceBreakdown !== breakdown) {
+      item.explanationContent.sentenceBreakdown = breakdown;
+      changed = true;
+    }
+  }
+
+  return changed;
 }
 
 function migrateFile(filePath) {
