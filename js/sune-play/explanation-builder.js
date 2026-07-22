@@ -47,12 +47,23 @@ var SunePlayExplanation = (function() {
     return false;
   }
 
+  function hasPassageGapExplanation(payload) {
+    if (!payload) return false;
+    if (getContent(payload)) return true;
+    if (payload.explanation) return true;
+    return (payload.gaps || []).some(function(gap) {
+      return gap.explanationContent || gap.explanation;
+    });
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option') {
       if (hasMcExplanation(p)) return true;
     } else if (screen && screen.formatType === 'word_bank_gap_fill') {
       if (hasWordBankExplanation(p)) return true;
+    } else if (screen && screen.formatType === 'passage_gap_fill') {
+      if (hasPassageGapExplanation(p)) return true;
     } else {
       if (getContent(p)) return true;
       if (p.explanation) return true;
@@ -334,6 +345,160 @@ var SunePlayExplanation = (function() {
     return sentences[0] || null;
   }
 
+  function extractPassageGapLine(passage, gapNumber, answer) {
+    var lines = String(passage || '').split('\n');
+    var gapToken = '(' + gapNumber + ')';
+    var gapRe = new RegExp('\\.{3,}|…{2,}|_{3,}|…\\(' + gapNumber + '\\)…', 'g');
+    for (var i = 0; i < lines.length; i++) {
+      if (lines[i].indexOf(gapToken) === -1) continue;
+      var line = lines[i]
+        .replace(gapRe, answer || '___')
+        .replace(/\s*\([A-Z][A-Z0-9'-]*\)/g, '')
+        .trim();
+      return gapSentenceDisplay(line);
+    }
+    return gapNumber != null ? 'Gap (' + gapNumber + ')' : '';
+  }
+
+  function findPassageGap(payload, result) {
+    var gaps = (payload && payload.gaps) || [];
+    if (result && result.activeGapNumber != null) {
+      for (var i = 0; i < gaps.length; i++) {
+        if (gaps[i].gapNumber === result.activeGapNumber) return gaps[i];
+      }
+    }
+    if (result && result.correctAnswer) {
+      for (var j = 0; j < gaps.length; j++) {
+        if (String(gaps[j].expectedAnswer) === String(result.correctAnswer)) return gaps[j];
+      }
+    }
+    return gaps[0] || null;
+  }
+
+  function appendPassageGapTeaching(sections, gap, payload, userAnswer, isWrong, options) {
+    options = options || {};
+    var content = gap.explanationContent || null;
+    var gapNum = gap.gapNumber;
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({
+          key: 'whyCorrect',
+          label: options.gapLabel ? 'Gap ' + gapNum : undefined,
+          text: content.whyCorrect
+        });
+      }
+      if (content.wordFormation) {
+        sections.push({
+          key: 'wordFormation',
+          label: options.gapLabel ? 'Gap ' + gapNum : undefined,
+          text: content.wordFormation
+        });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) {
+        sections.push({
+          key: focus.key,
+          label: options.gapLabel ? 'Gap ' + gapNum : undefined,
+          text: focus.text
+        });
+      }
+      if (isWrong) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, null);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) {
+          sections.push({
+            key: 'commonMistake',
+            label: options.gapLabel
+              ? 'Your mistake (gap ' + gapNum + ')'
+              : 'Your mistake',
+            text: wrongNote
+          });
+        }
+      }
+      if (content.usefulTip && !options.gapLabel) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (gap.explanation) {
+      sections.push({
+        key: 'whyCorrect',
+        label: options.gapLabel ? 'Gap ' + gapNum : undefined,
+        text: gap.explanation
+      });
+    }
+
+    var line = extractPassageGapLine(payload.passage, gap.gapNumber, gap.expectedAnswer);
+    if (line && !options.gapLabel) {
+      sections.push({ key: 'sentenceBreakdown', text: line });
+    } else if (line && options.gapLabel) {
+      sections.push({
+        key: 'sentenceBreakdown',
+        label: 'Gap ' + gapNum,
+        text: line
+      });
+    }
+  }
+
+  function buildPassageGapFill(screen, result) {
+    var p = screen.payload || {};
+    var gaps = p.gaps || [];
+
+    if (p.sequentialGaps) {
+      var gap = findPassageGap(p, result);
+      if (!gap) return null;
+      var sections = [];
+      var correctAnswer = gap.expectedAnswer || '';
+      var userAnswer = result && result.userAnswer;
+      var isWrong = result && result.correct === false && userAnswer;
+      var gapLabel = gap.gapNumber != null ? 'Gap (' + gap.gapNumber + ')' : 'Correct answer';
+
+      sections.push({ key: 'correct', label: gapLabel, text: String(correctAnswer) });
+
+      if (isWrong) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+
+      appendPassageGapTeaching(sections, gap, p, userAnswer, isWrong, {});
+
+      return {
+        title: 'Explanation',
+        formatType: 'passage_gap_fill',
+        context: buildContext(screen),
+        sections: sections
+      };
+    }
+
+    var gapResults = (result && result.passageGapResults) || [];
+    var wrongGaps = gapResults.filter(function(gr) { return gr.correct === false; });
+    var allSections = [];
+
+    allSections.push({ key: 'correct', text: String((result && result.correctAnswer) || '') });
+
+    if (wrongGaps.length > 0 && result && result.userAnswer) {
+      allSections.push({ key: 'yourAnswer', text: String(result.userAnswer) });
+    }
+
+    if (wrongGaps.length > 0) {
+      wrongGaps.forEach(function(gr) {
+        var wrongGap = gaps.find(function(g) { return g.gapNumber === gr.gapNumber; }) || {};
+        appendPassageGapTeaching(allSections, wrongGap, p, gr.userAnswer, true, { gapLabel: true });
+      });
+    } else {
+      var firstGap = gaps[0] || {};
+      appendPassageGapTeaching(allSections, firstGap, p, '', false, {});
+      if (!firstGap.explanationContent && !firstGap.explanation && p.explanation) {
+        allSections.push({ key: 'whyCorrect', text: p.explanation });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'passage_gap_fill',
+      context: buildContext(screen),
+      sections: allSections
+    };
+  }
+
   function buildWordBankGapFill(screen, result) {
     var p = screen.payload || {};
     if (p.sequentialSentences && p.sentences && p.sentences.length) {
@@ -585,6 +750,9 @@ var SunePlayExplanation = (function() {
       if (verb) return 'Verb: ' + verb + '\n' + preSent;
       return preSent;
     }
+    if (screen.formatType === 'passage_gap_fill') {
+      return String(p.passage || p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -608,6 +776,8 @@ var SunePlayExplanation = (function() {
         return buildPreselectedVerbGapFill(screen, result);
       case 'word_bank_gap_fill':
         return buildWordBankGapFill(screen, result);
+      case 'passage_gap_fill':
+        return buildPassageGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }

@@ -323,3 +323,41 @@ if (wbMissing.length) {
 
 console.log('PASS word_bank_gap_fill explanation builder');
 console.log('Sections:', wbKeys.join(' → '));
+
+// passage_gap_fill sequential
+const pgUnit = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit4.v2.json'), 'utf8'));
+const pgEx = pgUnit.contentBanks.exercises.find((e) => e.id === 'b1-u4-ex-d');
+const pgGap = pgEx.gapExplanationContent[0];
+
+const pgScreen = {
+  formatType: 'passage_gap_fill',
+  payload: {
+    sequentialGaps: true,
+    passage: pgEx.passage,
+    gaps: [{
+      gapNumber: 1,
+      expectedAnswer: pgEx.answers[0],
+      explanationContent: pgGap
+    }]
+  }
+};
+
+const pgWrong = {
+  correct: false,
+  correctAnswer: pgEx.answers[0],
+  userAnswer: 'did you do',
+  activeGapNumber: 1
+};
+
+const pgOpts = SunePlayExplanation.buildExplainOpts(pgScreen, pgWrong);
+const pgKeys = pgOpts.sections.map((s) => s.key);
+const pgExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const pgMissing = pgExpected.filter((k) => !pgKeys.includes(k));
+
+if (pgMissing.length) {
+  console.error('FAIL passage_gap_fill missing sections:', pgMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS passage_gap_fill explanation builder');
+console.log('Sections:', pgKeys.join(' → '));
