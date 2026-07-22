@@ -66,6 +66,17 @@ function validateExercise(file, exercise) {
     if (!exercise.passage) issues.push(error(file, 'passage_gap_fill ' + exercise.id + ' missing passage'));
     var answers = exercise.answers || [];
     if (!answers.length) issues.push(error(file, 'passage_gap_fill ' + exercise.id + ' missing answers[]'));
+    var gapContent = exercise.gapExplanationContent || [];
+    answers.forEach(function(ans, idx) {
+      if (!gapContent[idx] && !(exercise.explanations && exercise.explanations[idx])) {
+        issues.push(warn(file, 'passage_gap_fill ' + exercise.id + ' gap ' + (idx + 1) + ' missing gapExplanationContent'));
+      } else if (gapContent[idx] && !gapContent[idx].whyCorrect) {
+        issues.push(warn(file, 'passage_gap_fill ' + exercise.id + ' gap ' + (idx + 1) + ' gapExplanationContent missing whyCorrect'));
+      }
+    });
+    if (exercise.explanations && exercise.explanations.length) {
+      issues.push(warn(file, 'passage_gap_fill ' + exercise.id + ' still uses legacy explanations[]'));
+    }
   }
 
   if (ft === 'column_matching' && !(exercise.items || []).length) {

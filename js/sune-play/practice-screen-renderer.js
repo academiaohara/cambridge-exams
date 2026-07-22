@@ -1135,7 +1135,11 @@
       lifeLoss: ok ? 0 : (chargeLife ? 1 : 0),
       userAnswer: given,
       correctAnswer: gap.expectedAnswer,
-      explanation: (gap && gap.explanation) || p.explanation || '',
+      activeGapNumber: gapNumber,
+      explanationContent: (gap && gap.explanationContent) || null,
+      explanation: (gap && gap.explanationContent)
+        ? '__structured__'
+        : ((gap && gap.explanation) || p.explanation || ''),
       _passageGapResult: true
     };
   }
@@ -4834,6 +4838,21 @@
         result.correct = passageGapValues.length === passageGaps.length &&
           norm.matchesPassageGaps(passageGapValues, p);
         result.lifeLoss = result.correct ? 0 : 1;
+        var passageGapResults = [];
+        passageGaps.forEach(function(gap, idx) {
+          var given = passageGapValues[idx] || '';
+          var gapCorrect = isPassageGapAnswerCorrect(given, gap, p);
+          passageGapResults.push({
+            gapNumber: gap.gapNumber,
+            userAnswer: given,
+            correctAnswer: gap.expectedAnswer,
+            correct: gapCorrect
+          });
+        });
+        result.passageGapResults = passageGapResults;
+        if (passageGaps.some(function(gap) { return gap.explanationContent; })) {
+          result.explanation = '__structured__';
+        }
         if (!result.correct) {
           markPassageGapResults(root, passageGaps, passageGapValues, p);
         } else {
