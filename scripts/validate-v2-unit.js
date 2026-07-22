@@ -60,6 +60,14 @@ function validateExercise(file, exercise) {
     if (!exercise.answer) {
       issues.push(error(file, 'word_bank_tick ' + exercise.id + ' missing answer'));
     }
+    if (!exercise.explanationContent && !exercise.explanation) {
+      issues.push(warn(file, 'word_bank_tick ' + exercise.id + ' missing explanationContent'));
+    } else if (exercise.explanationContent && !exercise.explanationContent.whyCorrect) {
+      issues.push(warn(file, 'word_bank_tick ' + exercise.id + ' explanationContent missing whyCorrect'));
+    }
+    if (exercise.explanation) {
+      issues.push(warn(file, 'word_bank_tick ' + exercise.id + ' still uses legacy explanation string'));
+    }
   }
 
   if (ft === 'passage_gap_fill') {

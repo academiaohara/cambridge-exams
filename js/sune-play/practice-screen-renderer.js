@@ -4811,10 +4811,14 @@
       case 'word_bank_tick': {
         var wbtPayload = p;
         var wbtSelected = getWordBankTickSelection(root);
+        result.selectedWords = wbtSelected;
         result.userAnswer = wbtSelected.join(', ');
         result.correctAnswer = (wbtPayload.answerWords || []).join(', ');
         result.correct = norm.wordSetsMatch(wbtSelected, wbtPayload.answerWords, { caseSensitive: false });
         result.lifeLoss = result.correct ? 0 : 1;
+        if (wbtPayload.explanationContent) {
+          result.explanation = '__structured__';
+        }
         markWordBankTickResults(root, wbtPayload, wbtSelected);
         break;
       }

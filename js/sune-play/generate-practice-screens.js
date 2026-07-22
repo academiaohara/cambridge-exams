@@ -862,6 +862,7 @@
         orderInsensitive: true
       },
       instruction: exercise.studentInstruction || exercise.instructions || '',
+      explanationContent: exercise.explanationContent || null,
       explanation: exercise.explanation || ''
     };
   }

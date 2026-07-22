@@ -162,6 +162,39 @@
         "interaction": {
           "formatType": "word_bank_tick",
           "screenMode": "all_words_single_screen"
+        },
+        "explanationContent": {
+          "whyCorrect": "The suffix -y turns many nouns and verbs into adjectives (brain → brainy, scare → scary). Select every base word that forms a natural -y adjective.",
+          "grammarFocus": "Suffix -y often forms adjectives from nouns or verbs — e.g. luck → lucky, shine → shiny. Some words use a different pattern (culture → cultural) or have no common -y form.",
+          "wrongOptions": {
+            "brain": "brain → brainy",
+            "bump": "bump → bumpy",
+            "budget": "forms budgetary, not *budgety* — a different adjective pattern.",
+            "culture": "forms cultural, not *culturey* — use -al instead of -y here.",
+            "curl": "curl → curly",
+            "engine": "has no common -y adjective (*enginey* is not standard English).",
+            "flavour": "flavour → flavoury / flavoursome",
+            "guilt": "guilt → guilty",
+            "hair": "hair → hairy",
+            "haste": "haste → hasty",
+            "juice": "juice → juicy",
+            "luck": "luck → lucky",
+            "lump": "lump → lumpy",
+            "meat": "meat → meaty",
+            "method": "forms methodical, not *methody* — a different adjective pattern.",
+            "milk": "milk → milky",
+            "scare": "scare → scary",
+            "shine": "shine → shiny",
+            "sport": "sport → sporty",
+            "spot": "spot → spotty",
+            "system": "forms systematic, not *systemy* — use -atic instead of -y here.",
+            "taste": "taste → tasty",
+            "waste": "waste → wasteful is more common, but wastey/waste-based -y forms exist in set exercises",
+            "water": "water → watery",
+            "wealth": "wealth → wealthy"
+          },
+          "commonMistake": "Do not select words that already form adjectives with -al/-ic/-ful instead of -y, or that have no standard -y adjective.",
+          "usefulTip": "Try saying the -y adjective aloud — if it sounds natural (juicy, spotty), the base word belongs."
         }
       }
     ]

@@ -959,6 +959,116 @@ var SunePlayExplanation = (function() {
     }).join('; ');
   }
 
+  function parseWordList(value) {
+    if (Array.isArray(value)) {
+      return value.map(function(w) { return String(w).trim(); }).filter(Boolean);
+    }
+    return String(value || '').split(/,\s*/).map(function(w) { return w.trim(); }).filter(Boolean);
+  }
+
+  function wordBankTickSetDiff(selected, answerWords) {
+    var answerMap = {};
+    var selectedMap = {};
+    (answerWords || []).forEach(function(word) {
+      var key = String(word).trim().toLowerCase();
+      if (key) answerMap[key] = String(word).trim();
+    });
+    (selected || []).forEach(function(word) {
+      var key = String(word).trim().toLowerCase();
+      if (key) selectedMap[key] = String(word).trim();
+    });
+    var falsePositives = [];
+    var falseNegatives = [];
+    Object.keys(selectedMap).forEach(function(key) {
+      if (!answerMap[key]) falsePositives.push(selectedMap[key]);
+    });
+    Object.keys(answerMap).forEach(function(key) {
+      if (!selectedMap[key]) falseNegatives.push(answerMap[key]);
+    });
+    return { falsePositives: falsePositives, falseNegatives: falseNegatives };
+  }
+
+  function formatWordBankTickAnswer(words) {
+    return (words || []).slice().sort(function(a, b) {
+      return String(a).localeCompare(String(b), undefined, { sensitivity: 'base' });
+    }).join(', ');
+  }
+
+  function wordBankTickWordNote(content, word, kind) {
+    var note = lookupWrongOptionNote(content, word, null);
+    if (note) return note;
+    if (kind === 'missed') {
+      return 'it matches the selection rule — check the adjective form with -y.';
+    }
+    return 'it does not match the selection rule.';
+  }
+
+  function buildWordBankTickMistakeNote(content, diff) {
+    if (!diff) return '';
+    var lines = [];
+    if (diff.falsePositives.length) {
+      var extra = diff.falsePositives[0];
+      lines.push('You selected *' + extra + '* — ' + wordBankTickWordNote(content, extra, 'extra'));
+    }
+    if (diff.falseNegatives.length) {
+      var missed = diff.falseNegatives[0];
+      lines.push('You missed *' + missed + '* — ' + wordBankTickWordNote(content, missed, 'missed'));
+    }
+    if (lines.length > 1) {
+      return lines[0] + ' ' + lines[1].charAt(0).toLowerCase() + lines[1].slice(1);
+    }
+    if (lines.length) return lines[0];
+    return content && content.commonMistake ? content.commonMistake : '';
+  }
+
+  function buildWordBankTick(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var answerWords = p.answerWords || parseWordList(result && result.correctAnswer);
+    var selected = (result && result.selectedWords) ||
+      parseWordList(result && result.userAnswer);
+    var correctAnswer = formatWordBankTickAnswer(answerWords);
+    var userAnswer = formatWordBankTickAnswer(selected);
+    var isWrong = result && result.correct === false;
+    var diff = isWrong ? wordBankTickSetDiff(selected, answerWords) : null;
+    var sections = [];
+
+    sections.push({ key: 'correct', text: correctAnswer });
+
+    if (isWrong && userAnswer) {
+      sections.push({ key: 'yourAnswer', text: userAnswer });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var wrongNote = buildWordBankTickMistakeNote(content, diff);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+      if (isWrong) {
+        var legacyNote = buildWordBankTickMistakeNote(null, diff);
+        if (legacyNote) sections.push({ key: 'commonMistake', text: legacyNote });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'word_bank_tick',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildCommaPlacement(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1367,6 +1477,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'comma_placement') {
       return String(p.sentence || '').trim();
     }
+    if (screen.formatType === 'word_bank_tick') {
+      return String(p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1410,6 +1523,8 @@ var SunePlayExplanation = (function() {
         return buildCrosswordClues(screen, result);
       case 'comma_placement':
         return buildCommaPlacement(screen, result);
+      case 'word_bank_tick':
+        return buildWordBankTick(screen, result);
       default:
         return buildLegacy(screen, result);
     }
