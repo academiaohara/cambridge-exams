@@ -1306,7 +1306,7 @@ button.sp-vocab-word-card:focus-visible {
 }
 
 .sp-btn--explain-icon.sp-btn--explain-active {
-  background: var(--sp-duo-blue-light);
+  background: var(--white);
   color: var(--sp-duo-blue);
   border-color: var(--sp-duo-blue);
   border-bottom-color: var(--sp-duo-blue-dark);
@@ -1430,7 +1430,7 @@ button.sp-vocab-word-card:focus-visible {
   display: flex;
   flex-direction: column;
   border-bottom: none;
-  background: var(--sp-duo-blue-light);
+  background: var(--white);
 }
 
 .sp-explanation-card-why-header {
