@@ -3917,6 +3917,7 @@
     root.querySelectorAll('.sp-hunt-word').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (root.classList.contains('sp-screen--locked')) return;
+        root._huntLastWrongTap = (btn.getAttribute('data-word') || btn.textContent || '').trim();
         btn.classList.add('sp-hunt-word--wrong');
         setTimeout(function() { btn.classList.remove('sp-hunt-word--wrong'); }, 450);
         root.dispatchEvent(new CustomEvent('sp-hunt-wrong-tap', { bubbles: true }));
@@ -3951,6 +3952,7 @@
           root._huntTappedWrong = null;
           root._huntTappedCorrect = false;
         } else if (wrong !== targetWrong) {
+          root._huntLastWrongTap = wrong;
           btn.classList.add('sp-hunt-word--wrong');
           setTimeout(function() { btn.classList.remove('sp-hunt-word--wrong'); }, 450);
           root.dispatchEvent(new CustomEvent('sp-hunt-wrong-tap', { bubbles: true }));
@@ -5042,8 +5044,14 @@
         if (tappedSingle !== targetSingle) {
           result.correct = false;
           result.lifeLoss = 1;
-          result.explanation = 'That phrase is not the error. Look for an unnatural verb form.';
-          result.userAnswer = tappedSingle || '';
+          result.huntPhase = 'wrong_tap';
+          result.tappedPhrase = root._huntLastWrongTap || tappedSingle || '';
+          result.userAnswer = result.tappedPhrase;
+          if (p.explanationContent) {
+            result.explanation = '__structured__';
+          } else {
+            result.explanation = 'That phrase is not the error. Look for an unnatural verb form.';
+          }
           break;
         }
         var fixInp = root.querySelector('#sp-hunt-fix-input');
@@ -5052,6 +5060,11 @@
         result.correctAnswer = p.answer;
         result.correct = norm.matchesAnyAccepted(fixVal, p);
         result.lifeLoss = result.correct ? 0 : 1;
+        result.huntPhase = result.correct ? 'correct' : 'wrong_fix';
+        result.tappedPhrase = targetSingle;
+        if (p.explanationContent) {
+          result.explanation = '__structured__';
+        }
         break;
       }
       case 'passage_error_hunt_counter': {

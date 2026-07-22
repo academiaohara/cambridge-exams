@@ -846,3 +846,64 @@ if (!String(ssOpts.context).includes('assign')) {
 console.log('PASS stative_sorting explanation builder');
 console.log('Sections:', ssKeys.join(' → '));
 
+// passage_error_hunt_single — wrong fix phase
+const pehExercise = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-6');
+const pehItem = pehExercise.items[0];
+
+const pehScreen = {
+  formatType: 'passage_error_hunt_single',
+  payload: {
+    passage: pehExercise.passage,
+    wrong: pehItem.targetPhrase || pehItem.wrong,
+    answer: pehItem.answer,
+    explanationContent: pehItem.explanationContent
+  }
+};
+
+const pehWrongFix = {
+  correct: false,
+  huntPhase: 'wrong_fix',
+  tappedPhrase: pehItem.wrong,
+  userAnswer: 'enjoying',
+  correctAnswer: pehItem.answer
+};
+
+const pehFixOpts = SunePlayExplanation.buildExplainOpts(pehScreen, pehWrongFix);
+const pehFixKeys = pehFixOpts.sections.map((s) => s.key);
+const pehFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const pehFixMissing = pehFixExpected.filter((k) => !pehFixKeys.includes(k));
+
+if (pehFixMissing.length) {
+  console.error('FAIL passage_error_hunt_single wrong_fix missing sections:', pehFixMissing.join(', '));
+  process.exit(1);
+}
+
+// passage_error_hunt_single — wrong tap phase
+const pehWrongTap = {
+  correct: false,
+  huntPhase: 'wrong_tap',
+  tappedPhrase: 'painting',
+  userAnswer: 'painting'
+};
+
+const pehTapOpts = SunePlayExplanation.buildExplainOpts(pehScreen, pehWrongTap);
+const pehTapKeys = pehTapOpts.sections.map((s) => s.key);
+const pehTapExpected = ['commonMistake', 'whyCorrect', 'grammarFocus'];
+const pehTapMissing = pehTapExpected.filter((k) => !pehTapKeys.includes(k));
+
+if (pehTapMissing.length) {
+  console.error('FAIL passage_error_hunt_single wrong_tap missing sections:', pehTapMissing.join(', '));
+  process.exit(1);
+}
+
+if (!String(pehFixOpts.context).includes('painting')) {
+  console.error('FAIL passage_error_hunt_single context should include passage text');
+  process.exit(1);
+}
+
+console.log('PASS passage_error_hunt_single explanation builder (wrong_fix)');
+console.log('Sections:', pehFixKeys.join(' → '));
+console.log('PASS passage_error_hunt_single explanation builder (wrong_tap)');
+console.log('Sections:', pehTapKeys.join(' → '));
+

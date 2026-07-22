@@ -1164,6 +1164,89 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildHuntSentenceBreakdown(passage, wrong, answer) {
+    var text = String(passage || '').trim();
+    var wrongPhrase = String(wrong || '').trim();
+    var fix = String(answer || '').trim();
+    if (!text || !wrongPhrase || !fix) return '';
+    var escaped = wrongPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return text.replace(new RegExp(escaped, 'i'), fix);
+  }
+
+  function huntWrongTapNote(content, tappedPhrase, wrongPhrase) {
+    var note = lookupWrongOptionNote(content, tappedPhrase, null);
+    if (!note && content && content.wrongOptions && content.wrongOptions.wrong_tap) {
+      note = content.wrongOptions.wrong_tap;
+    }
+    if (note) return note;
+    if (tappedPhrase) {
+      return '*' + tappedPhrase + '* is not the error — look for an unnatural verb form' +
+        (wrongPhrase ? ' like *' + wrongPhrase + '*' : '') + '.';
+    }
+    return 'That phrase is not the error. Look for an unnatural verb form.';
+  }
+
+  function buildPassageErrorHuntSingle(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var wrongPhrase = p.wrong || '';
+    var huntPhase = (result && result.huntPhase) ||
+      (result && result.correct ? 'correct' : 'wrong_fix');
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var tappedPhrase = (result && result.tappedPhrase) || '';
+    var sections = [];
+
+    if (huntPhase === 'wrong_tap') {
+      sections.push({
+        key: 'commonMistake',
+        text: huntWrongTapNote(content, tappedPhrase, wrongPhrase)
+      });
+      if (content) {
+        if (content.whyCorrect) {
+          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        }
+        var tapFocus = pickFocusSection(content);
+        if (tapFocus) sections.push(tapFocus);
+      }
+    } else {
+      var isWrong = result && result.correct === false;
+      sections.push({ key: 'correct', text: String(correctAnswer) });
+      if (isWrong && userAnswer) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+      if (content) {
+        if (content.whyCorrect) {
+          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        }
+        var focus = pickFocusSection(content);
+        if (focus) sections.push(focus);
+        if (isWrong) {
+          var fixNote = lookupWrongOptionNote(content, userAnswer, null);
+          if (!fixNote && content.commonMistake) fixNote = content.commonMistake;
+          if (fixNote) sections.push({ key: 'commonMistake', text: fixNote });
+        }
+        var breakdown = content.sentenceBreakdown ||
+          buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
+        if (breakdown) sections.push({ key: 'sentenceBreakdown', text: breakdown });
+        if (content.usefulTip) {
+          sections.push({ key: 'usefulTip', text: content.usefulTip });
+        }
+      } else if (p.explanation) {
+        sections.push({ key: 'whyCorrect', text: p.explanation });
+        var legacyBreakdown = buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
+        if (legacyBreakdown) sections.push({ key: 'sentenceBreakdown', text: legacyBreakdown });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'passage_error_hunt_single',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildCommaPlacement(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1578,6 +1661,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'stative_sorting') {
       return String(p.prompt || p.instruction || '').trim();
     }
+    if (screen.formatType === 'passage_error_hunt_single') {
+      return String(p.passage || p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1625,6 +1711,8 @@ var SunePlayExplanation = (function() {
         return buildWordBankTick(screen, result);
       case 'stative_sorting':
         return buildStativeSorting(screen, result);
+      case 'passage_error_hunt_single':
+        return buildPassageErrorHuntSingle(screen, result);
       default:
         return buildLegacy(screen, result);
     }

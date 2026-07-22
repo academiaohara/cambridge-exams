@@ -1086,7 +1086,9 @@
           wrong: item.targetPhrase || item.wrong || '',
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || '',
+          instruction: exercise.studentInstruction || exercise.instructions || '',
           itemId: item.id,
           allErrors: (exercise.items || []).map(function(it) {
             return { id: it.id, wrong: it.targetPhrase || it.wrong, fixed: false };
