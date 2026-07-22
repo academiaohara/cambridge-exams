@@ -1327,25 +1327,44 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildPhraseRegex(phrase) {
+    var parts = String(phrase || '').trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return null;
+    var pattern = parts.map(function(part) {
+      return '\\b' + part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b';
+    }).join('\\s+');
+    return new RegExp(pattern, 'i');
+  }
+
+  function findPhraseMatch(text, phrase) {
+    var re = buildPhraseRegex(phrase);
+    if (!re) return null;
+    var match = re.exec(String(text || ''));
+    if (!match) return null;
+    return { index: match.index, length: match[0].length, match: match[0] };
+  }
+
+  function replacePhrase(text, phrase, replacement) {
+    var re = buildPhraseRegex(phrase);
+    if (!re) return String(text || '');
+    return String(text || '').replace(re, replacement);
+  }
+
   function findPhraseIndex(text, phrase) {
-    var haystack = String(text || '');
-    var needle = String(phrase || '').trim();
-    if (!haystack || !needle) return -1;
-    return haystack.toLowerCase().indexOf(needle.toLowerCase());
+    var hit = findPhraseMatch(text, phrase);
+    return hit ? hit.index : -1;
   }
 
   function extractSentenceContaining(text, phrase) {
     var passage = String(text || '').trim();
-    var target = String(phrase || '').trim();
-    if (!passage) return '';
-    var idx = findPhraseIndex(passage, target);
-    if (idx === -1) return passage;
+    var hit = findPhraseMatch(passage, phrase);
+    if (!hit) return passage;
 
-    var start = passage.lastIndexOf('.', idx);
+    var start = passage.lastIndexOf('.', hit.index);
     start = start === -1 ? 0 : start + 1;
     while (start < passage.length && /\s/.test(passage.charAt(start))) start++;
 
-    var end = passage.indexOf('.', idx + target.length);
+    var end = passage.indexOf('.', hit.index + hit.length);
     if (end === -1) end = passage.length;
     else end += 1;
 
@@ -1354,11 +1373,11 @@ var SunePlayExplanation = (function() {
 
   function wrapMarkedSnippet(sentence, phrase, markerNum) {
     var num = markerNum || 1;
-    var target = String(phrase || '').trim();
-    if (!sentence || !target) return String(sentence || '').trim();
-    var escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var re = buildPhraseRegex(phrase);
+    if (!re) return String(sentence || '').trim();
+
     var replaced = false;
-    var marked = String(sentence).replace(new RegExp(escaped, 'i'), function(match) {
+    var marked = String(sentence).replace(re, function(match) {
       replaced = true;
       return '[start' + num + ']' + match + '[end' + num + ']';
     });
@@ -1374,8 +1393,7 @@ var SunePlayExplanation = (function() {
     var wrongPhrase = String(wrong || '').trim();
     var fix = String(answer || '').trim();
     if (!sentence || !wrongPhrase || !fix) return '';
-    var escaped = wrongPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var corrected = sentence.replace(new RegExp(escaped, 'i'), fix);
+    var corrected = replacePhrase(sentence, wrongPhrase, fix);
     return wrapMarkedSnippet(corrected, fix, 1);
   }
 
