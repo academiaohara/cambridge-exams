@@ -178,3 +178,36 @@ if (!passageKeys.includes('correct') || !passageKeys.includes('yourAnswer')) {
 
 console.log('PASS mc_4_option passage explanation builder');
 console.log('Sections:', passageKeys.join(' → '));
+
+// free_text_gap_fill
+const gapItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit5.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u5-ex-a').items[0];
+
+const gapScreen = {
+  formatType: 'free_text_gap_fill',
+  payload: {
+    sentence: gapItem.sentence,
+    answer: gapItem.answer,
+    completedSentence: gapItem.sentence.replace(/\.{3,}|…{2,}|_{3,}/, gapItem.answer),
+    explanationContent: gapItem.explanationContent
+  }
+};
+
+const gapWrong = {
+  correct: false,
+  correctAnswer: 'had already left',
+  userAnswer: 'already left'
+};
+
+const gapOpts = SunePlayExplanation.buildExplainOpts(gapScreen, gapWrong);
+const gapKeys = gapOpts.sections.map((s) => s.key);
+const gapExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const gapMissing = gapExpected.filter((k) => !gapKeys.includes(k));
+
+if (gapMissing.length) {
+  console.error('FAIL free_text_gap_fill missing sections:', gapMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS free_text_gap_fill explanation builder');
+console.log('Sections:', gapKeys.join(' → '));

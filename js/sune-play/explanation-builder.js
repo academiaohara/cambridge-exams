@@ -82,13 +82,20 @@ var SunePlayExplanation = (function() {
   }
 
   function lookupWrongOptionNote(content, userAnswer, options) {
-    if (!content || !content.wrongOptions || !userAnswer) return '';
+    if (!content || !userAnswer) return '';
     var wrongKey = String(userAnswer).trim();
-    var wrongNote = content.wrongOptions[wrongKey];
-    if (wrongNote) return wrongNote;
+    if (content.wrongOptions) {
+      var wrongNote = content.wrongOptions[wrongKey];
+      if (wrongNote) return wrongNote;
+      var lower = wrongKey.toLowerCase();
+      var keys = Object.keys(content.wrongOptions);
+      for (var k = 0; k < keys.length; k++) {
+        if (String(keys[k]).trim().toLowerCase() === lower) return content.wrongOptions[keys[k]];
+      }
+    }
     for (var i = 0; i < (options || []).length; i++) {
       if (String(options[i]).trim().toLowerCase() === wrongKey.toLowerCase()) {
-        return content.wrongOptions[options[i]] || '';
+        return (content.wrongOptions && content.wrongOptions[options[i]]) || '';
       }
     }
     return '';
@@ -105,6 +112,7 @@ var SunePlayExplanation = (function() {
 
     if (isWrong) {
       var wrongNote = lookupWrongOptionNote(content, userAnswer, options);
+      if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
       if (wrongNote) {
         sections.push({ key: 'commonMistake', text: wrongNote });
       }
@@ -279,6 +287,47 @@ var SunePlayExplanation = (function() {
     return buildMc4OptionStandalone(screen, result);
   }
 
+  function gapSentenceDisplay(sentence) {
+    return String(sentence || '')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/(?:\.{3,}|…{2,}|_{3,})/g, '___')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function buildFreeTextGapFill(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, null);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var completed = p.completedSentence || '';
+    if (completed) {
+      sections.push({ key: 'sentenceBreakdown', text: completed });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'free_text_gap_fill',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildMeaningContrast(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -359,6 +408,9 @@ var SunePlayExplanation = (function() {
       }
       return String(p.prompt || p.sentence || p.instruction || '').trim();
     }
+    if (screen.formatType === 'free_text_gap_fill') {
+      return gapSentenceDisplay(p.sentence);
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -371,6 +423,8 @@ var SunePlayExplanation = (function() {
         return buildMeaningContrast(screen, result);
       case 'mc_4_option':
         return buildMc4Option(screen, result);
+      case 'free_text_gap_fill':
+        return buildFreeTextGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }

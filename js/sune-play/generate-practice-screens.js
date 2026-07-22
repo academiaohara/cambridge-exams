@@ -961,6 +961,7 @@
           verbPrompt: item.verbPrompt || '',
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || '',
           completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || ''),
           instruction: exercise.instructions || '',
