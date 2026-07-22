@@ -750,3 +750,48 @@ if (!String(cpOpts.context).includes('brother')) {
 console.log('PASS comma_placement explanation builder');
 console.log('Sections:', cpKeys.join(' → '));
 
+// word_bank_tick (exercise-level multi-select)
+const wbtExercise = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit12.v2-test.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'c1-u12-test-ex-wbt');
+
+const wbtScreen = {
+  formatType: 'word_bank_tick',
+  payload: {
+    words: (wbtExercise.words || []).map((word, index) => ({ text: word, index })),
+    answerWords: wbtExercise.answer.split(/,\s*/),
+    instruction: wbtExercise.studentInstruction,
+    explanationContent: wbtExercise.explanationContent
+  }
+};
+
+const wbtWrong = {
+  correct: false,
+  selectedWords: ['budget', 'brain', 'culture'],
+  userAnswer: 'budget, brain, culture',
+  correctAnswer: wbtExercise.answer
+};
+
+const wbtOpts = SunePlayExplanation.buildExplainOpts(wbtScreen, wbtWrong);
+const wbtKeys = wbtOpts.sections.map((s) => s.key);
+const wbtExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const wbtMissing = wbtExpected.filter((k) => !wbtKeys.includes(k));
+
+if (wbtMissing.length) {
+  console.error('FAIL word_bank_tick missing sections:', wbtMissing.join(', '));
+  process.exit(1);
+}
+
+const mistakeSection = wbtOpts.sections.find((s) => s.key === 'commonMistake');
+if (!mistakeSection || !String(mistakeSection.text).includes('budget')) {
+  console.error('FAIL word_bank_tick should personalize false positive (budget)');
+  process.exit(1);
+}
+
+if (!String(wbtOpts.context).includes('suffix -y')) {
+  console.error('FAIL word_bank_tick context should show instruction');
+  process.exit(1);
+}
+
+console.log('PASS word_bank_tick explanation builder');
+console.log('Sections:', wbtKeys.join(' → '));
+
