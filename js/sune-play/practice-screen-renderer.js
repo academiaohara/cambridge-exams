@@ -247,14 +247,10 @@
     if (options.gapInputStyle === 'underline_expand') {
       inputCls += ' sp-gap-underline-input';
     }
-    var verbHtml = options.showVerbSlot
-      ? '<span class="sp-passage-gap-verb" data-passage-gap-verb="' + gapNum + '" hidden aria-hidden="true"></span>'
-      : '';
     return '<span class="sp-passage-gap-wrap sp-inline-gap-group" data-passage-gap="' + gapNum + '">' +
       '<span class="sp-passage-gap-num">' + gapNum + '</span>' +
       '<input type="text" class="' + inputCls + '" data-passage-gap="' + gapNum + '" ' +
       'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Gap ' + gapNum + '">' +
-      verbHtml +
     '</span>';
   }
 
@@ -910,20 +906,6 @@
     });
   }
 
-  function setPassageGapVerbLabel(wrap, verb) {
-    var label = wrap && wrap.querySelector('.sp-passage-gap-verb');
-    if (!label) return;
-    if (verb) {
-      label.textContent = verb;
-      label.hidden = false;
-      label.removeAttribute('aria-hidden');
-    } else {
-      label.textContent = '';
-      label.hidden = true;
-      label.setAttribute('aria-hidden', 'true');
-    }
-  }
-
   function updatePassageGapUI(root, screen) {
     var p = screen.payload || {};
     var gaps = p.gaps || [];
@@ -957,7 +939,6 @@
           input.readOnly = true;
           resizeUnderlineGapInput(input);
         }
-        setPassageGapVerbLabel(wrap, done.verb || state.assignments[gapNum] || gap.baseVerb);
       } else if (isActive) {
         wrap.classList.add('sp-passage-gap-wrap--active');
         if (input) {
@@ -965,11 +946,6 @@
           input.readOnly = false;
           if (state.inRetryPhase && isFailed) {
             input.value = '';
-          }
-          if (state.assignments[gapNum]) {
-            setPassageGapVerbLabel(wrap, state.assignments[gapNum]);
-          } else {
-            setPassageGapVerbLabel(wrap, '');
           }
           resizeUnderlineGapInput(input);
         }
@@ -982,7 +958,6 @@
           input.readOnly = true;
           resizeUnderlineGapInput(input);
         }
-        setPassageGapVerbLabel(wrap, fail.verb || state.assignments[gapNum] || '');
       } else {
         wrap.classList.add('sp-passage-gap-wrap--future');
         if (input) {
@@ -991,34 +966,10 @@
           input.readOnly = true;
           resizeUnderlineGapInput(input);
         }
-        setPassageGapVerbLabel(wrap, '');
       }
     });
 
     updatePassageGapWordBank(root);
-  }
-
-  function assignVerbToPassageGap(root, screen, gapNumber, verb, onChange) {
-    var state = root._passageGapState;
-    if (!state || gapNumber !== state.activeGap) return false;
-    if (state.completed[gapNumber]) return false;
-
-    var maxUses = state.verbCounts[verb] || 0;
-    var confirmed = state.confirmedVerbs[verb] || 0;
-    if (maxUses > 0 && confirmed >= maxUses) return false;
-
-    state.assignments[gapNumber] = verb;
-
-    var wrap = getPassageGapWrap(root, gapNumber);
-    setPassageGapVerbLabel(wrap, verb);
-    syncPassageGapStateToScreen(screen, root);
-
-    var input = wrap && wrap.querySelector('.sp-passage-gap-input');
-    if (input && !root.classList.contains('sp-screen--locked')) {
-      setTimeout(function() { input.focus(); }, 0);
-    }
-    if (onChange) onChange();
-    return true;
   }
 
   function isPassageGapSequentialReady(root, screen) {
@@ -1032,11 +983,7 @@
     var wrap = getPassageGapWrap(root, state.activeGap);
     if (!wrap) return false;
     var input = wrap.querySelector('.sp-passage-gap-input');
-    var hasInput = input && !!input.value.trim();
-    if (p.requireWordBankAssignment !== false) {
-      return hasInput && !!state.assignments[state.activeGap];
-    }
-    return hasInput;
+    return input && !!input.value.trim();
   }
 
   function bindPassageGapFill(root, screen, onChange) {
@@ -1048,21 +995,6 @@
 
     initPassageGapSequentialState(root, screen);
     updatePassageGapUI(root, screen);
-
-    function tryAssignWord(word) {
-      if (root.classList.contains('sp-screen--locked')) return;
-      var state = root._passageGapState;
-      if (!state || state.activeGap == null) return;
-      assignVerbToPassageGap(root, screen, state.activeGap, word, onChange);
-    }
-
-    root.querySelectorAll('.sp-passage-wordbank-chip--selectable').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        if (chip.disabled) return;
-        tryAssignWord(chip.getAttribute('data-word'));
-      });
-    });
-
     bindPassageGapActiveInput(root, screen, onChange);
 
     var activeWrap = getPassageGapWrap(root, root._passageGapState.activeGap);
@@ -1093,7 +1025,7 @@
     var wrap = getPassageGapWrap(root, gapNumber);
     var input = wrap && wrap.querySelector('.sp-passage-gap-input');
     var given = input ? input.value.trim() : '';
-    if (!given || (p.requireWordBankAssignment !== false && !state.assignments[gapNumber])) {
+    if (!given) {
       return { handled: true, noop: true };
     }
 
@@ -3285,8 +3217,7 @@
     var p = screen.payload || {};
     var isSequential = !!p.sequentialGaps;
     var fieldOpts = {
-      gapInputStyle: p.gapInputStyle,
-      showVerbSlot: isSequential && p.requireWordBankAssignment !== false
+      gapInputStyle: p.gapInputStyle
     };
     var passageHtml = renderPassageGapHtml(p.passage || '', fieldOpts);
     var html = '<div class="sp-screen sp-screen--passage-gap' +
@@ -3295,12 +3226,7 @@
     if (p.wordBank && p.wordBank.length) {
       html += '<div class="sp-passage-wordbank" aria-label="Word bank">';
       p.wordBank.forEach(function(word) {
-        if (isSequential && p.requireWordBankAssignment !== false) {
-          html += '<button type="button" class="sp-passage-wordbank-chip sp-passage-wordbank-chip--selectable" ' +
-            'data-word="' + esc(word) + '">' + esc(word) + '</button>';
-        } else {
-          html += '<span class="sp-passage-wordbank-chip" data-word="' + esc(word) + '">' + esc(word) + '</span>';
-        }
+        html += '<span class="sp-passage-wordbank-chip" data-word="' + esc(word) + '">' + esc(word) + '</span>';
       });
       html += '</div>';
     }

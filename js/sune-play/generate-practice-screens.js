@@ -168,7 +168,7 @@
       : isWordFormation;
     var requireWordBankAssignment = interaction.requireWordBankAssignment != null
       ? !!interaction.requireWordBankAssignment
-      : (sequentialGaps && wordBank.length > 0);
+      : false;
     var requireWordFormation = interaction.requireWordFormation != null
       ? !!interaction.requireWordFormation
       : isWordFormation;
