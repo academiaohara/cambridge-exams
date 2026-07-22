@@ -137,9 +137,22 @@ var SunePlayExplanation = (function() {
 
   function pickFocusSection(content) {
     if (!content) return null;
-    if (content.vocabularyFocus) return { key: 'vocabularyFocus', text: content.vocabularyFocus };
     if (content.grammarFocus) return { key: 'grammarFocus', text: content.grammarFocus };
     return null;
+  }
+
+  var EXPLANATION_EXCLUDED_SECTION_KEYS = {
+    whyCorrect: true,
+    vocabularyFocus: true,
+    usefulTip: true
+  };
+
+  function finalizeExplanation(view) {
+    if (!view || !view.sections) return view;
+    view.sections = view.sections.filter(function(section) {
+      return !EXPLANATION_EXCLUDED_SECTION_KEYS[section.key];
+    });
+    return view;
   }
 
   function lookupMapNote(map, userAnswer, options) {
@@ -2198,59 +2211,85 @@ var SunePlayExplanation = (function() {
 
   function buildExplainOpts(screen, result) {
     if (!screen) return null;
+    var view = null;
     switch (screen.formatType) {
       case 'two_option_choice':
-        return buildTwoOptionChoice(screen, result);
+        view = buildTwoOptionChoice(screen, result);
+        break;
       case 'meaning_contrast':
-        return buildMeaningContrast(screen, result);
+        view = buildMeaningContrast(screen, result);
+        break;
       case 'mc_4_option':
-        return buildMc4Option(screen, result);
+        view = buildMc4Option(screen, result);
+        break;
       case 'free_text_gap_fill':
         if (screen.sourceFormatType === 'conjugation_gap_fill') {
-          return buildConjugationGapFill(screen, result);
+          view = buildConjugationGapFill(screen, result);
+        } else {
+          view = buildFreeTextGapFill(screen, result);
         }
-        return buildFreeTextGapFill(screen, result);
+        break;
       case 'conjugation_gap_fill':
-        return buildConjugationGapFill(screen, result);
+        view = buildConjugationGapFill(screen, result);
+        break;
       case 'preselected_verb_gap_fill':
-        return buildPreselectedVerbGapFill(screen, result);
+        view = buildPreselectedVerbGapFill(screen, result);
+        break;
       case 'word_bank_gap_fill':
-        return buildWordBankGapFill(screen, result);
+        view = buildWordBankGapFill(screen, result);
+        break;
       case 'passage_gap_fill':
-        return buildPassageGapFill(screen, result);
+        view = buildPassageGapFill(screen, result);
+        break;
       case 'synced_gap_fill':
-        return buildSyncedGapFill(screen, result);
+        view = buildSyncedGapFill(screen, result);
+        break;
       case 'keyword_transformation':
-        return buildKeywordTransformation(screen, result);
+        view = buildKeywordTransformation(screen, result);
+        break;
       case 'error_correction':
-        return buildErrorCorrection(screen, result);
+        view = buildErrorCorrection(screen, result);
+        break;
       case 'find_extra_word':
-        return buildFindExtraWord(screen, result);
+        view = buildFindExtraWord(screen, result);
+        break;
       case 'word_order_tiles':
-        return buildWordOrderTiles(screen, result);
+        view = buildWordOrderTiles(screen, result);
+        break;
       case 'full_sentence_write':
-        return buildFullSentenceWrite(screen, result);
+        view = buildFullSentenceWrite(screen, result);
+        break;
       case 'verb_bank_two_step':
-        return buildVerbBankTwoStep(screen, result);
+        view = buildVerbBankTwoStep(screen, result);
+        break;
       case 'crossword_clues':
-        return buildCrosswordClues(screen, result);
+        view = buildCrosswordClues(screen, result);
+        break;
       case 'comma_placement':
-        return buildCommaPlacement(screen, result);
+        view = buildCommaPlacement(screen, result);
+        break;
       case 'word_bank_tick':
-        return buildWordBankTick(screen, result);
+        view = buildWordBankTick(screen, result);
+        break;
       case 'stative_sorting':
-        return buildStativeSorting(screen, result);
+        view = buildStativeSorting(screen, result);
+        break;
       case 'passage_error_hunt_single':
-        return buildPassageErrorHuntSingle(screen, result);
+        view = buildPassageErrorHuntSingle(screen, result);
+        break;
       case 'passage_error_hunt_counter':
-        return buildPassageErrorHuntCounter(screen, result);
+        view = buildPassageErrorHuntCounter(screen, result);
+        break;
       case 'guided_error_choice':
-        return buildGuidedErrorChoice(screen, result);
+        view = buildGuidedErrorChoice(screen, result);
+        break;
       case 'conversation_gap_fill':
-        return buildConversationGapFill(screen, result);
+        view = buildConversationGapFill(screen, result);
+        break;
       default:
-        return buildLegacy(screen, result);
+        view = buildLegacy(screen, result);
     }
+    return finalizeExplanation(view);
   }
 
   return {
