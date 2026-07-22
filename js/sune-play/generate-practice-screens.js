@@ -140,6 +140,7 @@
     var firstGapMatch = passageGapRe.exec(passage);
     var startGap = firstGapMatch ? parseInt(firstGapMatch[1], 10) : 1;
     var gapExplanations = exercise.explanations || exercise.gapExplanations || [];
+    var gapExplanationContent = exercise.gapExplanationContent || [];
     var gaps = answers.map(function(ans, idx) {
       var gapNumber = startGap + idx;
       var stemWord = stemWords[gapNumber] || '';
@@ -149,6 +150,7 @@
         expectedAnswer: ans,
         baseVerb: explicitGapVerbs[idx] || stemWord || '',
         stemWord: stemWord,
+        explanationContent: gapExplanationContent[idx] || null,
         explanation: gapExplanations[idx] || ''
       };
     });

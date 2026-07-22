@@ -3059,13 +3059,49 @@
           "side",
           "balance"
         ],
-        "explanations": [
-          "Decided → made up my **mind**.",
-          "Considered → took into **account**.",
-          "Wrong belief → under the **misapprehension**.",
-          "After reflection → in **conclusion**.",
-          "Positive side → on the bright **side**.",
-          "Overall → on **balance**."
+        "gapExplanationContent": [
+          {
+            "whyCorrect": "The clue is decided, so \"mind\" fits this gap.",
+            "wrongOptions": {},
+            "commonMistake": "Read the whole line in the passage — tense, preposition, or word form must match the surrounding context.",
+            "usefulTip": "Read the sentence before and after the gap — the story context usually signals tense and word choice.",
+            "grammarFocus": "Past simple is used for finished actions at a specific past time."
+          },
+          {
+            "whyCorrect": "The clue is considered, so \"account\" fits this gap.",
+            "wrongOptions": {},
+            "commonMistake": "Read the whole line in the passage — tense, preposition, or word form must match the surrounding context.",
+            "usefulTip": "Read the sentence before and after the gap — the story context usually signals tense and word choice.",
+            "grammarFocus": "Past simple is used for finished actions at a specific past time."
+          },
+          {
+            "whyCorrect": "The clue is wrong belief, so \"misapprehension\" fits this gap.",
+            "wrongOptions": {},
+            "commonMistake": "Read the whole line in the passage — tense, preposition, or word form must match the surrounding context.",
+            "usefulTip": "Read the sentence before and after the gap — the story context usually signals tense and word choice.",
+            "grammarFocus": "Past simple is used for finished actions at a specific past time."
+          },
+          {
+            "whyCorrect": "The clue is after reflection, so \"conclusion\" fits this gap.",
+            "wrongOptions": {},
+            "commonMistake": "Read the whole line in the passage — tense, preposition, or word form must match the surrounding context.",
+            "usefulTip": "Read the sentence before and after the gap — the story context usually signals tense and word choice.",
+            "grammarFocus": "Past simple is used for finished actions at a specific past time."
+          },
+          {
+            "whyCorrect": "The clue is positive side, so \"side\" fits this gap.",
+            "wrongOptions": {},
+            "commonMistake": "Read the whole line in the passage — tense, preposition, or word form must match the surrounding context.",
+            "usefulTip": "Read the sentence before and after the gap — the story context usually signals tense and word choice.",
+            "grammarFocus": "Past simple is used for finished actions at a specific past time."
+          },
+          {
+            "whyCorrect": "The clue is overall, so \"balance\" fits this gap.",
+            "wrongOptions": {},
+            "commonMistake": "Read the whole line in the passage — tense, preposition, or word form must match the surrounding context.",
+            "usefulTip": "Read the sentence before and after the gap — the story context usually signals tense and word choice.",
+            "grammarFocus": "Past simple is used for finished actions at a specific past time."
+          }
         ]
       },
       {
@@ -3861,17 +3897,108 @@
           "imaginative",
           "definitive"
         ],
-        "explanations": [
-          "Noun from CONCEIVE → **conception** of critical thinking.",
-          "Noun from ASSUME → **assumption** that intelligence is fixed.",
-          "Adverb from DOUBT → **undoubtedly** true.",
-          "Noun from CONFUSE → **confusion** surrounding techniques.",
-          "Adjective from BELIEVE → **unbelievable** impression of learning.",
-          "Negative adjective CONVINCE → feel **unconvinced**.",
-          "Adjective from DECIDE → **decisive** learner.",
-          "Adjective from EXPLAIN → seem **inexplicable**.",
-          "Adjective from IMAGINE → **imaginative** approach.",
-          "Adjective from DEFINE → most **definitive** measure."
+        "gapExplanationContent": [
+          {
+            "whyCorrect": "The clue is noun from CONCEIVE, so the correct answer is \"conception\".",
+            "wrongOptions": {
+              "conceive": "The root CONCEIVE cannot fill the gap alone — you need a derived form like \"conception\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of CONCEIVE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "CONCEIVE → conception: Use the noun form (often -tion, -ment, -ity, or -ness).",
+            "grammarFocus": "Word formation from CONCEIVE: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is noun from ASSUME, so the correct answer is \"assumption\".",
+            "wrongOptions": {
+              "assume": "The root ASSUME cannot fill the gap alone — you need a derived form like \"assumption\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of ASSUME that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "ASSUME → assumption: Use the noun form (often -tion, -ment, -ity, or -ness).",
+            "grammarFocus": "Word formation from ASSUME: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is adverb from DOUBT, so the correct answer is \"undoubtedly\".",
+            "wrongOptions": {
+              "doubt": "The root DOUBT cannot fill the gap alone — you need a derived form like \"undoubtedly\".",
+              "undoubted": "An adjective cannot modify a verb here — use the adverb form."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of DOUBT that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "DOUBT → undoubtedly: Add the adverb suffix (-ly) or use the adverb form.",
+            "grammarFocus": "Word formation from DOUBT: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is noun from CONFUSE, so the correct answer is \"confusion\".",
+            "wrongOptions": {
+              "confuse": "The root CONFUSE cannot fill the gap alone — you need a derived form like \"confusion\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of CONFUSE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "CONFUSE → confusion: Use the noun form (often -tion, -ment, -ity, or -ness).",
+            "grammarFocus": "Word formation from CONFUSE: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is adjective from BELIEVE, so the correct answer is \"unbelievable\".",
+            "wrongOptions": {
+              "believe": "The root BELIEVE cannot fill the gap alone — you need a derived form like \"unbelievable\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of BELIEVE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "BELIEVE → unbelievable: Use the adjective form (often -ive, -able, or a negative prefix).",
+            "grammarFocus": "Word formation from BELIEVE: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is negative adjective CONVINCE, so the correct answer is \"unconvinced\".",
+            "wrongOptions": {
+              "convince": "The root CONVINCE cannot fill the gap alone — you need a derived form like \"unconvinced\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of CONVINCE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "CONVINCE → unconvinced: Use the adjective form (often -ive, -able, or a negative prefix).",
+            "grammarFocus": "Word formation from CONVINCE: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is adjective from DECIDE, so the correct answer is \"decisive\".",
+            "wrongOptions": {
+              "decide": "The root DECIDE cannot fill the gap alone — you need a derived form like \"decisive\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of DECIDE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "DECIDE → decisive: Use the adjective form (often -ive, -able, or a negative prefix).",
+            "grammarFocus": "Word formation from DECIDE: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is adjective from EXPLAIN, so the correct answer is \"inexplicable\".",
+            "wrongOptions": {
+              "explain": "The root EXPLAIN cannot fill the gap alone — you need a derived form like \"inexplicable\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of EXPLAIN that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "EXPLAIN → inexplicable: Use the adjective form (often -ive, -able, or a negative prefix).",
+            "grammarFocus": "Word formation from EXPLAIN: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is adjective from IMAGINE, so the correct answer is \"imaginative\".",
+            "wrongOptions": {
+              "imagine": "The root IMAGINE cannot fill the gap alone — you need a derived form like \"imaginative\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of IMAGINE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "IMAGINE → imaginative: Use the adjective form (often -ive, -able, or a negative prefix).",
+            "grammarFocus": "Word formation from IMAGINE: choose the form that matches the grammar of the line."
+          },
+          {
+            "whyCorrect": "The clue is adjective from DEFINE, so the correct answer is \"definitive\".",
+            "wrongOptions": {
+              "define": "The root DEFINE cannot fill the gap alone — you need a derived form like \"definitive\"."
+            },
+            "commonMistake": "Check the suffix and word class — the gap needs the form of DEFINE that fits grammatically, not just the root.",
+            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
+            "wordFormation": "DEFINE → definitive: Use the adjective form (often -ive, -able, or a negative prefix).",
+            "grammarFocus": "Word formation from DEFINE: choose the form that matches the grammar of the line."
+          }
         ]
       }
     ]
