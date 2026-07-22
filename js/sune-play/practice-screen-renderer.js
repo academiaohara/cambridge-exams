@@ -4755,6 +4755,10 @@
         result.correctAnswer = (p.acceptedAnswers && p.acceptedAnswers[0]) || p.answer || '';
         result.correct = norm.matchesAnyAccepted(syncValue, p);
         result.lifeLoss = result.correct ? 0 : 1;
+        if (p.explanationContent) {
+          result.explanationContent = p.explanationContent;
+          result.explanation = '__structured__';
+        }
         markSyncedGapResults(root, result.correct);
         break;
       }
