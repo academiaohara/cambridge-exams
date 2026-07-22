@@ -710,3 +710,43 @@ if (!String(cwOpts.context).includes('notes')) {
 console.log('PASS crossword_clues explanation builder');
 console.log('Sections:', cwKeys.join(' → '));
 
+// comma_placement (rewrite mode — non-defining clause)
+const cpItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit17.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u17-ex-b').items[0];
+
+const cpScreen = {
+  formatType: 'comma_placement',
+  payload: {
+    interactionMode: 'rewrite_sentence',
+    sentence: cpItem.sentence,
+    answer: cpItem.answer,
+    reconstructedSentence: cpItem.answer,
+    noCommaNeeded: false,
+    explanationContent: cpItem.explanationContent
+  }
+};
+
+const cpWrong = {
+  correct: false,
+  correctAnswer: cpItem.answer,
+  userAnswer: cpItem.sentence
+};
+
+const cpOpts = SunePlayExplanation.buildExplainOpts(cpScreen, cpWrong);
+const cpKeys = cpOpts.sections.map((s) => s.key);
+const cpExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const cpMissing = cpExpected.filter((k) => !cpKeys.includes(k));
+
+if (cpMissing.length) {
+  console.error('FAIL comma_placement missing sections:', cpMissing.join(', '));
+  process.exit(1);
+}
+
+if (!String(cpOpts.context).includes('brother')) {
+  console.error('FAIL comma_placement context should show original sentence');
+  process.exit(1);
+}
+
+console.log('PASS comma_placement explanation builder');
+console.log('Sections:', cpKeys.join(' → '));
+

@@ -262,6 +262,16 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'crossword_clues item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'comma_placement' || ft === 'comma_placement') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'comma_placement item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'comma_placement item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'comma_placement item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (item.acceptedAnswers && item.acceptedAnswers.some(function(a) { return typeof a !== 'string'; })) {
       issues.push(error(file, 'Item ' + (item.id || idx) + ' acceptedAnswers must be strings'));
     }

@@ -894,6 +894,7 @@
       commaAfterTokenIndexes: commaAfterTokenIndexes,
       noCommaNeeded: noCommaNeeded,
       instruction: exercise.studentInstruction || exercise.instructions || '',
+      explanationContent: item.explanationContent || null,
       explanation: item.explanation || ''
     };
 

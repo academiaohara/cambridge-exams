@@ -937,6 +937,84 @@ var SunePlayExplanation = (function() {
       .trim();
   }
 
+  function isNoCommaAnswer(answer) {
+    return /^no commas/i.test(String(answer || '').trim());
+  }
+
+  function formatCommaCorrectAnswer(payload, result) {
+    var p = payload || {};
+    if (p.interactionMode === 'rewrite_sentence') {
+      if (p.noCommaNeeded) return 'No commas';
+      return (result && result.correctAnswer) || p.reconstructedSentence || p.answer || '';
+    }
+    if (p.noCommaNeeded) return 'No commas';
+    var indexes = p.commaAfterTokenIndexes || [];
+    if (!indexes.length) return 'No commas';
+    var tokens = (p.tokens || []).map(function(tok) {
+      return tok && tok.text != null ? tok.text : tok;
+    });
+    return indexes.map(function(idx) {
+      var word = tokens[idx] || ('token ' + idx);
+      return 'after "' + word + '"';
+    }).join('; ');
+  }
+
+  function buildCommaPlacement(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || formatCommaCorrectAnswer(p, result);
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong && userAnswer) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      if (content.grammarFocus) {
+        sections.push({ key: 'grammarFocus', text: content.grammarFocus });
+      } else {
+        var focus = pickFocusSection(content);
+        if (focus) sections.push(focus);
+      }
+      if (isWrong) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, null);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.sentenceBreakdown) {
+        sections.push({ key: 'sentenceBreakdown', text: content.sentenceBreakdown });
+      } else if (p.reconstructedSentence && !p.noCommaNeeded) {
+        sections.push({ key: 'sentenceBreakdown', text: p.reconstructedSentence });
+      } else if (!p.noCommaNeeded && p.answer) {
+        sections.push({ key: 'sentenceBreakdown', text: p.answer });
+      } else if (p.sentence) {
+        sections.push({ key: 'sentenceBreakdown', text: p.sentence });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+      if (p.reconstructedSentence && !p.noCommaNeeded) {
+        sections.push({ key: 'sentenceBreakdown', text: p.reconstructedSentence });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'comma_placement',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function crosswordSpellingNote(userAnswer, correctAnswer, letterCount) {
     var user = String(userAnswer || '').trim();
     var correct = String(correctAnswer || '').trim();
@@ -1286,6 +1364,9 @@ var SunePlayExplanation = (function() {
       if (p.clueNumber != null && cwClue) return String(p.clueNumber) + '. ' + cwClue;
       return cwClue;
     }
+    if (screen.formatType === 'comma_placement') {
+      return String(p.sentence || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1327,6 +1408,8 @@ var SunePlayExplanation = (function() {
         return buildVerbBankTwoStep(screen, result);
       case 'crossword_clues':
         return buildCrosswordClues(screen, result);
+      case 'comma_placement':
+        return buildCommaPlacement(screen, result);
       default:
         return buildLegacy(screen, result);
     }

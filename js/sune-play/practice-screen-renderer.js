@@ -4803,6 +4803,9 @@
           result.lifeLoss = cpCorrect ? 0 : 1;
           markCommaSlotResults(root, p, cpSelected);
         }
+        if (p.explanationContent) {
+          result.explanation = '__structured__';
+        }
         break;
       }
       case 'word_bank_tick': {
