@@ -4433,6 +4433,48 @@
     });
   }
 
+  function formatStativeSortingAnswer(groups) {
+    var lines = [];
+    (groups || []).forEach(function(group) {
+      var label = group.label || group.groupId || '';
+      (group.answers || []).forEach(function(verb) {
+        lines.push(String(verb).trim() + ' \u2192 ' + label);
+      });
+    });
+    return lines.join('\n');
+  }
+
+  function collectStativeMisplaced(root, groups) {
+    var correctGroupByVerb = {};
+    (groups || []).forEach(function(group) {
+      (group.answers || []).forEach(function(verb) {
+        correctGroupByVerb[verb] = {
+          groupId: group.groupId,
+          label: group.label || group.groupId || ''
+        };
+      });
+    });
+    var misplaced = [];
+    (groups || []).forEach(function(group) {
+      var zone = root.querySelector('.sp-sort-dropzone[data-group="' + group.groupId + '"]');
+      if (!zone) return;
+      zone.querySelectorAll('.sp-sort-verb').forEach(function(btn) {
+        var verb = btn.getAttribute('data-verb');
+        if ((group.answers || []).indexOf(verb) === -1) {
+          var correct = correctGroupByVerb[verb] || {};
+          misplaced.push({
+            verb: verb,
+            placedGroupId: group.groupId,
+            placedLabel: group.label || group.groupId || '',
+            correctGroupId: correct.groupId || '',
+            correctLabel: correct.label || ''
+          });
+        }
+      });
+    });
+    return misplaced;
+  }
+
   function processStativeSortingCheck(root, screen, done) {
     var p = screen.payload || {};
     var groups = p.groups || [];
@@ -4478,14 +4520,16 @@
       root.classList.remove('sp-screen--locked');
 
       var allDone = alreadyCorrect.length >= totalExpected;
+      var misplacedWords = collectStativeMisplaced(root, groups);
       done({
         correct: allDone,
-        explanation: p.explanation || '',
-        correctAnswer: '',
+        explanation: p.explanationContent ? '__structured__' : (p.explanation || ''),
+        correctAnswer: formatStativeSortingAnswer(groups),
         userAnswer: 'sorted',
         lifeLoss: allDone ? 0 : Math.min(wrongCount, 2),
         wrongCount: wrongCount,
         roundCorrect: roundCorrect,
+        misplacedWords: misplacedWords,
         shouldRequeue: false,
         partial: !allDone
       });
@@ -5031,25 +5075,30 @@
         break;
       }
       case 'stative_sorting': {
-        var groups = p.groups || [];
-        var totalExpected = 0;
-        var totalPlaced = 0;
-        var wrongCount = 0;
-        groups.forEach(function(g) {
-          totalExpected += (g.answers || []).length;
+        var ssGroups = p.groups || [];
+        var ssTotalExpected = 0;
+        var ssTotalPlaced = 0;
+        var ssWrongCount = 0;
+        ssGroups.forEach(function(g) {
+          ssTotalExpected += (g.answers || []).length;
           var zone = root.querySelector('.sp-sort-dropzone[data-group="' + g.groupId + '"]');
           if (!zone) return;
           zone.querySelectorAll('.sp-sort-verb').forEach(function(btn) {
-            totalPlaced++;
+            ssTotalPlaced++;
             var v = btn.getAttribute('data-verb');
             var expected = g.answers || [];
-            if (expected.indexOf(v) === -1) wrongCount++;
+            if (expected.indexOf(v) === -1) ssWrongCount++;
           });
         });
-        var poolLeft = root.querySelectorAll('#sp-sort-pool .sp-sort-verb').length;
-        result.correct = wrongCount === 0 && totalPlaced === totalExpected && poolLeft === 0;
-        result.lifeLoss = Math.min(wrongCount + (poolLeft > 0 ? 1 : 0), 2);
+        var ssPoolLeft = root.querySelectorAll('#sp-sort-pool .sp-sort-verb').length;
+        result.correct = ssWrongCount === 0 && ssTotalPlaced === ssTotalExpected && ssPoolLeft === 0;
+        result.lifeLoss = Math.min(ssWrongCount + (ssPoolLeft > 0 ? 1 : 0), 2);
         result.userAnswer = 'sorted';
+        result.correctAnswer = formatStativeSortingAnswer(ssGroups);
+        result.misplacedWords = collectStativeMisplaced(root, ssGroups);
+        if (p.explanationContent) {
+          result.explanation = '__structured__';
+        }
         break;
       }
       default:

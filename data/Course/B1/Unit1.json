@@ -595,7 +595,31 @@
             }
           ],
           "lives": 4,
-          "maxLifeLossPerScreen": 2
+          "maxLifeLossPerScreen": 2,
+          "explanationContent": {
+            "whyCorrect": "Stative verbs describe states, feelings, or possession — not actions in progress. Action verbs describe things people do.",
+            "grammarFocus": "Stative verbs are usually not used in continuous forms (*I am knowing* ✗). Action verbs describe activities that can be in progress (*I am studying*).",
+            "wrongOptions": {
+              "know": "stative — state of knowledge, not *I am knowing*",
+              "like": "stative — feeling, not usually continuous",
+              "want": "stative — desire/state",
+              "believe": "stative — opinion or conviction",
+              "belong": "stative — possession/relationship",
+              "prefer": "stative — preference",
+              "understand": "stative — mental state",
+              "need": "stative — necessity",
+              "play": "action — something you do (*I am playing*)",
+              "carry": "action — physical activity",
+              "listen": "action — can be in progress",
+              "study": "action — activity in progress",
+              "walk": "action — movement",
+              "wear": "action — putting on clothes",
+              "borrow": "action — doing something",
+              "look for": "action — searching activity"
+            },
+            "commonMistake": "If the verb describes a state or feeling rather than an activity, it is stative.",
+            "usefulTip": "Ask: is this something happening now, or a state? *I like* = state · *I am playing* = action."
+          }
         },
         {
           "screenId": "b1-u1-node3-meaning-1",

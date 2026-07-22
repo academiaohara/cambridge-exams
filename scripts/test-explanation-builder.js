@@ -795,3 +795,54 @@ if (!String(wbtOpts.context).includes('suffix -y')) {
 console.log('PASS word_bank_tick explanation builder');
 console.log('Sections:', wbtKeys.join(' → '));
 
+// stative_sorting (drag-sort categories)
+const ssItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit13.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u13-ex-a').items[0];
+
+const ssScreen = {
+  formatType: 'stative_sorting',
+  payload: {
+    prompt: 'Tap each word and assign it to the correct box.',
+    groups: ssItem.groups,
+    explanationContent: ssItem.explanationContent
+  }
+};
+
+const ssWrong = {
+  correct: false,
+  correctAnswer: ssItem.groups
+    .flatMap((g) => g.answers.map((verb) => `${verb} → ${g.label}`))
+    .join('\n'),
+  misplacedWords: [{
+    verb: 'furniture',
+    placedGroupId: 'countable',
+    placedLabel: 'Countable',
+    correctGroupId: 'uncountable',
+    correctLabel: 'Uncountable'
+  }]
+};
+
+const ssOpts = SunePlayExplanation.buildExplainOpts(ssScreen, ssWrong);
+const ssKeys = ssOpts.sections.map((s) => s.key);
+const ssExpected = ['correct', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const ssMissing = ssExpected.filter((k) => !ssKeys.includes(k));
+
+if (ssMissing.length) {
+  console.error('FAIL stative_sorting missing sections:', ssMissing.join(', '));
+  process.exit(1);
+}
+
+const ssMistake = ssOpts.sections.find((s) => s.key === 'commonMistake');
+if (!ssMistake || !String(ssMistake.text).includes('furniture')) {
+  console.error('FAIL stative_sorting should personalize misplaced word (furniture)');
+  process.exit(1);
+}
+
+if (!String(ssOpts.context).includes('assign')) {
+  console.error('FAIL stative_sorting context should show prompt');
+  process.exit(1);
+}
+
+console.log('PASS stative_sorting explanation builder');
+console.log('Sections:', ssKeys.join(' → '));
+

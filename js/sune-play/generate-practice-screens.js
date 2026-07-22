@@ -1096,9 +1096,11 @@
 
       case 'stative_sorting':
         return {
-          prompt: item.prompt || genRule.prompt || 'Sort the verbs.',
+          prompt: item.prompt || genRule.prompt || exercise.studentInstruction || 'Sort the verbs.',
           groups: item.groups || genRule.groups || [],
-          verbs: item.verbs || flattenSortVerbs(item.groups || genRule.groups || [])
+          verbs: item.verbs || flattenSortVerbs(item.groups || genRule.groups || []),
+          explanationContent: item.explanationContent || null,
+          explanation: item.explanation || ''
         };
 
       case 'meaning_contrast':
