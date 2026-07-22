@@ -284,3 +284,42 @@ if (preMissing.length) {
 
 console.log('PASS preselected_verb_gap_fill explanation builder');
 console.log('Sections:', preKeys.join(' → '));
+
+// word_bank_gap_fill sequential
+const wbUnit = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit7.v2.json'), 'utf8'));
+const wbEx = wbUnit.contentBanks.exercises.find((e) => e.id === 'b1-u7-ex-b');
+const wbSentence = {
+  sentenceId: wbEx.items[0].id,
+  sentence: wbEx.items[0].sentence,
+  answer: wbEx.items[0].answer,
+  explanationContent: wbEx.items[0].explanationContent
+};
+
+const wbScreen = {
+  formatType: 'word_bank_gap_fill',
+  payload: {
+    sequentialSentences: true,
+    wordBank: wbEx.wordBank,
+    sentences: [wbSentence]
+  }
+};
+
+const wbWrong = {
+  correct: false,
+  correctAnswer: 'rain',
+  userAnswer: 'snow',
+  activeSentenceId: wbSentence.sentenceId
+};
+
+const wbOpts = SunePlayExplanation.buildExplainOpts(wbScreen, wbWrong);
+const wbKeys = wbOpts.sections.map((s) => s.key);
+const wbExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const wbMissing = wbExpected.filter((k) => !wbKeys.includes(k));
+
+if (wbMissing.length) {
+  console.error('FAIL word_bank_gap_fill missing sections:', wbMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS word_bank_gap_fill explanation builder');
+console.log('Sections:', wbKeys.join(' → '));
