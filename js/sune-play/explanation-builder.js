@@ -35,10 +35,24 @@ var SunePlayExplanation = (function() {
     return false;
   }
 
+  function hasWordBankExplanation(payload) {
+    if (!payload) return false;
+    if (getContent(payload)) return true;
+    if (payload.explanation) return true;
+    if (payload.sequentialSentences) {
+      return (payload.sentences || []).some(function(sentence) {
+        return sentence.explanationContent || sentence.explanation;
+      });
+    }
+    return false;
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option') {
       if (hasMcExplanation(p)) return true;
+    } else if (screen && screen.formatType === 'word_bank_gap_fill') {
+      if (hasWordBankExplanation(p)) return true;
     } else {
       if (getContent(p)) return true;
       if (p.explanation) return true;
@@ -298,6 +312,75 @@ var SunePlayExplanation = (function() {
       .trim();
   }
 
+  function buildWordBankContext(payload, sentence) {
+    var bank = (payload && payload.wordBank) || [];
+    var bankLine = bank.length ? 'Word bank: ' + bank.join(', ') : '';
+    var sent = gapSentenceDisplay((sentence && sentence.sentence) || (payload && payload.sentence) || '');
+    return bankLine ? bankLine + '\n' + sent : sent;
+  }
+
+  function findWordBankSeqSentence(payload, result) {
+    var sentences = (payload && payload.sentences) || [];
+    if (result && result.activeSentenceId) {
+      for (var i = 0; i < sentences.length; i++) {
+        if (sentences[i].sentenceId === result.activeSentenceId) return sentences[i];
+      }
+    }
+    if (result && result.correctAnswer) {
+      for (var j = 0; j < sentences.length; j++) {
+        if (String(sentences[j].answer) === String(result.correctAnswer)) return sentences[j];
+      }
+    }
+    return sentences[0] || null;
+  }
+
+  function buildWordBankGapFill(screen, result) {
+    var p = screen.payload || {};
+    if (p.sequentialSentences && p.sentences && p.sentences.length) {
+      var sentence = findWordBankSeqSentence(p, result);
+      var content = (sentence && sentence.explanationContent) || getContent(p);
+      var sections = [];
+      var correctAnswer = (result && result.correctAnswer) || (sentence && sentence.answer) || '';
+      var userAnswer = result && result.userAnswer;
+      var isWrong = result && result.correct === false && userAnswer;
+
+      sections.push({ key: 'correct', text: String(correctAnswer) });
+
+      if (isWrong) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+
+      if (content) {
+        appendTeachingSections(sections, content, isWrong, userAnswer, p.wordBank);
+      } else if (sentence && sentence.explanation) {
+        sections.push({ key: 'whyCorrect', text: sentence.explanation });
+      } else if (p.explanation) {
+        sections.push({ key: 'whyCorrect', text: p.explanation });
+      }
+
+      var sentText = sentence && sentence.sentence;
+      if (sentText && correctAnswer) {
+        sections.push({
+          key: 'sentenceBreakdown',
+          text: gapSentenceDisplay(String(sentText).replace(/(?:\.{3,}|…{2,}|_{3,})/g, correctAnswer))
+        });
+      }
+
+      return {
+        title: 'Explanation',
+        formatType: 'word_bank_gap_fill',
+        context: buildWordBankContext(p, sentence),
+        sections: sections
+      };
+    }
+
+    var standalone = buildFreeTextGapFill(screen, result);
+    if (!standalone) return null;
+    standalone.formatType = 'word_bank_gap_fill';
+    standalone.context = buildWordBankContext(p, null);
+    return standalone;
+  }
+
   function buildPreselectedVerbGapFill(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -523,6 +606,8 @@ var SunePlayExplanation = (function() {
         return buildConjugationGapFill(screen, result);
       case 'preselected_verb_gap_fill':
         return buildPreselectedVerbGapFill(screen, result);
+      case 'word_bank_gap_fill':
+        return buildWordBankGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }

@@ -669,7 +669,9 @@
       lifeLoss: ok ? 0 : (chargeLife ? 1 : 0),
       userAnswer: given,
       correctAnswer: sentence.answer,
-      explanation: sentence.explanation || p.explanation || '',
+      activeSentenceId: state.activeId,
+      explanationContent: sentence.explanationContent || null,
+      explanation: sentence.explanationContent ? '__structured__' : (sentence.explanation || p.explanation || ''),
       _wordBankSeqResult: true
     };
   }
@@ -4812,7 +4814,8 @@
         result.lifeLoss = result.correct ? 0 : 1;
         if ((screen.formatType === 'free_text_gap_fill' ||
              screen.sourceFormatType === 'conjugation_gap_fill' ||
-             screen.formatType === 'preselected_verb_gap_fill') &&
+             screen.formatType === 'preselected_verb_gap_fill' ||
+             screen.formatType === 'word_bank_gap_fill') &&
             p.explanationContent) {
           result.explanationContent = p.explanationContent;
           result.explanation = '__structured__';
