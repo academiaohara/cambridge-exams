@@ -4754,6 +4754,9 @@
         result.correctAnswer = p.answer || '';
         result.correct = norm.matchesAnyAccepted(cwWord, p);
         result.lifeLoss = result.correct ? 0 : 1;
+        if (p.explanationContent) {
+          result.explanation = '__structured__';
+        }
         markCrosswordResults(root, p, cwWord);
         break;
       }

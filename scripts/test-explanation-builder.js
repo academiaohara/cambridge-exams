@@ -671,3 +671,42 @@ console.log('Sections:', vbStep1Keys.join(' → '));
 console.log('PASS verb_bank_two_step explanation builder (step 2)');
 console.log('Sections:', vbStep2Keys.join(' → '));
 
+// crossword_clues
+const cwItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit6.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u6-ex-c').items[0];
+
+const cwScreen = {
+  formatType: 'crossword_clues',
+  payload: {
+    clueNumber: cwItem.clueNumber,
+    clue: cwItem.clue,
+    answer: cwItem.answer,
+    letterCount: cwItem.letterCount,
+    explanationContent: cwItem.explanationContent
+  }
+};
+
+const cwWrong = {
+  correct: false,
+  correctAnswer: cwItem.answer,
+  userAnswer: 'revisee'
+};
+
+const cwOpts = SunePlayExplanation.buildExplainOpts(cwScreen, cwWrong);
+const cwKeys = cwOpts.sections.map((s) => s.key);
+const cwExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'usefulTip'];
+const cwMissing = cwExpected.filter((k) => !cwKeys.includes(k));
+
+if (cwMissing.length) {
+  console.error('FAIL crossword_clues missing sections:', cwMissing.join(', '));
+  process.exit(1);
+}
+
+if (!String(cwOpts.context).includes('notes')) {
+  console.error('FAIL crossword_clues context should include clue text');
+  process.exit(1);
+}
+
+console.log('PASS crossword_clues explanation builder');
+console.log('Sections:', cwKeys.join(' → '));
+

@@ -787,6 +787,7 @@
       answer: answer,
       acceptedAnswers: item.acceptedAnswers || (answer ? [answer] : []),
       letterCount: letterCount,
+      explanationContent: item.explanationContent || null,
       explanation: item.explanation || '',
       instruction: exercise.studentInstruction || exercise.instructions || ''
     };
