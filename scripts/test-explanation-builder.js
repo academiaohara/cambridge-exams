@@ -530,3 +530,38 @@ if (!String(fewOkOpts.sections[0].text).includes('OK')) {
 console.log('PASS find_extra_word explanation builder');
 console.log('Sections:', fewKeys.join(' → '));
 
+// word_order_tiles
+const tileItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-1').items[0];
+
+const tileScreen = {
+  formatType: 'word_order_tiles',
+  payload: {
+    prompt: tileItem.contextQuestion,
+    contextQuestion: tileItem.contextQuestion,
+    answer: tileItem.answer,
+    answerTiles: tileItem.answerTiles,
+    tiles: tileItem.tiles,
+    explanationContent: tileItem.explanationContent
+  }
+};
+
+const tileWrong = {
+  correct: false,
+  correctAnswer: tileItem.answer,
+  userAnswer: 'Every morning, Jake walk to school.'
+};
+
+const tileOpts = SunePlayExplanation.buildExplainOpts(tileScreen, tileWrong);
+const tileKeys = tileOpts.sections.map((s) => s.key);
+const tileExpected = ['correct', 'wordOrder', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const tileMissing = tileExpected.filter((k) => !tileKeys.includes(k));
+
+if (tileMissing.length) {
+  console.error('FAIL word_order_tiles missing sections:', tileMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS word_order_tiles explanation builder');
+console.log('Sections:', tileKeys.join(' → '));
+

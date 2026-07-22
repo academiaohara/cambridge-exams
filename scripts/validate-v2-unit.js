@@ -221,6 +221,16 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'find_extra_word item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'word_order_tiles' || ft === 'word_order_tiles') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'word_order_tiles item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'word_order_tiles item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'word_order_tiles item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (item.acceptedAnswers && item.acceptedAnswers.some(function(a) { return typeof a !== 'string'; })) {
       issues.push(error(file, 'Item ' + (item.id || idx) + ' acceptedAnswers must be strings'));
     }
