@@ -526,6 +526,45 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildSyncedSentenceBreakdown(sentences, answer) {
+    return (sentences || []).map(function(sentence) {
+      return gapSentenceDisplay(String(sentence).replace(/(?:\.{3,}|…{2,}|_{3,})/g, answer || '___'));
+    }).join('\n');
+  }
+
+  function buildSyncedGapFill(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, null);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var breakdown = buildSyncedSentenceBreakdown(p.sentences, correctAnswer);
+    if (breakdown) {
+      sections.push({ key: 'sentenceBreakdown', text: breakdown });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'synced_gap_fill',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildLegacy(screen, result) {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
@@ -585,6 +624,11 @@ var SunePlayExplanation = (function() {
       if (verb) return 'Verb: ' + verb + '\n' + preSent;
       return preSent;
     }
+    if (screen.formatType === 'synced_gap_fill') {
+      return (p.sentences || []).map(function(sentence) {
+        return gapSentenceDisplay(sentence);
+      }).join('\n');
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -608,6 +652,8 @@ var SunePlayExplanation = (function() {
         return buildPreselectedVerbGapFill(screen, result);
       case 'word_bank_gap_fill':
         return buildWordBankGapFill(screen, result);
+      case 'synced_gap_fill':
+        return buildSyncedGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }

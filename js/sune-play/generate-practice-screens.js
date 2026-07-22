@@ -910,6 +910,7 @@
       answer: answer,
       acceptedAnswers: item.acceptedAnswers || (answer ? [answer] : []),
       syncUiMode: 'master_with_previews',
+      explanationContent: item.explanationContent || null,
       explanation: item.explanation || '',
       instruction: exercise.studentInstruction || exercise.instructions || ''
     };

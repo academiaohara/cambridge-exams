@@ -323,3 +323,40 @@ if (wbMissing.length) {
 
 console.log('PASS word_bank_gap_fill explanation builder');
 console.log('Sections:', wbKeys.join(' → '));
+
+// synced_gap_fill
+const syncItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit2.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'c1-u2-ex-i').items[0];
+
+const syncScreen = {
+  formatType: 'synced_gap_fill',
+  payload: {
+    sentences: syncItem.sentences,
+    answer: syncItem.answer,
+    explanationContent: syncItem.explanationContent
+  }
+};
+
+const syncWrong = {
+  correct: false,
+  correctAnswer: 'focus',
+  userAnswer: 'attention'
+};
+
+const syncOpts = SunePlayExplanation.buildExplainOpts(syncScreen, syncWrong);
+const syncKeys = syncOpts.sections.map((s) => s.key);
+const syncExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const syncMissing = syncExpected.filter((k) => !syncKeys.includes(k));
+
+if (syncMissing.length) {
+  console.error('FAIL synced_gap_fill missing sections:', syncMissing.join(', '));
+  process.exit(1);
+}
+
+if (!SunePlayExplanation.hasExplanation(syncScreen, syncWrong)) {
+  console.error('FAIL synced_gap_fill hasExplanation should be true');
+  process.exit(1);
+}
+
+console.log('PASS synced_gap_fill explanation builder');
+console.log('Sections:', syncKeys.join(' → '));
