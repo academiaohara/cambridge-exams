@@ -46,14 +46,44 @@ function isHuntExercise(exercise) {
   return ft === 'passage_error_hunt_single' || ft === 'passage_error_hunt_counter';
 }
 
+function extractSentenceContaining(text, phrase) {
+  const passage = String(text || '').trim();
+  const target = String(phrase || '').trim();
+  if (!passage) return '';
+  const idx = passage.toLowerCase().indexOf(target.toLowerCase());
+  if (idx === -1) return passage;
+
+  let start = passage.lastIndexOf('.', idx);
+  start = start === -1 ? 0 : start + 1;
+  while (start < passage.length && /\s/.test(passage.charAt(start))) start++;
+
+  let end = passage.indexOf('.', idx + target.length);
+  if (end === -1) end = passage.length;
+  else end += 1;
+
+  return passage.slice(start, end).trim();
+}
+
+function wrapMarkedSnippet(sentence, phrase, markerNum = 1) {
+  const target = String(phrase || '').trim();
+  if (!sentence || !target) return String(sentence || '').trim();
+  const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let replaced = false;
+  const marked = String(sentence).replace(new RegExp(escaped, 'i'), (match) => {
+    replaced = true;
+    return `[start${markerNum}]${match}[end${markerNum}]`;
+  });
+  return replaced ? marked : String(sentence).trim();
+}
+
 function buildSentenceBreakdown(passage, wrong, answer) {
+  const sentence = extractSentenceContaining(passage, wrong);
   const phrase = String(wrong || '').trim();
   const fix = String(answer || '').trim();
-  if (!passage || !phrase || !fix) return null;
+  if (!sentence || !phrase || !fix) return null;
   const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const re = new RegExp('\\b' + escaped + '\\b');
-  if (!re.test(passage)) return null;
-  return passage.replace(re, fix);
+  const corrected = sentence.replace(new RegExp(escaped, 'i'), fix);
+  return wrapMarkedSnippet(corrected, fix, 1);
 }
 
 function migrateErrorSlot(slot, passage) {

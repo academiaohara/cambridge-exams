@@ -779,7 +779,13 @@
     updateSessionHeader();
   }
 
-  function updateExerciseTip(screen) {
+  function formatTipText(text) {
+    return esc(text)
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>');
+  }
+
+  function updateExerciseTip(screen, result) {
     var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
     if (!tipMount) return;
 
@@ -787,6 +793,11 @@
     if (screen && screen.formatType === 'word_order_tiles' && screen.payload) {
       var content = screen.payload.explanationContent;
       tip = (content && content.usefulTip) || '';
+    } else if (screen && result &&
+        (screen.formatType === 'passage_error_hunt_counter' ||
+         screen.formatType === 'passage_error_hunt_single') &&
+        typeof SunePlayExplanation !== 'undefined') {
+      tip = SunePlayExplanation.getHuntExerciseTip(screen, result) || '';
     }
 
     if (!tip) {
@@ -799,7 +810,7 @@
     tipMount.innerHTML =
       '<div class="sp-exercise-tip" role="note">' +
         '<span class="sp-exercise-tip__icon material-symbols-outlined" aria-hidden="true">tips_and_updates</span>' +
-        '<p class="sp-exercise-tip__text">' + esc(tip) + '</p>' +
+        '<p class="sp-exercise-tip__text">' + formatTipText(tip) + '</p>' +
       '</div>';
   }
 
@@ -1529,6 +1540,7 @@
     applyGapResultStyles(result.correct);
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
+    updateExerciseTip(lessonState.currentScreen, result);
   }
 
   function finishSession() {

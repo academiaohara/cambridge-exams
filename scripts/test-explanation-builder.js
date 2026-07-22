@@ -924,11 +924,16 @@ const pehWrongFix = {
 
 const pehFixOpts = SunePlayExplanation.buildExplainOpts(pehScreen, pehWrongFix);
 const pehFixKeys = pehFixOpts.sections.map((s) => s.key);
-const pehFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const pehFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const pehFixMissing = pehFixExpected.filter((k) => !pehFixKeys.includes(k));
 
 if (pehFixMissing.length) {
   console.error('FAIL passage_error_hunt_single wrong_fix missing sections:', pehFixMissing.join(', '));
+  process.exit(1);
+}
+
+if (pehFixKeys.includes('usefulTip')) {
+  console.error('FAIL passage_error_hunt_single should not include usefulTip in explanation sections');
   process.exit(1);
 }
 
@@ -950,8 +955,14 @@ if (pehTapMissing.length) {
   process.exit(1);
 }
 
-if (!String(pehFixOpts.context).includes('painting')) {
-  console.error('FAIL passage_error_hunt_single context should include passage text');
+if (!String(pehFixOpts.context).includes('[start1]') || !String(pehFixOpts.context).includes('enjoy')) {
+  console.error('FAIL passage_error_hunt_single context should use marked snippet around the error');
+  process.exit(1);
+}
+
+const pehBreakdown = pehFixOpts.sections.find((s) => s.key === 'sentenceBreakdown');
+if (!pehBreakdown || !String(pehBreakdown.text).includes('[start1]')) {
+  console.error('FAIL passage_error_hunt_single sentence breakdown should use bracket markers');
   process.exit(1);
 }
 
@@ -988,7 +999,7 @@ const pehCounterWrongFix = {
 
 const pehCounterFixOpts = SunePlayExplanation.buildExplainOpts(pehCounterScreen, pehCounterWrongFix);
 const pehCounterFixKeys = pehCounterFixOpts.sections.map((s) => s.key);
-const pehCounterFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const pehCounterFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const pehCounterFixMissing = pehCounterFixExpected.filter((k) => !pehCounterFixKeys.includes(k));
 
 if (pehCounterFixMissing.length) {
@@ -996,9 +1007,14 @@ if (pehCounterFixMissing.length) {
   process.exit(1);
 }
 
-const pehCounterTip = pehCounterFixOpts.sections.find((s) => s.key === 'usefulTip');
-if (!pehCounterTip || !String(pehCounterTip.text).includes('9 errors left')) {
-  console.error('FAIL passage_error_hunt_counter should include progress tip');
+const pehCounterExerciseTip = SunePlayExplanation.getHuntExerciseTip(pehCounterScreen, pehCounterWrongFix);
+if (!pehCounterExerciseTip || !String(pehCounterExerciseTip).includes('9 errors left')) {
+  console.error('FAIL passage_error_hunt_counter should expose progress tip via getHuntExerciseTip');
+  process.exit(1);
+}
+
+if (pehCounterFixKeys.includes('usefulTip')) {
+  console.error('FAIL passage_error_hunt_counter should not include usefulTip in explanation sections');
   process.exit(1);
 }
 
@@ -1015,11 +1031,17 @@ const pehCounterMark = {
 
 const pehCounterMarkOpts = SunePlayExplanation.buildExplainOpts(pehCounterScreen, pehCounterMark);
 const pehCounterMarkKeys = pehCounterMarkOpts.sections.map((s) => s.key);
-const pehCounterMarkExpected = ['whyCorrect', 'grammarFocus', 'usefulTip'];
+const pehCounterMarkExpected = ['whyCorrect', 'grammarFocus'];
 const pehCounterMarkMissing = pehCounterMarkExpected.filter((k) => !pehCounterMarkKeys.includes(k));
 
 if (pehCounterMarkMissing.length) {
   console.error('FAIL passage_error_hunt_counter mark_success missing sections:', pehCounterMarkMissing.join(', '));
+  process.exit(1);
+}
+
+const pehCounterMarkTip = SunePlayExplanation.getHuntExerciseTip(pehCounterScreen, pehCounterMark);
+if (!pehCounterMarkTip || !String(pehCounterMarkTip).includes('write the correction')) {
+  console.error('FAIL passage_error_hunt_counter mark_success should expose correction tip via getHuntExerciseTip');
   process.exit(1);
 }
 
