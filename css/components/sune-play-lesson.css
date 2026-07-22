@@ -1082,6 +1082,16 @@ button.sp-vocab-word-card:focus-visible {
   max-width: min(100%, 52rem);
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--crossword) {
+  align-items: stretch;
+}
+
+.sp-practice-main .sp-exercise-card:has(.sp-screen--crossword) .sp-screen--crossword {
+  max-width: 100%;
+  align-self: stretch;
+  margin-inline: 0;
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--hunt) .sp-screen--hunt {
   flex: 1;
   min-height: 0;
