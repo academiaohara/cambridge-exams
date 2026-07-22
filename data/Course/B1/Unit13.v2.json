@@ -451,7 +451,22 @@
                 "groupId": "countable"
               }
             ],
-            "explanation": "**Countable**: banana, person, box, woman (can be plural). **Uncountable**: furniture, money, news, bread (no plural form)."
+            "explanationContent": {
+              "whyCorrect": "Countable: banana, person, box, woman (can be plural). Uncountable: furniture, money, news, bread (no plural form).",
+              "grammarFocus": "Countable nouns take a/an and have plurals (a banana → bananas). Uncountable nouns have no plural (*furnitures*, *moneys*) and often use much/some.",
+              "wrongOptions": {
+                "banana": "countable — plural: bananas",
+                "person": "countable — plural: people",
+                "box": "countable — plural: boxes",
+                "woman": "countable — plural: women",
+                "furniture": "uncountable — no plural (*furnitures* ✗)",
+                "money": "uncountable — we do not say *moneys*",
+                "news": "uncountable — no *a news* or *news are*",
+                "bread": "uncountable in this sense — no plural *breads*"
+              },
+              "commonMistake": "If you can count individual items or add a plural -s, the noun is countable.",
+              "usefulTip": "Try adding a number or plural: *two bananas* works, but *two furnitures* does not."
+            }
           }
         ]
       },

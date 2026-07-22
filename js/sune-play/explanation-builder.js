@@ -1069,6 +1069,101 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function stativeVerbGroupMap(groups) {
+    var map = {};
+    (groups || []).forEach(function(group) {
+      (group.answers || []).forEach(function(verb) {
+        map[String(verb).trim().toLowerCase()] = {
+          groupId: group.groupId,
+          label: group.label || group.groupId || ''
+        };
+      });
+    });
+    return map;
+  }
+
+  function formatStativeSortingAnswer(groups) {
+    var lines = [];
+    (groups || []).forEach(function(group) {
+      var label = group.label || group.groupId || '';
+      (group.answers || []).forEach(function(verb) {
+        lines.push(String(verb).trim() + ' \u2192 ' + label);
+      });
+    });
+    return lines.join('\n');
+  }
+
+  function stativeSortingWordNote(content, verb, correctLabel) {
+    var note = lookupWrongOptionNote(content, verb, null);
+    if (note) return note;
+    if (correctLabel) {
+      return 'it belongs in *' + correctLabel + '*.';
+    }
+    return 'check which category rule applies to this word.';
+  }
+
+  function buildStativeSortingMistakeNote(content, misplaced) {
+    if (!misplaced || !misplaced.length) {
+      return content && content.commonMistake ? content.commonMistake : '';
+    }
+    var first = misplaced[0];
+    var verb = first.verb || '';
+    var placedLabel = first.placedLabel || first.placedGroupId || 'the wrong box';
+    var correctLabel = first.correctLabel || '';
+    var note = stativeSortingWordNote(content, verb, correctLabel);
+    var line = 'You put *' + verb + '* in ' + placedLabel + ' \u2014 ' + note;
+    if (misplaced.length > 1) {
+      var second = misplaced[1];
+      var secondNote = stativeSortingWordNote(content, second.verb, second.correctLabel);
+      line += ' You also put *' + second.verb + '* in ' +
+        (second.placedLabel || second.placedGroupId) + ' \u2014 ' + secondNote;
+    }
+    return line;
+  }
+
+  function buildStativeSorting(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var groups = p.groups || [];
+    var correctAnswer = (result && result.correctAnswer) || formatStativeSortingAnswer(groups);
+    var misplaced = (result && result.misplacedWords) || [];
+    var isWrong = result && result.correct === false && misplaced.length > 0;
+    var sections = [];
+
+    sections.push({ key: 'correct', text: correctAnswer });
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var wrongNote = buildStativeSortingMistakeNote(content, misplaced);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      } else if (!isWrong && content.commonMistake && result && result.correct === false) {
+        sections.push({ key: 'commonMistake', text: content.commonMistake });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+      if (isWrong) {
+        var legacyMistake = buildStativeSortingMistakeNote(null, misplaced);
+        if (legacyMistake) sections.push({ key: 'commonMistake', text: legacyMistake });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'stative_sorting',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildCommaPlacement(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1480,6 +1575,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'word_bank_tick') {
       return String(p.instruction || '').trim();
     }
+    if (screen.formatType === 'stative_sorting') {
+      return String(p.prompt || p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1525,6 +1623,8 @@ var SunePlayExplanation = (function() {
         return buildCommaPlacement(screen, result);
       case 'word_bank_tick':
         return buildWordBankTick(screen, result);
+      case 'stative_sorting':
+        return buildStativeSorting(screen, result);
       default:
         return buildLegacy(screen, result);
     }
