@@ -57,6 +57,13 @@ var SunePlayExplanation = (function() {
     });
   }
 
+  function hasHuntCounterExplanation(payload) {
+    if (!payload) return false;
+    return (payload.items || []).some(function(item) {
+      return item.explanationContent || item.explanation;
+    });
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option') {
@@ -65,6 +72,8 @@ var SunePlayExplanation = (function() {
       if (hasWordBankExplanation(p)) return true;
     } else if (screen && screen.formatType === 'passage_gap_fill') {
       if (hasPassageGapExplanation(p)) return true;
+    } else if (screen && screen.formatType === 'passage_error_hunt_counter') {
+      if (hasHuntCounterExplanation(p)) return true;
     } else {
       if (getContent(p)) return true;
       if (p.explanation) return true;
@@ -1247,6 +1256,113 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function huntCounterProgressTip(remaining, total) {
+    if (remaining == null) return '';
+    if (remaining <= 0) {
+      return total ? 'All errors corrected — well done!' : '';
+    }
+    if (remaining === 1) {
+      return '1 error left — check another verb tense in the passage.';
+    }
+    return remaining + ' errors left — keep hunting for unnatural verb forms.';
+  }
+
+  function getHuntActiveItem(payload, result) {
+    if (result && result.activeItem) return result.activeItem;
+    var idx = result && result.huntItemIdx;
+    if (idx != null && payload && payload.items && payload.items[idx]) {
+      return payload.items[idx];
+    }
+    return null;
+  }
+
+  function buildPassageErrorHuntCounter(screen, result) {
+    var p = screen.payload || {};
+    var activeItem = getHuntActiveItem(p, result) || {};
+    var content = activeItem.explanationContent || null;
+    var huntPhase = result && result.huntPhase;
+    if (!huntPhase) {
+      if (result && result._huntMarkResult) huntPhase = 'mark_success';
+      else if (result && result._huntFixResult && result.correct) huntPhase = 'correct_fix';
+      else if (result && result.correct === false) huntPhase = 'wrong_fix';
+      else huntPhase = 'correct_fix';
+    }
+    var wrongPhrase = activeItem.wrong || '';
+    var correctAnswer = (result && result.correctAnswer) || activeItem.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var tappedPhrase = (result && result.tappedPhrase) || '';
+    var remaining = result && result.errorsRemaining;
+    var total = (result && result.errorsTotal) ||
+      (p.counter && p.counter.target) || p.errorCount || (p.items && p.items.length) || 0;
+    var sections = [];
+
+    if (huntPhase === 'wrong_tap') {
+      sections.push({
+        key: 'commonMistake',
+        text: huntWrongTapNote(content, tappedPhrase, wrongPhrase)
+      });
+      if (content) {
+        if (content.whyCorrect) {
+          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        }
+        var tapFocus = pickFocusSection(content);
+        if (tapFocus) sections.push(tapFocus);
+      }
+      var tapProgress = huntCounterProgressTip(remaining, total);
+      if (tapProgress) sections.push({ key: 'usefulTip', text: tapProgress });
+    } else if (huntPhase === 'mark_success') {
+      if (content && content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var markFocus = pickFocusSection(content);
+      if (markFocus) sections.push(markFocus);
+      var markTip = wrongPhrase
+        ? 'Now write the correction for *' + wrongPhrase + '*.'
+        : 'Now write the correction for this error.';
+      var markProgress = huntCounterProgressTip(remaining, total);
+      if (markProgress) markTip += ' ' + markProgress;
+      sections.push({ key: 'usefulTip', text: markTip });
+    } else {
+      var isWrong = result && result.correct === false;
+      sections.push({ key: 'correct', text: String(correctAnswer) });
+      if (isWrong && userAnswer) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+      if (content) {
+        if (content.whyCorrect) {
+          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        }
+        var focus = pickFocusSection(content);
+        if (focus) sections.push(focus);
+        if (isWrong) {
+          var fixNote = lookupWrongOptionNote(content, userAnswer, null);
+          if (!fixNote && content.commonMistake) fixNote = content.commonMistake;
+          if (fixNote) sections.push({ key: 'commonMistake', text: fixNote });
+        }
+        var breakdown = content.sentenceBreakdown ||
+          buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
+        if (breakdown) sections.push({ key: 'sentenceBreakdown', text: breakdown });
+      }
+      var progressTip = huntCounterProgressTip(
+        result && result.allDone ? 0 : remaining,
+        total
+      );
+      var baseTip = content && content.usefulTip ? content.usefulTip + ' ' : '';
+      if (progressTip) {
+        sections.push({ key: 'usefulTip', text: (baseTip + progressTip).trim() });
+      } else if (content && content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'passage_error_hunt_counter',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildCommaPlacement(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1664,6 +1780,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'passage_error_hunt_single') {
       return String(p.passage || p.instruction || '').trim();
     }
+    if (screen.formatType === 'passage_error_hunt_counter') {
+      return String(p.passage || p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1713,6 +1832,8 @@ var SunePlayExplanation = (function() {
         return buildStativeSorting(screen, result);
       case 'passage_error_hunt_single':
         return buildPassageErrorHuntSingle(screen, result);
+      case 'passage_error_hunt_counter':
+        return buildPassageErrorHuntCounter(screen, result);
       default:
         return buildLegacy(screen, result);
     }

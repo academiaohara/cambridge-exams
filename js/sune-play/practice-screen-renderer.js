@@ -4138,6 +4138,15 @@
       });
     }
 
+    function findNextUnmarkedHuntItem() {
+      for (var i = 0; i < items.length; i++) {
+        if (!root._huntMarked[i]) {
+          return { item: items[i], idx: i };
+        }
+      }
+      return { item: items[0] || null, idx: 0 };
+    }
+
     root._huntValidateMark = function() {
       if (root._huntPhase !== 'mark') return { handled: false };
       var selectionText = getPendingText();
@@ -4148,13 +4157,22 @@
         shakePendingSelection();
         clearPending();
         refresh();
+        var hint = findNextUnmarkedHuntItem();
         return {
           handled: true,
           correct: false,
           lifeLoss: 1,
+          huntPhase: 'wrong_tap',
+          tappedPhrase: selectionText,
           userAnswer: selectionText,
-          correctAnswer: '',
-          explanation: 'That phrase is not one of the errors. Keep looking.'
+          errorsFound: markedCount(),
+          errorsRemaining: target - markedCount(),
+          errorsTotal: target,
+          activeItem: hint.item,
+          huntItemIdx: hint.idx,
+          explanation: (hint.item && hint.item.explanationContent)
+            ? '__structured__'
+            : 'That phrase is not one of the errors. Keep looking.'
         };
       }
 
@@ -4171,8 +4189,16 @@
         handled: true,
         correct: true,
         _huntMarkResult: true,
+        huntPhase: 'mark_success',
+        huntItemIdx: matchedIdx,
+        activeItem: item,
         userAnswer: selectionText,
-        explanation: item.explanation || 'Correct! Now write the correction for this error.'
+        errorsFound: markedCount(),
+        errorsRemaining: target - markedCount() - 1,
+        errorsTotal: target,
+        explanation: item.explanationContent
+          ? '__structured__'
+          : (item.explanation || 'Correct! Now write the correction for this error.')
       };
     };
 
@@ -4193,9 +4219,15 @@
           handled: true,
           correct: false,
           lifeLoss: 1,
+          huntPhase: 'wrong_fix',
+          huntItemIdx: idx,
+          activeItem: item,
           userAnswer: fixVal,
           correctAnswer: expected,
-          explanation: item.explanation || ''
+          errorsFound: fixedCount(),
+          errorsRemaining: target - fixedCount(),
+          errorsTotal: target,
+          explanation: item.explanationContent ? '__structured__' : (item.explanation || '')
         };
       }
 
@@ -4210,12 +4242,20 @@
         handled: true,
         correct: true,
         _huntFixResult: true,
+        huntPhase: 'correct_fix',
         allDone: allDone,
+        huntItemIdx: idx,
+        activeItem: item,
         userAnswer: fixVal,
         correctAnswer: expected,
-        explanation: allDone
-          ? (item.explanation || p.explanation || 'You found and corrected all the tense mistakes in the passage.')
-          : (item.explanation || '')
+        errorsFound: fixedCount() + 1,
+        errorsRemaining: allDone ? 0 : target - fixedCount() - 1,
+        errorsTotal: target,
+        explanation: item.explanationContent
+          ? '__structured__'
+          : (allDone
+            ? (item.explanation || p.explanation || 'You found and corrected all the tense mistakes in the passage.')
+            : (item.explanation || ''))
       };
     };
 
