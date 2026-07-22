@@ -9,6 +9,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildHuntSentenceBreakdown } from './lib/hunt-snippet.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -46,44 +47,8 @@ function isHuntExercise(exercise) {
   return ft === 'passage_error_hunt_single' || ft === 'passage_error_hunt_counter';
 }
 
-function extractSentenceContaining(text, phrase) {
-  const passage = String(text || '').trim();
-  const target = String(phrase || '').trim();
-  if (!passage) return '';
-  const idx = passage.toLowerCase().indexOf(target.toLowerCase());
-  if (idx === -1) return passage;
-
-  let start = passage.lastIndexOf('.', idx);
-  start = start === -1 ? 0 : start + 1;
-  while (start < passage.length && /\s/.test(passage.charAt(start))) start++;
-
-  let end = passage.indexOf('.', idx + target.length);
-  if (end === -1) end = passage.length;
-  else end += 1;
-
-  return passage.slice(start, end).trim();
-}
-
-function wrapMarkedSnippet(sentence, phrase, markerNum = 1) {
-  const target = String(phrase || '').trim();
-  if (!sentence || !target) return String(sentence || '').trim();
-  const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  let replaced = false;
-  const marked = String(sentence).replace(new RegExp(escaped, 'i'), (match) => {
-    replaced = true;
-    return `[start${markerNum}]${match}[end${markerNum}]`;
-  });
-  return replaced ? marked : String(sentence).trim();
-}
-
 function buildSentenceBreakdown(passage, wrong, answer) {
-  const sentence = extractSentenceContaining(passage, wrong);
-  const phrase = String(wrong || '').trim();
-  const fix = String(answer || '').trim();
-  if (!sentence || !phrase || !fix) return null;
-  const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const corrected = sentence.replace(new RegExp(escaped, 'i'), fix);
-  return wrapMarkedSnippet(corrected, fix, 1);
+  return buildHuntSentenceBreakdown(passage, wrong, answer);
 }
 
 function migrateErrorSlot(slot, passage) {
