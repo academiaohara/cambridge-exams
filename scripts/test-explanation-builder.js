@@ -250,3 +250,37 @@ if (conjOpts.formatType !== 'conjugation_gap_fill') {
 
 console.log('PASS conjugation_gap_fill explanation builder');
 console.log('Sections:', conjKeys.join(' → '));
+
+// preselected_verb_gap_fill
+const preItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-5').items[0];
+
+const preScreen = {
+  formatType: 'preselected_verb_gap_fill',
+  payload: {
+    sentence: preItem.blankSentence || preItem.sentence,
+    preselectedVerb: preItem.selectedTileAnswer,
+    answer: preItem.answer,
+    completedSentence: preItem.completedSentence,
+    explanationContent: preItem.explanationContent
+  }
+};
+
+const preWrong = {
+  correct: false,
+  correctAnswer: 'stay',
+  userAnswer: 'staying'
+};
+
+const preOpts = SunePlayExplanation.buildExplainOpts(preScreen, preWrong);
+const preKeys = preOpts.sections.map((s) => s.key);
+const preExpected = ['correct', 'grammarFocus', 'yourAnswer', 'commonMistake', 'sentenceBreakdown'];
+const preMissing = preExpected.filter((k) => !preKeys.includes(k));
+
+if (preMissing.length) {
+  console.error('FAIL preselected_verb_gap_fill missing sections:', preMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS preselected_verb_gap_fill explanation builder');
+console.log('Sections:', preKeys.join(' → '));

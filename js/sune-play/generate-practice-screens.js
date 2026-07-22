@@ -1101,6 +1101,7 @@
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers,
           gaps: item.gaps || [],
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || '',
           completedSentence: item.completedSentence || '',
           instruction: exercise.instructions || exercise.studentInstruction || ''

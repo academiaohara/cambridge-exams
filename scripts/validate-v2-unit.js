@@ -140,6 +140,17 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'conjugation_gap_fill item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'preselected_verb_gap_fill' || ft === 'preselected_verb_gap_fill' ||
+        (ft === 'verb_tile_conjugation_gap' && (item.baseVerb || item.selectedTileAnswer || item.preselectedVerb))) {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'preselected_verb_gap_fill item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.grammarFocus && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'preselected_verb_gap_fill item ' + (item.id || idx) + ' explanationContent missing grammarFocus'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'preselected_verb_gap_fill item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (ft === 'synced_gap_fill') {
       if (!(item.sentences && item.sentences.length >= 2)) {
         issues.push(error(file, 'synced_gap_fill item ' + (item.id || idx) + ' needs sentences[]'));
