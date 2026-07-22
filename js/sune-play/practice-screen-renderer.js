@@ -4885,6 +4885,9 @@
           result.correct = norm.matchesAnyAccepted(text, p);
         }
         result.lifeLoss = result.correct ? 0 : 1;
+        if (p.explanationContent) {
+          result.explanation = '__structured__';
+        }
         break;
       }
       case 'word_order_tiles': {

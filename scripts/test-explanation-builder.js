@@ -565,3 +565,42 @@ if (tileMissing.length) {
 console.log('PASS word_order_tiles explanation builder');
 console.log('Sections:', tileKeys.join(' → '));
 
+// full_sentence_write (cue-based conjugation scaffold)
+const fswItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit5.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u5-ex-c').items[0];
+
+const fswScreen = {
+  formatType: 'full_sentence_write',
+  payload: {
+    displayPrompt: fswItem.displayPrompt,
+    prompt: fswItem.prompt,
+    answer: fswItem.answer,
+    acceptedAnswers: fswItem.acceptedAnswers,
+    explanationContent: fswItem.explanationContent
+  }
+};
+
+const fswWrong = {
+  correct: false,
+  correctAnswer: fswItem.answer,
+  userAnswer: 'They already left when we arrived.'
+};
+
+const fswOpts = SunePlayExplanation.buildExplainOpts(fswScreen, fswWrong);
+const fswKeys = fswOpts.sections.map((s) => s.key);
+const fswExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const fswMissing = fswExpected.filter((k) => !fswKeys.includes(k));
+
+if (fswMissing.length) {
+  console.error('FAIL full_sentence_write missing sections:', fswMissing.join(', '));
+  process.exit(1);
+}
+
+if (!String(fswOpts.context).includes('they / already')) {
+  console.error('FAIL full_sentence_write context should show displayPrompt cues');
+  process.exit(1);
+}
+
+console.log('PASS full_sentence_write explanation builder');
+console.log('Sections:', fswKeys.join(' → '));
+

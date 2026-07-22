@@ -299,7 +299,17 @@
             "acceptedAnswers": [
               "The nurse asked me if I was feeling better."
             ],
-            "explanation": "Yes/no question → **asked if I was** feeling better."
+            "explanationContent": {
+              "whyCorrect": "Yes/no question, so the sentence is \"The nurse asked me if I was feeling better.\".",
+              "sentenceBreakdown": "Prompt: \"Are you feeling better?\" the nurse asked me. → The nurse asked me if I was feeling better.",
+              "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
+              "wrongOptions": {
+                "Yesno": "Check how \"Yesno\" changes in the target sentence — tense or word form may shift.",
+                "question": "Check how \"question\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exa-2",
@@ -314,7 +324,17 @@
             "acceptedAnswers": [
               "Liam asked if I had sent the email."
             ],
-            "explanation": "Present perfect → **if I had sent** the email."
+            "explanationContent": {
+              "whyCorrect": "Present perfect, so the sentence is \"Liam asked if I had sent the email.\".",
+              "sentenceBreakdown": "Prompt: \"Have you sent the email?\" Liam asked. → Liam asked if I had sent the email.",
+              "grammarFocus": "Present perfect links past actions to now — has/have + past participle; yet goes at the end of negatives.",
+              "wrongOptions": {
+                "Present": "Check how \"Present\" changes in the target sentence — tense or word form may shift.",
+                "perfect": "Check how \"perfect\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exa-3",
@@ -329,7 +349,16 @@
             "acceptedAnswers": [
               "Sara asked Tom if he could speak Italian."
             ],
-            "explanation": "**Can** → **could** speak Italian."
+            "explanationContent": {
+              "whyCorrect": "Can, so the sentence is \"Sara asked Tom if he could speak Italian.\".",
+              "sentenceBreakdown": "Prompt: \"Can you speak Italian?\" Sara asked Tom. → Sara asked Tom if he could speak Italian.",
+              "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
+              "wrongOptions": {
+                "Can": "Check how \"Can\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exa-4",
@@ -344,7 +373,16 @@
             "acceptedAnswers": [
               "Mum asked if they would arrive that night."
             ],
-            "explanation": "**Tonight** → **that night**; **will** → **would**."
+            "explanationContent": {
+              "whyCorrect": "Tonight, so the sentence is \"Mum asked if they would arrive that night.\".",
+              "sentenceBreakdown": "Prompt: \"Will they arrive tonight?\" Mum asked. → Mum asked if they would arrive that night.",
+              "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
+              "wrongOptions": {
+                "Tonight": "Check how \"Tonight\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exa-5",
@@ -359,7 +397,17 @@
             "acceptedAnswers": [
               "Daniel asked if they should wait outside."
             ],
-            "explanation": "**Should we** → **if they should** wait."
+            "explanationContent": {
+              "whyCorrect": "Should we, so the sentence is \"Daniel asked if they should wait outside.\".",
+              "sentenceBreakdown": "Prompt: \"Should we wait outside?\" Daniel asked. → Daniel asked if they should wait outside.",
+              "grammarFocus": "Build a grammatically complete sentence that matches the prompt: Daniel asked if they should wait outside.",
+              "wrongOptions": {
+                "Should": "Check how \"Should\" changes in the target sentence — tense or word form may shift.",
+                "we": "Check how \"we\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exa-6",
@@ -374,7 +422,17 @@
             "acceptedAnswers": [
               "Dad asked me if I had locked the door."
             ],
-            "explanation": "Past question → **if I had locked** the door."
+            "explanationContent": {
+              "whyCorrect": "Past question, so the sentence is \"Dad asked me if I had locked the door.\".",
+              "sentenceBreakdown": "Prompt: \"Did you lock the door?\" Dad asked me. → Dad asked me if I had locked the door.",
+              "grammarFocus": "Second conditional: If + past simple, would + base verb — unreal present/future situations.",
+              "wrongOptions": {
+                "Past": "Check how \"Past\" changes in the target sentence — tense or word form may shift.",
+                "question": "Check how \"question\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           }
         ]
       },
@@ -521,7 +579,16 @@
             "acceptedAnswers": [
               "The teacher told us to open our books."
             ],
-            "explanation": "Order → **told us to open** our books."
+            "explanationContent": {
+              "whyCorrect": "Order, so the sentence is \"The teacher told us to open our books.\".",
+              "sentenceBreakdown": "Prompt: \"Open your books,\" the teacher said to us. → The teacher told us to open our books.",
+              "grammarFocus": "Build a grammatically complete sentence that matches the prompt: The teacher told us to open our books.",
+              "wrongOptions": {
+                "Order": "Check how \"Order\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exc-2",
@@ -536,7 +603,17 @@
             "acceptedAnswers": [
               "The police officer told me not to park there."
             ],
-            "explanation": "Negative order → **not to park there**."
+            "explanationContent": {
+              "whyCorrect": "Negative order, so the sentence is \"The police officer told me not to park there.\".",
+              "sentenceBreakdown": "Prompt: \"Don't park here,\" the police officer said to me. → The police officer told me not to park there.",
+              "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
+              "wrongOptions": {
+                "Negative": "Check how \"Negative\" changes in the target sentence — tense or word form may shift.",
+                "order": "Check how \"order\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exc-3",
@@ -551,7 +628,16 @@
             "acceptedAnswers": [
               "Grandma asked Leo to carry that bag."
             ],
-            "explanation": "Request → **asked Leo to carry** that bag."
+            "explanationContent": {
+              "whyCorrect": "Request, so the sentence is \"Grandma asked Leo to carry that bag.\".",
+              "sentenceBreakdown": "Prompt: \"Please carry this bag,\" Grandma said to Leo. → Grandma asked Leo to carry that bag.",
+              "grammarFocus": "Relative clauses add detail — choose who/which/that/whose to match the noun they describe.",
+              "wrongOptions": {
+                "Request": "Check how \"Request\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exc-4",
@@ -566,7 +652,17 @@
             "acceptedAnswers": [
               "The librarian asked the children not to make any noise."
             ],
-            "explanation": "Polite request → **not to make** any noise."
+            "explanationContent": {
+              "whyCorrect": "Polite request, so the sentence is \"The librarian asked the children not to make any noise.\".",
+              "sentenceBreakdown": "Prompt: \"Please don't make any noise,\" the librarian said to the children. → The librarian asked the children not to make any noise.",
+              "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
+              "wrongOptions": {
+                "Polite": "Check how \"Polite\" changes in the target sentence — tense or word form may shift.",
+                "request": "Check how \"request\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exc-5",
@@ -581,7 +677,16 @@
             "acceptedAnswers": [
               "The assistant told Anna to bring him the receipt."
             ],
-            "explanation": "Order → **told Anna to bring** him the receipt."
+            "explanationContent": {
+              "whyCorrect": "Order, so the sentence is \"The assistant told Anna to bring him the receipt.\".",
+              "sentenceBreakdown": "Prompt: \"Bring me the receipt,\" the assistant said to Anna. → The assistant told Anna to bring him the receipt.",
+              "grammarFocus": "Build a grammatically complete sentence that matches the prompt: The assistant told Anna to bring him the receipt.",
+              "wrongOptions": {
+                "Order": "Check how \"Order\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u32-exc-6",
@@ -596,7 +701,16 @@
             "acceptedAnswers": [
               "Mark asked me not to eat his sandwich."
             ],
-            "explanation": "Request → **not to eat** his sandwich."
+            "explanationContent": {
+              "whyCorrect": "Request, so the sentence is \"Mark asked me not to eat his sandwich.\".",
+              "sentenceBreakdown": "Prompt: \"Please don't eat my sandwich,\" Mark said to me. → Mark asked me not to eat his sandwich.",
+              "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
+              "wrongOptions": {
+                "Request": "Check how \"Request\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           }
         ]
       },
