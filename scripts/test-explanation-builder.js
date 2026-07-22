@@ -60,6 +60,25 @@ if (!SunePlayExplanation.hasExplanation(screen, wrongResult)) {
 console.log('PASS two_option_choice explanation builder');
 console.log('Sections:', keys.join(' → '));
 
+const whySection = opts.sections.find((s) => s.key === 'whyCorrect');
+if (!whySection || whySection.label !== 'Explanation') {
+  console.error('FAIL wrong-answer whyCorrect label should be "Explanation", got:', whySection && whySection.label);
+  process.exit(1);
+}
+
+const correctResult = {
+  correct: true,
+  correctAnswer: 'pessimistic',
+  userAnswer: 'pessimistic'
+};
+const correctOpts = SunePlayExplanation.buildExplainOpts(screen, correctResult);
+const correctWhy = correctOpts.sections.find((s) => s.key === 'whyCorrect');
+if (!correctWhy || correctWhy.label !== "Why it's correct") {
+  console.error('FAIL correct-answer whyCorrect label should be "Why it\'s correct", got:', correctWhy && correctWhy.label);
+  process.exit(1);
+}
+console.log('PASS whyCorrect contextual labels');
+
 // meaning_contrast
 const meaningScreen = {
   formatType: 'meaning_contrast',
