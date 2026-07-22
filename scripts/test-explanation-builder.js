@@ -604,3 +604,70 @@ if (!String(fswOpts.context).includes('they / already')) {
 console.log('PASS full_sentence_write explanation builder');
 console.log('Sections:', fswKeys.join(' → '));
 
+// verb_bank_two_step — step 1 (wrong verb)
+const vbItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-5').items[0];
+
+const vbStep1Screen = {
+  formatType: 'verb_bank_two_step',
+  payload: {
+    sentence: vbItem.blankSentence || vbItem.sentence,
+    baseVerb: vbItem.baseVerb,
+    answer: vbItem.answer,
+    wordBank: ['belong', 'carry', 'do', 'help', 'listen', 'look', 'stay', 'wear'],
+    step: 'choose_verb',
+    explanationContent: vbItem.explanationContent
+  }
+};
+
+const vbStep1Wrong = {
+  correct: false,
+  partial: true,
+  userAnswer: 'carry'
+};
+
+const vbStep1Opts = SunePlayExplanation.buildExplainOpts(vbStep1Screen, vbStep1Wrong);
+const vbStep1Keys = vbStep1Opts.sections.map((s) => s.key);
+const vbStep1Expected = ['yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake'];
+const vbStep1Missing = vbStep1Expected.filter((k) => !vbStep1Keys.includes(k));
+
+if (vbStep1Missing.length) {
+  console.error('FAIL verb_bank_two_step step1 missing sections:', vbStep1Missing.join(', '));
+  process.exit(1);
+}
+
+// verb_bank_two_step — step 2 (wrong form)
+const vbStep2Screen = {
+  formatType: 'verb_bank_two_step',
+  payload: {
+    sentence: vbItem.blankSentence || vbItem.sentence,
+    baseVerb: vbItem.baseVerb,
+    answer: vbItem.answer,
+    completedSentence: vbItem.completedSentence,
+    step: 'type_form',
+    selectedVerb: vbItem.baseVerb,
+    explanationContent: vbItem.explanationContent
+  }
+};
+
+const vbStep2Wrong = {
+  correct: false,
+  correctAnswer: 'stay',
+  userAnswer: 'staying'
+};
+
+const vbStep2Opts = SunePlayExplanation.buildExplainOpts(vbStep2Screen, vbStep2Wrong);
+const vbStep2Keys = vbStep2Opts.sections.map((s) => s.key);
+const vbStep2Expected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const vbStep2Missing = vbStep2Expected.filter((k) => !vbStep2Keys.includes(k));
+
+if (vbStep2Missing.length) {
+  console.error('FAIL verb_bank_two_step step2 missing sections:', vbStep2Missing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS verb_bank_two_step explanation builder (step 1)');
+console.log('Sections:', vbStep1Keys.join(' → '));
+console.log('PASS verb_bank_two_step explanation builder (step 2)');
+console.log('Sections:', vbStep2Keys.join(' → '));
+

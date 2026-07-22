@@ -783,12 +783,26 @@
             "blankSentence": "I was thirsty, so Dad ____ me a bottle of water.",
             "answerMode": "choose_tile_then_type_conjugation",
             "explanationContent": {
+              "whyVerbFits": "\"Bring\" means take something to a person or place — it fits giving someone an object.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
               "whyCorrect": "Use the past simple because the action is finished in the past.",
               "grammarFocus": "Past simple describes finished actions in the past — use the past form of the pre-selected verb.",
               "wrongOptions": {
                 "bring": "The base verb \"bring\" is not conjugated — add the correct tense ending or auxiliary."
               },
+              "commonMistakeStep1": "\"bring\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
               "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "I was thirsty, so Dad me a bottle of water → brought.",
               "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
             }
           },
@@ -801,7 +815,6 @@
               "didn't come",
               "did not come"
             ],
-            "explanation": "Use did not / didn't + base verb for a negative action in the past.",
             "template": "We waited for Alex for an hour, but he {gap1} .",
             "gapCount": 1,
             "gaps": [
@@ -811,7 +824,29 @@
               }
             ],
             "blankSentence": "We waited for Alex for an hour, but he ____ .",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyVerbFits": "The correct form is \"didn't come\" for this sentence.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
+              "whyCorrect": "Use did not / didn't + base verb for a negative action in the past.",
+              "grammarFocus": "Past simple describes finished actions in the past — use the past form of the chosen verb.",
+              "wrongOptions": {},
+              "commonMistakeStep1": "\"\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
+              "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "We waited for Alex for an hour, but he  → didn't come.",
+              "usefulTip": "Step 1: pick the verb that fits the meaning. Step 2: conjugate it to match the tense clues."
+            }
           },
           {
             "id": "b1-u2-ex1-3",
@@ -833,12 +868,26 @@
             "blankSentence": "Sarah ____ a really interesting article for the school magazine.",
             "answerMode": "choose_tile_then_type_conjugation",
             "explanationContent": {
+              "whyVerbFits": "\"Write\" collocates with texts such as articles, letters, or stories.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
               "whyCorrect": "Use the past simple because the action is finished in the past.",
               "grammarFocus": "Past simple describes finished actions in the past — use the past form of the pre-selected verb.",
               "wrongOptions": {
                 "write": "The base verb \"write\" is not conjugated — add the correct tense ending or auxiliary."
               },
+              "commonMistakeStep1": "\"write\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
               "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "Sarah a really interesting article for the school magazine → wrote.",
               "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
             }
           },
@@ -850,7 +899,6 @@
             "acceptedAnswers": [
               "knew"
             ],
-            "explanation": "Use the past simple because the action is finished in the past.",
             "template": "Nobody {gap1} the answer to the teacher's question.",
             "gapCount": 1,
             "gaps": [
@@ -860,7 +908,29 @@
               }
             ],
             "blankSentence": "Nobody ____ the answer to the teacher's question.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyVerbFits": "The correct form is \"knew\" for this sentence.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
+              "whyCorrect": "Use the past simple because the action is finished in the past.",
+              "grammarFocus": "Past simple describes finished actions in the past — use the past form of the chosen verb.",
+              "wrongOptions": {},
+              "commonMistakeStep1": "\"\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
+              "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "Nobody the answer to the teacher's question → knew.",
+              "usefulTip": "Step 1: pick the verb that fits the meaning. Step 2: conjugate it to match the tense clues."
+            }
           },
           {
             "id": "b1-u2-ex1-5",
@@ -882,12 +952,26 @@
             "blankSentence": "Tom ____ his wallet under the sofa yesterday.",
             "answerMode": "choose_tile_then_type_conjugation",
             "explanationContent": {
+              "whyVerbFits": "\"Find\" fits when someone discovers a lost object.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
               "whyCorrect": "Use the past simple because the action is finished in the past.",
               "grammarFocus": "Past simple describes finished actions in the past — use the past form of the pre-selected verb.",
               "wrongOptions": {
                 "find": "The base verb \"find\" is not conjugated — add the correct tense ending or auxiliary."
               },
+              "commonMistakeStep1": "\"find\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
               "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "Tom his wallet under the sofa yesterday → found.",
               "usefulTip": "Finished past-time words require past simple forms."
             }
           },
@@ -911,12 +995,26 @@
             "blankSentence": "My uncle ____ us to the airport early in the morning.",
             "answerMode": "choose_tile_then_type_conjugation",
             "explanationContent": {
+              "whyVerbFits": "\"drive\" is the verb from the bank that best matches this past simple sentence.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
               "whyCorrect": "Use the past simple because the action is finished in the past.",
               "grammarFocus": "Past simple describes finished actions in the past — use the past form of the pre-selected verb.",
               "wrongOptions": {
                 "drive": "The base verb \"drive\" is not conjugated — add the correct tense ending or auxiliary."
               },
+              "commonMistakeStep1": "\"drive\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
               "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "My uncle us to the airport early in the morning → drove.",
               "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
             }
           },
@@ -940,12 +1038,26 @@
             "blankSentence": "Last summer, we ____ some new friends at camp.",
             "answerMode": "choose_tile_then_type_conjugation",
             "explanationContent": {
+              "whyVerbFits": "\"Meet\" collocates with people — use it when the sentence is about seeing someone.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "buy": "\"buy\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
               "whyCorrect": "Use the past simple because the action is finished in the past.",
               "grammarFocus": "Past simple describes finished actions in the past — use the past form of the pre-selected verb.",
               "wrongOptions": {
                 "meet": "The base verb \"meet\" is not conjugated — add the correct tense ending or auxiliary."
               },
+              "commonMistakeStep1": "\"meet\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
               "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "Last summer, we some new friends at camp → met.",
               "usefulTip": "Finished past-time words require past simple forms."
             }
           },
@@ -969,12 +1081,26 @@
             "blankSentence": "I was cold, so I ____ a new jacket.",
             "answerMode": "choose_tile_then_type_conjugation",
             "explanationContent": {
+              "whyVerbFits": "\"buy\" is the verb from the bank that best matches this past simple sentence.",
+              "vocabularyFocus": "Past simple verbs in the bank describe finished actions — pick the one that matches the sentence meaning.",
+              "wrongVerbs": {
+                "bring": "\"bring\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "drive": "\"drive\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "find": "\"find\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "leave": "\"leave\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "meet": "\"meet\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "speak": "\"speak\" does not fit the meaning of this sentence — choose a verb that collocates with the context.",
+                "write": "\"write\" does not fit the meaning of this sentence — choose a verb that collocates with the context."
+              },
               "whyCorrect": "Use the past simple because the action is finished in the past.",
               "grammarFocus": "Past simple describes finished actions in the past — use the past form of the pre-selected verb.",
               "wrongOptions": {
                 "buy": "The base verb \"buy\" is not conjugated — add the correct tense ending or auxiliary."
               },
+              "commonMistakeStep1": "\"buy\" is the verb that fits this sentence — other tiles describe different actions or collocations.",
+              "commonMistakeStep2": "Check you used the past form of the verb, not the base form or a present tense.",
               "commonMistake": "Check you used the past form of the verb, not the base form or a present tense.",
+              "sentenceBreakdown": "I was cold, so I a new jacket → bought.",
               "usefulTip": "The verb choice is fixed — focus on tense, auxiliary, and subject–verb agreement."
             }
           }

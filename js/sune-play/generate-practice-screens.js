@@ -1021,11 +1021,12 @@
 
       case 'verb_bank_two_step':
         return {
-          sentence: item.sentence || '',
+          sentence: item.blankSentence || item.sentence || '',
           baseVerb: item.baseVerb || '',
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers,
           completedSentence: item.completedSentence || '',
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || '',
           wordBank: exercise.words || exercise.wordBank || [],
           step: 'choose_verb',
@@ -1068,6 +1069,7 @@
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers,
           completedSentence: item.completedSentence || '',
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || '',
           wordBank: exercise.wordBank || exercise.words || [],
           step: item.preselectedVerb || item.selectedTileAnswer ? 'type_form' : 'choose_verb',
