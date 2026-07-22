@@ -649,6 +649,7 @@
         minWords: item.minWords != null ? item.minWords : 2,
         maxWords: item.maxWords != null ? item.maxWords : 5,
         wordCountRule: item.wordCountRule || 'whitespace_tokens_apostrophe_single_word',
+        explanationContent: item.explanationContent || null,
         explanation: item.explanation || '',
         instruction: exercise.studentInstruction || exercise.instructions || ''
       };
@@ -668,6 +669,7 @@
       minWords: item.minWords != null ? item.minWords : 2,
       maxWords: item.maxWords != null ? item.maxWords : 5,
       wordCountRule: 'whitespace_tokens_apostrophe_single_word',
+      explanationContent: item.explanationContent || null,
       explanation: item.explanation || '',
       instruction: exercise.studentInstruction || exercise.instructions || ''
     };

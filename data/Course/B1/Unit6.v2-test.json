@@ -144,25 +144,61 @@
             "id": "b1-u6-test-kwt-1",
             "sentence": "Mia is very good at drawing portraits.\n**TALENTED** Mia is really ...... portraits.",
             "answer": "talented at drawing",
-            "formatType": "keyword_transformation"
+            "formatType": "keyword_transformation",
+            "explanationContent": {
+              "whyCorrect": "Use the keyword \"\" unchanged to rewrite the sentence as \"talented at drawing\".",
+              "grammarFocus": "Verb + preposition patterns (succeed in, capable of, talented at) are fixed — learn them as chunks.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {},
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-test-kwt-2",
             "sentence": "The students were tired but didn't stop working.\n**CONTINUED** The students were tired but they ...... their work.",
             "answer": "continued with",
-            "formatType": "keyword_transformation"
+            "formatType": "keyword_transformation",
+            "explanationContent": {
+              "whyCorrect": "Use the keyword \"\" unchanged to rewrite the sentence as \"continued with\".",
+              "grammarFocus": "Use \"\" exactly as given and change the grammar around it to preserve the meaning of the first sentence.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {},
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-test-kwt-3",
             "sentence": "I have no information about this subject.\n**KNOW** I ...... this subject.",
             "answer": "don't know anything about",
-            "formatType": "keyword_transformation"
+            "formatType": "keyword_transformation",
+            "explanationContent": {
+              "whyCorrect": "Use the keyword \"\" unchanged to rewrite the sentence as \"don't know anything about\".",
+              "grammarFocus": "Use \"\" exactly as given and change the grammar around it to preserve the meaning of the first sentence.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {},
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-test-kwt-4",
             "sentence": "Nobody can finish this project in ten minutes.\n**CAPABLE** Nobody ...... this project in ten minutes.",
             "answer": "is capable of finishing",
-            "formatType": "keyword_transformation"
+            "formatType": "keyword_transformation",
+            "explanationContent": {
+              "whyCorrect": "Use the keyword \"\" unchanged to rewrite the sentence as \"is capable of finishing\".",
+              "grammarFocus": "Verb + preposition patterns (succeed in, capable of, talented at) are fixed — learn them as chunks.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {},
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar: He is capable of solving difficult problems.",
+              "usefulTip": "Count your words (2–5) before you check — include \"\" unchanged and read the completed second sentence aloud."
+            }
           }
         ],
         "interaction": {

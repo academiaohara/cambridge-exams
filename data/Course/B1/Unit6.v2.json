@@ -1704,7 +1704,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "**Good at** → **talented at** drawing (same meaning)."
+            "explanationContent": {
+              "whyCorrect": "The clue is good at, so the correct transformation is \"talented at drawing\".",
+              "grammarFocus": "Verb + preposition patterns (succeed in, capable of, talented at) are fixed — learn them as chunks.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"TALENTED\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "talented": "Do not leave out or alter the keyword \"TALENTED\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"TALENTED\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"TALENTED\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-exh-2",
@@ -1719,7 +1729,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "**Didn't stop working** → **continued with** their work."
+            "explanationContent": {
+              "whyCorrect": "The clue is didn't stop working, so the correct transformation is \"continued with\".",
+              "grammarFocus": "Passive voice uses be + past participle — keep the keyword and change the structure around it.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"CONTINUED\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "continued": "Do not leave out or alter the keyword \"CONTINUED\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"CONTINUED\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"CONTINUED\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-exh-3",
@@ -1734,7 +1754,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "**No information about** → **don't know anything about**."
+            "explanationContent": {
+              "whyCorrect": "The clue is no information about, so the correct transformation is \"don't know anything about\".",
+              "grammarFocus": "Use \"KNOW\" exactly as given and change the grammar around it to preserve the meaning of the first sentence.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"KNOW\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "know": "Do not leave out or alter the keyword \"KNOW\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"KNOW\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"KNOW\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-exh-4",
@@ -1749,7 +1779,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "Tom helped her → **helping Lucy with** the exercise."
+            "explanationContent": {
+              "whyCorrect": "The clue is tom helped her, so the correct transformation is \"helping Lucy with\".",
+              "grammarFocus": "Use \"HELPING\" exactly as given and change the grammar around it to preserve the meaning of the first sentence.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"HELPING\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "helping": "Do not leave out or alter the keyword \"HELPING\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar pattern: keep \"HELPING\" and rewrite the grammar to match the prompt meaning.",
+              "usefulTip": "Count your words (2–5) before you check — include \"HELPING\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-exh-5",
@@ -1764,7 +1804,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "**Nobody can** → **is capable of** finishing (able to)."
+            "explanationContent": {
+              "whyCorrect": "The clue is nobody can, so the correct transformation is \"is capable of finishing\".",
+              "grammarFocus": "Verb + preposition patterns (succeed in, capable of, talented at) are fixed — learn them as chunks.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"CAPABLE\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "capable": "Do not leave out or alter the keyword \"CAPABLE\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar: He is capable of solving difficult problems.",
+              "usefulTip": "Count your words (2–5) before you check — include \"CAPABLE\" unchanged and read the completed second sentence aloud."
+            }
           },
           {
             "id": "b1-u6-exh-6",
@@ -1779,7 +1829,17 @@
             "minWords": 2,
             "maxWords": 5,
             "wordCountRule": "whitespace_tokens_apostrophe_single_word",
-            "explanation": "**Manage to pass** → **succeed in passing**."
+            "explanationContent": {
+              "whyCorrect": "The clue is manage to pass, so the correct transformation is \"succeed in passing\".",
+              "grammarFocus": "Verb + preposition patterns (succeed in, capable of, talented at) are fixed — learn them as chunks.",
+              "wordCountMistake": "Write between 2 and 5 words, including the keyword \"SUCCEED\" unchanged. Contractions such as don't count as one word.",
+              "wrongOptions": {
+                "succeed": "Do not leave out or alter the keyword \"SUCCEED\" — it must appear in your answer."
+              },
+              "commonMistake": "Check that your answer keeps the keyword, matches the word limit, and preserves the meaning of the prompt sentence.",
+              "similarExample": "Similar: She succeeded in passing the exam.",
+              "usefulTip": "Count your words (2–5) before you check — include \"SUCCEED\" unchanged and read the completed second sentence aloud."
+            }
           }
         ]
       }

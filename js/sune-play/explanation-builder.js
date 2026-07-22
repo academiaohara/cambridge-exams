@@ -730,6 +730,68 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function fillKwtTarget(targetSentence, answer) {
+    return gapSentenceDisplay(String(targetSentence || '').replace(/(?:\.{3,}|…{2,}|_{3,})/g, answer || '___'));
+  }
+
+  function buildKeywordTransformation(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var wordCountInvalid = result && result.wordCountInvalid;
+    var isWrong = result && result.correct === false;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (wordCountInvalid) {
+      var minW = p.minWords != null ? p.minWords : 2;
+      var maxW = p.maxWords != null ? p.maxWords : 5;
+      var wcNote = (content && content.wordCountMistake) ||
+        ('Write between ' + minW + ' and ' + maxW + ' words, including the keyword unchanged. Contractions such as don\'t count as one word.');
+      sections.push({ key: 'commonMistake', text: wcNote });
+      if (userAnswer) {
+        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+      }
+    } else if (isWrong && userAnswer) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      if (content.whyCorrect && !wordCountInvalid) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong && !wordCountInvalid) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, null);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.similarExample) {
+        sections.push({ key: 'similarExample', text: content.similarExample });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation && !wordCountInvalid) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var completed = fillKwtTarget(p.targetSentence, correctAnswer);
+    if (completed) {
+      sections.push({ key: 'sentenceBreakdown', text: completed });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'keyword_transformation',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildLegacy(screen, result) {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
@@ -797,6 +859,16 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'passage_gap_fill') {
       return String(p.passage || p.instruction || '').trim();
     }
+    if (screen.formatType === 'keyword_transformation') {
+      var kwtPrompt = String(p.promptSentence || '').trim();
+      var kwtKeyword = String(p.keyword || '').trim();
+      var kwtTarget = gapSentenceDisplay(p.targetSentence || '');
+      var kwtLines = [];
+      if (kwtPrompt) kwtLines.push(kwtPrompt);
+      if (kwtKeyword) kwtLines.push('Keyword: ' + kwtKeyword);
+      if (kwtTarget) kwtLines.push(kwtTarget);
+      return kwtLines.join('\n');
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -824,6 +896,8 @@ var SunePlayExplanation = (function() {
         return buildPassageGapFill(screen, result);
       case 'synced_gap_fill':
         return buildSyncedGapFill(screen, result);
+      case 'keyword_transformation':
+        return buildKeywordTransformation(screen, result);
       default:
         return buildLegacy(screen, result);
     }
