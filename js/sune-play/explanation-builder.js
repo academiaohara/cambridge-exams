@@ -15,7 +15,8 @@ var SunePlayExplanation = (function() {
     sentenceBreakdown: { label: 'Sentence breakdown', icon: 'format_quote', variant: 'neutral' },
     usefulTip: { label: 'Useful tip', icon: 'tips_and_updates', variant: 'tip' },
     similarExample: { label: 'Similar example', icon: 'auto_awesome', variant: 'tip' },
-    wordFormation: { label: 'Word formation', icon: 'transform', variant: 'teach' }
+    wordFormation: { label: 'Word formation', icon: 'transform', variant: 'teach' },
+    wordOrder: { label: 'Word order', icon: 'reorder', variant: 'teach' }
   };
 
   function getContent(payload) {
@@ -904,6 +905,56 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildWordOrderTiles(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (content && content.wordOrder) {
+      sections.push({ key: 'wordOrder', text: content.wordOrder });
+    } else if (p.answerTiles && p.answerTiles.length) {
+      sections.push({ key: 'wordOrder', text: p.answerTiles.join(' ') });
+    }
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, p.tiles);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    if (correctAnswer) {
+      sections.push({ key: 'sentenceBreakdown', text: String(correctAnswer) });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'word_order_tiles',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildLegacy(screen, result) {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
@@ -987,6 +1038,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'find_extra_word') {
       return gapSentenceDisplay(p.sentence || '');
     }
+    if (screen.formatType === 'word_order_tiles') {
+      return String(p.contextQuestion || p.prompt || p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1020,6 +1074,8 @@ var SunePlayExplanation = (function() {
         return buildErrorCorrection(screen, result);
       case 'find_extra_word':
         return buildFindExtraWord(screen, result);
+      case 'word_order_tiles':
+        return buildWordOrderTiles(screen, result);
       default:
         return buildLegacy(screen, result);
     }

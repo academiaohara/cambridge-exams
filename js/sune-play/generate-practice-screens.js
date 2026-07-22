@@ -996,10 +996,12 @@
           : (rawInstruction || 'Build the sentence. Some words are extra.');
         return {
           prompt: item.displayPrompt || item.sentence || 'Build the sentence.',
+          contextQuestion: item.contextQuestion || '',
           instruction: instruction,
           tiles: tiles,
           answer: ans,
           acceptedAnswers: item.acceptedAnswers || [ans],
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || '',
           answerTiles: item.answerTiles || null,
           tileValidation: item.tileValidation || null
