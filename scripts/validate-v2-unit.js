@@ -130,6 +130,16 @@ function validateExercise(file, exercise) {
         issues.push(warn(file, 'free_text_gap_fill item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
+    if (item.formatType === 'conjugation_gap_fill' || ft === 'conjugation_gap_fill') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'conjugation_gap_fill item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'conjugation_gap_fill item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'conjugation_gap_fill item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (ft === 'synced_gap_fill') {
       if (!(item.sentences && item.sentences.length >= 2)) {
         issues.push(error(file, 'synced_gap_fill item ' + (item.id || idx) + ' needs sentences[]'));

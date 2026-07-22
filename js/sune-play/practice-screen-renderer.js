@@ -4810,7 +4810,9 @@
           result.correct = norm.matchesAnyAccepted(given, p);
         }
         result.lifeLoss = result.correct ? 0 : 1;
-        if (screen.formatType === 'free_text_gap_fill' && p.explanationContent) {
+        if ((screen.formatType === 'free_text_gap_fill' ||
+             screen.sourceFormatType === 'conjugation_gap_fill') &&
+            p.explanationContent) {
           result.explanationContent = p.explanationContent;
           result.explanation = '__structured__';
         }

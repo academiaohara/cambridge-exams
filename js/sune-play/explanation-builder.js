@@ -107,6 +107,9 @@ var SunePlayExplanation = (function() {
     if (content.whyCorrect) {
       sections.push({ key: 'whyCorrect', text: content.whyCorrect });
     }
+    if (content.wordFormation) {
+      sections.push({ key: 'wordFormation', text: content.wordFormation });
+    }
     var focus = pickFocusSection(content);
     if (focus) sections.push(focus);
 
@@ -295,6 +298,43 @@ var SunePlayExplanation = (function() {
       .trim();
   }
 
+  function buildConjugationGapFill(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, null);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var completed = p.completedSentence || '';
+    if (completed) {
+      sections.push({ key: 'sentenceBreakdown', text: stripGapMarkers(completed) });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'conjugation_gap_fill',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
+  function stripGapMarkers(text) {
+    return String(text || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+  }
+
   function buildFreeTextGapFill(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -411,6 +451,9 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'free_text_gap_fill') {
       return gapSentenceDisplay(p.sentence);
     }
+    if (screen.sourceFormatType === 'conjugation_gap_fill' || screen.formatType === 'conjugation_gap_fill') {
+      return gapSentenceDisplay(p.sentence || p.sourceSentence);
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -424,7 +467,12 @@ var SunePlayExplanation = (function() {
       case 'mc_4_option':
         return buildMc4Option(screen, result);
       case 'free_text_gap_fill':
+        if (screen.sourceFormatType === 'conjugation_gap_fill') {
+          return buildConjugationGapFill(screen, result);
+        }
         return buildFreeTextGapFill(screen, result);
+      case 'conjugation_gap_fill':
+        return buildConjugationGapFill(screen, result);
       default:
         return buildLegacy(screen, result);
     }
