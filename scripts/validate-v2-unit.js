@@ -31,7 +31,8 @@ const SUPPORTED_FORMAT_TYPES = new Set([
 
 const SCREEN_MODES = new Set([
   'single_passage_with_counter', 'single_passage_with_gaps',
-  'all_gaps_single_screen', 'all_pairs_single_screen', 'all_words_single_screen'
+  'all_gaps_single_screen', 'all_pairs_single_screen', 'all_words_single_screen',
+  'all_guided_items_single_screen'
 ]);
 
 function error(file, msg) {
@@ -89,6 +90,10 @@ function validateExercise(file, exercise) {
 
   if (ft === 'column_matching' && !(exercise.items || []).length) {
     issues.push(error(file, 'column_matching ' + exercise.id + ' missing items'));
+  }
+
+  if (ft === 'guided_error_choice' && !(exercise.items || []).length) {
+    issues.push(error(file, 'guided_error_choice ' + exercise.id + ' missing items'));
   }
 
   if (ft === 'crossword_clues' && !(exercise.items || []).length) {
@@ -299,6 +304,16 @@ function validateExercise(file, exercise) {
       }
       if (item.explanation) {
         issues.push(warn(file, 'passage_error_hunt item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
+    if (item.formatType === 'guided_error_choice' || ft === 'guided_error_choice') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'guided_error_choice item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'guided_error_choice item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'guided_error_choice item ' + (item.id || idx) + ' still uses legacy explanation string'));
       }
     }
     if (item.acceptedAnswers && item.acceptedAnswers.some(function(a) { return typeof a !== 'string'; })) {

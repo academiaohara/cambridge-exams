@@ -975,3 +975,49 @@ console.log('Sections:', pehCounterFixKeys.join(' → '));
 console.log('PASS passage_error_hunt_counter explanation builder (mark_success)');
 console.log('Sections:', pehCounterMarkKeys.join(' → '));
 
+// guided_error_choice (multi-item screen — current item only)
+const gecExercise = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit12.v2-test.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'c1-u12-test-ex-gec');
+const gecItem = gecExercise.items[0];
+
+const gecScreen = {
+  formatType: 'guided_error_choice',
+  _guidedIdx: 0,
+  payload: {
+    instruction: gecExercise.studentInstruction,
+    items: gecExercise.items
+  }
+};
+
+const gecWrong = {
+  correct: false,
+  guidedItemIdx: 0,
+  activeItem: gecItem,
+  userAnswer: 'was',
+  correctAnswer: gecItem.answer
+};
+
+const gecOpts = SunePlayExplanation.buildExplainOpts(gecScreen, gecWrong);
+const gecKeys = gecOpts.sections.map((s) => s.key);
+const gecExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const gecMissing = gecExpected.filter((k) => !gecKeys.includes(k));
+
+if (gecMissing.length) {
+  console.error('FAIL guided_error_choice missing sections:', gecMissing.join(', '));
+  process.exit(1);
+}
+
+const gecMistake = gecOpts.sections.find((s) => s.key === 'commonMistake');
+if (!gecMistake || !String(gecMistake.text).includes('was')) {
+  console.error('FAIL guided_error_choice should personalize wrong option');
+  process.exit(1);
+}
+
+if (!String(gecOpts.context).includes('~~was~~')) {
+  console.error('FAIL guided_error_choice context should show wrong form');
+  process.exit(1);
+}
+
+console.log('PASS guided_error_choice explanation builder');
+console.log('Sections:', gecKeys.join(' → '));
+

@@ -64,6 +64,13 @@ var SunePlayExplanation = (function() {
     });
   }
 
+  function hasGuidedErrorExplanation(payload) {
+    if (!payload) return false;
+    return (payload.items || []).some(function(item) {
+      return item.explanationContent || item.explanation;
+    });
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option') {
@@ -74,6 +81,8 @@ var SunePlayExplanation = (function() {
       if (hasPassageGapExplanation(p)) return true;
     } else if (screen && screen.formatType === 'passage_error_hunt_counter') {
       if (hasHuntCounterExplanation(p)) return true;
+    } else if (screen && screen.formatType === 'guided_error_choice') {
+      if (hasGuidedErrorExplanation(p)) return true;
     } else {
       if (getContent(p)) return true;
       if (p.explanation) return true;
@@ -1363,6 +1372,60 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function getGuidedErrorItem(screen, result) {
+    var p = (screen && screen.payload) || {};
+    if (result && result.activeItem) return result.activeItem;
+    var idx = result && result.guidedItemIdx != null
+      ? result.guidedItemIdx
+      : ((screen && screen._guidedIdx) || 0);
+    return (p.items || [])[idx] || null;
+  }
+
+  function buildGuidedErrorChoice(screen, result) {
+    var item = getGuidedErrorItem(screen, result) || {};
+    var content = item.explanationContent || null;
+    var wrongForm = item.wrong || item.targetPhrase || '';
+    var correctAnswer = (result && result.correctAnswer) || item.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var options = item.options || [];
+    var isWrong = result && result.correct === false && userAnswer;
+    var sections = [];
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      if (content.whyCorrect) {
+        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      }
+      var focus = pickFocusSection(content);
+      if (focus) sections.push(focus);
+      if (isWrong) {
+        var wrongNote = lookupWrongOptionNote(content, userAnswer, options);
+        if (!wrongNote && content.commonMistake) wrongNote = content.commonMistake;
+        if (!wrongNote && wrongForm) {
+          wrongNote = '*' + userAnswer + '* is not correct here — replace *' + wrongForm + '*.';
+        }
+        if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+      if (content.usefulTip) {
+        sections.push({ key: 'usefulTip', text: content.usefulTip });
+      }
+    } else if (item.explanation) {
+      sections.push({ key: 'whyCorrect', text: item.explanation });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'guided_error_choice',
+      context: wrongForm ? ('Wrong form: ~~' + wrongForm + '~~') : buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildCommaPlacement(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1783,6 +1846,12 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'passage_error_hunt_counter') {
       return String(p.passage || p.instruction || '').trim();
     }
+    if (screen.formatType === 'guided_error_choice') {
+      var guidedItem = getGuidedErrorItem(screen, null);
+      var wrongForm = guidedItem && (guidedItem.wrong || guidedItem.targetPhrase);
+      if (wrongForm) return 'Wrong form: ~~' + wrongForm + '~~';
+      return String(p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1834,6 +1903,8 @@ var SunePlayExplanation = (function() {
         return buildPassageErrorHuntSingle(screen, result);
       case 'passage_error_hunt_counter':
         return buildPassageErrorHuntCounter(screen, result);
+      case 'guided_error_choice':
+        return buildGuidedErrorChoice(screen, result);
       default:
         return buildLegacy(screen, result);
     }
