@@ -97,3 +97,84 @@ if (meaningMissing.length) {
 
 console.log('PASS meaning_contrast explanation builder');
 console.log('Sections:', meaningKeys.join(' → '));
+
+// mc_4_option standalone
+const mcItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit4.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u4-ex-b').items[0];
+
+const mcScreen = {
+  formatType: 'mc_4_option',
+  payload: {
+    sentenceBefore: mcItem.sentenceBefore,
+    sentenceAfter: mcItem.sentenceAfter,
+    options: mcItem.options,
+    answer: mcItem.answer,
+    explanationContent: mcItem.explanationContent
+  }
+};
+
+const mcWrong = {
+  correct: false,
+  correctLetter: 'A',
+  correctAnswer: "I've",
+  userLetter: 'B',
+  userAnswer: 'I'
+};
+
+const mcOpts = SunePlayExplanation.buildExplainOpts(mcScreen, mcWrong);
+const mcKeys = mcOpts.sections.map((s) => s.key);
+const mcExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const mcMissing = mcExpected.filter((k) => !mcKeys.includes(k));
+
+if (mcMissing.length) {
+  console.error('FAIL mc_4_option missing sections:', mcMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS mc_4_option standalone explanation builder');
+console.log('Sections:', mcKeys.join(' → '));
+
+// mc_4_option passage
+const passageEx = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit2.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'c1-u2-ex-d');
+const passageGap = passageEx.items[0];
+
+const passageScreen = {
+  formatType: 'mc_4_option',
+  payload: {
+    displayMode: 'passage',
+    passage: passageEx.passage,
+    gaps: [{
+      gapNumber: 1,
+      options: passageGap.options,
+      answer: passageGap.answer,
+      sentenceBefore: passageGap.sentenceBefore,
+      sentenceAfter: passageGap.sentenceAfter,
+      explanationContent: passageGap.explanationContent
+    }]
+  }
+};
+
+const passageWrong = {
+  correct: false,
+  correctAnswer: 'curriculum',
+  userAnswer: 'programme',
+  mcGapResults: [{
+    gapNumber: 1,
+    userLetter: 'A',
+    userText: 'programme',
+    correctLetter: 'C',
+    correctText: 'curriculum',
+    correct: false
+  }]
+};
+
+const passageOpts = SunePlayExplanation.buildExplainOpts(passageScreen, passageWrong);
+const passageKeys = passageOpts.sections.map((s) => s.key);
+if (!passageKeys.includes('correct') || !passageKeys.includes('yourAnswer')) {
+  console.error('FAIL mc_4_option passage missing core sections:', passageKeys.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS mc_4_option passage explanation builder');
+console.log('Sections:', passageKeys.join(' → '));

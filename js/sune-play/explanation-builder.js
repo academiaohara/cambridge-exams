@@ -14,7 +14,8 @@ var SunePlayExplanation = (function() {
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
     sentenceBreakdown: { label: 'Sentence breakdown', icon: 'format_quote', variant: 'neutral' },
     usefulTip: { label: 'Useful tip', icon: 'tips_and_updates', variant: 'tip' },
-    similarExample: { label: 'Similar example', icon: 'auto_awesome', variant: 'tip' }
+    similarExample: { label: 'Similar example', icon: 'auto_awesome', variant: 'tip' },
+    wordFormation: { label: 'Word formation', icon: 'transform', variant: 'teach' }
   };
 
   function getContent(payload) {
@@ -22,12 +23,55 @@ var SunePlayExplanation = (function() {
     return payload.explanationContent || null;
   }
 
+  function hasMcExplanation(payload) {
+    if (!payload) return false;
+    if (getContent(payload)) return true;
+    if (payload.explanation) return true;
+    if (payload.displayMode === 'passage') {
+      return (payload.gaps || []).some(function(gap) {
+        return gap.explanationContent || gap.explanation;
+      });
+    }
+    return false;
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
-    if (getContent(p)) return true;
-    if (p.explanation) return true;
+    if (screen && screen.formatType === 'mc_4_option') {
+      if (hasMcExplanation(p)) return true;
+    } else {
+      if (getContent(p)) return true;
+      if (p.explanation) return true;
+    }
     if (result && result.explanation) return true;
+    if (result && result.explanationContent) return true;
     return false;
+  }
+
+  function formatMcAnswerDisplay(letter, text) {
+    var letterStr = String(letter || '').trim().toUpperCase();
+    var textStr = String(text || '').trim();
+    if (letterStr && textStr) return letterStr + ' — ' + textStr;
+    return textStr || letterStr;
+  }
+
+  function findMcOption(options, letterOrText) {
+    var key = String(letterOrText || '').trim();
+    if (!key) return null;
+    for (var i = 0; i < (options || []).length; i++) {
+      var opt = options[i];
+      if (String(opt.letter || '').toUpperCase() === key.toUpperCase()) return opt;
+      if (String(opt.text || '').trim().toLowerCase() === key.toLowerCase()) return opt;
+    }
+    return null;
+  }
+
+  function formatGapContext(gap) {
+    var before = String(gap.sentenceBefore || '').trim();
+    var after = String(gap.sentenceAfter || '').trim();
+    if (before || after) return (before + ' ___ ' + after).replace(/\s+/g, ' ').trim();
+    if (gap.gapNumber != null) return 'Gap (' + gap.gapNumber + ')';
+    return '';
   }
 
   function pickFocusSection(content) {
@@ -107,6 +151,134 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function buildMc4OptionStandalone(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctLetter = String((result && result.correctLetter) || p.answer || '').trim().toUpperCase();
+    var correctOpt = findMcOption(p.options, correctLetter);
+    var correctText = (result && result.correctAnswer) ||
+      p.answerText ||
+      (correctOpt && correctOpt.text) ||
+      correctLetter;
+    var userLetter = result && result.userLetter;
+    var userText = result && result.userAnswer;
+    var isWrong = result && result.correct === false && (userLetter || userText);
+
+    sections.push({
+      key: 'correct',
+      text: formatMcAnswerDisplay(correctLetter, correctOpt ? correctOpt.text : correctText)
+    });
+
+    if (isWrong) {
+      sections.push({
+        key: 'yourAnswer',
+        text: formatMcAnswerDisplay(userLetter, userText)
+      });
+    }
+
+    if (content) {
+      if (content.wordFormation) {
+        sections.push({ key: 'wordFormation', text: content.wordFormation });
+      }
+      appendTeachingSections(sections, content, isWrong, userLetter || userText, p.options);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var completed = p.completedSentence || '';
+    if (completed) {
+      sections.push({ key: 'sentenceBreakdown', text: completed });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'mc_4_option',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
+  function buildMc4OptionPassage(screen, result) {
+    var p = screen.payload || {};
+    var gaps = p.gaps || [];
+    var gapResults = (result && result.mcGapResults) || [];
+    var sections = [];
+    var wrongGaps = gapResults.filter(function(gr) { return gr.correct === false; });
+    var isWrong = wrongGaps.length > 0;
+
+    sections.push({ key: 'correct', text: String((result && result.correctAnswer) || '') });
+
+    if (isWrong && result && result.userAnswer) {
+      sections.push({ key: 'yourAnswer', text: String(result.userAnswer) });
+    }
+
+    if (isWrong) {
+      wrongGaps.forEach(function(gr) {
+        var gap = gaps.find(function(g) { return g.gapNumber === gr.gapNumber; }) || {};
+        var content = gap.explanationContent || null;
+        var gapContext = formatGapContext(gap);
+        var wrongNote = content
+          ? lookupWrongOptionNote(content, gr.userLetter, gap.options) ||
+            lookupWrongOptionNote(content, gr.userText, gap.options)
+          : '';
+
+        if (content && content.whyCorrect) {
+          sections.push({
+            key: 'whyCorrect',
+            label: 'Gap ' + gr.gapNumber,
+            text: content.whyCorrect + (gapContext ? '\n' + gapContext : '')
+          });
+        }
+
+        var focus = content ? pickFocusSection(content) : null;
+        if (focus) {
+          sections.push({
+            key: focus.key,
+            label: 'Gap ' + gr.gapNumber,
+            text: focus.text
+          });
+        }
+
+        if (wrongNote) {
+          sections.push({
+            key: 'commonMistake',
+            label: 'Your mistake (gap ' + gr.gapNumber + ')',
+            text: formatMcAnswerDisplay(gr.userLetter, gr.userText) + '. ' + wrongNote
+          });
+        } else if (gr.userText) {
+          sections.push({
+            key: 'commonMistake',
+            label: 'Your mistake (gap ' + gr.gapNumber + ')',
+            text: 'You chose ' + formatMcAnswerDisplay(gr.userLetter, gr.userText) +
+              '; the correct answer is ' + formatMcAnswerDisplay(gr.correctLetter, gr.correctText) + '.'
+          });
+        }
+      });
+    } else {
+      var firstGap = gaps[0] || {};
+      var firstContent = firstGap.explanationContent || getContent(p);
+      if (firstContent) {
+        appendTeachingSections(sections, firstContent, false, '', firstGap.options || []);
+      } else if (p.explanation) {
+        sections.push({ key: 'whyCorrect', text: p.explanation });
+      }
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'mc_4_option',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
+  function buildMc4Option(screen, result) {
+    var p = screen.payload || {};
+    if (p.displayMode === 'passage') return buildMc4OptionPassage(screen, result);
+    return buildMc4OptionStandalone(screen, result);
+  }
+
   function buildMeaningContrast(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -176,6 +348,17 @@ var SunePlayExplanation = (function() {
         return (before + ' ___ ' + after).replace(/\s+/g, ' ').trim();
       }
     }
+    if (screen.formatType === 'mc_4_option') {
+      if (p.displayMode === 'passage') {
+        return String(p.passage || p.instruction || '').trim();
+      }
+      var mcBefore = String(p.sentenceBefore || '').trim();
+      var mcAfter = String(p.sentenceAfter || '').trim();
+      if (mcBefore || mcAfter) {
+        return (mcBefore + ' ___ ' + mcAfter).replace(/\s+/g, ' ').trim();
+      }
+      return String(p.prompt || p.sentence || p.instruction || '').trim();
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -186,6 +369,8 @@ var SunePlayExplanation = (function() {
         return buildTwoOptionChoice(screen, result);
       case 'meaning_contrast':
         return buildMeaningContrast(screen, result);
+      case 'mc_4_option':
+        return buildMc4Option(screen, result);
       default:
         return buildLegacy(screen, result);
     }

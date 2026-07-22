@@ -424,6 +424,24 @@
       }
     });
 
+    (exercise.items || []).forEach(function(item, idx) {
+      if (!(item.options && item.options.length)) return;
+      var gapNumber = idx + 1;
+      var beforeMatch = String(item.sentenceBefore || '').match(/\((\d+)\)/);
+      if (beforeMatch) gapNumber = parseInt(beforeMatch[1], 10);
+      else if (item.gapNumber != null) gapNumber = parseInt(item.gapNumber, 10);
+
+      gapMap[gapNumber] = {
+        gapNumber: gapNumber,
+        options: item.options,
+        answer: item.answer,
+        sentenceBefore: item.sentenceBefore || '',
+        sentenceAfter: item.sentenceAfter || '',
+        explanationContent: item.explanationContent || null,
+        explanation: item.explanation || ''
+      };
+    });
+
     Object.keys(gapMap).sort(function(a, b) {
       return parseInt(a, 10) - parseInt(b, 10);
     }).forEach(function(key) {
@@ -433,7 +451,11 @@
         gapId: 'gap' + gapNumber,
         gapNumber: gapNumber,
         options: sortMcOptionsByLetter(normalizeMcOptions(gap.options || [])),
-        answer: String(gap.answer || '').trim().toUpperCase()
+        answer: String(gap.answer || '').trim().toUpperCase(),
+        sentenceBefore: gap.sentenceBefore || '',
+        sentenceAfter: gap.sentenceAfter || '',
+        explanationContent: gap.explanationContent || null,
+        explanation: gap.explanation || ''
       });
     });
 
@@ -474,6 +496,7 @@
       answer: answerLetter,
       answerText: item.answerText || (answerOpt && answerOpt.text) || '',
       completedSentence: item.completedSentence || '',
+      explanationContent: item.explanationContent || null,
       explanation: item.explanation || '',
       instruction: exercise.studentInstruction || exercise.instructions || ''
     });

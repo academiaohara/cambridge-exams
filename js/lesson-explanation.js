@@ -16,7 +16,8 @@ var LessonExplanation = (function() {
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
     sentenceBreakdown: { label: 'Sentence breakdown', icon: 'format_quote', variant: 'neutral' },
     usefulTip: { label: 'Useful tip', icon: 'tips_and_updates', variant: 'tip' },
-    similarExample: { label: 'Similar example', icon: 'auto_awesome', variant: 'tip' }
+    similarExample: { label: 'Similar example', icon: 'auto_awesome', variant: 'tip' },
+    wordFormation: { label: 'Word formation', icon: 'transform', variant: 'teach' }
   };
 
   function isMobile() {
