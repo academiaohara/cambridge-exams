@@ -37,6 +37,43 @@ var SunePlayExplanation = (function() {
     return null;
   }
 
+  function lookupWrongOptionNote(content, userAnswer, options) {
+    if (!content || !content.wrongOptions || !userAnswer) return '';
+    var wrongKey = String(userAnswer).trim();
+    var wrongNote = content.wrongOptions[wrongKey];
+    if (wrongNote) return wrongNote;
+    for (var i = 0; i < (options || []).length; i++) {
+      if (String(options[i]).trim().toLowerCase() === wrongKey.toLowerCase()) {
+        return content.wrongOptions[options[i]] || '';
+      }
+    }
+    return '';
+  }
+
+  function appendTeachingSections(sections, content, isWrong, userAnswer, options) {
+    if (!content) return;
+
+    if (content.whyCorrect) {
+      sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+    }
+    var focus = pickFocusSection(content);
+    if (focus) sections.push(focus);
+
+    if (isWrong) {
+      var wrongNote = lookupWrongOptionNote(content, userAnswer, options);
+      if (wrongNote) {
+        sections.push({ key: 'commonMistake', text: wrongNote });
+      }
+    }
+
+    if (content.usefulTip) {
+      sections.push({ key: 'usefulTip', text: content.usefulTip });
+    }
+    if (content.similarExample) {
+      sections.push({ key: 'similarExample', text: content.similarExample });
+    }
+  }
+
   function buildTwoOptionChoice(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -52,35 +89,7 @@ var SunePlayExplanation = (function() {
     }
 
     if (content) {
-      if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
-      }
-      var focus = pickFocusSection(content);
-      if (focus) sections.push(focus);
-
-      if (isWrong && content.wrongOptions) {
-        var wrongKey = String(userAnswer).trim();
-        var wrongNote = content.wrongOptions[wrongKey];
-        if (!wrongNote) {
-          var options = p.options || [];
-          for (var i = 0; i < options.length; i++) {
-            if (String(options[i]).trim().toLowerCase() === wrongKey.toLowerCase()) {
-              wrongNote = content.wrongOptions[options[i]];
-              break;
-            }
-          }
-        }
-        if (wrongNote) {
-          sections.push({ key: 'commonMistake', text: wrongNote });
-        }
-      }
-
-      if (content.usefulTip) {
-        sections.push({ key: 'usefulTip', text: content.usefulTip });
-      }
-      if (content.similarExample) {
-        sections.push({ key: 'similarExample', text: content.similarExample });
-      }
+      appendTeachingSections(sections, content, isWrong, userAnswer, p.options);
     } else if (p.explanation) {
       sections.push({ key: 'whyCorrect', text: p.explanation });
     }
@@ -93,6 +102,39 @@ var SunePlayExplanation = (function() {
     return {
       title: 'Explanation',
       formatType: 'two_option_choice',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
+  function buildMeaningContrast(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+    var sentence = String(p.sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (sentence) {
+      sections.push({ key: 'sentenceBreakdown', text: sentence });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, p.options);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'meaning_contrast',
       context: buildContext(screen),
       sections: sections
     };
@@ -116,6 +158,14 @@ var SunePlayExplanation = (function() {
   function buildContext(screen) {
     if (!screen) return '';
     var p = screen.payload || {};
+    if (screen.formatType === 'meaning_contrast') {
+      var prompt = String(p.prompt || '').trim();
+      var sentence = String(p.sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+      if (prompt && sentence) {
+        return prompt + '\n' + sentence;
+      }
+      return sentence || prompt;
+    }
     if (screen.formatType === 'two_option_choice') {
       if (p.displayMode === 'same_meaning') {
         return String(p.sentenceBefore || p.sentence || '').trim();
@@ -134,6 +184,8 @@ var SunePlayExplanation = (function() {
     switch (screen.formatType) {
       case 'two_option_choice':
         return buildTwoOptionChoice(screen, result);
+      case 'meaning_contrast':
+        return buildMeaningContrast(screen, result);
       default:
         return buildLegacy(screen, result);
     }

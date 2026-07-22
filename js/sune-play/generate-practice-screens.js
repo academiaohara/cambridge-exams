@@ -1065,7 +1065,8 @@
           sentence: item.sentence || genRule.sentence || '',
           options: item.options || genRule.options || [],
           answer: item.answer || genRule.answer,
-          explanation: item.explanation || genRule.explanation || ''
+          explanation: item.explanation || genRule.explanation || '',
+          explanationContent: item.explanationContent || genRule.explanationContent || null
         });
 
       case 'preselected_verb_gap_fill':
