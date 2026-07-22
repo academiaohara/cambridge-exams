@@ -4665,13 +4665,18 @@ button.sp-vocab-word-card:focus-visible {
 
 .sp-hunt-correction {
   margin-top: 16px;
+  display: flex;
+  justify-content: center;
 }
 
 .sp-hunt-correction .sp-hunt-correction-row {
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
+  justify-content: center;
   gap: 12px;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .sp-practice-main .sp-screen .sp-hunt-correction .sp-hunt-correction-row .sp-text-input,
