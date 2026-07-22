@@ -44,7 +44,7 @@ const wrongResult = {
 const opts = SunePlayExplanation.buildExplainOpts(screen, wrongResult);
 const keys = opts.sections.map((s) => s.key);
 
-const expected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'vocabularyFocus', 'usefulTip', 'sentenceBreakdown'];
+const expected = ['correct', 'yourAnswer', 'optionContrast', 'sentenceBreakdown'];
 const missing = expected.filter((k) => !keys.includes(k));
 
 if (missing.length) {
@@ -57,27 +57,17 @@ if (!SunePlayExplanation.hasExplanation(screen, wrongResult)) {
   process.exit(1);
 }
 
+
+const excluded = ['whyCorrect', 'vocabularyFocus', 'usefulTip'];
+const leaked = excluded.filter((k) => keys.includes(k));
+if (leaked.length) {
+  console.error('FAIL explanation should exclude sections:', leaked.join(', '));
+  process.exit(1);
+}
 console.log('PASS two_option_choice explanation builder');
 console.log('Sections:', keys.join(' → '));
 
-const whySection = opts.sections.find((s) => s.key === 'whyCorrect');
-if (!whySection || whySection.label !== 'Why') {
-  console.error('FAIL wrong-answer whyCorrect label should be "Why", got:', whySection && whySection.label);
-  process.exit(1);
-}
-
-const correctResult = {
-  correct: true,
-  correctAnswer: 'pessimistic',
-  userAnswer: 'pessimistic'
-};
-const correctOpts = SunePlayExplanation.buildExplainOpts(screen, correctResult);
-const correctWhy = correctOpts.sections.find((s) => s.key === 'whyCorrect');
-if (!correctWhy || correctWhy.label !== "Why it's correct") {
-  console.error('FAIL correct-answer whyCorrect label should be "Why it\'s correct", got:', correctWhy && correctWhy.label);
-  process.exit(1);
-}
-console.log('PASS whyCorrect contextual labels');
+console.log('PASS excluded explanation sections filtered');
 
 // meaning_contrast
 const meaningScreen = {
@@ -106,7 +96,7 @@ const meaningWrong = {
 
 const meaningOpts = SunePlayExplanation.buildExplainOpts(meaningScreen, meaningWrong);
 const meaningKeys = meaningOpts.sections.map((s) => s.key);
-const meaningExpected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'grammarFocus', 'usefulTip', 'sentenceBreakdown'];
+const meaningExpected = ['correct', 'yourAnswer', 'optionContrast', 'grammarFocus', 'sentenceBreakdown'];
 const meaningMissing = meaningExpected.filter((k) => !meaningKeys.includes(k));
 
 if (meaningMissing.length) {
@@ -142,7 +132,7 @@ const mcWrong = {
 
 const mcOpts = SunePlayExplanation.buildExplainOpts(mcScreen, mcWrong);
 const mcKeys = mcOpts.sections.map((s) => s.key);
-const mcExpected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'grammarFocus', 'usefulTip'];
+const mcExpected = ['correct', 'yourAnswer', 'optionContrast', 'grammarFocus'];
 const mcMissing = mcExpected.filter((k) => !mcKeys.includes(k));
 
 if (mcMissing.length) {
@@ -220,7 +210,7 @@ const gapWrong = {
 
 const gapOpts = SunePlayExplanation.buildExplainOpts(gapScreen, gapWrong);
 const gapKeys = gapOpts.sections.map((s) => s.key);
-const gapExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const gapExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const gapMissing = gapExpected.filter((k) => !gapKeys.includes(k));
 
 if (gapMissing.length) {
@@ -254,7 +244,7 @@ const conjWrong = {
 
 const conjOpts = SunePlayExplanation.buildExplainOpts(conjScreen, conjWrong);
 const conjKeys = conjOpts.sections.map((s) => s.key);
-const conjExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const conjExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const conjMissing = conjExpected.filter((k) => !conjKeys.includes(k));
 
 if (conjMissing.length) {
@@ -332,7 +322,7 @@ const wbWrong = {
 
 const wbOpts = SunePlayExplanation.buildExplainOpts(wbScreen, wbWrong);
 const wbKeys = wbOpts.sections.map((s) => s.key);
-const wbExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const wbExpected = ['correct', 'yourAnswer', 'commonMistake', 'sentenceBreakdown'];
 const wbMissing = wbExpected.filter((k) => !wbKeys.includes(k));
 
 if (wbMissing.length) {
@@ -370,7 +360,7 @@ const pgWrong = {
 
 const pgOpts = SunePlayExplanation.buildExplainOpts(pgScreen, pgWrong);
 const pgKeys = pgOpts.sections.map((s) => s.key);
-const pgExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const pgExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const pgMissing = pgExpected.filter((k) => !pgKeys.includes(k));
 
 if (pgMissing.length) {
@@ -402,7 +392,7 @@ const syncWrong = {
 
 const syncOpts = SunePlayExplanation.buildExplainOpts(syncScreen, syncWrong);
 const syncKeys = syncOpts.sections.map((s) => s.key);
-const syncExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const syncExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const syncMissing = syncExpected.filter((k) => !syncKeys.includes(k));
 
 if (syncMissing.length) {
@@ -443,7 +433,7 @@ const kwtWrong = {
 
 const kwtOpts = SunePlayExplanation.buildExplainOpts(kwtScreen, kwtWrong);
 const kwtKeys = kwtOpts.sections.map((s) => s.key);
-const kwtExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'similarExample', 'usefulTip', 'sentenceBreakdown'];
+const kwtExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'similarExample', 'sentenceBreakdown'];
 const kwtMissing = kwtExpected.filter((k) => !kwtKeys.includes(k));
 
 if (kwtMissing.length) {
@@ -488,7 +478,7 @@ const errWrong = {
 
 const errOpts = SunePlayExplanation.buildExplainOpts(errScreen, errWrong);
 const errKeys = errOpts.sections.map((s) => s.key);
-const errExpected = ['yourAnswer', 'question', 'fix', 'whyCorrect', 'correctedSentence'];
+const errExpected = ['yourAnswer', 'question', 'fix', 'correctedSentence'];
 const errMissing = errExpected.filter((k) => !errKeys.includes(k));
 
 if (errMissing.length) {
@@ -501,11 +491,6 @@ if (errOpts.context) {
   process.exit(1);
 }
 
-const errWhy = errOpts.sections.find((s) => s.key === 'whyCorrect');
-if (!errWhy || errWhy.label !== 'Why') {
-  console.error('FAIL error_correction whyCorrect label should be "Why", got:', errWhy && errWhy.label);
-  process.exit(1);
-}
 
 console.log('PASS error_correction explanation builder');
 console.log('Sections:', errKeys.join(' → '));
@@ -532,7 +517,7 @@ const fewWrong = {
 
 const fewOpts = SunePlayExplanation.buildExplainOpts(fewScreen, fewWrong);
 const fewKeys = fewOpts.sections.map((s) => s.key);
-const fewExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+const fewExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const fewMissing = fewExpected.filter((k) => !fewKeys.includes(k));
 
 if (fewMissing.length) {
@@ -584,7 +569,7 @@ const tileWrong = {
 
 const tileOpts = SunePlayExplanation.buildExplainOpts(tileScreen, tileWrong);
 const tileKeys = tileOpts.sections.map((s) => s.key);
-const tileExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake'];
+const tileExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake'];
 const tileMissing = tileExpected.filter((k) => !tileKeys.includes(k));
 
 if (tileMissing.length) {
@@ -634,8 +619,8 @@ const fswUsesStandard = fswItem.explanationContent &&
   fswItem.explanationContent.question &&
   fswItem.explanationContent.correctedSentence;
 const fswExpected = fswUsesStandard
-  ? ['yourAnswer', 'question', 'fix', 'whyCorrect', 'correctedSentence']
-  : ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip', 'sentenceBreakdown'];
+  ? ['yourAnswer', 'question', 'fix', 'correctedSentence']
+  : ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const fswMissing = fswExpected.filter((k) => !fswKeys.includes(k));
 
 if (fswMissing.length) {
@@ -680,7 +665,7 @@ const vbStep1Wrong = {
 
 const vbStep1Opts = SunePlayExplanation.buildExplainOpts(vbStep1Screen, vbStep1Wrong);
 const vbStep1Keys = vbStep1Opts.sections.map((s) => s.key);
-const vbStep1Expected = ['yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake'];
+const vbStep1Expected = ['yourAnswer', 'commonMistake'];
 const vbStep1Missing = vbStep1Expected.filter((k) => !vbStep1Keys.includes(k));
 
 if (vbStep1Missing.length) {
@@ -710,7 +695,7 @@ const vbStep2Wrong = {
 
 const vbStep2Opts = SunePlayExplanation.buildExplainOpts(vbStep2Screen, vbStep2Wrong);
 const vbStep2Keys = vbStep2Opts.sections.map((s) => s.key);
-const vbStep2Expected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const vbStep2Expected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const vbStep2Missing = vbStep2Expected.filter((k) => !vbStep2Keys.includes(k));
 
 if (vbStep2Missing.length) {
@@ -746,7 +731,7 @@ const cwWrong = {
 
 const cwOpts = SunePlayExplanation.buildExplainOpts(cwScreen, cwWrong);
 const cwKeys = cwOpts.sections.map((s) => s.key);
-const cwExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'usefulTip'];
+const cwExpected = ['correct', 'yourAnswer', 'commonMistake'];
 const cwMissing = cwExpected.filter((k) => !cwKeys.includes(k));
 
 if (cwMissing.length) {
@@ -786,7 +771,7 @@ const cpWrong = {
 
 const cpOpts = SunePlayExplanation.buildExplainOpts(cpScreen, cpWrong);
 const cpKeys = cpOpts.sections.map((s) => s.key);
-const cpExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const cpExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const cpMissing = cpExpected.filter((k) => !cpKeys.includes(k));
 
 if (cpMissing.length) {
@@ -825,7 +810,7 @@ const wbtWrong = {
 
 const wbtOpts = SunePlayExplanation.buildExplainOpts(wbtScreen, wbtWrong);
 const wbtKeys = wbtOpts.sections.map((s) => s.key);
-const wbtExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const wbtExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake'];
 const wbtMissing = wbtExpected.filter((k) => !wbtKeys.includes(k));
 
 if (wbtMissing.length) {
@@ -876,7 +861,7 @@ const ssWrong = {
 
 const ssOpts = SunePlayExplanation.buildExplainOpts(ssScreen, ssWrong);
 const ssKeys = ssOpts.sections.map((s) => s.key);
-const ssExpected = ['correct', 'whyCorrect', 'grammarFocus', 'commonMistake', 'usefulTip'];
+const ssExpected = ['correct', 'grammarFocus', 'commonMistake'];
 const ssMissing = ssExpected.filter((k) => !ssKeys.includes(k));
 
 if (ssMissing.length) {
@@ -924,7 +909,7 @@ const pehWrongFix = {
 
 const pehFixOpts = SunePlayExplanation.buildExplainOpts(pehScreen, pehWrongFix);
 const pehFixKeys = pehFixOpts.sections.map((s) => s.key);
-const pehFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
+const pehFixExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const pehFixMissing = pehFixExpected.filter((k) => !pehFixKeys.includes(k));
 
 if (pehFixMissing.length) {
@@ -947,7 +932,7 @@ const pehWrongTap = {
 
 const pehTapOpts = SunePlayExplanation.buildExplainOpts(pehScreen, pehWrongTap);
 const pehTapKeys = pehTapOpts.sections.map((s) => s.key);
-const pehTapExpected = ['commonMistake', 'whyCorrect', 'grammarFocus'];
+const pehTapExpected = ['commonMistake', 'grammarFocus'];
 const pehTapMissing = pehTapExpected.filter((k) => !pehTapKeys.includes(k));
 
 if (pehTapMissing.length) {
@@ -999,7 +984,7 @@ const pehCounterWrongFix = {
 
 const pehCounterFixOpts = SunePlayExplanation.buildExplainOpts(pehCounterScreen, pehCounterWrongFix);
 const pehCounterFixKeys = pehCounterFixOpts.sections.map((s) => s.key);
-const pehCounterFixExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
+const pehCounterFixExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const pehCounterFixMissing = pehCounterFixExpected.filter((k) => !pehCounterFixKeys.includes(k));
 
 if (pehCounterFixMissing.length) {
@@ -1031,7 +1016,7 @@ const pehCounterMark = {
 
 const pehCounterMarkOpts = SunePlayExplanation.buildExplainOpts(pehCounterScreen, pehCounterMark);
 const pehCounterMarkKeys = pehCounterMarkOpts.sections.map((s) => s.key);
-const pehCounterMarkExpected = ['whyCorrect', 'grammarFocus'];
+const pehCounterMarkExpected = ['grammarFocus'];
 const pehCounterMarkMissing = pehCounterMarkExpected.filter((k) => !pehCounterMarkKeys.includes(k));
 
 if (pehCounterMarkMissing.length) {
@@ -1074,7 +1059,7 @@ const gecWrong = {
 
 const gecOpts = SunePlayExplanation.buildExplainOpts(gecScreen, gecWrong);
 const gecKeys = gecOpts.sections.map((s) => s.key);
-const gecExpected = ['correct', 'yourAnswer', 'optionContrast', 'whyCorrect', 'grammarFocus', 'usefulTip'];
+const gecExpected = ['correct', 'yourAnswer', 'optionContrast', 'grammarFocus'];
 const gecMissing = gecExpected.filter((k) => !gecKeys.includes(k));
 
 if (gecMissing.length) {
@@ -1141,7 +1126,7 @@ if (!pvGapLine.explanationContent) {
 
 const convGapOpts = SunePlayExplanation.buildExplainOpts(convGapScreen, convGapWrong);
 const convGapKeys = convGapOpts.sections.map((s) => s.key);
-const convGapExpected = ['correct', 'yourAnswer', 'whyCorrect', 'vocabularyFocus', 'commonMistake', 'sentenceBreakdown', 'usefulTip'];
+const convGapExpected = ['correct', 'yourAnswer', 'commonMistake', 'sentenceBreakdown'];
 const convGapMissing = convGapExpected.filter((k) => !convGapKeys.includes(k));
 
 if (convGapMissing.length) {

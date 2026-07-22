@@ -789,6 +789,21 @@
       .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>');
   }
 
+  function getExerciseUsefulTip(screen, result) {
+    if (!screen) return '';
+    if (screen.formatType === 'passage_error_hunt_counter' ||
+        screen.formatType === 'passage_error_hunt_single') {
+      if (typeof SunePlayExplanation !== 'undefined') {
+        return SunePlayExplanation.getHuntExerciseTip(screen, result) || '';
+      }
+      return '';
+    }
+    var p = screen.payload || {};
+    var content = p.explanationContent;
+    if (content && content.usefulTip) return content.usefulTip;
+    return '';
+  }
+
   function updateExerciseTip(screen, result) {
     var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
     if (!tipMount) return;
@@ -799,16 +814,7 @@
       return;
     }
 
-    var tip = '';
-    if (screen && screen.formatType === 'word_order_tiles' && screen.payload) {
-      var content = screen.payload.explanationContent;
-      tip = (content && content.usefulTip) || '';
-    } else if (screen &&
-        (screen.formatType === 'passage_error_hunt_counter' ||
-         screen.formatType === 'passage_error_hunt_single') &&
-        typeof SunePlayExplanation !== 'undefined') {
-      tip = SunePlayExplanation.getHuntExerciseTip(screen, result) || '';
-    }
+    var tip = getExerciseUsefulTip(screen, result);
 
     if (!tip) {
       tipMount.hidden = true;

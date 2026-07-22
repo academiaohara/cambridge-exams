@@ -35,6 +35,57 @@ var LessonExplanation = (function() {
     return d.innerHTML;
   }
 
+  var CONTEXT_LABEL_RE = /^(Word bank|Keyword|Verb|Prompt|Cues|Wrong form):\s*/i;
+
+  function formatGapToken(match) {
+    return '<span class="sp-explanation-gap" aria-label="gap">' + esc(match) + '</span>';
+  }
+
+  function formatContextLine(line) {
+    var raw = String(line || '');
+    if (!raw.trim()) return '&nbsp;';
+
+    var labelMatch = raw.match(CONTEXT_LABEL_RE);
+    if (labelMatch) {
+      var label = labelMatch[1];
+      var rest = raw.slice(labelMatch[0].length);
+      return '<span class="sp-explanation-context-label">' + esc(label) + ':</span> ' +
+        formatContextLine(rest);
+    }
+
+    var result = '';
+    var gapRe = /(?:\(\d+\)\s*)?(?:\.{3,}|…{2,}|_{3,})/g;
+    var lastIdx = 0;
+    var match;
+    while ((match = gapRe.exec(raw)) !== null) {
+      result += formatContextInline(raw.slice(lastIdx, match.index));
+      result += formatGapToken(match[0]);
+      lastIdx = match.index + match[0].length;
+    }
+    result += formatContextInline(raw.slice(lastIdx));
+    return result;
+  }
+
+  function formatContextInline(text) {
+    if (!text) return '';
+    return esc(text)
+      .replace(/&lt;s&gt;([\s\S]*?)&lt;\/s&gt;/g, '<s class="sp-explanation-strike">$1</s>')
+      .replace(/~~([^~]+)~~/g, '<s class="sp-explanation-strike">$1</s>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>');
+  }
+
+  function formatContextText(text) {
+    if (!text) return '';
+    var raw = String(text);
+    if (/\[start\d+\]/.test(raw)) {
+      return formatBracketMarkers(raw).replace(/\n/g, '<br>');
+    }
+    return raw.split('\n').map(function(line) {
+      return formatContextLine(line);
+    }).join('<br>');
+  }
+
   function formatBracketMarkers(text) {
     var raw = String(text || '');
     if (!/\[start\d+\]/.test(raw)) return esc(raw);
@@ -54,15 +105,16 @@ var LessonExplanation = (function() {
 
   function formatBody(text) {
     if (!text) return '';
-    var withMarkers = formatBracketMarkers(text);
-    if (withMarkers !== esc(text)) return withMarkers.replace(/\n/g, '<br>');
+    var raw = String(text);
+    if (/\[start\d+\]/.test(raw)) {
+      return formatBracketMarkers(raw).replace(/\n/g, '<br>');
+    }
 
-    return esc(text)
+    return raw.split('\n').map(function(line) {
+      return formatContextLine(line);
+    }).join('<br>')
       .replace(/&lt;mistake&gt;([\s\S]*?)&lt;\/mistake&gt;/g,
-        '<mark class="sp-error-mark"><strong>$1</strong></mark>')
-      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>')
-      .replace(/\n/g, '<br>');
+        '<mark class="sp-error-mark"><strong>$1</strong></mark>');
   }
 
   function getSectionDefs(opts) {
@@ -146,7 +198,7 @@ var LessonExplanation = (function() {
           '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>' +
           esc(label) +
         '</span>' +
-        '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
+        '<p class="' + blockClass + '-text">' + formatContextText(text) + '</p>' +
       '</div>';
   }
 
@@ -157,7 +209,7 @@ var LessonExplanation = (function() {
           '<span class="material-symbols-outlined" aria-hidden="true">quiz</span>' +
           'Question' +
         '</span>' +
-        '<p class="sp-explanation-card-context-text">' + formatBody(text) + '</p>' +
+        '<p class="sp-explanation-card-context-text">' + formatContextText(text) + '</p>' +
       '</div>';
   }
 

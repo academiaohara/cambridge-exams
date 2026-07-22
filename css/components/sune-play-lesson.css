@@ -1484,9 +1484,43 @@ button.sp-vocab-word-card:focus-visible {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: clamp(1rem, 0.5rem + 2vw, 1.12rem);
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.55;
   color: #3c3c3c;
   box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
+}
+
+.sp-explanation-gap {
+  display: inline-block;
+  min-width: 2.8em;
+  padding: 0 0.35em;
+  margin: 0 0.1em;
+  border-bottom: 2px dashed var(--sp-duo-blue);
+  color: var(--sp-duo-blue-dark);
+  font-weight: 800;
+  text-align: center;
+  vertical-align: baseline;
+  letter-spacing: 0.08em;
+}
+
+.sp-explanation-context-label {
+  display: inline-block;
+  margin-right: 0.15em;
+  padding: 0.1em 0.55em;
+  border-radius: 999px;
+  background: var(--sp-duo-blue-light);
+  border: 1px solid var(--sp-duo-blue-border);
+  font-size: 0.78em;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sp-duo-blue-dark);
+  vertical-align: baseline;
+}
+
+.sp-explanation-strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: #b91c1c;
 }
 
 .sp-explanation-card-answer-text {
@@ -2949,42 +2983,67 @@ button.sp-vocab-word-card:focus-visible {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: 20px;
+  background: #eaf6ff;
+}
+
+.sp-screen--crossword .sp-cw-letter-row .vocab-cw-cells {
+  justify-content: center;
+}
+
+.sp-screen--crossword .sp-cw-letter.sp-cw-letter,
+.sp-screen--crossword input.vocab-cw-cell.sp-cw-letter {
+  cursor: text;
+}
+
+.sp-screen--crossword .sp-cw-letter:disabled,
+.sp-screen--crossword input.vocab-cw-cell.sp-cw-letter:disabled {
+  cursor: default;
 }
 
 .sp-cw-letter {
-  width: 2rem;
-  height: 2.2rem;
+  width: 44px;
+  height: 44px;
   padding: 0;
-  border: 2px solid #dce3f0;
-  border-radius: 8px;
-  background: var(--white);
+  border: 2px solid #9cc8f5;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 5px 0 #c6def8;
   text-align: center;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 2.2rem;
-  color: var(--text-primary, #1e293b);
-  text-transform: lowercase;
-  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 44px;
+  color: #1f2937;
+  text-transform: uppercase;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
 }
 
 .sp-cw-letter:focus {
   outline: none;
-  border-color: var(--sp-duo-blue);
-  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.2);
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #c6def8;
+  border-color: #1cb0f6;
 }
 
-.sp-cw-letter--correct {
-  border-color: var(--sp-duo-green, #58cc02);
-  background: rgba(88, 204, 2, 0.12);
-  color: var(--sp-duo-green-dark, #3d8f00);
+.sp-cw-letter--correct,
+.sp-cw-letter.vocab-cw-cell-correct {
+  border-color: #58cc02 !important;
+  background: #d7ffb8 !important;
+  color: #2b6b00;
+  box-shadow: 0 5px 0 #8ee000 !important;
 }
 
-.sp-cw-letter--incorrect {
-  border-color: #ef4444;
-  background: rgba(255, 120, 120, 0.12);
-  color: #b91c1c;
+.sp-cw-letter--incorrect,
+.sp-cw-letter.vocab-cw-cell-incorrect {
+  border-color: #dc2626 !important;
+  background: #fee2e2 !important;
+  color: #991b1b;
+  box-shadow: 0 5px 0 #fecaca !important;
 }
 
 .sp-cw-letter:disabled {
