@@ -878,13 +878,13 @@
         "exerciseTypeName": "Join our games club! (gap fill)",
         "title": "Join our games club! (gap fill)",
         "instructions": "Complete using the correct form of the words and phrases in the box.",
-        "studentInstruction": "Select a word from the box, write its correct form, and confirm each gap one by one.",
+        "studentInstruction": "Write the correct form of a word from the box for each gap, one at a time.",
         "legacyKey": "B",
         "legacyPattern": "passage-gap-fill",
         "interaction": {
           "formatType": "passage_gap_fill",
           "sequentialGaps": true,
-          "requireWordBankAssignment": true,
+          "requireWordBankAssignment": false,
           "gapInputStyle": "underline_expand"
         },
         "words": [
