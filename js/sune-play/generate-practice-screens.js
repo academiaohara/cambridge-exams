@@ -921,6 +921,7 @@
           answer: item.answer,
           completedSentence: item.completedSentence || '',
           explanation: item.explanation || '',
+          explanationContent: item.explanationContent || null,
           instruction: exercise.studentInstruction || exercise.instructions || ''
         });
         if (exercise.legacyPattern === 'same-meaning-ab' ||

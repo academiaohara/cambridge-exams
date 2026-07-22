@@ -999,7 +999,14 @@
             "answer": "at",
             "originalSentence": "I'll see you **at / on** the station in ten minutes.",
             "completedSentence": "I'll see you at the station in ten minutes.",
-            "explanation": "A specific meeting point → **at** the station."
+            "explanationContent": {
+              "whyCorrect": "A specific point or place takes at.",
+              "grammarFocus": "On is used with days and dates. At is used with specific times and places.",
+              "wrongOptions": {
+                "at": "At is not used with days or dates in standard English.",
+                "on": "On is not used for a precise meeting point like a station."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-2",
@@ -1013,7 +1020,14 @@
             "answer": "in",
             "originalSentence": "There is a fountain **at / in** front of the museum.",
             "completedSentence": "There is a fountain in front of the museum.",
-            "explanation": "Fixed phrase → **in** front of the museum."
+            "explanationContent": {
+              "whyCorrect": "This is a fixed expression or enclosed space that takes in.",
+              "grammarFocus": "At marks a point (at the station). In marks inside or fixed phrases (in front of).",
+              "wrongOptions": {
+                "at": "At does not fit this type of location or fixed phrase.",
+                "in": "In does not fit when we need a point or a different preposition pattern."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-3",
@@ -1027,7 +1041,14 @@
             "answer": "on",
             "originalSentence": "The course begins **in / on** the third of September.",
             "completedSentence": "The course begins on the third of September.",
-            "explanation": "Dates use **on** → begins **on** the third of September."
+            "explanationContent": {
+              "whyCorrect": "The time expression in this sentence follows a fixed preposition pattern.",
+              "grammarFocus": "In is used with months, years, and longer periods. On is used with days and dates.",
+              "wrongOptions": {
+                "in": "In does not match this type of time expression.",
+                "on": "On does not match this type of time expression."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-4",
@@ -1041,7 +1062,14 @@
             "answer": "on",
             "originalSentence": "We're visiting my aunt **in / on** Saturday morning.",
             "completedSentence": "We're visiting my aunt on Saturday morning.",
-            "explanation": "Days with a time of day → **on** Saturday morning."
+            "explanationContent": {
+              "whyCorrect": "The time expression in this sentence follows a fixed preposition pattern.",
+              "grammarFocus": "In is used with months, years, and longer periods. On is used with days and dates.",
+              "wrongOptions": {
+                "in": "In does not match this type of time expression.",
+                "on": "On does not match this type of time expression."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-5",
@@ -1055,7 +1083,14 @@
             "answer": "in",
             "originalSentence": "Is there any milk **at / in** the fridge?",
             "completedSentence": "Is there any milk in the fridge?",
-            "explanation": "Inside a container → milk **in** the fridge."
+            "explanationContent": {
+              "whyCorrect": "This is a fixed expression or enclosed space that takes in.",
+              "grammarFocus": "At marks a point (at the station). In marks inside or fixed phrases (in front of).",
+              "wrongOptions": {
+                "at": "At does not fit this type of location or fixed phrase.",
+                "in": "In does not fit when we need a point or a different preposition pattern."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-6",
@@ -1069,7 +1104,14 @@
             "answer": "in",
             "originalSentence": "People may live on other planets **at / in** the future.",
             "completedSentence": "People may live on other planets in the future.",
-            "explanation": "Future time period → **in** the future."
+            "explanationContent": {
+              "whyCorrect": "This is a fixed expression or enclosed space that takes in.",
+              "grammarFocus": "At marks a point (at the station). In marks inside or fixed phrases (in front of).",
+              "wrongOptions": {
+                "at": "At does not fit this type of location or fixed phrase.",
+                "in": "In does not fit when we need a point or a different preposition pattern."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-7",
@@ -1083,7 +1125,14 @@
             "answer": "at",
             "originalSentence": "I'm quite busy **at / on** the moment.",
             "completedSentence": "I'm quite busy at the moment.",
-            "explanation": "Fixed phrase → busy **at** the moment."
+            "explanationContent": {
+              "whyCorrect": "A specific point or place takes at.",
+              "grammarFocus": "On is used with days and dates. At is used with specific times and places.",
+              "wrongOptions": {
+                "at": "At is not used with days or dates in standard English.",
+                "on": "On is not used for a precise meeting point like a station."
+              }
+            }
           },
           {
             "id": "b1-u8-exe-8",
@@ -1097,7 +1146,14 @@
             "answer": "at",
             "originalSentence": "Someone is waiting **at / in** the window.",
             "completedSentence": "Someone is waiting at the window.",
-            "explanation": "At a specific point → waiting **at** the window."
+            "explanationContent": {
+              "whyCorrect": "This is a point or specific location that takes at.",
+              "grammarFocus": "At marks a point (at the station). In marks inside or fixed phrases (in front of).",
+              "wrongOptions": {
+                "at": "At does not fit this type of location or fixed phrase.",
+                "in": "In does not fit when we need a point or a different preposition pattern."
+              }
+            }
           }
         ]
       },

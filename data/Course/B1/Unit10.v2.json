@@ -569,7 +569,14 @@
             "answer": "is visited",
             "originalSentence": "This castle **visited / is visited / was visiting** by thousands of tourists each year.",
             "completedSentence": "This castle is visited by thousands of tourists each year.",
-            "explanation": "Each year, ongoing → **is visited** by tourists."
+            "explanationContent": {
+              "whyCorrect": "Only \"is visited\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"is visited\" collocates with the rest of the sentence. \"visited\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "visited": "\"visited\" does not match the clue in the rest of the sentence (\"by thousands of tourists each year.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u10-exc-2",
@@ -584,7 +591,14 @@
             "answer": "was completed",
             "originalSentence": "The project **completed / was completed / is completing** yesterday afternoon.",
             "completedSentence": "The project was completed yesterday afternoon.",
-            "explanation": "Yesterday afternoon → **was completed**."
+            "explanationContent": {
+              "whyCorrect": "Only \"was completed\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"was completed\" collocates with the rest of the sentence. \"completed\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "completed": "\"completed\" does not match the clue in the rest of the sentence (\"yesterday afternoon.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u10-exc-3",
@@ -599,7 +613,14 @@
             "answer": "will be opened",
             "originalSentence": "The new shopping centre **will open / will be opened / is opened** next month.",
             "completedSentence": "The new shopping centre will be opened next month.",
-            "explanation": "Next month → **will be opened** (not active **will open**)."
+            "explanationContent": {
+              "whyCorrect": "Only \"will be opened\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"will be opened\" collocates with the rest of the sentence. \"will open\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "will open": "\"will open\" does not match the clue in the rest of the sentence (\"next month.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u10-exc-4",
@@ -614,7 +635,14 @@
             "answer": "are cleaned",
             "originalSentence": "The floors **are cleaned / clean / were cleaning** every night.",
             "completedSentence": "The floors are cleaned every night.",
-            "explanation": "Every night → **are cleaned**."
+            "explanationContent": {
+              "whyCorrect": "Only \"are cleaned\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"are cleaned\" collocates with the rest of the sentence. \"clean\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "clean": "\"clean\" does not match the clue in the rest of the sentence (\"every night.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u10-exc-5",
@@ -629,7 +657,14 @@
             "answer": "wasn't opened",
             "originalSentence": "The windows **wasn't open / wasn't opened / didn't opened** during the storm.",
             "completedSentence": "The windows wasn't opened during the storm.",
-            "explanation": "During the storm → **wasn't opened** (passive negative)."
+            "explanationContent": {
+              "whyCorrect": "Only \"wasn't opened\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"wasn't opened\" collocates with the rest of the sentence. \"wasn't open\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "wasn't open": "\"wasn't open\" does not match the clue in the rest of the sentence (\"during the storm.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u10-exc-6",
@@ -644,7 +679,14 @@
             "answer": "Is the parcel delivered",
             "originalSentence": "**Is the parcel delivered / Is the parcel delivery / Does the parcel delivered** every morning?",
             "completedSentence": "Is the parcel delivered every morning?",
-            "explanation": "Passive question → **Is the parcel delivered** every morning?"
+            "explanationContent": {
+              "whyCorrect": "Only \"Is the parcel delivered\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"Is the parcel delivered\" collocates with the rest of the sentence. \"Is the parcel delivery\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "Is the parcel delivery": "\"Is the parcel delivery\" does not match the clue in the rest of the sentence (\"every morning?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },

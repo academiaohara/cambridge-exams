@@ -84,6 +84,16 @@ function validateExercise(file, exercise) {
     if (ft === 'two_option_choice' && !(item.options && item.options.length >= 2)) {
       issues.push(error(file, 'two_option_choice item ' + (item.id || idx) + ' needs options[]'));
     }
+    if (item.formatType === 'two_option_choice' || ft === 'two_option_choice') {
+      if (!item.explanationContent && !item.explanation) {
+        issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' missing explanationContent'));
+      } else if (item.explanationContent && !item.explanationContent.whyCorrect) {
+        issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' explanationContent missing whyCorrect'));
+      }
+      if (item.explanation) {
+        issues.push(warn(file, 'two_option_choice item ' + (item.id || idx) + ' still uses legacy explanation string'));
+      }
+    }
     if (ft === 'synced_gap_fill') {
       if (!(item.sentences && item.sentences.length >= 2)) {
         issues.push(error(file, 'synced_gap_fill item ' + (item.id || idx) + ' needs sentences[]'));

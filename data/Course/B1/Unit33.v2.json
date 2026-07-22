@@ -741,7 +741,14 @@
             "answer": "tight",
             "originalSentence": "These jeans are too **tight / striped** for me now.",
             "completedSentence": "These jeans are too tight for me now.",
-            "explanation": "Too small → too **tight**."
+            "explanationContent": {
+              "whyCorrect": "Only \"tight\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"tight\" collocates with the rest of the sentence. \"striped\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "striped": "\"striped\" does not match the clue in the rest of the sentence (\"for me now.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u33-exb-2",
@@ -755,7 +762,14 @@
             "answer": "pile",
             "originalSentence": "She put the magazines in a **pile / shape** beside the sofa.",
             "completedSentence": "She put the magazines in a pile beside the sofa.",
-            "explanation": "Stack → **pile** of magazines."
+            "explanationContent": {
+              "whyCorrect": "Only \"pile\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"pile\" collocates with the rest of the sentence. \"shape\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "shape": "\"shape\" does not match the clue in the rest of the sentence (\"beside the sofa.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u33-exb-3",
@@ -769,7 +783,14 @@
             "answer": "smooth",
             "originalSentence": "After polishing it, the stone became very **rough / smooth**.",
             "completedSentence": "After polishing it, the stone became very smooth .",
-            "explanation": "Opposite of rough → **smooth**."
+            "explanationContent": {
+              "whyCorrect": "Only \"smooth\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"smooth\" collocates with the rest of the sentence. \"rough\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "rough": "\"rough\" does not match the clue in the rest of the sentence (\".\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u33-exb-4",
@@ -783,7 +804,14 @@
             "answer": "match",
             "originalSentence": "Your shoes don't **stretch / match** your jacket.",
             "completedSentence": "Your shoes don't match your jacket.",
-            "explanation": "Go together → **match** your jacket."
+            "explanationContent": {
+              "whyCorrect": "Only \"match\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"match\" collocates with the rest of the sentence. \"stretch\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "stretch": "\"stretch\" does not match the clue in the rest of the sentence (\"your jacket.\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u33-exb-5",
@@ -797,7 +825,14 @@
             "answer": "notice",
             "originalSentence": "Did you ...... the crack in the window? **notice / suit**",
             "completedSentence": "Did you ...... the crack in the window? notice",
-            "explanation": "See → **notice** the crack."
+            "explanationContent": {
+              "whyCorrect": "Only \"notice\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"notice\" collocates with the rest of the sentence. \"suit\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "suit": "\"suit\" does not match the clue in the rest of the sentence."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u33-exb-6",
@@ -811,7 +846,14 @@
             "answer": "tool",
             "originalSentence": "This is the best ...... for painting walls. **tool / style**",
             "completedSentence": "This is the best ...... for painting walls. tool",
-            "explanation": "Instrument → best **tool** for painting."
+            "explanationContent": {
+              "whyCorrect": "Only \"tool\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"tool\" collocates with the rest of the sentence. \"style\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "style": "\"style\" does not match the clue in the rest of the sentence."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },

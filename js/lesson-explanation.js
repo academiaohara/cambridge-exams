@@ -1,11 +1,23 @@
 /**
- * Shared mobile explanation sheet for learning lesson flows.
- * Opens a full-screen readable view instead of cramming text in the feedback bar.
+ * Shared explanation view for learning lesson flows (Sune Play + B1 Grammar).
+ * Supports legacy single "Why" block and structured multi-section explanations.
  */
 var LessonExplanation = (function() {
   var SHEET_ID = 'lesson-explanation-sheet';
   var INLINE_OVERLAY_ID = 'lesson-explanation-inline';
   var CARD_VIEW_ID = 'sp-explanation-card-view';
+
+  var DEFAULT_SECTION_DEFS = {
+    correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
+    yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
+    whyCorrect: { label: "Why it's correct", icon: 'lightbulb', variant: 'teach' },
+    vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
+    grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },
+    commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
+    sentenceBreakdown: { label: 'Sentence breakdown', icon: 'format_quote', variant: 'neutral' },
+    usefulTip: { label: 'Useful tip', icon: 'tips_and_updates', variant: 'tip' },
+    similarExample: { label: 'Similar example', icon: 'auto_awesome', variant: 'tip' }
+  };
 
   function isMobile() {
     return !!(window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
@@ -23,6 +35,31 @@ var LessonExplanation = (function() {
     return esc(text)
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br>');
+  }
+
+  function getSectionDefs(opts) {
+    if (typeof SunePlayExplanation !== 'undefined' && SunePlayExplanation.SECTION_DEFS) {
+      return SunePlayExplanation.SECTION_DEFS;
+    }
+    return DEFAULT_SECTION_DEFS;
+  }
+
+  function normalizeOpts(opts) {
+    if (!opts) return null;
+    if (opts.sections && opts.sections.length) return opts;
+
+    if (opts.explanation || opts.correctAnswer || opts.context) {
+      var sections = [];
+      if (opts.correctAnswer) sections.push({ key: 'correct', text: opts.correctAnswer });
+      if (opts.explanation) sections.push({ key: 'whyCorrect', text: opts.explanation });
+      return Object.assign({}, opts, { sections: sections });
+    }
+    return null;
+  }
+
+  function hasRenderableContent(opts) {
+    var normalized = normalizeOpts(opts);
+    return !!(normalized && normalized.sections && normalized.sections.length);
   }
 
   var _inlineRestore = null;
@@ -43,6 +80,32 @@ var LessonExplanation = (function() {
     }
   }
 
+  function sectionBlockHtml(section, defs, mode) {
+    var def = defs[section.key] || { label: section.key, icon: 'info', variant: 'teach' };
+    var label = section.label || def.label;
+    var icon = section.icon || def.icon;
+    var variant = section.variant || def.variant;
+    var prefix = mode === 'inline' ? 'sp-explanation-inline-block' : 'sp-explanation-section';
+    var labelClass = prefix + '-label' + (mode === 'inline' ? ' sp-explanation-inline-block-label' : '');
+    var iconWrap = mode === 'inline'
+      ? '<span class="sp-explanation-inline-block-icon material-symbols-outlined" aria-hidden="true">' + icon + '</span>'
+      : '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>';
+    var bodyClass = mode === 'inline' ? prefix + '-text' : prefix + '-body';
+
+    return '<section class="' + prefix + ' sp-explanation-section--' + esc(variant) + '" data-section="' + esc(section.key) + '">' +
+        '<div class="' + labelClass + '">' + iconWrap + esc(label) + '</div>' +
+        '<div class="' + bodyClass + '">' + formatBody(section.text) + '</div>' +
+      '</section>';
+  }
+
+  function structuredBodyHtml(opts, mode) {
+    var defs = getSectionDefs(opts);
+    var sections = opts.sections || [];
+    return sections.map(function(section) {
+      return sectionBlockHtml(section, defs, mode);
+    }).join('');
+  }
+
   function contextBlockHtml(label, text, variant) {
     if (!text) return '';
     var blockClass = variant === 'question'
@@ -58,52 +121,30 @@ var LessonExplanation = (function() {
       '</div>';
   }
 
-  function inlineContextBlockHtml(label, text, variant) {
+  function cardContextHtml(text) {
     if (!text) return '';
-    var blockClass = variant === 'question'
-      ? 'lesson-explanation-question sp-explanation-inline-block'
-      : 'lesson-explanation-answer sp-explanation-inline-block';
-    var icon = variant === 'question' ? 'quiz' : 'check_circle';
-    return '<div class="' + blockClass + '">' +
-        '<span class="' + blockClass + '-label sp-explanation-inline-block-label">' +
-          '<span class="sp-explanation-inline-block-icon material-symbols-outlined" aria-hidden="true">' +
-            icon +
-          '</span>' +
-          esc(label) +
+    return '<div class="sp-explanation-card-context">' +
+        '<span class="sp-explanation-card-context-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">quiz</span>' +
+          'Question' +
         '</span>' +
-        '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
+        '<p class="sp-explanation-card-context-text">' + formatBody(text) + '</p>' +
       '</div>';
   }
 
-  function explanationCardHtml(text) {
-    return '<div class="lesson-explanation-card">' +
-        '<div class="lesson-explanation-card-label">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
-          'Why' +
-        '</div>' +
-        '<p class="lesson-explanation-text">' + formatBody(text) + '</p>' +
-      '</div>';
-  }
-
-  function inlineExplanationCardHtml(text) {
-    return '<div class="sp-explanation-inline-card sp-explanation-inline-block">' +
-        '<div class="sp-explanation-inline-card-label sp-explanation-inline-block-label">' +
-          '<span class="sp-explanation-inline-block-icon sp-explanation-inline-block-icon--why" aria-hidden="true">' +
-            '<span class="material-symbols-outlined">lightbulb</span>' +
-          '</span>' +
-          'Why' +
-        '</div>' +
-        '<p class="sp-explanation-inline-text">' + formatBody(text) + '</p>' +
-      '</div>';
+  function cardStructuredHtml(opts) {
+    return '<div class="sp-explanation-sections">' + structuredBodyHtml(opts, 'card') + '</div>';
   }
 
   function openInline(mountEl, opts) {
-    if (!mountEl || !opts || !opts.explanation) return;
+    var normalized = normalizeOpts(opts);
+    if (!mountEl || !normalized) return;
     close();
     _onClose = opts.onClose || null;
 
-    var contextHtml = inlineContextBlockHtml('Question', opts.context, 'question');
-    var answerHtml = inlineContextBlockHtml('Correct answer', opts.correctAnswer);
+    var contextHtml = normalized.context
+      ? contextBlockHtml('Question', normalized.context, 'question')
+      : '';
 
     mountEl.classList.add('sp-explanation-inline-mount');
     if (mountEl.classList.contains('sp-lesson-mount') || mountEl.classList.contains('sp-practice-session')) {
@@ -114,7 +155,7 @@ var LessonExplanation = (function() {
     overlay.className = 'sp-explanation-inline';
     overlay.id = INLINE_OVERLAY_ID;
     overlay.setAttribute('role', 'dialog');
-    overlay.setAttribute('aria-label', opts.title || 'Explanation');
+    overlay.setAttribute('aria-label', normalized.title || 'Explanation');
     overlay.innerHTML =
         '<header class="sp-explanation-inline-header">' +
           '<button type="button" class="sp-explanation-inline-close" aria-label="Close">' +
@@ -126,8 +167,7 @@ var LessonExplanation = (function() {
         '</header>' +
         '<div class="sp-explanation-inline-body">' +
           contextHtml +
-          answerHtml +
-          inlineExplanationCardHtml(opts.explanation) +
+          '<div class="sp-explanation-sections">' + structuredBodyHtml(normalized, 'inline') + '</div>' +
         '</div>' +
         '<footer class="sp-explanation-inline-footer">' +
           '<button type="button" class="sp-explanation-inline-continue">' +
@@ -148,9 +188,10 @@ var LessonExplanation = (function() {
   }
 
   function open(opts) {
-    if (!opts || !opts.explanation) return;
+    var normalized = normalizeOpts(opts);
+    if (!normalized) return;
     if (opts.inlineMount) {
-      openInline(opts.inlineMount, opts);
+      openInline(opts.inlineMount, normalized);
       return;
     }
     close();
@@ -164,8 +205,9 @@ var LessonExplanation = (function() {
     sheet.setAttribute('aria-modal', 'true');
     sheet.setAttribute('aria-label', 'Explanation');
 
-    var contextHtml = contextBlockHtml('Question', opts.context, 'question');
-    var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
+    var contextHtml = normalized.context
+      ? contextBlockHtml('Question', normalized.context, 'question')
+      : '';
 
     var closeLabel = opts.compact ? 'close' : 'arrow_back';
     var closeAria = opts.compact ? 'Close' : 'Back';
@@ -182,8 +224,7 @@ var LessonExplanation = (function() {
         '</header>' +
         '<div class="lesson-explanation-body">' +
           contextHtml +
-          answerHtml +
-          explanationCardHtml(opts.explanation) +
+          '<div class="sp-explanation-sections">' + structuredBodyHtml(normalized, 'sheet') + '</div>' +
         '</div>' +
         '<footer class="lesson-explanation-footer">' +
           '<button type="button" class="lesson-explanation-continue">' +
@@ -202,40 +243,6 @@ var LessonExplanation = (function() {
     });
   }
 
-  function cardContextHtml(text) {
-    if (!text) return '';
-    return '<div class="sp-explanation-card-context">' +
-        '<span class="sp-explanation-card-context-label">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">quiz</span>' +
-          'Question' +
-        '</span>' +
-        '<p class="sp-explanation-card-context-text">' + formatBody(text) + '</p>' +
-      '</div>';
-  }
-
-  function cardAnswerHtml(text) {
-    if (!text) return '';
-    return '<div class="sp-explanation-card-answer">' +
-        '<span class="sp-explanation-card-answer-label">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span>' +
-          'Correct answer' +
-        '</span>' +
-        '<p class="sp-explanation-card-answer-text">' + formatBody(text) + '</p>' +
-      '</div>';
-  }
-
-  function cardWhyHtml(text) {
-    return '<div class="sp-explanation-card-why">' +
-        '<div class="sp-explanation-card-why-header">' +
-          '<span class="sp-explanation-card-why-icon" aria-hidden="true">' +
-            '<span class="material-symbols-outlined">lightbulb</span>' +
-          '</span>' +
-          '<span class="sp-explanation-card-why-title">Why</span>' +
-        '</div>' +
-        '<div class="sp-explanation-card-why-body">' + formatBody(text) + '</div>' +
-      '</div>';
-  }
-
   function isOpenInCard(cardEl) {
     return !!(cardEl && cardEl.classList.contains('sp-exercise-card--explanation'));
   }
@@ -250,7 +257,8 @@ var LessonExplanation = (function() {
   }
 
   function openInCard(cardEl, opts) {
-    if (!cardEl || !opts || !opts.explanation) return;
+    var normalized = normalizeOpts(opts);
+    if (!cardEl || !normalized) return;
     closeInCard(cardEl);
 
     var screen = cardEl.querySelector('.sp-screen');
@@ -260,12 +268,11 @@ var LessonExplanation = (function() {
     view.className = 'sp-explanation-card-view';
     view.id = CARD_VIEW_ID;
     view.setAttribute('role', 'region');
-    view.setAttribute('aria-label', opts.title || 'Explanation');
+    view.setAttribute('aria-label', normalized.title || 'Explanation');
     view.innerHTML =
         '<div class="sp-explanation-card-view-inner">' +
-          cardContextHtml(opts.context) +
-          cardAnswerHtml(opts.correctAnswer) +
-          cardWhyHtml(opts.explanation) +
+          cardContextHtml(normalized.context) +
+          cardStructuredHtml(normalized) +
         '</div>';
 
     cardEl.appendChild(view);
@@ -285,6 +292,7 @@ var LessonExplanation = (function() {
     isMobile: isMobile,
     open: open,
     close: close,
+    hasRenderableContent: hasRenderableContent,
     isOpenInCard: isOpenInCard,
     openInCard: openInCard,
     closeInCard: closeInCard,

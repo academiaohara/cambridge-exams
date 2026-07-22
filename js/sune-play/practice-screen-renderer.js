@@ -4610,6 +4610,10 @@
           ? norm.choiceSelectionMatches(val, p)
           : norm.answersMatch(val, p.answer);
         result.lifeLoss = result.correct ? 0 : 1;
+        if (p.explanationContent) {
+          result.explanationContent = p.explanationContent;
+          result.explanation = '__structured__';
+        }
         break;
       }
       case 'mc_4_option': {

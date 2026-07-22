@@ -743,7 +743,14 @@
             "answer": "don't you",
             "originalSentence": "You like jazz, **don't you / aren't you**?",
             "completedSentence": "You like jazz, don't you ?",
-            "explanation": "**You like** → **don't you**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"don't you\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"don't you\" collocates with the rest of the sentence. \"aren't you\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "aren't you": "\"aren't you\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-2",
@@ -757,7 +764,14 @@
             "answer": "does she",
             "originalSentence": "She never replies to messages, **does she / doesn't she**?",
             "completedSentence": "She never replies to messages, does she ?",
-            "explanation": "**Never** (negative) → positive tag **does she**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"does she\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"does she\" collocates with the rest of the sentence. \"doesn't she\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "doesn't she": "\"doesn't she\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-3",
@@ -771,7 +785,14 @@
             "answer": "is there",
             "originalSentence": "There's no milk left, **is there / isn't there**?",
             "completedSentence": "There's no milk left, is there ?",
-            "explanation": "**No milk** → positive tag **is there**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"is there\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"is there\" collocates with the rest of the sentence. \"isn't there\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "isn't there": "\"isn't there\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-4",
@@ -785,7 +806,14 @@
             "answer": "aren't we",
             "originalSentence": "We are meeting tomorrow morning, **aren't we / don't we**?",
             "completedSentence": "We are meeting tomorrow morning, aren't we ?",
-            "explanation": "**We are meeting** → **aren't we**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"aren't we\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"aren't we\" collocates with the rest of the sentence. \"don't we\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "don't we": "\"don't we\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-5",
@@ -799,7 +827,14 @@
             "answer": "did they",
             "originalSentence": "No one told you, **did they / didn't they**?",
             "completedSentence": "No one told you, did they ?",
-            "explanation": "**No one** → positive tag **did they**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"did they\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"did they\" collocates with the rest of the sentence. \"didn't they\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "didn't they": "\"didn't they\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-6",
@@ -813,7 +848,14 @@
             "answer": "shouldn't they",
             "originalSentence": "People should recycle more, **shouldn't they / don't they**?",
             "completedSentence": "People should recycle more, shouldn't they ?",
-            "explanation": "**Should recycle** → **shouldn't they**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"shouldn't they\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"shouldn't they\" collocates with the rest of the sentence. \"don't they\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "don't they": "\"don't they\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-7",
@@ -827,7 +869,14 @@
             "answer": "will you",
             "originalSentence": "Don't forget to lock up, **will you / do you**?",
             "completedSentence": "Don't forget to lock up, will you ?",
-            "explanation": "Negative imperative → **will you**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"will you\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"will you\" collocates with the rest of the sentence. \"do you\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "do you": "\"do you\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           },
           {
             "id": "b1-u23-exc-8",
@@ -841,7 +890,14 @@
             "answer": "won't there",
             "originalSentence": "There will be enough seats, **won't there / will there**?",
             "completedSentence": "There will be enough seats, won't there ?",
-            "explanation": "**There will be** → **won't there**?"
+            "explanationContent": {
+              "whyCorrect": "Only \"won't there\" fits the meaning created by the words before and after the gap.",
+              "vocabularyFocus": "\"won't there\" collocates with the rest of the sentence. \"will there\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "will there": "\"will there\" does not match the clue in the rest of the sentence (\"?\")."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap."
+            }
           }
         ]
       },

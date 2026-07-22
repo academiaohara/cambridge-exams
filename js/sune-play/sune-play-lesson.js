@@ -585,6 +585,16 @@
     }
     var result = lessonState._lastFeedbackResult;
     var screen = lessonState.currentScreen;
+    if (!screen) return null;
+
+    if (typeof SunePlayExplanation !== 'undefined') {
+      if (!SunePlayExplanation.hasExplanation(screen, result)) return null;
+      var structured = SunePlayExplanation.buildExplainOpts(screen, Object.assign({}, result, {
+        correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen)
+      }));
+      if (structured) return structured;
+    }
+
     if (!result || !result.explanation) return null;
     return {
       title: 'Explanation',
@@ -592,6 +602,13 @@
       explanation: result.explanation,
       correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen)
     };
+  }
+
+  function screenHasExplanation(screen, result) {
+    if (typeof SunePlayExplanation !== 'undefined') {
+      return SunePlayExplanation.hasExplanation(screen, result);
+    }
+    return !!(result && result.explanation);
   }
 
   function setActionBtn(mode, enabled) {
@@ -619,7 +636,8 @@
       skipBtn.disabled = lessonState.hearts && lessonState.hearts.isGameOver;
     }
     if (explainBtn) {
-      var hasFeedbackExplanation = lessonState._lastFeedbackResult && lessonState._lastFeedbackResult.explanation;
+      var hasFeedbackExplanation = lessonState._lastFeedbackResult &&
+        screenHasExplanation(lessonState.currentScreen, lessonState._lastFeedbackResult);
       var hasColumnMatchExplanation = !!lessonState._cmExplainContext;
       explainBtn.hidden = (mode === 'check' && !hasColumnMatchExplanation) ||
         (mode === 'continue' && !hasFeedbackExplanation);
@@ -1016,7 +1034,8 @@
     var p = screen.payload || {};
     var result = {
       correct: false,
-      explanation: p.explanation || '',
+      explanation: p.explanationContent ? '__structured__' : (p.explanation || ''),
+      explanationContent: p.explanationContent || null,
       correctAnswer: getScreenCorrectAnswer(screen),
       userAnswer: '',
       lifeLoss: 1
@@ -1057,7 +1076,9 @@
     if (!cardEl) return;
 
     var explainOpts = buildExplainOpts();
-    if (!explainOpts || !explainOpts.explanation) return;
+    if (!explainOpts) return;
+    if (typeof LessonExplanation.hasRenderableContent === 'function' &&
+        !LessonExplanation.hasRenderableContent(explainOpts)) return;
 
     var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
     setExplainBtnActive(isOpen);
