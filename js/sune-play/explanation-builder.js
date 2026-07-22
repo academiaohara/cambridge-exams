@@ -905,6 +905,65 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function getFullSentenceCues(payload) {
+    var cues = (payload.prompt && payload.prompt.cues) || [];
+    if ((!cues.length || cues.length <= 1) && payload.displayPrompt && /\s\/\s/.test(payload.displayPrompt)) {
+      cues = String(payload.displayPrompt).split(/\s*\/\s*/).map(function(s) {
+        return s.trim();
+      }).filter(Boolean);
+    }
+    return cues;
+  }
+
+  function buildFullSentenceBreakdown(payload, content) {
+    if (content && content.sentenceBreakdown) {
+      return content.sentenceBreakdown;
+    }
+    var answer = String((payload.acceptedAnswers && payload.acceptedAnswers[0]) || payload.answer || '').trim();
+    var cues = getFullSentenceCues(payload);
+    var displayPrompt = String(payload.displayPrompt || '').trim();
+    if (cues.length > 1 && /\s\/\s/.test(displayPrompt)) {
+      return 'Cues: ' + cues.join(' / ') + ' → ' + answer;
+    }
+    if (displayPrompt && !/\s\/\s/.test(displayPrompt)) {
+      return 'Prompt: ' + displayPrompt.replace(/<s>[^<]*<\/s>/g, '___') + ' → ' + answer;
+    }
+    return answer;
+  }
+
+  function buildFullSentenceWrite(screen, result) {
+    var p = screen.payload || {};
+    var content = getContent(p);
+    var sections = [];
+    var correctAnswer = (result && result.correctAnswer) || p.answer || '';
+    var userAnswer = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userAnswer;
+
+    sections.push({ key: 'correct', text: String(correctAnswer) });
+
+    if (isWrong) {
+      sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+    }
+
+    if (content) {
+      appendTeachingSections(sections, content, isWrong, userAnswer, null);
+    } else if (p.explanation) {
+      sections.push({ key: 'whyCorrect', text: p.explanation });
+    }
+
+    var breakdown = buildFullSentenceBreakdown(p, content);
+    if (breakdown) {
+      sections.push({ key: 'sentenceBreakdown', text: breakdown });
+    }
+
+    return {
+      title: 'Explanation',
+      formatType: 'full_sentence_write',
+      context: buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildWordOrderTiles(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1041,6 +1100,13 @@ var SunePlayExplanation = (function() {
     if (screen.formatType === 'word_order_tiles') {
       return String(p.contextQuestion || p.prompt || p.instruction || '').trim();
     }
+    if (screen.formatType === 'full_sentence_write') {
+      var fswPrompt = String(p.displayPrompt || '').trim();
+      if (fswPrompt) return fswPrompt;
+      var fswCues = getFullSentenceCues(p);
+      if (fswCues.length) return fswCues.join(' / ');
+      return '';
+    }
     return String(p.sentence || p.prompt || p.instruction || '').trim();
   }
 
@@ -1076,6 +1142,8 @@ var SunePlayExplanation = (function() {
         return buildFindExtraWord(screen, result);
       case 'word_order_tiles':
         return buildWordOrderTiles(screen, result);
+      case 'full_sentence_write':
+        return buildFullSentenceWrite(screen, result);
       default:
         return buildLegacy(screen, result);
     }

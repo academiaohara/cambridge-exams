@@ -886,7 +886,14 @@
             "acceptedAnswers": [
               "Can you give me some information about the course?"
             ],
-            "explanation": "**Information** is uncountable — no **an**."
+            "explanationContent": {
+              "whyCorrect": "Information is uncountable — no an.",
+              "sentenceBreakdown": "Prompt: Can you give me an information about the course? → Can you give me some information about the course?",
+              "grammarFocus": "Build a grammatically complete sentence that matches the prompt: Can you give me some information about the course?",
+              "wrongOptions": {},
+              "commonMistake": "Compare your sentence with the model — check verb tense, connectors, and that every cue is included.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u13-exe-2",
@@ -901,7 +908,17 @@
             "acceptedAnswers": [
               "There isn't much bread on the table."
             ],
-            "explanation": "**Bread** is uncountable → **much** bread (not many)."
+            "explanationContent": {
+              "whyCorrect": "Bread is uncountable, so the sentence is \"There isn't much bread on the table.\".",
+              "sentenceBreakdown": "Prompt: There isn't many bread on the table. → There isn't much bread on the table.",
+              "grammarFocus": "Reported speech backshifts tenses and time/place words (now → then, tomorrow → the next day, here → there).",
+              "wrongOptions": {
+                "Bread": "Check how \"Bread\" changes in the target sentence — tense or word form may shift.",
+                "is": "Check how \"is\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "In reported speech, change time and place words (tomorrow → the next day, here → there).",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u13-exe-3",
@@ -916,7 +933,17 @@
             "acceptedAnswers": [
               "She bought two pieces of furniture for her bedroom."
             ],
-            "explanation": "**Furniture** is uncountable → **two pieces of furniture**."
+            "explanationContent": {
+              "whyCorrect": "Furniture is uncountable, so the sentence is \"She bought two pieces of furniture for her bedroom.\".",
+              "sentenceBreakdown": "Prompt: She bought two furnitures for her bedroom. → She bought two pieces of furniture for her bedroom.",
+              "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
+              "wrongOptions": {
+                "Furniture": "Check how \"Furniture\" changes in the target sentence — tense or word form may shift.",
+                "is": "Check how \"is\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u13-exe-4",
@@ -931,7 +958,17 @@
             "acceptedAnswers": [
               "How much money have you saved?"
             ],
-            "explanation": "**Money** is uncountable → **How much** money."
+            "explanationContent": {
+              "whyCorrect": "Money is uncountable, so the sentence is \"How much money have you saved?\".",
+              "sentenceBreakdown": "Prompt: How many money have you saved? → How much money have you saved?",
+              "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
+              "wrongOptions": {
+                "Money": "Check how \"Money\" changes in the target sentence — tense or word form may shift.",
+                "is": "Check how \"is\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u13-exe-5",
@@ -946,7 +983,17 @@
             "acceptedAnswers": [
               "Your jeans are on the chair."
             ],
-            "explanation": "**Jeans** are always plural → **are** on the chair."
+            "explanationContent": {
+              "whyCorrect": "Jeans are always plural, so the sentence is \"Your jeans are on the chair.\".",
+              "sentenceBreakdown": "Prompt: Your jeans is on the chair. → Your jeans are on the chair.",
+              "grammarFocus": "Build a grammatically complete sentence that matches the prompt: Your jeans are on the chair.",
+              "wrongOptions": {
+                "Jeans": "Check how \"Jeans\" changes in the target sentence — tense or word form may shift.",
+                "are": "Check how \"are\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           },
           {
             "id": "b1-u13-exe-6",
@@ -961,7 +1008,17 @@
             "acceptedAnswers": [
               "I need a little advice before I decide."
             ],
-            "explanation": "**Advice** is uncountable → **a little** advice (not a few)."
+            "explanationContent": {
+              "whyCorrect": "Advice is uncountable, so the sentence is \"I need a little advice before I decide.\".",
+              "sentenceBreakdown": "Prompt: I need a few advice before I decide. → I need a little advice before I decide.",
+              "grammarFocus": "Passive voice — be + past participle when the action matters more than who did it.",
+              "wrongOptions": {
+                "Advice": "Check how \"Advice\" changes in the target sentence — tense or word form may shift.",
+                "is": "Check how \"is\" changes in the target sentence — tense or word form may shift."
+              },
+              "commonMistake": "Match the tense shift shown in the explanation — one verb often moves back one step in time.",
+              "usefulTip": "Write one complete sentence with correct punctuation — capital letter at the start and a full stop at the end."
+            }
           }
         ]
       },

@@ -982,6 +982,7 @@
           prompt: item.prompt || {},
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+          explanationContent: item.explanationContent || null,
           explanation: item.explanation || ''
         };
 
