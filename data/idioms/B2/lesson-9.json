@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "As always, Marco was ___ – dancing, telling stories, and making everyone laugh.",
-      "options": ["the life and soul of the party", "on good terms", "on the town", "in her good books"],
+      "options": [
+        "the life and soul of the party",
+        "on good terms",
+        "on the town",
+        "in her good books"
+      ],
       "correct": "the life and soul of the party",
       "explanation": "'Life and soul of the party' describes the most energetic and entertaining person at a social event."
     },
     {
       "type": "multiple-choice",
       "sentence": "Those two cousins are ___. Same sense of humour, same taste in music, same everything.",
-      "options": ["like two peas in a pod", "on the town", "flesh and blood", "in their good books"],
+      "options": [
+        "like two peas in a pod",
+        "on the town",
+        "flesh and blood",
+        "in their good books"
+      ],
       "correct": "like two peas in a pod",
       "explanation": "'Like two peas in a pod' means very similar in personality or appearance."
     },
     {
       "type": "multiple-choice",
       "sentence": "Despite a difficult split, the former business partners stayed ___ and even referred clients to each other.",
-      "options": ["on good terms", "on the town", "like two peas in a pod", "in each other's bad books"],
+      "options": [
+        "on good terms",
+        "on the town",
+        "like two peas in a pod",
+        "in each other's bad books"
+      ],
       "correct": "on good terms",
       "explanation": "'On good terms' means maintaining a friendly or civil relationship with someone."
     },
     {
       "type": "multiple-choice",
       "sentence": "We're celebrating tonight – a proper night ___ with dinner and dancing.",
-      "options": ["on the town", "on good terms", "in their good books", "like two peas in a pod"],
+      "options": [
+        "on the town",
+        "on good terms",
+        "in their good books",
+        "like two peas in a pod"
+      ],
       "correct": "on the town",
       "explanation": "'On the town' means going out to enjoy restaurants, bars, and clubs, typically in the evening."
     },
     {
       "type": "multiple-choice",
       "sentence": "No matter what he's done, he's still your ___, and family should stick together.",
-      "options": ["flesh and blood", "life and soul of the party", "on the town", "on good terms"],
+      "options": [
+        "flesh and blood",
+        "life and soul of the party",
+        "on the town",
+        "on good terms"
+      ],
       "correct": "flesh and blood",
       "explanation": "'Flesh and blood' refers to close family members, emphasising the bond of blood relations."
     },
     {
       "type": "multiple-choice",
       "sentence": "I forgot to submit the report on time, so I'm definitely ___ this week.",
-      "options": ["in my manager's bad books", "on the town", "on good terms", "like two peas in a pod"],
+      "options": [
+        "in my manager's bad books",
+        "on the town",
+        "on good terms",
+        "like two peas in a pod"
+      ],
       "correct": "in my manager's bad books",
       "explanation": "'In someone's bad books' means that person is displeased or disappointed with you."
     }
@@ -115,27 +145,112 @@
       "lines": [
         {
           "speaker": "Beth",
-          "text": "Your cousin Thomas was absolutely [the life and soul of the party|life and soul of the party] at the barbecue yesterday."
+          "text": "Your cousin Thomas was absolutely [the life and soul of the party|life and soul of the party] at the barbecue yesterday.",
+          "explanationContent": {
+            "whyCorrect": "'Life and soul of the party' describes the most energetic and entertaining person at a social event.",
+            "vocabularyFocus": "*life and soul of the party* — The most lively, entertaining, and sociable person at a gathering or social event.",
+            "sentenceBreakdown": "Your cousin Thomas was absolutely the life and soul of the party at the barbecue yesterday.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *life and soul of the party* (*life and soul of the party*).",
+            "wrongOptions": {
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Always positive. Describes someone energetic and entertaining who makes social events more enjoyable for everyone. Can also be used slightly ironically."
+          }
         },
         {
           "speaker": "Dan",
-          "text": "He always is. His friend Jake is the same – those two are [like two peas in a pod|like two peas in a pod]."
+          "text": "He always is. His friend Jake is the same – those two are [like two peas in a pod|like two peas in a pod].",
+          "explanationContent": {
+            "whyCorrect": "'Like two peas in a pod' means very similar in personality or appearance.",
+            "vocabularyFocus": "*like two peas in a pod* — Very similar to each other in appearance, personality, or behaviour.",
+            "sentenceBreakdown": "He always is. His friend Jake is the same – those two are like two peas in a pod.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *like two peas in a pod* (*like two peas in a pod*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Refers to strong similarity, usually in personality or appearance. Always used about two people. The comparison is neutral or affectionate."
+          }
         },
         {
           "speaker": "Beth",
-          "text": "I noticed your aunt wasn't there. Are you still [on good terms|on good terms] with her?"
+          "text": "I noticed your aunt wasn't there. Are you still [on good terms|on good terms] with her?",
+          "explanationContent": {
+            "whyCorrect": "'On good terms' means maintaining a friendly or civil relationship with someone.",
+            "vocabularyFocus": "*on good terms (with)* — Having a friendly, civil, or pleasant relationship with someone.",
+            "sentenceBreakdown": "I noticed your aunt wasn't there. Are you still on good terms with her?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on good terms* (*on good terms (with)*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Implies a relationship that is at least amicable, even if not a close friendship. Also used in the negative: 'not on good terms'. Compare with 'on bad terms'."
+          }
         },
         {
           "speaker": "Dan",
-          "text": "Just about. Things got awkward last year, but she's [your flesh and blood|your flesh and blood], so we're making the effort."
+          "text": "Just about. Things got awkward last year, but she's [your flesh and blood|your flesh and blood], so we're making the effort.",
+          "explanationContent": {
+            "whyCorrect": "'Flesh and blood' refers to close family members, emphasising the bond of blood relations.",
+            "vocabularyFocus": "*your flesh and blood* — Your close family members or blood relatives.",
+            "sentenceBreakdown": "Just about. Things got awkward last year, but she's your flesh and blood, so we're making the effort.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *your flesh and blood* (*your flesh and blood*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to emphasise the importance of family ties, often in emotional contexts. Can imply a moral obligation to support or forgive a family member."
+          }
         },
         {
           "speaker": "Beth",
-          "text": "That's the right attitude. By the way, did you hear Thomas is planning a proper night [on the town|on the town] for his birthday next month?"
+          "text": "That's the right attitude. By the way, did you hear Thomas is planning a proper night [on the town|on the town] for his birthday next month?",
+          "explanationContent": {
+            "whyCorrect": "'On the town' means going out to enjoy restaurants, bars, and clubs, typically in the evening.",
+            "vocabularyFocus": "*on the town* — Going out to restaurants, bars, and clubs to enjoy yourself, typically at night.",
+            "sentenceBreakdown": "That's the right attitude. By the way, did you hear Thomas is planning a proper night on the town for his birthday next month?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on the town* (*on the town*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used with 'go out on the town' or 'a night on the town'. Implies enjoying city nightlife and entertainment. Slightly informal."
+          }
         },
         {
           "speaker": "Dan",
-          "text": "Yes, he mentioned it. I hope I'm still [in his good books|in sb's good books] after I missed his last birthday dinner."
+          "text": "Yes, he mentioned it. I hope I'm still [in his good books|in sb's good books] after I missed his last birthday dinner.",
+          "explanationContent": {
+            "whyCorrect": "*in sb's good books* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "Yes, he mentioned it. I hope I'm still in his good books after I missed his last birthday dinner.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in sb's good books* (*in sb's good books*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Beth",
@@ -148,27 +263,113 @@
       "lines": [
         {
           "speaker": "Grace",
-          "text": "I heard the new intern is brilliant. Apparently she's already [in the director's good books|in sb's good books]."
+          "text": "I heard the new intern is brilliant. Apparently she's already [in the director's good books|in sb's good books].",
+          "explanationContent": {
+            "whyCorrect": "*in sb's good books* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "I heard the new intern is brilliant. Apparently she's already in the director's good books.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in sb's good books* (*in sb's good books*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Liam",
-          "text": "Really? Her supervisor says the same. They're [like two peas in a pod|like two peas in a pod] – same work style, same drive."
+          "text": "Really? Her supervisor says the same. They're [like two peas in a pod|like two peas in a pod] – same work style, same drive.",
+          "explanationContent": {
+            "whyCorrect": "'Like two peas in a pod' means very similar in personality or appearance.",
+            "vocabularyFocus": "*like two peas in a pod* — Very similar to each other in appearance, personality, or behaviour.",
+            "sentenceBreakdown": "Really? Her supervisor says the same. They're like two peas in a pod – same work style, same drive.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *like two peas in a pod* (*like two peas in a pod*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Refers to strong similarity, usually in personality or appearance. Always used about two people. The comparison is neutral or affectionate."
+          }
         },
         {
           "speaker": "Grace",
-          "text": "Good for her. I'm still trying to get back [on good terms|on good terms] with finance after the budget dispute last quarter."
+          "text": "Good for her. I'm still trying to get back [on good terms|on good terms] with finance after the budget dispute last quarter.",
+          "explanationContent": {
+            "whyCorrect": "'On good terms' means maintaining a friendly or civil relationship with someone.",
+            "vocabularyFocus": "*on good terms (with)* — Having a friendly, civil, or pleasant relationship with someone.",
+            "sentenceBreakdown": "Good for her. I'm still trying to get back on good terms with finance after the budget dispute last quarter.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on good terms* (*on good terms (with)*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Implies a relationship that is at least amicable, even if not a close friendship. Also used in the negative: 'not on good terms'. Compare with 'on bad terms'."
+          }
         },
         {
           "speaker": "Liam",
-          "text": "I'm sure you'll get there. On a lighter note – are you coming to the team social on Friday? We're going [on the town|on the town]."
+          "text": "I'm sure you'll get there. On a lighter note – are you coming to the team social on Friday? We're going [on the town|on the town].",
+          "explanationContent": {
+            "whyCorrect": "'On the town' means going out to enjoy restaurants, bars, and clubs, typically in the evening.",
+            "vocabularyFocus": "*on the town* — Going out to restaurants, bars, and clubs to enjoy yourself, typically at night.",
+            "sentenceBreakdown": "I'm sure you'll get there. On a lighter note – are you coming to the team social on Friday? We're going on the town.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on the town* (*on the town*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually used with 'go out on the town' or 'a night on the town'. Implies enjoying city nightlife and entertainment. Slightly informal."
+          }
         },
         {
           "speaker": "Grace",
-          "text": "I'd love to. I could do with a laugh. Is Pete coming? He's always [the life and soul of the party|life and soul of the party]."
+          "text": "I'd love to. I could do with a laugh. Is Pete coming? He's always [the life and soul of the party|life and soul of the party].",
+          "explanationContent": {
+            "whyCorrect": "'Life and soul of the party' describes the most energetic and entertaining person at a social event.",
+            "vocabularyFocus": "*life and soul of the party* — The most lively, entertaining, and sociable person at a gathering or social event.",
+            "sentenceBreakdown": "I'd love to. I could do with a laugh. Is Pete coming? He's always the life and soul of the party.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *life and soul of the party* (*life and soul of the party*).",
+            "wrongOptions": {
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Always positive. Describes someone energetic and entertaining who makes social events more enjoyable for everyone. Can also be used slightly ironically."
+          }
         },
         {
           "speaker": "Liam",
-          "text": "He is, yes. His partner too. Those two are [in each other's good books|in sb's good books] at the moment – they've been getting on brilliantly."
+          "text": "He is, yes. His partner too. Those two are [in each other's good books|in sb's good books] at the moment – they've been getting on brilliantly.",
+          "explanationContent": {
+            "whyCorrect": "*in sb's good books* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "He is, yes. His partner too. Those two are in each other's good books at the moment – they've been getting on brilliantly.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in sb's good books* (*in sb's good books*).",
+            "wrongOptions": {
+              "life and soul of the party": "*life and soul of the party* (The most lively, entertaining, and sociable person at a gathering or social event) does not match the meaning needed in this line.",
+              "like two peas in a pod": "*like two peas in a pod* (Very similar to each other in appearance, personality, or behaviour) does not match the meaning needed in this line.",
+              "on good terms (with)": "*on good terms (with)* (Having a friendly, civil, or pleasant relationship with someone) does not match the meaning needed in this line.",
+              "on the town": "*on the town* (Going out to restaurants, bars, and clubs to enjoy yourself, typically at night) does not match the meaning needed in this line.",
+              "your flesh and blood": "*your flesh and blood* (Your close family members or blood relatives) does not match the meaning needed in this line.",
+              "in sb's bad/good books": "*in sb's bad/good books* (In a situation where someone is displeased with you (bad books) or pleased with you (good books)) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Grace",
@@ -182,25 +383,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "life and soul of the party", "meaning": "the most lively and entertaining person at a social event"},
-        {"idiom": "like two peas in a pod", "meaning": "very similar in appearance or character"},
-        {"idiom": "on good terms (with)", "meaning": "having a friendly, pleasant relationship with someone"},
-        {"idiom": "on the town", "meaning": "going out to enjoy restaurants, bars, and clubs"},
-        {"idiom": "your flesh and blood", "meaning": "your close family or blood relatives"},
-        {"idiom": "in sb's bad/good books", "meaning": "in a situation where someone is pleased or displeased with you"}
+        {
+          "idiom": "life and soul of the party",
+          "meaning": "the most lively and entertaining person at a social event"
+        },
+        {
+          "idiom": "like two peas in a pod",
+          "meaning": "very similar in appearance or character"
+        },
+        {
+          "idiom": "on good terms (with)",
+          "meaning": "having a friendly, pleasant relationship with someone"
+        },
+        {
+          "idiom": "on the town",
+          "meaning": "going out to enjoy restaurants, bars, and clubs"
+        },
+        {
+          "idiom": "your flesh and blood",
+          "meaning": "your close family or blood relatives"
+        },
+        {
+          "idiom": "in sb's bad/good books",
+          "meaning": "in a situation where someone is pleased or displeased with you"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "Even after their argument, the two colleagues stayed ___ and continued to collaborate professionally.",
-      "options": ["on good terms", "on the town", "like two peas in a pod", "in each other's good books"],
+      "options": [
+        "on good terms",
+        "on the town",
+        "like two peas in a pod",
+        "in each other's good books"
+      ],
       "correct": "on good terms",
       "explanation": "'On good terms' means maintaining a civil and friendly relationship even after a disagreement."
     },
     {
       "type": "complete-sentence",
       "sentence": "She forgot to cc her manager on a key email – she's been ___ ever since.",
-      "options": ["in her manager's bad books", "on the town", "like two peas in a pod", "the life and soul of the party"],
+      "options": [
+        "in her manager's bad books",
+        "on the town",
+        "like two peas in a pod",
+        "the life and soul of the party"
+      ],
       "correct": "in her manager's bad books",
       "explanation": "'In someone's bad books' means that person is unhappy or disappointed with you."
     },

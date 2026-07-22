@@ -196,7 +196,8 @@
           correct: parsed.answer,
           acceptedAnswers: accepted,
           hint: line.speaker || '',
-          explanation: ''
+          explanationContent: line.explanationContent || null,
+          explanation: line.explanation || ''
         });
       });
     });
@@ -260,6 +261,7 @@
           answer: exercise.correct,
           acceptedAnswers: exercise.acceptedAnswers || [exercise.correct],
           instruction: '',
+          explanationContent: exercise.explanationContent || null,
           explanation: exercise.explanation || ''
         }
       };
@@ -410,6 +412,16 @@
     var s = getSession();
     var result = s && s._lastFeedbackResult;
     var screen = s && s.currentScreen;
+    if (!screen) return null;
+
+    if (typeof SunePlayExplanation !== 'undefined') {
+      if (!SunePlayExplanation.hasExplanation(screen, result)) return null;
+      var structured = SunePlayExplanation.buildExplainOpts(screen, Object.assign({}, result, {
+        correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen)
+      }));
+      if (structured) return structured;
+    }
+
     if (!result || !result.explanation) return null;
     return {
       title: 'Explanation',
@@ -734,7 +746,8 @@
     var p = screen.payload || {};
     var result = {
       correct: false,
-      explanation: p.explanation || '',
+      explanation: p.explanationContent ? '__structured__' : (p.explanation || ''),
+      explanationContent: p.explanationContent || null,
       correctAnswer: getScreenCorrectAnswer(screen),
       userAnswer: '',
       lifeLoss: 1
@@ -776,7 +789,9 @@
     if (!cardEl) return;
 
     var explainOpts = buildExplainOpts();
-    if (!explainOpts || !explainOpts.explanation) return;
+    if (!explainOpts) return;
+    if (typeof LessonExplanation.hasRenderableContent === 'function' &&
+        !LessonExplanation.hasRenderableContent(explainOpts)) return;
 
     var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
     setExplainBtnActive(isOpen);

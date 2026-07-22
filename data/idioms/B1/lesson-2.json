@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "___, I saw a really good documentary about climate change.",
-      "options": ["The other day", "In the end", "By the way", "At last"],
+      "options": [
+        "The other day",
+        "In the end",
+        "By the way",
+        "At last"
+      ],
       "correct": "The other day",
       "explanation": "'The other day' means a few days ago, used when you don't specify the exact day."
     },
     {
       "type": "multiple-choice",
       "sentence": "She's a total ___. She watches TV for hours and never exercises.",
-      "options": ["couch potato", "the other day", "on her own", "at last"],
+      "options": [
+        "couch potato",
+        "the other day",
+        "on her own",
+        "at last"
+      ],
       "correct": "couch potato",
       "explanation": "'Couch potato' describes someone who is very inactive and spends lots of time watching TV."
     },
     {
       "type": "multiple-choice",
       "sentence": "The negotiations went on for weeks, but ___ they reached an agreement.",
-      "options": ["in the end", "the other day", "on their own", "by the way"],
+      "options": [
+        "in the end",
+        "the other day",
+        "on their own",
+        "by the way"
+      ],
       "correct": "in the end",
       "explanation": "'In the end' means finally, after a long process."
     },
     {
       "type": "multiple-choice",
       "sentence": "___, I forgot to mention – your package arrived this morning.",
-      "options": ["By the way", "At last", "In the end", "On your own"],
+      "options": [
+        "By the way",
+        "At last",
+        "In the end",
+        "On your own"
+      ],
       "correct": "By the way",
       "explanation": "'By the way' is used to introduce a new topic or something you almost forgot to say."
     },
     {
       "type": "multiple-choice",
       "sentence": "The taxi is here ___! We've been waiting for forty minutes.",
-      "options": ["at last", "by the way", "in the end", "the other day"],
+      "options": [
+        "at last",
+        "by the way",
+        "in the end",
+        "the other day"
+      ],
       "correct": "at last",
       "explanation": "'At last' expresses relief that something has finally happened after a long wait."
     },
     {
       "type": "multiple-choice",
       "sentence": "Did you build that bookshelf ___, or did someone help you?",
-      "options": ["on your own", "at last", "the other day", "by the way"],
+      "options": [
+        "on your own",
+        "at last",
+        "the other day",
+        "by the way"
+      ],
       "correct": "on your own",
       "explanation": "'On your own' means without help from anyone else."
     }
@@ -119,15 +149,57 @@
         },
         {
           "speaker": "Dan",
-          "text": "You're turning into a real [couch potato|couch potato]! You should come to the gym with me."
+          "text": "You're turning into a real [couch potato|couch potato]! You should come to the gym with me.",
+          "explanationContent": {
+            "whyCorrect": "'Couch potato' describes someone who is very inactive and spends lots of time watching TV.",
+            "vocabularyFocus": "*couch potato* — A person who spends too much time sitting or lying down, watching TV and being physically inactive.",
+            "sentenceBreakdown": "You're turning into a real couch potato! You should come to the gym with me.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *couch potato* (*couch potato*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line."
+            },
+            "usefulTip": "This is a slightly humorous, informal expression. It is not usually offensive, but be careful using it directly to someone as it could sound rude."
+          }
         },
         {
           "speaker": "Nina",
-          "text": "I know, I know. [By the way|By the way], how did your job interview go?"
+          "text": "I know, I know. [By the way|By the way], how did your job interview go?",
+          "explanationContent": {
+            "whyCorrect": "'By the way' is used to introduce a new topic or something you almost forgot to say.",
+            "vocabularyFocus": "*by the way* — Used to introduce a new topic or a piece of additional information that the speaker has just thought of.",
+            "sentenceBreakdown": "I know, I know. By the way, how did your job interview go?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *By the way* (*by the way*).",
+            "wrongOptions": {
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use this to change the subject or add something you almost forgot to mention. It is very common in informal conversation."
+          }
         },
         {
           "speaker": "Dan",
-          "text": "It went well! [In the end|In the end], I think they really liked me."
+          "text": "It went well! [In the end|In the end], I think they really liked me.",
+          "explanationContent": {
+            "whyCorrect": "'In the end' means finally, after a long process.",
+            "vocabularyFocus": "*in the end* — Finally; after a long time or after a lot of events; as a final result.",
+            "sentenceBreakdown": "It went well! In the end, I think they really liked me.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *In the end* (*in the end*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use 'in the end' to describe the final outcome after a process. Don't confuse it with 'at the end', which refers to a specific point (e.g., 'at the end of the film')."
+          }
         },
         {
           "speaker": "Nina",
@@ -135,7 +207,21 @@
         },
         {
           "speaker": "Dan",
-          "text": "By Friday hopefully. I also met an old classmate [the other day|the other day] – he works for the same company!"
+          "text": "By Friday hopefully. I also met an old classmate [the other day|the other day] – he works for the same company!",
+          "explanationContent": {
+            "whyCorrect": "'The other day' means a few days ago, used when you don't specify the exact day.",
+            "vocabularyFocus": "*the other day* — A few days ago; recently (used when you don't remember or don't want to specify the exact day).",
+            "sentenceBreakdown": "By Friday hopefully. I also met an old classmate the other day – he works for the same company!",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *the other day* (*the other day*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "This always refers to the recent past (usually within the last week or two). It makes conversation sound natural and informal."
+          }
         },
         {
           "speaker": "Nina",
@@ -143,7 +229,21 @@
         },
         {
           "speaker": "Dan",
-          "text": "Not at first. But [at last|at last] it clicked and we had a great catch-up."
+          "text": "Not at first. But [at last|at last] it clicked and we had a great catch-up.",
+          "explanationContent": {
+            "whyCorrect": "'At last' expresses relief that something has finally happened after a long wait.",
+            "vocabularyFocus": "*at last* — Finally, after a long wait or after much difficulty; expressing relief.",
+            "sentenceBreakdown": "Not at first. But at last it clicked and we had a great catch-up.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *at last* (*at last*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used to express relief or satisfaction after a long wait. It has a more emotional, expressive tone than 'finally'."
+          }
         }
       ]
     },
@@ -156,7 +256,21 @@
         },
         {
           "speaker": "Ryan",
-          "text": "Really? Travelling completely [on your own|on your own]? That sounds adventurous!"
+          "text": "Really? Travelling completely [on your own|on your own]? That sounds adventurous!",
+          "explanationContent": {
+            "whyCorrect": "'On your own' means without help from anyone else.",
+            "vocabularyFocus": "*on your own* — Alone; without help from anyone else.",
+            "sentenceBreakdown": "Really? Travelling completely on your own? That sounds adventurous!",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on your own* (*on your own*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Can mean physically alone OR doing something without assistance. The context usually makes it clear which meaning is intended."
+          }
         },
         {
           "speaker": "Lucy",
@@ -164,23 +278,93 @@
         },
         {
           "speaker": "Ryan",
-          "text": "[In the end|In the end], I think solo travel teaches you a lot about yourself."
+          "text": "[In the end|In the end], I think solo travel teaches you a lot about yourself.",
+          "explanationContent": {
+            "whyCorrect": "'In the end' means finally, after a long process.",
+            "vocabularyFocus": "*in the end* — Finally; after a long time or after a lot of events; as a final result.",
+            "sentenceBreakdown": "In the end, I think solo travel teaches you a lot about yourself.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *In the end* (*in the end*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use 'in the end' to describe the final outcome after a process. Don't confuse it with 'at the end', which refers to a specific point (e.g., 'at the end of the film')."
+          }
         },
         {
           "speaker": "Lucy",
-          "text": "Exactly. [By the way|By the way], do you know any good travel apps?"
+          "text": "Exactly. [By the way|By the way], do you know any good travel apps?",
+          "explanationContent": {
+            "whyCorrect": "'By the way' is used to introduce a new topic or something you almost forgot to say.",
+            "vocabularyFocus": "*by the way* — Used to introduce a new topic or a piece of additional information that the speaker has just thought of.",
+            "sentenceBreakdown": "Exactly. By the way, do you know any good travel apps?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *By the way* (*by the way*).",
+            "wrongOptions": {
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use this to change the subject or add something you almost forgot to mention. It is very common in informal conversation."
+          }
         },
         {
           "speaker": "Ryan",
-          "text": "I was talking to a friend [the other day|the other day] who recommended one called TripIt."
+          "text": "I was talking to a friend [the other day|the other day] who recommended one called TripIt.",
+          "explanationContent": {
+            "whyCorrect": "'The other day' means a few days ago, used when you don't specify the exact day.",
+            "vocabularyFocus": "*the other day* — A few days ago; recently (used when you don't remember or don't want to specify the exact day).",
+            "sentenceBreakdown": "I was talking to a friend the other day who recommended one called TripIt.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *the other day* (*the other day*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "This always refers to the recent past (usually within the last week or two). It makes conversation sound natural and informal."
+          }
         },
         {
           "speaker": "Lucy",
-          "text": "I'll look it up. I want to get this booked [at last|at last] – I've been planning this for two years!"
+          "text": "I'll look it up. I want to get this booked [at last|at last] – I've been planning this for two years!",
+          "explanationContent": {
+            "whyCorrect": "'At last' expresses relief that something has finally happened after a long wait.",
+            "vocabularyFocus": "*at last* — Finally, after a long wait or after much difficulty; expressing relief.",
+            "sentenceBreakdown": "I'll look it up. I want to get this booked at last – I've been planning this for two years!",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *at last* (*at last*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line.",
+              "couch potato": "*couch potato* (A person who spends too much time sitting or lying down, watching TV and being physically inactive) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used to express relief or satisfaction after a long wait. It has a more emotional, expressive tone than 'finally'."
+          }
         },
         {
           "speaker": "Ryan",
-          "text": "Go for it! Just don't become a [couch potato|couch potato] and change your mind at the last minute."
+          "text": "Go for it! Just don't become a [couch potato|couch potato] and change your mind at the last minute.",
+          "explanationContent": {
+            "whyCorrect": "'Couch potato' describes someone who is very inactive and spends lots of time watching TV.",
+            "vocabularyFocus": "*couch potato* — A person who spends too much time sitting or lying down, watching TV and being physically inactive.",
+            "sentenceBreakdown": "Go for it! Just don't become a couch potato and change your mind at the last minute.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *couch potato* (*couch potato*).",
+            "wrongOptions": {
+              "by the way": "*by the way* (Used to introduce a new topic or a piece of additional information that the speaker has just thought of) does not match the meaning needed in this line.",
+              "on your own": "*on your own* (Alone) does not match the meaning needed in this line.",
+              "in the end": "*in the end* (Finally) does not match the meaning needed in this line.",
+              "at last": "*at last* (Finally, after a long wait or after much difficulty) does not match the meaning needed in this line.",
+              "the other day": "*the other day* (A few days ago) does not match the meaning needed in this line."
+            },
+            "usefulTip": "This is a slightly humorous, informal expression. It is not usually offensive, but be careful using it directly to someone as it could sound rude."
+          }
         }
       ]
     }
@@ -190,25 +374,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "by the way", "meaning": "used to introduce additional or unrelated information"},
-        {"idiom": "on your own", "meaning": "alone or without help"},
-        {"idiom": "in the end", "meaning": "finally, as a result after a long process"},
-        {"idiom": "at last", "meaning": "finally, after a long wait (expressing relief)"},
-        {"idiom": "the other day", "meaning": "a few days ago, recently"},
-        {"idiom": "couch potato", "meaning": "a lazy, physically inactive person who watches a lot of TV"}
+        {
+          "idiom": "by the way",
+          "meaning": "used to introduce additional or unrelated information"
+        },
+        {
+          "idiom": "on your own",
+          "meaning": "alone or without help"
+        },
+        {
+          "idiom": "in the end",
+          "meaning": "finally, as a result after a long process"
+        },
+        {
+          "idiom": "at last",
+          "meaning": "finally, after a long wait (expressing relief)"
+        },
+        {
+          "idiom": "the other day",
+          "meaning": "a few days ago, recently"
+        },
+        {
+          "idiom": "couch potato",
+          "meaning": "a lazy, physically inactive person who watches a lot of TV"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "I bumped into your brother ___ outside the coffee shop.",
-      "options": ["the other day", "at last", "in the end", "on my own"],
+      "options": [
+        "the other day",
+        "at last",
+        "in the end",
+        "on my own"
+      ],
       "correct": "the other day",
       "explanation": "'The other day' refers to a recent but unspecified day in the past."
     },
     {
       "type": "complete-sentence",
       "sentence": "___ we missed the flight, so we had to book a hotel for the night.",
-      "options": ["In the end", "By the way", "At last", "The other day"],
+      "options": [
+        "In the end",
+        "By the way",
+        "At last",
+        "The other day"
+      ],
       "correct": "In the end",
       "explanation": "'In the end' means as a final result or outcome."
     },

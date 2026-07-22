@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "The politician refused to give a direct answer – as usual, he just ___ on the issue.",
-      "options": ["sat on the fence", "changed his tune", "buried his head in the sand", "got the wrong end of the stick"],
+      "options": [
+        "sat on the fence",
+        "changed his tune",
+        "buried his head in the sand",
+        "got the wrong end of the stick"
+      ],
       "correct": "sat on the fence",
       "explanation": "'Sit on the fence' means to avoid taking a side or expressing a clear opinion."
     },
     {
       "type": "multiple-choice",
       "sentence": "You've completely ___. I wasn't criticising your work – I was asking a genuine question.",
-      "options": ["got the wrong end of the stick", "sat on the fence", "changed your tune", "buried your head in the sand"],
+      "options": [
+        "got the wrong end of the stick",
+        "sat on the fence",
+        "changed your tune",
+        "buried your head in the sand"
+      ],
       "correct": "got the wrong end of the stick",
       "explanation": "'Get the wrong end of the stick' means to completely misunderstand a situation."
     },
     {
       "type": "multiple-choice",
       "sentence": "You can't ___ about this financial problem. You need to face it head on.",
-      "options": ["bury your head in the sand", "sit on the fence", "get the wrong end of the stick", "change your tune"],
+      "options": [
+        "bury your head in the sand",
+        "sit on the fence",
+        "get the wrong end of the stick",
+        "change your tune"
+      ],
       "correct": "bury your head in the sand",
       "explanation": "'Bury your head in the sand' means to avoid or ignore a problem instead of dealing with it."
     },
     {
       "type": "multiple-choice",
       "sentence": "Before the meeting starts, I want to make sure we're all ___.",
-      "options": ["on the same page", "changing our tune", "sitting on the fence", "getting the drift"],
+      "options": [
+        "on the same page",
+        "changing our tune",
+        "sitting on the fence",
+        "getting the drift"
+      ],
       "correct": "on the same page",
       "explanation": "'On the same page' means having the same understanding or expectations."
     },
     {
       "type": "multiple-choice",
       "sentence": "She was very much against the proposal, but once she got a bonus tied to it, she ___.",
-      "options": ["changed her tune", "got the wrong end of the stick", "sat on the fence", "buried her head in the sand"],
+      "options": [
+        "changed her tune",
+        "got the wrong end of the stick",
+        "sat on the fence",
+        "buried her head in the sand"
+      ],
       "correct": "changed her tune",
       "explanation": "'Change your tune' means to suddenly adopt a very different opinion or attitude."
     },
     {
       "type": "multiple-choice",
       "sentence": "I'm not going to spell it out – I think you ___, don't you?",
-      "options": ["catch my drift", "sit on the fence", "bury your head in the sand", "get the wrong end of the stick"],
+      "options": [
+        "catch my drift",
+        "sit on the fence",
+        "bury your head in the sand",
+        "get the wrong end of the stick"
+      ],
       "correct": "catch my drift",
       "explanation": "'Catch/get sb's drift' means to understand the implied meaning of what someone is saying."
     }
@@ -115,7 +145,21 @@
       "lines": [
         {
           "speaker": "Rachel",
-          "text": "So, does everyone agree with the new approach? Or are we going to [sit on the fence|sit on the fence] again?"
+          "text": "So, does everyone agree with the new approach? Or are we going to [sit on the fence|sit on the fence] again?",
+          "explanationContent": {
+            "whyCorrect": "*sit on the fence* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*sit on the fence* — To avoid committing to an opinion or position; to remain neutral in a debate or argument.",
+            "sentenceBreakdown": "So, does everyone agree with the new approach? Or are we going to sit on the fence again?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *sit on the fence* (*sit on the fence*).",
+            "wrongOptions": {
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used critically to suggest someone is being indecisive or avoiding responsibility. Can also be neutral when describing someone who genuinely wants to stay uninvolved."
+          }
         },
         {
           "speaker": "Tom",
@@ -123,23 +167,93 @@
         },
         {
           "speaker": "Rachel",
-          "text": "Fair enough. But we can't keep [burying our heads in the sand|bury your head in the sand] about the budget constraints."
+          "text": "Fair enough. But we can't keep [burying our heads in the sand|bury your head in the sand] about the budget constraints.",
+          "explanationContent": {
+            "whyCorrect": "'Bury your head in the sand' means to avoid or ignore a problem instead of dealing with it.",
+            "vocabularyFocus": "*bury your head in the sand* — To deliberately ignore a problem or difficult situation, hoping it will go away on its own.",
+            "sentenceBreakdown": "Fair enough. But we can't keep burying our heads in the sand about the budget constraints.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *bury your head in the sand* (*bury your head in the sand*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Based on the (incorrect) belief that ostriches bury their heads to avoid danger. Always implies a negative attitude – avoidance of reality."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "I think you've [got the wrong end of the stick|get the wrong end of the stick]. I'm not ignoring the budget – I just want a proper discussion."
+          "text": "I think you've [got the wrong end of the stick|get the wrong end of the stick]. I'm not ignoring the budget – I just want a proper discussion.",
+          "explanationContent": {
+            "whyCorrect": "'Get the wrong end of the stick' means to completely misunderstand a situation.",
+            "vocabularyFocus": "*get the wrong end of the stick* — To misunderstand a situation completely; to have a completely incorrect understanding of something.",
+            "sentenceBreakdown": "I think you've got the wrong end of the stick. I'm not ignoring the budget – I just want a proper discussion.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *get the wrong end of the stick* (*get the wrong end of the stick*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to correct a misunderstanding gently or to explain that someone has misinterpreted the situation."
+          }
         },
         {
           "speaker": "Rachel",
-          "text": "You're right. I'm sorry. Let's start fresh and make sure we're all [on the same page|on the same page]."
+          "text": "You're right. I'm sorry. Let's start fresh and make sure we're all [on the same page|on the same page].",
+          "explanationContent": {
+            "whyCorrect": "'On the same page' means having the same understanding or expectations.",
+            "vocabularyFocus": "*on the same page* — Having the same understanding, goals, or expectations; in agreement about something.",
+            "sentenceBreakdown": "You're right. I'm sorry. Let's start fresh and make sure we're all on the same page.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on the same page* (*on the same page*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Common in professional and collaborative contexts. Very similar to 'on the same wavelength', but 'on the same page' refers more to shared facts or plans, while 'wavelength' implies deeper understanding."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "Exactly. And once we agree on the figures, I suspect Dan will [change his tune|change your tune] too."
+          "text": "Exactly. And once we agree on the figures, I suspect Dan will [change his tune|change your tune] too.",
+          "explanationContent": {
+            "whyCorrect": "*change your tune* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*change your tune* — To suddenly start expressing a very different opinion or attitude; to contradict what you previously said.",
+            "sentenceBreakdown": "Exactly. And once we agree on the figures, I suspect Dan will change his tune too.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *change your tune* (*change your tune*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often implies that the change is influenced by self-interest or new information. Can be used critically or neutrally."
+          }
         },
         {
           "speaker": "Rachel",
-          "text": "Ha – I think you [catch my drift|catch sb's drift] exactly. He always comes around eventually."
+          "text": "Ha – I think you [catch my drift|catch sb's drift] exactly. He always comes around eventually.",
+          "explanationContent": {
+            "whyCorrect": "'Catch/get sb's drift' means to understand the implied meaning of what someone is saying.",
+            "vocabularyFocus": "*get/catch sb's drift* — To understand the general meaning or intention of what someone is saying.",
+            "sentenceBreakdown": "Ha – I think you catch my drift exactly. He always comes around eventually.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *catch sb's drift* (*get/catch sb's drift*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line."
+            },
+            "usefulTip": "'Do you get my drift?' is a common way of checking if someone understood your implied meaning. Often used when the full message is left unsaid."
+          }
         },
         {
           "speaker": "Tom",
@@ -152,27 +266,111 @@
       "lines": [
         {
           "speaker": "Manager",
-          "text": "I want to talk about the client feedback. I'm not going to sugarcoat it – you [catch my drift|catch sb's drift], I'm sure."
+          "text": "I want to talk about the client feedback. I'm not going to sugarcoat it – you [catch my drift|catch sb's drift], I'm sure.",
+          "explanationContent": {
+            "whyCorrect": "'Catch/get sb's drift' means to understand the implied meaning of what someone is saying.",
+            "vocabularyFocus": "*get/catch sb's drift* — To understand the general meaning or intention of what someone is saying.",
+            "sentenceBreakdown": "I want to talk about the client feedback. I'm not going to sugarcoat it – you catch my drift, I'm sure.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *catch sb's drift* (*get/catch sb's drift*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line."
+            },
+            "usefulTip": "'Do you get my drift?' is a common way of checking if someone understood your implied meaning. Often used when the full message is left unsaid."
+          }
         },
         {
           "speaker": "Leo",
-          "text": "Yes, I do. But I think some of the team [got the wrong end of the stick|get the wrong end of the stick] about what the client actually wanted."
+          "text": "Yes, I do. But I think some of the team [got the wrong end of the stick|get the wrong end of the stick] about what the client actually wanted.",
+          "explanationContent": {
+            "whyCorrect": "'Get the wrong end of the stick' means to completely misunderstand a situation.",
+            "vocabularyFocus": "*get the wrong end of the stick* — To misunderstand a situation completely; to have a completely incorrect understanding of something.",
+            "sentenceBreakdown": "Yes, I do. But I think some of the team got the wrong end of the stick about what the client actually wanted.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *get the wrong end of the stick* (*get the wrong end of the stick*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to correct a misunderstanding gently or to explain that someone has misinterpreted the situation."
+          }
         },
         {
           "speaker": "Manager",
-          "text": "Maybe. But we can't [bury our heads in the sand|bury your head in the sand] about the fact that the delivery was late."
+          "text": "Maybe. But we can't [bury our heads in the sand|bury your head in the sand] about the fact that the delivery was late.",
+          "explanationContent": {
+            "whyCorrect": "'Bury your head in the sand' means to avoid or ignore a problem instead of dealing with it.",
+            "vocabularyFocus": "*bury your head in the sand* — To deliberately ignore a problem or difficult situation, hoping it will go away on its own.",
+            "sentenceBreakdown": "Maybe. But we can't bury our heads in the sand about the fact that the delivery was late.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *bury your head in the sand* (*bury your head in the sand*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Based on the (incorrect) belief that ostriches bury their heads to avoid danger. Always implies a negative attitude – avoidance of reality."
+          }
         },
         {
           "speaker": "Leo",
-          "text": "Agreed. I take responsibility for that. I won't [sit on the fence|sit on the fence] – it was my team's mistake."
+          "text": "Agreed. I take responsibility for that. I won't [sit on the fence|sit on the fence] – it was my team's mistake.",
+          "explanationContent": {
+            "whyCorrect": "*sit on the fence* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*sit on the fence* — To avoid committing to an opinion or position; to remain neutral in a debate or argument.",
+            "sentenceBreakdown": "Agreed. I take responsibility for that. I won't sit on the fence – it was my team's mistake.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *sit on the fence* (*sit on the fence*).",
+            "wrongOptions": {
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used critically to suggest someone is being indecisive or avoiding responsibility. Can also be neutral when describing someone who genuinely wants to stay uninvolved."
+          }
         },
         {
           "speaker": "Manager",
-          "text": "I appreciate that. Let's make sure we're [on the same page|on the same page] going forward about timelines and expectations."
+          "text": "I appreciate that. Let's make sure we're [on the same page|on the same page] going forward about timelines and expectations.",
+          "explanationContent": {
+            "whyCorrect": "'On the same page' means having the same understanding or expectations.",
+            "vocabularyFocus": "*on the same page* — Having the same understanding, goals, or expectations; in agreement about something.",
+            "sentenceBreakdown": "I appreciate that. Let's make sure we're on the same page going forward about timelines and expectations.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on the same page* (*on the same page*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "change your tune": "*change your tune* (To suddenly start expressing a very different opinion or attitude) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Common in professional and collaborative contexts. Very similar to 'on the same wavelength', but 'on the same page' refers more to shared facts or plans, while 'wavelength' implies deeper understanding."
+          }
         },
         {
           "speaker": "Leo",
-          "text": "Absolutely. And I noticed you [changed your tune|change your tune] on the deadline after the client called – was that intentional?"
+          "text": "Absolutely. And I noticed you [changed your tune|change your tune] on the deadline after the client called – was that intentional?",
+          "explanationContent": {
+            "whyCorrect": "*change your tune* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*change your tune* — To suddenly start expressing a very different opinion or attitude; to contradict what you previously said.",
+            "sentenceBreakdown": "Absolutely. And I noticed you changed your tune on the deadline after the client called – was that intentional?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *change your tune* (*change your tune*).",
+            "wrongOptions": {
+              "sit on the fence": "*sit on the fence* (To avoid committing to an opinion or position) does not match the meaning needed in this line.",
+              "get the wrong end of the stick": "*get the wrong end of the stick* (To misunderstand a situation completely) does not match the meaning needed in this line.",
+              "bury your head in the sand": "*bury your head in the sand* (To deliberately ignore a problem or difficult situation, hoping it will go away on its own) does not match the meaning needed in this line.",
+              "on the same page": "*on the same page* (Having the same understanding, goals, or expectations) does not match the meaning needed in this line.",
+              "get/catch sb's drift": "*get/catch sb's drift* (To understand the general meaning or intention of what someone is saying) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often implies that the change is influenced by self-interest or new information. Can be used critically or neutrally."
+          }
         },
         {
           "speaker": "Manager",
@@ -186,25 +384,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "sit on the fence", "meaning": "avoid committing to an opinion or side"},
-        {"idiom": "get the wrong end of the stick", "meaning": "completely misunderstand a situation"},
-        {"idiom": "bury your head in the sand", "meaning": "ignore a problem hoping it will go away"},
-        {"idiom": "change your tune", "meaning": "suddenly express a very different opinion"},
-        {"idiom": "on the same page", "meaning": "having the same understanding or agreement"},
-        {"idiom": "catch sb's drift", "meaning": "understand the implied meaning of what is said"}
+        {
+          "idiom": "sit on the fence",
+          "meaning": "avoid committing to an opinion or side"
+        },
+        {
+          "idiom": "get the wrong end of the stick",
+          "meaning": "completely misunderstand a situation"
+        },
+        {
+          "idiom": "bury your head in the sand",
+          "meaning": "ignore a problem hoping it will go away"
+        },
+        {
+          "idiom": "change your tune",
+          "meaning": "suddenly express a very different opinion"
+        },
+        {
+          "idiom": "on the same page",
+          "meaning": "having the same understanding or agreement"
+        },
+        {
+          "idiom": "catch sb's drift",
+          "meaning": "understand the implied meaning of what is said"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "Before we finalise the contract, let's check that the legal team is ___.",
-      "options": ["on the same page", "sitting on the fence", "changing their tune", "burying their heads in the sand"],
+      "options": [
+        "on the same page",
+        "sitting on the fence",
+        "changing their tune",
+        "burying their heads in the sand"
+      ],
       "correct": "on the same page",
       "explanation": "'On the same page' means everyone has the same understanding or expectations."
     },
     {
       "type": "complete-sentence",
       "sentence": "He used to be very critical of remote working, but once he tried it himself, he ___.",
-      "options": ["changed his tune", "got the wrong end of the stick", "sat on the fence", "caught my drift"],
+      "options": [
+        "changed his tune",
+        "got the wrong end of the stick",
+        "sat on the fence",
+        "caught my drift"
+      ],
       "correct": "changed his tune",
       "explanation": "'Change your tune' means to suddenly hold a very different opinion than before."
     },

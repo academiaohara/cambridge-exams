@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "I heard ___ that the director is planning to resign before the end of the year.",
-      "options": ["on the grapevine", "under my hat", "in the dark", "through a big mouth"],
+      "options": [
+        "on the grapevine",
+        "under my hat",
+        "in the dark",
+        "through a big mouth"
+      ],
       "correct": "on the grapevine",
       "explanation": "'On the grapevine' means hearing something through informal channels or rumour, not through an official source."
     },
     {
       "type": "multiple-choice",
       "sentence": "The staff felt frustrated because management had kept them ___ about the new policy for weeks.",
-      "options": ["in the dark", "on the grapevine", "under their hats", "posted"],
+      "options": [
+        "in the dark",
+        "on the grapevine",
+        "under their hats",
+        "posted"
+      ],
       "correct": "in the dark",
       "explanation": "'In the dark' means not being informed about something, often deliberately. 'Keep someone in the dark' is the full phrase."
     },
     {
       "type": "multiple-choice",
       "sentence": "I'll ___ as soon as I hear anything back from the interview panel.",
-      "options": ["keep you posted", "put you two and two", "keep you under your hat", "tell you through the grapevine"],
+      "options": [
+        "keep you posted",
+        "put you two and two",
+        "keep you under your hat",
+        "tell you through the grapevine"
+      ],
       "correct": "keep you posted",
       "explanation": "'Keep someone posted' means to give them regular updates about a situation as it develops."
     },
     {
       "type": "multiple-choice",
       "sentence": "This is strictly confidential – please ___ until we make the official announcement.",
-      "options": ["keep it under your hat", "keep it on the grapevine", "keep it in the dark", "put two and two together"],
+      "options": [
+        "keep it under your hat",
+        "keep it on the grapevine",
+        "keep it in the dark",
+        "put two and two together"
+      ],
       "correct": "keep it under your hat",
       "explanation": "'Keep something under your hat' means to keep it secret and not tell anyone."
     },
     {
       "type": "multiple-choice",
       "sentence": "When she saw the resignation letter on the printer and the boxes in his office, she quickly ___.",
-      "options": ["put two and two together", "kept it under her hat", "had a big mouth", "was kept in the dark"],
+      "options": [
+        "put two and two together",
+        "kept it under her hat",
+        "had a big mouth",
+        "was kept in the dark"
+      ],
       "correct": "put two and two together",
       "explanation": "'Put two and two together' means to draw an obvious conclusion from available clues or evidence."
     },
     {
       "type": "multiple-choice",
       "sentence": "Don't share the surprise with Marcus – he's a complete ___ and he'll ruin everything.",
-      "options": ["big mouth", "dark horse", "grapevine", "posted person"],
+      "options": [
+        "big mouth",
+        "dark horse",
+        "grapevine",
+        "posted person"
+      ],
       "correct": "big mouth",
       "explanation": "'A big mouth' refers to someone who cannot keep secrets or who talks too much and reveals confidential information."
     }
@@ -115,15 +145,58 @@
       "lines": [
         {
           "speaker": "Priya",
-          "text": "Have you heard? Apparently, the whole marketing team is being moved to a different floor. I heard it [on the grapevine|on the grapevine]."
+          "text": "Have you heard? Apparently, the whole marketing team is being moved to a different floor. I heard it [on the grapevine|on the grapevine].",
+          "explanationContent": {
+            "whyCorrect": "'On the grapevine' means hearing something through informal channels or rumour, not through an official source.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "Have you heard? Apparently, the whole marketing team is being moved to a different floor. I heard it on the grapevine.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on the grapevine* (*on the grapevine*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "Really? Why was I [in the dark|in the dark] about this? No one tells me anything."
+          "text": "Really? Why was I [in the dark|in the dark] about this? No one tells me anything.",
+          "explanationContent": {
+            "whyCorrect": "'In the dark' means not being informed about something, often deliberately. 'Keep someone in the dark' is the full phrase.",
+            "vocabularyFocus": "*in the dark (about)* — Not knowing about something; kept uninformed.",
+            "sentenceBreakdown": "Really? Why was I in the dark about this? No one tells me anything.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in the dark* (*in the dark (about)*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used with 'keep someone in the dark' or 'be in the dark'. The phrase implies that information has been deliberately or accidentally withheld."
+          }
         },
         {
           "speaker": "Priya",
-          "text": "I think management wanted to keep it quiet. I only know because Jake mentioned it – and he's a complete [big mouth|big mouth]."
+          "text": "I think management wanted to keep it quiet. I only know because Jake mentioned it – and he's a complete [big mouth|big mouth].",
+          "explanationContent": {
+            "whyCorrect": "'A big mouth' refers to someone who cannot keep secrets or who talks too much and reveals confidential information.",
+            "vocabularyFocus": "*big mouth* — A person who cannot keep secrets or talks too much.",
+            "sentenceBreakdown": "I think management wanted to keep it quiet. I only know because Jake mentioned it – and he's a complete big mouth.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *big mouth* (*big mouth*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Usually critical or humorous in tone. Can be used as a noun ('a big mouth') or in a phrase like 'have a big mouth' or 'me and my big mouth' (said after accidentally revealing something)."
+          }
         },
         {
           "speaker": "Tom",
@@ -131,11 +204,40 @@
         },
         {
           "speaker": "Priya",
-          "text": "He wasn't sure. I'm waiting to hear from a contact in HR. I'll [keep you posted|keep you posted] when I know more."
+          "text": "He wasn't sure. I'm waiting to hear from a contact in HR. I'll [keep you posted|keep you posted] when I know more.",
+          "explanationContent": {
+            "whyCorrect": "'Keep someone posted' means to give them regular updates about a situation as it develops.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "He wasn't sure. I'm waiting to hear from a contact in HR. I'll keep you posted when I know more.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *keep you posted* (*keep you posted*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "Please do. And in the meantime, let's [keep this under our hats|keep sth under your hat] – I don't want to start unnecessary rumours."
+          "text": "Please do. And in the meantime, let's [keep this under our hats|keep sth under your hat] – I don't want to start unnecessary rumours.",
+          "explanationContent": {
+            "whyCorrect": "*keep sth under your hat* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*keep sth under your hat* — To keep something secret; not to tell anyone.",
+            "sentenceBreakdown": "Please do. And in the meantime, let's keep this under our hats – I don't want to start unnecessary rumours.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *keep sth under your hat* (*keep sth under your hat*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used when asking someone to keep information confidential. It has a slightly informal, conversational tone. Often used as a direct request: 'Keep this under your hat.'."
+          }
         }
       ]
     },
@@ -144,15 +246,57 @@
       "lines": [
         {
           "speaker": "Nadia",
-          "text": "I've been [in the dark|in the dark] about why the project was delayed for weeks. No one told me a thing."
+          "text": "I've been [in the dark|in the dark] about why the project was delayed for weeks. No one told me a thing.",
+          "explanationContent": {
+            "whyCorrect": "'In the dark' means not being informed about something, often deliberately. 'Keep someone in the dark' is the full phrase.",
+            "vocabularyFocus": "*in the dark (about)* — Not knowing about something; kept uninformed.",
+            "sentenceBreakdown": "I've been in the dark about why the project was delayed for weeks. No one told me a thing.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in the dark* (*in the dark (about)*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Often used with 'keep someone in the dark' or 'be in the dark'. The phrase implies that information has been deliberately or accidentally withheld."
+          }
         },
         {
           "speaker": "Carlos",
-          "text": "I know a bit more, but I promised to [keep it under my hat|keep sth under your hat] until the manager is ready to explain."
+          "text": "I know a bit more, but I promised to [keep it under my hat|keep sth under your hat] until the manager is ready to explain.",
+          "explanationContent": {
+            "whyCorrect": "*keep sth under your hat* fits naturally in this line of the dialogue.",
+            "vocabularyFocus": "*keep sth under your hat* — To keep something secret; not to tell anyone.",
+            "sentenceBreakdown": "I know a bit more, but I promised to keep it under my hat until the manager is ready to explain.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *keep sth under your hat* (*keep sth under your hat*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used when asking someone to keep information confidential. It has a slightly informal, conversational tone. Often used as a direct request: 'Keep this under your hat.'."
+          }
         },
         {
           "speaker": "Nadia",
-          "text": "Fair enough. I suppose I already [put two and two together|put two and two together] when I saw the contract had been amended."
+          "text": "Fair enough. I suppose I already [put two and two together|put two and two together] when I saw the contract had been amended.",
+          "explanationContent": {
+            "whyCorrect": "'Put two and two together' means to draw an obvious conclusion from available clues or evidence.",
+            "vocabularyFocus": "*put two and two together* — To reach an obvious conclusion from available information.",
+            "sentenceBreakdown": "Fair enough. I suppose I already put two and two together when I saw the contract had been amended.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *put two and two together* (*put two and two together*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Used to describe deducing something logical from clues. Sometimes extended to 'put two and two together and make five', meaning to draw the wrong conclusion from the available facts."
+          }
         },
         {
           "speaker": "Carlos",
@@ -160,11 +304,41 @@
         },
         {
           "speaker": "Nadia",
-          "text": "I heard [on the grapevine|on the grapevine] that a few people in accounts had guessed, but nothing official."
+          "text": "I heard [on the grapevine|on the grapevine] that a few people in accounts had guessed, but nothing official.",
+          "explanationContent": {
+            "whyCorrect": "'On the grapevine' means hearing something through informal channels or rumour, not through an official source.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "I heard on the grapevine that a few people in accounts had guessed, but nothing official.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on the grapevine* (*on the grapevine*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         },
         {
           "speaker": "Carlos",
-          "text": "I'll ask the manager to say something today. I'll [keep you posted|keep you posted] as soon as there's news."
+          "text": "I'll ask the manager to say something today. I'll [keep you posted|keep you posted] as soon as there's news.",
+          "explanationContent": {
+            "whyCorrect": "'Keep someone posted' means to give them regular updates about a situation as it develops.",
+            "vocabularyFocus": "",
+            "sentenceBreakdown": "I'll ask the manager to say something today. I'll keep you posted as soon as there's news.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *keep you posted* (*keep you posted*).",
+            "wrongOptions": {
+              "on/through the grapevine": "*on/through the grapevine* (By informal communication) does not match the meaning needed in this line.",
+              "in the dark (about)": "*in the dark (about)* (Not knowing about something) does not match the meaning needed in this line.",
+              "keep sb posted": "*keep sb posted* (To regularly update someone with the latest news or information) does not match the meaning needed in this line.",
+              "keep sth under your hat": "*keep sth under your hat* (To keep something secret) does not match the meaning needed in this line.",
+              "put two and two together": "*put two and two together* (To reach an obvious conclusion from available information) does not match the meaning needed in this line.",
+              "big mouth": "*big mouth* (A person who cannot keep secrets or talks too much) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Read the whole dialogue aloud; the correct phrase should sound natural in context."
+          }
         }
       ]
     }
@@ -174,25 +348,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "on/through the grapevine", "meaning": "by rumour or informal communication"},
-        {"idiom": "in the dark (about)", "meaning": "not knowing about something; kept uninformed"},
-        {"idiom": "keep sb posted", "meaning": "to regularly update someone with the latest news"},
-        {"idiom": "keep sth under your hat", "meaning": "to keep something secret; not to tell anyone"},
-        {"idiom": "put two and two together", "meaning": "to reach an obvious conclusion from available information"},
-        {"idiom": "big mouth", "meaning": "a person who cannot keep secrets or talks too much"}
+        {
+          "idiom": "on/through the grapevine",
+          "meaning": "by rumour or informal communication"
+        },
+        {
+          "idiom": "in the dark (about)",
+          "meaning": "not knowing about something; kept uninformed"
+        },
+        {
+          "idiom": "keep sb posted",
+          "meaning": "to regularly update someone with the latest news"
+        },
+        {
+          "idiom": "keep sth under your hat",
+          "meaning": "to keep something secret; not to tell anyone"
+        },
+        {
+          "idiom": "put two and two together",
+          "meaning": "to reach an obvious conclusion from available information"
+        },
+        {
+          "idiom": "big mouth",
+          "meaning": "a person who cannot keep secrets or talks too much"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "I found out about the merger ___ – it hadn't been officially confirmed yet.",
-      "options": ["on the grapevine", "under my hat", "in the dark", "through a big mouth"],
+      "options": [
+        "on the grapevine",
+        "under my hat",
+        "in the dark",
+        "through a big mouth"
+      ],
       "correct": "on the grapevine",
       "explanation": "'On the grapevine' describes learning something through informal rumour or gossip rather than an official source."
     },
     {
       "type": "complete-sentence",
       "sentence": "As soon as the investigation results are ready, I'll ___ – you won't be waiting long.",
-      "options": ["keep you posted", "put two and two together", "keep you under your hat", "keep you in the dark"],
+      "options": [
+        "keep you posted",
+        "put two and two together",
+        "keep you under your hat",
+        "keep you in the dark"
+      ],
       "correct": "keep you posted",
       "explanation": "'Keep someone posted' means to give them regular updates on a developing situation."
     },

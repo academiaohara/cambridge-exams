@@ -69,42 +69,72 @@
     {
       "type": "multiple-choice",
       "sentence": "I only see my old school friends ___ – maybe once or twice a year.",
-      "options": ["once in a while", "in a hurry", "at the moment", "on time"],
+      "options": [
+        "once in a while",
+        "in a hurry",
+        "at the moment",
+        "on time"
+      ],
       "correct": "once in a while",
       "explanation": "'Once in a while' means occasionally, not regularly."
     },
     {
       "type": "multiple-choice",
       "sentence": "Sorry, I can't stop to chat – I'm ___.",
-      "options": ["in a hurry", "on time", "at the moment", "from time to time"],
+      "options": [
+        "in a hurry",
+        "on time",
+        "at the moment",
+        "from time to time"
+      ],
       "correct": "in a hurry",
       "explanation": "'In a hurry' means doing something quickly because you don't have much time."
     },
     {
       "type": "multiple-choice",
       "sentence": "___, the company needs to cut costs, so no one is getting a pay rise.",
-      "options": ["For the time being", "On time", "Once in a while", "In a hurry"],
+      "options": [
+        "For the time being",
+        "On time",
+        "Once in a while",
+        "In a hurry"
+      ],
       "correct": "For the time being",
       "explanation": "'For the time being' means for now, with the implication that things may change later."
     },
     {
       "type": "multiple-choice",
       "sentence": "The bus was ___ today, which was a pleasant surprise.",
-      "options": ["on time", "in a hurry", "from time to time", "at the moment"],
+      "options": [
+        "on time",
+        "in a hurry",
+        "from time to time",
+        "at the moment"
+      ],
       "correct": "on time",
       "explanation": "'On time' means arriving or happening at the scheduled time."
     },
     {
       "type": "multiple-choice",
       "sentence": "I'm not available ___ – I'll call you back in about an hour.",
-      "options": ["at the moment", "on time", "for the time being", "once in a while"],
+      "options": [
+        "at the moment",
+        "on time",
+        "for the time being",
+        "once in a while"
+      ],
       "correct": "at the moment",
       "explanation": "'At the moment' means right now, currently."
     },
     {
       "type": "multiple-choice",
       "sentence": "___, I enjoy a quiet evening at home instead of going out.",
-      "options": ["From time to time", "On time", "In a hurry", "At the moment"],
+      "options": [
+        "From time to time",
+        "On time",
+        "In a hurry",
+        "At the moment"
+      ],
       "correct": "From time to time",
       "explanation": "'From time to time' means occasionally, at irregular intervals."
     }
@@ -119,23 +149,93 @@
         },
         {
           "speaker": "Tom",
-          "text": "I'll be there – but I'm [in a hurry|in a hurry] right now. I need to grab some coffee first."
+          "text": "I'll be there – but I'm [in a hurry|in a hurry] right now. I need to grab some coffee first.",
+          "explanationContent": {
+            "whyCorrect": "'In a hurry' means doing something quickly because you don't have much time.",
+            "vocabularyFocus": "*in a hurry* — Doing something quickly because you don't have much time; rushing.",
+            "sentenceBreakdown": "I'll be there – but I'm in a hurry right now. I need to grab some coffee first.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in a hurry* (*in a hurry*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use 'in a hurry' to explain why you can't do something or why something was done quickly and perhaps carelessly."
+          }
         },
         {
           "speaker": "Laura",
-          "text": "Don't be late! The manager gets really annoyed when people aren't [on time|on time]."
+          "text": "Don't be late! The manager gets really annoyed when people aren't [on time|on time].",
+          "explanationContent": {
+            "whyCorrect": "'On time' means arriving or happening at the scheduled time.",
+            "vocabularyFocus": "*on time* — At the scheduled or expected time; not late.",
+            "sentenceBreakdown": "Don't be late! The manager gets really annoyed when people aren't on time.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *on time* (*on time*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Don't confuse 'on time' (punctual) with 'in time' (before a deadline or before something happens)."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "I know, I know. I'll be there in five minutes. Is the whole team there [at the moment|at the moment]?"
+          "text": "I know, I know. I'll be there in five minutes. Is the whole team there [at the moment|at the moment]?",
+          "explanationContent": {
+            "whyCorrect": "'At the moment' means right now, currently.",
+            "vocabularyFocus": "*at the moment* — Right now; currently; at this particular point in time.",
+            "sentenceBreakdown": "I know, I know. I'll be there in five minutes. Is the whole team there at the moment?",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *at the moment* (*at the moment*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Very common in spoken and written English. Use it instead of 'right now' for a slightly more formal tone."
+          }
         },
         {
           "speaker": "Laura",
-          "text": "Most of them. We can start without you [for the time being|for the time being], but please hurry."
+          "text": "Most of them. We can start without you [for the time being|for the time being], but please hurry.",
+          "explanationContent": {
+            "whyCorrect": "'For the time being' means for now, with the implication that things may change later.",
+            "vocabularyFocus": "*for the time being* — For now; for the present moment, though things may change in the future.",
+            "sentenceBreakdown": "Most of them. We can start without you for the time being, but please hurry.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *for the time being* (*for the time being*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use this to signal that a situation is temporary and will likely change later."
+          }
         },
         {
           "speaker": "Tom",
-          "text": "I'll be quick. I only do this [once in a while|once in a while] – I'm usually very punctual."
+          "text": "I'll be quick. I only do this [once in a while|once in a while] – I'm usually very punctual.",
+          "explanationContent": {
+            "whyCorrect": "'Once in a while' means occasionally, not regularly.",
+            "vocabularyFocus": "*once in a while* — Sometimes, but not regularly or often.",
+            "sentenceBreakdown": "I'll be quick. I only do this once in a while – I'm usually very punctual.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *once in a while* (*once in a while*).",
+            "wrongOptions": {
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use this when something happens occasionally but not regularly. It's interchangeable with 'from time to time'."
+          }
         },
         {
           "speaker": "Laura",
@@ -156,15 +256,57 @@
         },
         {
           "speaker": "Josh",
-          "text": "Really well, thanks. Life's been hectic [at the moment|at the moment], but in a good way."
+          "text": "Really well, thanks. Life's been hectic [at the moment|at the moment], but in a good way.",
+          "explanationContent": {
+            "whyCorrect": "'At the moment' means right now, currently.",
+            "vocabularyFocus": "*at the moment* — Right now; currently; at this particular point in time.",
+            "sentenceBreakdown": "Really well, thanks. Life's been hectic at the moment, but in a good way.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *at the moment* (*at the moment*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Very common in spoken and written English. Use it instead of 'right now' for a slightly more formal tone."
+          }
         },
         {
           "speaker": "Mia",
-          "text": "We should meet up more often. We only see each other [from time to time|from time to time]."
+          "text": "We should meet up more often. We only see each other [from time to time|from time to time].",
+          "explanationContent": {
+            "whyCorrect": "'From time to time' means occasionally, at irregular intervals.",
+            "vocabularyFocus": "*from time to time* — Occasionally; at irregular intervals; not very often.",
+            "sentenceBreakdown": "We should meet up more often. We only see each other from time to time.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *from time to time* (*from time to time*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Slightly more formal than 'once in a while'. Both mean the same thing and can be used interchangeably."
+          }
         },
         {
           "speaker": "Josh",
-          "text": "I know. Things are crazy with the new job [for the time being|for the time being], but it should calm down soon."
+          "text": "I know. Things are crazy with the new job [for the time being|for the time being], but it should calm down soon.",
+          "explanationContent": {
+            "whyCorrect": "'For the time being' means for now, with the implication that things may change later.",
+            "vocabularyFocus": "*for the time being* — For now; for the present moment, though things may change in the future.",
+            "sentenceBreakdown": "I know. Things are crazy with the new job for the time being, but it should calm down soon.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *for the time being* (*for the time being*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use this to signal that a situation is temporary and will likely change later."
+          }
         },
         {
           "speaker": "Mia",
@@ -172,7 +314,21 @@
         },
         {
           "speaker": "Josh",
-          "text": "Yes, [once in a while|once in a while]. Their pasta is amazing."
+          "text": "Yes, [once in a while|once in a while]. Their pasta is amazing.",
+          "explanationContent": {
+            "whyCorrect": "'Once in a while' means occasionally, not regularly.",
+            "vocabularyFocus": "*once in a while* — Sometimes, but not regularly or often.",
+            "sentenceBreakdown": "Yes, once in a while. Their pasta is amazing.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *once in a while* (*once in a while*).",
+            "wrongOptions": {
+              "in a hurry": "*in a hurry* (Doing something quickly because you don't have much time) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use this when something happens occasionally but not regularly. It's interchangeable with 'from time to time'."
+          }
         },
         {
           "speaker": "Mia",
@@ -180,7 +336,21 @@
         },
         {
           "speaker": "Josh",
-          "text": "Let me check – I'll message you later today. I can't think right now, I'm [in a hurry|in a hurry] to get to an appointment."
+          "text": "Let me check – I'll message you later today. I can't think right now, I'm [in a hurry|in a hurry] to get to an appointment.",
+          "explanationContent": {
+            "whyCorrect": "'In a hurry' means doing something quickly because you don't have much time.",
+            "vocabularyFocus": "*in a hurry* — Doing something quickly because you don't have much time; rushing.",
+            "sentenceBreakdown": "Let me check – I'll message you later today. I can't think right now, I'm in a hurry to get to an appointment.",
+            "commonMistake": "Do not confuse this with other items from the lesson — here you need *in a hurry* (*in a hurry*).",
+            "wrongOptions": {
+              "once in a while": "*once in a while* (Sometimes, but not regularly or often) does not match the meaning needed in this line.",
+              "at the moment": "*at the moment* (Right now) does not match the meaning needed in this line.",
+              "on time": "*on time* (At the scheduled or expected time) does not match the meaning needed in this line.",
+              "from time to time": "*from time to time* (Occasionally) does not match the meaning needed in this line.",
+              "for the time being": "*for the time being* (For now) does not match the meaning needed in this line."
+            },
+            "usefulTip": "Use 'in a hurry' to explain why you can't do something or why something was done quickly and perhaps carelessly."
+          }
         }
       ]
     }
@@ -190,25 +360,53 @@
       "type": "match-meaning",
       "instructions": "Match each idiom with its correct meaning.",
       "pairs": [
-        {"idiom": "once in a while", "meaning": "occasionally, not regularly"},
-        {"idiom": "in a hurry", "meaning": "rushing because of lack of time"},
-        {"idiom": "at the moment", "meaning": "right now, currently"},
-        {"idiom": "on time", "meaning": "at the scheduled time, not late"},
-        {"idiom": "from time to time", "meaning": "occasionally, at irregular intervals"},
-        {"idiom": "for the time being", "meaning": "for now, temporarily"}
+        {
+          "idiom": "once in a while",
+          "meaning": "occasionally, not regularly"
+        },
+        {
+          "idiom": "in a hurry",
+          "meaning": "rushing because of lack of time"
+        },
+        {
+          "idiom": "at the moment",
+          "meaning": "right now, currently"
+        },
+        {
+          "idiom": "on time",
+          "meaning": "at the scheduled time, not late"
+        },
+        {
+          "idiom": "from time to time",
+          "meaning": "occasionally, at irregular intervals"
+        },
+        {
+          "idiom": "for the time being",
+          "meaning": "for now, temporarily"
+        }
       ]
     },
     {
       "type": "complete-sentence",
       "sentence": "The train arrives ___ – exactly at 9:00 AM every day.",
-      "options": ["on time", "once in a while", "in a hurry", "from time to time"],
+      "options": [
+        "on time",
+        "once in a while",
+        "in a hurry",
+        "from time to time"
+      ],
       "correct": "on time",
       "explanation": "'On time' means at the scheduled or agreed time."
     },
     {
       "type": "complete-sentence",
       "sentence": "We don't have a permanent solution yet, so this arrangement will have to do ___.",
-      "options": ["for the time being", "on time", "once in a while", "at the moment"],
+      "options": [
+        "for the time being",
+        "on time",
+        "once in a while",
+        "at the moment"
+      ],
       "correct": "for the time being",
       "explanation": "'For the time being' signals a temporary arrangement that may change in the future."
     },
