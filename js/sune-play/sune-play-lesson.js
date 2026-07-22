@@ -720,6 +720,7 @@
     if (!screenMount) return;
 
     feedbackMount.innerHTML = '';
+    updateExerciseTip(null);
     lessonState.awaitingContinue = false;
     lessonState._lastFeedbackResult = null;
     lessonState._lastResultCorrect = null;
@@ -774,7 +775,32 @@
     }
     setScreenInputsLocked(false);
     setActionBtn('check', false);
+    updateExerciseTip(screen);
     updateSessionHeader();
+  }
+
+  function updateExerciseTip(screen) {
+    var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
+    if (!tipMount) return;
+
+    var tip = '';
+    if (screen && screen.formatType === 'word_order_tiles' && screen.payload) {
+      var content = screen.payload.explanationContent;
+      tip = (content && content.usefulTip) || '';
+    }
+
+    if (!tip) {
+      tipMount.hidden = true;
+      tipMount.innerHTML = '';
+      return;
+    }
+
+    tipMount.hidden = false;
+    tipMount.innerHTML =
+      '<div class="sp-exercise-tip" role="note">' +
+        '<span class="sp-exercise-tip__icon material-symbols-outlined" aria-hidden="true">tips_and_updates</span>' +
+        '<p class="sp-exercise-tip__text">' + esc(tip) + '</p>' +
+      '</div>';
   }
 
   function updateSessionHeader() {

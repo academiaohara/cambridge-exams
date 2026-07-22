@@ -107,6 +107,7 @@
         '<footer class="sp-practice-footer" id="sp-practice-footer">' +
           '<div class="sp-practice-footer-inner">' +
             '<div id="sp-feedback-mount" class="sp-feedback-mount"></div>' +
+            '<div id="sp-exercise-tip-mount" class="sp-exercise-tip-mount" hidden></div>' +
             '<div class="sp-practice-footer-actions">' +
               '<button type="button" class="sp-btn sp-btn--skip" id="sp-skip-btn" aria-label="Skip">Skip</button>' +
               '<div class="sp-footer-actions-right">' +
