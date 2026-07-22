@@ -10,7 +10,7 @@ var LessonExplanation = (function() {
   var DEFAULT_SECTION_DEFS = {
     correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
     yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
-    whyCorrect: { label: "Why it's correct", icon: 'lightbulb', variant: 'teach' },
+    whyCorrect: { label: "Why it's correct", wrongLabel: 'Explanation', icon: 'lightbulb', variant: 'teach' },
     vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
     grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
@@ -83,7 +83,8 @@ var LessonExplanation = (function() {
 
   function sectionBlockHtml(section, defs, mode) {
     var def = defs[section.key] || { label: section.key, icon: 'info', variant: 'teach' };
-    var label = section.label || def.label;
+    var label = section.label ||
+      (section.isWrong && def.wrongLabel ? def.wrongLabel : def.label);
     var icon = section.icon || def.icon;
     var variant = section.variant || def.variant;
     var prefix = mode === 'inline' ? 'sp-explanation-inline-block' : 'sp-explanation-section';

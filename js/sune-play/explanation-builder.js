@@ -8,7 +8,7 @@ var SunePlayExplanation = (function() {
   var SECTION_DEFS = {
     correct: { label: 'Correct answer', icon: 'check_circle', variant: 'answer' },
     yourAnswer: { label: 'Your answer', icon: 'cancel', variant: 'mistake' },
-    whyCorrect: { label: "Why it's correct", icon: 'lightbulb', variant: 'teach' },
+    whyCorrect: { label: "Why it's correct", wrongLabel: 'Explanation', icon: 'lightbulb', variant: 'teach' },
     vocabularyFocus: { label: 'Vocabulary focus', icon: 'menu_book', variant: 'teach' },
     grammarFocus: { label: 'Grammar focus', icon: 'school', variant: 'teach' },
     commonMistake: { label: 'Common mistake', icon: 'error_outline', variant: 'mistake-note' },
@@ -18,6 +18,19 @@ var SunePlayExplanation = (function() {
     wordFormation: { label: 'Word formation', icon: 'transform', variant: 'teach' },
     wordOrder: { label: 'Word order', icon: 'reorder', variant: 'teach' }
   };
+
+  function whyCorrectSection(text, isWrong, extra) {
+    var section = { key: 'whyCorrect', text: text };
+    if (extra) {
+      Object.keys(extra).forEach(function(k) {
+        if (extra[k] !== undefined) section[k] = extra[k];
+      });
+    }
+    if (section.label == null) {
+      section.label = isWrong ? SECTION_DEFS.whyCorrect.wrongLabel : SECTION_DEFS.whyCorrect.label;
+    }
+    return section;
+  }
 
   function getContent(payload) {
     if (!payload) return null;
@@ -149,7 +162,7 @@ var SunePlayExplanation = (function() {
     if (!content) return;
 
     if (content.whyCorrect) {
-      sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+      sections.push(whyCorrectSection(content.whyCorrect, isWrong));
     }
     if (content.wordFormation) {
       sections.push({ key: 'wordFormation', text: content.wordFormation });
@@ -190,7 +203,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, p.options);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var completed = p.completedSentence || '';
@@ -238,7 +251,7 @@ var SunePlayExplanation = (function() {
       }
       appendTeachingSections(sections, content, isWrong, userLetter || userText, p.options);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var completed = p.completedSentence || '';
@@ -279,11 +292,11 @@ var SunePlayExplanation = (function() {
           : '';
 
         if (content && content.whyCorrect) {
-          sections.push({
-            key: 'whyCorrect',
-            label: 'Gap ' + gr.gapNumber,
-            text: content.whyCorrect + (gapContext ? '\n' + gapContext : '')
-          });
+          sections.push(whyCorrectSection(
+            content.whyCorrect + (gapContext ? '\n' + gapContext : ''),
+            true,
+            { label: 'Gap ' + gr.gapNumber }
+          ));
         }
 
         var focus = content ? pickFocusSection(content) : null;
@@ -316,7 +329,7 @@ var SunePlayExplanation = (function() {
       if (firstContent) {
         appendTeachingSections(sections, firstContent, false, '', firstGap.options || []);
       } else if (p.explanation) {
-        sections.push({ key: 'whyCorrect', text: p.explanation });
+        sections.push(whyCorrectSection(p.explanation, false));
       }
     }
 
@@ -401,11 +414,9 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({
-          key: 'whyCorrect',
-          label: options.gapLabel ? 'Gap ' + gapNum : undefined,
-          text: content.whyCorrect
-        });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong, {
+          label: options.gapLabel ? 'Gap ' + gapNum : undefined
+        }));
       }
       if (content.wordFormation) {
         sections.push({
@@ -439,11 +450,9 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (gap.explanation) {
-      sections.push({
-        key: 'whyCorrect',
-        label: options.gapLabel ? 'Gap ' + gapNum : undefined,
-        text: gap.explanation
-      });
+      sections.push(whyCorrectSection(gap.explanation, isWrong, {
+        label: options.gapLabel ? 'Gap ' + gapNum : undefined
+      }));
     }
 
     var line = extractPassageGapLine(payload.passage, gap.gapNumber, gap.expectedAnswer);
@@ -506,7 +515,7 @@ var SunePlayExplanation = (function() {
       var firstGap = gaps[0] || {};
       appendPassageGapTeaching(allSections, firstGap, p, '', false, {});
       if (!firstGap.explanationContent && !firstGap.explanation && p.explanation) {
-        allSections.push({ key: 'whyCorrect', text: p.explanation });
+        allSections.push(whyCorrectSection(p.explanation, false));
       }
     }
 
@@ -537,9 +546,9 @@ var SunePlayExplanation = (function() {
       if (content) {
         appendTeachingSections(sections, content, isWrong, userAnswer, p.wordBank);
       } else if (sentence && sentence.explanation) {
-        sections.push({ key: 'whyCorrect', text: sentence.explanation });
+        sections.push(whyCorrectSection(sentence.explanation, isWrong));
       } else if (p.explanation) {
-        sections.push({ key: 'whyCorrect', text: p.explanation });
+        sections.push(whyCorrectSection(p.explanation, isWrong));
       }
 
       var sentText = sentence && sentence.sentence;
@@ -628,7 +637,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, null);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var completed = p.completedSentence || '';
@@ -665,7 +674,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, null);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var completed = p.completedSentence || '';
@@ -703,7 +712,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, p.options);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     return {
@@ -737,7 +746,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, null);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var breakdown = buildSyncedSentenceBreakdown(p.sentences, correctAnswer);
@@ -783,7 +792,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect && !wordCountInvalid) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -799,7 +808,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (p.explanation && !wordCountInvalid) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var completed = fillKwtTarget(p.targetSentence, correctAnswer);
@@ -842,7 +851,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, null);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var corrected = buildErrorCorrectedSentence(p.sentence, highlighted, correctAnswer);
@@ -911,7 +920,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, null);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var corrected = buildFewCorrectedSentence(p.sentence, p.answer, p.isCorrectSentence);
@@ -1059,7 +1068,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -1072,7 +1081,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
       if (isWrong) {
         var legacyNote = buildWordBankTickMistakeNote(null, diff);
         if (legacyNote) sections.push({ key: 'commonMistake', text: legacyNote });
@@ -1152,7 +1161,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -1167,7 +1176,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
       if (isWrong) {
         var legacyMistake = buildStativeSortingMistakeNote(null, misplaced);
         if (legacyMistake) sections.push({ key: 'commonMistake', text: legacyMistake });
@@ -1222,7 +1231,7 @@ var SunePlayExplanation = (function() {
       });
       if (content) {
         if (content.whyCorrect) {
-          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+          sections.push(whyCorrectSection(content.whyCorrect, true));
         }
         var tapFocus = pickFocusSection(content);
         if (tapFocus) sections.push(tapFocus);
@@ -1235,7 +1244,7 @@ var SunePlayExplanation = (function() {
       }
       if (content) {
         if (content.whyCorrect) {
-          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+          sections.push(whyCorrectSection(content.whyCorrect, isWrong));
         }
         var focus = pickFocusSection(content);
         if (focus) sections.push(focus);
@@ -1251,7 +1260,7 @@ var SunePlayExplanation = (function() {
           sections.push({ key: 'usefulTip', text: content.usefulTip });
         }
       } else if (p.explanation) {
-        sections.push({ key: 'whyCorrect', text: p.explanation });
+        sections.push(whyCorrectSection(p.explanation, isWrong));
         var legacyBreakdown = buildHuntSentenceBreakdown(p.passage, wrongPhrase, correctAnswer);
         if (legacyBreakdown) sections.push({ key: 'sentenceBreakdown', text: legacyBreakdown });
       }
@@ -1312,7 +1321,7 @@ var SunePlayExplanation = (function() {
       });
       if (content) {
         if (content.whyCorrect) {
-          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+          sections.push(whyCorrectSection(content.whyCorrect, true));
         }
         var tapFocus = pickFocusSection(content);
         if (tapFocus) sections.push(tapFocus);
@@ -1321,7 +1330,7 @@ var SunePlayExplanation = (function() {
       if (tapProgress) sections.push({ key: 'usefulTip', text: tapProgress });
     } else if (huntPhase === 'mark_success') {
       if (content && content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, false));
       }
       var markFocus = pickFocusSection(content);
       if (markFocus) sections.push(markFocus);
@@ -1339,7 +1348,7 @@ var SunePlayExplanation = (function() {
       }
       if (content) {
         if (content.whyCorrect) {
-          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+          sections.push(whyCorrectSection(content.whyCorrect, isWrong));
         }
         var focus = pickFocusSection(content);
         if (focus) sections.push(focus);
@@ -1399,7 +1408,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -1415,7 +1424,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (item.explanation) {
-      sections.push({ key: 'whyCorrect', text: item.explanation });
+      sections.push(whyCorrectSection(item.explanation, isWrong));
     }
 
     return {
@@ -1453,7 +1462,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -1472,7 +1481,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
       var legacyBreakdown = buildConvGapLineBreakdown(p.lines, p.activeLineIndex, correctAnswer);
       if (legacyBreakdown) sections.push({ key: 'sentenceBreakdown', text: legacyBreakdown });
     }
@@ -1501,7 +1510,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       if (content.grammarFocus) {
         sections.push({ key: 'grammarFocus', text: content.grammarFocus });
@@ -1527,7 +1536,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
       if (p.reconstructedSentence && !p.noCommaNeeded) {
         sections.push({ key: 'sentenceBreakdown', text: p.reconstructedSentence });
       }
@@ -1576,7 +1585,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -1590,7 +1599,7 @@ var SunePlayExplanation = (function() {
         sections.push({ key: 'usefulTip', text: content.usefulTip });
       }
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
       if (isWrong) {
         sections.push({ key: 'commonMistake', text: crosswordSpellingNote(userAnswer, correctAnswer, p.letterCount) });
       }
@@ -1619,7 +1628,7 @@ var SunePlayExplanation = (function() {
       if (content) {
         var verbWhy = content.whyVerbFits || content.vocabularyWhy;
         if (verbWhy) {
-          sections.push({ key: 'whyCorrect', text: verbWhy });
+          sections.push(whyCorrectSection(verbWhy, isWrong));
         }
         if (content.vocabularyFocus) {
           sections.push({ key: 'vocabularyFocus', text: content.vocabularyFocus });
@@ -1648,7 +1657,7 @@ var SunePlayExplanation = (function() {
         if (content.grammarFocus) {
           sections.push({ key: 'grammarFocus', text: content.grammarFocus });
         } else if (content.whyCorrect) {
-          sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+          sections.push(whyCorrectSection(content.whyCorrect, isWrong));
         }
         if (isWrong) {
           var formWrong = lookupWrongOptionNote(content, userAnswer, null);
@@ -1723,7 +1732,7 @@ var SunePlayExplanation = (function() {
     if (content) {
       appendTeachingSections(sections, content, isWrong, userAnswer, null);
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var breakdown = buildFullSentenceBreakdown(p, content);
@@ -1755,7 +1764,7 @@ var SunePlayExplanation = (function() {
 
     if (content) {
       if (content.whyCorrect) {
-        sections.push({ key: 'whyCorrect', text: content.whyCorrect });
+        sections.push(whyCorrectSection(content.whyCorrect, isWrong));
       }
       var focus = pickFocusSection(content);
       if (focus) sections.push(focus);
@@ -1765,7 +1774,7 @@ var SunePlayExplanation = (function() {
         if (wrongNote) sections.push({ key: 'commonMistake', text: wrongNote });
       }
     } else if (p.explanation) {
-      sections.push({ key: 'whyCorrect', text: p.explanation });
+      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     return {
@@ -1780,13 +1789,14 @@ var SunePlayExplanation = (function() {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
     if (!text) return null;
+    var isWrong = result && result.correct === false;
     return {
       title: 'Explanation',
       formatType: screen && screen.formatType,
       context: buildContext(screen),
       sections: [
         { key: 'correct', text: (result && result.correctAnswer) || '' },
-        { key: 'whyCorrect', text: text }
+        whyCorrectSection(text, isWrong)
       ].filter(function(s) { return s.text; })
     };
   }
