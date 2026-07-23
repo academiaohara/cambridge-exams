@@ -649,11 +649,9 @@ var SunePlayExplanation = (function() {
     }
 
     if (gapNumber != null) {
-      var gap = (p.gaps || []).find(function(g) { return g.gapNumber === gapNumber; }) || {};
-      var answer = (result && result.correctAnswer) || gap.expectedAnswer || '';
-      var snippet = extractGapContextFromMarkers(passage, gapNumber, answer);
+      var snippet = extractGapContextFromMarkers(passage, gapNumber, null);
       if (snippet) return snippet;
-      var line = extractPassageGapLine(passage, gapNumber, answer);
+      var line = extractPassageGapLine(passage, gapNumber, null);
       if (line) return line;
     }
 
