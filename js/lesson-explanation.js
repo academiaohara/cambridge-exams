@@ -122,6 +122,43 @@ var LessonExplanation = (function() {
     }).join('<br>'));
   }
 
+  function isOptionContrastFormatted(text) {
+    return /doesn't fit here\s*→/.test(String(text || ''));
+  }
+
+  function formatOptionContrastTerm(term, role) {
+    return '<span class="sp-option-contrast-term sp-option-contrast-term--' + role + '">' +
+      '"' + esc(term) + '"' +
+      '</span>';
+  }
+
+  function formatOptionContrastText(text) {
+    var raw = String(text || '').trim();
+    if (!raw) return '';
+
+    var match = raw.match(
+      /^["']([^"']+)["']\s+doesn't fit here\s*→\s*["']([^"']+)["']\s+does,\s*because\s+([\s\S]+)$/i
+    );
+    if (match) {
+      var wrong = match[1];
+      var correct = match[2];
+      var because = match[3].replace(/[.!?]$/, '');
+      return formatOptionContrastTerm(wrong, 'wrong') +
+        " doesn't fit here → " +
+        formatOptionContrastTerm(correct, 'correct') +
+        ', because ' + esc(because) + '.';
+    }
+
+    return formatBody(raw);
+  }
+
+  function formatSectionBody(section) {
+    if (section.key === 'optionContrast' && isOptionContrastFormatted(section.text)) {
+      return formatOptionContrastText(section.text);
+    }
+    return formatBody(section.text);
+  }
+
   function questionSectionHtml(section, defs, mode) {
     var def = defs[section.key] || { label: 'Question', icon: 'quiz' };
     var label = section.label || def.label;
@@ -230,7 +267,7 @@ var LessonExplanation = (function() {
 
     return '<section class="' + prefix + ' sp-explanation-section--' + esc(variant) + '" data-section="' + esc(section.key) + '">' +
         '<div class="' + labelClass + '">' + iconWrap + esc(label) + '</div>' +
-        '<div class="' + bodyClass + '">' + formatBody(section.text) + '</div>' +
+        '<div class="' + bodyClass + '">' + formatSectionBody(section) + '</div>' +
       '</section>';
   }
 
