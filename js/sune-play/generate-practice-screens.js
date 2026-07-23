@@ -1196,11 +1196,25 @@
     return out.sort(function() { return Math.random() - 0.5; });
   }
 
+  function resolveShowExplanationAfterIncorrect(unit, meta) {
+    if (meta.showExplanationAfterIncorrect != null) {
+      return meta.showExplanationAfterIncorrect;
+    }
+    if (!meta.sourceExerciseId) return undefined;
+    var bank = getExerciseBank(unit);
+    var exercise = findExercise(bank, meta.sourceExerciseId);
+    if (exercise && exercise.showExplanationAfterIncorrect != null) {
+      return exercise.showExplanationAfterIncorrect;
+    }
+    return undefined;
+  }
+
   function buildScreen(unit, node, formatType, payload, meta) {
     meta = meta || {};
     var normalizedType = meta.formatTypeOverride || normalizeFormatType(formatType);
     var formatDef = getFormatDef(unit, formatType) || getFormatDef(unit, normalizedType);
-    return {
+    var showExplanationAfterIncorrect = resolveShowExplanationAfterIncorrect(unit, meta);
+    var screen = {
       screenId: meta.screenId,
       nodeId: node.nodeId,
       formatType: normalizedType,
@@ -1219,6 +1233,10 @@
       _attemptsUsed: 0,
       _isCustom: !!meta.isCustom
     };
+    if (showExplanationAfterIncorrect != null) {
+      screen.showExplanationAfterIncorrect = showExplanationAfterIncorrect;
+    }
+    return screen;
   }
 
   function generatePracticeScreens(unit, nodeId) {
