@@ -305,7 +305,7 @@ const gapWrong = {
 
 const gapOpts = SunePlayExplanation.buildExplainOpts(gapScreen, gapWrong);
 const gapKeys = gapOpts.sections.map((s) => s.key);
-const gapExpected = ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
+const gapExpected = ['correct', 'yourAnswer', 'whyCorrect', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const gapMissing = gapExpected.filter((k) => !gapKeys.includes(k));
 
 if (gapMissing.length) {
@@ -315,6 +315,42 @@ if (gapMissing.length) {
 
 console.log('PASS free_text_gap_fill explanation builder');
 console.log('Sections:', gapKeys.join(' → '));
+
+// Unit3 ex-e — prepositional phrases gap fill should keep whyCorrect on wrong answers
+const u3ExEItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit3.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u3-ex-e').items[0];
+
+const u3ExEScreen = {
+  formatType: 'free_text_gap_fill',
+  payload: {
+    sentence: u3ExEItem.sentence,
+    answer: u3ExEItem.answer,
+    completedSentence: u3ExEItem.sentence.replace(/\.{3,}|…{2,}|_{3,}/, u3ExEItem.answer),
+    explanationContent: u3ExEItem.explanationContent
+  }
+};
+
+const u3ExEWrong = {
+  correct: false,
+  correctAnswer: u3ExEItem.answer,
+  userAnswer: 'since'
+};
+
+const u3ExEWrongOpts = SunePlayExplanation.buildExplainOpts(u3ExEScreen, u3ExEWrong);
+const u3ExEWrongKeys = u3ExEWrongOpts.sections.map((s) => s.key);
+
+if (!u3ExEWrongKeys.includes('whyCorrect')) {
+  console.error('FAIL Unit3 ex-e wrong answer missing whyCorrect section');
+  process.exit(1);
+}
+
+if (!SunePlayExplanation.hasTeachingSections(u3ExEScreen, u3ExEWrong)) {
+  console.error('FAIL Unit3 ex-e wrong answer should have teaching sections');
+  process.exit(1);
+}
+
+console.log('PASS Unit3 ex-e free_text_gap_fill explanation (wrong answer)');
+console.log('Sections:', u3ExEWrongKeys.join(' → '));
 
 // conjugation_gap_fill (rendered as free_text_gap_fill with sourceFormatType)
 const conjItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit4.v2.json'), 'utf8'))
