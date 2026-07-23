@@ -2369,6 +2369,14 @@
   function retryColumnMatchAfterFeedback(root, screen) {
     root._cmShowExplainAfterWrong = false;
     revertCmPendingPair(root);
+    root.querySelectorAll('.sp-cm-right-item, .sp-cm-left-item').forEach(function(btn) {
+      btn.style.transform = '';
+      btn.classList.remove(
+        'sp-cm-left-item--wrong-flash',
+        'sp-cm-right-item--wrong-flash',
+        'sp-cm-right-item--swap-anim'
+      );
+    });
     syncColumnMatchUi(root, screen);
   }
 

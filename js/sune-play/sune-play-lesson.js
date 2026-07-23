@@ -1451,10 +1451,10 @@
     if (screen && screen.formatType === 'column_matching' &&
         screen.payload && screen.payload.sequentialMode !== false && screenRoot && lastResult &&
         lastResult._columnMatchResult) {
+      screenRoot.classList.remove('sp-screen--locked');
+      setScreenInputsLocked(false);
       if (lastResult.correct && !lastResult.allDone) {
         renderer.advanceColumnMatchAfterFeedback(screenRoot, screen);
-        screenRoot.classList.remove('sp-screen--locked');
-        setScreenInputsLocked(false);
         setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
         updateColumnMatchExplainBtn(screenRoot, screen);
         updateExerciseTip(screen, null);
@@ -1463,8 +1463,6 @@
       }
       if (!lastResult.correct) {
         renderer.retryColumnMatchAfterFeedback(screenRoot, screen);
-        screenRoot.classList.remove('sp-screen--locked');
-        setScreenInputsLocked(false);
         setActionBtn('check', false);
         updateColumnMatchExplainBtn(screenRoot, screen);
         updateExerciseTip(screen, null);
