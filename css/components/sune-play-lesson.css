@@ -1086,6 +1086,17 @@ button.sp-vocab-word-card:focus-visible {
   align-items: stretch;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--column-match) {
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.sp-practice-main .sp-exercise-card:has(.sp-screen--column-match) .sp-screen--column-match {
+  max-width: 100%;
+  align-self: stretch;
+  margin-inline: 0;
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--crossword) .sp-screen--crossword {
   max-width: 100%;
   align-self: stretch;
@@ -1447,6 +1458,78 @@ button.sp-vocab-word-card:focus-visible {
   width: 100%;
   min-height: 0;
   padding-bottom: clamp(12px, 3vw, 20px);
+}
+
+.sp-cm-explanation-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: clamp(14px, 3vw, 18px) clamp(18px, 4vw, 26px);
+  border-bottom: 2px solid var(--sp-duo-blue-border);
+  background: var(--white);
+}
+
+.sp-cm-explanation-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  padding: 0 0.55rem;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  color: #94a3b8;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: default;
+  user-select: none;
+}
+
+button.sp-cm-explanation-tile {
+  cursor: pointer;
+  border-color: var(--sp-duo-blue-border);
+  background: var(--sp-duo-blue-light);
+  color: var(--sp-duo-blue-dark);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+button.sp-cm-explanation-tile:hover:not(:disabled) {
+  border-color: var(--sp-duo-blue);
+  background: #dff0ff;
+}
+
+button.sp-cm-explanation-tile:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.sp-cm-explanation-tile--active {
+  border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue);
+  color: var(--white);
+  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
+}
+
+.sp-cm-explanation-tile--disabled {
+  opacity: 0.55;
+}
+
+.sp-cm-explanation-tile--preview.sp-cm-explanation-tile--active {
+  border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue-light);
+  color: var(--sp-duo-blue-dark);
+  box-shadow: inset 0 0 0 2px var(--sp-duo-blue);
+}
+
+.sp-cm-explanation-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
 }
 
 .sp-explanation-card-context,
@@ -2856,6 +2939,30 @@ button.sp-vocab-word-card:focus-visible {
 .sp-cm-letter {
   background: #fff7ed;
   color: #c2410c;
+}
+
+.sp-cm-left-item--correct .sp-cm-num,
+.sp-cm-left-item--locked.sp-cm-left-item--correct .sp-cm-num {
+  background: rgba(88, 204, 2, 0.2);
+  color: #3d8f00;
+}
+
+.sp-cm-left-item--incorrect .sp-cm-num,
+.sp-cm-left-item--wrong-flash .sp-cm-num {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+.sp-cm-right-item--correct .sp-cm-letter,
+.sp-cm-right-item--locked.sp-cm-right-item--correct .sp-cm-letter,
+.sp-cm-right-item--reveal .sp-cm-letter {
+  background: rgba(88, 204, 2, 0.2);
+  color: #3d8f00;
+}
+
+.sp-cm-right-item--wrong-flash .sp-cm-letter {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
 }
 
 .sp-cm-left-text,
