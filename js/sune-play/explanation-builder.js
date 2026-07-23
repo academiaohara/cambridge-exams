@@ -147,9 +147,17 @@ var SunePlayExplanation = (function() {
     usefulTip: true
   };
 
+  function shouldShowWhyCorrectSection(view) {
+    if (!view) return false;
+    var ft = view.formatType;
+    return ft === 'error_correction' || ft === 'full_sentence_write';
+  }
+
   function finalizeExplanation(view) {
     if (!view || !view.sections) return view;
+    var showWhy = shouldShowWhyCorrectSection(view);
     view.sections = view.sections.filter(function(section) {
+      if (section.key === 'whyCorrect') return showWhy && !!String(section.text || '').trim();
       return !EXPLANATION_EXCLUDED_SECTION_KEYS[section.key];
     });
     return view;
@@ -286,9 +294,12 @@ var SunePlayExplanation = (function() {
   function appendMistakeExplanationSections(sections, content, isWrong) {
     if (!usesMistakeExplanationFormat(content)) return false;
 
-    sections.push({ key: 'question', text: String(content.question) });
+    sections.push({ key: 'question', text: String(content.question), variant: 'question' });
     sections.push({ key: 'fix', text: String(content.fix) });
-    sections.push(whyCorrectSection(content.whyCorrect, isWrong, { label: 'Why' }));
+    sections.push(whyCorrectSection(content.whyCorrect, isWrong, {
+      label: isWrong ? "Why it's wrong" : SECTION_DEFS.whyCorrect.label,
+      variant: 'why-explain'
+    }));
     sections.push({ key: 'correctedSentence', text: String(content.correctedSentence) });
     return true;
   }
@@ -977,6 +988,32 @@ var SunePlayExplanation = (function() {
     return gapSentenceDisplay(text.replace(new RegExp(escaped, 'i'), fix));
   }
 
+  function wrapMistakeInQuestion(sentence, mistakeText) {
+    var text = gapSentenceDisplay(sentence || '');
+    var wrong = String(mistakeText || '').trim();
+    if (!text || !wrong) return text;
+
+    if (text.indexOf('<mistake>') !== -1) return text;
+
+    var wrapped = '**' + wrong + '**';
+    if (text.indexOf(wrapped) !== -1) {
+      return text.replace(wrapped, '<mistake>' + wrong + '</mistake>');
+    }
+
+    var escaped = wrong.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var re = new RegExp(escaped, 'i');
+    var match = text.match(re);
+    if (match) {
+      return text.replace(re, '<mistake>' + match[0] + '</mistake>');
+    }
+
+    return text.replace(escaped, '<mistake>' + wrong + '</mistake>');
+  }
+
+  function buildErrorQuestionContext(sentence, highlightedText) {
+    return wrapMistakeInQuestion(sentence, highlightedText);
+  }
+
   function buildErrorCorrection(screen, result) {
     var p = screen.payload || {};
     var content = getContent(p);
@@ -1008,10 +1045,19 @@ var SunePlayExplanation = (function() {
       }
     }
 
+    if (isWrong) {
+      sections.forEach(function(section) {
+        if (section.key === 'whyCorrect') {
+          section.variant = 'why-explain';
+          section.label = "Why it's wrong";
+        }
+      });
+    }
+
     return {
       title: 'Explanation',
       formatType: 'error_correction',
-      context: standardized ? '' : buildContext(screen),
+      context: standardized ? '' : buildErrorQuestionContext(p.sentence, p.highlightedText),
       sections: sections
     };
   }
@@ -2017,6 +2063,15 @@ var SunePlayExplanation = (function() {
       if (breakdown) {
         sections.push({ key: 'sentenceBreakdown', text: breakdown });
       }
+    }
+
+    if (isWrong) {
+      sections.forEach(function(section) {
+        if (section.key === 'whyCorrect') {
+          section.variant = 'why-explain';
+          section.label = "Why it's wrong";
+        }
+      });
     }
 
     return {

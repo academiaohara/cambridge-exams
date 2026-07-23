@@ -75,15 +75,22 @@ var LessonExplanation = (function() {
       .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>');
   }
 
+  function formatMistakeHighlight(html) {
+    if (!html) return '';
+    return String(html)
+      .replace(/&lt;mistake&gt;([\s\S]*?)&lt;\/mistake&gt;/g,
+        '<mark class="sp-error-mark"><strong>$1</strong></mark>');
+  }
+
   function formatContextText(text) {
     if (!text) return '';
     var raw = String(text);
     if (/\[start\d+\]/.test(raw)) {
       return formatBracketMarkers(raw).replace(/\n/g, '<br>');
     }
-    return raw.split('\n').map(function(line) {
+    return formatMistakeHighlight(raw.split('\n').map(function(line) {
       return formatContextLine(line);
-    }).join('<br>');
+    }).join('<br>'));
   }
 
   function formatBracketMarkers(text) {
@@ -110,11 +117,52 @@ var LessonExplanation = (function() {
       return formatBracketMarkers(raw).replace(/\n/g, '<br>');
     }
 
-    return raw.split('\n').map(function(line) {
+    return formatMistakeHighlight(raw.split('\n').map(function(line) {
       return formatContextLine(line);
-    }).join('<br>')
-      .replace(/&lt;mistake&gt;([\s\S]*?)&lt;\/mistake&gt;/g,
-        '<mark class="sp-error-mark"><strong>$1</strong></mark>');
+    }).join('<br>'));
+  }
+
+  function questionSectionHtml(section, defs, mode) {
+    var def = defs[section.key] || { label: 'Question', icon: 'quiz' };
+    var label = section.label || def.label;
+    var icon = section.icon || def.icon;
+    if (mode === 'card') {
+      return '<div class="sp-explanation-card-context sp-explanation-section--question" data-section="' + esc(section.key) + '">' +
+          '<span class="sp-explanation-card-context-label">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>' +
+            esc(label) +
+          '</span>' +
+          '<p class="sp-explanation-card-context-text">' + formatContextText(section.text) + '</p>' +
+        '</div>';
+    }
+    return contextBlockHtml(label, section.text, 'question');
+  }
+
+  function whyExplainSectionHtml(section, defs, mode) {
+    var def = defs[section.key] || { label: "Why it's wrong", icon: 'lightbulb' };
+    var label = section.label ||
+      (section.isWrong && def.wrongLabel ? def.wrongLabel : def.label);
+    var icon = section.icon || def.icon;
+    var bodyHtml = formatBody(section.text);
+    if (mode === 'card') {
+      return '<div class="sp-explanation-card-why sp-explanation-section--why-explain" data-section="' + esc(section.key) + '">' +
+          '<div class="sp-explanation-card-why-header">' +
+            '<span class="sp-explanation-card-why-icon" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">' + icon + '</span>' +
+            '</span>' +
+            '<span class="sp-explanation-card-why-title">' + esc(label) + '</span>' +
+          '</div>' +
+          '<div class="sp-explanation-card-why-body">' + bodyHtml + '</div>' +
+        '</div>';
+    }
+    var prefix = mode === 'inline' ? 'sp-explanation-inline-block' : 'sp-explanation-section';
+    return '<section class="' + prefix + ' sp-explanation-section--why-explain" data-section="' + esc(section.key) + '">' +
+        '<div class="' + prefix + '-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>' +
+          esc(label) +
+        '</div>' +
+        '<div class="' + (mode === 'inline' ? prefix + '-text' : prefix + '-body') + '">' + bodyHtml + '</div>' +
+      '</section>';
   }
 
   function getSectionDefs(opts) {
@@ -161,6 +209,13 @@ var LessonExplanation = (function() {
   }
 
   function sectionBlockHtml(section, defs, mode) {
+    if (section.key === 'question' || section.variant === 'question') {
+      return questionSectionHtml(section, defs, mode);
+    }
+    if (section.key === 'whyCorrect' || section.variant === 'why-explain') {
+      return whyExplainSectionHtml(section, defs, mode);
+    }
+
     var def = defs[section.key] || { label: section.key, icon: 'info', variant: 'teach' };
     var label = section.label ||
       (section.isWrong && def.wrongLabel ? def.wrongLabel : def.label);
