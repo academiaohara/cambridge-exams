@@ -1669,6 +1669,26 @@ button.sp-vocab-word-card:focus-visible {
   color: #9a3412;
 }
 
+.sp-option-contrast-term {
+  display: inline;
+  padding: 1px 6px;
+  margin: 0 1px;
+  border-radius: 8px;
+  font-weight: 800;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.sp-option-contrast-term--wrong {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.sp-option-contrast-term--correct {
+  color: #166534;
+  background: #dcfce7;
+}
+
 .sp-explanation-section--teach .sp-explanation-section-label {
   background: var(--sp-duo-blue-light);
   color: var(--sp-duo-blue-dark);
