@@ -1403,9 +1403,13 @@ button.sp-vocab-word-card:focus-visible {
 
 /* ── In-card explanation view (Duo style) ─────────────────────────────────── */
 
-.sp-practice-main .sp-exercise-card--explanation {
+.sp-practice-main .sp-exercise-card--explanation,
+.sp-practice-main .sp-exercise-card.sp-exercise-card--explanation {
   align-items: stretch;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sp-exercise-card--explanation {
@@ -1413,7 +1417,6 @@ button.sp-vocab-word-card:focus-visible {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  overflow-y: auto;
   background: var(--white);
 }
 
@@ -1422,7 +1425,7 @@ button.sp-vocab-word-card:focus-visible {
 }
 
 .sp-explanation-card-view {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -1442,7 +1445,8 @@ button.sp-vocab-word-card:focus-visible {
   flex-direction: column;
   gap: 0;
   width: 100%;
-  min-height: 100%;
+  min-height: 0;
+  padding-bottom: clamp(12px, 3vw, 20px);
 }
 
 .sp-explanation-card-context,
