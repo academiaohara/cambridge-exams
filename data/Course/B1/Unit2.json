@@ -1303,7 +1303,6 @@
             "acceptedAnswers": [
               "was reading"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "Mia {gap1} a magazine at nine o'clock.",
             "gapCount": 1,
             "gaps": [
@@ -1313,7 +1312,18 @@
               }
             ],
             "blankSentence": "Mia ____ a magazine at nine o'clock.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyCorrect": "At nine o'clock marks a moment in the past, so Mia was in the middle of reading — use was reading.",
+              "grammarFocus": "Past continuous (was/were + -ing) describes an action in progress at a specific moment in the past.",
+              "wrongOptions": {
+                "read": "Past simple (read) describes a finished action, not something happening at nine o'clock.",
+                "reads": "Present simple doesn't match the past time clue at nine o'clock.",
+                "is reading": "Present continuous doesn't fit a specific past moment — use was reading."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           },
           {
             "id": "b1-u2-ex3-2",
@@ -1323,7 +1333,6 @@
             "acceptedAnswers": [
               "were driving, was snowing"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "At midnight, we {gap1} home while it {gap2}.",
             "gapCount": 2,
             "gaps": [
@@ -1337,7 +1346,17 @@
               }
             ],
             "blankSentence": "At midnight, we ____ home while it ____.",
-            "answerMode": "typed_multiple_conjugation_gaps"
+            "answerMode": "typed_multiple_conjugation_gaps",
+            "explanationContent": {
+              "whyCorrect": "At midnight both actions were in progress at the same time — use were driving and was snowing.",
+              "grammarFocus": "Past continuous (was/were + -ing) describes actions in progress. While often links two background actions happening together.",
+              "wrongOptions": {
+                "drove": "Past simple (drove) doesn't show the action was still in progress at midnight.",
+                "snowed": "Past simple (snowed) doesn't show the snow was still falling at that moment."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           },
           {
             "id": "b1-u2-ex3-3",
@@ -1347,7 +1366,6 @@
             "acceptedAnswers": [
               "was waiting"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "Ben {gap1} outside the cinema when his friends arrived.",
             "gapCount": 1,
             "gaps": [
@@ -1357,7 +1375,16 @@
               }
             ],
             "blankSentence": "Ben ____ outside the cinema when his friends arrived.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyCorrect": "Ben was already waiting when his friends arrived — the longer background action uses past continuous.",
+              "grammarFocus": "Past continuous (was/were + -ing) describes a background action interrupted by a shorter past simple event (when + arrived).",
+              "wrongOptions": {
+                "waited": "Past simple (waited) doesn't emphasise that the waiting was already in progress when they arrived."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           },
           {
             "id": "b1-u2-ex3-4",
@@ -1367,7 +1394,6 @@
             "acceptedAnswers": [
               "was shopping"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "I saw Olivia while she {gap1} in the town centre.",
             "gapCount": 1,
             "gaps": [
@@ -1377,7 +1403,17 @@
               }
             ],
             "blankSentence": "I saw Olivia while she ____ in the town centre.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyCorrect": "While she was shopping describes an action in progress when I saw her — use was shopping.",
+              "grammarFocus": "Past continuous (was/were + -ing) describes an action in progress at a specific moment in the past.",
+              "wrongOptions": {
+                "shopped": "Past simple (shopped) doesn't show the shopping was in progress when I saw Olivia.",
+                "shops": "Present simple doesn't match the past context of saw."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           },
           {
             "id": "b1-u2-ex3-6",
@@ -1387,7 +1423,6 @@
             "acceptedAnswers": [
               "was cycling"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "Ella {gap1} to school when it started raining.",
             "gapCount": 1,
             "gaps": [
@@ -1397,7 +1432,16 @@
               }
             ],
             "blankSentence": "Ella ____ to school when it started raining.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyCorrect": "Ella was already cycling when it started raining — the background action uses past continuous.",
+              "grammarFocus": "Past continuous (was/were + -ing) describes an action in progress at a specific moment in the past.",
+              "wrongOptions": {
+                "cycled": "Past simple (cycled) doesn't show the cycling was in progress when the rain started."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           },
           {
             "id": "b1-u2-ex3-7",
@@ -1407,7 +1451,6 @@
             "acceptedAnswers": [
               "was, sleeping"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "When you called Harry, {gap1} he {gap2}?",
             "gapCount": 2,
             "gaps": [
@@ -1421,7 +1464,17 @@
               }
             ],
             "blankSentence": "When you called Harry, ____ he ____?",
-            "answerMode": "typed_multiple_conjugation_gaps"
+            "answerMode": "typed_multiple_conjugation_gaps",
+            "explanationContent": {
+              "whyCorrect": "The question asks what Harry was doing when you called — use was sleeping.",
+              "grammarFocus": "In past continuous questions, use was/were before the subject, then the -ing form: Was he sleeping?",
+              "wrongOptions": {
+                "slept": "Past simple (slept) answers whether he slept at some point, not whether he was sleeping when you called.",
+                "did sleep": "Use was/were + -ing for an action in progress, not did + base verb."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           },
           {
             "id": "b1-u2-ex3-8",
@@ -1431,7 +1484,6 @@
             "acceptedAnswers": [
               "were studying"
             ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
             "template": "At ten o'clock last night, we {gap1} for the exam.",
             "gapCount": 1,
             "gaps": [
@@ -1441,7 +1493,17 @@
               }
             ],
             "blankSentence": "At ten o'clock last night, we ____ for the exam.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "typed_conjugation_only",
+            "explanationContent": {
+              "whyCorrect": "At ten o'clock last night marks a moment in the past — we were in the middle of studying.",
+              "grammarFocus": "Past continuous (was/were + -ing) describes an action in progress at a specific moment in the past.",
+              "wrongOptions": {
+                "studied": "Past simple (studied) describes a finished action, not something in progress at ten o'clock.",
+                "are studying": "Present continuous doesn't match the past time clue last night."
+              },
+              "commonMistake": "Past simple describes a finished action; past continuous shows what was happening at that moment.",
+              "usefulTip": "Look for time markers like at nine o'clock, at midnight, or while/when + past simple — they often signal past continuous."
+            }
           }
         ],
         "interaction": {
