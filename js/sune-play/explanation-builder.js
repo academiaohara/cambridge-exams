@@ -142,11 +142,6 @@ var SunePlayExplanation = (function() {
     return null;
   }
 
-  var EXPLANATION_EXCLUDED_SECTION_KEYS = {
-    whyCorrect: true,
-    usefulTip: true
-  };
-
   var GAP_FILL_EXPLANATION_FORMATS = {
     free_text_gap_fill: true,
     conjugation_gap_fill: true,
@@ -171,8 +166,8 @@ var SunePlayExplanation = (function() {
       if (section.key === 'whyCorrect') {
         return (showWhy || isCorrect) && !!String(section.text || '').trim();
       }
-      if (EXPLANATION_EXCLUDED_SECTION_KEYS[section.key]) {
-        return isCorrect;
+      if (section.key === 'usefulTip') {
+        return false;
       }
       return true;
     });
