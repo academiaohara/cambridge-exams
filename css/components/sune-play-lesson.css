@@ -1294,6 +1294,18 @@ button.sp-vocab-word-card:focus-visible {
   border-radius: 4px;
 }
 
+.sp-explanation-term {
+  display: inline;
+  padding: 1px 7px;
+  margin: 0 1px;
+  border-radius: 8px;
+  font-weight: 800;
+  color: var(--ex-duo-purple-dark, #7c3aed);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .sp-snippet-highlight {
   font-weight: 700;
   color: var(--sp-duo-blue-dark, #1e40af);

@@ -801,6 +801,9 @@
   }
 
   function formatTipText(text) {
+    if (typeof LessonExplanation !== 'undefined' && LessonExplanation.formatInlineText) {
+      return LessonExplanation.formatInlineText(text);
+    }
     return esc(text)
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<mark class="sp-explanation-emphasis">$1</mark>');
