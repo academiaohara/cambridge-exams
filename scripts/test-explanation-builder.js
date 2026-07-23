@@ -97,11 +97,16 @@ const u3Correct = {
 
 const u3CorrectOpts = SunePlayExplanation.buildExplainOpts(u3Screen, u3Correct);
 const u3CorrectKeys = u3CorrectOpts.sections.map((s) => s.key);
-const u3CorrectExpected = ['correct', 'whyCorrect', 'vocabularyFocus', 'usefulTip', 'sentenceBreakdown'];
+const u3CorrectExpected = ['correct', 'whyCorrect', 'vocabularyFocus', 'sentenceBreakdown'];
 const u3CorrectMissing = u3CorrectExpected.filter((k) => !u3CorrectKeys.includes(k));
 
 if (u3CorrectMissing.length) {
   console.error('FAIL Unit3 ex-c correct answer missing sections:', u3CorrectMissing.join(', '));
+  process.exit(1);
+}
+
+if (u3CorrectKeys.includes('usefulTip')) {
+  console.error('FAIL Unit3 ex-c correct answer should not include usefulTip in explanation sections');
   process.exit(1);
 }
 
