@@ -147,10 +147,19 @@ var SunePlayExplanation = (function() {
     usefulTip: true
   };
 
+  var GAP_FILL_EXPLANATION_FORMATS = {
+    free_text_gap_fill: true,
+    conjugation_gap_fill: true,
+    preselected_verb_gap_fill: true,
+    word_bank_gap_fill: true,
+    synced_gap_fill: true,
+    conversation_gap_fill: true
+  };
+
   function shouldShowWhyCorrectSection(view) {
     if (!view) return false;
     var ft = view.formatType;
-    return ft === 'error_correction' || ft === 'full_sentence_write';
+    return ft === 'error_correction' || ft === 'full_sentence_write' || !!GAP_FILL_EXPLANATION_FORMATS[ft];
   }
 
   function finalizeExplanation(view, result) {
