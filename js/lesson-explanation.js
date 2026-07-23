@@ -37,8 +37,8 @@ var LessonExplanation = (function() {
 
   var CONTEXT_LABEL_RE = /^(Word bank|Keyword|Verb|Prompt|Cues|Wrong form):\s*/i;
 
-  function formatGapToken(match) {
-    return '<span class="sp-explanation-gap" aria-label="gap">' + esc(match) + '</span>';
+  function formatGapToken() {
+    return '<span class="sp-explanation-gap" aria-label="gap"></span>';
   }
 
   function formatContextLine(line) {

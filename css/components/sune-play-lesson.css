@@ -1502,14 +1502,11 @@ button.sp-vocab-word-card:focus-visible {
 .sp-explanation-gap {
   display: inline-block;
   min-width: 2.8em;
+  min-height: 1.2em;
   padding: 0 0.35em;
   margin: 0 0.1em;
   border-bottom: 2px dashed var(--sp-duo-blue);
-  color: var(--sp-duo-blue-dark);
-  font-weight: 800;
-  text-align: center;
   vertical-align: baseline;
-  letter-spacing: 0.08em;
 }
 
 .sp-explanation-context-label {
