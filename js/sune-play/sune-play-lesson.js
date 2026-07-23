@@ -615,6 +615,30 @@
     return !!(result && result.explanation);
   }
 
+  function shouldAutoOpenExplanation(result) {
+    if (!result || result.correct) return false;
+    var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
+    if (globalRules.showExplanationAfterIncorrect === false) return false;
+    return screenHasExplanation(lessonState.currentScreen, result);
+  }
+
+  function openExerciseExplanation() {
+    if (typeof LessonExplanation === 'undefined') return false;
+    var cardEl = getExerciseCardEl();
+    if (!cardEl) return false;
+
+    var explainOpts = buildExplainOpts();
+    if (!explainOpts) return false;
+    if (typeof LessonExplanation.hasRenderableContent === 'function' &&
+        !LessonExplanation.hasRenderableContent(explainOpts)) return false;
+
+    LessonExplanation.openInCard(cardEl, explainOpts);
+    setExplainBtnActive(true);
+    var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
+    if (tipMount) tipMount.hidden = true;
+    return true;
+  }
+
   function setActionBtn(mode, enabled) {
     var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
     var skipBtn = lessonState.mount.querySelector('#sp-skip-btn');
@@ -1128,22 +1152,17 @@
     var cardEl = getExerciseCardEl();
     if (!cardEl) return;
 
-    var explainOpts = buildExplainOpts();
-    if (!explainOpts) return;
-    if (typeof LessonExplanation.hasRenderableContent === 'function' &&
-        !LessonExplanation.hasRenderableContent(explainOpts)) return;
-
-    var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
-    setExplainBtnActive(isOpen);
-    if (isOpen) {
-      var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
-      if (tipMount) tipMount.hidden = true;
-    } else {
+    if (LessonExplanation.isOpenInCard(cardEl)) {
+      LessonExplanation.closeInCard(cardEl);
+      setExplainBtnActive(false);
       updateExerciseTip(
         lessonState.currentScreen,
         lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
       );
+      return;
     }
+
+    openExerciseExplanation();
   }
 
   function handleActionClick() {
@@ -1567,6 +1586,9 @@
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
     updateExerciseTip(lessonState.currentScreen, result);
+    if (shouldAutoOpenExplanation(result)) {
+      openExerciseExplanation();
+    }
   }
 
   function finishSession() {

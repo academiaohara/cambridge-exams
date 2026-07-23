@@ -408,6 +408,34 @@
     return root && root.querySelector('.sp-exercise-card');
   }
 
+  function screenHasExplanation(screen, result) {
+    if (typeof SunePlayExplanation !== 'undefined') {
+      return SunePlayExplanation.hasExplanation(screen, result);
+    }
+    return !!(result && result.explanation);
+  }
+
+  function shouldAutoOpenExplanation(result) {
+    if (!result || result.correct) return false;
+    var s = getSession();
+    return screenHasExplanation(s && s.currentScreen, result);
+  }
+
+  function openExerciseExplanation() {
+    if (typeof LessonExplanation === 'undefined') return false;
+    var cardEl = getExerciseCardEl();
+    if (!cardEl) return false;
+
+    var explainOpts = buildExplainOpts();
+    if (!explainOpts) return false;
+    if (typeof LessonExplanation.hasRenderableContent === 'function' &&
+        !LessonExplanation.hasRenderableContent(explainOpts)) return false;
+
+    LessonExplanation.openInCard(cardEl, explainOpts);
+    setExplainBtnActive(true);
+    return true;
+  }
+
   function buildExplainOpts() {
     var s = getSession();
     var result = s && s._lastFeedbackResult;
@@ -617,6 +645,9 @@
     applyGapResultStyles(result.correct, s.currentScreen);
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
+    if (shouldAutoOpenExplanation(result)) {
+      openExerciseExplanation();
+    }
   }
 
   function getScreenInstruction(screen) {
@@ -788,13 +819,13 @@
     var cardEl = getExerciseCardEl();
     if (!cardEl) return;
 
-    var explainOpts = buildExplainOpts();
-    if (!explainOpts) return;
-    if (typeof LessonExplanation.hasRenderableContent === 'function' &&
-        !LessonExplanation.hasRenderableContent(explainOpts)) return;
+    if (LessonExplanation.isOpenInCard(cardEl)) {
+      LessonExplanation.closeInCard(cardEl);
+      setExplainBtnActive(false);
+      return;
+    }
 
-    var isOpen = LessonExplanation.toggleInCard(cardEl, explainOpts);
-    setExplainBtnActive(isOpen);
+    openExerciseExplanation();
   }
 
   function bindSessionEvents(fe) {
