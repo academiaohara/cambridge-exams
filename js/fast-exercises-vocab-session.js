@@ -415,12 +415,6 @@
     return !!(result && result.explanation);
   }
 
-  function shouldAutoOpenExplanation(result) {
-    if (!result || result.correct) return false;
-    var s = getSession();
-    return screenHasExplanation(s && s.currentScreen, result);
-  }
-
   function openExerciseExplanation() {
     if (typeof LessonExplanation === 'undefined') return false;
     var cardEl = getExerciseCardEl();
@@ -645,9 +639,6 @@
     applyGapResultStyles(result.correct, s.currentScreen);
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
-    if (shouldAutoOpenExplanation(result)) {
-      openExerciseExplanation();
-    }
   }
 
   function getScreenInstruction(screen) {
