@@ -45,7 +45,7 @@ const wrongResult = {
 const opts = SunePlayExplanation.buildExplainOpts(screen, wrongResult);
 const keys = opts.sections.map((s) => s.key);
 
-const expected = ['correct', 'yourAnswer', 'optionContrast', 'sentenceBreakdown'];
+const expected = ['correct', 'yourAnswer', 'optionContrast', 'vocabularyFocus', 'sentenceBreakdown'];
 const missing = expected.filter((k) => !keys.includes(k));
 
 if (missing.length) {
@@ -59,10 +59,14 @@ if (!SunePlayExplanation.hasExplanation(screen, wrongResult)) {
 }
 
 
-const excluded = ['whyCorrect', 'vocabularyFocus', 'usefulTip'];
+const excluded = ['whyCorrect', 'usefulTip'];
 const leaked = excluded.filter((k) => keys.includes(k));
 if (leaked.length) {
-  console.error('FAIL explanation should exclude sections:', leaked.join(', '));
+  console.error('FAIL explanation should exclude sections on wrong answer:', leaked.join(', '));
+  process.exit(1);
+}
+if (!keys.includes('vocabularyFocus')) {
+  console.error('FAIL wrong two_option_choice should still show vocabularyFocus');
   process.exit(1);
 }
 console.log('PASS two_option_choice explanation builder');
@@ -103,6 +107,18 @@ if (u3CorrectMissing.length) {
 
 console.log('PASS Unit3 ex-c two_option_choice explanation (correct answer)');
 console.log('Sections:', u3CorrectKeys.join(' → '));
+
+if (!SunePlayExplanation.hasTeachingSections(u3Screen, u3Correct)) {
+  console.error('FAIL hasTeachingSections should be true for correct two_option_choice');
+  process.exit(1);
+}
+
+if (SunePlayExplanation.hasTeachingSections(u3Screen, wrongResult) !== true) {
+  console.error('FAIL hasTeachingSections should be true for wrong two_option_choice with optionContrast');
+  process.exit(1);
+}
+
+console.log('PASS hasTeachingSections helper');
 
 // two_option_choice — legacy Unit 1 present simple vs continuous (migrated content)
 const u1Ex4Item = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))

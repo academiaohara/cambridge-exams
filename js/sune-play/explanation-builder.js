@@ -144,7 +144,6 @@ var SunePlayExplanation = (function() {
 
   var EXPLANATION_EXCLUDED_SECTION_KEYS = {
     whyCorrect: true,
-    vocabularyFocus: true,
     usefulTip: true
   };
 
@@ -168,6 +167,20 @@ var SunePlayExplanation = (function() {
       return true;
     });
     return view;
+  }
+
+  var BARE_EXPLANATION_SECTION_KEYS = {
+    correct: true,
+    yourAnswer: true,
+    sentenceBreakdown: true
+  };
+
+  function hasTeachingSections(screen, result) {
+    var view = buildExplainOpts(screen, result);
+    if (!view || !view.sections || !view.sections.length) return false;
+    return view.sections.some(function(section) {
+      return !BARE_EXPLANATION_SECTION_KEYS[section.key];
+    });
   }
 
   function lookupMapNote(map, userAnswer, options) {
@@ -2554,6 +2567,7 @@ var SunePlayExplanation = (function() {
   return {
     SECTION_DEFS: SECTION_DEFS,
     hasExplanation: hasExplanation,
+    hasTeachingSections: hasTeachingSections,
     buildExplainOpts: buildExplainOpts,
     buildContext: buildContext,
     getHuntExerciseTip: getHuntExerciseTip,

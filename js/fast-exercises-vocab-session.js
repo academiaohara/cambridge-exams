@@ -639,6 +639,10 @@
     applyGapResultStyles(result.correct, s.currentScreen);
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
+    if (typeof SunePlayExplanation !== 'undefined' &&
+        SunePlayExplanation.hasTeachingSections(s.currentScreen, result)) {
+      openExerciseExplanation();
+    }
   }
 
   function getScreenInstruction(screen) {
