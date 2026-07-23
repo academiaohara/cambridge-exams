@@ -128,7 +128,7 @@ var LessonExplanation = (function() {
 
   function formatOptionContrastTerm(term, role) {
     return '<span class="sp-option-contrast-term sp-option-contrast-term--' + role + '">' +
-      '"' + esc(term) + '"' +
+      esc(term) +
       '</span>';
   }
 
