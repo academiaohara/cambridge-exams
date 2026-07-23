@@ -66,9 +66,30 @@ var LessonExplanation = (function() {
     return result;
   }
 
+  /** Quoted phrases in explanation copy → term chip (quotes removed). */
+  function formatQuotedTerms(text, opts) {
+    if (!text) return '';
+    var raw = String(text);
+    var includeSingleQuotes = !(opts && opts.singleQuotes === false);
+    var re = includeSingleQuotes
+      ? /\u201c([^\u201d]+)\u201d|'([^']+)'|"([^"]+)"/g
+      : /\u201c([^\u201d]+)\u201d|"([^"]+)"/g;
+    var out = '';
+    var last = 0;
+    var match;
+    while ((match = re.exec(raw)) !== null) {
+      out += esc(raw.slice(last, match.index));
+      var term = match[1] || match[2] || match[3] || '';
+      out += '<span class="sp-explanation-term">' + esc(term) + '</span>';
+      last = re.lastIndex;
+    }
+    out += esc(raw.slice(last));
+    return out;
+  }
+
   function formatContextInline(text) {
     if (!text) return '';
-    return esc(text)
+    return formatQuotedTerms(text)
       .replace(/&lt;s&gt;([\s\S]*?)&lt;\/s&gt;/g, '<s class="sp-explanation-strike">$1</s>')
       .replace(/~~([^~]+)~~/g, '<s class="sp-explanation-strike">$1</s>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
@@ -108,18 +129,18 @@ var LessonExplanation = (function() {
 
   function formatBracketMarkers(text) {
     var raw = String(text || '');
-    if (!/\[start\d+\]/.test(raw)) return esc(raw);
+    if (!/\[start\d+\]/.test(raw)) return formatQuotedTerms(raw);
 
     var result = '';
     var re = /\[start(\d+)\]([\s\S]*?)\[end\1\]/g;
     var lastIdx = 0;
     var match;
     while ((match = re.exec(raw)) !== null) {
-      result += esc(raw.slice(lastIdx, match.index));
+      result += formatQuotedTerms(raw.slice(lastIdx, match.index));
       result += '<mark class="sp-snippet-highlight">' + esc(match[2]) + '</mark>';
       lastIdx = match.index + match[0].length;
     }
-    result += esc(raw.slice(lastIdx));
+    result += formatQuotedTerms(raw.slice(lastIdx));
     return result.replace(/\[start\d+\]|\[end\d+\]/g, '');
   }
 
@@ -163,7 +184,7 @@ var LessonExplanation = (function() {
       return formatOptionContrastTerm(wrong, 'wrong') +
         " doesn't fit here → " +
         formatOptionContrastTerm(correct, 'correct') +
-        ', because ' + esc(because) + '.';
+        ', because ' + formatContextInline(because) + '.';
     }
 
     return formatBody(raw);
@@ -631,6 +652,8 @@ var LessonExplanation = (function() {
     isOpenInCard: isOpenInCard,
     openInCard: openInCard,
     closeInCard: closeInCard,
-    toggleInCard: toggleInCard
+    toggleInCard: toggleInCard,
+    formatInlineText: formatContextInline,
+    formatBodyText: formatBody
   };
 })();

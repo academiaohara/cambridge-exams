@@ -568,10 +568,13 @@
       var html = '<h3 class="bgl-hunt-summary-title">All mistakes corrected</h3><ul class="bgl-hunt-summary-list">';
       data.items.forEach(function(it, idx) {
         var corr = fixed[idx] ? fixed[idx].correction : it.answer;
+        var expHtml = typeof LessonExplanation !== 'undefined' && LessonExplanation.formatInlineText
+          ? LessonExplanation.formatInlineText(it.explanation || '')
+          : esc(it.explanation || '');
         html += '<li class="bgl-hunt-summary-item">' +
           '<span class="bgl-hunt-summary-wrong">' + esc(it.wrong) + '</span> → ' +
           '<span class="bgl-hunt-summary-right">' + esc(corr) + '</span>' +
-          '<p class="bgl-hunt-summary-exp">' + esc(it.explanation || '') + '</p></li>';
+          '<p class="bgl-hunt-summary-exp">' + expHtml + '</p></li>';
       });
       html += '</ul>';
       summaryEl.innerHTML = html;
@@ -994,7 +997,10 @@
         (result.highlight || esc(result.correctAnswer)) + '</div>';
     }
     if (result.explanation && !useExplainSheet) {
-      answerHtml += '<p class="bgl-feedback-exp">' + esc(result.explanation) + '</p>';
+      var expHtml = typeof LessonExplanation !== 'undefined' && LessonExplanation.formatInlineText
+        ? LessonExplanation.formatInlineText(result.explanation)
+        : esc(result.explanation);
+      answerHtml += '<p class="bgl-feedback-exp">' + expHtml + '</p>';
     }
 
     var explainBtnHtml = useExplainSheet
