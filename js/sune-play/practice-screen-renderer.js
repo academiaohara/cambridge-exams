@@ -9,6 +9,12 @@
   var GAP_RE = /(?:\.{3,}|…{2,}|_{3,})/g;
   var GAP_BRACKET_HINT_RE = /((?:\.{3,}|…{2,}|_{3,}))\s*\([^)]+\)/g;
   var PASSAGE_GAP_MARK_RE = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/g;
+  var GAP_CONTEXT_MARKER_RE = /\[(\d+)\]([\s\S]*?)\[\/\1\]/g;
+
+  /** Remove [n]...[/n] context markers from passage text (inner content is kept). */
+  function stripGapContextMarkers(text) {
+    return String(text || '').replace(GAP_CONTEXT_MARKER_RE, '$2');
+  }
 
   function esc(str) {
     if (typeof DashboardNav !== 'undefined' && DashboardNav._escapeHTML) return DashboardNav._escapeHTML(str);
@@ -36,7 +42,7 @@
 
   /** Bold markers and parenthetical hints — including (word / word) slash hints. */
   function formatSentenceText(str) {
-    var raw = String(str || '');
+    var raw = stripGapContextMarkers(str);
     var result = '';
     var tokenRe = /\*\*([^*]+)\*\*|\(([^)]+)\)/g;
     var lastIdx = 0;
@@ -329,11 +335,7 @@
 
   function allGapInputsFilled(root) {
     var inputs = root.querySelectorAll('.sp-gap-inline-input');
-    if (!inputs.length) return false;
-    for (var i = 0; i < inputs.length; i++) {
-      if (!inputs[i].value.trim()) return false;
-    }
-    return true;
+    return inputs.length > 0;
   }
 
   function bindWordBankGapFill(root, onChange) {
@@ -604,9 +606,7 @@
     var state = root._wordBankSeqState;
     if (!state || !state.activeId) return false;
     if (state.completed[state.activeId]) return false;
-    var wrap = getWordBankSeqWrap(root, state.activeId);
-    var input = wrap && wrap.querySelector('.sp-wbseq-gap-input');
-    return input && !!input.value.trim();
+    return true;
   }
 
   function processWordBankSequentialCheck(root, screen) {
@@ -629,9 +629,8 @@
     var wrap = getWordBankSeqWrap(root, state.activeId);
     var input = wrap && wrap.querySelector('.sp-wbseq-gap-input');
     var given = input ? input.value.trim() : '';
-    if (!given) return { handled: true, noop: true };
 
-    var ok = isWordBankSeqAnswerCorrect(given, sentence);
+    var ok = given ? isWordBankSeqAnswerCorrect(given, sentence) : false;
 
     var chargeLife = false;
     if (ok) {
@@ -979,11 +978,7 @@
     var state = root._passageGapState;
     if (!state || state.activeGap == null) return false;
     if (state.completed[state.activeGap]) return false;
-
-    var wrap = getPassageGapWrap(root, state.activeGap);
-    if (!wrap) return false;
-    var input = wrap.querySelector('.sp-passage-gap-input');
-    return input && !!input.value.trim();
+    return true;
   }
 
   function bindPassageGapFill(root, screen, onChange) {
@@ -1025,11 +1020,8 @@
     var wrap = getPassageGapWrap(root, gapNumber);
     var input = wrap && wrap.querySelector('.sp-passage-gap-input');
     var given = input ? input.value.trim() : '';
-    if (!given) {
-      return { handled: true, noop: true };
-    }
 
-    var ok = isPassageGapAnswerCorrect(given, gap, p);
+    var ok = given ? isPassageGapAnswerCorrect(given, gap, p) : false;
     var verb = state.assignments[gapNumber] || gap.baseVerb || '';
 
     wrap.classList.toggle('sp-passage-gap--correct', ok);
