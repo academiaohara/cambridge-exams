@@ -103,7 +103,6 @@
       '<div class="sp-practice-main">' +
         '<div class="sp-practice-body">' +
           '<div class="sp-exercise-card" id="sp-screen-mount"></div>' +
-          '<div id="sp-exercise-explanation-mount" class="sp-exercise-explanation-mount" hidden></div>' +
           '<div id="sp-exercise-tip-mount" class="sp-exercise-tip-mount" hidden></div>' +
         '</div>' +
         '<footer class="sp-practice-footer" id="sp-practice-footer">' +
