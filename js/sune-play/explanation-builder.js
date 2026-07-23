@@ -243,6 +243,101 @@ var SunePlayExplanation = (function() {
     return note.replace(/[.!?]$/, '');
   }
 
+  function detectTenseBecause(wrongText, correctText, payload) {
+    var after = String((payload && payload.sentenceAfter) || '').trim().toLowerCase();
+    var before = String((payload && payload.sentenceBefore) || '').trim().toLowerCase();
+    var full = (before + ' ' + after).trim();
+    var wrong = String(wrongText || '').toLowerCase();
+    var correct = String(correctText || '').toLowerCase();
+
+    var habitMarkers = /very often|usually|always|every day|every evening|every week|never|sometimes|routine|habit|generally|in tennis/;
+    var nowMarkers = /right now|at the moment|now|this month|today|tonight|look!|listen!/;
+    var changingMarkers = /these days/;
+
+    if (habitMarkers.test(full)) {
+      if (/aren't|isn't|am not|not \w+ing/.test(wrong) && /don't|doesn't|do not|does not/.test(correct)) {
+        return 'the sentence describes a general habit, not something happening right now';
+      }
+      if (/\w+ing\b/.test(wrong) && !/\w+ing\b/.test(correct) && !/don't|doesn't/.test(correct)) {
+        return 'the sentence describes a general habit or fact, not a temporary action';
+      }
+      if (/does|do\b/.test(wrong) && /is |are |am /.test(correct)) {
+        return 'the time clue signals a routine, so the present simple question form fits';
+      }
+    }
+
+    if (nowMarkers.test(full)) {
+      if (/don't|doesn't|do not|does not/.test(wrong) && (/\w+ing\b/.test(correct) || /am |are |is /.test(correct))) {
+        return 'the time clue signals an action happening around now';
+      }
+      if (!/\w+ing\b/.test(wrong) && /\w+ing\b/.test(correct)) {
+        return 'the time clue signals the present continuous';
+      }
+      if (/^do |^does /.test(wrong) && /^are |^is /.test(correct)) {
+        return 'the time clue signals the present continuous question form';
+      }
+    }
+
+    if (changingMarkers.test(full) && /\w+ing\b/.test(correct)) {
+      return 'these days can describe a gradual change, so the present continuous fits';
+    }
+
+    if (/understand|know|believe|want|need|like|love|hate|prefer|belong|own|possess/.test(full) &&
+        /understand|know|believe|want|need|like|love|hate|prefer|belong|own|possess/.test(correct) &&
+        /\w+ing\b/.test(wrong)) {
+      return 'this stative verb is normally used in the present simple, not the continuous';
+    }
+
+    if (/pronounce/.test(full) && /don't|doesn't|do |does /.test(correct) && /\w+ing\b/.test(wrong)) {
+      return 'this asks about the general way to say a word, not an action happening now';
+    }
+
+    return '';
+  }
+
+  function inferTenseGrammarFocus(payload) {
+    var after = String((payload && payload.sentenceAfter) || '').trim().toLowerCase();
+    var before = String((payload && payload.sentenceBefore) || '').trim().toLowerCase();
+    var full = (before + ' ' + after).trim();
+
+    if (/very often|usually|always|every day|every evening|every week|never|sometimes|in tennis/.test(full)) {
+      return 'Present simple describes habits, routines and general facts. Frequency words like very often and usually are strong clues.';
+    }
+    if (/right now|at the moment|now|this month|today|tonight/.test(full)) {
+      return 'Present continuous describes actions happening around now. Time clues like right now and at the moment signal this tense.';
+    }
+    if (/these days/.test(full)) {
+      return 'Present continuous can describe gradual changes over a period (becoming more confident these days).';
+    }
+    if (/understand|know|believe|belong/.test(full)) {
+      return 'Stative verbs (understand, know, believe) are usually in the present simple, not the continuous.';
+    }
+  }
+
+  function buildSyntheticChoiceContent(payload, isWrong, userAnswer, correctAnswer) {
+    if (!payload || !payload.explanation) return null;
+
+    var content = {
+      whyCorrect: String(payload.explanation)
+    };
+    var grammarFocus = inferTenseGrammarFocus(payload);
+    if (grammarFocus) content.grammarFocus = grammarFocus;
+
+    if (isWrong && userAnswer && correctAnswer) {
+      var because = detectTenseBecause(userAnswer, correctAnswer, payload);
+      if (!because) {
+        because = String(payload.explanation).trim().replace(/[.!?]$/, '');
+      }
+      var contrast = formatOptionContrastLine(userAnswer, correctAnswer, because);
+      if (contrast) {
+        content.optionContrast = {};
+        content.optionContrast[userAnswer] = contrast;
+      }
+    }
+
+    return content;
+  }
+
   function lookupOptionContrast(content, userAnswer, options, correctAnswer) {
     if (!content || !userAnswer) return '';
     var contrast = lookupMapNote(content.optionContrast, userAnswer, options);
@@ -348,10 +443,12 @@ var SunePlayExplanation = (function() {
       sections.push({ key: 'yourAnswer', text: String(userAnswer) });
     }
 
+    if (!content && p.explanation) {
+      content = buildSyntheticChoiceContent(p, isWrong, userAnswer, correctAnswer);
+    }
+
     if (content) {
       appendChoiceTeachingSections(sections, content, isWrong, userAnswer, p.options, correctAnswer);
-    } else if (p.explanation) {
-      sections.push(whyCorrectSection(p.explanation, isWrong));
     }
 
     var completed = p.completedSentence || '';

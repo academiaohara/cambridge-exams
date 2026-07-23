@@ -22,7 +22,7 @@ function walkJsonFiles(dir, files = []) {
   for (const name of fs.readdirSync(dir)) {
     const full = path.join(dir, name);
     if (fs.statSync(full).isDirectory()) walkJsonFiles(full, files);
-    else if (name.endsWith('.v2.json')) files.push(full);
+    else if (name.endsWith('.v2.json') || /^Unit\d+\.json$/.test(name)) files.push(full);
   }
   return files;
 }
@@ -49,12 +49,6 @@ function pairKey(options) {
 function capitalize(s) {
   if (!s) return s;
   return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-function ensurePeriod(s) {
-  const t = String(s || '').trim();
-  if (!t) return t;
-  return /[.!?]$/.test(t) ? t : t + '.';
 }
 
 function expandLegacyWhy(item, legacy) {
@@ -308,6 +302,38 @@ function buildVocabularyContent(item, legacy) {
 
 function buildWrongOptionNote(item, answer, wrongStr, after) {
   const afterLow = after.toLowerCase();
+  const beforeLow = String(item.sentenceBefore || '').trim().toLowerCase();
+  const full = `${beforeLow} ${afterLow}`;
+
+  if (/very often|usually|always|every day|every evening|every week|never|sometimes|in tennis/.test(full)) {
+    if (/\w+ing\b/.test(wrongStr) || /aren't|isn't|am not/.test(wrongStr)) {
+      return `"${wrongStr}" describes something happening now, but the time clue signals a habit or routine.`;
+    }
+    if (/^do |^does /.test(wrongStr)) {
+      return `"${wrongStr}" is the wrong question form for a routine — check whether the sentence needs present simple or continuous.`;
+    }
+    return `"${wrongStr}" does not fit a habit or general fact — the present simple is needed here.`;
+  }
+
+  if (/right now|at the moment|now|this month|today|tonight/.test(full)) {
+    if (/don't|doesn't|^do |^does /.test(wrongStr) && !/\w+ing\b/.test(wrongStr)) {
+      return `"${wrongStr}" describes a habit or general fact, but the time clue signals an action happening now.`;
+    }
+    return `"${wrongStr}" does not match the present continuous time clue in this sentence.`;
+  }
+
+  if (/these days/.test(full) && !/\w+ing\b/.test(wrongStr)) {
+    return `"${wrongStr}" does not describe a gradual change over time — the present continuous fits better.`;
+  }
+
+  if (/understand|know|believe|belong/.test(full) && /\w+ing\b/.test(wrongStr)) {
+    return `"${wrongStr}" uses a stative verb in the continuous form, which is unusual here.`;
+  }
+
+  if (/pronounce/.test(full) && /\w+ing\b/.test(wrongStr)) {
+    return `"${wrongStr}" suggests an action happening now, but this asks about the general way to say a word.`;
+  }
+
   if (/i'?m sure|you'?ll pass/.test(afterLow)) {
     return `"${wrongStr}" points the wrong way — the speaker is rejecting ${wrongStr === 'optimistic' ? 'too much hope' : 'the opposite attitude'}, not supporting it.`;
   }
@@ -317,6 +343,58 @@ function buildWrongOptionNote(item, answer, wrongStr, after) {
   return `"${wrongStr}" does not match the clue in the rest of the sentence${
     after ? ` ("${after.slice(0, 55)}${after.length > 55 ? '…' : ''}")` : ''
   }.`;
+}
+
+function looksLikeTenseChoice(item) {
+  const options = (item.options || []).map((o) => String(o).trim().toLowerCase());
+  if (options.length < 2) return false;
+  const joined = options.join(' ');
+  return /\b(?:am|are|is|was|were)\s+\w+ing\b/.test(joined) ||
+    /\b(?:don't|doesn't|didn't|do|does|did)\b/.test(joined) ||
+    /\w+ed\b/.test(joined) ||
+    /\w+ing\b/.test(joined);
+}
+
+function buildTenseChoiceContent(item, legacy) {
+  const answer = String(item.answer || '').trim();
+  const wrong = otherOption(item);
+  const wrongStr = wrong ? String(wrong).trim() : '';
+  const { before, after } = sentenceContext(item);
+  const full = `${before} ${after}`.toLowerCase();
+
+  const whyCorrect = expandLegacyWhy(item, legacy) || buildWhyFromContext(item, answer, wrongStr);
+
+  let grammarFocus = 'Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.';
+  let usefulTip = 'Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.';
+
+  if (/walked|were walking|was \w+ing|did\b/.test((item.options || []).join(' ').toLowerCase())) {
+    grammarFocus = 'Past simple describes completed events. Past continuous describes actions in progress or background situations.';
+    usefulTip = 'Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.';
+  }
+
+  if (/very often|usually|always|every day|every evening|in tennis/.test(full)) {
+    grammarFocus = 'Use present simple with frequency words (very often, usually, every day) and general facts.';
+  } else if (/right now|at the moment|this month|today|tonight/.test(full)) {
+    grammarFocus = 'Use present continuous with time clues like right now, at the moment and this month.';
+  } else if (/these days/.test(full)) {
+    grammarFocus = 'Present continuous can describe gradual changes over a period (becoming more confident these days).';
+  } else if (/understand|believe|belong/.test(full)) {
+    grammarFocus = 'Stative verbs (understand, know, believe) are usually in the present simple, not the continuous.';
+  } else if (/pronounce/.test(full)) {
+    grammarFocus = 'Use present simple when asking about general facts or standard pronunciation.';
+  }
+
+  const wrongOptions = {};
+  if (wrongStr) {
+    wrongOptions[wrongStr] = buildWrongOptionNote(item, answer, wrongStr, after);
+  }
+
+  return attachOptionContrast(item, {
+    whyCorrect: ensurePeriod(whyCorrect),
+    grammarFocus: ensurePeriod(grammarFocus),
+    wrongOptions,
+    usefulTip: ensurePeriod(usefulTip)
+  });
 }
 
 function attachOptionContrast(item, content) {
@@ -349,7 +427,16 @@ function buildExplanationContent(item) {
     return attachOptionContrast(item, built);
   }
 
+  if (looksLikeTenseChoice(item)) {
+    return buildTenseChoiceContent(item, legacy);
+  }
+
   return attachOptionContrast(item, buildVocabularyContent(item, legacy));
+}
+
+function isTwoOptionChoiceItem(exercise, item) {
+  return item.formatType === 'two_option_choice' ||
+    exercise.exerciseType === 'two_option_choice';
 }
 
 function migrateFile(filePath) {
@@ -359,7 +446,8 @@ function migrateFile(filePath) {
 
   for (const exercise of data.contentBanks?.exercises || []) {
     for (const item of exercise.items || []) {
-      if (item.formatType !== 'two_option_choice') continue;
+      if (!isTwoOptionChoiceItem(exercise, item)) continue;
+      if (item.explanationContent && !item.explanation) continue;
 
       item.explanationContent = buildExplanationContent(item);
       delete item.explanation;

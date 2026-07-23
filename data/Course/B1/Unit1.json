@@ -1723,9 +1723,19 @@
             ],
             "answer": "am staying",
             "completedSentence": "I am staying with my uncle this month.",
-            "explanation": "This month describes a temporary situation, so the present continuous is the best choice.",
             "answerMode": "tap_correct_conjugation",
-            "template": "I {choice} with my uncle this month."
+            "template": "I {choice} with my uncle this month.",
+            "explanationContent": {
+              "whyCorrect": "This month describes a temporary situation, so the present continuous is the best choice.",
+              "grammarFocus": "Use present continuous with time clues like right now, at the moment and this month.",
+              "wrongOptions": {
+                "stay": "\"stay\" does not match the present continuous time clue in this sentence."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "stay": "\"stay\" doesn't fit here → \"am staying\" does, because the time clue signals the present continuous."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-2",
@@ -1737,9 +1747,19 @@
             ],
             "answer": "don't eat",
             "completedSentence": "We don't eat meat very often.",
-            "explanation": "Very often describes a general habit, so use the present simple.",
             "answerMode": "tap_correct_conjugation",
-            "template": "We {choice} meat very often."
+            "template": "We {choice} meat very often.",
+            "explanationContent": {
+              "whyCorrect": "Very often describes a general habit, so use the present simple.",
+              "grammarFocus": "Use present simple with frequency words (very often, usually, every day) and general facts.",
+              "wrongOptions": {
+                "aren't eating": "\"aren't eating\" describes something happening now, but the time clue signals a habit or routine."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "aren't eating": "\"aren't eating\" doesn't fit here → \"don't eat\" does, because the sentence describes a general habit, not something happening right now."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-3",
@@ -1751,9 +1771,19 @@
             ],
             "answer": "is doing",
             "completedSentence": "Olivia is doing her homework right now.",
-            "explanation": "Right now signals the present continuous.",
             "answerMode": "tap_correct_conjugation",
-            "template": "Olivia {choice} her homework right now."
+            "template": "Olivia {choice} her homework right now.",
+            "explanationContent": {
+              "whyCorrect": "Right now signals the present continuous.",
+              "grammarFocus": "Use present continuous with time clues like right now, at the moment and this month.",
+              "wrongOptions": {
+                "does": "\"does\" does not match the present continuous time clue in this sentence."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "does": "\"does\" doesn't fit here → \"is doing\" does, because the time clue signals the present continuous."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-4",
@@ -1765,9 +1795,19 @@
             ],
             "answer": "Does Ben usually drive",
             "completedSentence": "Does Ben usually drive to work?",
-            "explanation": "Usually describes a routine, so use the present simple question form.",
             "answerMode": "tap_correct_conjugation",
-            "template": "{choice} to work?"
+            "template": "{choice} to work?",
+            "explanationContent": {
+              "whyCorrect": "Usually describes a routine, so use the present simple question form.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "Is Ben usually driving": "\"Is Ben usually driving\" does not match the clue in the rest of the sentence (\"to work?\")."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "Is Ben usually driving": "\"Is Ben usually driving\" doesn't fit here → \"Does Ben usually drive\" does, because it does not match the clue in the rest of the sentence (\"to work?\")."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-5",
@@ -1779,9 +1819,19 @@
             ],
             "answer": "hit",
             "completedSentence": "In tennis, you hit the ball over the net.",
-            "explanation": "This is a general fact about tennis, so use the present simple.",
             "answerMode": "tap_correct_conjugation",
-            "template": "In tennis, you {choice} the ball over the net."
+            "template": "In tennis, you {choice} the ball over the net.",
+            "explanationContent": {
+              "whyCorrect": "This is a general fact about tennis, so use the present simple.",
+              "grammarFocus": "Use present simple with frequency words (very often, usually, every day) and general facts.",
+              "wrongOptions": {
+                "are hitting": "\"are hitting\" describes something happening now, but the time clue signals a habit or routine."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "are hitting": "\"are hitting\" doesn't fit here → \"hit\" does, because describes something happening now, but the time clue signals a habit or routine."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-6",
@@ -1793,9 +1843,19 @@
             ],
             "answer": "check",
             "completedSentence": "I check my emails every evening.",
-            "explanation": "Every evening describes a routine, so use the present simple.",
             "answerMode": "tap_correct_conjugation",
-            "template": "I {choice} my emails every evening."
+            "template": "I {choice} my emails every evening.",
+            "explanationContent": {
+              "whyCorrect": "Every evening describes a routine, so use the present simple.",
+              "grammarFocus": "Use present simple with frequency words (very often, usually, every day) and general facts.",
+              "wrongOptions": {
+                "am checking": "\"am checking\" describes something happening now, but the time clue signals a habit or routine."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "am checking": "\"am checking\" doesn't fit here → \"check\" does, because describes something happening now, but the time clue signals a habit or routine."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-7",
@@ -1807,9 +1867,19 @@
             ],
             "answer": "Are they studying",
             "completedSentence": "Are they studying for the exam at the moment?",
-            "explanation": "At the moment signals the present continuous question form.",
             "answerMode": "tap_correct_conjugation",
-            "template": "{choice} for the exam at the moment?"
+            "template": "{choice} for the exam at the moment?",
+            "explanationContent": {
+              "whyCorrect": "At the moment signals the present continuous question form.",
+              "grammarFocus": "Use present continuous with time clues like right now, at the moment and this month.",
+              "wrongOptions": {
+                "Do they study": "\"Do they study\" does not match the present continuous time clue in this sentence."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "Do they study": "\"Do they study\" doesn't fit here → \"Are they studying\" does, because the time clue signals the present continuous."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-8",
@@ -1821,9 +1891,19 @@
             ],
             "answer": "are becoming",
             "completedSentence": "Maria and Ellie are becoming more confident these days.",
-            "explanation": "These days can describe a changing temporary situation, so the present continuous is natural.",
             "answerMode": "tap_correct_conjugation",
-            "template": "Maria and Ellie {choice} more confident these days."
+            "template": "Maria and Ellie {choice} more confident these days.",
+            "explanationContent": {
+              "whyCorrect": "These days can describe a changing temporary situation, so the present continuous is natural.",
+              "grammarFocus": "Present continuous can describe gradual changes over a period (becoming more confident these days).",
+              "wrongOptions": {
+                "become": "\"become\" does not describe a gradual change over time — the present continuous fits better."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "become": "\"become\" doesn't fit here → \"are becoming\" does, because it does not describe a gradual change over time — the present continuous fits better."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-9",
@@ -1835,9 +1915,19 @@
             ],
             "answer": "understands",
             "completedSentence": "A good teacher understands their students.",
-            "explanation": "Understand is normally stative, and this sentence expresses a general truth.",
             "answerMode": "tap_correct_conjugation",
-            "template": "A good teacher {choice} their students."
+            "template": "A good teacher {choice} their students.",
+            "explanationContent": {
+              "whyCorrect": "Understand is normally stative, and this sentence expresses a general truth.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "is understanding": "\"is understanding\" does not match the clue in the rest of the sentence (\"their students.\")."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "is understanding": "\"is understanding\" doesn't fit here → \"understands\" does, because it does not match the clue in the rest of the sentence (\"their students.\")."
+              }
+            }
           },
           {
             "id": "b1-u1-ex4-10",
@@ -1849,9 +1939,19 @@
             ],
             "answer": "do you pronounce",
             "completedSentence": "How do you pronounce this word?",
-            "explanation": "This asks about the general correct pronunciation of a word, so the present simple is natural.",
             "answerMode": "tap_correct_conjugation",
-            "template": "How {choice} this word?"
+            "template": "How {choice} this word?",
+            "explanationContent": {
+              "whyCorrect": "This asks about the general correct pronunciation of a word, so the present simple is natural.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "are you pronouncing": "\"are you pronouncing\" does not match the clue in the rest of the sentence (\"this word?\")."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "are you pronouncing": "\"are you pronouncing\" doesn't fit here → \"do you pronounce\" does, because it does not match the clue in the rest of the sentence (\"this word?\")."
+              }
+            }
           }
         ],
         "interaction": {

@@ -67,6 +67,48 @@ if (leaked.length) {
 console.log('PASS two_option_choice explanation builder');
 console.log('Sections:', keys.join(' → '));
 
+// two_option_choice — legacy Unit 1 present simple vs continuous (migrated content)
+const u1Ex4Item = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-4').items
+  .find((i) => i.id === 'b1-u1-ex4-2');
+
+const u1Ex4Screen = {
+  formatType: 'two_option_choice',
+  payload: {
+    sentenceBefore: u1Ex4Item.sentenceBefore,
+    sentenceAfter: u1Ex4Item.sentenceAfter,
+    options: u1Ex4Item.options,
+    answer: u1Ex4Item.answer,
+    completedSentence: u1Ex4Item.completedSentence,
+    explanationContent: u1Ex4Item.explanationContent
+  }
+};
+
+const u1Ex4Wrong = {
+  correct: false,
+  correctAnswer: "don't eat",
+  userAnswer: "aren't eating"
+};
+
+const u1Ex4Opts = SunePlayExplanation.buildExplainOpts(u1Ex4Screen, u1Ex4Wrong);
+const u1Ex4Keys = u1Ex4Opts.sections.map((s) => s.key);
+const u1Ex4Expected = ['correct', 'yourAnswer', 'optionContrast', 'grammarFocus', 'sentenceBreakdown'];
+const u1Ex4Missing = u1Ex4Expected.filter((k) => !u1Ex4Keys.includes(k));
+
+if (u1Ex4Missing.length) {
+  console.error('FAIL Unit1 ex4-2 missing sections:', u1Ex4Missing.join(', '));
+  process.exit(1);
+}
+
+const u1Ex4Contrast = u1Ex4Opts.sections.find((s) => s.key === 'optionContrast');
+if (!u1Ex4Contrast || !String(u1Ex4Contrast.text).includes("aren't eating")) {
+  console.error('FAIL Unit1 ex4-2 should explain why aren\'t eating is wrong');
+  process.exit(1);
+}
+
+console.log('PASS Unit1 ex4-2 two_option_choice explanation (present simple vs continuous)');
+console.log('Sections:', u1Ex4Keys.join(' → '));
+
 console.log('PASS excluded explanation sections filtered');
 
 // meaning_contrast
