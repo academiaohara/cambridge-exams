@@ -227,6 +227,40 @@ const PAIR_BUILDERS = {
       Yes: 'Yes would mean the statement is true, which does not match the clue.',
       No: 'No would mean the statement is false, which does not match the clue.'
     }
+  }),
+  'consent|grant': () => ({
+    whyCorrect: 'Grant permission is the natural collocation — organisations grant permission, they do not "consent permission".',
+    grammarFocus: 'Grant + direct object (grant permission, grant access). Consent is usually consent to + noun or consent that + clause.',
+    wrongOptions: {
+      consent: 'Consent does not combine directly with "permission" in this pattern — grant permission is the fixed phrase.'
+    },
+    usefulTip: 'If permission is the object after the verb, grant is usually the correct choice.'
+  }),
+  'free|freely': (item) => ({
+    whyCorrect: item.answer === 'free'
+      ? 'Roam free is a fixed expression meaning to move without restriction — freely would describe how an action is done, not the state here.'
+      : 'Freely describes the manner of an action; roam free is the natural collocation in this sentence.',
+    grammarFocus: 'Free can be an adjective after verbs like roam, walk, and run (go free / roam free). Freely is an adverb describing how something is done.',
+    wrongOptions: {
+      free: 'Free does not work as an adverb of manner here — the sentence needs freely.',
+      freely: 'Freely describes manner, but roam free is the fixed expression for moving without restriction.'
+    }
+  }),
+  'may have|should have': () => ({
+    whyCorrect: 'Should have shows criticism or advice about a past action that was the right thing to do — asking permission before borrowing was expected.',
+    grammarFocus: "Should have + past participle = it was the right/advisable thing to do. May have = possibility in the past.",
+    wrongOptions: {
+      'may have': 'May have only expresses past possibility — it does not criticise or say what was expected.'
+    },
+    usefulTip: 'If the speaker is saying what was the right thing to do, choose should have.'
+  }),
+  'rob|vote': () => ({
+    whyCorrect: 'Adults vote in elections — vote is the verb that collocates with elections. Rob means to steal.',
+    vocabularyFocus: 'Vote collocates with elections and democracy. Rob means to steal from someone using force or threats.',
+    wrongOptions: {
+      rob: 'Rob means to steal — it does not collocate with elections.'
+    },
+    usefulTip: 'Read the words after the gap — in elections points clearly to vote.'
   })
 };
 
@@ -276,9 +310,13 @@ function buildVocabularyContent(item, legacy) {
   const wrongStr = wrong ? String(wrong).trim() : '';
   const { after } = sentenceContext(item);
 
-  const whyCorrect = legacy && legacy.includes('→')
+  let whyCorrect = legacy && legacy.includes('→')
     ? buildWhyFromContext(item, answer, wrongStr)
     : (expandLegacyWhy(item, legacy) || buildWhyFromContext(item, answer, wrongStr));
+
+  if (!String(whyCorrect || '').trim()) {
+    whyCorrect = buildWhyFromContext(item, answer, wrongStr);
+  }
 
   let vocabularyFocus = '';
   if (wrongStr) {
@@ -372,7 +410,14 @@ function buildTenseChoiceContent(item, legacy) {
     usefulTip = 'Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.';
   }
 
-  if (/very often|usually|always|every day|every evening|in tennis/.test(full)) {
+  const optionsJoined = (item.options || []).join(' ').toLowerCase();
+  if (/\b(?:am|are|is|was|were|be|been|being)\s+\w+(?:ed|en|t)\b/.test(optionsJoined) ||
+      /\b(?:visited|completed|opened|cleaned|invited|built|made|taken|given|seen|done|written)\b/.test(optionsJoined)) {
+    grammarFocus = 'Passive voice uses a form of be + past participle. Match the tense of be to the time clue (each year → present, yesterday → past, etc.).';
+    usefulTip = 'Look for by + agent and time clues — they tell you which passive tense fits.';
+  }
+
+  if (/very often|usually|always|every day|every evening|each year|in tennis/.test(full)) {
     grammarFocus = 'Use present simple with frequency words (very often, usually, every day) and general facts.';
   } else if (/right now|at the moment|this month|today|tonight/.test(full)) {
     grammarFocus = 'Use present continuous with time clues like right now, at the moment and this month.';
@@ -403,10 +448,11 @@ function attachOptionContrast(item, content) {
 }
 
 function buildExplanationContent(item) {
-  const legacy = item.explanation || '';
+  const legacy = getLegacyExplanation(item);
   const key = pairKey(item.options);
   const builder = PAIR_BUILDERS[key];
 
+  let content;
   if (builder) {
     const built = builder(item);
     const wrong = otherOption(item);
@@ -424,19 +470,50 @@ function buildExplanationContent(item) {
       }
     }
 
-    return attachOptionContrast(item, built);
+    content = attachOptionContrast(item, built);
+  } else if (looksLikeTenseChoice(item)) {
+    content = buildTenseChoiceContent(item, legacy);
+  } else {
+    content = attachOptionContrast(item, buildVocabularyContent(item, legacy));
   }
 
-  if (looksLikeTenseChoice(item)) {
-    return buildTenseChoiceContent(item, legacy);
+  if (!content.whyCorrect || !String(content.whyCorrect).trim()) {
+    const answer = String(item.answer || '').trim();
+    const wrong = otherOption(item);
+    const wrongStr = wrong ? String(wrong).trim() : '';
+    content.whyCorrect = ensurePeriod(buildWhyFromContext(item, answer, wrongStr));
   }
 
-  return attachOptionContrast(item, buildVocabularyContent(item, legacy));
+  return content;
 }
 
 function isTwoOptionChoiceItem(exercise, item) {
   return item.formatType === 'two_option_choice' ||
     exercise.exerciseType === 'two_option_choice';
+}
+
+function getLegacyExplanation(item) {
+  if (item.explanation) return item.explanation;
+  const why = item.explanationContent && item.explanationContent.whyCorrect;
+  if (why && String(why).trim()) return why;
+  return '';
+}
+
+function hasGenericWhyCorrect(item) {
+  const why = item.explanationContent && item.explanationContent.whyCorrect;
+  return /^Only "[^"]+" fits the meaning created by the words before and after the gap\.?$/.test(
+    String(why || '').trim()
+  );
+}
+
+function needsRemigration(item) {
+  if (item.explanation) return true;
+  const ec = item.explanationContent;
+  if (!ec) return true;
+  if (!ec.whyCorrect || !String(ec.whyCorrect).trim()) return true;
+  if (looksLikeTenseChoice(item) && !ec.grammarFocus) return true;
+  if (looksLikeTenseChoice(item) && hasGenericWhyCorrect(item)) return true;
+  return false;
 }
 
 function migrateFile(filePath) {
@@ -447,7 +524,7 @@ function migrateFile(filePath) {
   for (const exercise of data.contentBanks?.exercises || []) {
     for (const item of exercise.items || []) {
       if (!isTwoOptionChoiceItem(exercise, item)) continue;
-      if (item.explanationContent && !item.explanation) continue;
+      if (!needsRemigration(item)) continue;
 
       item.explanationContent = buildExplanationContent(item);
       delete item.explanation;

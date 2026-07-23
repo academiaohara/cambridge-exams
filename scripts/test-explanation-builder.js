@@ -7,6 +7,7 @@
 import fs from 'fs';
 import path from 'path';
 import vm from 'vm';
+import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -1207,4 +1208,14 @@ if (!convGapBreakdown || !String(convGapBreakdown.text).includes(pvDisplay)) {
 
 console.log('PASS conversation_gap_fill explanation builder');
 console.log('Sections:', convGapKeys.join(' → '));
+
+const audit = spawnSync('node', ['scripts/audit-two-option-explanations.js'], {
+  cwd: ROOT,
+  encoding: 'utf8'
+});
+if (audit.status !== 0) {
+  console.error((audit.stdout || '') + (audit.stderr || ''));
+  process.exit(audit.status || 1);
+}
+console.log(String(audit.stdout || '').trim());
 
