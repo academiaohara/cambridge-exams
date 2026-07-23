@@ -1133,9 +1133,19 @@
             ],
             "answer": "I ate lunch an hour ago.",
             "completedSentence": "I don't want another sandwich because I ate lunch an hour ago.",
-            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
             "answerMode": "tap_correct_ending",
-            "template": "I don't want another sandwich because {choice}"
+            "template": "I don't want another sandwich because {choice}",
+            "explanationContent": {
+              "whyCorrect": "The ending gives the past reason that explains the first part of the sentence.",
+              "vocabularyFocus": "\"I ate lunch an hour ago.\" collocates with the rest of the sentence. \"I bought one last month.\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "I bought one last month.": "\"I bought one last month.\" does not match the clue in the rest of the sentence."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "I bought one last month.": "\"I bought one last month.\" doesn't fit here → \"I ate lunch an hour ago.\" does, because it does not match the clue in the rest of the sentence."
+              }
+            }
           },
           {
             "id": "b1-u2-ex2-2",
@@ -1149,9 +1159,19 @@
             ],
             "answer": "I bought one last month.",
             "completedSentence": "I don't need your bike because I bought one last month.",
-            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
             "answerMode": "tap_correct_ending",
-            "template": "I don't need your bike because {choice}"
+            "template": "I don't need your bike because {choice}",
+            "explanationContent": {
+              "whyCorrect": "The ending gives the past reason that explains the first part of the sentence.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "I visited it last year.": "\"I visited it last year.\" does not match the clue in the rest of the sentence."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "I visited it last year.": "\"I visited it last year.\" doesn't fit here → \"I bought one last month.\" does, because it does not match the clue in the rest of the sentence."
+              }
+            }
           },
           {
             "id": "b1-u2-ex2-3",
@@ -1165,9 +1185,19 @@
             ],
             "answer": "I visited it last year.",
             "completedSentence": "I know a lot about Rome because I visited it last year.",
-            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
             "answerMode": "tap_correct_ending",
-            "template": "I know a lot about Rome because {choice}"
+            "template": "I know a lot about Rome because {choice}",
+            "explanationContent": {
+              "whyCorrect": "The ending gives the past reason that explains the first part of the sentence.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "I tidied it yesterday.": "\"I tidied it yesterday.\" does not match the present continuous time clue in this sentence."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "I tidied it yesterday.": "\"I tidied it yesterday.\" doesn't fit here → \"I visited it last year.\" does, because does not match the present continuous time clue in this sentence."
+              }
+            }
           },
           {
             "id": "b1-u2-ex2-4",
@@ -1181,9 +1211,19 @@
             ],
             "answer": "I tidied it yesterday.",
             "completedSentence": "I don't have to clean my room now because I tidied it yesterday.",
-            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
             "answerMode": "tap_correct_ending",
-            "template": "I don't have to clean my room now because {choice}"
+            "template": "I don't have to clean my room now because {choice}",
+            "explanationContent": {
+              "whyCorrect": "The ending gives the past reason that explains the first part of the sentence.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "I lost it last weekend.": "\"I lost it last weekend.\" does not match the present continuous time clue in this sentence."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "I lost it last weekend.": "\"I lost it last weekend.\" doesn't fit here → \"I tidied it yesterday.\" does, because does not match the present continuous time clue in this sentence."
+              }
+            }
           },
           {
             "id": "b1-u2-ex2-5",
@@ -1197,9 +1237,19 @@
             ],
             "answer": "I lost it last weekend.",
             "completedSentence": "I can't play that computer game any more because I lost it last weekend.",
-            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
             "answerMode": "tap_correct_ending",
-            "template": "I can't play that computer game any more because {choice}"
+            "template": "I can't play that computer game any more because {choice}",
+            "explanationContent": {
+              "whyCorrect": "The ending gives the past reason that explains the first part of the sentence.",
+              "vocabularyFocus": "\"I lost it last weekend.\" collocates with the rest of the sentence. \"I forgot his birthday.\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "I forgot his birthday.": "\"I forgot his birthday.\" does not match the clue in the rest of the sentence."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "I forgot his birthday.": "\"I forgot his birthday.\" doesn't fit here → \"I lost it last weekend.\" does, because it does not match the clue in the rest of the sentence."
+              }
+            }
           },
           {
             "id": "b1-u2-ex2-6",
@@ -1213,9 +1263,19 @@
             ],
             "answer": "I forgot his birthday.",
             "completedSentence": "Dad is upset with me because I forgot his birthday.",
-            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
             "answerMode": "tap_correct_ending",
-            "template": "Dad is upset with me because {choice}"
+            "template": "Dad is upset with me because {choice}",
+            "explanationContent": {
+              "whyCorrect": "The ending gives the past reason that explains the first part of the sentence.",
+              "vocabularyFocus": "\"I forgot his birthday.\" collocates with the rest of the sentence. \"I ate lunch an hour ago.\" would change the meaning or is the wrong register for this context.",
+              "wrongOptions": {
+                "I ate lunch an hour ago.": "\"I ate lunch an hour ago.\" does not match the clue in the rest of the sentence."
+              },
+              "usefulTip": "When two words look similar, read the whole sentence — the clue is usually before or after the gap.",
+              "optionContrast": {
+                "I ate lunch an hour ago.": "\"I ate lunch an hour ago.\" doesn't fit here → \"I forgot his birthday.\" does, because it does not match the clue in the rest of the sentence."
+              }
+            }
           }
         ],
         "originalSubtype": "matching",
@@ -1411,9 +1471,19 @@
             "answer": "walked",
             "completedSentence": "When we were in Scotland, we walked in the mountains every day.",
             "originalSentence": "When we were in Scotland, we **walked / were walking** in the mountains every day.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "When we were in Scotland, we {choice} in the mountains every day."
+            "template": "When we were in Scotland, we {choice} in the mountains every day.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Use present simple with frequency words (very often, usually, every day) and general facts.",
+              "wrongOptions": {
+                "were walking": "\"were walking\" describes something happening now, but the time clue signals a habit or routine."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "were walking": "\"were walking\" doesn't fit here → \"walked\" does, because the sentence describes a general habit, not a temporary action."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-2",
@@ -1426,9 +1496,19 @@
             "answer": "started",
             "completedSentence": "A few years ago, I started learning Japanese.",
             "originalSentence": "A few years ago, I **started / was starting** learning Japanese.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "A few years ago, I {choice} learning Japanese."
+            "template": "A few years ago, I {choice} learning Japanese.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "was starting": "\"was starting\" does not match the clue in the rest of the sentence (\"learning Japanese.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "was starting": "\"was starting\" doesn't fit here → \"started\" does, because it does not match the clue in the rest of the sentence (\"learning Japanese.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-3",
@@ -1441,9 +1521,19 @@
             "answer": "was making",
             "completedSentence": "Emma was making dinner when the guests arrived.",
             "originalSentence": "Emma **made / was making** dinner when the guests arrived.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "Emma {choice} dinner when the guests arrived."
+            "template": "Emma {choice} dinner when the guests arrived.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "made": "\"made\" does not match the clue in the rest of the sentence (\"dinner when the guests arrived.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "made": "\"made\" doesn't fit here → \"was making\" does, because it does not match the clue in the rest of the sentence (\"dinner when the guests arrived.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-4",
@@ -1456,9 +1546,19 @@
             "answer": "was snowing",
             "completedSentence": "We hurried home because it was snowing heavily.",
             "originalSentence": "We hurried home because it **snowed / was snowing** heavily.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "We hurried home because it {choice} heavily."
+            "template": "We hurried home because it {choice} heavily.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "snowed": "\"snowed\" does not match the clue in the rest of the sentence (\"heavily.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "snowed": "\"snowed\" doesn't fit here → \"was snowing\" does, because it does not match the clue in the rest of the sentence (\"heavily.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-5",
@@ -1471,9 +1571,19 @@
             "answer": "were fighting",
             "completedSentence": "Two children were fighting in the playground, so a teacher stopped them.",
             "originalSentence": "Two children **fought / were fighting** in the playground, so a teacher stopped them.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "Two children {choice} in the playground, so a teacher stopped them."
+            "template": "Two children {choice} in the playground, so a teacher stopped them.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "fought": "\"fought\" does not match the clue in the rest of the sentence (\"in the playground, so a teacher stopped them.\")."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "fought": "\"fought\" doesn't fit here → \"were fighting\" does, because it does not match the clue in the rest of the sentence (\"in the playground, so a teacher stopped them.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-6",
@@ -1486,9 +1596,19 @@
             "answer": "sent",
             "completedSentence": "Chris sent me a text message yesterday afternoon.",
             "originalSentence": "Chris **sent / was sending** me a text message yesterday afternoon.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "Chris {choice} me a text message yesterday afternoon."
+            "template": "Chris {choice} me a text message yesterday afternoon.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "was sending": "\"was sending\" does not match the clue in the rest of the sentence (\"me a text message yesterday afternoon.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "was sending": "\"was sending\" doesn't fit here → \"sent\" does, because it does not match the clue in the rest of the sentence (\"me a text message yesterday afternoon.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-7",
@@ -1501,9 +1621,19 @@
             "answer": "were having",
             "completedSentence": "We were having dinner when somebody knocked at the door.",
             "originalSentence": "We **had / were having** dinner when somebody knocked at the door.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "We {choice} dinner when somebody knocked at the door."
+            "template": "We {choice} dinner when somebody knocked at the door.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Present simple describes habits, routines and general facts. Present continuous describes actions happening now or temporary situations.",
+              "wrongOptions": {
+                "had": "\"had\" does not match the clue in the rest of the sentence (\"dinner when somebody knocked at the door.\")."
+              },
+              "usefulTip": "Look for time clues — frequency words (very often, usually) point to present simple; right now and at the moment point to present continuous.",
+              "optionContrast": {
+                "had": "\"had\" doesn't fit here → \"were having\" does, because it does not match the clue in the rest of the sentence (\"dinner when somebody knocked at the door.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-8",
@@ -1516,9 +1646,19 @@
             "answer": "was baking",
             "completedSentence": "As I passed the kitchen, I saw Mum was baking a cake.",
             "originalSentence": "As I passed the kitchen, I saw Mum **baked / was baking** a cake.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "As I passed the kitchen, I saw Mum {choice} a cake."
+            "template": "As I passed the kitchen, I saw Mum {choice} a cake.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "baked": "\"baked\" does not match the clue in the rest of the sentence (\"a cake.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "baked": "\"baked\" doesn't fit here → \"was baking\" does, because it does not match the clue in the rest of the sentence (\"a cake.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-9",
@@ -1531,9 +1671,19 @@
             "answer": "was sleeping",
             "completedSentence": "I was sleeping when the storm began.",
             "originalSentence": "I **slept / was sleeping** when the storm began.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "I {choice} when the storm began."
+            "template": "I {choice} when the storm began.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "slept": "\"slept\" does not match the clue in the rest of the sentence (\"when the storm began.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "slept": "\"slept\" doesn't fit here → \"was sleeping\" does, because it does not match the clue in the rest of the sentence (\"when the storm began.\")."
+              }
+            }
           },
           {
             "id": "b1-u2-ex4-10",
@@ -1546,9 +1696,19 @@
             "answer": "was doing",
             "completedSentence": "While Jake was doing his homework, his sister listened to music.",
             "originalSentence": "While Jake **did / was doing** his homework, his sister listened to music.",
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
             "answerMode": "tap_correct_conjugation",
-            "template": "While Jake {choice} his homework, his sister listened to music."
+            "template": "While Jake {choice} his homework, his sister listened to music.",
+            "explanationContent": {
+              "whyCorrect": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+              "grammarFocus": "Past simple describes completed events. Past continuous describes actions in progress or background situations.",
+              "wrongOptions": {
+                "did": "\"did\" does not match the clue in the rest of the sentence (\"his homework, his sister listened to music.\")."
+              },
+              "usefulTip": "Every day / an hour ago often signal past simple; while / when + past continuous often describe background actions.",
+              "optionContrast": {
+                "did": "\"did\" doesn't fit here → \"was doing\" does, because it does not match the clue in the rest of the sentence (\"his homework, his sister listened to music.\")."
+              }
+            }
           }
         ],
         "interaction": {
