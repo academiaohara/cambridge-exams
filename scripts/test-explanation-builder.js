@@ -68,6 +68,42 @@ if (leaked.length) {
 console.log('PASS two_option_choice explanation builder');
 console.log('Sections:', keys.join(' → '));
 
+// two_option_choice — correct answer should still show teaching sections
+const u3Item = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit3.v2.json'), 'utf8'))
+  .contentBanks.exercises.find((e) => e.id === 'b1-u3-ex-c').items
+  .find((i) => i.id === 'b1-u3-exc-1');
+
+const u3Screen = {
+  formatType: 'two_option_choice',
+  payload: {
+    sentenceBefore: u3Item.sentenceBefore,
+    sentenceAfter: u3Item.sentenceAfter,
+    options: u3Item.options,
+    answer: u3Item.answer,
+    completedSentence: u3Item.completedSentence,
+    explanationContent: u3Item.explanationContent
+  }
+};
+
+const u3Correct = {
+  correct: true,
+  correctAnswer: 'video',
+  userAnswer: 'video'
+};
+
+const u3CorrectOpts = SunePlayExplanation.buildExplainOpts(u3Screen, u3Correct);
+const u3CorrectKeys = u3CorrectOpts.sections.map((s) => s.key);
+const u3CorrectExpected = ['correct', 'whyCorrect', 'vocabularyFocus', 'usefulTip', 'sentenceBreakdown'];
+const u3CorrectMissing = u3CorrectExpected.filter((k) => !u3CorrectKeys.includes(k));
+
+if (u3CorrectMissing.length) {
+  console.error('FAIL Unit3 ex-c correct answer missing sections:', u3CorrectMissing.join(', '));
+  process.exit(1);
+}
+
+console.log('PASS Unit3 ex-c two_option_choice explanation (correct answer)');
+console.log('Sections:', u3CorrectKeys.join(' → '));
+
 // two_option_choice — legacy Unit 1 present simple vs continuous (migrated content)
 const u1Ex4Item = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Unit1.json'), 'utf8'))
   .contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-4').items
