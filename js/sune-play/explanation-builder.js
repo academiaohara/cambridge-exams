@@ -1313,6 +1313,49 @@ var SunePlayExplanation = (function() {
       .trim();
   }
 
+  function splitCrosswordClueParts(clue) {
+    if (typeof LearningCrossword !== 'undefined' && LearningCrossword.splitClueParts) {
+      return LearningCrossword.splitClueParts(clue);
+    }
+    if (!clue) return { definition: '', phrase: '' };
+    var text = String(clue).replace(/\s*\(\d+\)\s*$/, '').trim();
+    var sep = text.indexOf(' | ');
+    if (sep === -1) {
+      sep = text.indexOf(' — ');
+      if (sep !== -1) {
+        return {
+          definition: text.slice(0, sep).trim(),
+          phrase: text.slice(sep + 3).trim()
+        };
+      }
+      return { definition: '', phrase: text };
+    }
+    return {
+      definition: text.slice(0, sep).trim(),
+      phrase: text.slice(sep + 3).trim()
+    };
+  }
+
+  function buildCrosswordClueContext(clue) {
+    var parts = splitCrosswordClueParts(clue);
+    var lines = [];
+    if (parts.definition) lines.push(parts.definition);
+    if (parts.phrase) lines.push(gapSentenceDisplay(parts.phrase));
+    if (lines.length) {
+      return {
+        text: lines.join('\n'),
+        parts: {
+          definition: parts.definition || '',
+          phrase: parts.phrase ? gapSentenceDisplay(parts.phrase) : ''
+        }
+      };
+    }
+    return {
+      text: cleanCrosswordClue(clue),
+      parts: null
+    };
+  }
+
   function isNoCommaAnswer(answer) {
     return /^no commas/i.test(String(answer || '').trim());
   }
@@ -2079,10 +2122,12 @@ var SunePlayExplanation = (function() {
       }
     }
 
+    var cwContext = buildCrosswordClueContext(p.clue || '');
     return {
       title: 'Explanation',
       formatType: 'crossword_clues',
-      context: buildContext(screen),
+      context: cwContext.text,
+      contextParts: cwContext.parts,
       sections: sections
     };
   }
@@ -2371,9 +2416,7 @@ var SunePlayExplanation = (function() {
       return gapSentenceDisplay(p.sentence || p.blankSentence || '');
     }
     if (screen.formatType === 'crossword_clues') {
-      var cwClue = cleanCrosswordClue(p.clue || '');
-      if (p.clueNumber != null && cwClue) return String(p.clueNumber) + '. ' + cwClue;
-      return cwClue;
+      return buildCrosswordClueContext(p.clue || '').text;
     }
     if (screen.formatType === 'comma_placement') {
       return String(p.sentence || '').trim();
