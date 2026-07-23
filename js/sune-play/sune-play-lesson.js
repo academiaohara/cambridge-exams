@@ -1608,10 +1608,6 @@
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
     updateExerciseTip(lessonState.currentScreen, result);
-    if (typeof SunePlayExplanation !== 'undefined' &&
-        SunePlayExplanation.hasTeachingSections(lessonState.currentScreen, result)) {
-      openExerciseExplanation();
-    }
   }
 
   function finishSession() {
