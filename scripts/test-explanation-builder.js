@@ -811,6 +811,41 @@ if (!String(cwOpts.context).includes('notes')) {
   process.exit(1);
 }
 
+if (/^\d+\.\s/.test(String(cwOpts.context))) {
+  console.error('FAIL crossword_clues context should not include clue number');
+  process.exit(1);
+}
+
+if (!String(cwOpts.context).includes('___')) {
+  console.error('FAIL crossword_clues context should show gap in phrase');
+  process.exit(1);
+}
+
+const cwEnrichedScreen = {
+  formatType: 'crossword_clues',
+  payload: {
+    clueNumber: 8,
+    clue: 'The act of trying to win against others. | We entered a swimming ...... at the sports centre.',
+    answer: 'competition',
+    letterCount: 11,
+    explanationContent: cwItem.explanationContent
+  }
+};
+
+const cwEnrichedOpts = SunePlayExplanation.buildExplainOpts(cwEnrichedScreen, cwWrong);
+if (!cwEnrichedOpts.contextParts || !cwEnrichedOpts.contextParts.definition.includes('trying to win')) {
+  console.error('FAIL crossword_clues enriched context should include definition');
+  process.exit(1);
+}
+if (!cwEnrichedOpts.contextParts.phrase.includes('swimming ___ at the sports centre')) {
+  console.error('FAIL crossword_clues enriched context should include phrase with gap');
+  process.exit(1);
+}
+if (/^\d+\.\s/.test(String(cwEnrichedOpts.context)) || String(cwEnrichedOpts.context).includes(' | ')) {
+  console.error('FAIL crossword_clues enriched context should not include clue number or separator');
+  process.exit(1);
+}
+
 console.log('PASS crossword_clues explanation builder');
 console.log('Sections:', cwKeys.join(' → '));
 

@@ -296,29 +296,55 @@ var LessonExplanation = (function() {
     }).join('');
   }
 
-  function contextBlockHtml(label, text, variant) {
-    if (!text) return '';
+  function crosswordContextBodyHtml(contextParts) {
+    var cp = contextParts || {};
+    if (!cp.definition && !cp.phrase) return '';
+    if (cp.definition && cp.phrase) {
+      return '<div class="sp-cw-clue-body">' +
+        '<p class="sp-cw-clue-text sp-cw-clue-text--definition">' + formatContextLine(cp.definition) + '</p>' +
+        '<p class="sp-cw-clue-text sp-cw-clue-text--phrase">' + formatContextLine(cp.phrase) + '</p>' +
+        '</div>';
+    }
+    if (cp.definition) {
+      return '<p class="sp-cw-clue-text sp-cw-clue-text--definition">' + formatContextLine(cp.definition) + '</p>';
+    }
+    return '<p class="sp-cw-clue-text sp-cw-clue-text--phrase">' + formatContextLine(cp.phrase) + '</p>';
+  }
+
+  function contextBodyHtml(text, contextParts) {
+    if (contextParts && (contextParts.definition || contextParts.phrase)) {
+      return crosswordContextBodyHtml(contextParts);
+    }
+    return formatContextText(text);
+  }
+
+  function contextBlockHtml(label, text, variant, contextParts) {
+    if (!text && !(contextParts && (contextParts.definition || contextParts.phrase))) return '';
     var blockClass = variant === 'question'
       ? 'lesson-explanation-question'
       : 'lesson-explanation-answer';
     var icon = variant === 'question' ? 'quiz' : 'check_circle';
+    var bodyClass = blockClass + '-text';
+    if (contextParts && (contextParts.definition || contextParts.phrase)) {
+      bodyClass += ' sp-explanation-card-context-text';
+    }
     return '<div class="' + blockClass + '">' +
         '<span class="' + blockClass + '-label">' +
           '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>' +
           esc(label) +
         '</span>' +
-        '<p class="' + blockClass + '-text">' + formatContextText(text) + '</p>' +
+        '<div class="' + bodyClass + '">' + contextBodyHtml(text, contextParts) + '</div>' +
       '</div>';
   }
 
-  function cardContextHtml(text) {
-    if (!text) return '';
+  function cardContextHtml(text, contextParts) {
+    if (!text && !(contextParts && (contextParts.definition || contextParts.phrase))) return '';
     return '<div class="sp-explanation-card-context">' +
         '<span class="sp-explanation-card-context-label">' +
           '<span class="material-symbols-outlined" aria-hidden="true">quiz</span>' +
           'Question' +
         '</span>' +
-        '<p class="sp-explanation-card-context-text">' + formatContextText(text) + '</p>' +
+        '<div class="sp-explanation-card-context-text">' + contextBodyHtml(text, contextParts) + '</div>' +
       '</div>';
   }
 
@@ -332,8 +358,8 @@ var LessonExplanation = (function() {
     close();
     _onClose = opts.onClose || null;
 
-    var contextHtml = normalized.context
-      ? contextBlockHtml('Question', normalized.context, 'question')
+    var contextHtml = normalized.context || (normalized.contextParts && (normalized.contextParts.definition || normalized.contextParts.phrase))
+      ? contextBlockHtml('Question', normalized.context, 'question', normalized.contextParts)
       : '';
 
     mountEl.classList.add('sp-explanation-inline-mount');
@@ -395,8 +421,8 @@ var LessonExplanation = (function() {
     sheet.setAttribute('aria-modal', 'true');
     sheet.setAttribute('aria-label', 'Explanation');
 
-    var contextHtml = normalized.context
-      ? contextBlockHtml('Question', normalized.context, 'question')
+    var contextHtml = normalized.context || (normalized.contextParts && (normalized.contextParts.definition || normalized.contextParts.phrase))
+      ? contextBlockHtml('Question', normalized.context, 'question', normalized.contextParts)
       : '';
 
     var closeLabel = opts.compact ? 'close' : 'arrow_back';
@@ -461,7 +487,7 @@ var LessonExplanation = (function() {
     view.setAttribute('aria-label', normalized.title || 'Explanation');
     view.innerHTML =
         '<div class="sp-explanation-card-view-inner">' +
-          cardContextHtml(normalized.context) +
+          cardContextHtml(normalized.context, normalized.contextParts) +
           cardStructuredHtml(normalized) +
         '</div>';
 
