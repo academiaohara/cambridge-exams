@@ -615,15 +615,6 @@
     return !!(result && result.explanation);
   }
 
-  function shouldAutoOpenExplanation(result) {
-    if (!result || result.correct) return false;
-    var screen = lessonState.currentScreen;
-    if (screen && screen.showExplanationAfterIncorrect === false) return false;
-    var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
-    if (globalRules.showExplanationAfterIncorrect === false) return false;
-    return screenHasExplanation(screen, result);
-  }
-
   function openExerciseExplanation() {
     if (typeof LessonExplanation === 'undefined') return false;
     var cardEl = getExerciseCardEl();
@@ -1588,9 +1579,6 @@
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
     updateExerciseTip(lessonState.currentScreen, result);
-    if (shouldAutoOpenExplanation(result)) {
-      openExerciseExplanation();
-    }
   }
 
   function finishSession() {
