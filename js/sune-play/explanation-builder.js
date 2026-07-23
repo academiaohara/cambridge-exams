@@ -138,6 +138,7 @@ var SunePlayExplanation = (function() {
   function pickFocusSection(content) {
     if (!content) return null;
     if (content.grammarFocus) return { key: 'grammarFocus', text: content.grammarFocus };
+    if (content.vocabularyFocus) return { key: 'vocabularyFocus', text: content.vocabularyFocus };
     return null;
   }
 
@@ -153,12 +154,18 @@ var SunePlayExplanation = (function() {
     return ft === 'error_correction' || ft === 'full_sentence_write';
   }
 
-  function finalizeExplanation(view) {
+  function finalizeExplanation(view, result) {
     if (!view || !view.sections) return view;
+    var isCorrect = !result || result.correct !== false;
     var showWhy = shouldShowWhyCorrectSection(view);
     view.sections = view.sections.filter(function(section) {
-      if (section.key === 'whyCorrect') return showWhy && !!String(section.text || '').trim();
-      return !EXPLANATION_EXCLUDED_SECTION_KEYS[section.key];
+      if (section.key === 'whyCorrect') {
+        return (showWhy || isCorrect) && !!String(section.text || '').trim();
+      }
+      if (EXPLANATION_EXCLUDED_SECTION_KEYS[section.key]) {
+        return isCorrect;
+      }
+      return true;
     });
     return view;
   }
@@ -2541,7 +2548,7 @@ var SunePlayExplanation = (function() {
       default:
         view = buildLegacy(screen, result);
     }
-    return finalizeExplanation(view);
+    return finalizeExplanation(view, result);
   }
 
   return {
