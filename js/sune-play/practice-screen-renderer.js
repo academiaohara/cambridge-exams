@@ -2814,6 +2814,7 @@
           answer: p.answer,
           acceptedAnswers: p.acceptedAnswers,
           explanation: p.explanation,
+          explanationContent: p.explanationContent,
           minWords: p.minWords,
           maxWords: p.maxWords
         }, { instructions: p.instruction, studentInstruction: p.instruction })
