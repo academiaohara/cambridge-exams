@@ -2260,19 +2260,40 @@
     if (!screen || screen.formatType !== 'column_matching') return null;
     if (!isCmSequentialMode(screen)) return null;
 
-    var activePairId = getCmActivePairId(root, screen);
-    var pair = getCmPairPayload(screen, activePairId);
-    if (!pair || !pair.explanation) return null;
+    var pairs = (screen.payload && screen.payload.pairs) || [];
+    if (!pairs.length) return null;
 
+    var locked = getCmLockedPairs(root);
+    var activePairId = getCmActivePairId(root, screen);
     var pendingLetter = getCmPendingLetter(root);
     var postWrong = root._cmShowExplainAfterWrong;
-    if (!pendingLetter && !postWrong) return null;
+    var hasPreview = !!(pendingLetter || postWrong);
+
+    var resolvedPairs = pairs.filter(function(pair) {
+      return !!locked[String(pair.pairId)];
+    });
+    if (!resolvedPairs.length && !hasPreview) return null;
+
+    var selectedPairId = activePairId;
+    if (!locked[String(activePairId)] && !hasPreview) {
+      selectedPairId = resolvedPairs.length
+        ? resolvedPairs[resolvedPairs.length - 1].pairId
+        : activePairId;
+    }
 
     return {
       title: 'Explanation',
-      context: pair.leftText,
-      explanation: pair.explanation,
-      correctAnswer: pair.correctLetter,
+      columnMatchPairs: pairs.map(function(pair) {
+        return {
+          pairId: pair.pairId,
+          leftText: pair.leftText,
+          explanation: pair.explanation,
+          correctLetter: pair.correctLetter,
+          resolved: !!locked[String(pair.pairId)]
+        };
+      }),
+      selectedPairId: selectedPairId,
+      allowPreviewUnresolved: hasPreview,
       continueLabel: 'Close'
     };
   }

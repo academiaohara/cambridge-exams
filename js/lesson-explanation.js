@@ -239,7 +239,95 @@ var LessonExplanation = (function() {
     return null;
   }
 
+  function getColumnMatchPairById(pairs, pairId) {
+    return (pairs || []).find(function(pair) {
+      return String(pair.pairId) === String(pairId);
+    }) || null;
+  }
+
+  function columnMatchPairPanelInnerHtml(pair) {
+    if (!pair) return '';
+    var sections = [];
+    if (pair.correctLetter) sections.push({ key: 'correct', text: pair.correctLetter });
+    if (pair.explanation) sections.push({ key: 'whyCorrect', text: pair.explanation });
+    if (!sections.length) return '';
+    var defs = getSectionDefs({});
+    return cardContextHtml(pair.leftText) +
+      '<div class="sp-explanation-sections">' +
+        sections.map(function(section) {
+          return sectionBlockHtml(section, defs, 'card');
+        }).join('') +
+      '</div>';
+  }
+
+  function columnMatchTilesHtml(pairs, selectedPairId, allowPreviewUnresolved) {
+    return '<div class="sp-cm-explanation-tiles" role="tablist" aria-label="Pair explanations">' +
+      (pairs || []).map(function(pair) {
+        var isSelected = String(pair.pairId) === String(selectedPairId);
+        var isPreview = !pair.resolved && allowPreviewUnresolved && isSelected;
+        var attrs = ' data-pair-id="' + esc(pair.pairId) + '"';
+        if (pair.resolved) {
+          return '<button type="button" class="sp-cm-explanation-tile' +
+            (isSelected ? ' sp-cm-explanation-tile--active' : '') +
+            '" role="tab" aria-selected="' + (isSelected ? 'true' : 'false') + '"' + attrs + '>' +
+            esc(pair.pairId) + '</button>';
+        }
+        if (isPreview) {
+          return '<span class="sp-cm-explanation-tile sp-cm-explanation-tile--preview sp-cm-explanation-tile--active" aria-disabled="true"' + attrs + '>' +
+            esc(pair.pairId) + '</span>';
+        }
+        return '<span class="sp-cm-explanation-tile sp-cm-explanation-tile--disabled" aria-disabled="true"' + attrs + '>' +
+          esc(pair.pairId) + '</span>';
+      }).join('') +
+    '</div>';
+  }
+
+  function bindColumnMatchExplanation(view, opts) {
+    var pairs = opts.columnMatchPairs || [];
+    var selectedPairId = opts.selectedPairId;
+    var tilesEl = view.querySelector('.sp-cm-explanation-tiles');
+    var panel = view.querySelector('.sp-cm-explanation-panel');
+    if (!tilesEl || !panel) return;
+
+    function updateTilesActive() {
+      tilesEl.querySelectorAll('.sp-cm-explanation-tile').forEach(function(tile) {
+        var tileId = tile.getAttribute('data-pair-id');
+        var isActive = String(tileId) === String(selectedPairId);
+        tile.classList.toggle('sp-cm-explanation-tile--active', isActive);
+        if (tile.tagName === 'BUTTON') {
+          tile.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        }
+      });
+    }
+
+    function selectPair(pairId) {
+      var pair = getColumnMatchPairById(pairs, pairId);
+      if (!pair || !pair.resolved) return;
+      selectedPairId = pairId;
+      panel.innerHTML = columnMatchPairPanelInnerHtml(pair);
+      updateTilesActive();
+    }
+
+    tilesEl.addEventListener('click', function(e) {
+      var btn = e.target.closest('button.sp-cm-explanation-tile[data-pair-id]');
+      if (!btn) return;
+      selectPair(btn.getAttribute('data-pair-id'));
+    });
+  }
+
   function hasRenderableContent(opts) {
+    if (!opts) return false;
+    if (opts.columnMatchPairs && opts.columnMatchPairs.length) {
+      var hasResolved = opts.columnMatchPairs.some(function(pair) {
+        return pair.resolved && (pair.explanation || pair.leftText);
+      });
+      if (hasResolved) return true;
+      if (opts.allowPreviewUnresolved) {
+        var previewPair = getColumnMatchPairById(opts.columnMatchPairs, opts.selectedPairId);
+        return !!(previewPair && previewPair.explanation);
+      }
+      return false;
+    }
     var normalized = normalizeOpts(opts);
     return !!(normalized && normalized.sections && normalized.sections.length);
   }
@@ -473,8 +561,39 @@ var LessonExplanation = (function() {
   }
 
   function openInCard(cardEl, opts) {
+    if (!cardEl || !opts) return;
+
+    if (opts.columnMatchPairs && opts.columnMatchPairs.length) {
+      if (!hasRenderableContent(opts)) return;
+      closeInCard(cardEl);
+
+      var screen = cardEl.querySelector('.sp-screen');
+      if (screen) screen.hidden = true;
+
+      var initialPair = getColumnMatchPairById(opts.columnMatchPairs, opts.selectedPairId);
+      if (!initialPair || (!initialPair.resolved && !opts.allowPreviewUnresolved)) {
+        initialPair = opts.columnMatchPairs.find(function(pair) { return pair.resolved; }) || initialPair;
+      }
+
+      var view = document.createElement('div');
+      view.className = 'sp-explanation-card-view';
+      view.id = CARD_VIEW_ID;
+      view.setAttribute('role', 'region');
+      view.setAttribute('aria-label', opts.title || 'Explanation');
+      view.innerHTML =
+          '<div class="sp-explanation-card-view-inner">' +
+            columnMatchTilesHtml(opts.columnMatchPairs, opts.selectedPairId, opts.allowPreviewUnresolved) +
+            '<div class="sp-cm-explanation-panel">' + columnMatchPairPanelInnerHtml(initialPair) + '</div>' +
+          '</div>';
+
+      cardEl.appendChild(view);
+      cardEl.classList.add('sp-exercise-card--explanation');
+      bindColumnMatchExplanation(view, opts);
+      return;
+    }
+
     var normalized = normalizeOpts(opts);
-    if (!cardEl || !normalized) return;
+    if (!normalized) return;
     closeInCard(cardEl);
 
     var screen = cardEl.querySelector('.sp-screen');
