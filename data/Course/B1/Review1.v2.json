@@ -244,7 +244,7 @@
           "requireWordBankAssignment": false,
           "gapInputStyle": "underline_expand"
         },
-        "passage": "My brother has a huge comic book (1) ...... (COLLECT). One of his favourite (2) ...... (HERO) is Spider-Man. He started buying comics during his (3) ...... (CHILD) and now he has hundreds. Some of the stories are full of exciting (4) ...... (ACT) scenes, while others are more funny than dramatic. He often visits comic fairs with other (5) ...... (FAN) and sometimes dresses as famous characters. He says comics are great (6) ...... (ENTERTAIN) and help him relax after school. Last month, he even met a well-known comic book (7) ...... (ART) who signed one of his books. He's also becoming a serious comic (8) ...... (COLLECT) and spends all his pocket money on rare editions.",
+        "passage": "[1]My brother has a huge comic book (1) ...... (COLLECT).[/1] [2]One of his favourite (2) ...... (HERO) is Spider-Man.[/2] [3]He started buying comics during his (3) ...... (CHILD) and now he has hundreds.[/3] [4]Some of the stories are full of exciting (4) ...... (ACT) scenes, while others are more funny than dramatic.[/4] [5]He often visits comic fairs with other (5) ...... (FAN) and sometimes dresses as famous characters.[/5] [6]He says comics are great (6) ...... (ENTERTAIN) and help him relax after school.[/6] [7]Last month, he even met a well-known comic book (7) ...... (ART) who signed one of his books.[/7] [8]He's also becoming a serious comic (8) ...... (COLLECT) and spends all his pocket money on rare editions.[/8]",
         "formatType": "passage_gap_fill",
         "answers": [
           "collection",
@@ -258,84 +258,85 @@
         ],
         "gapExplanationContent": [
           {
-            "whyCorrect": "\"collection\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "After comic book you need a noun — the thing he collects — so use collection, not the verb collect.",
             "wrongOptions": {
-              "collect": "The root COLLECT cannot fill the gap alone — you need a derived form like \"collection\"."
+              "collect": "COLLECT is the verb root — the gap needs a noun (collection) after comic book."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of COLLECT that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "COLLECT → collection: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from COLLECT: choose the form that matches the grammar of the line."
+            "commonMistake": "Don't use the root verb when the sentence needs a noun — check what word class fits after the noun before the gap.",
+            "usefulTip": "Read the words before the gap: comic book + ___ needs a noun for the set of comics.",
+            "wordFormation": "COLLECT → collection: add -ion to form the noun meaning a set of collected items.",
+            "grammarFocus": "Word formation: after a noun like comic book, use a derived noun (collection), not the verb root."
           },
           {
-            "whyCorrect": "\"heroes\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "Favourite heroes is plural — he has more than one favourite character — so use heroes, not the singular hero.",
             "wrongOptions": {
-              "hero": "The root HERO cannot fill the gap alone — you need a derived form like \"heroes\"."
+              "hero": "HERO is singular — one of his favourite ___ needs the plural heroes."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of HERO that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "HERO → heroes: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from HERO: choose the form that matches the grammar of the line."
+            "commonMistake": "Check whether the gap needs singular or plural — one of his favourite ___ implies more than one.",
+            "usefulTip": "Phrases like one of his favourite ___ usually need a plural noun.",
+            "wordFormation": "HERO → heroes: add -es for the regular plural noun.",
+            "grammarFocus": "Word formation: one of + plural noun — heroes, not hero."
           },
           {
-            "whyCorrect": "\"childhood\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "During his ___ needs a time-period noun — the years when he was a child — so use childhood.",
             "wrongOptions": {
-              "child": "The root CHILD cannot fill the gap alone — you need a derived form like \"childhood\"."
+              "child": "CHILD is a noun for a person — during his ___ needs a time noun like childhood."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of CHILD that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "CHILD → childhood: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from CHILD: choose the form that matches the grammar of the line."
+            "commonMistake": "Don't use the person noun (child) when the sentence needs a time period (childhood).",
+            "usefulTip": "During his ___ almost always needs a time noun: childhood, youth, schooldays.",
+            "wordFormation": "CHILD → childhood: add -hood to form the noun for the period of being a child.",
+            "grammarFocus": "Word formation: during his + time noun — childhood, not child."
           },
           {
-            "whyCorrect": "\"action\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "Exciting ___ scenes needs an adjective before scenes — the type of scenes in the story — so use action.",
             "wrongOptions": {
-              "act": "The root ACT cannot fill the gap alone — you need a derived form like \"action\"."
+              "act": "ACT is the verb root — exciting ___ scenes needs an adjective/noun modifier like action."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of ACT that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "ACT → action: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from ACT: choose the form that matches the grammar of the line."
+            "commonMistake": "Before a plural noun (scenes), use a word that describes the type — action scenes, not act scenes.",
+            "usefulTip": "Noun + noun compounds like action scenes or horror films use the root as a modifier.",
+            "wordFormation": "ACT → action: use the noun form as a modifier before another noun (action scenes).",
+            "grammarFocus": "Word formation: exciting + modifier + scenes — action fits as a compound noun modifier."
           },
           {
-            "whyCorrect": "\"fans\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "Other ___ at comic fairs means other people who share his hobby — a plural noun — so use fans.",
             "wrongOptions": {
-              "fan": "The root FAN cannot fill the gap alone — you need a derived form like \"fans\"."
+              "fan": "FAN is singular — other ___ implies more than one person, so use fans."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of FAN that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "FAN → fans: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from FAN: choose the form that matches the grammar of the line."
+            "commonMistake": "Other + plural noun — fans, not fan.",
+            "usefulTip": "Other usually takes a plural noun when it means other people (other fans, other students).",
+            "wordFormation": "FAN → fans: add -s for the regular plural.",
+            "grammarFocus": "Word formation: other + plural countable noun — fans."
           },
           {
-            "whyCorrect": "\"entertainment\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "Great ___ after great needs a noun — the thing comics provide — so use entertainment.",
             "wrongOptions": {
-              "entertain": "The root ENTERTAIN cannot fill the gap alone — you need a derived form like \"entertainment\"."
+              "entertain": "ENTERTAIN is a verb — great ___ needs a noun like entertainment."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of ENTERTAIN that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "ENTERTAIN → entertainment: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from ENTERTAIN: choose the form that matches the grammar of the line."
+            "commonMistake": "After great (adjective), use a noun — entertainment — not the verb entertain.",
+            "usefulTip": "Adjective + noun: great fun, great entertainment, great exercise — never the verb form.",
+            "wordFormation": "ENTERTAIN → entertainment: add -ment to form the noun.",
+            "grammarFocus": "Word formation: great + noun — entertainment, not entertain."
           },
           {
-            "whyCorrect": "\"artist\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "A well-known comic book ___ who signed needs a person noun — someone who draws comics — so use artist.",
             "wrongOptions": {
-              "art": "The root ART cannot fill the gap alone — you need a derived form like \"artist\"."
+              "art": "ART is the subject — the gap needs a person noun (artist) who can sign a book."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of ART that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "ART → artist: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from ART: choose the form that matches the grammar of the line."
+            "commonMistake": "When the sentence describes a person (who signed), use a person noun — artist — not the subject art.",
+            "usefulTip": "Person suffixes: -ist (artist, scientist), -er (teacher, writer), -ian (musician).",
+            "wordFormation": "ART → artist: add -ist to form the noun for a person who creates art.",
+            "grammarFocus": "Word formation: a comic book + person noun — artist (who signed)."
           },
           {
-            "whyCorrect": "\"collector\" is the only word that completes this gap in the passage.",
+            "whyCorrect": "A serious comic ___ who spends money on rare editions is a person who collects — so use collector, not collection.",
             "wrongOptions": {
-              "collect": "The root COLLECT cannot fill the gap alone — you need a derived form like \"collector\"."
+              "collect": "COLLECT is the verb — the gap needs a person noun (collector).",
+              "collection": "Collection is the set of items — here you need the person who collects (collector)."
             },
-            "commonMistake": "Check the suffix and word class — the gap needs the form of COLLECT that fits grammatically, not just the root.",
-            "usefulTip": "Identify the word class needed (noun, adjective, adverb) before choosing the suffix from the root in capitals.",
-            "wordFormation": "COLLECT → collector: Apply the correct suffix or word form from the root.",
-            "grammarFocus": "Word formation from COLLECT: choose the form that matches the grammar of the line."
+            "commonMistake": "Gap (1) was collection (the thing); gap (8) is collector (the person) — same root, different suffix.",
+            "usefulTip": "Same root, different gaps: -tion/-ion for things (collection), -or/-er for people (collector).",
+            "wordFormation": "COLLECT → collector: add -or to form the noun for a person who collects.",
+            "grammarFocus": "Word formation: a serious comic + person noun — collector (not collection from gap 1)."
           }
         ]
       },

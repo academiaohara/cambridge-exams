@@ -514,6 +514,53 @@ if (pgContext.includes(pgEx.answers[0])) {
 }
 console.log('PASS passage_gap_fill question context keeps blank gap');
 
+// Review1 b1-u1-ex-a — [N][/N] markers show per-gap sentence context
+const review1 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/B1/Review1.v2.json'), 'utf8'));
+const r1ExA = review1.contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-a');
+const r1Gap3 = r1ExA.gapExplanationContent[2];
+
+const r1Screen = {
+  formatType: 'passage_gap_fill',
+  payload: {
+    sequentialGaps: true,
+    passage: r1ExA.passage,
+    gaps: [{
+      gapNumber: 3,
+      expectedAnswer: r1ExA.answers[2],
+      explanationContent: r1Gap3
+    }]
+  }
+};
+
+const r1Wrong = {
+  correct: false,
+  correctAnswer: r1ExA.answers[2],
+  userAnswer: 'child',
+  activeGapNumber: 3
+};
+
+const r1Opts = SunePlayExplanation.buildExplainOpts(r1Screen, r1Wrong);
+const r1Context = r1Opts.context || '';
+
+if (r1Context.includes('Spider-Man') || r1Context.includes('comic fairs')) {
+  console.error('FAIL Review1 ex-a gap 3 context should show only the gap sentence, not other sentences');
+  process.exit(1);
+}
+if (!/childhood|CHILD|\(3\)/.test(r1Context) && !/during his/.test(r1Context)) {
+  console.error('FAIL Review1 ex-a gap 3 context should include the gap-3 sentence');
+  console.error('Context was:', r1Context);
+  process.exit(1);
+}
+if (r1Context.includes(r1ExA.answers[2])) {
+  console.error('FAIL Review1 ex-a question context should not reveal the correct answer');
+  process.exit(1);
+}
+if (!r1Opts.sections.some((s) => s.key === 'whyCorrect')) {
+  console.error('FAIL Review1 ex-a wrong answer should include whyCorrect section');
+  process.exit(1);
+}
+console.log('PASS Review1 ex-a passage_gap_fill per-gap context via [N][/N] markers');
+
 // synced_gap_fill
 const syncItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit2.v2.json'), 'utf8'))
   .contentBanks.exercises.find((e) => e.id === 'c1-u2-ex-i').items[0];

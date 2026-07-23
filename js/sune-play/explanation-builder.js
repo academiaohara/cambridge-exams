@@ -153,7 +153,8 @@ var SunePlayExplanation = (function() {
     preselected_verb_gap_fill: true,
     word_bank_gap_fill: true,
     synced_gap_fill: true,
-    conversation_gap_fill: true
+    conversation_gap_fill: true,
+    passage_gap_fill: true
   };
 
   function shouldShowWhyCorrectSection(view) {
@@ -709,6 +710,38 @@ var SunePlayExplanation = (function() {
     return sentences[0] || null;
   }
 
+  function countGapsInLine(line) {
+    return (String(line || '').match(/\(\d+\)\s*(?:\.{3,}|…{2,}|_{3,})/g) || []).length;
+  }
+
+  function extractSentenceWithGap(text, gapNumber) {
+    var gapToken = '(' + gapNumber + ')';
+    var clean = stripGapContextMarkers(text);
+    var idx = clean.indexOf(gapToken);
+    if (idx === -1) return '';
+
+    var start = 0;
+    for (var i = idx - 1; i >= 0; i--) {
+      var ch = clean.charAt(i);
+      if ((ch === '.' || ch === '!' || ch === '?') && (i === 0 || /\s/.test(clean.charAt(i + 1)))) {
+        start = i + 1;
+        while (start < clean.length && /\s/.test(clean.charAt(start))) start++;
+        break;
+      }
+    }
+
+    var end = clean.length;
+    for (var j = idx; j < clean.length; j++) {
+      var c = clean.charAt(j);
+      if (c === '.' || c === '!' || c === '?') {
+        end = j + 1;
+        break;
+      }
+    }
+
+    return clean.slice(start, end).trim();
+  }
+
   function extractPassageGapLine(passage, gapNumber, answer) {
     var marked = extractGapContextFromMarkers(passage, gapNumber, answer);
     if (marked) return marked;
@@ -718,7 +751,11 @@ var SunePlayExplanation = (function() {
     var gapRe = new RegExp('\\.{3,}|…{2,}|_{3,}|…\\(' + gapNumber + '\\)…', 'g');
     for (var i = 0; i < lines.length; i++) {
       if (lines[i].indexOf(gapToken) === -1) continue;
-      var line = lines[i]
+      var source = countGapsInLine(lines[i]) > 1
+        ? extractSentenceWithGap(lines[i], gapNumber)
+        : lines[i];
+      if (!source) source = lines[i];
+      var line = source
         .replace(gapRe, answer || '___')
         .replace(/\s*\([A-Z][A-Z0-9'-]*\)/g, '')
         .trim();
