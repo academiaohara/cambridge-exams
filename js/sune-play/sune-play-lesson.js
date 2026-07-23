@@ -584,7 +584,7 @@
 
   function buildExplainOpts() {
     var cmContext = lessonState._cmExplainContext;
-    if (cmContext) {
+    if (cmContext && !lessonState.awaitingContinue) {
       return Object.assign({ title: 'Explanation' }, cmContext);
     }
     var result = lessonState._lastFeedbackResult;
@@ -1235,30 +1235,19 @@
 
     screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
 
-    if (result._inlineFeedback && !result.correct) {
-      if (result.lifeLoss > 0) {
-        applyLifeLoss(result.lifeLoss, screen);
-      }
-      if (window.AudioUtils) AudioUtils.playFailureSound();
-      updateColumnMatchExplainBtn(screenRoot, screen);
-      updateSessionHeader();
-      return;
-    }
-
-    if (result.correct && result._autoAdvance) {
-      if (window.AudioUtils) AudioUtils.playSuccessSound();
-      updateColumnMatchExplainBtn(screenRoot, screen);
-      updateSessionHeader();
-      return;
+    if (!result.correct && result.lifeLoss > 0) {
+      applyLifeLoss(result.lifeLoss, screen);
     }
 
     if (result.correct && result.allDone) {
-      screenRoot.classList.add('sp-screen--locked');
       lessonState.queue.removeCompletedItem(screen);
       lessonState.sessionCorrect++;
-      showFeedback(result, true);
-      updateSessionHeader();
     }
+
+    lessonState._lastHuntResult = result;
+    screenRoot.classList.add('sp-screen--locked');
+    showFeedback(result, result.correct);
+    updateSessionHeader();
   }
 
   function handlePassageGapSequentialCheck(screenRoot, screen) {
@@ -1454,6 +1443,31 @@
         screenRoot.classList.remove('sp-screen--locked');
         setScreenInputsLocked(false);
         setActionBtn('check', false);
+        updateSessionHeader();
+        return;
+      }
+    }
+
+    if (screen && screen.formatType === 'column_matching' &&
+        screen.payload && screen.payload.sequentialMode !== false && screenRoot && lastResult &&
+        lastResult._columnMatchResult) {
+      if (lastResult.correct && !lastResult.allDone) {
+        renderer.advanceColumnMatchAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateColumnMatchExplainBtn(screenRoot, screen);
+        updateExerciseTip(screen, null);
+        updateSessionHeader();
+        return;
+      }
+      if (!lastResult.correct) {
+        renderer.retryColumnMatchAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', false);
+        updateColumnMatchExplainBtn(screenRoot, screen);
+        updateExerciseTip(screen, null);
         updateSessionHeader();
         return;
       }

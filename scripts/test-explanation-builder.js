@@ -1444,6 +1444,72 @@ if (!convGapBreakdown || !String(convGapBreakdown.text).includes(pvDisplay)) {
 console.log('PASS conversation_gap_fill explanation builder');
 console.log('Sections:', convGapKeys.join(' → '));
 
+// column_matching — sequential pair explanations adapt to correct/wrong
+const cmScreen = {
+  formatType: 'column_matching',
+  payload: {
+    pairs: [{
+      pairId: 1,
+      leftText: 'I used to play the guitar every evening',
+      correctLetter: 'D',
+      endingText: 'when I was at secondary school.',
+      explanation: 'Together they form a complete sentence about a past habit.'
+    }],
+    rightOptions: [
+      { letter: 'D', endingText: 'when I was at secondary school.' },
+      { letter: 'B', endingText: "somebody's phone started ringing." }
+    ]
+  }
+};
+
+const cmWrong = {
+  correct: false,
+  correctAnswer: 'D — when I was at secondary school.',
+  userAnswer: 'B',
+  activePairId: 1,
+  explanation: 'Together they form a complete sentence about a past habit.'
+};
+
+const cmWrongOpts = SunePlayExplanation.buildExplainOpts(cmScreen, cmWrong);
+const cmWrongKeys = cmWrongOpts.sections.map((s) => s.key);
+
+if (!cmWrongKeys.includes('yourAnswer')) {
+  console.error('FAIL column_matching wrong answer should include yourAnswer section');
+  process.exit(1);
+}
+if (!cmWrongKeys.includes('whyCorrect') && !cmWrongKeys.includes('optionContrast')) {
+  console.error('FAIL column_matching wrong answer should include teaching section');
+  process.exit(1);
+}
+const cmWhyWrong = cmWrongOpts.sections.find((s) => s.key === 'whyCorrect');
+if (cmWhyWrong && cmWhyWrong.label === "Why it's correct") {
+  console.error('FAIL column_matching wrong answer should not use "Why it\'s correct" label');
+  process.exit(1);
+}
+if (!SunePlayExplanation.hasExplanation(cmScreen, cmWrong)) {
+  console.error('FAIL column_matching should report hasExplanation for pair data');
+  process.exit(1);
+}
+if (!SunePlayExplanation.hasTeachingSections(cmScreen, cmWrong)) {
+  console.error('FAIL column_matching wrong answer should have teaching sections');
+  process.exit(1);
+}
+
+const cmCorrect = {
+  correct: true,
+  correctAnswer: 'D — when I was at secondary school.',
+  userAnswer: 'D',
+  activePairId: 1,
+  explanation: 'Together they form a complete sentence about a past habit.'
+};
+const cmCorrectOpts = SunePlayExplanation.buildExplainOpts(cmScreen, cmCorrect);
+const cmWhyCorrect = cmCorrectOpts.sections.find((s) => s.key === 'whyCorrect');
+if (!cmWhyCorrect || cmWhyCorrect.label !== "Why it's correct") {
+  console.error('FAIL column_matching correct answer should use "Why it\'s correct" label');
+  process.exit(1);
+}
+console.log('PASS column_matching explanation builder');
+
 const audit = spawnSync('node', ['scripts/audit-two-option-explanations.js'], {
   cwd: ROOT,
   encoding: 'utf8'

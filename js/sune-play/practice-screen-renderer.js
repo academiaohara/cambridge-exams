@@ -2316,38 +2316,28 @@
     var ok = pendingLetter === correctLetter;
     var explanation = (pair && pair.explanation) || p.explanation || '';
 
+    var correctEnding = (pair && pair.endingText) || '';
+    var correctAnswerDisplay = correctEnding
+      ? correctLetter + ' — ' + correctEnding
+      : correctLetter;
+
     if (ok) {
       lockCmPair(root, screen, activePairId, pendingLetter);
       root._cmShowExplainAfterWrong = false;
+      syncColumnMatchUi(root, screen);
       var allDone = pairs.every(function(item) {
         return !!getCmLockedPairs(root)[String(item.pairId)];
       });
 
-      if (!allDone) {
-        advanceCmActivePair(root, screen);
-        syncColumnMatchUi(root, screen);
-        return {
-          handled: true,
-          correct: true,
-          partial: true,
-          allDone: false,
-          lifeLoss: 0,
-          userAnswer: pendingLetter,
-          correctAnswer: correctLetter,
-          explanation: explanation,
-          _columnMatchResult: true,
-          _autoAdvance: true
-        };
-      }
-
       return {
         handled: true,
         correct: true,
-        partial: false,
-        allDone: true,
+        partial: !allDone,
+        allDone: allDone,
         lifeLoss: 0,
         userAnswer: pendingLetter,
-        correctAnswer: correctLetter,
+        correctAnswer: correctAnswerDisplay,
+        activePairId: activePairId,
         explanation: explanation,
         _columnMatchResult: true
       };
@@ -2363,11 +2353,23 @@
       correct: false,
       lifeLoss: 1,
       userAnswer: pendingLetter,
-      correctAnswer: correctLetter,
+      correctAnswer: correctAnswerDisplay,
+      activePairId: activePairId,
       explanation: explanation,
-      _columnMatchResult: true,
-      _inlineFeedback: true
+      _columnMatchResult: true
     };
+  }
+
+  function advanceColumnMatchAfterFeedback(root, screen) {
+    advanceCmActivePair(root, screen);
+    root._cmShowExplainAfterWrong = false;
+    syncColumnMatchUi(root, screen);
+  }
+
+  function retryColumnMatchAfterFeedback(root, screen) {
+    root._cmShowExplainAfterWrong = false;
+    revertCmPendingPair(root);
+    syncColumnMatchUi(root, screen);
   }
 
   function markColumnMatchResults(root, pairs, payloadPairs) {
@@ -5214,6 +5216,8 @@
     retryWordBankSeqAfterFeedback: retryWordBankSeqAfterFeedback,
     isWordBankSeqReady: isWordBankSeqReady,
     processColumnMatchSequentialCheck: processColumnMatchSequentialCheck,
+    advanceColumnMatchAfterFeedback: advanceColumnMatchAfterFeedback,
+    retryColumnMatchAfterFeedback: retryColumnMatchAfterFeedback,
     getColumnMatchExplainContext: getColumnMatchExplainContext,
     isColumnMatchSequentialReady: isColumnMatchSequentialReady,
     commitHuntFixAfterFeedback: commitHuntFixAfterFeedback
