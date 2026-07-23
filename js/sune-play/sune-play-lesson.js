@@ -817,6 +817,20 @@
     }
     var p = screen.payload || {};
     var content = p.explanationContent;
+    if (!content && screen.formatType === 'word_bank_gap_fill' && p.sequentialSentences) {
+      var sentences = p.sentences || [];
+      var activeId = (result && result.activeSentenceId) ||
+        (screen._wordBankSeqState && screen._wordBankSeqState.activeId) ||
+        (sentences[0] && sentences[0].sentenceId);
+      if (activeId) {
+        for (var i = 0; i < sentences.length; i++) {
+          if (sentences[i].sentenceId === activeId) {
+            content = sentences[i].explanationContent;
+            break;
+          }
+        }
+      }
+    }
     if (content && content.usefulTip) return content.usefulTip;
     return '';
   }

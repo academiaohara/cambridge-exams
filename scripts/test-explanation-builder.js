@@ -561,6 +561,54 @@ if (!r1Opts.sections.some((s) => s.key === 'whyCorrect')) {
 }
 console.log('PASS Review1 ex-a passage_gap_fill per-gap context via [N][/N] markers');
 
+// Review1 b1-u1-ex-b — word_bank_gap_fill sequential phrasal-verb explanations
+const r1ExB = review1.contentBanks.exercises.find((e) => e.id === 'b1-u1-ex-b');
+const r1WbSentence = r1ExB.items[2];
+
+const r1WbScreen = {
+  formatType: 'word_bank_gap_fill',
+  payload: {
+    sequentialSentences: true,
+    wordBank: r1ExB.wordBank,
+    sentences: r1ExB.items.map((item) => ({
+      sentenceId: item.id,
+      sentence: item.sentence,
+      answer: item.answer,
+      explanationContent: item.explanationContent
+    }))
+  }
+};
+
+const r1WbWrong = {
+  correct: false,
+  correctAnswer: r1WbSentence.answer,
+  userAnswer: 'send',
+  activeSentenceId: r1WbSentence.id
+};
+
+const r1WbOpts = SunePlayExplanation.buildExplainOpts(r1WbScreen, r1WbWrong);
+const r1WbKeys = r1WbOpts.sections.map((s) => s.key);
+
+if (!r1WbOpts.sections.some((s) => s.key === 'whyCorrect')) {
+  console.error('FAIL Review1 ex-b wrong answer should include whyCorrect section');
+  process.exit(1);
+}
+if (!r1WbOpts.sections.some((s) => s.key === 'grammarFocus')) {
+  console.error('FAIL Review1 ex-b should include grammarFocus phrasal-verb teaching');
+  process.exit(1);
+}
+if (!r1WbOpts.sections.some((s) => s.key === 'commonMistake')) {
+  console.error('FAIL Review1 ex-b wrong answer should include commonMistake section');
+  process.exit(1);
+}
+const r1WbWhy = r1WbOpts.sections.find((s) => s.key === 'whyCorrect');
+if (!r1WbWhy || !/send off|sent/i.test(r1WbWhy.text)) {
+  console.error('FAIL Review1 ex-b whyCorrect should explain send off / past tense sent');
+  process.exit(1);
+}
+console.log('PASS Review1 ex-b word_bank_gap_fill phrasal-verb explanations');
+console.log('Sections:', r1WbKeys.join(' → '));
+
 // synced_gap_fill
 const syncItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit2.v2.json'), 'utf8'))
   .contentBanks.exercises.find((e) => e.id === 'c1-u2-ex-i').items[0];
