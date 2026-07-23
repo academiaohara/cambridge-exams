@@ -478,7 +478,7 @@ const errWrong = {
 
 const errOpts = SunePlayExplanation.buildExplainOpts(errScreen, errWrong);
 const errKeys = errOpts.sections.map((s) => s.key);
-const errExpected = ['yourAnswer', 'question', 'fix', 'correctedSentence'];
+const errExpected = ['yourAnswer', 'question', 'fix', 'whyCorrect', 'correctedSentence'];
 const errMissing = errExpected.filter((k) => !errKeys.includes(k));
 
 if (errMissing.length) {
@@ -488,6 +488,18 @@ if (errMissing.length) {
 
 if (errOpts.context) {
   console.error('FAIL error_correction standardized format should not duplicate context');
+  process.exit(1);
+}
+
+const errQuestion = errOpts.sections.find((s) => s.key === 'question');
+if (!errQuestion || !String(errQuestion.text).includes('<mistake>')) {
+  console.error('FAIL error_correction question should include <mistake> highlight');
+  process.exit(1);
+}
+
+const errWhy = errOpts.sections.find((s) => s.key === 'whyCorrect');
+if (!errWhy || !String(errWhy.text).trim()) {
+  console.error('FAIL error_correction should include whyCorrect explanation');
   process.exit(1);
 }
 
@@ -619,7 +631,7 @@ const fswUsesStandard = fswItem.explanationContent &&
   fswItem.explanationContent.question &&
   fswItem.explanationContent.correctedSentence;
 const fswExpected = fswUsesStandard
-  ? ['yourAnswer', 'question', 'fix', 'correctedSentence']
+  ? ['yourAnswer', 'question', 'fix', 'whyCorrect', 'correctedSentence']
   : ['correct', 'yourAnswer', 'grammarFocus', 'commonMistake', 'sentenceBreakdown'];
 const fswMissing = fswExpected.filter((k) => !fswKeys.includes(k));
 

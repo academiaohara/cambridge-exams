@@ -4187,6 +4187,19 @@ button.sp-vocab-word-card:focus-visible {
   padding: 0 2px;
 }
 
+.sp-explanation-card-context-text .sp-error-mark,
+.sp-explanation-section--question .sp-error-mark,
+.lesson-explanation-question-text .sp-error-mark,
+.sp-explanation-section--neutral .sp-error-mark {
+  font-style: normal;
+  font-weight: 700;
+  color: inherit;
+}
+
+.sp-explanation-section--why-explain {
+  border-bottom: none;
+}
+
 .sp-verb-bank {
   display: flex;
   flex-wrap: wrap;
