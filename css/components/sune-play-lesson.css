@@ -1421,6 +1421,60 @@ button.sp-vocab-word-card:focus-visible {
   display: none !important;
 }
 
+.sp-exercise-explanation-mount {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.sp-exercise-explanation-mount:not(:empty) + .sp-exercise-tip-mount {
+  margin-top: 8px;
+}
+
+.sp-exercise-explanation-panel {
+  width: 100%;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
+  overflow: hidden;
+}
+
+.sp-exercise-explanation-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--sp-duo-blue-border);
+  background: var(--sp-duo-blue-light);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sp-duo-blue-dark);
+}
+
+.sp-exercise-explanation-panel__header .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--sp-duo-blue);
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+}
+
+.sp-exercise-explanation-panel__body {
+  padding: 0;
+}
+
+.sp-exercise-explanation-panel__body .sp-explanation-card-view {
+  animation: none;
+}
+
+.sp-exercise-explanation-panel__body .sp-explanation-card-context,
+.sp-exercise-explanation-panel__body .sp-explanation-section {
+  border-radius: 0;
+}
+
 .sp-explanation-card-view {
   flex: 1;
   display: flex;
@@ -2307,7 +2361,9 @@ button.sp-vocab-word-card:focus-visible {
 }
 
 .sp-passage-gap-wrap {
-  display: inline;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0 2px;
   vertical-align: baseline;
   white-space: normal;
@@ -2392,7 +2448,7 @@ button.sp-vocab-word-card:focus-visible {
 .sp-passage-gap-wrap .sp-gap-inline-input.sp-gap-underline-input {
   max-width: none;
   min-width: 2ch;
-  text-align: left;
+  text-align: center;
 }
 
 .sp-screen--passage-sequential .sp-passage-gap--correct .sp-gap-inline-input,

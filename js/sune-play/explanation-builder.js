@@ -607,6 +607,59 @@ var SunePlayExplanation = (function() {
       .trim();
   }
 
+  var GAP_CONTEXT_MARKER_RE = /\[(\d+)\]([\s\S]*?)\[\/\1\]/g;
+
+  function stripGapContextMarkers(text) {
+    return String(text || '').replace(GAP_CONTEXT_MARKER_RE, '$2');
+  }
+
+  function extractGapContextFromMarkers(passage, gapNumber, answer) {
+    if (gapNumber == null) return '';
+    var re = new RegExp('\\[' + gapNumber + '\\]([\\s\\S]*?)\\[\\/' + gapNumber + '\\]');
+    var match = String(passage || '').match(re);
+    if (!match) return '';
+
+    var inner = match[1];
+    var gapToken = '(' + gapNumber + ')';
+    var gapRe = new RegExp(
+      '\\(' + gapNumber + '\\)\\s*(?:\\.{3,}|…{2,}|_{3,})',
+      'g'
+    );
+    var replacement = answer != null && String(answer).trim()
+      ? String(answer).trim()
+      : '___';
+    var line = inner
+      .replace(gapRe, replacement)
+      .replace(/\.{3,}|…{2,}|_{3,}/g, replacement)
+      .replace(/\s*\([A-Z][A-Z0-9'-]*\)/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return gapSentenceDisplay(line);
+  }
+
+  function buildPassageGapContext(screen, result) {
+    var p = (screen && screen.payload) || {};
+    var passage = p.passage || '';
+    var gapNumber = result && result.activeGapNumber;
+    if (gapNumber == null && result && result.passageGapResults && result.passageGapResults.length) {
+      gapNumber = result.passageGapResults[0].gapNumber;
+    }
+    if (gapNumber == null && (p.gaps || []).length) {
+      gapNumber = p.gaps[0].gapNumber;
+    }
+
+    if (gapNumber != null) {
+      var gap = (p.gaps || []).find(function(g) { return g.gapNumber === gapNumber; }) || {};
+      var answer = (result && result.correctAnswer) || gap.expectedAnswer || '';
+      var snippet = extractGapContextFromMarkers(passage, gapNumber, answer);
+      if (snippet) return snippet;
+      var line = extractPassageGapLine(passage, gapNumber, answer);
+      if (line) return line;
+    }
+
+    return stripGapContextMarkers(passage || p.instruction || '').trim();
+  }
+
   function buildWordBankContext(payload, sentence) {
     var bank = (payload && payload.wordBank) || [];
     var bankLine = bank.length ? 'Word bank: ' + bank.join(', ') : '';
@@ -630,7 +683,10 @@ var SunePlayExplanation = (function() {
   }
 
   function extractPassageGapLine(passage, gapNumber, answer) {
-    var lines = String(passage || '').split('\n');
+    var marked = extractGapContextFromMarkers(passage, gapNumber, answer);
+    if (marked) return marked;
+
+    var lines = stripGapContextMarkers(passage).split('\n');
     var gapToken = '(' + gapNumber + ')';
     var gapRe = new RegExp('\\.{3,}|…{2,}|_{3,}|…\\(' + gapNumber + '\\)…', 'g');
     for (var i = 0; i < lines.length; i++) {
@@ -729,13 +785,16 @@ var SunePlayExplanation = (function() {
       var sections = [];
       var correctAnswer = gap.expectedAnswer || '';
       var userAnswer = result && result.userAnswer;
-      var isWrong = result && result.correct === false && userAnswer;
+      var isWrong = result && result.correct === false;
       var gapLabel = gap.gapNumber != null ? 'Gap (' + gap.gapNumber + ')' : 'Correct answer';
 
       sections.push({ key: 'correct', label: gapLabel, text: String(correctAnswer) });
 
       if (isWrong) {
-        sections.push({ key: 'yourAnswer', text: String(userAnswer) });
+        sections.push({
+          key: 'yourAnswer',
+          text: userAnswer != null && String(userAnswer).trim() ? String(userAnswer) : '—'
+        });
       }
 
       appendPassageGapTeaching(sections, gap, p, userAnswer, isWrong, {});
@@ -743,7 +802,7 @@ var SunePlayExplanation = (function() {
       return {
         title: 'Explanation',
         formatType: 'passage_gap_fill',
-        context: buildContext(screen),
+        context: buildPassageGapContext(screen, result),
         sections: sections
       };
     }
@@ -774,7 +833,7 @@ var SunePlayExplanation = (function() {
     return {
       title: 'Explanation',
       formatType: 'passage_gap_fill',
-      context: buildContext(screen),
+      context: buildPassageGapContext(screen, result),
       sections: allSections
     };
   }
@@ -2282,7 +2341,7 @@ var SunePlayExplanation = (function() {
       }).join('\n');
     }
     if (screen.formatType === 'passage_gap_fill') {
-      return String(p.passage || p.instruction || '').trim();
+      return buildPassageGapContext(screen, null);
     }
     if (screen.formatType === 'keyword_transformation') {
       var kwtPrompt = String(p.promptSentence || '').trim();

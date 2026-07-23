@@ -82,11 +82,24 @@ var LessonExplanation = (function() {
         '<mark class="sp-error-mark"><strong>$1</strong></mark>');
   }
 
+  function formatNumberedContextMarkers(text) {
+    var raw = String(text || '');
+    if (!/\[\d+\]/.test(raw)) return null;
+
+    return raw.replace(/\[(\d+)\]([\s\S]*?)\[\/\1\]/g, function(_, _n, inner) {
+      return formatContextLine(inner);
+    }).replace(/\[\d+\]|\[\/\d+\]/g, '');
+  }
+
   function formatContextText(text) {
     if (!text) return '';
     var raw = String(text);
     if (/\[start\d+\]/.test(raw)) {
       return formatBracketMarkers(raw).replace(/\n/g, '<br>');
+    }
+    var numbered = formatNumberedContextMarkers(raw);
+    if (numbered != null) {
+      return formatMistakeHighlight(numbered);
     }
     return formatMistakeHighlight(raw.split('\n').map(function(line) {
       return formatContextLine(line);
@@ -115,6 +128,10 @@ var LessonExplanation = (function() {
     var raw = String(text);
     if (/\[start\d+\]/.test(raw)) {
       return formatBracketMarkers(raw).replace(/\n/g, '<br>');
+    }
+    var numbered = formatNumberedContextMarkers(raw);
+    if (numbered != null) {
+      return formatMistakeHighlight(numbered);
     }
 
     return formatMistakeHighlight(raw.split('\n').map(function(line) {
@@ -309,6 +326,23 @@ var LessonExplanation = (function() {
     return '<div class="sp-explanation-sections">' + structuredBodyHtml(opts, 'card') + '</div>';
   }
 
+  function panelHtml(opts) {
+    var normalized = normalizeOpts(opts);
+    if (!normalized) return '';
+    return '<div class="sp-exercise-explanation-panel" role="region" aria-label="' + esc(normalized.title || 'Explanation') + '">' +
+        '<div class="sp-exercise-explanation-panel__header">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">menu_book</span>' +
+          '<span>Explanation</span>' +
+        '</div>' +
+        '<div class="sp-exercise-explanation-panel__body">' +
+          '<div class="sp-explanation-card-view-inner">' +
+            cardContextHtml(normalized.context) +
+            cardStructuredHtml(normalized) +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
   function openInline(mountEl, opts) {
     var normalized = normalizeOpts(opts);
     if (!mountEl || !normalized) return;
@@ -466,6 +500,7 @@ var LessonExplanation = (function() {
     open: open,
     close: close,
     hasRenderableContent: hasRenderableContent,
+    panelHtml: panelHtml,
     isOpenInCard: isOpenInCard,
     openInCard: openInCard,
     closeInCard: closeInCard,

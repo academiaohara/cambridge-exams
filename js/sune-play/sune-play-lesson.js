@@ -576,6 +576,45 @@
       lessonState.currentScreen,
       lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
     );
+    updateExerciseExplanationMount(
+      lessonState.currentScreen,
+      lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
+    );
+  }
+
+  function clearExerciseExplanationMount() {
+    var mount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-explanation-mount');
+    if (!mount) return;
+    mount.hidden = true;
+    mount.innerHTML = '';
+  }
+
+  function updateExerciseExplanationMount(screen, result) {
+    var mount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-explanation-mount');
+    if (!mount) return;
+
+    var cardEl = getExerciseCardEl();
+    if (cardEl && typeof LessonExplanation !== 'undefined' && LessonExplanation.isOpenInCard(cardEl)) {
+      mount.hidden = true;
+      mount.innerHTML = '';
+      return;
+    }
+
+    if (!screen || !result || !screenHasExplanation(screen, result) ||
+        typeof LessonExplanation === 'undefined' ||
+        typeof LessonExplanation.panelHtml !== 'function') {
+      clearExerciseExplanationMount();
+      return;
+    }
+
+    var explainOpts = buildExplainOpts();
+    if (!explainOpts || !LessonExplanation.hasRenderableContent(explainOpts)) {
+      clearExerciseExplanationMount();
+      return;
+    }
+
+    mount.innerHTML = LessonExplanation.panelHtml(explainOpts);
+    mount.hidden = false;
   }
 
   function getExerciseCardEl() {
@@ -1138,8 +1177,13 @@
     if (isOpen) {
       var tipMount = lessonState.mount && lessonState.mount.querySelector('#sp-exercise-tip-mount');
       if (tipMount) tipMount.hidden = true;
+      clearExerciseExplanationMount();
     } else {
       updateExerciseTip(
+        lessonState.currentScreen,
+        lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
+      );
+      updateExerciseExplanationMount(
         lessonState.currentScreen,
         lessonState.awaitingContinue ? lessonState._lastFeedbackResult : null
       );
@@ -1368,6 +1412,7 @@
     if (lessonState.hearts.isGameOver) return;
 
     closeExerciseCardExplanation();
+    clearExerciseExplanationMount();
 
     var screen = lessonState.currentScreen;
     var screenRoot = mount.querySelector('.sp-screen');
@@ -1567,6 +1612,7 @@
     setScreenInputsLocked(true);
     setActionBtn('continue', true);
     updateExerciseTip(lessonState.currentScreen, result);
+    updateExerciseExplanationMount(lessonState.currentScreen, result);
   }
 
   function finishSession() {
