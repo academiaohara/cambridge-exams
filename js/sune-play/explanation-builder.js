@@ -88,6 +88,15 @@ var SunePlayExplanation = (function() {
     });
   }
 
+  function hasColumnMatchExplanation(payload) {
+    if (!payload) return false;
+    if (getContent(payload)) return true;
+    if (payload.explanation) return true;
+    return (payload.pairs || []).some(function(pair) {
+      return pair.explanationContent || pair.explanation;
+    });
+  }
+
   function hasExplanation(screen, result) {
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option') {
@@ -100,6 +109,8 @@ var SunePlayExplanation = (function() {
       if (hasHuntCounterExplanation(p)) return true;
     } else if (screen && screen.formatType === 'guided_error_choice') {
       if (hasGuidedErrorExplanation(p)) return true;
+    } else if (screen && screen.formatType === 'column_matching') {
+      if (hasColumnMatchExplanation(p)) return true;
     } else {
       if (getContent(p)) return true;
       if (p.explanation) return true;
@@ -155,7 +166,7 @@ var SunePlayExplanation = (function() {
   function shouldShowWhyCorrectSection(view) {
     if (!view) return false;
     var ft = view.formatType;
-    return ft === 'error_correction' || ft === 'full_sentence_write' || !!GAP_FILL_EXPLANATION_FORMATS[ft];
+    return ft === 'error_correction' || ft === 'full_sentence_write' || ft === 'column_matching' || !!GAP_FILL_EXPLANATION_FORMATS[ft];
   }
 
   function finalizeExplanation(view, result) {
@@ -2381,6 +2392,100 @@ var SunePlayExplanation = (function() {
     };
   }
 
+  function findColumnMatchPair(payload, result) {
+    var pairs = (payload && payload.pairs) || [];
+    if (result && result.activePairId != null) {
+      for (var i = 0; i < pairs.length; i++) {
+        if (String(pairs[i].pairId) === String(result.activePairId)) {
+          return pairs[i];
+        }
+      }
+    }
+    return pairs.length ? pairs[0] : null;
+  }
+
+  function getColumnMatchEndingText(payload, letter) {
+    var rightOptions = (payload && payload.rightOptions) || [];
+    for (var i = 0; i < rightOptions.length; i++) {
+      if (String(rightOptions[i].letter) === String(letter)) {
+        return rightOptions[i].endingText || '';
+      }
+    }
+    return '';
+  }
+
+  function formatColumnMatchAnswer(letter, endingText) {
+    var letterStr = String(letter || '').trim().toUpperCase();
+    var ending = String(endingText || '').trim();
+    if (letterStr && ending) return letterStr + ' — ' + ending;
+    return letterStr || ending;
+  }
+
+  function buildColumnMatching(screen, result) {
+    var p = screen.payload || {};
+    var pair = findColumnMatchPair(p, result);
+    var correctLetter = (result && result.correctAnswer) || (pair && pair.correctLetter) || '';
+    var userLetter = result && result.userAnswer;
+    var isWrong = result && result.correct === false && userLetter;
+    var correctEnding = (pair && pair.endingText) || getColumnMatchEndingText(p, pair && pair.correctLetter);
+    var userEnding = isWrong ? getColumnMatchEndingText(p, userLetter) : '';
+    var sections = [];
+
+    if (result && result.correctAnswer) {
+      sections.push({ key: 'correct', text: String(result.correctAnswer) });
+    } else if (correctLetter) {
+      sections.push({
+        key: 'correct',
+        text: formatColumnMatchAnswer(correctLetter, correctEnding)
+      });
+    }
+
+    if (isWrong) {
+      sections.push({
+        key: 'yourAnswer',
+        text: formatColumnMatchAnswer(userLetter, userEnding)
+      });
+    }
+
+    var content = (pair && pair.explanationContent) || getContent(p) || null;
+    var explanationText = (pair && pair.explanation) || (result && result.explanation) || p.explanation || '';
+
+    if (content) {
+      if (isWrong) {
+        var contrast = lookupOptionContrast(content, userLetter, p.rightOptions, correctLetter);
+        if (contrast) {
+          sections.push({ key: 'optionContrast', text: contrast });
+        }
+      }
+      appendTeachingSections(sections, content, isWrong, userLetter, p.rightOptions);
+    } else if (explanationText) {
+      if (isWrong) {
+        var because = String(explanationText).trim().replace(/[.!?]$/, '');
+        var contrastLine = formatOptionContrastLine(userLetter, correctLetter, because);
+        if (contrastLine) {
+          sections.push({ key: 'optionContrast', text: contrastLine });
+        }
+      }
+      sections.push(whyCorrectSection(explanationText, isWrong));
+    }
+
+    if (pair && pair.leftText && correctEnding) {
+      sections.push({
+        key: 'sentenceBreakdown',
+        text: pair.leftText + ' ' + correctEnding
+      });
+    }
+
+    if (!sections.length) return buildLegacy(screen, result);
+
+    return {
+      title: 'Explanation',
+      formatType: 'column_matching',
+      context: pair ? String(pair.leftText || '').trim() : buildContext(screen),
+      sections: sections
+    };
+  }
+
   function buildLegacy(screen, result) {
     var p = (screen && screen.payload) || {};
     var text = (result && result.explanation) || p.explanation || '';
@@ -2597,6 +2702,9 @@ var SunePlayExplanation = (function() {
         break;
       case 'guided_error_choice':
         view = buildGuidedErrorChoice(screen, result);
+        break;
+      case 'column_matching':
+        view = buildColumnMatching(screen, result);
         break;
       case 'conversation_gap_fill':
         view = buildConversationGapFill(screen, result);
