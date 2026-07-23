@@ -414,6 +414,18 @@ if (pgMissing.length) {
 console.log('PASS passage_gap_fill explanation builder');
 console.log('Sections:', pgKeys.join(' → '));
 
+// passage_gap_fill question context keeps blank gap (not the answer)
+const pgContext = pgOpts.context || '';
+if (!/\(1\)/.test(pgContext) || !/_{3,}|…{2,}/.test(pgContext)) {
+  console.error('FAIL passage_gap_fill question context should show blank gap markers');
+  process.exit(1);
+}
+if (pgContext.includes(pgEx.answers[0])) {
+  console.error('FAIL passage_gap_fill question context should not include the correct answer');
+  process.exit(1);
+}
+console.log('PASS passage_gap_fill question context keeps blank gap');
+
 // synced_gap_fill
 const syncItem = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/Course/C1/Unit2.v2.json'), 'utf8'))
   .contentBanks.exercises.find((e) => e.id === 'c1-u2-ex-i').items[0];
