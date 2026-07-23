@@ -906,7 +906,9 @@ var SunePlayExplanation = (function() {
     var p = screen.payload || {};
     if (p.sequentialSentences && p.sentences && p.sentences.length) {
       var sentence = findWordBankSeqSentence(p, result);
-      var content = (sentence && sentence.explanationContent) || getContent(p);
+      var content = (sentence && sentence.explanationContent) ||
+        (result && result.explanationContent) ||
+        getContent(p);
       var sections = [];
       var correctAnswer = (result && result.correctAnswer) || (sentence && sentence.answer) || '';
       var userAnswer = result && result.userAnswer;
